@@ -1,0 +1,1 @@
+{"title":"text-as-data-template","summary":"A small dataset kept as plain versioned files: a SQL schema, JSON-lines data, and pages rendered from it. This front page is data too: the `about` table."}
