@@ -32,7 +32,7 @@ Status
 : unknown
 
 Notes
-: Not individually confirmed; grouped with mic/earpiece as still-WIP in the postmarketOS community-promotion notes.
+: Not individually confirmed; grouped with mic/earpiece as still-WIP in the postmarketOS (now Nura) community-promotion notes.
 
 Updated
 : 2026-11-04
@@ -338,7 +338,7 @@ Status
 : works
 
 Notes
-: Required for postmarketOS to be installable at all, and for lab-agent's own boot-and-test loop.
+: Required for Nura to be installable at all, and for lab-agent's own boot-and-test loop.
 
 Updated
 : 2026-11-04

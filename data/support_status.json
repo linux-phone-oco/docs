@@ -1,5 +1,5 @@
 {"device_id":"xiaomi-surya","component_id":"audio-speaker","status":"works","notes":"Speaker support landed in the sm7150-mainline kernel (6.13.2).","updated":"2026-11-04"}
-{"device_id":"xiaomi-surya","component_id":"audio-headphone","status":"unknown","notes":"Not individually confirmed; grouped with mic/earpiece as still-WIP in the postmarketOS community-promotion notes.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"audio-headphone","status":"unknown","notes":"Not individually confirmed; grouped with mic/earpiece as still-WIP in the postmarketOS (now Nura) community-promotion notes.","updated":"2026-11-04"}
 {"device_id":"xiaomi-surya","component_id":"audio-mic","status":"broken","notes":"Explicitly called out as not yet working when the device moved from testing to community in pmOS packaging.","updated":"2026-11-04"}
 {"device_id":"xiaomi-surya","component_id":"audio-earpiece","status":"broken","notes":"Same source as audio-mic.","updated":"2026-11-04"}
 {"device_id":"xiaomi-surya","component_id":"camera-front","status":"broken","notes":"Cameras explicitly called out as not yet working, same source as audio-mic.","updated":"2026-11-04"}
@@ -16,4 +16,4 @@
 {"device_id":"xiaomi-surya","component_id":"fingerprint","status":"unknown","notes":"Not confirmed either way.","updated":"2026-11-04"}
 {"device_id":"xiaomi-surya","component_id":"sensors","status":"unknown","notes":"Not confirmed either way.","updated":"2026-11-04"}
 {"device_id":"xiaomi-surya","component_id":"usb-otg","status":"works","notes":"OTG support added (6.13.2).","updated":"2026-11-04"}
-{"device_id":"xiaomi-surya","component_id":"fastboot","status":"works","notes":"Required for postmarketOS to be installable at all, and for lab-agent's own boot-and-test loop.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"fastboot","status":"works","notes":"Required for Nura to be installable at all, and for lab-agent's own boot-and-test loop.","updated":"2026-11-04"}
