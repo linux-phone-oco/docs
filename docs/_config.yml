@@ -1,5 +1,5 @@
 title: linux-phone-oco/docs
-description: Docs and logs for mainlining Linux on phones: which device supports which hardware, how we know, and why decisions were made.
+description: "Docs and logs for mainlining Linux on phones: which device supports which hardware, how we know, and why decisions were made."
 theme: null
 markdown: kramdown
 plugins:
