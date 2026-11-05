@@ -1,0 +1,19 @@
+{"id":"audio-speaker","name":"Speaker","category":"audio"}
+{"id":"audio-headphone","name":"Headphone output (3.5mm)","category":"audio"}
+{"id":"audio-mic","name":"Microphone","category":"audio"}
+{"id":"audio-earpiece","name":"Earpiece (call speaker)","category":"audio"}
+{"id":"camera-front","name":"Front camera","category":"camera"}
+{"id":"camera-rear","name":"Rear camera(s)","category":"camera"}
+{"id":"display-panel","name":"Display panel","category":"display"}
+{"id":"touchscreen","name":"Touchscreen","category":"input"}
+{"id":"haptics","name":"Haptics (vibration motor)","category":"input"}
+{"id":"modem-data","name":"Mobile data","category":"connectivity"}
+{"id":"modem-calls","name":"Phone calls","category":"connectivity"}
+{"id":"modem-sms","name":"SMS","category":"connectivity"}
+{"id":"wifi","name":"Wi-Fi","category":"connectivity"}
+{"id":"bluetooth","name":"Bluetooth","category":"connectivity"}
+{"id":"nfc","name":"NFC","category":"connectivity"}
+{"id":"fingerprint","name":"Fingerprint sensor","category":"input"}
+{"id":"sensors","name":"Accelerometer / gyroscope / other sensors","category":"other"}
+{"id":"usb-otg","name":"USB OTG","category":"power"}
+{"id":"fastboot","name":"Fastboot / bootloader","category":"power"}

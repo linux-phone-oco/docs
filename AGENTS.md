@@ -44,26 +44,44 @@ Pages are written as Markdown by default. `DOCS_FORMAT=rst make render` writes r
 `docs/` are exactly what the data renders to. The data is written once, in Markdown inline syntax (`code`,
 `[text](url)`, `**bold**`, `*emphasis*`); the engine converts and escapes it for reStructuredText.
 
+## This repository's schema
+`devices` (one phone each), `components` (a fixed vocabulary of hardware features: audio-speaker, touchscreen, wifi, ...),
+`support_status` (the matrix: one row per device x component, `status` in works/partial/broken/unknown/not-applicable, with
+`notes` saying how we know), `device_sources` (citations, same convention as any `*_sources` join table - see
+`.tad/tools/render.py`'s docstring), plus the template's own `backlog` and `session_log`.
+
+**`unknown` is not a weaker form of `broken`.** It means nobody has checked. Do not infer a status from a device's reputation,
+a similar device's status, or silence in a source - only from something that actually tested or stated it. When in doubt,
+`unknown`, with a note saying what would settle it.
+
 ## Recipes
 Add or change content:
 ```
-make sql Q="INSERT INTO concepts VALUES ('id','Name','One-line statement.',[])"
-make sql Q="UPDATE concepts SET statement = '...' WHERE id = 'example-one'"
+make sql Q="INSERT INTO components VALUES ('id','Name','audio')"
+make sql Q="UPDATE support_status SET status = 'works', notes = '...', updated = current_date WHERE device_id = 'xiaomi-surya' AND component_id = 'audio-mic'"
 make render && make verify
 ```
 Schema change, when DuckDB allows it (add column with default, rename column, drop a non-key column, change a non-key type, `SET NOT NULL`, rename table):
 ```
-make sql Q="ALTER TABLE concepts ADD COLUMN maturity VARCHAR DEFAULT 'stable'"
+make sql Q="ALTER TABLE devices ADD COLUMN maintainer VARCHAR DEFAULT NULL"
 ```
 Schema change DuckDB refuses (add a column with constraints, `ADD CONSTRAINT CHECK`, drop or retype a key column):
 ```
 # 1. edit the CREATE line in data/schema.sql by hand
 # 2. give every data line the new key (Miller, in place):
-mlr -I --ijsonl --ojsonl put '$weight = 1' data/concepts.json
+mlr -I --ijsonl --ojsonl put '$weight = 1' data/devices.json
 # 3. validate and normalize; a wrong edit fails loudly here and leaves files untouched
 make canon && make render && make verify
 ```
 Rename a field across all lines: `mlr -I --ijsonl --ojsonl rename old,new data/<table>.json`, edit the same name in `data/schema.sql`, then `make canon`. Forgetting the schema edit is caught by `make check` (DuckDB itself would silently load NULLs).
+
+## The wider process
+This repository holds the *data*: what is known, and the history of deciding it. The engineering *process* - how work is
+planned, logged, guarded, and shipped across this org's repositories (this one and the code repos it documents) - follows
+[`ideal-project-playbook`](https://github.com/creation-guidelines/ideal-project-playbook)'s
+[`kit/AGENT-INSTRUCTIONS.rst`](https://github.com/creation-guidelines/ideal-project-playbook/blob/main/kit/AGENT-INSTRUCTIONS.rst).
+In particular: a code repository's own `AGENTS.md` points back here for the facts and the log, rather than keeping a second,
+divergent copy; `session_log` here is this org's development log, in the playbook's sense, not a local one per repository.
 
 ## Why it is built this way
 - DuckDB is the engine (in memory; no `.db` file is committed). `IMPORT DATABASE` loads `data/`, `EXPORT DATABASE ... (FORMAT json)` writes it back byte-stably.
