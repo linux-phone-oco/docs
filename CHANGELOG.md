@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.0.0 (2026-11-05)
+
+
+### Features
+
+* **data:** a fresh-install plan, prepared but not run ([#7](https://github.com/linux-phone-oco/docs/issues/7)) ([0bdbff5](https://github.com/linux-phone-oco/docs/commit/0bdbff518d76c882c615bd5b40808959c743a65c))
+* **data:** Nura boots and is reachable; no shell access without credentials ([#6](https://github.com/linux-phone-oco/docs/issues/6)) ([52819aa](https://github.com/linux-phone-oco/docs/commit/52819aa1d52078c391a27bebe9f512aa29be2a39))
+* **data:** the phone, confirmed for real ([#4](https://github.com/linux-phone-oco/docs/issues/4)) ([4c8c97d](https://github.com/linux-phone-oco/docs/commit/4c8c97d617626c9e4f9e60b5bd68f3c6039bb158))
+* schema for device/component/status tracking, RFC-style docs ([#1](https://github.com/linux-phone-oco/docs/issues/1)) ([bbe722e](https://github.com/linux-phone-oco/docs/commit/bbe722ee162d2e590406047ca86e3dfec2836b37))
+
+
+### Bug Fixes
+
+* _config.yml is actually valid YAML ([#3](https://github.com/linux-phone-oco/docs/issues/3)) ([4f4ba71](https://github.com/linux-phone-oco/docs/commit/4f4ba71395f8b0f9f29e4a2fd4b9683e40c14be5))
+* **data:** the distro is Nura now ([#5](https://github.com/linux-phone-oco/docs/issues/5)) ([6f79a41](https://github.com/linux-phone-oco/docs/commit/6f79a4143a17fbece6652e3b5068e724e4f75738))
+
 ## [1.2.0](https://github.com/creation-guidelines/text-as-data-template/compare/v1.1.2...v1.2.0) (2026-09-22)
 
 
