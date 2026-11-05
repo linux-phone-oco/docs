@@ -1,7 +1,8 @@
 COPY about FROM 'data/about.json' (FORMAT 'json');
 COPY backlog FROM 'data/backlog.json' (FORMAT 'json');
-COPY concepts FROM 'data/concepts.json' (FORMAT 'json');
-COPY concept_sources FROM 'data/concept_sources.json' (FORMAT 'json');
-COPY relations FROM 'data/relations.json' (FORMAT 'json');
+COPY components FROM 'data/components.json' (FORMAT 'json');
+COPY devices FROM 'data/devices.json' (FORMAT 'json');
+COPY device_sources FROM 'data/device_sources.json' (FORMAT 'json');
 COPY session_log FROM 'data/session_log.json' (FORMAT 'json');
 COPY sources FROM 'data/sources.json' (FORMAT 'json');
+COPY support_status FROM 'data/support_status.json' (FORMAT 'json');

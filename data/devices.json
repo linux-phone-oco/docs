@@ -1,0 +1,1 @@
+{"id":"xiaomi-surya","name":"Xiaomi POCO X3 NFC","codename":"surya","soc":"Qualcomm SM7150 (Snapdragon 732G)","notes":"Mainline-kernel support tracked by the sm7150-mainline community; postmarketOS package status: community. The device name includes NFC; that refers to the stock Android feature, not yet confirmed working under mainline (see the nfc component)."}

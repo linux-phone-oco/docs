@@ -1,1 +1,4 @@
-{"id":"example-source","title":"EXAMPLE: a source","url":"https://example.com/","author":"Example Author","year":2024}
+{"id":"sm7150-mainline-kernel","title":"linux-postmarketos-qcom-sm7150: the sm7150-mainline kernel fork and its changelog across releases","url":"https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/4818","author":null,"year":2026}
+{"id":"pmos-community-promotion","title":"device-xiaomi-{davinci,surya}: Move from testing to community","url":"https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/6210","author":null,"year":null}
+{"id":"sm7150-mainline-org","title":"sm7150-mainline: the community org hosting the kernel fork, nightly builds, and firmware repos","url":"https://github.com/orgs/sm7150-mainline/repositories","author":null,"year":null}
+{"id":"lab-agent-repo","title":"lab-agent: the pull-based agent that runs jobs on the real phone and reports back through git","url":"https://github.com/creation-guidelines/lab-agent","author":"grenudi","year":2026}

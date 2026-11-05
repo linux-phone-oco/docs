@@ -1,0 +1,19 @@
+{"device_id":"xiaomi-surya","component_id":"audio-speaker","status":"works","notes":"Speaker support landed in the sm7150-mainline kernel (6.13.2).","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"audio-headphone","status":"unknown","notes":"Not individually confirmed; grouped with mic/earpiece as still-WIP in the postmarketOS community-promotion notes.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"audio-mic","status":"broken","notes":"Explicitly called out as not yet working when the device moved from testing to community in pmOS packaging.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"audio-earpiece","status":"broken","notes":"Same source as audio-mic.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"camera-front","status":"broken","notes":"Cameras explicitly called out as not yet working, same source as audio-mic.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"camera-rear","status":"broken","notes":"Same source as camera-front.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"display-panel","status":"works","notes":"Video-mode panel fixes and panel regulator/variant support landed (6.7.4, 6.13.2).","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"touchscreen","status":"works","notes":"nt36xxx touchscreen driver rewrite for xiaomi-surya landed (6.7.4).","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"haptics","status":"works","notes":"awinic,aw8624 haptics driver added (6.2.0).","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"modem-data","status":"partial","notes":"Mobile data fix landed (6.2.0); calls and SMS not separately confirmed.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"modem-calls","status":"unknown","notes":"Not confirmed either way.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"modem-sms","status":"unknown","notes":"Not confirmed either way.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"wifi","status":"unknown","notes":"Not confirmed either way.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"bluetooth","status":"unknown","notes":"Not confirmed either way.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"nfc","status":"unknown","notes":"Not confirmed for this device specifically; a related device in the same family (davinci) is known to disable NFC over a GPIO conflict, which does not necessarily apply here.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"fingerprint","status":"unknown","notes":"Not confirmed either way.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"sensors","status":"unknown","notes":"Not confirmed either way.","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"usb-otg","status":"works","notes":"OTG support added (6.13.2).","updated":"2026-11-04"}
+{"device_id":"xiaomi-surya","component_id":"fastboot","status":"works","notes":"Required for postmarketOS to be installable at all, and for lab-agent's own boot-and-test loop.","updated":"2026-11-04"}

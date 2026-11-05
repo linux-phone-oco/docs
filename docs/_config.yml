@@ -1,5 +1,5 @@
-title: text-as-data-template
-description: A versioned, SQL-queryable dataset kept as plain files, rendered to a docs site.
+title: linux-phone-oco/docs
+description: Docs and logs for mainlining Linux on phones: which device supports which hardware, how we know, and why decisions were made.
 theme: null
 markdown: kramdown
 plugins:

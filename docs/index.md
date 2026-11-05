@@ -1,10 +1,12 @@
 <!-- Generated from data/ by .tad/tools/render.py. Do not edit by hand. -->
 
-# text-as-data-template
+# linux-phone-oco/docs
 
-A small dataset kept as plain versioned files: a SQL schema, JSON-lines data, and pages rendered from it. This front page is data too: the `about` table.
+Docs and logs for mainlining Linux on phones: which device supports which hardware, how we know, and why decisions were made. Plain versioned data; see AGENTS.md.
 
-- [Backlog](backlog.md): 9
-- [Concepts](concepts.md): 3
-- [Session Log](session_log.md): 7
-- [Sources](sources.md): 1
+- [Backlog](backlog.md): 4
+- [Components](components.md): 19
+- [Devices](devices.md): 1
+- [Session Log](session_log.md): 1
+- [Sources](sources.md): 4
+- [Support Status](support_status.md): 19
