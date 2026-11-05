@@ -7,6 +7,6 @@ Docs and logs for mainlining Linux on phones: which device supports which hardwa
 - [Backlog](backlog.md): 4
 - [Components](components.md): 19
 - [Devices](devices.md): 1
-- [Session Log](session_log.md): 4
+- [Session Log](session_log.md): 5
 - [Sources](sources.md): 4
 - [Support Status](support_status.md): 19
