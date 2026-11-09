@@ -88,3 +88,21 @@ Considered
 
 Rejected
 : Wrong is not catastrophic here (reflash fixes it) but is still avoidable, and pmbootstrap asks the installer to choose this explicitly, so the owner may simply already know which one was chosen.
+
+---
+
+
+<a id="2026-11-09-boot-hang-and-adsp"></a>
+### Boot hang found; ADSP crash loop found; lab-agent hardened
+
+Entry date
+: 2026-11-09
+
+Done
+: Audited the WCD937x patch on the lab machine (no IRQ collisions, no MMIO overlaps); proved on hardware that aoncc caused the boot hang; got SSH over USB on first boot (a preset beats Nura disable-sshd preset); found the ADSP crash loop and traced it to the sensor registry in hexagonrpcd. lab-agent: agent API, durable results, local-first monitor, GitHub budget fixes, ntfy notifications; surya-lab repo with DT audit and flash tools.
+
+Considered
+: Interrupt collisions and missing LPASS votes as the hang cause (refuted or unsupported by the audits).
+
+Rejected
+: A Python API for agents (the CLI with stable JSON is the API); a second monitor command (one command chooses local or remote).

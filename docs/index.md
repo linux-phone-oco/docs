@@ -4,9 +4,9 @@
 
 Docs and logs for mainlining Linux on phones: which device supports which hardware, how we know, and why decisions were made. Plain versioned data; see AGENTS.md.
 
-- [Backlog](backlog.md): 4
+- [Backlog](backlog.md): 7
 - [Components](components.md): 19
 - [Devices](devices.md): 1
-- [Session Log](session_log.md): 5
+- [Session Log](session_log.md): 6
 - [Sources](sources.md): 4
 - [Support Status](support_status.md): 19
