@@ -1,7 +1,10 @@
 # linux-phone-oco/docs
 
-Docs and logs for mainlining Linux on phones: which device supports which hardware, how we know, and why decisions were
-made. The data behind it is plain, versioned, and queryable - see [AGENTS.md](AGENTS.md).
+The memory of [linux-phone-oco](https://github.com/linux-phone-oco), whose goal is Linux phones
+as good as Android for everyday use, and better - one device and one piece of hardware at a time,
+everything upstream. Here: which phone supports which hardware, how we know, why decisions were
+made, and what is next. The data behind it is plain, versioned, and queryable - see
+[AGENTS.md](AGENTS.md).
 
 Read it as a site: **https://linux-phone-oco.github.io/docs/**. Style follows
 [`software-engineering-canon`](https://github.com/creation-guidelines/software-engineering-canon)'s RFC-like minimal

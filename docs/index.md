@@ -2,7 +2,7 @@
 
 # linux-phone-oco/docs
 
-Docs and logs for mainlining Linux on phones: which device supports which hardware, how we know, and why decisions were made. Plain versioned data; see AGENTS.md.
+The memory of linux-phone-oco, whose goal is Linux phones as good as Android for everyday use, and better: which phone supports which hardware, how we know, why decisions were made, and what is next. Plain versioned data; see AGENTS.md.
 
 - [Backlog](backlog.md): 7
 - [Components](components.md): 19
