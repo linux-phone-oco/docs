@@ -114,3 +114,29 @@ Note
 
 Opened
 : 2026-11-09
+
+
+<a id="upstream-tas2562-slot-length"></a>
+### Upstream: tas2562 sets the I2S slot length from the sample width
+
+Status
+: open
+
+Note
+: Kernel patch on linux-phone-oco/linux branch fix/tas2562-i2s-slot-length (one commit, compiles for arm64, verified on surya as a module built from the exact v7.1_rc3 source). Send to sm7150-mainline and to ALSA upstream (alsa-devel, the TAS2562 maintainers), signed off by the user.
+
+Opened
+: 2026-11-09
+
+
+<a id="upstream-ucm-surya-stereo"></a>
+### Upstream: stereo speaker UCM profile for surya
+
+Status
+: open
+
+Note
+: surya-lab ucm/Xiaomi/surya/HiFi.conf: two channels, top amplifier (0x4d) left, bottom (0x4c) right. For alsa-ucm-conf (Xiaomi/surya), once the kernel fix is accepted or at least posted.
+
+Opened
+: 2026-11-09

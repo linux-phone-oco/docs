@@ -14,7 +14,7 @@ Status
 : works
 
 Notes
-: Works on the stock Nura kernel (7.1-rc3) and device tree once the ADSP sensors service is off (see backlog adsp-sensor-crash-loop): heard by the user on 2026-11-09, then a 5-minute playback soak with 0 ADSP crashes, the sound card present throughout and 0 playback errors. Before that fix, sound lasted seconds: the ADSP crashed every 13-25 s.
+: Stereo, both speakers, verified by ear on 2026-11-09 through PipeWire (left-only tone from the top speaker, right-only from the bottom). Needs two fixes not yet upstream: the tas2562 amplifier driver set 32-bit I2S slots on a link clocked for 16-bit, so the right channel fell outside the frame (kernel patch on linux-phone-oco/linux branch fix/tas2562-i2s-slot-length); and the packaged UCM profile is mono with no amplifier channel setup (stereo profile in surya-lab ucm/). Also needs the ADSP sensors service off (adsp-sensor-crash-loop). Both fixes are installed on the test phone, over package files a system update would replace.
 
 Updated
 : 2026-11-09
