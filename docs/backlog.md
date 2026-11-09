@@ -179,3 +179,16 @@ Note
 
 Opened
 : 2026-11-09
+
+
+<a id="phosh-usb"></a>
+### Under Phosh the PC loses the phone over USB
+
+Status
+: open
+
+Note
+: After switching to Phosh (2026-11-09) the PC showed no USB device for the phone, so no SSH over USB; the user saw the same before, in an earlier Phosh try. Unclear yet: Phosh changing the USB gadget, or the cable (EarPods were being plugged in that evening). To check: lsusb on the PC and the gadget state on the phone (via wifi or the console) while in Phosh.
+
+Opened
+: 2026-11-09
