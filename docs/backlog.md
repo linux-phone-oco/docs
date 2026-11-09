@@ -140,3 +140,42 @@ Note
 
 Opened
 : 2026-11-09
+
+
+<a id="try-shells"></a>
+### Try every mobile shell with working sound
+
+Status
+: in-progress
+
+Note
+: Switched in place with surya-lab ui/switch.sh (postmarketOS UI packages, tinydm for all; no reflash, the sound fixes stay). Phosh: runs, stereo verified by ear 2026-11-09. Next: Plasma Mobile, GNOME Mobile; Sxmo was the starting shell.
+
+Opened
+: 2026-11-09
+
+
+<a id="microphone"></a>
+### Microphone: check, and make it work
+
+Status
+: open
+
+Note
+: The microphones go through the WCD9375 codec, which the stock device tree does not wire up (the sound card has only the speaker). Needs the device-tree work on linux-phone-oco/linux PR #1 (aoncc dropped, VA macro clocked from q6afecc; built and audited, not yet booted). Test idea: play a tone on the speaker and record it, so the check needs no ears. Boot test needs the user nearby (a hang needs the power button).
+
+Opened
+: 2026-11-09
+
+
+<a id="org-board"></a>
+### A board for linux-phone-oco
+
+Status
+: open
+
+Note
+: The user's idea: a shared board for the org, like lab-agent's. Later.
+
+Opened
+: 2026-11-09
