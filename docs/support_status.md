@@ -14,10 +14,10 @@ Status
 : works
 
 Notes
-: Speaker support landed in the sm7150-mainline kernel (6.13.2).
+: Works on the stock Nura kernel (7.1-rc3) and device tree once the ADSP sensors service is off (see backlog adsp-sensor-crash-loop): heard by the user on 2026-11-09, then a 5-minute playback soak with 0 ADSP crashes, the sound card present throughout and 0 playback errors. Before that fix, sound lasted seconds: the ADSP crashed every 13-25 s.
 
 Updated
-: 2026-11-04
+: 2026-11-09
 
 
 ### Row 2
