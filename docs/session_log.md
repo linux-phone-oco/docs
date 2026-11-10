@@ -106,3 +106,21 @@ Considered
 
 Rejected
 : A Python API for agents (the CLI with stable JSON is the API); a second monitor command (one command chooses local or remote).
+
+---
+
+
+<a id="2026-11-10-stereo-and-the-picture"></a>
+### Stereo speakers, shells, the grand picture, the device lab
+
+Entry date
+: 2026-11-10
+
+Done
+: Speaker stereo on surya (tas2562 slot-length fix + stereo UCM), verified by ear through PipeWire on Sxmo, Phosh and Plasma. Plasma: a saved mixer state and a tas2562 volume bug silenced the amps; found and recorded. The grand picture: tad-engine draws matrices, a 46-feature catalog against Android, iOS and Linux, the device grid, an automatic test suite whose runs are filed here, weekly feeds (the postmarketOS wiki claims, kernel work on surya), the research sorted into the orgs. The device lab: flash with the fixes built in, provisioning (packages, Wi-Fi), one phone library, an Sxmo device profile.
+
+Considered
+: Separate boards per project (labels on tasks chosen: one source of truth); a PR from the feed workflow (the org forbids it: verified data is committed instead); loosening the org policy for one feed.
+
+Rejected
+: Guessing statuses for the Linux distributions (left unknown until tests and feeds fill them); PC-side depmod when baking in a module (it made Plasma boot-loop); trusting an image by its folder name (a reference image carried an old test device tree - fingerprints now).
