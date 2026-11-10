@@ -1,0 +1,127 @@
+id: grapheneos
+name: GrapheneOS
+maintainer: GrapheneOS Project (Daniel Micay + community)
+status: active_shipping
+hardware_open: no  # runs on Google Pixel hardware
+software_open: full
+url: https://grapheneos.org
+daily_driver_maturity: high  # genuinely usable daily driver for many users
+
+summary: >
+  GrapheneOS is the most important bridge project in the handset ecosystem.
+  It takes Google Pixel hardware (which has the best open Android support and
+  Titan M2 security chip) and runs a hardened, privacy-respecting Android fork
+  on it — retaining full access to the Security Substrate while eliminating
+  Google Play Services dependency. It demonstrates that a non-vendor OS can
+  achieve daily-driver quality by making smart hardware selection rather than
+  fighting hardware that was designed to resist openness.
+
+why_it_matters_for_ohc: >
+  GrapheneOS solves several problems simultaneously that the open Linux phone
+  community has not yet solved. Analysing how it does so illuminates which OHC
+  concepts are proven feasible and which remain aspirational.
+
+security_substrate_approach:
+  description: >
+    GrapheneOS retains and extends Android's Verified Boot chain, anchored to
+    the Pixel's Titan M2 chip. It ships its own signing keys. The Titan M2
+    verifies that only GrapheneOS-signed firmware boots — not Google's, and not
+    an attacker's. This is possible because the Pixel bootloader can be re-locked
+    with a custom key, and Titan M2 respects that lock.
+  lesson_for_ohc: >
+    The Security Substrate does not require the original vendor's participation
+    post-purchase — it requires hardware that supports user key enrollment.
+    Any open handset SOM that includes a secure element with user-enrollable
+    keys can anchor its own verified boot chain. The Titan M2 does this.
+    A custom RP2040-based or commercial ATECC608 chip could do this on OHC hardware.
+
+notification_sovereignty_approach:
+  description: >
+    GrapheneOS ships without Google Play Services. Push notifications requiring
+    FCM therefore do not work for apps that depend on it. GrapheneOS provides
+    a sandboxed Google Play compatibility layer (optional, user-installed) that
+    runs Play Services in an isolated sandbox — it can deliver FCM notifications
+    but cannot access device identifiers or OS-level permissions that standard
+    Play Services would have.
+    For users who don't install the compatibility layer: UnifiedPush-compatible
+    apps (Element, Tusky, etc.) work natively. FCM-dependent apps don't get push.
+  lesson_for_ohc: >
+    GrapheneOS proves that notification sovereignty is achievable on a daily driver
+    today — but only for apps that support UnifiedPush or have no push dependency.
+    The coverage gap (apps that only support FCM) is the same gap OHC faces.
+    The solution is upstream app ecosystem adoption of UnifiedPush, not a
+    technical fix at the platform level.
+
+application_contract_approach:
+  description: >
+    GrapheneOS inherits Android's full application contract: ART runtime,
+    sandboxing, permission model, process isolation. It extends it with:
+    - Storage scopes: more granular storage permissions than stock Android
+    - Network permission: apps can be denied internet access entirely
+    - Sensors permission: apps can be denied access to all sensors
+    - Pin/fingerprint scrambling: randomised button/fingerprint position
+    - Hardened malloc: memory allocator that detects/prevents many exploit classes
+  lesson_for_ohc: >
+    GrapheneOS demonstrates that the Application Contract can be extended
+    beyond the vendor's defaults while remaining compatible with existing apps.
+    It also proves that "open software on closed hardware" can achieve higher
+    security than "closed software on closed hardware" — by making better
+    architectural choices with the same hardware.
+
+power_management:
+  description: >
+    GrapheneOS inherits Android's full power management stack (Doze, App Standby
+    Buckets, Adaptive Battery). It runs on hardware designed for mobile power
+    profiles. Standby is equivalent to stock Android.
+  lesson_for_ohc: >
+    GrapheneOS does not improve on Android's power management because it doesn't
+    need to — it runs on mobile-class SoCs. Open handsets on CM5 or equivalent
+    non-mobile SoCs cannot inherit this. The Power Covenant must be built from
+    scratch for OHC hardware.
+
+update_system:
+  description: >
+    GrapheneOS ships its own OTA update infrastructure. Updates are signed with
+    GrapheneOS keys, verified by Titan M2 before installation. A/B partitions
+    enable seamless updates. GrapheneOS commits to security patch releases within
+    days of Google releasing AOSP patches.
+  lesson_for_ohc: >
+    GrapheneOS proves that a community project can operate a credible,
+    verified OTA update system — but only by building on hardware (Pixel + Titan M2)
+    that makes verified boot possible. The Update Covenant requires a Security
+    Substrate to function. They are not independent concepts.
+
+hardware_choice_strategy:
+  description: >
+    GrapheneOS made a deliberate decision to support only Google Pixel devices.
+    This is because Pixel has: full mainline Android support, Titan M2, unlockable
+    bootloader with re-lockable custom key, fastest security patches, 7-year support.
+    By constraining hardware selection, GrapheneOS achieves quality that no
+    project supporting arbitrary Android devices can match.
+  lesson_for_ohc: >
+    This is Platform Compatibility as Precondition applied to a different axis.
+    GrapheneOS chose hardware based on security substrate quality, not
+    openness. OHC chose hardware based on driver maturity and community ecosystem.
+    Both are valid applications of the same concept: hardware selection is a
+    strategic decision that determines what the software layer can achieve.
+
+gaps_in_grapheneos:
+  - hardware_not_open: >
+      Runs on Pixel hardware. Pixel hardware design is closed. Users cannot inspect
+      or modify the physical device. This is the fundamental limit — GrapheneOS
+      cannot be more open than its hardware allows.
+  - no_radio_wall: >
+      The Pixel modem is integrated into the SoC or closely coupled to it.
+      There is no physical radio wall equivalent to Librem 5's M.2 modem card.
+  - android_dependency: >
+      GrapheneOS is an Android fork. Its long-term existence depends on AOSP
+      remaining open and Pixel hardware remaining supported. If Google closes
+      AOSP or discontinues Pixel, GrapheneOS has no path forward.
+
+prior_art_value_for_ohc:
+  - Proves daily-driver quality is achievable without Google services
+  - User-enrolled verified boot on commercial hardware → Security Substrate path
+  - Sandboxed Play compatibility → Application Contract extension pattern
+  - UnifiedPush gap documentation → confirms notification sovereignty challenge
+  - Hardware selection strategy → Platform Compatibility concept reinforcement
+  - Community OTA infrastructure → Update Covenant proof of concept

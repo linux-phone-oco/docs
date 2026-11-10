@@ -1,0 +1,148 @@
+id: android-aosp
+name: Android / AOSP
+maintainer: Google (open source project) + OEM ecosystem
+status: dominant_shipping
+hardware_open: no
+software_open: partial  # AOSP open, Google Play Services closed
+url: https://source.android.com
+daily_driver_maturity: full  # billions of devices, 15+ years in market
+
+summary: >
+  The world's most widely deployed mobile operating system. Android proves at
+  planetary scale what a daily-driver handset must do. It is simultaneously open
+  source (AOSP) and proprietary (Play Services layer). Its architecture encodes
+  fifteen years of hard lessons about power management, application sandboxing,
+  hardware abstraction, and push notification delivery. Every gap it solved is a
+  lesson the open handset ecosystem must eventually learn.
+
+architecture_layers:
+  linux_kernel:
+    description: >
+      Modified Linux kernel with Android-specific patches (Binder IPC, ION memory
+      allocator, Wakelocks). Hardware-agnostic kernel modules separated from
+      vendor-specific modules.
+    lesson_for_open: >
+      Standard Linux kernel (which open handsets already use) is the same foundation.
+      Android's wakelock patches prevent the CPU from sleeping while a process holds
+      one — the source of much battery drain, but also the mechanism that prevents
+      missed events. Open phones need equivalent wakelock discipline.
+
+  hal_layer:
+    name: Hardware Abstraction Layer (HAL)
+    description: >
+      Standardised interface between the Android framework and vendor hardware
+      drivers. Each hardware capability (camera, audio, sensors, radio) has a
+      defined HAL interface. Vendors implement the HAL without exposing proprietary
+      code to the OS. Since Android 8 (Treble), HALs run in separate processes
+      (Binderized HALs), isolated from the system server.
+    lesson_for_open: >
+      Open handsets on mainline Linux skip this problem by using upstream drivers
+      directly. But the HAL's architectural insight — that hardware capabilities
+      should have stable, versioned API surfaces — is valuable. Any open handset
+      that wants long-term software maintenance needs equivalent stability contracts
+      between hardware and software layers.
+
+  android_runtime:
+    name: ART (Android Runtime)
+    description: >
+      Managed runtime executing all Android apps. Provides: garbage collection,
+      JIT/AOT compilation, app process isolation (each app runs in its own
+      process), memory limits per app. Apps are sandboxed — cannot access other
+      apps' data without explicit permission grants.
+    lesson_for_open: >
+      Open Linux phones have no equivalent. Any Linux process can (with sufficient
+      privileges) access any other process's data. The Application Contract — a
+      defined runtime with sandboxing, lifecycle management, and permission
+      enforcement — is absent from the open phone stack. This is a critical
+      conceptual gap, not a technical one.
+
+  power_management:
+    name: Doze + App Standby Buckets + Adaptive Battery
+    description: >
+      Android's power regime operates at three levels:
+      1. Doze Mode: when screen off and stationary, CPU and network are suspended
+         in maintenance windows. Background jobs deferred.
+      2. App Standby Buckets (Android 9+): ML classifies apps into Active,
+         Working Set, Frequent, Rare, Restricted buckets. Background execution
+         windows compressed by up to 73.5% for low-use apps.
+      3. Adaptive Battery: on-device ML predicts which apps the user will use
+         next and allocates battery accordingly.
+      Result: background execution reduced >68% vs pre-Marshmallow Android.
+    lesson_for_open: >
+      This is the SOFTWARE dimension of power management — distinct from the
+      hardware Two Minds architecture. Even with a perfect Watchful Mind in
+      hardware, an open handset needs OS-level discipline to prevent user apps
+      from holding wakelocks unnecessarily and defeating standby.
+
+  push_architecture:
+    name: Firebase Cloud Messaging (FCM)
+    description: >
+      FCM maintains a single persistent connection from the device to Google's
+      servers. All app push notifications flow through this one connection. The OS
+      itself maintains this connection — apps do not each maintain their own.
+      This is architecturally efficient: one connection, all notifications.
+      The cost: Google is the mandatory intermediary. FCM is a closed service.
+    lesson_for_open: >
+      The one-connection-for-all architecture is correct and efficient. OHC's
+      Push Relay concept replicates this pattern with user-controlled infrastructure.
+      The architecture is sound; the vendor dependency is not.
+
+  security_substrate:
+    name: Verified Boot + Titan M2 + StrongBox KeyStore
+    description: >
+      Android's security chain operates at three levels:
+      1. Android Verified Boot (AVB): every component from bootloader to OS
+         is cryptographically verified before execution. Tamper detected = device
+         won't boot normally.
+      2. Titan M2 (Pixel) / Knox Vault (Samsung) / TrustZone (others):
+         a dedicated security coprocessor isolated from the main SoC. Runs its
+         own OS. Stores encryption keys that never leave the chip. Handles
+         biometric authentication. Verifies firmware updates.
+      3. StrongBox KeyStore: API for apps to store cryptographic keys inside
+         the secure element — inaccessible even to the OS.
+    lesson_for_open: >
+      Open handsets have NO equivalent of the security coprocessor. The RP2040
+      Sentinel MCU is architecturally close (isolated, minimal, always-on) but
+      its purpose in OHC is power management, not cryptographic security.
+      A separate Security Substrate — hardware-backed key storage, verified boot
+      — is the most significant missing concept in open handsets. Without it,
+      disk encryption keys live in RAM. A cold-boot attack can extract them.
+
+  update_system:
+    name: OTA Updates + A/B Partitions
+    description: >
+      Android uses A/B (seamless) updates: the update is written to the inactive
+      partition while the phone is in use. On reboot, the device boots the new
+      partition. If the update fails, it rolls back to the previous partition.
+      Verified Boot confirms the new partition's integrity before committing.
+      Google Pixel: 7 years of OS and security updates guaranteed.
+    lesson_for_open: >
+      Open handsets have no equivalent OTA infrastructure or update guarantee.
+      Community distributions (Mobian, postmarketOS) provide updates via package
+      managers, but no verified boot chain, no rollback, no committed support
+      timeline. The Update Covenant — who guarantees updates, for how long,
+      and how they are verified — is absent from the open stack.
+
+gaps_in_android:
+  - no_notification_sovereignty: >
+      FCM is mandatory for push. There is no documented, supported path to
+      run push notifications without Google's infrastructure for standard apps.
+      UnifiedPush exists as a workaround but requires app-level adoption.
+  - no_hardware_radio_isolation: >
+      On most Android devices, the baseband modem shares memory regions with
+      the application processor. Full physical isolation (Librem 5 model) is
+      not standard Android architecture.
+  - no_user_repairability: >
+      Android is designed for sealed consumer devices. Carrier boards, SOM
+      modules, and user-replaceable components are not part of the design model.
+  - fragmented_updates: >
+      Outside Google Pixel and selected Samsung flagships, update commitments
+      are short or nonexistent. Budget Android devices may receive zero updates.
+
+prior_art_value_for_ohc:
+  - FCM one-connection architecture → OHC Push Relay (replicated, user-controlled)
+  - HAL versioned interface concept → lesson for open hardware API stability
+  - Doze / App Standby → missing Power Covenant concept in open stack
+  - Titan M2 / Verified Boot → identifies Security Substrate as critical gap
+  - A/B OTA with rollback → identifies Update Covenant as critical gap
+  - 15 years of daily driver maturity → the benchmark every open project is measured against
