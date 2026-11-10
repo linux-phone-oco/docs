@@ -218,3 +218,16 @@ Note
 
 Opened
 : 2026-11-10
+
+
+<a id="upstream-sxmo-profile"></a>
+### Upstream: the Sxmo device profile for surya
+
+Status
+: open
+
+Note
+: Written and in use (2026-11-10): both panel variants, values from a running Sxmo, shellcheck clean; Sxmo loads it (SXMO_DEVICE_NAME=xiaomi,surya-huaxing, scale 3). Kept on linux-phone-oco/sxmo-utils, branch deviceprofile/xiaomi-surya; the patch waits in ~/Projects/linux-phone-oco/upstream-queue/sxmo-utils on the lab machine. sxmo-utils takes patches by mailing list (sourcehut) - to send signed off by the user, when the user decides. Until then surya-lab provisioning installs it.
+
+Opened
+: 2026-11-10
