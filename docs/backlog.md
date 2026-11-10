@@ -192,3 +192,29 @@ Note
 
 Opened
 : 2026-11-09
+
+
+<a id="plasma-silent"></a>
+### Plasma Mobile: speakers silent, the chain playing
+
+Status
+: open
+
+Note
+: Found 2026-11-10 on a fresh Nura Plasma Mobile image (sound fixes applied on the phone): PipeWire plays, the hardware runs, both amplifiers are active with the right slots - and silent. The image restores a saved mixer state (alsa-restore) with both amplifiers' digital volume at 0, which is -110 dB. Setting the control to 0 dB changed only the driver's cache: read live from the chips (page 2, 0x0c-0x0f) the volume stayed -110 dB, a tas2562 driver bug (volume writes not reaching, or not restored on, the chips). Writing 0x40000000 straight into the chips was done but not yet heard (testing paused by the user). Also: flash.sh's PC-side depmod made Plasma boot-loop (removed).
+
+Opened
+: 2026-11-10
+
+
+<a id="upstream-tas2562-volume"></a>
+### Upstream: tas2562 digital volume writes do not reach the chips
+
+Status
+: open
+
+Note
+: See plasma-silent. Reproduce: set the Digital Volume Control, read page 2 registers 0x0c-0x0f live with i2cget. Then a driver fix (write through, or restore on power-up) and a report.
+
+Opened
+: 2026-11-10
