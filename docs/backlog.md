@@ -231,3 +231,16 @@ Note
 
 Opened
 : 2026-11-10
+
+
+<a id="adsp-suspend-crash"></a>
+### The audio DSP crashes right after resume from suspend
+
+Status
+: open
+
+Note
+: Found 2026-11-10 on Sxmo (sensors service masked, all fixes in): 8 ms after resume from s2idle the ADSP reports a fatal error (EX:kernel:0x0:IST46:0x132:PC=0xf0049be4) and restarts; its audio services are back about 0.25 s later and playback works again. 2 of 3 suspends crashed it. Sxmo suspends whenever the screen is off, so playback is cut at wake-ups. Lead, not yet tested: the kernel may drop the ADSP's power or resource votes during s2idle (upstream once had to keep a remote processor's load state unaltered across suspend). The automatic adsp-stable check counts crashes right after a resume.
+
+Opened
+: 2026-11-10
