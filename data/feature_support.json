@@ -1,0 +1,101 @@
+{"feature_id":"voice-calls","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"volte","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"sms","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"mms","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"voicemail","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"emergency-calls","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"esim","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"mobile-data","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"wifi","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"bluetooth","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"hotspot","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"nfc","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"gps","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"speaker","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"earpiece","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"headphones","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"microphone","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"bluetooth-audio","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"photo","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"video-recording","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"qr-scan","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"touch","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"on-screen-keyboard","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"auto-rotate","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"auto-brightness","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"proximity","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"fingerprint","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"deep-sleep","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"power-discipline","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"all-day-battery","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"charging","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"encryption","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"verified-boot","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"secure-element","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"app-sandboxing","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"ota-updates","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"rollback","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"support-years","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"native-apps","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"android-apps","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"app-store","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"contacts-calendar-sync","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"backup","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"push-notifications","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"contactless-payments","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"banking-apps","platform_id":"android","status":"works","note":"platform standard","source":"[android documentation](https://source.android.com)","checked":"2026-11-10"}
+{"feature_id":"voice-calls","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"volte","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"sms","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"mms","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"voicemail","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"emergency-calls","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"esim","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"mobile-data","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"wifi","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"bluetooth","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"hotspot","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"nfc","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"gps","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"speaker","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"earpiece","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"headphones","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"microphone","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"bluetooth-audio","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"photo","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"video-recording","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"qr-scan","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"touch","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"on-screen-keyboard","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"auto-rotate","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"auto-brightness","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"proximity","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"fingerprint","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"deep-sleep","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"power-discipline","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"all-day-battery","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"charging","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"encryption","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"verified-boot","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"secure-element","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"app-sandboxing","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"ota-updates","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"rollback","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"support-years","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"native-apps","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"android-apps","platform_id":"ios","status":"not-applicable","note":"iOS runs its own apps only","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"app-store","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"contacts-calendar-sync","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"backup","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"push-notifications","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"contactless-payments","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"banking-apps","platform_id":"ios","status":"works","note":"platform standard","source":"[ios documentation](https://support.apple.com/guide/iphone/welcome/ios)","checked":"2026-11-10"}
+{"feature_id":"push-notifications","platform_id":"linux-best","status":"partial","note":"UnifiedPush, in the apps that support it; the always-on part of the phone is not network-aware","source":"Open Handset Commons prior-art map (the user's research, 2026)","checked":"2026-11-10"}
+{"feature_id":"deep-sleep","platform_id":"linux-best","status":"partial","note":"Proven by Crust firmware on the PinePhone (about 80% less power in standby), but without IP push during sleep","source":"Open Handset Commons prior-art map (the user's research, 2026)","checked":"2026-11-10"}
+{"feature_id":"power-discipline","platform_id":"linux-best","status":"missing","note":"No enforced regime like Android's Doze or iOS's background termination","source":"Open Handset Commons prior-art map (the user's research, 2026)","checked":"2026-11-10"}
+{"feature_id":"secure-element","platform_id":"linux-best","status":"missing","note":"No hardware root of trust in open phones: the critical gap","source":"Open Handset Commons prior-art map (the user's research, 2026)","checked":"2026-11-10"}
+{"feature_id":"verified-boot","platform_id":"linux-best","status":"missing","note":"No hardware anchor for the boot chain","source":"Open Handset Commons prior-art map (the user's research, 2026)","checked":"2026-11-10"}
+{"feature_id":"ota-updates","platform_id":"linux-best","status":"partial","note":"Package updates only; no hardware-verified update chain","source":"Open Handset Commons prior-art map (the user's research, 2026)","checked":"2026-11-10"}
+{"feature_id":"app-sandboxing","platform_id":"linux-best","status":"partial","note":"Linux has the primitives (they are what Android uses); not on by default - Flatpak on Phosh, Waydroid","source":"Open Handset Commons prior-art map (the user's research, 2026)","checked":"2026-11-10"}
+{"feature_id":"android-apps","platform_id":"linux-best","status":"partial","note":"Waydroid runs Android apps in a container","source":"Open Handset Commons prior-art map (the user's research, 2026)","checked":"2026-11-10"}
+{"feature_id":"esim","platform_id":"linux-best","status":"missing","note":"No open phone supports eSIM; the blocker is carrier certification, not engineering","source":"Open Handset Commons prior-art map (the user's research, 2026)","checked":"2026-11-10"}

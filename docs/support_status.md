@@ -32,7 +32,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 |---|---|
 | [Touchscreen](components.md#touchscreen) | [✅](support_status.md#touchscreen--xiaomi-surya) |
 | [Haptics (vibration motor)](components.md#haptics) | [✅](support_status.md#haptics--xiaomi-surya) |
-| [Fingerprint sensor](components.md#fingerprint) | [❔](support_status.md#fingerprint--xiaomi-surya) |
+| [Fingerprint or face unlock](features.md#fingerprint) | [❔](support_status.md#fingerprint--xiaomi-surya) |
 
 ### Connectivity
 
@@ -41,9 +41,9 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | [Mobile data](components.md#modem-data) | [🟡](support_status.md#modem-data--xiaomi-surya) |
 | [Phone calls](components.md#modem-calls) | [❔](support_status.md#modem-calls--xiaomi-surya) |
 | [SMS](components.md#modem-sms) | [❔](support_status.md#modem-sms--xiaomi-surya) |
-| [Wi-Fi](components.md#wifi) | [❔](support_status.md#wifi--xiaomi-surya) |
-| [Bluetooth](components.md#bluetooth) | [❔](support_status.md#bluetooth--xiaomi-surya) |
-| [NFC](components.md#nfc) | [❔](support_status.md#nfc--xiaomi-surya) |
+| [Wi-Fi](features.md#wifi) | [❔](support_status.md#wifi--xiaomi-surya) |
+| [Bluetooth](features.md#bluetooth) | [❔](support_status.md#bluetooth--xiaomi-surya) |
+| [NFC](features.md#nfc) | [❔](support_status.md#nfc--xiaomi-surya) |
 
 ### Other
 
@@ -121,7 +121,7 @@ NFC × Xiaomi POCO X3 NFC
 : unknown — notes: Not confirmed for this device specifically; a related device in the same family (davinci) is known to disable NFC over a GPIO conflict, which does not necessarily apply here. — updated: 2026-11-04
 
 <a id="fingerprint--xiaomi-surya"></a>
-Fingerprint sensor × Xiaomi POCO X3 NFC
+Fingerprint or face unlock × Xiaomi POCO X3 NFC
 : unknown — notes: Not confirmed either way. — updated: 2026-11-04
 
 <a id="sensors--xiaomi-surya"></a>
