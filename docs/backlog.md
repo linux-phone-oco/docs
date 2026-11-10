@@ -162,7 +162,7 @@ Status
 : open
 
 Note
-: The microphones go through the WCD9375 codec, which the stock device tree does not wire up (the sound card has only the speaker). Needs the device-tree work on linux-phone-oco/linux PR #1 (aoncc dropped, VA macro clocked from q6afecc; built and audited, not yet booted). Test idea: play a tone on the speaker and record it, so the check needs no ears. Boot test needs the user nearby (a hang needs the power button).
+: The microphones go through the WCD9375 codec, which the stock device tree does not wire up (the sound card has only the speaker). Needs the device-tree work on linux-phone-oco/linux PR #1 (aoncc dropped, VA macro clocked from q6afecc; built and audited, not yet booted). Test idea: play a tone on the speaker and record it, so the check needs no ears. Boot test needs the user nearby (a hang needs the power button). Prior art found by the kernel-activity feed (2026-11-10): upstream sm7150-mainline committed "WIP WCD stuff" to the surya device tree (7b00a934ace1, 2026-03-28, Aelin Reidel) and reverted it (6ec3051564fd, 2026-05-17). Read both, and why it was reverted, before booting our WCD9375 device tree.
 
 Opened
 : 2026-11-09
