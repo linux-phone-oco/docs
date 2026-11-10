@@ -160,3 +160,21 @@ Considered
 
 Rejected
 : That: translations never change the source; and nobody else translates this project's data.
+
+---
+
+
+<a id="2026-11-10-first-devlab-flash"></a>
+### The first real devlab flash, and what a clean flash exposed
+
+Entry date
+: 2026-11-10
+
+Done
+: surya flashed from the pristine stock image by devlab flash (device tree a43d069d0a49adcd, the manifest's fixes baked in) and brought back by devlab provision: 102 GB, Firefox, the Sxmo profile, Wi-Fi, 20 of 20 checks. Two first-boot faults became the tool's job (a clock at the image's build date; a filesystem left at 2 GB on a 104 GB partition) with a new check. Then the health watch caught the audio DSP crashing on every resume - rare before the flash - which makes the old suspend crash reproducible and shows the manifest lacks a change the old system had.
+
+Considered
+: Treating the crashes as damage from the flash.
+
+Rejected
+: That: the phone's own log showed the idle suspend as the trigger; nothing was changed until the log was read.
