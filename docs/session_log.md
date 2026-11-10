@@ -178,3 +178,21 @@ Considered
 
 Rejected
 : That: the phone's own log showed the idle suspend as the trigger; nothing was changed until the log was read.
+
+---
+
+
+<a id="2026-11-10-its-essence"></a>
+### Linux Phones tells its essence
+
+Entry date
+: 2026-11-10
+
+Done
+: Its idea written for anyone - the phone you own and do not control, a conveyor and an honest picture - and its workings: what delivers and proves each step of the paths of Linux Phones and of surya, with why we care. Three first steps of Linux Phones are left with nothing under them: nothing yet measures calls, connectivity or the daily basics on the best current Linux phone.
+
+Considered
+: Filling every step with something.
+
+Rejected
+: That: a step nothing serves should stand empty and be seen.
