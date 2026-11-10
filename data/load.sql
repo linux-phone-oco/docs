@@ -10,4 +10,5 @@ COPY platforms FROM 'data/platforms.json' (FORMAT 'json');
 COPY session_log FROM 'data/session_log.json' (FORMAT 'json');
 COPY sources FROM 'data/sources.json' (FORMAT 'json');
 COPY support_status FROM 'data/support_status.json' (FORMAT 'json');
+COPY test_results FROM 'data/test_results.json' (FORMAT 'json');
 COPY wiki_claims FROM 'data/wiki_claims.json' (FORMAT 'json');
