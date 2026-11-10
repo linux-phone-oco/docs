@@ -142,3 +142,21 @@ Considered
 
 Rejected
 : The clocks as the WCD cause (pinned on: same failure); the reset pin's mux as the cause (fixed: same failure); boot-time dyndbg for module code (it reaches only built-in code); dmesg for crash counts (a ring overwritten within minutes - the journal is complete).
+
+---
+
+
+<a id="2026-11-10-its-own-russian"></a>
+### The project's own data in Russian
+
+Entry date
+: 2026-11-10
+
+Done
+: A translations table (ocoeco SPEC section 9) with this project's own feature names and categories, device parts and milestones in Russian, every row marked by machine until a person reviews it; exported through the mark, so the observatory's Russian pages read them.
+
+Considered
+: Translated columns inside the source tables.
+
+Rejected
+: That: translations never change the source; and nobody else translates this project's data.

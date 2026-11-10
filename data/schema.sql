@@ -15,5 +15,6 @@ CREATE TABLE sources(id VARCHAR PRIMARY KEY, title VARCHAR NOT NULL, url VARCHAR
 CREATE TABLE support_status(device_id VARCHAR, component_id VARCHAR, status VARCHAR NOT NULL, notes VARCHAR, updated DATE NOT NULL, PRIMARY KEY(device_id, component_id), CHECK((status IN ('works', 'partial', 'broken', 'unknown', 'not-applicable'))));;
 CREATE TABLE test_results(id VARCHAR PRIMARY KEY, run VARCHAR NOT NULL, device_id VARCHAR NOT NULL, component_id VARCHAR NOT NULL, test VARCHAR NOT NULL, outcome VARCHAR NOT NULL, detail VARCHAR, run_at TIMESTAMP NOT NULL, kernel VARCHAR, shell VARCHAR, CHECK((outcome IN ('pass', 'fail', 'skip'))));;
 CREATE TABLE test_runs(id VARCHAR PRIMARY KEY, device_id VARCHAR NOT NULL, run_at TIMESTAMP NOT NULL, kernel VARCHAR, shell VARCHAR, passed INTEGER NOT NULL, failed INTEGER NOT NULL, skipped INTEGER NOT NULL);;
+CREATE TABLE translations(id VARCHAR PRIMARY KEY, "table" VARCHAR NOT NULL, "row" VARCHAR NOT NULL, "column" VARCHAR NOT NULL, lang VARCHAR NOT NULL, "text" VARCHAR NOT NULL, "by" VARCHAR NOT NULL, CHECK(("by" IN ('human', 'machine'))));;
 CREATE TABLE wiki_claims(device_id VARCHAR, component_id VARCHAR, status VARCHAR NOT NULL, wiki_field VARCHAR NOT NULL, "source" VARCHAR NOT NULL, PRIMARY KEY(device_id, component_id), CHECK((status IN ('works', 'partial', 'broken', 'unknown'))));;
 
