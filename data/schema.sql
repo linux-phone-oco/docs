@@ -10,5 +10,6 @@ CREATE TABLE platforms(id VARCHAR PRIMARY KEY, "name" VARCHAR NOT NULL, kind VAR
 CREATE TABLE session_log(id VARCHAR PRIMARY KEY, entry_date DATE NOT NULL, title VARCHAR NOT NULL, done VARCHAR NOT NULL, considered VARCHAR, rejected VARCHAR, CHECK(regexp_matches(id, '^[a-z0-9]+(-[a-z0-9]+)*$')));;
 CREATE TABLE sources(id VARCHAR PRIMARY KEY, title VARCHAR NOT NULL, url VARCHAR NOT NULL, author VARCHAR, "year" INTEGER, CHECK(regexp_matches(id, '^[a-z0-9]+(-[a-z0-9]+)*$')), CHECK(starts_with(url, 'https://')));;
 CREATE TABLE support_status(device_id VARCHAR, component_id VARCHAR, status VARCHAR NOT NULL, notes VARCHAR, updated DATE NOT NULL, PRIMARY KEY(device_id, component_id), CHECK((status IN ('works', 'partial', 'broken', 'unknown', 'not-applicable'))));;
+CREATE TABLE test_results(id VARCHAR PRIMARY KEY, run VARCHAR NOT NULL, device_id VARCHAR NOT NULL, component_id VARCHAR NOT NULL, test VARCHAR NOT NULL, outcome VARCHAR NOT NULL, detail VARCHAR, run_at TIMESTAMP NOT NULL, kernel VARCHAR, shell VARCHAR, CHECK((outcome IN ('pass', 'fail', 'skip'))));;
 CREATE TABLE wiki_claims(device_id VARCHAR, component_id VARCHAR, status VARCHAR NOT NULL, wiki_field VARCHAR NOT NULL, "source" VARCHAR NOT NULL, PRIMARY KEY(device_id, component_id), CHECK((status IN ('works', 'partial', 'broken', 'unknown'))));;
 
