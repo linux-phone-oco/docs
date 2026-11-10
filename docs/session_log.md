@@ -196,3 +196,21 @@ Considered
 
 Rejected
 : That: a step nothing serves should stand empty and be seen.
+
+---
+
+
+<a id="2026-11-10-the-ear-withdrawn"></a>
+### What the ear heard is withdrawn
+
+Entry date
+: 2026-11-10
+
+Done
+: The microphone was the author's earphones, worn on his head, moving with him. The claim that a machine heard both speakers is taken out of the idea; the working stays, waiting for a microphone fixed in place.
+
+Considered
+: Keeping the claim with a caveat.
+
+Rejected
+: That: evidence from an instrument that moves is not evidence.
