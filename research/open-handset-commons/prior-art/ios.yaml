@@ -1,0 +1,154 @@
+id: ios
+name: iOS / iPadOS
+maintainer: Apple Inc.
+status: dominant_shipping
+hardware_open: no
+software_open: no
+url: https://developer.apple.com
+daily_driver_maturity: full  # billions of devices, 18+ years in market
+
+summary: >
+  Apple's mobile operating system. The most tightly integrated hardware-software
+  platform in consumer electronics. iOS proves at scale what happens when one
+  organisation controls every layer from silicon to app store. Its architectural
+  decisions — particularly around security substrate, power management, and push
+  delivery — represent the highest level of refinement achieved by any handset
+  platform. Every design decision is a lesson, regardless of whether the open
+  ecosystem agrees with the tradeoff it represents.
+
+architecture_philosophy: >
+  Vertical integration as a design principle. Apple designs the SoC (A-series /
+  M-series chips), the Secure Enclave coprocessor, the OS, the development tools,
+  and the app distribution channel. Every layer is designed with knowledge of
+  every other layer. The result is the highest-performing, most power-efficient,
+  most consistent mobile platform in existence. The cost is total vendor lock-in
+  at every layer.
+
+security_substrate:
+  name: Secure Enclave
+  description: >
+    A dedicated security coprocessor embedded in Apple's SoC (not a separate chip
+    — a separate die region with its own secure boot and encrypted memory).
+    Boots with its own verified chain of trust (sepOS), completely independent of
+    the main iOS boot. Contains a unique hardware identifier burned into silicon
+    at manufacturing time — it never leaves the enclave, not even encrypted.
+    All Face ID / Touch ID biometric data is processed exclusively within the
+    enclave and never transferred to the main processor or Apple's servers.
+    Encryption keys protecting device storage reside here. Even a fully
+    compromised iOS cannot reach inside the Secure Enclave.
+  lesson_for_open: >
+    The Secure Enclave embodies the Security Substrate concept at its most refined.
+    The key insight is that the security processor must be architecturally
+    independent of the system it protects — it cannot rely on the OS being
+    uncompromised. An open handset's equivalent cannot be software-only.
+    It requires a physically isolated chip or die region with its own boot chain.
+    The RP2040 Sentinel MCU in OHC is structurally similar (isolated, minimal OS)
+    but lacks the cryptographic purpose. A second RP2040 or equivalent dedicated
+    to security — hardware key storage, verified boot anchoring — would close this.
+
+push_architecture:
+  name: Apple Push Notification Service (APNs)
+  description: >
+    APNs maintains a single persistent encrypted connection from every iOS device
+    to Apple's servers. This connection is maintained by the OS at all times the
+    device has network access — apps do not manage their own connections. When a
+    notification arrives for any app, it flows down this one connection. The OS
+    wakes the relevant app for up to 30 seconds to handle it.
+    Silent push (content-available:1, priority:5) can wake an app in the background
+    without user-visible notification — used for pre-loading content.
+    APNs throttles aggressive senders and can drop background pushes under
+    Low Power Mode or when the system is under resource pressure.
+  lesson_for_open: >
+    APNs reveals a crucial architectural truth: the persistent push connection must
+    be maintained by the OS/platform, not by individual apps. If each app maintained
+    its own connection, standby power would be destroyed by N simultaneous
+    connections. The OHC Push Relay concept correctly replicates this: one
+    connection (Watchful Mind → relay), all notifications, OS-level management.
+    APNs also reveals the throttling reality: push is not guaranteed delivery.
+    The open model must account for this honestly.
+
+power_management:
+  name: iOS Power Regime
+  description: >
+    iOS manages power at multiple levels simultaneously:
+    1. Background App Refresh: user-controlled per-app permission to run in
+       background. System schedules these opportunistically based on usage patterns.
+    2. Low Power Mode: triggered at 20% battery. Reduces display brightness,
+       CPU frequency, background refresh, and visual effects. Apps are notified.
+    3. App lifecycle enforcement: iOS aggressively terminates background processes.
+       Apps have no guaranteed background execution. Foreground Service equivalent
+       (Background Modes) requires explicit capability declaration and Apple approval.
+    4. Thermal management: iOS actively throttles CPU when thermals are exceeded.
+       Performance is predictably degraded, not catastrophically failed.
+  lesson_for_open: >
+    iOS enforces power discipline through app termination — a policy the OS controls,
+    not a courtesy apps choose. Open Linux phones cannot terminate processes
+    arbitrarily without breaking user expectations. But the concept — the OS as
+    power enforcement authority, not apps as power-aware citizens — is the missing
+    Power Covenant in open stacks.
+
+update_system:
+  name: iOS OTA Update Chain
+  description: >
+    Apple controls the entire update chain. Updates are signed by Apple.
+    The Secure Enclave verifies update signatures before installation.
+    The device will refuse to install unsigned or downgraded firmware.
+    iOS 15 is still supported on iPhone 6s (2015) — approximately 7 years.
+    Current iOS 18: supported on iPhone XS (2018) — 6 years at time of release.
+    Updates arrive simultaneously to all supported devices worldwide.
+    No carrier or OEM delay.
+  lesson_for_open: >
+    The simultaneous universal update is a function of Apple controlling both
+    hardware and software. No open project can replicate this without equivalent
+    organizational authority. However, the verified update chain — every update
+    cryptographically signed, device refuses unsigned firmware — is achievable
+    with open hardware. The RP2040 Sentinel or a dedicated security chip can
+    anchor a verified boot chain. The open ecosystem lacks this, not because it's
+    technically impossible, but because no project has prioritised it.
+
+application_contract:
+  name: iOS Application Lifecycle + App Store Review
+  description: >
+    iOS defines precisely what applications can do and when:
+    - Apps run in isolated sandboxes. Cannot access other apps' data.
+    - Background execution: only through declared Background Modes (audio, location,
+      VOIP, fetch, etc). Undeclared background execution is killed.
+    - Permissions: granular, user-granted, revocable at any time.
+    - App Store review: every app reviewed by humans before publication.
+      Blocks most (not all) malware before it reaches users.
+    - Memory limits: apps are killed when they exceed memory budgets.
+  lesson_for_open: >
+    Open Linux phones have an undefined application contract. Any process with
+    sufficient privileges can do anything. This is simultaneously liberating and
+    dangerous. The open ecosystem must define — as a concept separate from the OS —
+    what the application contract is. Not a walled garden (that defeats the purpose)
+    but a defined set of runtime expectations, sandbox boundaries, and permission
+    semantics that app developers can build against reliably.
+
+gaps_in_ios:
+  - zero_user_sovereignty: >
+      The user cannot inspect, modify, or replace any layer of the stack.
+      Hardware, OS, bootloader, and app distribution are all locked to Apple.
+      This is the precise opposite of the OHC model. iOS proves what is possible
+      with total control. OHC proves what is possible without it.
+  - mandatory_platform_dependency: >
+      APNs is not optional. An app that needs push notifications must use APNs.
+      There is no sovereign alternative path within the iOS ecosystem.
+  - no_repairability: >
+      iPhones are designed to resist repair. Paired components (screen, battery,
+      Face ID) require Apple authorization to replace without losing functionality.
+  - no_hardware_freedom: >
+      You cannot choose the modem, the display, the processor, or any other
+      component. The device is a sealed unit.
+  - update_discontinuation: >
+      When Apple drops support for a device, it is dropped universally.
+      There is no community path to continue updates on unsupported hardware.
+
+prior_art_value_for_ohc:
+  - Secure Enclave architecture → Security Substrate concept definition
+  - APNs one-connection model → OHC Push Relay architecture validation
+  - Background Modes declaration → Application Contract concept seed
+  - iOS power regime → Power Covenant concept (software-level power discipline)
+  - OTA signing chain → Update Covenant concept (verified, rollback-capable updates)
+  - 18 years of daily driver maturity → the quality ceiling every concept must aim at
+  - Total vendor lock-in → defines exactly what OHC must NOT replicate, and why

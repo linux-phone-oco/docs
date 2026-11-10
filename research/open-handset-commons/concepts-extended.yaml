@@ -1,0 +1,337 @@
+id: ohc-concepts-extended
+version: "0.2"
+title: Open Handset Commons — Extended Concepts
+note: >
+  This file extends concepts.yaml with three concepts derived from Android/iOS
+  prior art analysis, one concept describing OHC's own role, and a clearly
+  marked section for observations that are real but outside OHC's scope.
+  Together with concepts.yaml, these form the complete OHC conceptual model.
+
+# ═══════════════════════════════════════════════════
+# CONCEPT 6 — THE SECURITY SUBSTRATE
+# ═══════════════════════════════════════════════════
+concept_6:
+  name: The Security Substrate
+  short: >
+    There is a third mind in every proven handset.
+    It has no user interface and guards only one thing: secrets.
+
+  why_it_belongs_in_scope: >
+    The Security Substrate is structural, not cosmetic. Without it, the Update
+    Covenant (Concept 8) cannot be enforced — there is no hardware to verify
+    that the firmware being installed is legitimate. Without it, disk encryption
+    is software-only and vulnerable to physical extraction. A handset that cannot
+    protect its data at rest, and cannot verify its own software chain, is not
+    a daily driver regardless of how well it handles calls and notifications.
+
+  description: >
+    Every daily-driver handset platform contains a dedicated security processor
+    architecturally separate from both the Deep Mind and the Watchful Mind.
+    It runs its own operating system, has its own encrypted memory, and boots
+    with its own independent chain of trust. Its sole purpose is to guard
+    secrets: the encryption keys that protect user data, the biometric templates
+    that prove identity, and the chain of signatures that verifies the software
+    running on the device has not been tampered with.
+
+    The defining property: the secrets it holds never leave. Not if the main OS
+    is fully compromised. Not with physical access to the device. A cold-boot
+    attack — physically chilling RAM chips to slow their decay, then reading
+    their contents — can extract software-only encryption keys. Hardware-backed
+    keys cannot be extracted this way. There is nothing to extract.
+
+  evidence_from_prior_art:
+    - Apple Secure Enclave: separate die region in Apple SoC, independent boot
+      chain (sepOS), hardware unique ID burned at manufacture. Keys never leave
+      even in encrypted form.
+    - Google Titan M2: physically separate microcontroller on the Pixel board.
+      Interposes between application processor and boot flash. Verifies every
+      boot stage cryptographically.
+    - GrapheneOS: retains Titan M2, enrolls its own signing keys, proving that
+      a community OS can anchor a verified boot chain to vendor hardware without
+      vendor participation post-purchase.
+    - All open Linux phones (PinePhone, Librem 5, SPIRIT): absent. Disk
+      encryption exists but keys are in RAM. No hardware-backed key storage.
+      No verified boot chain anchored to dedicated silicon.
+
+  hardware_grounding: >
+    The Security Substrate does not require a large or expensive chip.
+    The ATECC608A — a purpose-built secure element — costs under €2, stores
+    ECC private keys that never leave the chip, performs signature verification,
+    and integrates with Linux's Keyring subsystem. A second RP2040 could serve
+    this purpose in a pinch. The dm-verity kernel subsystem and Linux Keyring
+    already provide the software side. The integration has not been prioritised
+    in any open phone project. That is the gap — not the technology.
+
+  boundary: >
+    The Security Substrate is not responsible for power management, not
+    responsible for notifications, and not visible to the user. Its work is
+    structural: the system either has a hardware root of trust or it does not.
+    There is no partial state. A handset without one cannot make credible claims
+    about data protection against a sophisticated physical attacker.
+
+  relationship_to_other_concepts: >
+    The Security Substrate is a prerequisite for the Update Covenant. A signed
+    update chain is meaningless without hardware that enforces the signature
+    check and refuses unsigned or downgraded firmware. These two concepts
+    cannot be addressed independently.
+
+# ═══════════════════════════════════════════════════
+# CONCEPT 7 — THE UPDATE COVENANT
+# ═══════════════════════════════════════════════════
+concept_7:
+  name: The Update Covenant
+  short: >
+    Every handset makes an implicit promise about its future.
+    An open handset must make that promise explicit and keep it.
+
+  why_it_belongs_in_scope: >
+    A handset that cannot reliably deliver security patches is not a daily driver —
+    it is a device that accumulates exploitable vulnerabilities over time.
+    The Update Covenant is not about features; it is about whether the device
+    remains safe to use. It belongs in the core model because it directly
+    determines the device's usable lifespan.
+
+  description: >
+    When a user acquires a handset they are accepting a relationship that extends
+    over years. Security vulnerabilities will be discovered. The user depends on
+    the platform to fix them and deliver the fix reliably, verifiably, without
+    bricking the device, and for a known period of time.
+
+    The covenant has four components:
+    1. A committed support horizon (how long will updates arrive)
+    2. A signing authority (who vouches that the update is legitimate)
+    3. Hardware verification (the Security Substrate confirms the signature before
+       installing)
+    4. Rollback protection (the device refuses to downgrade to known-vulnerable
+       firmware, and can revert a failed update)
+
+    All four must be present. Three of four is not the Update Covenant — it is
+    a partial approximation that leaves a specific attack surface open.
+
+  evidence_from_prior_art:
+    - iOS: 6-7 year update commitment. Signed updates. Secure Enclave verification.
+      Simultaneous worldwide delivery with no carrier delay.
+    - Android Pixel: 7-year commitment. A/B seamless updates. Titan M2 verification.
+      AVB rollback protection — device refuses to boot known-vulnerable firmware.
+    - GrapheneOS: community-operated OTA infrastructure anchored to Titan M2.
+      Security patches within days of AOSP release. Proves community can operate
+      a credible signed update chain — but only with the right hardware under it.
+    - PinePhone / all open Linux phones: package manager updates. No signing
+      authority. No hardware verification. No rollback. No committed timeline.
+      Update frequency depends on distribution maintainer capacity.
+
+  hardware_grounding: >
+    The Update Covenant requires the Security Substrate (Concept 6). Without
+    a hardware anchor that verifies firmware signatures, the update process
+    is a software-level agreement that software can circumvent. This is not
+    a theoretical weakness — it is the attack surface that firmware-level
+    rootkits exploit.
+
+  open_advantage: >
+    Open hardware has a structural advantage proprietary platforms cannot replicate:
+    the Update Covenant, once established, can be transferred to any willing
+    community maintainer. Proprietary devices are obsolete when the vendor decides.
+    An open device with a community-maintained update covenant has no
+    vendor-imposed end of life. The hardware outlives the original maintainer.
+    This is one of the clearest structural arguments for open hardware.
+
+  boundary: >
+    The Update Covenant does not require the original vendor's participation.
+    It requires a named signing authority, hardware verification, and a
+    committed schedule — regardless of who operates them.
+
+# ═══════════════════════════════════════════════════
+# CONCEPT 8 — THE POWER COVENANT
+# ═══════════════════════════════════════════════════
+concept_8:
+  name: The Power Covenant
+  short: >
+    The hardware standby architecture is necessary but not sufficient.
+    The OS must also prevent software from defeating sleep.
+
+  why_it_belongs_in_scope: >
+    The Two Minds architecture (Concept 1) is the hardware answer to standby.
+    Without the Power Covenant, software undoes it. A single misbehaving
+    application holding an indefinite wakelock defeats the entire Two Minds
+    design regardless of how well the hardware is built. The Power Covenant
+    is the software complement to Concept 1. They are one solution in two parts.
+
+  description: >
+    The Two Minds solve the hardware dimension of power management. The Power
+    Covenant solves the software dimension: what prevents application code from
+    holding the Deep Mind awake unnecessarily?
+
+    Android's answer: Doze Mode defers background work when the device is
+    stationary and screen-off. App Standby Buckets compress background execution
+    windows based on usage prediction. Any process that wants to prevent system
+    sleep must do so through a declared, auditable mechanism (wakelocks visible
+    in battery statistics, WorkManager for background tasks). Background execution
+    reduced by over 68% since Android Marshmallow.
+
+    iOS's answer is blunter: apps that attempt undeclared background execution
+    are terminated. The OS, not the app, decides when background execution occurs.
+
+    Open Linux phones have no enforced Power Covenant. Any process with user
+    privileges can hold a wakelock indefinitely. A single misbehaving app
+    prevents the Deep Mind from sleeping. The Two Minds architecture is defeated
+    in software before the hardware can act.
+
+  evidence_from_prior_art:
+    - Android Doze + App Standby Buckets: background execution reduced >68%
+      vs pre-Doze devices. Measured across billions of device-hours.
+    - iOS background termination: enforced at OS level. No workaround available
+      to apps without declared background modes.
+    - PinePhone / all open Linux phones: systemd-inhibit, cgroups, cpufreq
+      governors exist but are not assembled into an enforced regime. No user-
+      visible power audit. No process-level background execution discipline.
+
+  hardware_grounding: >
+    The Power Covenant is primarily a software concept with one hardware
+    requirement: process-level power accounting. Linux provides this via
+    cgroups and /proc. No additional hardware is needed. The gap is the
+    absence of an integrated, enforced regime using existing primitives —
+    not the absence of the primitives themselves.
+
+  open_path: >
+    A minimal Power Covenant for open handsets does not require new technology.
+    The components exist: systemd-inhibit for wakelock declaration, cgroups for
+    process power budgets, cpufreq governors for frequency scaling, PowerTOP for
+    audit. What is absent is the integration into a coherent enforced regime and
+    the UI to make power consumption transparent. This is a software integration
+    problem, well within reach of a focused effort.
+
+# ═══════════════════════════════════════════════════
+# CONCEPT 9 — THE OBSERVATORY
+# ═══════════════════════════════════════════════════
+concept_9:
+  name: The Observatory
+  short: >
+    OHC does not build handsets. It watches the ecosystem,
+    maps its progress, and lifts the infrastructure burden
+    from every project working within it.
+
+  description: >
+    The open handset ecosystem is not failing for lack of effort. It is failing
+    for lack of coordination, visibility, and shared infrastructure. Dozens of
+    projects — live, dormant, and dead — have each independently solved parts
+    of the problem. Most have no CI/CD pipeline. Most have no public progress
+    tracking. Most have no integration with prior work. When a project stalls,
+    its work becomes invisible.
+
+    OHC is the Observatory: a persistent, actively maintained view of the
+    entire ecosystem. Not a directory (static, quickly outdated). An observatory
+    — a system that watches, measures, and reports in real time.
+
+  functions:
+
+    mapping:
+      description: >
+        Every project in the open handset space is catalogued in the prior-art
+        directory and mapped against the nine OHC concepts: which it implements,
+        to what maturity, and what remains open. This is the master board.
+      deliverable: master board with per-concept maturity ratings per project
+
+    ci_integration:
+      description: >
+        For projects with existing CI/CD, OHC integrates their build and test
+        status into the master board. The board is driven by live signals,
+        not manual updates.
+      deliverable: CI status feed per project in master board
+
+    ci_lifting:
+      description: >
+        For projects without CI/CD, OHC proactively offers to set up and maintain
+        it. The project retains full control of its code and decisions. OHC
+        provides infrastructure, not direction.
+      deliverable: CI/CD setup and maintenance for willing projects
+
+    outreach:
+      description: >
+        Dormant projects are not deleted. Their last known state is preserved.
+        OHC attempts periodic contact with dormant maintainers. If foundational
+        work is at risk of disappearing, OHC documents the fork path and
+        seeks new maintainers.
+      deliverable: dormancy tracking, outreach log, fork path documentation
+
+    gap_reporting:
+      description: >
+        The master board generates a gap report: which concepts have no active
+        project, which have overlapping efforts, which are closest to completion.
+        New contributors are oriented toward gaps that matter.
+      deliverable: periodic published gap report
+
+  structural_parallel: >
+    The Observatory watches the ecosystem the way the Watchful Mind watches the
+    radio. Persistent observation. Minimal direct action. Escalation when
+    warranted. The analogy is intentional — OHC's role in the ecosystem is
+    structurally identical to the Watchful Mind's role in the handset.
+
+  what_ohc_does_not_do:
+    - Does not direct any project's technology choices
+    - Does not fork projects without maintainer agreement
+    - Does not build or ship hardware
+    - Does not write application software
+    - Does not manage a software distribution
+    - Does not certify devices without a defined process
+
+# ═══════════════════════════════════════════════════
+# SCOPE BOUNDARY
+# Observations that are real but outside OHC's model
+# ═══════════════════════════════════════════════════
+outside_scope:
+
+  preamble: >
+    The following are genuine observations about the gap between open and proprietary
+    handset platforms. They are documented here because they emerged from the prior
+    art analysis and should not be silently discarded. However, they are outside
+    OHC's scope — either because they are implementation choices individual projects
+    make differently (not structural model concerns), or because the open ecosystem
+    already has the capability and the gap is one of integration rather than concept.
+
+  application_sandboxing:
+    observation: >
+      Android and iOS both enforce application sandboxing: process isolation,
+      permission models, storage scopes. Open Linux phones present no equivalent
+      enforced boundary by default.
+    why_outside_scope: >
+      Linux has stronger sandboxing primitives than Android or iOS — not weaker
+      ones. Linux namespaces, seccomp-bpf, cgroups, AppArmor, and SELinux are
+      the exact mechanisms Android uses under the hood. Flatpak applies them to
+      desktop applications. Qubes OS takes them further than any mobile platform
+      has attempted — per-application hardware-isolated domains.
+
+      The gap is not conceptual and not technical. It is integration and default
+      configuration. Whether and how to apply these primitives to a phone's
+      application layer is an implementation choice that belongs to individual
+      distributions (Phosh, postmarketOS) and packaging systems (Flatpak for
+      Phosh is the live effort to watch). OHC catalogues projects working on this
+      but does not include it in the structural model because the concept is already
+      well-understood and the tooling already exists.
+    projects_to_watch:
+      - Flatpak on Phosh (adaptive sandboxed app delivery)
+      - Waydroid (Android container on Linux — full Android sandbox on Linux kernel)
+      - postmarketOS packaging policies (Alpine apk with controlled permissions)
+
+  app_store_curation:
+    observation: >
+      Apple App Store review and Google Play Protect provide a pre-installation
+      filter that catches most (not all) malware before it reaches users.
+    why_outside_scope: >
+      App store curation is a centralised authority deciding what software users
+      may install. This is structurally incompatible with the open handset model
+      regardless of its security benefits. The open handset model preserves
+      freedom of installation. The security tradeoff is accepted and documented,
+      not proposed to be replicated.
+
+  esim:
+    observation: >
+      All proprietary handsets support eSIM. No open Linux phone project does.
+      eSIM requires SGP.22 protocol support and carrier provisioning agreements.
+    why_outside_scope: >
+      eSIM is a feature gap, not a structural concept gap. The hardware (Quectel
+      eSIM variants) and software (estkme-cloud) exist. The blocker is carrier
+      certification — a commercial and regulatory process, not an engineering one.
+      OHC notes the gap, tracks it in the prior-art catalogue (spirit.yaml,
+      pinephone.yaml), but does not model it as a structural concept because
+      it does not affect whether the handset can function as a daily driver.
+      Physical SIM works identically for all voice, SMS, and data purposes.
