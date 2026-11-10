@@ -237,10 +237,10 @@ Opened
 ### The audio DSP crashes right after resume from suspend
 
 Status
-: open
+: in-progress
 
 Note
-: Found 2026-11-10 on Sxmo (sensors service masked, all fixes in): 8 ms after resume from s2idle the ADSP reports a fatal error (EX:kernel:0x0:IST46:0x132:PC=0xf0049be4) and restarts; its audio services are back about 0.25 s later and playback works again. 2 of 3 suspends crashed it. Sxmo suspends whenever the screen is off, so playback is cut at wake-ups. Lead, not yet tested: the kernel may drop the ADSP's power or resource votes during s2idle (upstream once had to keep a remote processor's load state unaltered across suspend). The automatic adsp-stable check counts crashes right after a resume. Narrowed 2026-11-10: 2 crashes in 28 suspends of one boot, both early in it (at 51 s and 839 s), none in the following 26 - not suspend alone, not audio playing or just played, not the sound card (unbound or bound), not I2C access to the amps, not the time awake (a 12-cycle soak, 10 s to 5 min, all clean). Lesson: dmesg is a ring that this kernel's debug prints overwrite within minutes; crash counts now come from the journal.
+: Now reproducible. After the first real devlab flash of the pristine stock image (2026-11-10) the audio DSP crashed on 22 of 24 resumes (fatal error EX:kernel:0x0:IST46:0x132 during the wake-up, a few milliseconds before "PM: suspend exit"), where on the system before the flash it was rare (2 of 28). So something on the old system made it rare and is not in the manifest - a change made by hand and never recorded. Next: find that difference (the old system's state is in the earlier images and notes), then the cause. Until then the lab holds a wake lock (devlab-hold) so the phone does not suspend; it is gone on reboot.
 
 Opened
 : 2026-11-10
@@ -269,6 +269,19 @@ Status
 
 Note
 : Asked for 2026-11-10: tooling must not be tied to surya - surya is the test subject; the work is a conveyor for any phone, built as one Rust toolset (rust-script for small scripts) as we go, informed by existing projects (postmarketOS tooling first). Plan: one CLI in linux-phone-oco/lab-tools reading the device manifest (device.toml): phone (find over USB or Wi-Fi, run commands with no quoting layer), kernel install/try/log/remove (the safe test-kernel boot proven on surya 2026-11-10: one try by boot counting, a stalled initramfs saves its log and reboots into stock), provision, test (the checks, results as versioned JSON lines), tone. Port surya-lab's shell tools one at a time behind tests; surya-lab shrinks to data and a manifest - the first step of device-template. Read first, as reference and to reuse conventions: pmbootstrap (flasher, initfs, sideload, ci), postmarketos-mkinitfs hooks, pmaports CI and testing.
+
+Opened
+: 2026-11-10
+
+
+<a id="check-crash-on-resume"></a>
+### The check counts crashes on resume wrongly
+
+Status
+: open
+
+Note
+: adsp-stable reported "0 right after a resume" when 22 of 24 resumes had crashed: the crash is logged just before the "PM: suspend exit" line, and the check only looks after it. It should count a crash between "suspend entry" and two seconds after "suspend exit".
 
 Opened
 : 2026-11-10
