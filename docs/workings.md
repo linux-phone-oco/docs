@@ -134,7 +134,7 @@ Serves
 : surya-sound
 
 How
-: Plays a tone on each speaker and hears it through a microphone in the lab, measured against the silent room.
+: Plays a tone on each speaker and hears it through a microphone in the lab, measured against the silent room. It waits for a microphone fixed in place: its first results, from a microphone that moved, were withdrawn.
 
 Why
 : A driver that loads proves nothing about sound. A machine should hear it.

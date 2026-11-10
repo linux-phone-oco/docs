@@ -114,4 +114,4 @@ Heading
 : Where it stands
 
 Text
-: One phone, a Xiaomi POCO X3 NFC, sits in the lab. It can be flashed to a known state by one command, it is checked after every start, and both of its speakers have been heard by a machine. Its microphone and its calls are still ahead. The picture lists forty-six things a phone does, across seven systems.
+: One phone, a Xiaomi POCO X3 NFC, sits in the lab. It can be flashed to a known state by one command, and it is checked after every start. Sound plays from both of its speakers. Its microphone and its calls are still ahead. The picture lists forty-six things a phone does, across seven systems.
