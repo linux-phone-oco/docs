@@ -1,0 +1,141 @@
+{"id":"features:voice-calls:name:ru","table":"features","row":"voice-calls","column":"name","lang":"ru","text":"Голосовые звонки","by":"machine"}
+{"id":"features:voice-calls:category:ru","table":"features","row":"voice-calls","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"id":"features:volte:name:ru","table":"features","row":"volte","column":"name","lang":"ru","text":"VoLTE и звонки по Wi-Fi","by":"machine"}
+{"id":"features:volte:category:ru","table":"features","row":"volte","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"id":"features:sms:name:ru","table":"features","row":"sms","column":"name","lang":"ru","text":"SMS","by":"machine"}
+{"id":"features:sms:category:ru","table":"features","row":"sms","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"id":"features:mms:name:ru","table":"features","row":"mms","column":"name","lang":"ru","text":"MMS","by":"machine"}
+{"id":"features:mms:category:ru","table":"features","row":"mms","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"id":"features:voicemail:name:ru","table":"features","row":"voicemail","column":"name","lang":"ru","text":"Голосовая почта","by":"machine"}
+{"id":"features:voicemail:category:ru","table":"features","row":"voicemail","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"id":"features:emergency-calls:name:ru","table":"features","row":"emergency-calls","column":"name","lang":"ru","text":"Экстренные вызовы","by":"machine"}
+{"id":"features:emergency-calls:category:ru","table":"features","row":"emergency-calls","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"id":"features:esim:name:ru","table":"features","row":"esim","column":"name","lang":"ru","text":"eSIM","by":"machine"}
+{"id":"features:esim:category:ru","table":"features","row":"esim","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"id":"features:mobile-data:name:ru","table":"features","row":"mobile-data","column":"name","lang":"ru","text":"Мобильный интернет","by":"machine"}
+{"id":"features:mobile-data:category:ru","table":"features","row":"mobile-data","column":"category","lang":"ru","text":"связь","by":"machine"}
+{"id":"features:wifi:name:ru","table":"features","row":"wifi","column":"name","lang":"ru","text":"Wi-Fi","by":"machine"}
+{"id":"features:wifi:category:ru","table":"features","row":"wifi","column":"category","lang":"ru","text":"связь","by":"machine"}
+{"id":"features:bluetooth:name:ru","table":"features","row":"bluetooth","column":"name","lang":"ru","text":"Bluetooth","by":"machine"}
+{"id":"features:bluetooth:category:ru","table":"features","row":"bluetooth","column":"category","lang":"ru","text":"связь","by":"machine"}
+{"id":"features:hotspot:name:ru","table":"features","row":"hotspot","column":"name","lang":"ru","text":"Точка доступа","by":"machine"}
+{"id":"features:hotspot:category:ru","table":"features","row":"hotspot","column":"category","lang":"ru","text":"связь","by":"machine"}
+{"id":"features:nfc:name:ru","table":"features","row":"nfc","column":"name","lang":"ru","text":"NFC","by":"machine"}
+{"id":"features:nfc:category:ru","table":"features","row":"nfc","column":"category","lang":"ru","text":"связь","by":"machine"}
+{"id":"features:gps:name:ru","table":"features","row":"gps","column":"name","lang":"ru","text":"GPS и навигация","by":"machine"}
+{"id":"features:gps:category:ru","table":"features","row":"gps","column":"category","lang":"ru","text":"связь","by":"machine"}
+{"id":"features:speaker:name:ru","table":"features","row":"speaker","column":"name","lang":"ru","text":"Динамик","by":"machine"}
+{"id":"features:speaker:category:ru","table":"features","row":"speaker","column":"category","lang":"ru","text":"звук","by":"machine"}
+{"id":"features:earpiece:name:ru","table":"features","row":"earpiece","column":"name","lang":"ru","text":"Разговорный динамик","by":"machine"}
+{"id":"features:earpiece:category:ru","table":"features","row":"earpiece","column":"category","lang":"ru","text":"звук","by":"machine"}
+{"id":"features:headphones:name:ru","table":"features","row":"headphones","column":"name","lang":"ru","text":"Наушники","by":"machine"}
+{"id":"features:headphones:category:ru","table":"features","row":"headphones","column":"category","lang":"ru","text":"звук","by":"machine"}
+{"id":"features:microphone:name:ru","table":"features","row":"microphone","column":"name","lang":"ru","text":"Микрофон","by":"machine"}
+{"id":"features:microphone:category:ru","table":"features","row":"microphone","column":"category","lang":"ru","text":"звук","by":"machine"}
+{"id":"features:bluetooth-audio:name:ru","table":"features","row":"bluetooth-audio","column":"name","lang":"ru","text":"Звук по Bluetooth","by":"machine"}
+{"id":"features:bluetooth-audio:category:ru","table":"features","row":"bluetooth-audio","column":"category","lang":"ru","text":"звук","by":"machine"}
+{"id":"features:photo:name:ru","table":"features","row":"photo","column":"name","lang":"ru","text":"Фото","by":"machine"}
+{"id":"features:photo:category:ru","table":"features","row":"photo","column":"category","lang":"ru","text":"камера","by":"machine"}
+{"id":"features:video-recording:name:ru","table":"features","row":"video-recording","column":"name","lang":"ru","text":"Запись видео","by":"machine"}
+{"id":"features:video-recording:category:ru","table":"features","row":"video-recording","column":"category","lang":"ru","text":"камера","by":"machine"}
+{"id":"features:qr-scan:name:ru","table":"features","row":"qr-scan","column":"name","lang":"ru","text":"Сканирование QR-кодов","by":"machine"}
+{"id":"features:qr-scan:category:ru","table":"features","row":"qr-scan","column":"category","lang":"ru","text":"камера","by":"machine"}
+{"id":"features:touch:name:ru","table":"features","row":"touch","column":"name","lang":"ru","text":"Сенсорный экран","by":"machine"}
+{"id":"features:touch:category:ru","table":"features","row":"touch","column":"category","lang":"ru","text":"экран и ввод","by":"machine"}
+{"id":"features:on-screen-keyboard:name:ru","table":"features","row":"on-screen-keyboard","column":"name","lang":"ru","text":"Экранная клавиатура","by":"machine"}
+{"id":"features:on-screen-keyboard:category:ru","table":"features","row":"on-screen-keyboard","column":"category","lang":"ru","text":"экран и ввод","by":"machine"}
+{"id":"features:auto-rotate:name:ru","table":"features","row":"auto-rotate","column":"name","lang":"ru","text":"Автоповорот","by":"machine"}
+{"id":"features:auto-rotate:category:ru","table":"features","row":"auto-rotate","column":"category","lang":"ru","text":"экран и ввод","by":"machine"}
+{"id":"features:auto-brightness:name:ru","table":"features","row":"auto-brightness","column":"name","lang":"ru","text":"Автояркость","by":"machine"}
+{"id":"features:auto-brightness:category:ru","table":"features","row":"auto-brightness","column":"category","lang":"ru","text":"экран и ввод","by":"machine"}
+{"id":"features:proximity:name:ru","table":"features","row":"proximity","column":"name","lang":"ru","text":"Датчик приближения","by":"machine"}
+{"id":"features:proximity:category:ru","table":"features","row":"proximity","column":"category","lang":"ru","text":"датчики","by":"machine"}
+{"id":"features:fingerprint:name:ru","table":"features","row":"fingerprint","column":"name","lang":"ru","text":"Отпечаток пальца","by":"machine"}
+{"id":"features:fingerprint:category:ru","table":"features","row":"fingerprint","column":"category","lang":"ru","text":"датчики","by":"machine"}
+{"id":"features:deep-sleep:name:ru","table":"features","row":"deep-sleep","column":"name","lang":"ru","text":"Глубокий сон","by":"machine"}
+{"id":"features:deep-sleep:category:ru","table":"features","row":"deep-sleep","column":"category","lang":"ru","text":"питание","by":"machine"}
+{"id":"features:power-discipline:name:ru","table":"features","row":"power-discipline","column":"name","lang":"ru","text":"Бережный расход энергии","by":"machine"}
+{"id":"features:power-discipline:category:ru","table":"features","row":"power-discipline","column":"category","lang":"ru","text":"питание","by":"machine"}
+{"id":"features:all-day-battery:name:ru","table":"features","row":"all-day-battery","column":"name","lang":"ru","text":"Батарея на весь день","by":"machine"}
+{"id":"features:all-day-battery:category:ru","table":"features","row":"all-day-battery","column":"category","lang":"ru","text":"питание","by":"machine"}
+{"id":"features:charging:name:ru","table":"features","row":"charging","column":"name","lang":"ru","text":"Зарядка","by":"machine"}
+{"id":"features:charging:category:ru","table":"features","row":"charging","column":"category","lang":"ru","text":"питание","by":"machine"}
+{"id":"features:encryption:name:ru","table":"features","row":"encryption","column":"name","lang":"ru","text":"Шифрование","by":"machine"}
+{"id":"features:encryption:category:ru","table":"features","row":"encryption","column":"category","lang":"ru","text":"безопасность","by":"machine"}
+{"id":"features:verified-boot:name:ru","table":"features","row":"verified-boot","column":"name","lang":"ru","text":"Проверенная загрузка","by":"machine"}
+{"id":"features:verified-boot:category:ru","table":"features","row":"verified-boot","column":"category","lang":"ru","text":"безопасность","by":"machine"}
+{"id":"features:secure-element:name:ru","table":"features","row":"secure-element","column":"name","lang":"ru","text":"Защищённый элемент","by":"machine"}
+{"id":"features:secure-element:category:ru","table":"features","row":"secure-element","column":"category","lang":"ru","text":"безопасность","by":"machine"}
+{"id":"features:app-sandboxing:name:ru","table":"features","row":"app-sandboxing","column":"name","lang":"ru","text":"Изоляция приложений","by":"machine"}
+{"id":"features:app-sandboxing:category:ru","table":"features","row":"app-sandboxing","column":"category","lang":"ru","text":"безопасность","by":"machine"}
+{"id":"features:ota-updates:name:ru","table":"features","row":"ota-updates","column":"name","lang":"ru","text":"Обновления по воздуху","by":"machine"}
+{"id":"features:ota-updates:category:ru","table":"features","row":"ota-updates","column":"category","lang":"ru","text":"обновления","by":"machine"}
+{"id":"features:rollback:name:ru","table":"features","row":"rollback","column":"name","lang":"ru","text":"Откат обновлений","by":"machine"}
+{"id":"features:rollback:category:ru","table":"features","row":"rollback","column":"category","lang":"ru","text":"обновления","by":"machine"}
+{"id":"features:support-years:name:ru","table":"features","row":"support-years","column":"name","lang":"ru","text":"Годы поддержки","by":"machine"}
+{"id":"features:support-years:category:ru","table":"features","row":"support-years","column":"category","lang":"ru","text":"обновления","by":"machine"}
+{"id":"features:native-apps:name:ru","table":"features","row":"native-apps","column":"name","lang":"ru","text":"Родные приложения","by":"machine"}
+{"id":"features:native-apps:category:ru","table":"features","row":"native-apps","column":"category","lang":"ru","text":"приложения","by":"machine"}
+{"id":"features:android-apps:name:ru","table":"features","row":"android-apps","column":"name","lang":"ru","text":"Приложения Android","by":"machine"}
+{"id":"features:android-apps:category:ru","table":"features","row":"android-apps","column":"category","lang":"ru","text":"приложения","by":"machine"}
+{"id":"features:app-store:name:ru","table":"features","row":"app-store","column":"name","lang":"ru","text":"Магазин приложений","by":"machine"}
+{"id":"features:app-store:category:ru","table":"features","row":"app-store","column":"category","lang":"ru","text":"приложения","by":"machine"}
+{"id":"features:contacts-calendar-sync:name:ru","table":"features","row":"contacts-calendar-sync","column":"name","lang":"ru","text":"Синхронизация контактов и календаря","by":"machine"}
+{"id":"features:contacts-calendar-sync:category:ru","table":"features","row":"contacts-calendar-sync","column":"category","lang":"ru","text":"синхронизация","by":"machine"}
+{"id":"features:backup:name:ru","table":"features","row":"backup","column":"name","lang":"ru","text":"Резервное копирование","by":"machine"}
+{"id":"features:backup:category:ru","table":"features","row":"backup","column":"category","lang":"ru","text":"синхронизация","by":"machine"}
+{"id":"features:push-notifications:name:ru","table":"features","row":"push-notifications","column":"name","lang":"ru","text":"Push-уведомления","by":"machine"}
+{"id":"features:push-notifications:category:ru","table":"features","row":"push-notifications","column":"category","lang":"ru","text":"сервисы","by":"machine"}
+{"id":"features:contactless-payments:name:ru","table":"features","row":"contactless-payments","column":"name","lang":"ru","text":"Бесконтактная оплата","by":"machine"}
+{"id":"features:contactless-payments:category:ru","table":"features","row":"contactless-payments","column":"category","lang":"ru","text":"сервисы","by":"machine"}
+{"id":"features:banking-apps:name:ru","table":"features","row":"banking-apps","column":"name","lang":"ru","text":"Банковские приложения","by":"machine"}
+{"id":"features:banking-apps:category:ru","table":"features","row":"banking-apps","column":"category","lang":"ru","text":"сервисы","by":"machine"}
+{"id":"components:audio-speaker:name:ru","table":"components","row":"audio-speaker","column":"name","lang":"ru","text":"Динамик","by":"machine"}
+{"id":"components:audio-headphone:name:ru","table":"components","row":"audio-headphone","column":"name","lang":"ru","text":"Выход на наушники (3,5 мм)","by":"machine"}
+{"id":"components:audio-mic:name:ru","table":"components","row":"audio-mic","column":"name","lang":"ru","text":"Микрофон","by":"machine"}
+{"id":"components:audio-earpiece:name:ru","table":"components","row":"audio-earpiece","column":"name","lang":"ru","text":"Разговорный динамик","by":"machine"}
+{"id":"components:camera-front:name:ru","table":"components","row":"camera-front","column":"name","lang":"ru","text":"Фронтальная камера","by":"machine"}
+{"id":"components:camera-rear:name:ru","table":"components","row":"camera-rear","column":"name","lang":"ru","text":"Основная камера","by":"machine"}
+{"id":"components:display-panel:name:ru","table":"components","row":"display-panel","column":"name","lang":"ru","text":"Экран","by":"machine"}
+{"id":"components:touchscreen:name:ru","table":"components","row":"touchscreen","column":"name","lang":"ru","text":"Сенсор экрана","by":"machine"}
+{"id":"components:haptics:name:ru","table":"components","row":"haptics","column":"name","lang":"ru","text":"Вибрация","by":"machine"}
+{"id":"components:modem-data:name:ru","table":"components","row":"modem-data","column":"name","lang":"ru","text":"Модем: передача данных","by":"machine"}
+{"id":"components:modem-calls:name:ru","table":"components","row":"modem-calls","column":"name","lang":"ru","text":"Модем: звонки","by":"machine"}
+{"id":"components:modem-sms:name:ru","table":"components","row":"modem-sms","column":"name","lang":"ru","text":"Модем: SMS","by":"machine"}
+{"id":"components:wifi:name:ru","table":"components","row":"wifi","column":"name","lang":"ru","text":"Wi-Fi","by":"machine"}
+{"id":"components:bluetooth:name:ru","table":"components","row":"bluetooth","column":"name","lang":"ru","text":"Bluetooth","by":"machine"}
+{"id":"components:nfc:name:ru","table":"components","row":"nfc","column":"name","lang":"ru","text":"NFC","by":"machine"}
+{"id":"components:fingerprint:name:ru","table":"components","row":"fingerprint","column":"name","lang":"ru","text":"Сканер отпечатков","by":"machine"}
+{"id":"components:sensors:name:ru","table":"components","row":"sensors","column":"name","lang":"ru","text":"Датчики","by":"machine"}
+{"id":"components:usb-otg:name:ru","table":"components","row":"usb-otg","column":"name","lang":"ru","text":"USB OTG","by":"machine"}
+{"id":"components:fastboot:name:ru","table":"components","row":"fastboot","column":"name","lang":"ru","text":"Fastboot","by":"machine"}
+{"id":"components:kernel:name:ru","table":"components","row":"kernel","column":"name","lang":"ru","text":"Ядро","by":"machine"}
+{"id":"milestones:lp-calls-and-messages:title:ru","table":"milestones","row":"lp-calls-and-messages","column":"title","lang":"ru","text":"Звонки и сообщения","by":"machine"}
+{"id":"milestones:lp-calls-and-messages:why:ru","table":"milestones","row":"lp-calls-and-messages","column":"why","lang":"ru","text":"Первое, для чего нужен телефон.","by":"machine"}
+{"id":"milestones:lp-connected:title:ru","table":"milestones","row":"lp-connected","column":"title","lang":"ru","text":"На связи: интернет, Wi-Fi, Bluetooth, GPS","by":"machine"}
+{"id":"milestones:lp-connected:why:ru","table":"milestones","row":"lp-connected","column":"why","lang":"ru","text":"Телефон без связи — не телефон.","by":"machine"}
+{"id":"milestones:lp-daily-basics:title:ru","table":"milestones","row":"lp-daily-basics","column":"title","lang":"ru","text":"Повседневное","by":"machine"}
+{"id":"milestones:lp-daily-basics:why:ru","table":"milestones","row":"lp-daily-basics","column":"why","lang":"ru","text":"Звук, камера, экран, на котором удобно печатать, и день без зарядки: тогда он может быть единственным телефоном.","by":"machine"}
+{"id":"milestones:lp-everything:title:ru","table":"milestones","row":"lp-everything","column":"title","lang":"ru","text":"Всё, что умеет телефон","by":"machine"}
+{"id":"milestones:lp-everything:why:ru","table":"milestones","row":"lp-everything","column":"why","lang":"ru","text":"Каждая функция из списка — работает.","by":"machine"}
+{"id":"milestones:lp-apps-and-services:title:ru","table":"milestones","row":"lp-apps-and-services","column":"title","lang":"ru","text":"Приложения и сервисы не хуже, чем на Android","by":"machine"}
+{"id":"milestones:lp-apps-and-services:why:ru","table":"milestones","row":"lp-apps-and-services","column":"why","lang":"ru","text":"То, в чём люди на самом деле живут.","by":"machine"}
+{"id":"milestones:lp-secure-updated:title:ru","table":"milestones","row":"lp-secure-updated","column":"title","lang":"ru","text":"Защищён и обновляется","by":"machine"}
+{"id":"milestones:lp-secure-updated:why:ru","table":"milestones","row":"lp-secure-updated","column":"why","lang":"ru","text":"Совершенство, которое держится.","by":"machine"}
+{"id":"milestones:lp-tested-daily:title:ru","table":"milestones","row":"lp-tested-daily","column":"title","lang":"ru","text":"Проверяется на настоящих устройствах","by":"machine"}
+{"id":"milestones:lp-tested-daily:why:ru","table":"milestones","row":"lp-tested-daily","column":"why","lang":"ru","text":"Каждый день, на самих телефонах.","by":"machine"}
+{"id":"milestones:lp-upstream:title:ru","table":"milestones","row":"lp-upstream","column":"title","lang":"ru","text":"Исправления — в апстриме","by":"machine"}
+{"id":"milestones:lp-upstream:why:ru","table":"milestones","row":"lp-upstream","column":"why","lang":"ru","text":"Исправлениям место там, где их получат все.","by":"machine"}
+{"id":"milestones:surya-boots:title:ru","table":"milestones","row":"surya-boots","column":"title","lang":"ru","text":"Загружается, показывает, реагирует, подключается","by":"machine"}
+{"id":"milestones:surya-boots:why:ru","table":"milestones","row":"surya-boots","column":"why","lang":"ru","text":"Основа, на которой стоит всё остальное.","by":"machine"}
+{"id":"milestones:surya-sound:title:ru","table":"milestones","row":"surya-sound","column":"title","lang":"ru","text":"Звук","by":"machine"}
+{"id":"milestones:surya-sound:why:ru","table":"milestones","row":"surya-sound","column":"why","lang":"ru","text":"Динамики, разговорный динамик, микрофон, наушники.","by":"machine"}
+{"id":"milestones:surya-phone:title:ru","table":"milestones","row":"surya-phone","column":"title","lang":"ru","text":"Настоящий телефон: звонки, сообщения, интернет","by":"machine"}
+{"id":"milestones:surya-phone:why:ru","table":"milestones","row":"surya-phone","column":"why","lang":"ru","text":"Тогда им можно пользоваться как телефоном.","by":"machine"}
+{"id":"milestones:surya-every-part:title:ru","table":"milestones","row":"surya-every-part","column":"title","lang":"ru","text":"Работает каждая деталь","by":"machine"}
+{"id":"milestones:surya-every-part:why:ru","table":"milestones","row":"surya-every-part","column":"why","lang":"ru","text":"Камеры, отпечаток, датчики, NFC — всё.","by":"machine"}
+{"id":"milestones:surya-tested:title:ru","table":"milestones","row":"surya-tested","column":"title","lang":"ru","text":"Проверяется каждый день","by":"machine"}
+{"id":"milestones:surya-tested:why:ru","table":"milestones","row":"surya-tested","column":"why","lang":"ru","text":"Наблюдение за здоровьем и прогоны тестов — зелёные.","by":"machine"}
+{"id":"milestones:surya-upstream:title:ru","table":"milestones","row":"surya-upstream","column":"title","lang":"ru","text":"Его исправления — в апстриме","by":"machine"}
+{"id":"milestones:surya-upstream:why:ru","table":"milestones","row":"surya-upstream","column":"why","lang":"ru","text":"Чтобы их получил каждый телефон на SM7150.","by":"machine"}
+{"id":"platforms:linux-best:name:ru","table":"platforms","row":"linux-best","column":"name","lang":"ru","text":"Linux-телефоны (лучшее на сегодня)","by":"machine"}
