@@ -133,3 +133,10 @@ Category
 
 Category
 : power
+
+
+<a id="kernel"></a>
+### Kernel (boots without unexpected warnings)
+
+Category
+: other

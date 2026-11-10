@@ -50,6 +50,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|
 | [Accelerometer / gyroscope / other sensors](components.md#sensors) | [❔](support_status.md#sensors--xiaomi-surya) |
+| [Kernel (boots without unexpected warnings)](components.md#kernel) | ❔ |
 
 ### Power
 
