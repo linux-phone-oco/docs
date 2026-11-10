@@ -62,64 +62,64 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 
 <a id="audio-speaker--xiaomi-surya"></a>
 Speaker × Xiaomi POCO X3 NFC
-: partial — wiki field: status_audio — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: partial — wiki field: status_audio — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="camera-front--xiaomi-surya"></a>
 Front camera × Xiaomi POCO X3 NFC
-: broken — wiki field: status_camera — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: broken — wiki field: status_camera — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="camera-rear--xiaomi-surya"></a>
 Rear camera(s) × Xiaomi POCO X3 NFC
-: broken — wiki field: status_camera — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: broken — wiki field: status_camera — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="display-panel--xiaomi-surya"></a>
 Display panel × Xiaomi POCO X3 NFC
-: works — wiki field: status_screen — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: works — wiki field: status_screen — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="touchscreen--xiaomi-surya"></a>
 Touchscreen × Xiaomi POCO X3 NFC
-: works — wiki field: status_touch — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: works — wiki field: status_touch — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="haptics--xiaomi-surya"></a>
 Haptics (vibration motor) × Xiaomi POCO X3 NFC
-: works — wiki field: status_haptics — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: works — wiki field: status_haptics — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="modem-data--xiaomi-surya"></a>
 Mobile data × Xiaomi POCO X3 NFC
-: works — wiki field: status_mobiledata — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: works — wiki field: status_mobiledata — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="modem-calls--xiaomi-surya"></a>
 Phone calls × Xiaomi POCO X3 NFC
-: works — wiki field: status_calls — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: works — wiki field: status_calls — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="modem-sms--xiaomi-surya"></a>
 SMS × Xiaomi POCO X3 NFC
-: works — wiki field: status_sms — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: works — wiki field: status_sms — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="wifi--xiaomi-surya"></a>
 Wi-Fi × Xiaomi POCO X3 NFC
-: works — wiki field: status_wifi — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: works — wiki field: status_wifi — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="bluetooth--xiaomi-surya"></a>
 Bluetooth × Xiaomi POCO X3 NFC
-: works — wiki field: status_bluetooth — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: works — wiki field: status_bluetooth — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="nfc--xiaomi-surya"></a>
 NFC × Xiaomi POCO X3 NFC
-: works — wiki field: status_nfc — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: works — wiki field: status_nfc — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="fingerprint--xiaomi-surya"></a>
 Fingerprint or face unlock × Xiaomi POCO X3 NFC
-: broken — wiki field: status_fingerprint — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: broken — wiki field: status_fingerprint — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="sensors--xiaomi-surya"></a>
 Accelerometer / gyroscope / other sensors × Xiaomi POCO X3 NFC
-: works — wiki field: status_accel — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: works — wiki field: status_accel — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="usb-otg--xiaomi-surya"></a>
 USB OTG × Xiaomi POCO X3 NFC
-: works — wiki field: status_otg — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: works — wiki field: status_otg — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="fastboot--xiaomi-surya"></a>
 Fastboot / bootloader × Xiaomi POCO X3 NFC
-: works — wiki field: status_flashing — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29) — checked: 2026-11-10
+: works — wiki field: status_flashing — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
