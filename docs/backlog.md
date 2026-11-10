@@ -159,10 +159,10 @@ Opened
 ### Microphone: check, and make it work
 
 Status
-: open
+: in-progress
 
 Note
-: The microphones go through the WCD9375 codec, which the stock device tree does not wire up (the sound card has only the speaker). Needs the device-tree work on linux-phone-oco/linux PR #1 (aoncc dropped, VA macro clocked from q6afecc; built and audited, not yet booted). Test idea: play a tone on the speaker and record it, so the check needs no ears. Boot test needs the user nearby (a hang needs the power button). Prior art found by the kernel-activity feed (2026-11-10): upstream sm7150-mainline committed "WIP WCD stuff" to the surya device tree (7b00a934ace1, 2026-03-28, Aelin Reidel) and reverted it (6ec3051564fd, 2026-05-17). Read both, and why it was reverted, before booting our WCD9375 device tree.
+: The microphones go through the WCD9375 codec, which the stock device tree does not wire up (the sound card has only the speaker). Needs the device-tree work on linux-phone-oco/linux PR #1 (aoncc dropped, VA macro clocked from q6afecc; built and audited, not yet booted). Test idea: play a tone on the speaker and record it, so the check needs no ears. Boot test needs the user nearby (a hang needs the power button). Prior art found by the kernel-activity feed (2026-11-10): upstream sm7150-mainline committed "WIP WCD stuff" to the surya device tree (7b00a934ace1, 2026-03-28, Aelin Reidel) and reverted it (6ec3051564fd, 2026-05-17). Read both, and why it was reverted, before booting our WCD9375 device tree. Built 2026-11-10 on the lab machine: a whole test kernel, 7.1.0-rc3-sm7150-wcd (the phone's exact v7.1_rc3 source + upstream's WIP WCD patch + our tas2562 fix; the pin-controller drivers it changes are built in, so modules alone cannot carry it): Image.gz, the Huaxing dtb and 828 modules under ~/Projects/surya-audio/kernel-rc3/{src-wcd,out-wcd}. Test plan, safe: a second systemd-boot entry (pmos-wcd.conf: its own kernel, initramfs and dtb), stock stays the default; a loader.conf with a 10 s menu (Nura ships none, so there is no menu); pick the entry with the volume keys, or try a one-shot boot; a hang falls back to stock on reboot. To check on the phone: whether the menu takes the volume keys, and an initramfs for the -wcd version (mkinitfs builds for the installed kernel). Needs the user nearby.
 
 Opened
 : 2026-11-09
