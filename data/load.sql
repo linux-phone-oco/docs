@@ -8,6 +8,7 @@ COPY feature_support FROM 'data/feature_support.json' (FORMAT 'json');
 COPY kernel_activity FROM 'data/kernel_activity.json' (FORMAT 'json');
 COPY platforms FROM 'data/platforms.json' (FORMAT 'json');
 COPY session_log FROM 'data/session_log.json' (FORMAT 'json');
+COPY shell_releases FROM 'data/shell_releases.json' (FORMAT 'json');
 COPY sources FROM 'data/sources.json' (FORMAT 'json');
 COPY support_status FROM 'data/support_status.json' (FORMAT 'json');
 COPY test_results FROM 'data/test_results.json' (FORMAT 'json');
