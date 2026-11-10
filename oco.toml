@@ -4,7 +4,8 @@ schema = 1
 
 [project]
 id = "linux-phone-oco/docs"
-name = "Linux phones: the grand picture"
+name = "Linux Phones: phones running Linux, as good as Android - and how close we are"
+title = "Linux Phones"
 kind = "picture"
 parent = "open-commons-observatory"
 
