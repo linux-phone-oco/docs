@@ -1,0 +1,17 @@
+# This repository's mark: how it fits the Open Commons Observatory's picture.
+# https://github.com/open-commons-observatory/open-commons-observatory.github.io/tree/main/marks
+schema = 1
+
+[project]
+id = "linux-phone-oco/docs"
+name = "Linux phones: the grand picture"
+kind = "picture"
+parent = "open-commons-observatory"
+
+[exports]
+backlog = "data/backlog.json"
+session_log = "data/session_log.json"
+test_runs = "data/test_runs.json"
+support_status = "data/support_status.json"
+feature_support = "data/feature_support.json"
+landscape = "data/landscape.json"
