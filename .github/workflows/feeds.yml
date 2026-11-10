@@ -1,0 +1,31 @@
+name: feeds
+# Data that other projects keep, brought here on a schedule. Each feed is a SQL file in feeds/
+# (DuckDB fetches and reshapes the source); when a run changes the data, the change is committed to
+# main - only after the data and the rendered pages verify, so nothing broken lands. (The org does
+# not let workflows open PRs; the repo's own checks still run on the push.)
+on:
+  schedule:
+    - cron: "17 5 * * 1"   # Mondays
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  feeds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r .tad/requirements.txt
+      - name: Run every feed
+        run: for f in feeds/*.sql; do echo "== $f"; python3 .tad/tools/dc.py sql "$(cat "$f")"; done
+      - name: Render and verify
+        run: make canon render verify
+      - name: Commit the change to main, if there is one
+        run: |
+          git diff --quiet && { echo "nothing changed"; exit 0; }
+          git config user.name "feeds"; git config user.email "feeds@linux-phone-oco"
+          git commit -qam "chore(feed): data from the scheduled feeds"
+          git push -q origin HEAD:main
