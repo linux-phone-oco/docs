@@ -13,3 +13,4 @@ The memory of linux-phone-oco, whose goal is Linux phones as good as Android for
 - [Session Log](session_log.md): 6
 - [Sources](sources.md): 4
 - [Support Status](support_status.md): 19
+- [Wiki Claims](wiki_claims.md): 16
