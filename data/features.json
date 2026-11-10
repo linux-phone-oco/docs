@@ -1,0 +1,46 @@
+{"id":"voice-calls","name":"Voice calls","category":"calls and messages","why":"The first thing a phone is for."}
+{"id":"volte","name":"VoLTE and Wi-Fi calling","category":"calls and messages","why":"Many networks have switched 2G/3G off: without VoLTE there are no calls at all."}
+{"id":"sms","name":"SMS","category":"calls and messages","why":"Still how banks, services and two-factor codes reach people."}
+{"id":"mms","name":"MMS and group messages","category":"calls and messages","why":"Pictures and group chats over the carrier."}
+{"id":"voicemail","name":"Voicemail","category":"calls and messages","why":"Calls missed while busy or asleep."}
+{"id":"emergency-calls","name":"Emergency calls","category":"calls and messages","why":"Must work every time, even without a SIM."}
+{"id":"esim","name":"eSIM","category":"calls and messages","why":"More carriers and devices are eSIM-only."}
+{"id":"mobile-data","name":"Mobile data","category":"connectivity","why":"Being online away from Wi-Fi."}
+{"id":"wifi","name":"Wi-Fi","category":"connectivity","why":"The main connection at home and work."}
+{"id":"bluetooth","name":"Bluetooth","category":"connectivity","why":"Headphones, cars, watches, keyboards."}
+{"id":"hotspot","name":"Hotspot and tethering","category":"connectivity","why":"Sharing the phone's connection with a laptop."}
+{"id":"nfc","name":"NFC","category":"connectivity","why":"Payments, transit cards, pairing."}
+{"id":"gps","name":"GPS and location","category":"connectivity","why":"Maps and navigation."}
+{"id":"speaker","name":"Speaker","category":"audio","why":"Calls on speaker, media, ringing."}
+{"id":"earpiece","name":"Earpiece","category":"audio","why":"Calls held to the ear."}
+{"id":"headphones","name":"Wired headphones and headset mic","category":"audio","why":"Private listening and calls."}
+{"id":"microphone","name":"Microphones","category":"audio","why":"Calls, voice notes, video."}
+{"id":"bluetooth-audio","name":"Bluetooth audio and headset calls","category":"audio","why":"Wireless headphones and car kits, including for calls."}
+{"id":"photo","name":"Photos","category":"camera","why":"The camera is among the most used features of a phone."}
+{"id":"video-recording","name":"Video recording","category":"camera","why":"Recording with sound."}
+{"id":"qr-scan","name":"QR codes","category":"camera","why":"Logins, payments, tickets, Wi-Fi."}
+{"id":"touch","name":"Touchscreen","category":"display and input","why":"The whole interface."}
+{"id":"on-screen-keyboard","name":"On-screen keyboard","category":"display and input","why":"Typing, in every language the user writes."}
+{"id":"auto-rotate","name":"Auto-rotate","category":"display and input","why":"Video and photos in landscape."}
+{"id":"auto-brightness","name":"Auto-brightness","category":"display and input","why":"Readable outdoors, comfortable at night, saves battery."}
+{"id":"proximity","name":"Proximity sensor in calls","category":"sensors","why":"Turns the screen off at the ear, so the cheek does not press buttons."}
+{"id":"fingerprint","name":"Fingerprint or face unlock","category":"sensors","why":"Fast unlocking without weakening the lock."}
+{"id":"deep-sleep","name":"Deep sleep that wakes for calls and messages","category":"power","why":"A phone that sleeps and still rings - the heart of battery life."}
+{"id":"power-discipline","name":"Background power discipline","category":"power","why":"The system, not each app, decides what may run in the background."}
+{"id":"all-day-battery","name":"All-day battery","category":"power","why":"Leaving home without a charger."}
+{"id":"charging","name":"Charging, including powered off","category":"power","why":"Charging at all, and charging while switched off."}
+{"id":"encryption","name":"Storage encryption","category":"security","why":"A lost phone does not give away its data."}
+{"id":"verified-boot","name":"Verified boot","category":"security","why":"The phone can tell when its system was tampered with."}
+{"id":"secure-element","name":"Hardware key store","category":"security","why":"Keys that never leave a dedicated chip."}
+{"id":"app-sandboxing","name":"App sandboxing by default","category":"security","why":"One bad app cannot read the others."}
+{"id":"ota-updates","name":"Updates over the air","category":"updates","why":"Security fixes arrive without a computer."}
+{"id":"rollback","name":"Updates with rollback","category":"updates","why":"A failed update does not leave a broken phone."}
+{"id":"support-years","name":"Years of updates","category":"updates","why":"A phone stays safe for as long as it lasts."}
+{"id":"native-apps","name":"Native apps for daily needs","category":"apps","why":"Mail, messaging, maps, browser, media, made for a phone screen."}
+{"id":"android-apps","name":"Android apps","category":"apps","why":"Many services exist only as Android apps."}
+{"id":"app-store","name":"App store","category":"apps","why":"Finding and updating software in one place."}
+{"id":"contacts-calendar-sync","name":"Contacts and calendar sync","category":"sync","why":"The same contacts and appointments everywhere."}
+{"id":"backup","name":"Backup and restore","category":"sync","why":"Moving to a new phone, or recovering a lost one."}
+{"id":"push-notifications","name":"Push notifications while asleep","category":"services","why":"Messages arrive at once without draining the battery."}
+{"id":"contactless-payments","name":"Contactless payments","category":"services","why":"Paying with the phone."}
+{"id":"banking-apps","name":"Banking apps","category":"services","why":"Many banks require their app for login and payments."}

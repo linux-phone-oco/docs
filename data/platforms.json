@@ -1,0 +1,7 @@
+{"id":"android","name":"Android","kind":"proprietary","notes":"AOSP with Google services, as shipped on most phones"}
+{"id":"ios","name":"iOS","kind":"proprietary","notes":null}
+{"id":"linux-best","name":"Linux phones (best current)","kind":"linux","notes":"The best any open Linux phone does today, across projects - from the Open Handset Commons prior-art map"}
+{"id":"postmarketos","name":"postmarketOS","kind":"linux","notes":"Alpine-based; Nura images included"}
+{"id":"mobian","name":"Mobian","kind":"linux","notes":"Debian-based"}
+{"id":"ubuntu-touch","name":"Ubuntu Touch","kind":"linux","notes":"UBports"}
+{"id":"sailfish-os","name":"Sailfish OS","kind":"linux","notes":"Jolla; partly closed user interface"}
