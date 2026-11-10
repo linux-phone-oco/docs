@@ -240,7 +240,7 @@ Status
 : open
 
 Note
-: Found 2026-11-10 on Sxmo (sensors service masked, all fixes in): 8 ms after resume from s2idle the ADSP reports a fatal error (EX:kernel:0x0:IST46:0x132:PC=0xf0049be4) and restarts; its audio services are back about 0.25 s later and playback works again. 2 of 3 suspends crashed it. Sxmo suspends whenever the screen is off, so playback is cut at wake-ups. Lead, not yet tested: the kernel may drop the ADSP's power or resource votes during s2idle (upstream once had to keep a remote processor's load state unaltered across suspend). The automatic adsp-stable check counts crashes right after a resume.
+: Found 2026-11-10 on Sxmo (sensors service masked, all fixes in): 8 ms after resume from s2idle the ADSP reports a fatal error (EX:kernel:0x0:IST46:0x132:PC=0xf0049be4) and restarts; its audio services are back about 0.25 s later and playback works again. 2 of 3 suspends crashed it. Sxmo suspends whenever the screen is off, so playback is cut at wake-ups. Lead, not yet tested: the kernel may drop the ADSP's power or resource votes during s2idle (upstream once had to keep a remote processor's load state unaltered across suspend). The automatic adsp-stable check counts crashes right after a resume. Narrowed 2026-11-10: 2 crashes in 28 suspends of one boot, both early in it (at 51 s and 839 s), none in the following 26 - not suspend alone, not audio playing or just played, not the sound card (unbound or bound), not I2C access to the amps, not the time awake (a 12-cycle soak, 10 s to 5 min, all clean). Lesson: dmesg is a ring that this kernel's debug prints overwrite within minutes; crash counts now come from the journal.
 
 Opened
 : 2026-11-10
