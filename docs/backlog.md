@@ -240,7 +240,7 @@ Status
 : in-progress
 
 Note
-: Now reproducible. After the first real devlab flash of the pristine stock image (2026-11-10) the audio DSP crashed on 22 of 24 resumes (fatal error EX:kernel:0x0:IST46:0x132 during the wake-up, a few milliseconds before "PM: suspend exit"), where on the system before the flash it was rare (2 of 28). So something on the old system made it rare and is not in the manifest - a change made by hand and never recorded. Next: find that difference (the old system's state is in the earlier images and notes), then the cause. Until then the lab holds a wake lock (devlab-hold) so the phone does not suspend; it is gone on reboot.
+: Trigger found 2026-11-10, one change at a time: with hexagonrpcd's RootPD helper (a FastRPC client) attached, the audio DSP dies on every suspend attempt - 24 of 24 (fatal error EX:kernel:0x0:IST46:0x132:PC=0xf0049be4, about 30 ms after the attempt; the attempts abort at once because the USB link cannot go idle). Without the helper: 0 of 8, and on a clean boot with it masked 0 of 9, all checks passing; sound does not need it. Not a first-boot effect, not the sensor proxy, no stream open. The earlier "rare" crash (2 of 28, both early in a boot) was the same one: there the helper died with the first crashes and stayed down. Fixed in the lab: hexagonrpcd-adsp-rootpd masked in the device manifest, baked in at every flash. Still open, for upstream: why an attached FastRPC client makes the DSP assert across a suspend attempt (the kernel's fastrpc and remoteproc suspend handling, or hexagonrpcd), and why the helper restarts after each crash on a fresh system.
 
 Opened
 : 2026-11-10
@@ -278,10 +278,10 @@ Opened
 ### The check counts crashes on resume wrongly
 
 Status
-: open
+: done
 
 Note
-: adsp-stable reported "0 right after a resume" when 22 of 24 resumes had crashed: the crash is logged just before the "PM: suspend exit" line, and the check only looks after it. It should count a crash between "suspend entry" and two seconds after "suspend exit".
+: The check's pattern used \| in sed, which the phone's BusyBox sed does not have: it matched nothing and always counted 0. Rewritten in awk alone - a crash between "suspend entry" and two seconds after "suspend exit" - and checked against a boot that had 24.
 
 Opened
 : 2026-11-10
