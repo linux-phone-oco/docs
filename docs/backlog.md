@@ -285,3 +285,42 @@ Note
 
 Opened
 : 2026-11-10
+
+
+<a id="usb-flapping-on-suspend"></a>
+### The phone kept reconnecting on the host's USB
+
+Status
+: done
+
+Note
+: On USB a suspend cannot complete (the link cannot go idle): each attempt aborts at once, and a shell that suspends when idle retried every 12 seconds, each time dropping the link - 26 USB disconnects in 5 minutes on the lab machine. Fixed independently of any shell: a service holds a kernel wake lock while the port is connected to a host (devlab-usb-awake, baked in by the device manifest), with a check.
+
+Opened
+: 2026-11-10
+
+
+<a id="shell-free-base"></a>
+### A shell-free base for hardware tests
+
+Status
+: open
+
+Note
+: Proposed by the author after a day of faults that a shell's policy turned into loops: test the base - sound, modem, suspend, storage - on a console-only system, with no desktop or shell deciding when things happen, as the reference; then test each shell as a layer on top, so a failure points at one or the other. The lab's checks already run without a display; the image and the conveyor are to follow.
+
+Opened
+: 2026-11-10
+
+
+<a id="tty-first-shell"></a>
+### The author's TTY-first shell
+
+Status
+: open
+
+Note
+: His own shell for Linux, mobile first and at home on a desktop: built from nothing, on the best existing parts or their reimplementation in Rust. It starts as the raw console the lab's agent uses for the shell-free base, and grows from there. Not started; recorded so it is not forgotten.
+
+Opened
+: 2026-11-10
