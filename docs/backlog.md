@@ -123,7 +123,7 @@ Status
 : open
 
 Note
-: Kernel patch on linux-phone-oco/linux branch fix/tas2562-i2s-slot-length (one commit, compiles for arm64, verified on surya as a module built from the exact v7.1_rc3 source). Send to sm7150-mainline and to ALSA upstream (alsa-devel, the TAS2562 maintainers), signed off by the user.
+: Kernel patch on linux-phone-oco/linux branch fix/tas2562-i2s-slot-length (one commit, compiles for arm64, verified on surya as a module built from the exact v7.1_rc3 source). Send to sm7150-mainline and to ALSA upstream (alsa-devel, the TAS2562 maintainers), signed off by the user. Branch fix/tas2562-i2s-slot-length pushed to linux-phone-oco/linux 2026-11-10 (it had stayed local); patch 0001 in the upstream queue.
 
 Opened
 : 2026-11-09
@@ -198,10 +198,10 @@ Opened
 ### Plasma Mobile: speakers silent, the chain playing
 
 Status
-: in-progress
+: done
 
 Note
-: Plasma Mobile (fresh Nura image, sound fixes applied on the phone): speakers were silent with the whole chain playing. Two causes, both confirmed: (1) the image restores a saved mixer state with both amplifiers' digital volume at 0 = -110 dB; (2) a tas2562 driver bug: setting the Digital Volume Control changes only the driver's cache, the chips (page 2, 0x0c-0x0f) stay at -110 dB. Writing 0x40000000 straight into both chips with i2cset made sound work: the user heard YouTube in Firefox, 2026-11-10. Not persistent: after a power-off the restore and the driver bug bring the silence back. Needed: the driver fix (upstream-tas2562-volume), and until then a boot-time step that writes the volume into the chips.
+: Plasma Mobile (fresh Nura image, sound fixes applied on the phone): speakers were silent with the whole chain playing. Two causes, both confirmed: (1) the image restores a saved mixer state with both amplifiers' digital volume at 0 = -110 dB; (2) a tas2562 driver bug: setting the Digital Volume Control changes only the driver's cache, the chips (page 2, 0x0c-0x0f) stay at -110 dB. Writing 0x40000000 straight into both chips with i2cset made sound work: the user heard YouTube in Firefox, 2026-11-10. Not persistent: after a power-off the restore and the driver bug bring the silence back. Needed: the driver fix (upstream-tas2562-volume), and until then a boot-time step that writes the volume into the chips. Root cause found and fixed 2026-11-10: the tas2562 driver's maximum volume (0 dB) read past the end of its lookup table, which muted the amps; with two more faults (the latch byte written first, resume skipping bytes). Fixed module installed and proven on the phone by I2C reads; every flash bakes it in. Listen on Plasma when it is next run.
 
 Opened
 : 2026-11-10
@@ -214,7 +214,7 @@ Status
 : open
 
 Note
-: See plasma-silent. Reproduce: set the Digital Volume Control, read page 2 registers 0x0c-0x0f live with i2cget. Then a driver fix (write through, or restore on power-up) and a report.
+: See plasma-silent. Reproduce: set the Digital Volume Control, read page 2 registers 0x0c-0x0f live with i2cget. Then a driver fix (write through, or restore on power-up) and a report. Fixed 2026-11-10 (three faults: write order, a short and corrupt table, the defaults table): linux-phone-oco/linux PR #2, branch fix/tas2562-volume; patch 0002 in ~/Projects/linux-phone-oco/upstream-queue/linux on the lab machine - to send with the slot-length patch when the user decides.
 
 Opened
 : 2026-11-10
