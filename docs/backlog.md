@@ -159,10 +159,10 @@ Opened
 ### Microphone: check, and make it work
 
 Status
-: in-progress
+: open
 
 Note
-: The WCD9375 codec chain, booted on 2026-11-11 from the EFI image: clock provider, pin controller, macros and codec come up; then 'soundwire device init timeout' and no card. Next lead: the codec's core clocks set to 0 at 15.2 s, before the timeout at 16.9 s.
+: The WCD9375 codec chain, booted on 2026-11-11 from the EFI image: clock provider, pin controller, macros and codec come up; then 'soundwire device init timeout' and no card. Next lead: the codec's core clocks set to 0 at 15.2 s, before the timeout at 16.9 s. Parked 2026-11-12: the lab-agent redesign after the 2026-11-11 incident comes first; resume from the next step above (order: open-commons-observatory decision 2026-11-12-the-redesign-first).
 
 Opened
 : 2026-11-09
