@@ -298,3 +298,21 @@ Considered
 
 Rejected
 : Guessing.
+
+---
+
+
+<a id="2026-11-11-recording-tries"></a>
+### The microphone: the route is set, the stream does not start
+
+Entry date
+: 2026-11-11
+
+Done
+: In the test kernel the main-microphone route sets cleanly; starting a recording fails as the TX SoundWire bus loses the codec when it is reshaped for the stream. Power management ruled out. Next: the bus and port parameters, against the phone's Android kernel.
+
+Considered
+: Keeping the bus awake.
+
+Rejected
+: That as the answer.
