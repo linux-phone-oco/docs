@@ -32,7 +32,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 |---|---|
 | [Touchscreen](components.md#touchscreen) | [✅](support_status.md#touchscreen--xiaomi-surya) |
 | [Haptics (vibration motor)](components.md#haptics) | [✅](support_status.md#haptics--xiaomi-surya) |
-| [Fingerprint or face unlock](features.md#fingerprint) | [❔](support_status.md#fingerprint--xiaomi-surya) |
+| [Fingerprint or face unlock](features.md#fingerprint) | [❌](support_status.md#fingerprint--xiaomi-surya) |
 
 ### Connectivity
 
@@ -41,15 +41,15 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | [Mobile data](components.md#modem-data) | [🟡](support_status.md#modem-data--xiaomi-surya) |
 | [Phone calls](components.md#modem-calls) | [❔](support_status.md#modem-calls--xiaomi-surya) |
 | [SMS](components.md#modem-sms) | [❔](support_status.md#modem-sms--xiaomi-surya) |
-| [Wi-Fi](features.md#wifi) | [❔](support_status.md#wifi--xiaomi-surya) |
-| [Bluetooth](features.md#bluetooth) | [❔](support_status.md#bluetooth--xiaomi-surya) |
+| [Wi-Fi](features.md#wifi) | [✅](support_status.md#wifi--xiaomi-surya) |
+| [Bluetooth](features.md#bluetooth) | [🟡](support_status.md#bluetooth--xiaomi-surya) |
 | [NFC](features.md#nfc) | [❔](support_status.md#nfc--xiaomi-surya) |
 
 ### Other
 
 | Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|
-| [Accelerometer / gyroscope / other sensors](components.md#sensors) | [❔](support_status.md#sensors--xiaomi-surya) |
+| [Accelerometer / gyroscope / other sensors](components.md#sensors) | [❌](support_status.md#sensors--xiaomi-surya) |
 | [Kernel (boots without unexpected warnings)](components.md#kernel) | ❔ |
 
 ### Power
@@ -67,7 +67,7 @@ Speaker × Xiaomi POCO X3 NFC
 
 <a id="audio-headphone--xiaomi-surya"></a>
 Headphone output (3.5mm) × Xiaomi POCO X3 NFC
-: unknown — notes: Not individually confirmed; grouped with mic/earpiece as still-WIP in the postmarketOS (now Nura) community-promotion notes. — updated: 2026-11-04
+: unknown — notes: The headset jack's detector is present. Sound through it needs a person and a pair of headphones: a witnessed test, not done yet. — updated: 2026-11-11
 
 <a id="audio-mic--xiaomi-surya"></a>
 Microphone × Xiaomi POCO X3 NFC
@@ -79,11 +79,11 @@ Earpiece (call speaker) × Xiaomi POCO X3 NFC
 
 <a id="camera-front--xiaomi-surya"></a>
 Front camera × Xiaomi POCO X3 NFC
-: broken — notes: Cameras explicitly called out as not yet working, same source as audio-mic. — updated: 2026-11-04
+: broken — notes: Cameras explicitly called out as not yet working, same source as audio-mic. Measured 2026-11-11: the camera pipeline is present (10 nodes), but no image sensor is bound to it. — updated: 2026-11-11
 
 <a id="camera-rear--xiaomi-surya"></a>
 Rear camera(s) × Xiaomi POCO X3 NFC
-: broken — notes: Same source as camera-front. — updated: 2026-11-04
+: broken — notes: Same source as camera-front. Measured 2026-11-11: the camera pipeline is present (10 nodes), but no image sensor is bound to it. — updated: 2026-11-11
 
 <a id="display-panel--xiaomi-surya"></a>
 Display panel × Xiaomi POCO X3 NFC
@@ -103,31 +103,31 @@ Mobile data × Xiaomi POCO X3 NFC
 
 <a id="modem-calls--xiaomi-surya"></a>
 Phone calls × Xiaomi POCO X3 NFC
-: unknown — notes: Not confirmed either way. — updated: 2026-11-04
+: unknown — notes: Not known: there is no SIM card in the phone, and without one the modem reports a failed state. Nothing about calls can be shown until a SIM is in. — updated: 2026-11-11
 
 <a id="modem-sms--xiaomi-surya"></a>
 SMS × Xiaomi POCO X3 NFC
-: unknown — notes: Not confirmed either way. — updated: 2026-11-04
+: unknown — notes: Not known: there is no SIM card in the phone, and without one the modem reports a failed state. Nothing about messages can be shown until a SIM is in. — updated: 2026-11-11
 
 <a id="wifi--xiaomi-surya"></a>
 Wi-Fi × Xiaomi POCO X3 NFC
-: unknown — notes: Not confirmed either way. — updated: 2026-11-04
+: works — notes: Joins a network, holds an address, and its gateway answers - checked after every start. Speed and the 5 GHz band are not measured. — updated: 2026-11-11
 
 <a id="bluetooth--xiaomi-surya"></a>
 Bluetooth × Xiaomi POCO X3 NFC
-: unknown — notes: Not confirmed either way. — updated: 2026-11-04
+: partial — notes: The adapter is powered and hears nearby devices (five on 2026-11-11) - checked after every start. Pairing, and sound over Bluetooth, have not been tried. — updated: 2026-11-11
 
 <a id="nfc--xiaomi-surya"></a>
 NFC × Xiaomi POCO X3 NFC
-: unknown — notes: Not confirmed for this device specifically; a related device in the same family (davinci) is known to disable NFC over a GPIO conflict, which does not necessarily apply here. — updated: 2026-11-04
+: unknown — notes: The controller is seen by the kernel. No tool on the phone reads a tag yet. — updated: 2026-11-11
 
 <a id="fingerprint--xiaomi-surya"></a>
 Fingerprint or face unlock × Xiaomi POCO X3 NFC
-: unknown — notes: Not confirmed either way. — updated: 2026-11-04
+: broken — notes: No fingerprint reader is exposed by the kernel. — updated: 2026-11-11
 
 <a id="sensors--xiaomi-surya"></a>
 Accelerometer / gyroscope / other sensors × Xiaomi POCO X3 NFC
-: unknown — notes: Not confirmed either way. — updated: 2026-11-04
+: broken — notes: No motion, light or proximity sensor is exposed to the system. The sensor hub's service is masked on purpose: with it running, the audio processor crashed at every suspend. — updated: 2026-11-11
 
 <a id="usb-otg--xiaomi-surya"></a>
 USB OTG × Xiaomi POCO X3 NFC

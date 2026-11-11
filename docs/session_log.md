@@ -226,3 +226,21 @@ Entry date
 
 Done
 : The idea of Linux Phones translated into Russian in this project's own translations, by machine, for a person to correct.
+
+---
+
+
+<a id="2026-11-11-parts-measured"></a>
+### Four of surya's parts no longer unknown
+
+Entry date
+: 2026-11-11
+
+Done
+: The phone's own checks were widened and its parts follow their evidence: Wi-Fi works (joined, gateway answers); Bluetooth partly (powered, hears devices; pairing untried); sensors and the fingerprint reader broken (nothing exposed - the sensor service is masked because it crashed the audio processor). Calls and messages stay unknown for a plain reason now written down: there is no SIM card in the phone. The cameras' fault is narrowed: the pipeline is there, no image sensor is bound.
+
+Considered
+: Calling Bluetooth working because it is powered.
+
+Rejected
+: That: a part works when its function was shown, not when its device appears.
