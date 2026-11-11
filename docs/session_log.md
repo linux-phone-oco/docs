@@ -316,3 +316,15 @@ Considered
 
 Rejected
 : That as the answer.
+
+---
+
+
+<a id="2026-11-11-tad-in-rust"></a>
+### tad in Rust replaces the vendored Python engine
+
+Entry date
+: 2026-11-11
+
+Done
+: This repository moved to tad in Rust: tables.toml is the authority, tad comes from its pinned release, the vendored .tad, schema.sql, load.sql and checks/ are gone. The feeds keep their SQL, now run by DuckDB's standalone binary (pinned by fingerprint) with tad checking what they write; proven to give the same rows as before, byte for byte.
