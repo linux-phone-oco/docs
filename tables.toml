@@ -1,0 +1,666 @@
+# linux-phone-oco/docs's tables, declared as data (tad). Generated from data/schema.sql by tad declare; the rules
+# across tables are written by hand from checks/*.sql. The authority stays schema.sql and checks/
+# until the switch to tad in Rust; both are proven to give the same verdicts.
+[[tables.about.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.about.fields]]
+name = "summary"
+type = "string"
+required = true
+
+[tables.backlog]
+key = ["id"]
+
+[[tables.backlog.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.backlog.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.backlog.fields]]
+name = "status"
+type = "string"
+required = true
+enum = ["open", "in-progress", "done"]
+
+[[tables.backlog.fields]]
+name = "note"
+type = "string"
+
+[[tables.backlog.fields]]
+name = "opened"
+type = "date"
+required = true
+
+[tables.components]
+key = ["id"]
+
+[[tables.components.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.components.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.components.fields]]
+name = "category"
+type = "string"
+required = true
+enum = ["audio", "display", "input", "connectivity", "camera", "power", "other"]
+
+[tables.device_sources]
+key = ["device_id", "source_id"]
+
+[[tables.device_sources.fields]]
+name = "device_id"
+type = "string"
+required = true
+
+[[tables.device_sources.fields]]
+name = "source_id"
+type = "string"
+required = true
+
+[tables.devices]
+key = ["id"]
+
+[[tables.devices.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.devices.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.devices.fields]]
+name = "codename"
+type = "string"
+required = true
+
+[[tables.devices.fields]]
+name = "soc"
+type = "string"
+required = true
+
+[[tables.devices.fields]]
+name = "notes"
+type = "string"
+
+[tables.feature_support]
+key = ["feature_id", "platform_id"]
+
+[[tables.feature_support.fields]]
+name = "feature_id"
+type = "string"
+required = true
+
+[[tables.feature_support.fields]]
+name = "platform_id"
+type = "string"
+required = true
+
+[[tables.feature_support.fields]]
+name = "status"
+type = "string"
+required = true
+enum = ["works", "partial", "missing", "broken", "unknown", "not-applicable"]
+
+[[tables.feature_support.fields]]
+name = "note"
+type = "string"
+
+[[tables.feature_support.fields]]
+name = "source"
+type = "string"
+
+[[tables.feature_support.fields]]
+name = "checked"
+type = "date"
+required = true
+
+[tables.features]
+key = ["id"]
+
+[[tables.features.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.features.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.features.fields]]
+name = "category"
+type = "string"
+required = true
+enum = ["calls and messages", "connectivity", "audio", "camera", "display and input", "sensors", "power", "security", "updates", "apps", "sync", "services"]
+
+[[tables.features.fields]]
+name = "why"
+type = "string"
+required = true
+
+[tables.idea]
+key = ["id"]
+
+[[tables.idea.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.idea.fields]]
+name = "ord"
+type = "integer"
+required = true
+
+[[tables.idea.fields]]
+name = "kind"
+type = "string"
+required = true
+enum = ["lead", "problem", "idea", "picture", "limit", "start"]
+
+[[tables.idea.fields]]
+name = "heading"
+type = "string"
+required = true
+
+[[tables.idea.fields]]
+name = "text"
+type = "string"
+required = true
+
+[tables.kernel_activity]
+key = ["id"]
+
+[[tables.kernel_activity.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.kernel_activity.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.kernel_activity.fields]]
+name = "day"
+type = "date"
+required = true
+
+[[tables.kernel_activity.fields]]
+name = "author"
+type = "string"
+
+[[tables.kernel_activity.fields]]
+name = "link"
+type = "string"
+required = true
+starts_with = "https://"
+
+[tables.landscape]
+key = ["id"]
+
+[[tables.landscape.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.landscape.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.landscape.fields]]
+name = "project"
+type = "string"
+required = true
+
+[[tables.landscape.fields]]
+name = "what"
+type = "string"
+required = true
+
+[[tables.landscape.fields]]
+name = "for_us"
+type = "string"
+required = true
+
+[[tables.landscape.fields]]
+name = "link"
+type = "string"
+required = true
+starts_with = "https://"
+
+[[tables.landscape.fields]]
+name = "checked"
+type = "date"
+required = true
+
+[tables.milestones]
+key = ["id"]
+
+[[tables.milestones.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.milestones.fields]]
+name = "subject"
+type = "string"
+required = true
+
+[[tables.milestones.fields]]
+name = "ord"
+type = "integer"
+required = true
+
+[[tables.milestones.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.milestones.fields]]
+name = "horizon"
+type = "string"
+required = true
+enum = ["working", "perfection", "ongoing"]
+
+[[tables.milestones.fields]]
+name = "readiness"
+type = "integer"
+required = true
+minimum = 1.0
+maximum = 9.0
+
+[[tables.milestones.fields]]
+name = "criteria"
+type = "string"
+required = true
+
+[[tables.milestones.fields]]
+name = "why"
+type = "string"
+required = true
+
+[tables.platforms]
+key = ["id"]
+
+[[tables.platforms.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.platforms.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.platforms.fields]]
+name = "kind"
+type = "string"
+required = true
+enum = ["proprietary", "linux"]
+
+[[tables.platforms.fields]]
+name = "notes"
+type = "string"
+
+[tables.session_log]
+key = ["id"]
+
+[[tables.session_log.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.session_log.fields]]
+name = "entry_date"
+type = "date"
+required = true
+
+[[tables.session_log.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.session_log.fields]]
+name = "done"
+type = "string"
+required = true
+
+[[tables.session_log.fields]]
+name = "considered"
+type = "string"
+
+[[tables.session_log.fields]]
+name = "rejected"
+type = "string"
+
+[tables.shell_releases]
+key = ["id"]
+
+[[tables.shell_releases.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.shell_releases.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.shell_releases.fields]]
+name = "version"
+type = "string"
+required = true
+
+[[tables.shell_releases.fields]]
+name = "released"
+type = "date"
+
+[[tables.shell_releases.fields]]
+name = "link"
+type = "string"
+required = true
+starts_with = "https://"
+
+[tables.sources]
+key = ["id"]
+
+[[tables.sources.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.sources.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.sources.fields]]
+name = "url"
+type = "string"
+required = true
+starts_with = "https://"
+
+[[tables.sources.fields]]
+name = "author"
+type = "string"
+
+[[tables.sources.fields]]
+name = "year"
+type = "integer"
+
+[tables.support_status]
+key = ["device_id", "component_id"]
+
+[[tables.support_status.fields]]
+name = "device_id"
+type = "string"
+required = true
+
+[[tables.support_status.fields]]
+name = "component_id"
+type = "string"
+required = true
+
+[[tables.support_status.fields]]
+name = "status"
+type = "string"
+required = true
+enum = ["works", "partial", "broken", "unknown", "not-applicable"]
+
+[[tables.support_status.fields]]
+name = "notes"
+type = "string"
+
+[[tables.support_status.fields]]
+name = "updated"
+type = "date"
+required = true
+
+[tables.test_results]
+key = ["id"]
+
+[[tables.test_results.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.test_results.fields]]
+name = "run"
+type = "string"
+required = true
+
+[[tables.test_results.fields]]
+name = "device_id"
+type = "string"
+required = true
+
+[[tables.test_results.fields]]
+name = "component_id"
+type = "string"
+required = true
+
+[[tables.test_results.fields]]
+name = "test"
+type = "string"
+required = true
+
+[[tables.test_results.fields]]
+name = "outcome"
+type = "string"
+required = true
+enum = ["pass", "fail", "skip"]
+
+[[tables.test_results.fields]]
+name = "detail"
+type = "string"
+
+[[tables.test_results.fields]]
+name = "run_at"
+type = "datetime"
+required = true
+
+[[tables.test_results.fields]]
+name = "kernel"
+type = "string"
+
+[[tables.test_results.fields]]
+name = "shell"
+type = "string"
+
+[tables.test_runs]
+key = ["id"]
+
+[[tables.test_runs.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.test_runs.fields]]
+name = "device_id"
+type = "string"
+required = true
+
+[[tables.test_runs.fields]]
+name = "run_at"
+type = "datetime"
+required = true
+
+[[tables.test_runs.fields]]
+name = "kernel"
+type = "string"
+
+[[tables.test_runs.fields]]
+name = "shell"
+type = "string"
+
+[[tables.test_runs.fields]]
+name = "passed"
+type = "integer"
+required = true
+
+[[tables.test_runs.fields]]
+name = "failed"
+type = "integer"
+required = true
+
+[[tables.test_runs.fields]]
+name = "skipped"
+type = "integer"
+required = true
+
+[tables.translations]
+key = ["id"]
+
+[[tables.translations.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.translations.fields]]
+name = "table"
+type = "string"
+required = true
+
+[[tables.translations.fields]]
+name = "row"
+type = "string"
+required = true
+
+[[tables.translations.fields]]
+name = "column"
+type = "string"
+required = true
+
+[[tables.translations.fields]]
+name = "lang"
+type = "string"
+required = true
+
+[[tables.translations.fields]]
+name = "text"
+type = "string"
+required = true
+
+[[tables.translations.fields]]
+name = "by"
+type = "string"
+required = true
+enum = ["human", "machine"]
+
+[tables.wiki_claims]
+key = ["device_id", "component_id"]
+
+[[tables.wiki_claims.fields]]
+name = "device_id"
+type = "string"
+required = true
+
+[[tables.wiki_claims.fields]]
+name = "component_id"
+type = "string"
+required = true
+
+[[tables.wiki_claims.fields]]
+name = "status"
+type = "string"
+required = true
+enum = ["works", "partial", "broken", "unknown"]
+
+[[tables.wiki_claims.fields]]
+name = "wiki_field"
+type = "string"
+required = true
+
+[[tables.wiki_claims.fields]]
+name = "source"
+type = "string"
+required = true
+
+[tables.workings]
+key = ["id"]
+
+[[tables.workings.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.workings.fields]]
+name = "what"
+type = "string"
+required = true
+
+[[tables.workings.fields]]
+name = "kind"
+type = "string"
+required = true
+enum = ["tool", "check", "gatherer", "test", "practice"]
+
+[[tables.workings.fields]]
+name = "serves"
+type = "string"
+required = true
+
+[[tables.workings.fields]]
+name = "how"
+type = "string"
+required = true
+
+[[tables.workings.fields]]
+name = "why"
+type = "string"
+required = true
+
+[[tables.workings.fields]]
+name = "evidence"
+type = "string"
+required = true
+
+[[tables.workings.fields]]
+name = "uses"
+type = "string"
+required = true
+
+# Rules across tables (from checks/*.sql, written by hand; proven against them)
+[[rules.unique_ids]]
+tables = ["devices", "components", "sources", "backlog", "session_log"]
+
+[[rules.references]]
+field = "support_status.device_id"
+to = ["devices"]
+
+[[rules.references]]
+field = "support_status.component_id"
+to = ["components"]
+
+[[rules.references]]
+field = "device_sources.device_id"
+to = ["devices"]
+
+[[rules.references]]
+field = "device_sources.source_id"
+to = ["sources"]
