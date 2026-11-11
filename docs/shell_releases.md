@@ -19,10 +19,10 @@ Link
 ### Plasma Mobile
 
 Version
-: v6.8.2
+: v6.8.3
 
 Released
-: 2026-10-27
+: 2026-11-10
 
 Link
-: https://invent.kde.org/plasma/plasma-mobile/-/tags/v6.8.2
+: https://invent.kde.org/plasma/plasma-mobile/-/tags/v6.8.3
