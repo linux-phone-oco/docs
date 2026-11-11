@@ -262,3 +262,21 @@ Considered
 
 Rejected
 : That: hearsay until a chip answers.
+
+---
+
+
+<a id="2026-11-11-microphone-nearly"></a>
+### The microphone's chain, nearly whole
+
+Entry date
+: 2026-11-11
+
+Done
+: For the first time the test kernel brought the whole microphone chain up to the codec; one timeout stands between it and a sound card. Measured: the right channel is the bottom speaker.
+
+Considered
+: Booting again without reading the bootloader's record.
+
+Rejected
+: That: three wrong theories cost three reboots.
