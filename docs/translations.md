@@ -3394,3 +3394,619 @@ Text
 
 By
 : machine
+
+
+<a id="workings:w-manifest-fixes:how:ru"></a>
+### workings:w-manifest-fixes:how:ru
+
+Table
+: workings
+
+Row
+: w-manifest-fixes
+
+Column
+: how
+
+Lang
+: ru
+
+Text
+: Стереопрофиль, исправленный драйвер усилителя и две замаскированные службы — записаны один раз и вшиваются в каждую прошивку.
+
+By
+: machine
+
+
+<a id="workings:w-parts-table:why:ru"></a>
+### workings:w-parts-table:why:ru
+
+Table
+: workings
+
+Row
+: w-parts-table
+
+Column
+: why
+
+Lang
+: ru
+
+Text
+: Чтобы оставшееся было списком, а не догадкой.
+
+By
+: machine
+
+
+<a id="workings:w-upstream-surya:what:ru"></a>
+### workings:w-upstream-surya:what:ru
+
+Table
+: workings
+
+Row
+: w-upstream-surya
+
+Column
+: what
+
+Lang
+: ru
+
+Text
+: Очередь в апстрим
+
+By
+: machine
+
+
+<a id="workings:w-upstream-queue:what:ru"></a>
+### workings:w-upstream-queue:what:ru
+
+Table
+: workings
+
+Row
+: w-upstream-queue
+
+Column
+: what
+
+Lang
+: ru
+
+Text
+: Очередь в апстрим
+
+By
+: machine
+
+
+<a id="workings:w-health:how:ru"></a>
+### workings:w-health:how:ru
+
+Table
+: workings
+
+Row
+: w-health
+
+Column
+: how
+
+Lang
+: ru
+
+Text
+: Проверки на самом телефоне — звуковая карта, усилители, модем, Wi-Fi, накопитель — в сравнении со всем, что проходило раньше.
+
+By
+: machine
+
+
+<a id="workings:w-parts-table:what:ru"></a>
+### workings:w-parts-table:what:ru
+
+Table
+: workings
+
+Row
+: w-parts-table
+
+Column
+: what
+
+Lang
+: ru
+
+Text
+: Таблица частей
+
+By
+: machine
+
+
+<a id="workings:w-watch-surya:how:ru"></a>
+### workings:w-watch-surya:how:ru
+
+Table
+: workings
+
+Row
+: w-watch-surya
+
+Column
+: how
+
+Lang
+: ru
+
+Text
+: Проверки после каждого запуска, сами, с записью.
+
+By
+: machine
+
+
+<a id="workings:w-upstream-surya:how:ru"></a>
+### workings:w-upstream-surya:how:ru
+
+Table
+: workings
+
+Row
+: w-upstream-surya
+
+Column
+: how
+
+Lang
+: ru
+
+Text
+: Исправления усилителя и профиль Sxmo подготовлены патчами с названными мейнтейнерами.
+
+By
+: machine
+
+
+<a id="workings:w-feature-table:how:ru"></a>
+### workings:w-feature-table:how:ru
+
+Table
+: workings
+
+Row
+: w-feature-table
+
+Column
+: how
+
+Lang
+: ru
+
+Text
+: Всё, что делает телефон, напротив каждой системы; у каждой записи — источник и день проверки.
+
+By
+: machine
+
+
+<a id="workings:w-hear:how:ru"></a>
+### workings:w-hear:how:ru
+
+Table
+: workings
+
+Row
+: w-hear
+
+Column
+: how
+
+Lang
+: ru
+
+Text
+: Проигрывает тон на каждом динамике и слышит его через микрофон в лаборатории, сравнивая с тишиной комнаты. Ждёт микрофона, поставленного рядом: первые результаты, с микрофона, который двигался, отозваны.
+
+By
+: machine
+
+
+<a id="workings:w-modem-checks:how:ru"></a>
+### workings:w-modem-checks:how:ru
+
+Table
+: workings
+
+Row
+: w-modem-checks
+
+Column
+: how
+
+Lang
+: ru
+
+Text
+: Виден ли модем и готов ли он к звонкам, сообщениям и данным — но ещё не то, проходит ли звонок.
+
+By
+: machine
+
+
+<a id="workings:w-watch:how:ru"></a>
+### workings:w-watch:how:ru
+
+Table
+: workings
+
+Row
+: w-watch
+
+Column
+: how
+
+Lang
+: ru
+
+Text
+: После каждого запуска телефона его проверки идут сами, результаты записываются; ухудшение ставит задачу на доску.
+
+By
+: machine
+
+
+<a id="workings:w-flash:how:ru"></a>
+### workings:w-flash:how:ru
+
+Table
+: workings
+
+Row
+: w-flash
+
+Column
+: how
+
+Lang
+: ru
+
+Text
+: Записывает чистый образ с вшитыми известными исправлениями устройства и сначала сверяет отпечаток его дерева устройств.
+
+By
+: machine
+
+
+<a id="workings:w-health:why:ru"></a>
+### workings:w-health:why:ru
+
+Table
+: workings
+
+Row
+: w-health
+
+Column
+: why
+
+Lang
+: ru
+
+Text
+: Телефон — эталон: он не должен незаметно становиться хуже.
+
+By
+: machine
+
+
+<a id="workings:w-manifest-fixes:what:ru"></a>
+### workings:w-manifest-fixes:what:ru
+
+Table
+: workings
+
+Row
+: w-manifest-fixes
+
+Column
+: what
+
+Lang
+: ru
+
+Text
+: Манифест устройства
+
+By
+: machine
+
+
+<a id="workings:w-modem-checks:why:ru"></a>
+### workings:w-modem-checks:why:ru
+
+Table
+: workings
+
+Row
+: w-modem-checks
+
+Column
+: why
+
+Lang
+: ru
+
+Text
+: «Виден» — не то же, что «работает»; это лишь первая ступень.
+
+By
+: machine
+
+
+<a id="workings:w-upstream-queue:why:ru"></a>
+### workings:w-upstream-queue:why:ru
+
+Table
+: workings
+
+Row
+: w-upstream-queue
+
+Column
+: why
+
+Lang
+: ru
+
+Text
+: Исправление, оставленное у себя, помогает одному телефону; отправленное в апстрим — каждому такому.
+
+By
+: machine
+
+
+<a id="workings:w-manifest-fixes:why:ru"></a>
+### workings:w-manifest-fixes:why:ru
+
+Table
+: workings
+
+Row
+: w-manifest-fixes
+
+Column
+: why
+
+Lang
+: ru
+
+Text
+: Исправление, сделанное руками, теряется при следующей прошивке.
+
+By
+: machine
+
+
+<a id="workings:w-upstream-surya:why:ru"></a>
+### workings:w-upstream-surya:why:ru
+
+Table
+: workings
+
+Row
+: w-upstream-surya
+
+Column
+: why
+
+Lang
+: ru
+
+Text
+: Чтобы их получил каждый телефон на этом чипе.
+
+By
+: machine
+
+
+<a id="workings:w-feature-table:what:ru"></a>
+### workings:w-feature-table:what:ru
+
+Table
+: workings
+
+Row
+: w-feature-table
+
+Column
+: what
+
+Lang
+: ru
+
+Text
+: Таблица возможностей
+
+By
+: machine
+
+
+<a id="workings:w-feature-table:why:ru"></a>
+### workings:w-feature-table:why:ru
+
+Table
+: workings
+
+Row
+: w-feature-table
+
+Column
+: why
+
+Lang
+: ru
+
+Text
+: Чтобы «не хуже Android» было счётом, а не ощущением.
+
+By
+: machine
+
+
+<a id="workings:w-modem-checks:what:ru"></a>
+### workings:w-modem-checks:what:ru
+
+Table
+: workings
+
+Row
+: w-modem-checks
+
+Column
+: what
+
+Lang
+: ru
+
+Text
+: Проверки модема
+
+By
+: machine
+
+
+<a id="workings:w-watch:why:ru"></a>
+### workings:w-watch:why:ru
+
+Table
+: workings
+
+Row
+: w-watch
+
+Column
+: why
+
+Lang
+: ru
+
+Text
+: Телефон, за которым никто не следит, уходит от рабочего состояния.
+
+By
+: machine
+
+
+<a id="workings:w-upstream-queue:how:ru"></a>
+### workings:w-upstream-queue:how:ru
+
+Table
+: workings
+
+Row
+: w-upstream-queue
+
+Column
+: how
+
+Lang
+: ru
+
+Text
+: Каждое исправление готовится патчем для проекта, которому оно принадлежит, с названными мейнтейнерами — и отправляется от имени автора.
+
+By
+: machine
+
+
+<a id="workings:w-hear:why:ru"></a>
+### workings:w-hear:why:ru
+
+Table
+: workings
+
+Row
+: w-hear
+
+Column
+: why
+
+Lang
+: ru
+
+Text
+: Загрузившийся драйвер ничего не говорит о звуке. Его должна услышать машина.
+
+By
+: machine
+
+
+<a id="workings:w-watch-surya:why:ru"></a>
+### workings:w-watch-surya:why:ru
+
+Table
+: workings
+
+Row
+: w-watch-surya
+
+Column
+: why
+
+Lang
+: ru
+
+Text
+: Проверено однажды — не проверено.
+
+By
+: machine
+
+
+<a id="workings:w-flash:why:ru"></a>
+### workings:w-flash:why:ru
+
+Table
+: workings
+
+Row
+: w-flash
+
+Column
+: why
+
+Lang
+: ru
+
+Text
+: Любая прошивка даёт один и тот же известный телефон — выучено на горьком опыте.
+
+By
+: machine
+
+
+<a id="workings:w-parts-table:how:ru"></a>
+### workings:w-parts-table:how:ru
+
+Table
+: workings
+
+Row
+: w-parts-table
+
+Column
+: how
+
+Lang
+: ru
+
+Text
+: Каждая часть телефона с её состоянием — по проверкам и записям о работе.
+
+By
+: machine
