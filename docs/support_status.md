@@ -63,7 +63,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 
 <a id="audio-speaker--xiaomi-surya"></a>
 Speaker × Xiaomi POCO X3 NFC
-: works — notes: Stereo, both speakers, verified by ear on 2026-11-09 through PipeWire (left-only tone from the top speaker, right-only from the bottom). Needs two fixes not yet upstream: the tas2562 amplifier driver set 32-bit I2S slots on a link clocked for 16-bit, so the right channel fell outside the frame (kernel patch on linux-phone-oco/linux branch fix/tas2562-i2s-slot-length); and the packaged UCM profile is mono with no amplifier channel setup (stereo profile in surya-lab ucm/). Also needs the ADSP sensors service off (adsp-sensor-crash-loop). Both fixes are installed on the test phone, over package files a system update would replace. — updated: 2026-11-09
+: works — notes: Stereo, both speakers, verified by ear on 2026-11-09 through PipeWire (left-only tone from the top speaker, right-only from the bottom). Needs two fixes not yet upstream: the tas2562 amplifier driver set 32-bit I2S slots on a link clocked for 16-bit, so the right channel fell outside the frame (kernel patch on linux-phone-oco/linux branch fix/tas2562-i2s-slot-length); and the packaged UCM profile is mono with no amplifier channel setup (stereo profile in surya-lab ucm/). Also needs the ADSP sensors service off (adsp-sensor-crash-loop). Both fixes are installed on the test phone, over package files a system update would replace. Measured 2026-11-11 with a microphone placed at the bottom: the right channel is the bottom speaker (7 dB louder there). — updated: 2026-11-11
 
 <a id="audio-headphone--xiaomi-surya"></a>
 Headphone output (3.5mm) × Xiaomi POCO X3 NFC
@@ -71,7 +71,7 @@ Headphone output (3.5mm) × Xiaomi POCO X3 NFC
 
 <a id="audio-mic--xiaomi-surya"></a>
 Microphone × Xiaomi POCO X3 NFC
-: broken — notes: Explicitly called out as not yet working when the device moved from testing to community in pmOS packaging. — updated: 2026-11-04
+: broken — notes: The microphones go through the WCD9375 codec. A test kernel (2026-11-11) brings the whole chain up to the codec - both its SoundWire halves attach - then the codec times out at initialisation and no sound card is made; the codec's clocks were switched off shortly before. Being worked on (surya-lab: mic-codec-init-timeout). — updated: 2026-11-11
 
 <a id="audio-earpiece--xiaomi-surya"></a>
 Earpiece (call speaker) × Xiaomi POCO X3 NFC
