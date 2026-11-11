@@ -214,3 +214,15 @@ Considered
 
 Rejected
 : That: evidence from an instrument that moves is not evidence.
+
+---
+
+
+<a id="2026-11-10-idea-in-russian"></a>
+### Its idea in Russian
+
+Entry date
+: 2026-11-10
+
+Done
+: The idea of Linux Phones translated into Russian in this project's own translations, by machine, for a person to correct.
