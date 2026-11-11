@@ -1,8 +1,4 @@
 name: feeds
-# Data that other projects keep, brought here on a schedule. Each feed is a SQL file in feeds/
-# (DuckDB fetches and reshapes the source); when a run changes the data, the change is committed to
-# main - only after the data and the rendered pages verify, so nothing broken lands. (The org does
-# not let workflows open PRs; the repo's own checks still run on the push.)
 on:
   schedule:
     - cron: "17 5 * * 1"   # Mondays
@@ -14,15 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
-        with:
-          python-version: "3.12"
-          cache: pip
-      - run: pip install -r .tad/requirements.txt
-      - name: Run every feed
-        run: for f in feeds/*.sql; do echo "== $f"; python3 .tad/tools/dc.py sql "$(cat "$f")"; done
+      - name: tad, from its pinned release
+        run: TAD_DEST="$HOME/.local/bin" ./bin/install-tad.sh && echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Run every feed (DuckDB's pinned binary reshapes the fetched data; tad checks it)
+        run: make feeds
       - name: Render and verify
-        run: make canon render verify
+        run: make render verify
       - name: Commit the change to main, if there is one
         run: |
           git diff --quiet && { echo "nothing changed"; exit 0; }
