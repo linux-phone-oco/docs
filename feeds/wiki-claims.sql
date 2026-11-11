@@ -1,6 +1,6 @@
 -- Feed: the postmarketOS wiki's own status fields for each device, as claims beside our evidence.
 -- The wiki is the source: its current claims replace the previous ones, and the history says when a
--- claim changed - no date column, so an unchanged wiki changes nothing here. Run with dc.py sql.
+-- claim changed - no date column, so an unchanged wiki changes nothing here. Run by make feeds (bin/run-feeds.sh).
 CREATE TABLE IF NOT EXISTS wiki_claims(device_id VARCHAR, component_id VARCHAR, status VARCHAR NOT NULL, wiki_field VARCHAR NOT NULL,
   source VARCHAR NOT NULL, PRIMARY KEY(device_id, component_id),
   CHECK(status IN ('works', 'partial', 'broken', 'unknown')));
