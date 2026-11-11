@@ -10,6 +10,7 @@ kind = "picture"
 parent = "open-commons-observatory"
 
 [exports]
+wiki_claims = "data/wiki_claims.json"
 backlog = "data/backlog.json"
 session_log = "data/session_log.json"
 test_runs = "data/test_runs.json"
