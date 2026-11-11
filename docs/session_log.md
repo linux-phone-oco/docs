@@ -244,3 +244,21 @@ Considered
 
 Rejected
 : That: a part works when its function was shown, not when its device appears.
+
+---
+
+
+<a id="2026-11-11-cameras-understood"></a>
+### The cameras' fault, understood
+
+Entry date
+: 2026-11-11
+
+Done
+: Both cameras stay broken, but for a stated reason and with a way in: nothing describes the sensors; the wiring of seven slots is known from the vendor's kernel; the models are not.
+
+Considered
+: Naming sensor models from reports.
+
+Rejected
+: That: hearsay until a chip answers.

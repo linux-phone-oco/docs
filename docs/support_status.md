@@ -79,11 +79,11 @@ Earpiece (call speaker) × Xiaomi POCO X3 NFC
 
 <a id="camera-front--xiaomi-surya"></a>
 Front camera × Xiaomi POCO X3 NFC
-: broken — notes: Cameras explicitly called out as not yet working, same source as audio-mic. Measured 2026-11-11: the camera pipeline is present (10 nodes), but no image sensor is bound to it. — updated: 2026-11-11
+: broken — notes: The camera pipeline and its three control buses work; the phone's description lists no image sensor, which alone is why the cameras are dark. The vendor's kernel gives the wiring of seven sensor slots and names no model. Next: power a slot and ask the chip what it is (surya-lab, research/cameras.md). — updated: 2026-11-11
 
 <a id="camera-rear--xiaomi-surya"></a>
 Rear camera(s) × Xiaomi POCO X3 NFC
-: broken — notes: Same source as camera-front. Measured 2026-11-11: the camera pipeline is present (10 nodes), but no image sensor is bound to it. — updated: 2026-11-11
+: broken — notes: The camera pipeline and its three control buses work; the phone's description lists no image sensor, which alone is why the cameras are dark. The vendor's kernel gives the wiring of seven sensor slots and names no model. Next: power a slot and ask the chip what it is (surya-lab, research/cameras.md). — updated: 2026-11-11
 
 <a id="display-panel--xiaomi-surya"></a>
 Display panel × Xiaomi POCO X3 NFC
