@@ -71,7 +71,7 @@ Headphone output (3.5mm) × Xiaomi POCO X3 NFC
 
 <a id="audio-mic--xiaomi-surya"></a>
 Microphone × Xiaomi POCO X3 NFC
-: broken — notes: The microphones go through the WCD9375 codec. A test kernel (2026-11-11) brings the whole chain up to the codec - both its SoundWire halves attach - then the codec times out at initialisation and no sound card is made; the codec's clocks were switched off shortly before. Being worked on (surya-lab: mic-codec-init-timeout). — updated: 2026-11-11
+: broken — notes: The microphones go through the WCD9375 codec. In a test kernel (2026-11-11) the codec now comes up and the sound card is made with it, after correcting how two SoundWire pins are muxed. Recording through it is not yet shown. — updated: 2026-11-11
 
 <a id="audio-earpiece--xiaomi-surya"></a>
 Earpiece (call speaker) × Xiaomi POCO X3 NFC
