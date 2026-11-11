@@ -81,10 +81,10 @@ Opened
 ### WCD937x device tree: drop aoncc, clock the VA macro from q6afecc
 
 Status
-: in-progress
+: done
 
 Note
-: The boot hang (RCU stalls) with the WCD937x patch is the aoncc clock controller at 0x03380000, an SM8250 address with nothing near it in the SM7150 tree: with only aoncc disabled the phone boots (2026-11-09). Without aoncc the VA macro has no mclk, so the macros, SoundWire and the sound card stay deferred. Fix as SM8250 does: no aoncc, VA macro mclk from q6afecc. Audit tools and results in linux-phone-oco/surya-lab and on linux-phone-oco/linux#1.
+: The boot hang (RCU stalls) with the WCD937x patch is the aoncc clock controller at 0x03380000, an SM8250 address with nothing near it in the SM7150 tree: with only aoncc disabled the phone boots (2026-11-09). Without aoncc the VA macro has no mclk, so the macros, SoundWire and the sound card stay deferred. Fix as SM8250 does: no aoncc, VA macro mclk from q6afecc. Audit tools and results in linux-phone-oco/surya-lab and on linux-phone-oco/linux#1. Settled 2026-11-11: in linux-phone-oco/linux pull request #1; the codec comes up.
 
 Opened
 : 2026-11-09
@@ -146,10 +146,10 @@ Opened
 ### Try every mobile shell with working sound
 
 Status
-: in-progress
+: open
 
 Note
-: Switched in place with surya-lab ui/switch.sh (postmarketOS UI packages, tinydm for all; no reflash, the sound fixes stay). Phosh: runs, stereo verified by ear 2026-11-09. Next: Plasma Mobile, GNOME Mobile; Sxmo was the starting shell.
+: Switched in place with surya-lab ui/switch.sh (postmarketOS UI packages, tinydm for all; no reflash, the sound fixes stay). Phosh: runs, stereo verified by ear 2026-11-09. Next: Plasma Mobile, GNOME Mobile; Sxmo was the starting shell. Settled 2026-11-11: parked until the shells are cut and sound is complete.
 
 Opened
 : 2026-11-09
@@ -237,10 +237,10 @@ Opened
 ### The audio DSP crashes right after resume from suspend
 
 Status
-: in-progress
+: done
 
 Note
-: Trigger found 2026-11-10, one change at a time: with hexagonrpcd's RootPD helper (a FastRPC client) attached, the audio DSP dies on every suspend attempt - 24 of 24 (fatal error EX:kernel:0x0:IST46:0x132:PC=0xf0049be4, about 30 ms after the attempt; the attempts abort at once because the USB link cannot go idle). Without the helper: 0 of 8, and on a clean boot with it masked 0 of 9, all checks passing; sound does not need it. Not a first-boot effect, not the sensor proxy, no stream open. The earlier "rare" crash (2 of 28, both early in a boot) was the same one: there the helper died with the first crashes and stayed down. Fixed in the lab: hexagonrpcd-adsp-rootpd masked in the device manifest, baked in at every flash. Still open, for upstream: why an attached FastRPC client makes the DSP assert across a suspend attempt (the kernel's fastrpc and remoteproc suspend handling, or hexagonrpcd), and why the helper restarts after each crash on a fresh system.
+: Trigger found 2026-11-10, one change at a time: with hexagonrpcd's RootPD helper (a FastRPC client) attached, the audio DSP dies on every suspend attempt - 24 of 24 (fatal error EX:kernel:0x0:IST46:0x132:PC=0xf0049be4, about 30 ms after the attempt; the attempts abort at once because the USB link cannot go idle). Without the helper: 0 of 8, and on a clean boot with it masked 0 of 9, all checks passing; sound does not need it. Not a first-boot effect, not the sensor proxy, no stream open. The earlier "rare" crash (2 of 28, both early in a boot) was the same one: there the helper died with the first crashes and stayed down. Fixed in the lab: hexagonrpcd-adsp-rootpd masked in the device manifest, baked in at every flash. Still open, for upstream: why an attached FastRPC client makes the DSP assert across a suspend attempt (the kernel's fastrpc and remoteproc suspend handling, or hexagonrpcd), and why the helper restarts after each crash on a fresh system. Settled 2026-11-11: fixed with the same masks and the awake service.
 
 Opened
 : 2026-11-10
