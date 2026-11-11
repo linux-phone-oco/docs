@@ -280,3 +280,21 @@ Considered
 
 Rejected
 : That: three wrong theories cost three reboots.
+
+---
+
+
+<a id="2026-11-11-the-codec-comes-up"></a>
+### The microphone codec comes up
+
+Entry date
+: 2026-11-11
+
+Done
+: One SoundWire data pin was muxed to the wrong function by the audio pin driver; corrected against the phone's own Android kernel, the codec initialises and joins the sound card.
+
+Considered
+: Clock and power-management theories.
+
+Rejected
+: Guessing.
