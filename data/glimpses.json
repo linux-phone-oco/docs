@@ -5,3 +5,4 @@
 {"id":"g-20261112-010725","at":"2026-11-12T01:07:25Z","by":"lab-agent-session","kind":"feat","summary":"SQL is back: make sql, tad engine in setup, the recipe"}
 {"id":"g-20261112-191221","at":"2026-11-12T19:12:21Z","by":"claude","kind":"docs","summary":"two problems raised: a release that failed unheard, and a version from nothing"}
 {"id":"g-20261112-191425","at":"2026-11-12T19:14:25Z","by":"claude","kind":"fix","summary":"the docs begin their own history at 0.1.0; the template's is cleared"}
+{"id":"g-20261112-191701","at":"2026-11-12T19:17:01Z","by":"claude","kind":"fix","summary":"the first release is 0.1.0: release-please is told so"}
