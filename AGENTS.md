@@ -68,6 +68,13 @@ planned, logged, guarded, and shipped across this org's repositories (this one a
 In particular: a code repository's own `AGENTS.md` points back here for the facts and the log, rather than keeping a second,
 divergent copy; `session_log` here is this org's development log, in the playbook's sense, not a local one per repository.
 
+Ask the data anything in SQL - joins, counts, what is missing - and change it the same way; a change through SQL is checked exactly as `tad set` is, and kept only if every rule still holds:
+```
+tad sql "SELECT status, count(*) FROM backlog GROUP BY status"
+tad sql "UPDATE backlog SET status = 'done' WHERE id = 'an-id'"
+tad sql --file a-query.sql --format csv
+```
+
 ## Why it is built this way
 - The data is plain text in git: one JSON object per line, so a change to one row is a one-line diff, readable without any tool.
 - `tables.toml` declares the tables as data (after Frictionless Data's Table Schema): a person reads it, and [tad](https://github.com/creation-guidelines/tad-engine) checks every row and every rule across tables against it.
