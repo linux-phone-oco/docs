@@ -2,3 +2,4 @@
 {"id":"g-20261111-223513","at":"2026-11-11T22:35:13Z","by":"tad update-pins","kind":"build","summary":"tad 0.4.0: the pin moved, the data and documents re-rendered"}
 {"id":"g-20261111-231211","at":"2026-11-11T23:12:11Z","by":"lab-agent-session","kind":"chore","summary":"parked: the lab-agent redesign comes first; each item keeps its resume point","advances":"backlog:microphone","touches":"backlog:microphone"}
 {"id":"g-20261112-010505","at":"2026-11-12T01:05:05Z","by":"lab-agent-session","kind":"build","summary":"tad 0.5.0: the pin moved, the data and documents re-rendered"}
+{"id":"g-20261112-010725","at":"2026-11-12T01:07:25Z","by":"lab-agent-session","kind":"feat","summary":"SQL is back: make sql, tad engine in setup, the recipe"}
