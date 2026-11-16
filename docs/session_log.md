@@ -340,3 +340,15 @@ Entry date
 
 Done
 : 9 runs of surya filed by devlab gather now (lab-tools): the 5 runs of 2026-11-10 that were never filed, and the first 4 reports the phone wrote itself with the health suite now on it.
+
+---
+
+
+<a id="2026-11-17-the-conveyor-for-any-phone"></a>
+### The conveyor for any phone
+
+Entry date
+: 2026-11-17
+
+Done
+: The phone checks its own health after every boot and every change ends with that report; gathering into this picture is one command; agents reach the phone over MCP; and a new phone's lab is now a new device.toml (linux-phone-oco/device-template).
