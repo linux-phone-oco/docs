@@ -1,0 +1,19 @@
+[lens]
+id = "test-runs"
+says = "What was tried on a phone, run by run: on which device, kernel and shell, and how many tests passed, failed or were skipped."
+
+[tables.test_runs]
+key = ["id"]
+dated = "run_at"
+extra_fields = true
+tells = "{passed} passed, {failed} failed, on {device_id}"
+fields = [
+    { name = "id", type = "string", required = true },
+    { name = "device_id", type = "string" },
+    { name = "run_at", type = "string" },
+    { name = "kernel", type = "string" },
+    { name = "shell", type = "string" },
+    { name = "passed", type = "integer" },
+    { name = "failed", type = "integer" },
+    { name = "skipped", type = "integer" },
+]
