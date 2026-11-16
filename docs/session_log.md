@@ -328,3 +328,15 @@ Entry date
 
 Done
 : This repository moved to tad in Rust: tables.toml is the authority, tad comes from its pinned release, the vendored .tad, schema.sql, load.sql and checks/ are gone. The feeds keep their SQL, now run by DuckDB's standalone binary (pinned by fingerprint) with tad checking what they write; proven to give the same rows as before, byte for byte.
+
+---
+
+
+<a id="2026-11-17-runs-gathered"></a>
+### Test runs gathered, not typed
+
+Entry date
+: 2026-11-17
+
+Done
+: 9 runs of surya filed by devlab gather now (lab-tools): the 5 runs of 2026-11-10 that were never filed, and the first 4 reports the phone wrote itself with the health suite now on it.
