@@ -6,13 +6,13 @@
 ### Phosh
 
 Version
-: v0.58.0
+: v0.59.0
 
 Released
-: 2026-10-04
+: 2026-11-15
 
 Link
-: https://gitlab.gnome.org/World/Phosh/phosh/-/releases/v0.58.0
+: https://gitlab.gnome.org/World/Phosh/phosh/-/releases/v0.59.0
 
 
 <a id="plasma-mobile"></a>
