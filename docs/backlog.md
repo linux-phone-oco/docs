@@ -3936,10 +3936,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Seen 2026-11-17 (research walleye-first-fastboot-boot-tries): a failed try left slot a unbootable and slot b current, and devlab said refused. Say left-fastboot or stayed, and list changed slot variables
+: Done 2026-11-17 by lab-tools PR 80 (d510232), recorded there as fastboot-slots-told: devlab fastboot boot now reads current-slot and slot-unbootable/successful/retry-count of a and b before and after, says where the phone went and what changed; state reads them; set-active gated by [fastboot] slot_switch. Installed on the lab.
 
 Opened
 : 2026-11-17
