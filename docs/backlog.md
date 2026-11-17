@@ -1289,10 +1289,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Asked by the bring-up session, 2026-11-17. Five times that night devlab kernel try said 'pmos-wcdswr was chosen and stopped before it could log anything - is it an EFI image? stock 7.1.0-rc3-sm7150-wcd came back', while uname showed the phone running the try kernel (7.1.0-rc3-sm7150-wcd, its cmdline with initrd=initramfs-wcdswr). The try came, ran its health and stayed; devlab took it for stock. Then kernel install refused ('7.1.0-rc3-sm7150-wcd is the running kernel's version'), so each new try needed a devlab phone reboot first. Wanted: decide which entry booted by the running cmdline (initrd=initramfs-NAME) rather than the log file; and say plainly that the phone stays on the try until the next reboot - or reboot back to stock at the end of try, so the reference is stock again.
+: Done 2026-11-17 (lab-tools PR 71): where LoaderEntrySelected is empty, devlab kernel try reads the booted entry off the running cmdline's initrd=initramfs-NAME, and the release only where neither says; Booted says the phone stays on the try until the next reboot. Installed on the lab (old at ~/.local/bin/devlab.before-try-initrd).
 
 Opened
 : 2026-11-17
