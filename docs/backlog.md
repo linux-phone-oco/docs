@@ -4875,3 +4875,31 @@ Opened
 
 About
 : dl-safe
+
+
+<a id="walleye-initramfs-address-43"></a>
+### walleye's gadget initramfs answers on 172.16.43.1, not surya's 172.16.42.1
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Both phones share one host; surya's pmOS gadget is 172.16.42.1 and devlab must tell the phones apart (lab-tools fastboot-found-by-serial-or-port). The manifest [connection] addresses is already 172.16.43.1 (lab main). Do not change e or b (a keeper is trying them): new images g/h only, host only.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: images g and h (e and b with the initramfs address changed, nothing else) built, checked by the same check-bootimg, SHA256SUMS updated; images a-f byte-identical to before
+
+About
+: walleye-initramfs-usb-gadget
