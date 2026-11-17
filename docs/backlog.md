@@ -4011,10 +4011,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: One change: rmmod ath10k_snoc (and ath10k_core) before cycle 15 bt-on; read counters. WLAN floods the modem IPC and holds votes on SDM845.
+: Done 2026-11-17 (keeper-9): ath10k_snoc/core unloaded, cycle 15 bt-on: cxsd/aosd/ddr 0 -> 0. WLAN is not the holder. research/deep-sleep/2026-11-17-floor-wlan-off/README.md
 
 Opened
 : 2026-11-17
