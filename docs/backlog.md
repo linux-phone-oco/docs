@@ -2049,10 +2049,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: queries/coverage.sql: for every device, its components with no tests row proving works (and those with only present), joined with support_status. Proof: tad q coverage on xiaomi-surya lists modem-calls (until call-echo) and the parts with no check at all.
+: Done 2026-11-17 (orchestration): queries/coverage.sql - tad q coverage [--device D] lists every part of a device whose work no test on that device proves, with its best proof (present or none), its status and the tests that measure it. On xiaomi-surya it lists 14: fastboot with no test at all; modem-calls, modem-sms, nfc, bluetooth, audio-headphone, audio-speaker, the display, touch, haptics, the cameras, fingerprint and sensors proven present only.
 
 Opened
 : 2026-11-17
