@@ -4539,10 +4539,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: in-progress
+: open
 
 Note
-: BT-blocked cycle resets the phone (research 2026-11-17-sh0-bt-blocked-cycle-resets); icc bw 0 on every QUP/UFS/MMC path - SH0 x=1,y=3 looks by-design, not a consumer vote. Turning point: a deeper decision (late-suspend dump, clocks/GDSC, counter validity)
+: Paused 2026-11-17 by decision 2026-11-17-floor-read-the-entry: read the entry first (floor-entry-trace), then decide whether the SH0 owner hunt resumes.
 
 Opened
 : 2026-11-17
