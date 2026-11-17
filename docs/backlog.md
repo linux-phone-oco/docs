@@ -4326,25 +4326,6 @@ About
 : commons-only
 
 
-<a id="device-template-follow"></a>
-### How a device repository takes later changes of device-template beyond idealkb's generic files
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: A GitHub template keeps no link back. Take the idealkb pin pattern (a version in the repository, a follow script) or Copier-style answers; decide in device-template. Owner: device-template.
-
-Opened
-: 2026-11-17
-
-About
-: commons-only
-
-
 <a id="device-template-base"></a>
 ### device-template gets a tad base: tables.toml following idealkb, the parts contract (status, evidence, date), next and phone-queue queries, ikb
 
@@ -4670,3 +4651,22 @@ Proof
 
 About
 : deep-sleep
+
+
+<a id="device-template-follow"></a>
+### How a device repository takes later changes of device-template beyond idealkb's generic files
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: Decided 2026-11-17 (idealkb decision 2026-11-17-chain-follow-by-slice): the same pin-and-follow slice as idealkb, not a fork, subtree or Copier. Done: device-template lists what it gives (generic) and ships idealkb and itself as upstreams in its base. Next: device-template releases (release-please) and idealkb's follow-source-from-pin (update-pins reading its source from the pin file); then surya-lab and google-walleye-lab follow it with move-device-rows. Improvements go back as upstream items (PRs). rhizoid's missing slice mode is on git-rhizoid's backlog (slice-consumption).
+
+Opened
+: 2026-11-17
+
+About
+: commons-only
