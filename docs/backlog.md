@@ -4877,62 +4877,6 @@ About
 : dl-safe
 
 
-<a id="walleye-initramfs-address-43"></a>
-### walleye's gadget initramfs answers on 172.16.43.1, not surya's 172.16.42.1
-
-Project
-: linux-phone-oco/google-walleye-lab
-
-Status
-: open
-
-Note
-: Both phones share one host; surya's pmOS gadget is 172.16.42.1 and devlab must tell the phones apart (lab-tools fastboot-found-by-serial-or-port). The manifest [connection] addresses is already 172.16.43.1 (lab main). Do not change e or b (a keeper is trying them): new images g/h only, host only.
-
-Opened
-: 2026-11-17
-
-Needs
-: build
-
-Device
-: google-walleye
-
-Proof
-: images g and h (e and b with the initramfs address changed, nothing else) built, checked by the same check-bootimg, SHA256SUMS updated; images a-f byte-identical to before
-
-About
-: walleye-initramfs-usb-gadget
-
-
-<a id="walleye-bisect-stock-to-ours"></a>
-### Bisect from the accepted control to our image: stock kernel+dtb with our initramfs, then one part of ours at a time
-
-Project
-: linux-phone-oco/google-walleye-lab
-
-Status
-: open
-
-Note
-: s1 (stock kernel+dtb, our initramfs) is the same image as walleye-vendor-gadget-image (research walleye-bootstrap-method-how-it-stands, decision 2026-11-17-walleye-vendor-kernel-first): build it there once, the keeper's walleye-vendor-gadget-try is its try. This item is then s2 (our kernel + stock dtb + stock ramdisk) and s3 (stock kernel + our dtb + stock ramdisk), tried only if the vendor-kernel gadget run leaves the question open. Host only; keep a-h byte-identical.
-
-Opened
-: 2026-11-17
-
-Needs
-: build
-
-Device
-: google-walleye
-
-Proof
-: images s1..s3 built by a script from control/boot.img's own parts (unpack_bootimg) with exactly one part swapped each, check-bootimg ok, hashes in SHA256SUMS; the keeper's tries then show which swap makes the bootloader stop at 'Booting OKAY'
-
-About
-: walleye-first-fastboot-boot
-
-
 <a id="walleye-vendor-gadget-image"></a>
 ### Repack the control boot.img with our gadget initramfs (kernel, dtb, cmdline untouched)
 
@@ -5102,3 +5046,230 @@ Device
 
 About
 : deep-sleep
+
+
+<a id="walleye-try-g-43"></a>
+### Try image g (e at 172.16.43.1) by fastboot boot
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: g is e with the initramfs on 172.16.43.1; sha256 cc3cc1affad447e87ded0f20ebefe76c08e0dfa0270a797401513963b7f895a3 (~/Projects/walleye-build/images/SHA256SUMS). From the first state, devlab fastboot boot now ~/Projects/walleye-build/images/boot-g.img, watch 90 s. Same try as e; only the ramdisk address differs. No writes. Lower priority than the bisect s1-s3 (e and b never start, so g and h cannot differ from them until the bisect says why).
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: walleye-gadget-up: after devlab fastboot boot now IMAGE the phone leaves fastboot, lsusb shows our gadget (1d6b:0104, walleye-first-boot) within 60 s and 172.16.43.1 answers ping and telnet; devlab's before/after slot report and the fastboot text kept
+
+About
+: walleye-initramfs-usb-gadget
+
+
+<a id="walleye-try-h-43"></a>
+### Try image h (b at 172.16.43.1) by fastboot boot
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: h is b (LineageOS offsets) with the initramfs on 172.16.43.1; sha256 3090bbcdbb17bb8c719ee75560f06c9047804ac55d4a072a94b0b2eaf812ce19. After g; same steps. No writes. Also built, not queued: i = f at 172.16.43.1 (5fdcd4ca...bae0a4).
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye-try-g-43
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: walleye-gadget-up: after devlab fastboot boot now IMAGE the phone leaves fastboot, lsusb shows our gadget (1d6b:0104, walleye-first-boot) within 60 s and 172.16.43.1 answers ping and telnet; devlab's before/after slot report and the fastboot text kept
+
+About
+: walleye-initramfs-usb-gadget
+
+
+<a id="walleye-initramfs-address-43"></a>
+### walleye's gadget initramfs answers on 172.16.43.1, not surya's 172.16.42.1
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: done
+
+Note
+: Landed google-walleye-lab #8, #9 (main 4eb1a74). g=e, h=b, i=f with the ramdisk built NET=43; check-bootimg 22 ok each; a-f sha256 identical to before; QEMU selftest PASS at 42 and 43. Tries queued: walleye-try-g-43, walleye-try-h-43.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: images g and h (e and b with the initramfs address changed, nothing else) built, checked by the same check-bootimg, SHA256SUMS updated; images a-f byte-identical to before
+
+About
+: walleye-initramfs-usb-gadget
+
+
+<a id="walleye-bisect-stock-to-ours"></a>
+### Bisect from the accepted control to our image: stock kernel+dtb with our initramfs, then one part of ours at a time
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: done
+
+Note
+: Built and checked on the lab (google-walleye-lab #10, main 01f9138): ~/Projects/walleye-build/bisect/boot-s{0,0n,1,2,3}.img, SHA256SUMS there. s1 ramdisk=ours (172.16.43.1) 3f658748...; s2 kernel=ours as lz4 frame 0bb339b4...; s3 dtb=ours 14d95ef5...; extras s0 (stock parts repacked with footer, 859f0153...; differs from the control in 53 bytes: header id + footer digest) and s0n (no footer/padding, the shape of a-i, 46b575c7...). Try order for the keeper: s0n or s0 first only if the tool chain is in doubt, then s1, s2, s3. Differences stock vs ours: see build/README.md in the lab (no AVB footer/32 MiB pad, os word 0 vs 15.0.0/2026-11, gzip vs lz4 frame kernel, 51 KB dtb with no bootargs vs 376 KB with, cmdline, gzip vs xz ramdisk).
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: images s1..s3 built by a script from control/boot.img's own parts (unpack_bootimg) with exactly one part swapped each, check-bootimg ok, hashes in SHA256SUMS; the keeper's tries then show which swap makes the bootloader stop at 'Booting OKAY'
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-try-bisect-s1"></a>
+### Try bisect image s1 (ramdisk = ours) by fastboot boot from the first state
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: ~/Projects/walleye-build/bisect/boot-s1.img (sha in bisect/SHA256SUMS); see walleye-bisect-stock-to-ours. Per try as walleye-own-images-first-state; answer = does the phone leave fastboot, and does 172.16.43.1 answer (s1). No writes.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: walleye-gadget-up for s1; for s2, s3, s0n: the phone leaves fastboot (starts) or stays at 'Booting OKAY', recorded
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-try-bisect-s2"></a>
+### Try bisect image s2 (kernel = ours (lz4 frame)) by fastboot boot from the first state
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: ~/Projects/walleye-build/bisect/boot-s2.img (sha in bisect/SHA256SUMS); see walleye-bisect-stock-to-ours. Per try as walleye-own-images-first-state; answer = does the phone leave fastboot, and does 172.16.43.1 answer (s1). No writes.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: walleye-gadget-up for s1; for s2, s3, s0n: the phone leaves fastboot (starts) or stays at 'Booting OKAY', recorded
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-try-bisect-s3"></a>
+### Try bisect image s3 (dtb = ours) by fastboot boot from the first state
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: ~/Projects/walleye-build/bisect/boot-s3.img (sha in bisect/SHA256SUMS); see walleye-bisect-stock-to-ours. Per try as walleye-own-images-first-state; answer = does the phone leave fastboot, and does 172.16.43.1 answer (s1). No writes.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: walleye-gadget-up for s1; for s2, s3, s0n: the phone leaves fastboot (starts) or stays at 'Booting OKAY', recorded
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-try-bisect-s0n"></a>
+### Try bisect image s0n (stock parts without AVB footer (control of the footer)) by fastboot boot from the first state
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: ~/Projects/walleye-build/bisect/boot-s0n.img (sha in bisect/SHA256SUMS); see walleye-bisect-stock-to-ours. Per try as walleye-own-images-first-state; answer = does the phone leave fastboot, and does 172.16.43.1 answer (s1). No writes.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: walleye-gadget-up for s1; for s2, s3, s0n: the phone leaves fastboot (starts) or stays at 'Booting OKAY', recorded
+
+About
+: walleye-first-fastboot-boot

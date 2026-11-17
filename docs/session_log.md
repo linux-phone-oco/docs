@@ -2395,3 +2395,27 @@ Considered
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-walleye-images-g-h-i"></a>
+### Images g, h, i: the gadget at 172.16.43.1
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: build-initramfs.sh takes NET (default 42: files used as they are, so a-f stay byte for byte; 43 rewrites 172.16.42 to 172.16.43 and ECM MAC byte 2a to 2b into WORK_DIR/net43). Built g=e, h=b, i=f; check-bootimg counts the address in /init and the lease; selftest PASS at NET 42 and 43. sha256 g cc3cc1af..., h 3090bbcd..., i 5fdcd4ca...; images/SHA256SUMS and DIFFERENCES.txt updated.
+
+Considered
+: Editing init in place to 43; an address file inside the ramdisk
+
+Rejected
+: Both: they change the a-f ramdisk bytes while a keeper is trying e and b
+
+About
+: walleye-initramfs-usb-gadget
