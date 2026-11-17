@@ -2842,7 +2842,7 @@ Note
 Opened
 : 2026-11-17
 
-Waits
+Blocked by
 : bringup-image-v0
 
 Needs
@@ -2901,7 +2901,7 @@ Note
 Opened
 : 2026-11-17
 
-Waits
+Blocked by
 : bringup-image-v0
 
 About
@@ -2923,7 +2923,7 @@ Note
 Opened
 : 2026-11-17
 
-Waits
+Blocked by
 : bringup-image-v0
 
 Needs
@@ -2954,7 +2954,7 @@ Note
 Opened
 : 2026-11-17
 
-Waits
+Blocked by
 : lpoco-dispatcher
 
 Needs
@@ -3054,7 +3054,7 @@ Note
 Opened
 : 2026-11-17
 
-Waits
+Blocked by
 : lpoco-dispatcher
 
 Needs
@@ -3085,7 +3085,7 @@ Note
 Opened
 : 2026-11-17
 
-Waits
+Blocked by
 : lpoco-rename-lab-tone
 
 Needs
@@ -3099,3 +3099,22 @@ Proof
 
 About
 : bringup
+
+
+<a id="docs-phone-items-to-lanes"></a>
+### Open docs items that need a phone go onto that phone's own queue (its base), or say they wait for a phone
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Since 2026-11-17-docs-serves-no-lane no keeper reads docs' needs=phone rows: health-suspend-cycle (xiaomi-surya), devlab-fastboot-boot-reads-slots (google-walleye), and floor-dsps-never-started, floor-read-holders, floor-no-ignore-unused, mic-ucm-capture, microphone, sleep-measured-once (no device named). Each goes to its lane coordinator as a phone item in that lab's base (the lane records it there, citing the docs row), or is closed if the lab already holds it; then docs' row keeps the build part only.
+
+Opened
+: 2026-11-17
+
+About
+: commons-only

@@ -96,13 +96,6 @@ id = "backlog"
 title = "Backlog"
 kind = "backlog"
 
-[[view]]   # the work that cannot be done without the phone: its keeper takes it up, one change at a time
-id = "phone-queue"
-title = "The phone's queue"
-kind = "backlog"
-needs = "phone"
-lead = "What only the phone can prove, taken up by its keeper one change at a time - each with the test that proves it."
-
 [[view]]
 id = "landscape"
 title = "Landscape"

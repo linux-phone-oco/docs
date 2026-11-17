@@ -57,14 +57,14 @@ type = "string"
 pattern = "^[a-z0-9]+(-[a-z0-9]+)*(, ?[a-z0-9]+(-[a-z0-9]+)*)*$"
 
 # the shared resource the item cannot be done without: phone - its keeper takes it up, one change at a
-# time (tad q phone-queue); research and other sessions put such items here instead of touching the phone
+# time, in that device's own base (tad q phone-queue there; docs serves no lane since 2026-11-17)
 [[tables.backlog.fields]]
 name = "needs"
 type = "string"
 enum = ["phone", "research", "build"]
 
 # the device the item is for - its lane (devices.id): a phone item is taken only by that device's keeper, a
-# research or build item by that lane's launcher (tad q lane-next --device D --needs N). Required where needs
+# research or build item by that lane's launcher, reading its own base (lane-next there). Required where needs
 # is phone, by the records that set needs (tad has no conditional rule yet).
 [[tables.backlog.fields]]
 name = "device"
