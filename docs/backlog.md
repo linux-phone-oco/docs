@@ -3489,10 +3489,35 @@ Status
 : in-progress
 
 Note
-: Research 2026-11-17-lpoco-health-landscape recorded; design and build follow (decision 2026-11-17-lpoco-health).
+: Landed 2026-11-17 in lab-tools #75: runner, conditions, switches, devlab suite off|on|list, MCP tools, conveyor names. Next: the phone keeper puts it (devlab suite put now: builds the runner, migrates devlab-health's reports, ledger and marks), then devlab suite run and lpoco-health list; then the Alpine package once cv-apk has its key (devlab suite put now --package).
 
 Opened
 : 2026-11-17
 
+Needs
+: phone
+
 About
 : lpoco-health
+
+
+<a id="sim-removed-skips"></a>
+### Checks that need the SIM skip, not fail, while it is out
+
+Project
+: linux-phone-oco/docs
+
+Status
+: done
+
+Note
+: Done 2026-11-17 (lab-tools #73), then moved onto the phone: lpoco-health detects no-sim at every run (conditions/10-modem.sh) and reports 'skip: no SIM card'; the SIM's state is no longer kept in docs. History: session log 2026-11-17-sim-removed-skips, decision 2026-11-17-lpoco-health.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+About
+: surya-tested

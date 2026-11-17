@@ -1660,3 +1660,27 @@ Done
 
 Considered
 : next: sleep-wake-uart as one change, with way-back.sh cycle SLEEP as the way back: Bluetooth unblocked but the wakeup of serial@88c000 off (or hci_uart/btqca unbound before the suspend) so IRQ 157 cannot end s2idle and the BT UART is not half-powered; then 'cycle 15' (the script blocks Bluetooth itself: add a verb or a flag for the unblocked variant first). Put the script on the phone with devlab phone put and run it with systemd-run (never nohup). After any try that ends in a bite: one clean reboot, read the health. Must not be undone: sensorspd and rootpd stay masked.
+
+---
+
+
+<a id="2026-11-17-lpoco-health"></a>
+### lpoco-health: the one health suite
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: Looked around (research 2026-11-17-lpoco-health-landscape), renamed devlab-health to lpoco-health, added run-time conditions (no-sim, no-modem, no-network), switches with reasons on the phone (lpoco-health off|on|list), argenv command line, devlab suite off|on|list and MCP tools, migration of reports/ledger/marks, conveyor names (lab-tools #75). Nothing done on the phone: its put is on the phone queue.
+
+Considered
+: rust-script tests and a bundle crate; per-test binaries; package-first provisioning
+
+Rejected
+: see decision 2026-11-17-lpoco-health
+
+About
+: lpoco-health
