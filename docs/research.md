@@ -2027,3 +2027,28 @@ Found
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="2026-11-17-floor-entry-trace"></a>
+### 2026-11-17-floor-entry-trace
+
+Brief
+: Entry read: sleep set flushed by last CPU 7 just before cluster-sleep-2 (0x4100b244); only wake IRQ is the RTC alarm; not an IRQ storm
+
+Project
+: linux-phone-oco/surya-lab
+
+Date
+: 2026-11-17
+
+Question
+: At the s2idle entry, is the RSC sleep set flushed after the last CPU, which idle state does the last CPU take, and how noisy are the interrupts?
+
+Found
+: One way-back.sh cycle 15 bt-on (BT left on, its UART wake off), tracing rpmh, cpu_idle, psci_domain_idle, suspend_resume, with before/after snapshots; the phone returned, RTC asleep 17 s. (1) After the other seven CPUs entered 0x40000004 (cpu-sleep-x-1, s2idle=yes), cpu7 wrote in one instant the wake set (tcs 5) and the sleep set (tcs 2: 0x50000=0x40000000, 0x50028=0, 0x5003c=0x60004003 (SH0 x=1,y=3), 0x50088=0, 0x50084=0x40000000, 0x5000c=0x40000000) and then entered psci_domain_idle 0x4100b244 = the DT's deepest cluster-sleep-2 (awake idle only uses 0x41001244, cluster-sleep-1): the flush is in order and the deepest state is requested. (2) The last CPU is cpu7 in 0x4100b244. (3) Between that entry and the wake the trace holds no event at all; the only interrupt counted for the sleep is pm8xxx_rtc_alarm (+1, cpu2, the first CPU out); every other delta (arch_timer, IPIs, apps_rsc, ufshcd, WLAN_CE) is the awake time around it. After: cxsd, aosd, ddr, adsp still 0; cdsp and modem counters move; the cluster genpd S2idle column stays 0 though S1 usage rose 402 to 483 awake. Not known yet: why the S2idle column is 0, what the AOP does on seeing this flush, which master holds the floor. Trace-clock time stops in suspend, so event times inside the window are not sleep time.
+
+Sources
+: devlab phone root on 2026-11-17: /var/tmp/entry-trace.sh (a read-only tracefs/debugfs wrapper over way-back.sh cycle 15 bt-on); output /var/tmp/et2 on the phone
+
+About
+: deep-sleep
