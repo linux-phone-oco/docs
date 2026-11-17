@@ -4834,10 +4834,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: The control boot.img was accepted from this state (walleye-first-state-control-accepted). Now ours: first e (a with a short cmdline), then b (LineageOS offsets). Per try: Android on a booted (adb device, slot a successful yes), adb reboot bootloader, devlab fastboot boot now IMAGE, watch 90 s. If the phone vanishes from USB, say so to the coordinator in one line (the author's hands: hold Power 10-30 s); a hang is an answer, a gadget is the goal. No writes; set-active only as in the recorded decisions.
+: proven by devlab fastboot boot now: e and b accepted from the first state, neither started, slot flags unchanged; see walleye-own-images-e-b-first-state
 
 Opened
 : 2026-11-17
