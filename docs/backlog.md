@@ -4542,7 +4542,7 @@ Status
 : in-progress
 
 Note
-: uart8 ruled out (research 2026-11-17-sh0-not-uart8): SH0 stays with uart8 disabled; DT tags are overridden by geni-se. Next: floor-sh0-qup-tags by unbind / BT off, or floor-suspend-late-dump
+: BT-blocked cycle resets the phone (research 2026-11-17-sh0-bt-blocked-cycle-resets); icc bw 0 on every QUP/UFS/MMC path - SH0 x=1,y=3 looks by-design, not a consumer vote. Turning point: a deeper decision (late-suspend dump, clocks/GDSC, counter validity)
 
 Opened
 : 2026-11-17
