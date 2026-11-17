@@ -3455,3 +3455,25 @@ Needs
 
 About
 : surya-tested
+
+
+<a id="sleep-way-back"></a>
+### A way back from a suspend that may not return: the watchdog kept armed through sleep
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: in-progress
+
+Note
+: Decision 2026-11-17-deep-sleep-way-back. Script and patched module written (sleep/way-back.sh, sleep/build-wdt.sh); next: the dry run (fuse on the idle phone: does it reset, boot and keep the ramoops log), then one measured cycle. A suspend is not tried until the dry run came back by itself.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+About
+: deep-sleep

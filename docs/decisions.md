@@ -1040,3 +1040,31 @@ Rejected
 
 About
 : deep-sleep
+
+
+<a id="2026-11-17-deep-sleep-way-back"></a>
+### 2026-11-17-deep-sleep-way-back
+
+Brief
+: A suspend try's way back is the SoC watchdog kept armed through sleep (patched qcom_wdt), the RTC set first, and ramoops read back after; proven by a dry run that suspends nothing
+
+Project
+: linux-phone-oco/surya-lab
+
+Date
+: 2026-11-17
+
+Decision
+: Before any further suspend: (1) set the RTC (hwclock -w -u); (2) load a qcom_wdt built from the kernel's own source with one change, keep_armed_in_suspend=1, so an armed watchdog is NOT stopped in late suspend; (3) arm it with a timeout longer than the sleep (sleep + 30 s at least) by BusyBox watchdog and kill that process hard, so nobody pets it: it bites if the phone does not come back, and a stuck phone resets itself, boots the stock kernel and is reachable again; the script stops it by the magic close the moment rtcwake returns; (4) the log: a marker to /dev/kmsg before the fuse and the ramoops console (read from /sys/fs/pstore by sleep/way-back.sh collect) show what the last seconds were. Done as sleep/way-back.sh (verbs check, rtc, load, fuse, defuse, collect, cycle; no verb prints usage; cycle refuses unless the way back is in place) and sleep/build-wdt.sh. The way back is proven by 'fuse' on the idle phone (nothing suspends) before the one measured cycle; if the phone does not come back from that by itself, no suspend is tried and the author is told.
+
+Why
+: The first timed s2idle hung with no log and no USB return and needed the author's hands. The stock watchdog is stopped by the driver in late suspend, so it could not have rescued that hang (it ends only a hang before the late phase); the patched module is the only way found that needs no kernel rebuild, no reboot to test and no hands, and a reboot or rmmod undoes it. A bite is a hardware reset and does not depend on USB, the RTC alarm or a CPU that is alive.
+
+Rejected
+: Stock watchdog alone: stopped in late suspend, covers only a hang before it. A timed reboot (rtcwake -m off/disk or a systemd timer): needs the RTC alarm or timers to fire out of the very state being tested, and a power-off wake is the bootloader's business on this phone. Keeping USB awake (devlab-usb-awake): it does not return a phone whose CPUs are stuck in s2idle, and the first hang showed no USB at all. Only a log that survives (pstore): it shows what happened but gives no way back, the author would still hold the power key. A rebuilt kernel with the patch built in: a long build and a boot-counted try for what a module loaded at run time does; kept as the upstream form (the parameter is a small patch for mainline) once the cycle is measured. Serial console: no serial pins open on surya.
+
+About
+: deep-sleep
+
+Research
+: 2026-11-17-surya-way-back-inventory
