@@ -1900,3 +1900,25 @@ Found
 
 About
 : deep-sleep
+
+
+<a id="walleye-own-images-e-b-first-state"></a>
+### walleye-own-images-e-b-first-state
+
+Brief
+: e and b accepted from the first state, neither started: no USB device, flags unchanged, phone stays in fastboot
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: Does fastboot boot of our images e and b start from the restored first state?
+
+Found
+: Both ACCEPTED (Booting OKAY) but not started: 90 s watch by serial, phone stays in fastboot, no new USB device, no 172.16.42.1 (172.16.42.2 is surya's), slot flags unchanged; acceptance is not the cause of silence
+
+About
+: walleye-first-fastboot-boot
