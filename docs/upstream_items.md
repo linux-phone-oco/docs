@@ -12,7 +12,7 @@ Form
 : patch
 
 State
-: sent
+: landed
 
 From work
 : upstream-sxmo-profile
@@ -35,11 +35,14 @@ Sent on
 Forwarded
 : https://lists.sr.ht/~mil/sxmo-devel
 
+Applied upstream
+: https://git.sr.ht/~mil/sxmo-utils/commit/1fd7822
+
 Waits
-: review on the list
+: nothing (landed)
 
 Note
-: Sent by the author at 04:25 UTC, signed off, rebased on upstream master eb237fe; watch the archive
+: Accepted on sxmo-devel ('accepted. thank you', the author's mail 2026-11-17) and in sxmo-utils master as 1fd7822 'deviceprofiles: add xiaomi,surya (POCO X3 NFC)'. Next: it reaches pmOS with sxmo-utils' next release.
 
 Last update
 : 2026-11-17
