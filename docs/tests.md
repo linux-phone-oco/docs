@@ -533,3 +533,16 @@ Proves
 
 Says
 : a quiet tone played through the earpiece as a mono stream is found by the top microphone beside it, 20 dB above the noise
+
+
+<a id="call-audio-path"></a>
+### call-audio-path
+
+Component id
+: modem-calls
+
+Proves
+: present
+
+Says
+: the DSP's voice path is there: the VoiceMMode1 PCM, its Voice Mixer and Capture Mixer controls, and q6voiced

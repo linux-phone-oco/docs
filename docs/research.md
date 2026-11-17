@@ -263,3 +263,95 @@ Found
 
 Sources
 : pulpoff-linux-surya,sm7150-mainline-pr60,lineage-sm6150-bolero
+
+
+<a id="echo-call-number"></a>
+### echo-call-number
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Which public number can an automated call reach from a German mobile, that plays back what it hears, free or at the national rate?
+
+Found
+: Only one German public echo line is attested across sources and years: blueSIP's echo test, +49 89 721010 99701, a Munich landline number (landline rate: inside any German allnet flat, about 9 ct/min on plain prepaid), named in forums in 2005 and 2013, recommended in 2021, and still on Placetel's list (which gives no warranty). It plays back what it hears at once (an echo, not record-then-playback); no length limit is stated. The same provider's +49 89 721010 99702 plays a signal tone: a downlink-only control that needs no working uplink. sipgate's echo (10005) and test (10000) are SIP-internal short codes, not dialable from a mobile, and sipgate serves only business customers since 2025-06. Other European lines (portunity's 0211 237099929 from 2005, sip2sip's +31 20 8005161, a Dutch C*NET echo) are old and unconfirmed, and abroad costs more. No source confirms any line works from a mobile today, so the first supervised call settles it. Fallback that is certain to exist and free on German tariffs: the SIM's own mailbox (record a message, play it back by DTMF; slower and operator-specific).
+
+Sources
+: placetel-testrufnummern, ipphone-testrufnummern-2005, ipphone-testanrufe-2013, bitpage-bluesip-2021, prepaid-wiki-sipgate, sip2sip-testing
+
+
+<a id="call-audio-on-surya"></a>
+### call-audio-on-surya
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: What does a voice call with sound both ways need on surya, and what is there now?
+
+Found
+: Read on the phone 2026-11-17 (devlab phone sh, read only): the modem is online now - LTE on Vodafone.de (26202), registered home, packet service attached, signal 71%, UE mode csps-1, voice-centric with PS (VoLTE) preferred, so a call goes VoLTE if the modem's IMS profile allows it, else falls back to GSM; ModemManager 1.25.95, libqmi 1.38, tqftpserv 1.3, rmtfs 1.3; callaudiod and q6voiced are installed; no calls listed. The kernel (7.1.0-sm7150-mic+, linux-phone-oco/linux test/surya-mic) has no VoiceMMode PCM and no Voice Mixer controls: q6voice is not in it. pulpoff/linux-surya (7.2.15 on surya) carries calls with audio both ways: q6voice from sdm845-mainline (MVM, CVS, CVP over APR) with the CVD 2.3 set-up SM7150 needs (from the CVP version), codec DMA ports, a zeroed command buffer and the start moved from startup to prepare; the device tree adds the APR services and a hostless VoiceMMode1 link (PCM 4, hw:0,4) that q6voiced opens per call; routing 'TERT_MI2S_RX Voice Mixer VoiceMMode1' and 'VoiceMMode1 Capture Mixer TX_CODEC_DMA_TX_3' (our kernel uses the same back-end names); 'VoiceMMode1 TX Topology' at 0x10F70 (none) since the default 0x10F71 sends silence without Xiaomi's calibration; and the uplink is silent unless a 1-channel capture runs on TX_CODEC_DMA_TX_3 for the whole call (their surya-call-uplink on MultiMedia3; 2 channels or a prepared-only stream do not do). callaudiod picks a UCM Voice Call verb (earpiece or speaker). The order: q6voice and the device tree first (the PCM and controls appear - check call-audio-path), then UCM Voice Call with the topology and the uplink capture, then a call.
+
+Sources
+: pulpoff-linux-surya
+
+
+<a id="echo-call-test-design"></a>
+### echo-call-test-design
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: How can the phone itself decide that a call carried sound both ways?
+
+Found
+: Acoustically, through the paths a person uses, with the analysis in Rust: during the call the uplink capture that the call needs anyway (1 channel on TX_CODEC_DMA_TX_3, the bottom mic) is written to a file instead of thrown away. The phone plays a pattern of three short tones (e.g. 800, 1300, 1900 Hz, 200 ms each, 300 ms apart - inside the 300-3400 Hz every voice codec keeps) on the loudspeaker at the manifest's quiet level; the bottom mic hears it at once (proves the injection) and sends it up the call; the echo comes back down and plays on the earpiece, and the same mic hears it again 150-1500 ms later (the network's round trip; acoustic reflections are under 20 ms). A Goertzel envelope per frequency finds the pattern twice; the echo counts when the same order of tones recurs at one delay, 15 dB above the noise, and the delay is reported. Before the echo call, a call to the tone line (99702) proves the downlink alone, so a missing echo says uplink (or the line) rather than everything. Cost: one call of at most 25 s (dial, about 8 s to answer, 5 s of pattern, hang up; a hard timeout), at most once a day, a landline-rate number: inside a flat, or under 10 ct per day on prepaid. Skips cleanly, as unknown: no modem, no SIM, not registered, no voice interface, no call path (call-audio-path failing), the daily call already made, or the number unset in the manifest. A pass proves works for modem-calls. If q6voice exposes in-call record/playback ports (downstream's VOICE_RECORD_RX, incall music), a digital loop could replace the acoustic one later; unknown on this driver.
+
+Sources
+: pulpoff-linux-surya, placetel-testrufnummern
+
+
+<a id="health-suite-organisation"></a>
+### health-suite-organisation
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: How should the phones' health suites be organised to cover every part and feature, stay quick to change and dependable, and avoid Python?
+
+Found
+: What is: devlab-health, a static Rust runner (lab-tools/health), runs shell checks on the phone after every boot in two layers (base, shell): 11 generic in lab-tools and 5 of surya's own in surya-lab; each prints 'pass|fail|skip TEST COMPONENT detail' and docs' tests table says what each pass proves. The weak spot is computation in shell: three of surya's checks carry a Goertzel filter written in awk and a tone made byte by byte with printf, because lab-tools' tested tone crate never reaches the phone. The phone has no Rust toolchain (it has python3, which the lab refuses), so rust-script (stable, 0.36 on the lab) cannot run there and would need a toolchain and network on the phone; Cargo's own single-file scripts (frontmatter, cargo PR 16569) are still nightly-only in Cargo 1.99. KTAP is the kernel's test output (ok/not ok, SKIP, nested suites) - a format our lines map onto if LAVA-style tools are ever wanted. Shape that fits: shell stays for what is a reading (sysfs, a command's output; ten readable lines), and anything with numbers, timing or a state machine (tones, echoes, calls, sleep counters) is a subcommand of one static multi-call Rust binary shipped with devlab-health (e.g. devlab-health tone find, devlab-health call echo), built with its unit tests and recorded fixtures on the lab and cross-built by health/build.sh; rust-script is the lab's prototyping and one-off analysis tool against recordings fetched from the phone, a prototype becoming a subcommand once it is kept. Coverage is read off the data: a query of every device's components with no test that proves works, and a layer per cost - base, shell, then telephony (calls and data, gated by budget and once a day) and witnessed (needs a person).
+
+Sources
+: rust-script, cargo-script-goal-2026, ktap-v1
+
+
+<a id="mobile-data-check-budget"></a>
+### mobile-data-check-budget
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: How can mobile data be checked after every boot within about 3 GB?
+
+Found
+: Per run: the modem registered and its bearer connected (mmcli), the bearer's interface found from ModemManager, then over that interface only (curl --interface, so Wi-Fi cannot pass for it): a DNS lookup, five pings to a fixed address (round trip, loss), and a 100 kB HTTPS download timed (speed.cloudflare.com/__down?bytes=100000 or a file the project hosts), about 150 kB with overheads. Boots run up to ~45 a day in bring-up, so about 7 MB on a heavy day; once a week a 5 MB download measures throughput. That is under 0.3 GB a month even on busy months: the 3 GB lasts most of a year at the worst rate and years at an ordinary one. A check also reads the bearer's own byte counters (the interface's /sys/class/net/IFACE/statistics before and after) so each run states what it used, and skips when the month's total passes a budget set in the manifest. Skips without a SIM, as the modem checks already do.

@@ -523,3 +523,144 @@ Year
 
 Takes
 : Declares TX DMIC1-3 (bias 1/3) and AMIC2 together with TX SWR_ADC0/ADC2 from ADC1/ADC2: a reference board's routing, not proof of DMICs on surya; every TX/RX path is routed to VA_MCLK
+
+
+<a id="placetel-testrufnummern"></a>
+### Testrufnummer gesucht? Vollständige Liste für alle Zwecke
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.placetel.de/ratgeber/testrufnummer
+
+By
+: Placetel
+
+Takes
+: blueSIP's echo test +49 89 721010 99701 and its signal-tone line 99702; no warranty given for the list
+
+
+<a id="ipphone-testrufnummern-2005"></a>
+### Testrufnummern gesucht (IP Phone Forum)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.ip-phone-forum.de/threads/testrufnummern-gesucht.78949/
+
+Year
+: 2005
+
+Takes
+: blueSIP 99701 echo, 99702 tone, 99703 song; portunity's 0211 237099929 echo
+
+
+<a id="ipphone-testanrufe-2013"></a>
+### Telefonnummer für Testanrufe (IP Phone Forum)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.ip-phone-forum.de/threads/telefonnummer-f%C3%BCr-testanrufe.263649/
+
+Year
+: 2013
+
+Takes
+: 089 72101099701 still given as the BlueSIP echo test in 2013
+
+
+<a id="bitpage-bluesip-2021"></a>
+### BlueSIP Echotest, +49 89 721010 99701 (Festnetztarif)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://x.com/bitpage/status/1392771136560193536
+
+Year
+: 2021
+
+Takes
+: the echo still recommended in 2021, at the landline rate
+
+
+<a id="prepaid-wiki-sipgate"></a>
+### Sipgate (prepaid-wiki)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.prepaid-wiki.de/tarife/Sipgate
+
+Year
+: 2025
+
+Takes
+: sipgate's echo 10005 and test 10000 are SIP-internal; sipgate serves only business customers since 2025-06
+
+
+<a id="sip2sip-testing"></a>
+### SipTesting - SIP2SIP (AG Projects)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.sip2sip.info/projects/sip2sip/wiki/SipTesting
+
+Takes
+: an EU PSTN test number +31 20 8005161; echo only on SIP (4444)
+
+
+<a id="ktap-v1"></a>
+### The Kernel Test Anything Protocol (KTAP), version 1
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.kernel.org/dev-tools/ktap.html
+
+By
+: Linux kernel
+
+Takes
+: the kernel's test output: ok/not ok with SKIP, nested suites; a format our one-line reports could be converted to
+
+
+<a id="cargo-script-goal-2026"></a>
+### Rust project goal 2026: cargo-script
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://rust-lang.github.io/rust-project-goals/2026/cargo-script.html
+
+Year
+: 2026
+
+By
+: Rust project
+
+Takes
+: single-file Cargo packages with frontmatter, unstable for years, stabilisation in progress (cargo PR 16569); Cargo 1.99 on the lab still asks for -Zscript
+
+
+<a id="rust-script"></a>
+### rust-script: run Rust files and expressions as scripts
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://rust-script.org/
+
+Takes
+: stable today on the lab (0.36): a single .rs file with its dependencies, compiled and cached on first run

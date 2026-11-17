@@ -1742,25 +1742,6 @@ Opened
 : 2026-11-17
 
 
-<a id="calls-audio-q6voice"></a>
-### Call audio both ways: q6voice, with the uplink from the microphone
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: What pulpoff/linux-surya found on this phone (research-microphones, 2026-11-17): on a modem call the ADSP mixes the audio itself (MVM, CVS, CVP over APR); the host starts the AFE ports and the voice processor. q6voice from sdm845-mainline with the CVD 2.3 set-up SM7150 needs, a hostless VoiceMMode1 link (q6voiced opens it per call), routing 'TERT_MI2S_RX Voice Mixer VoiceMMode1' and 'VoiceMMode1 Capture Mixer TX_CODEC_DMA_TX_3'. The far end hears nothing unless a 1-channel capture actually runs on TX_CODEC_DMA_TX_3 during the call; the default TX topology 0x10F71 sends silence without Xiaomi's calibration, 0x10F70 (none) works; the top mic picks up less speaker echo. Step, after mic-ucm-capture and with a SIM: bring these in as the calls feature's research. Proof: a call's far end hears a tone played into the phone's microphone.
-
-Opened
-: 2026-11-17
-
-Waits
-: a SIM card
-
-
 <a id="mic-held"></a>
 ### The microphones held across boots
 
@@ -1970,3 +1951,140 @@ Opened
 
 Waits
 : Alpine v3.24 rebuilding telegram-desktop against ada 4 (libada.so.4)
+
+
+<a id="calls-q6voice-kernel"></a>
+### Calls 1: q6voice and the VoiceMMode1 link in surya's kernel
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: First step of 2026-11-17-calls-proven-by-echo-call. On linux-phone-oco/linux, a branch with q6voice (q6mvm, q6cvs, q6cvp, the voice DAI) from sdm845-mainline and pulpoff/linux-surya's SM7150 changes (CVD 2.3 from the CVP version, codec DMA ports, zeroed command buffer, start in prepare), and in surya's device tree the APR voice services and a hostless VoiceMMode1 link; merged into a test branch over test/surya-mic and tried by devlab kernel try. Proof: surya-lab's check call-audio-path passes (the VoiceMMode1 PCM, 'TERT_MI2S_RX Voice Mixer VoiceMMode1', 'VoiceMMode1 Capture Mixer TX_CODEC_DMA_TX_3', q6voiced); it fails today.
+
+Opened
+: 2026-11-17
+
+
+<a id="calls-voice-ucm-uplink"></a>
+### Calls 2: UCM Voice Call, TX topology 0x10F70, the 1-channel uplink capture
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: In surya-lab ucm/: a Voice Call verb (earpiece and speaker, bottom mic; 'VoiceMMode1 TX Topology' 0x10F70), and a small service that runs a 1-channel capture on TX_CODEC_DMA_TX_3 for as long as ModemManager has an active call (pulpoff's surya-call-uplink), writing it to a file when the echo check asks. Proof: with no call, alsaucm lists the verb and setting it sets the routes (a base check); the call itself is proven by calls-first-call.
+
+Opened
+: 2026-11-17
+
+Waits
+: calls-q6voice-kernel
+
+
+<a id="calls-first-call"></a>
+### Calls 3: the first supervised call - tone line, then echo line
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: With the author's word (2026-11-11-modem-read-only-first), the bring-up session calls +49 89 721010 99702 (blueSIP's tone line) and then +49 89 721010 99701 (blueSIP's echo) through mmcli, 20 s each, recording the uplink capture. Settles: whether the lines answer from this SIM, whether VoLTE or GSM carries the call, the round-trip delay, the downlink level at the mic. If the echo line is dead, the fallback is the SIM's own mailbox (record, then play back by DTMF). Proof: a tone found in the recording of the tone-line call, and the played pattern found again a round trip later in the echo call.
+
+Opened
+: 2026-11-17
+
+Waits
+: calls-voice-ucm-uplink; the author's word
+
+
+<a id="calls-echo-check"></a>
+### Calls 4: call-echo, the daily automatic echo call
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: A telephony-layer check in surya-lab tests/health (generic in lab-tools once a second phone calls): skip as unknown without modem, SIM, registration, voice, call-audio-path, a number in the manifest, or with today's call already made (a stamp under /var/lib/devlab/health); else call the echo line, play three tones (800, 1300, 1900 Hz, 200 ms, 300 ms apart) quietly on the loudspeaker, record the uplink capture, hang up within 25 s, and let 'devlab-health call echo' find the pattern twice at one delay of 150-1500 ms, 15 dB above the noise. Proof: its pass is the works test for modem-calls (docs' tests row call-echo, works).
+
+Opened
+: 2026-11-17
+
+Waits
+: calls-first-call
+
+
+<a id="health-data-check"></a>
+### A mobile-data check over the bearer's own interface, within budget
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: In health/suite/checks/base/60-modem.sh or beside it: with a connected bearer, its interface from mmcli; over it only (curl --interface): DNS, 5 pings, a 100 kB HTTPS download timed; the bytes used from the interface's counters, said in the detail; a weekly 5 MB throughput run; skip when the month's total passes the manifest's budget (default 250 MB). About 150 kB a run, under 0.3 GB a month (research mobile-data-check-budget). Proof: tests rows modem-data-online (works) pass on surya, and the detail states bytes used.
+
+Opened
+: 2026-11-17
+
+
+<a id="health-analysis-in-rust"></a>
+### devlab-health tone make|find on the phone, the awk Goertzels retired
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Per 2026-11-17-health-checks-shell-and-rust: devlab-health becomes a multi-call binary with the tone crate's make and find (WAV or raw s16le, JSON out, exit 0 when found), cross-built as now; surya's microphone-hears, earpiece and speaker-stereo call it instead of awk. Proof: those checks give the same verdicts across two boots, and the tone crate's tests run in CI; the awk Goertzel is gone from every check.
+
+Opened
+: 2026-11-17
+
+
+<a id="health-coverage-query"></a>
+### A coverage query: each device's parts with no test proving works
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: queries/coverage.sql: for every device, its components with no tests row proving works (and those with only present), joined with support_status. Proof: tad q coverage on xiaomi-surya lists modem-calls (until call-echo) and the parts with no check at all.
+
+Opened
+: 2026-11-17
+
+
+<a id="calls-audio-q6voice"></a>
+### Call audio both ways: q6voice, with the uplink from the microphone
+
+Project
+: linux-phone-oco/docs
+
+Status
+: done
+
+Note
+: Researched (research call-audio-on-surya) and decided (2026-11-17-calls-proven-by-echo-call); the work continues as calls-q6voice-kernel, calls-voice-ucm-uplink, calls-first-call and calls-echo-check.
+
+Opened
+: 2026-11-17
