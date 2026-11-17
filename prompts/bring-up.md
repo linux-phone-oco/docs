@@ -19,7 +19,8 @@ is written so the next phone of the same family (SM7150, then any Qualcomm) star
    correct this file (linux-phone-oco/docs, `prompts/bring-up.md`).
 2. `export OCOECO_BY=bring-up`, then `. oco-work` in every shell that works on the ecosystem (it gives
    `GH_TOKEN` and the words every job uses: `fresh`, `change`, `stand`, `enter`, `rust_checked`, `landit`,
-   `turn`, ...). Your name is on every record, so the face shows where each session stands. Never `land`
+   `turn`, ...). Your name signs every commit (oco-work makes it the git author), so the face shows where each
+   session stands. Never `land`
    from a shell that has not sourced it.
 3. `lab-agent inbox` - print every unread message, answer each, then `--ack`.
 4. Read the state through the lenses, not from memory: from `~/Projects/marshall-oco/marshall-oco.github.io`,
@@ -28,6 +29,30 @@ is written so the next phone of the same family (SM7150, then any Qualcomm) star
    `tad sql "SELECT component_id, status, judged, measured FROM support_status"`, the backlog, milestones,
    research, decisions. `~/Projects/marshall-oco/conversation` holds everything the author said - read it
    when intent is unclear, before asking.
+
+## Recording: data through tad, landing through land
+
+The author, 2026-11-17: for linux-phone everything goes through tad in one database, and the record of work
+is git itself (docs' decision `2026-11-17-one-database`). So:
+
+- **Data through tad, in docs.** Every record of every linux-phone place - decisions with what was rejected,
+  research with sources, backlog items and their next step, the session log, concepts, sources, milestones -
+  lives in linux-phone-oco/docs' tables, each row naming its place (`--project lab-tools`, `surya-lab`,
+  `device-template`, `sxmo-deviceprofiles`, `docs`). Write it with docs' named records, in a worktree of docs,
+  in the same change as the work when the work is in docs: `tad r decision --project surya-lab --id ...
+  --decision ... --why ... --rejected ...`, `tad r research ...`, `tad r backlog ...`, `tad r backlog-status
+  ...`, `tad r session-log ...`; read with `tad q backlog|decisions|research [--project ...]`. `tad statements`
+  lists them all with their parameters. A record or query that is missing is a new file in `records/` or
+  `queries/` in the same change - no release of tad. Then `tad canon && tad render` before landing.
+- **Landing through land.** Commit and `land` (or `landit "summary" kind`, which makes no glimpse where a place
+  exports none). The commit and its pull request are the record of the work; your name (OCOECO_BY, set before
+  `. oco-work`) signs the commit, and the face reads where each hand stands off the commits. One commit per
+  branch, with a conventional title: `land` titles a pull request of several commits after its branch.
+- **Nothing of ocoeco by hand** in linux-phone places: no `ocoeco note`, no `ocoeco glimpse`, no oco/ tables.
+  ocoeco stays the observatory's: its lenses (`ocoeco focus ...`) are still how the whole is read.
+
+Why, measured: the turn commit-title limit failed 4 times, link refusals ordered the work 3 times, and two tools
+wrote rows in one place.
 
 ## Choosing what to work on
 
@@ -55,8 +80,8 @@ of it.
    subsystem's tree), sm7150-mainline and sibling SoCs (sm7125, sm7225, sm8150 share blocks), postmarketOS
    (pmaports, the wiki, the device's and the SoC's MRs), other distributions, the vendor's GPL kernel
    release for the device (reference for register sequences, regulators, GPIOs, device-tree values).
-   Record it as research in the project that owns the part (`ocoeco note research`, with sources), so
-   decisions can cite it.
+   Record it as research in docs, naming the place that owns the part (`tad r research --project surya-lab
+   ...`, its sources as `tad r source ...`), so decisions can cite it.
 3. **Reverse engineering, clean room, when nothing open exists.** Observe behaviour, never copy
    proprietary code: register traffic (i2c/spmi dumps, debugfs, regmap traces), ftrace and dynamic debug,
    QMI/glink messages between the processors and Linux, the stock Android system's own logs and sysfs.
@@ -85,13 +110,13 @@ of it.
    Alpine repositories. A step done a second time by hand is a tool to build or a word for `oco-work`.
 7. **Proven by the phone.** The phone measures itself 120 s after every boot; `devlab watch` files every
    report into docs through tad and lands it, and docs' derivation turns the part's status from its latest
-   results (`derive/support-status.sql`) - nobody types a status a machine can measure. Where a person
+   results (`records/derive-support-status.sql`) - nobody types a status a machine can measure. Where a person
    witnessed it, update `judged` and `notes` with the evidence (`tad set support_status ...`). Then look at
    the face: the part's cell, the Tests page.
 8. **Upstream.** A fix that works goes to `linux-phone-oco/upstream-queue` as a series ready to send
    (get_maintainer.pl recipients, b4 or git send-email command, cover letter). Sending is the author's
    decision, in his name: put it on the board as waiting for him; never send mail yourself.
-9. **Recorded as you go**, in the same change as the work, in the project that owns it: decisions with
+9. **Recorded as you go**, through docs' named records, naming the place that owns it (see "Recording"): decisions with
    what was rejected, research, the backlog item's next step, the session log. Where the ecosystem itself
    shows a gap or an overlap (ocoeco, tad, devlab), refine it first and record the refinement.
 

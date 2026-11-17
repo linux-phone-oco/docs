@@ -5,6 +5,9 @@
 <a id="docs-repo-created"></a>
 ### The docs repo: schema, style, and an honest first seed of what is actually known
 
+Project
+: linux-phone-oco/docs
+
 Entry date
 : 2026-11-04
 
@@ -22,6 +25,9 @@ Rejected
 
 <a id="first-fastboot-probe"></a>
 ### The phone, for real: bootloader unlocked, product confirmed, two jobs run end to end
+
+Project
+: linux-phone-oco/docs
 
 Entry date
 : 2026-11-05
@@ -41,6 +47,9 @@ Rejected
 <a id="nura-rename"></a>
 ### The distro is Nura now: postmarketOS renamed in September
 
+Project
+: linux-phone-oco/docs
+
 Entry date
 : 2026-11-05
 
@@ -58,6 +67,9 @@ Rejected
 
 <a id="boot-confirmed-no-shell-yet"></a>
 ### Nura boots and is reachable on the network; no shell access without credentials
+
+Project
+: linux-phone-oco/docs
 
 Entry date
 : 2026-11-05
@@ -77,6 +89,9 @@ Rejected
 <a id="fresh-install-plan"></a>
 ### A fresh-install plan, prepared but not run: two things only the owner can answer
 
+Project
+: linux-phone-oco/docs
+
 Entry date
 : 2026-11-05
 
@@ -94,6 +109,9 @@ Rejected
 
 <a id="2026-11-09-boot-hang-and-adsp"></a>
 ### Boot hang found; ADSP crash loop found; lab-agent hardened
+
+Project
+: linux-phone-oco/docs
 
 Entry date
 : 2026-11-09
@@ -113,6 +131,9 @@ Rejected
 <a id="2026-11-10-stereo-and-the-picture"></a>
 ### Stereo speakers, shells, the grand picture, the device lab
 
+Project
+: linux-phone-oco/docs
+
 Entry date
 : 2026-11-10
 
@@ -130,6 +151,9 @@ Rejected
 
 <a id="2026-11-10-conveyor-and-health"></a>
 ### The conveyor in Rust, health that watches itself, the microphone narrowed
+
+Project
+: linux-phone-oco/docs
 
 Entry date
 : 2026-11-10
@@ -149,6 +173,9 @@ Rejected
 <a id="2026-11-10-its-own-russian"></a>
 ### The project's own data in Russian
 
+Project
+: linux-phone-oco/docs
+
 Entry date
 : 2026-11-10
 
@@ -166,6 +193,9 @@ Rejected
 
 <a id="2026-11-10-first-devlab-flash"></a>
 ### The first real devlab flash, and what a clean flash exposed
+
+Project
+: linux-phone-oco/docs
 
 Entry date
 : 2026-11-10
@@ -185,6 +215,9 @@ Rejected
 <a id="2026-11-10-its-essence"></a>
 ### Linux Phones tells its essence
 
+Project
+: linux-phone-oco/docs
+
 Entry date
 : 2026-11-10
 
@@ -202,6 +235,9 @@ Rejected
 
 <a id="2026-11-10-the-ear-withdrawn"></a>
 ### What the ear heard is withdrawn
+
+Project
+: linux-phone-oco/docs
 
 Entry date
 : 2026-11-10
@@ -221,6 +257,9 @@ Rejected
 <a id="2026-11-10-idea-in-russian"></a>
 ### Its idea in Russian
 
+Project
+: linux-phone-oco/docs
+
 Entry date
 : 2026-11-10
 
@@ -232,6 +271,9 @@ Done
 
 <a id="2026-11-11-parts-measured"></a>
 ### Four of surya's parts no longer unknown
+
+Project
+: linux-phone-oco/docs
 
 Entry date
 : 2026-11-11
@@ -251,6 +293,9 @@ Rejected
 <a id="2026-11-11-cameras-understood"></a>
 ### The cameras' fault, understood
 
+Project
+: linux-phone-oco/docs
+
 Entry date
 : 2026-11-11
 
@@ -268,6 +313,9 @@ Rejected
 
 <a id="2026-11-11-microphone-nearly"></a>
 ### The microphone's chain, nearly whole
+
+Project
+: linux-phone-oco/docs
 
 Entry date
 : 2026-11-11
@@ -287,6 +335,9 @@ Rejected
 <a id="2026-11-11-the-codec-comes-up"></a>
 ### The microphone codec comes up
 
+Project
+: linux-phone-oco/docs
+
 Entry date
 : 2026-11-11
 
@@ -304,6 +355,9 @@ Rejected
 
 <a id="2026-11-11-recording-tries"></a>
 ### The microphone: the route is set, the stream does not start
+
+Project
+: linux-phone-oco/docs
 
 Entry date
 : 2026-11-11
@@ -323,6 +377,9 @@ Rejected
 <a id="2026-11-11-tad-in-rust"></a>
 ### tad in Rust replaces the vendored Python engine
 
+Project
+: linux-phone-oco/docs
+
 Entry date
 : 2026-11-11
 
@@ -334,6 +391,9 @@ Done
 
 <a id="2026-11-17-runs-gathered"></a>
 ### Test runs gathered, not typed
+
+Project
+: linux-phone-oco/docs
 
 Entry date
 : 2026-11-17
@@ -347,6 +407,9 @@ Done
 <a id="2026-11-17-the-conveyor-for-any-phone"></a>
 ### The conveyor for any phone
 
+Project
+: linux-phone-oco/docs
+
 Entry date
 : 2026-11-17
 
@@ -358,6 +421,9 @@ Done
 
 <a id="2026-11-17-the-face"></a>
 ### linux-phone's own face
+
+Project
+: linux-phone-oco/docs
 
 Entry date
 : 2026-11-17
@@ -371,6 +437,9 @@ Done
 <a id="2026-11-17-the-organisation-set-up"></a>
 ### The organisation of the agents, set up
 
+Project
+: linux-phone-oco/docs
+
 Entry date
 : 2026-11-17
 
@@ -382,6 +451,9 @@ Done
 
 <a id="2026-11-17-the-conveyor-hands-over"></a>
 ### The conveyor session hands over
+
+Project
+: linux-phone-oco/docs
 
 Entry date
 : 2026-11-17
@@ -395,8 +467,623 @@ Done
 <a id="2026-11-17-deep-sleep-researched"></a>
 ### Deep sleep researched: the path chosen and measured where it starts
 
+Project
+: linux-phone-oco/docs
+
 Entry date
 : 2026-11-17
 
 Done
 : The first feature research (prompts/feature-research.md), signed research-deep-sleep. surya read without a change: s2idle only, OS-initiated PSCI, the SoC's sleep counters readable, no suspend yet in a measured boot, CX collapse and AOSS sleep at 0, the audio DSP never asleep, the deepest cluster state never entered. Six research rows (how Qualcomm reaches its floor, what blocks it, the SM7150 cluster parameters against surya's own tables, waking for calls, the other ways, surya measured), the decision with four ways rejected, six steps on the backlog each with its proof, a deep-sleep part with surya's row unknown, and the check soc-sleeps in lab-tools' suite. docs now shares its research and sources tables.
+
+---
+
+
+<a id="2026-11-10-first-real-flash"></a>
+### devlab flash's first real flash
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-10
+
+Done
+: The pristine stock Sxmo image flashed to surya with devlab flash: fixes baked in, device tree a43d069d0a49adcd, the phone booted and passed all 20 checks. Two things done by hand after it became the tool's job: a fresh phone's clock is at its image's build date (certificates looked invalid) and its first boot grew the partition but left the filesystem at 2 GB - devlab provision now sets the clock and grows the system first.
+
+Considered
+: Leaving both as notes for whoever flashes next.
+
+Rejected
+: That: what must be known to use a tool belongs in the tool.
+
+---
+
+
+<a id="2026-11-10-its-essence"></a>
+### It tells its essence
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-10
+
+Done
+: Its idea written for anyone, and its workings: what delivers and proves each step of its path, and why we care. Steps that nothing serves yet are left empty, to be seen.
+
+Considered
+: Filling every step with something.
+
+Rejected
+: That: a step nothing serves is a wish, and should show.
+
+---
+
+
+<a id="2026-11-10-the-ear-in-health"></a>
+### The ear in health
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-10
+
+Done
+: devlab health --hear listens as part of health: heard checks join the one baseline and regress like any other. The rule made honest rather than a second baseline: a run that did not listen is out of scope for what only listening tells. The watcher never makes a sound by itself.
+
+Considered
+: Listening after every start; a separate baseline for heard checks.
+
+Rejected
+: The first: a tone in the night. The second: two truths about one phone.
+
+---
+
+
+<a id="2026-11-10-the-ear-on-notice"></a>
+### The ear, on notice
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-10
+
+Done
+: The author corrected the withdrawal: the microphone is reliable when placed by the phone - it only was not, unannounced. The procedure is written down: notify, wait for his word, then listen. A proper rig - fixed microphone, webcam, servos - is on the backlog.
+
+Considered
+: Treating the microphone as unusable until a rig exists.
+
+Rejected
+: That: an instrument placed with care on notice is an instrument.
+
+---
+
+
+<a id="2026-11-10-the-ear-withdrawn"></a>
+### What the ear heard is withdrawn
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-10
+
+Done
+: The microphone was the author's earphones, worn on his head: its distance from the phone changed as he moved. The levels measured, the difference seen between the two speakers, and the passes themselves cannot be relied on. The heard checks are out of the baseline and the lab's microphone is un-named until one is fixed in place; the tool stays, proven to work mechanically.
+
+Considered
+: Keeping the results with a caveat.
+
+Rejected
+: That: evidence from an instrument that moves is not evidence, and a later failure would have looked like the phone getting worse.
+
+---
+
+
+<a id="2026-11-10-the-labs-ear"></a>
+### The lab's ear
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-10
+
+Done
+: devlab hear joins what existed - the tone tool, the lab's microphone, the phone's player: the room recorded in silence, a tone played on each channel at a known volume and recorded, measured against the noise around it and the silent room. Both of surya's speakers heard on the first run. For any phone: its lab names a microphone, its manifest names the tones.
+
+Considered
+: Trusting that a loaded driver and an unmuted control mean sound.
+
+Rejected
+: That: a machine should hear it. And claiming which speaker is which - one microphone cannot tell.
+
+---
+
+
+<a id="2026-11-11-efi-only"></a>
+### Only an EFI program is offered to the bootloader
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-11
+
+Done
+: A test kernel given as Image.gz was chosen by the bootloader, counted down, and could not start - the try was lost before the kernel logged a line, and looked like 'the bootloader ignores the entry'. devlab kernel install now refuses anything that is not an EFI executable and names the right file.
+
+Considered
+: Sort keys; a stored default entry; a second boot partition - each checked on the phone and ruled out.
+
+Rejected
+: Acting on any of them before the bootloader's own record (the entry's try counter) was read.
+
+---
+
+
+<a id="2026-11-11-efi-only-and-records"></a>
+### Two refusals, and what they cost to learn
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-11
+
+Done
+: The kernel guard and the listening word, each from a mistake made today; two more steps recorded: a room of digital silence, and a try that reports its own outcome.
+
+---
+
+
+<a id="2026-11-11-the-word-first"></a>
+### The word first
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-11
+
+Done
+: A listening test now needs the explicit word that the microphone is placed, and refuses with the procedure otherwise - so the lesson of the worn microphone rests on the tool, not on memory.
+
+Considered
+: Leaving the microphone un-named as the safeguard.
+
+Rejected
+: That: a renamed file is a trick only its author remembers.
+
+---
+
+
+<a id="2026-11-17-every-change-ends-with-health"></a>
+### Every change ends with the phone's health
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: devlab phone reboot, kernel try and provision end with the health report of the boot they came to; proven by a reboot of surya: healthy, report brought, 3 minutes.
+
+---
+
+
+<a id="2026-11-17-filed-by-itself"></a>
+### Filed through tad, landed by itself
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: devlab gather now --land: one new report brought from surya, filed through tad sql into the picture, landed in surya-lab and docs in 75 s with every check passing; devlab watch now does this after every boot and says the phone's own verdict on the board.
+
+---
+
+
+<a id="2026-11-17-gathering-is-one-command"></a>
+### Gathering is one command
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: devlab gather now brings the phone's reports to the lab and files every unfiled run into the picture's tables; 9 runs filed, a week of gathering by hand caught up.
+
+---
+
+
+<a id="2026-11-17-health-on-the-phone"></a>
+### The phone checks its own health after every boot
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: devlab-health, a static Rust runner, with generic checks in postmarketOS's test shape, put on surya by devlab suite put now; after a reboot it ran by itself and said healthy (29 pass, 4 in known gaps). Landscape read first: the package conveyor will carry it as an Alpine package; agent access's plan carries devlab's MCP door.
+
+Date
+: 2026-11-17
+
+---
+
+
+<a id="2026-11-17-support-follows-the-phone"></a>
+### Support status follows the phone
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: After filing, devlab runs every statement the picture keeps in derive/ through tad: support status is read off the latest results (broken on a failure, works on a proven pass, otherwise as judged). Proven with run 20261117-005911: filed, derived, landed - every measured part now names it.
+
+---
+
+
+<a id="2026-11-17-the-phone-over-mcp"></a>
+### The phone over MCP
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: devlab mcp: nine tools that let any agent run commands on the phone, move files, read and measure its health, try a kernel once and reboot - proven against surya.
+
+---
+
+
+<a id="2026-11-10-flashed-by-devlab"></a>
+### Flashed by devlab; the shell flash script retired
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-10
+
+Done
+: surya flashed from the pristine stock image by devlab flash and brought back by devlab provision, all 20 checks passing; flash.sh removed, as planned once devlab had done a real flash. A new check, root-fills-its-partition: the first boot had left the system at 2 GB on a 104 GB partition.
+
+Considered
+: Keeping flash.sh as a fallback.
+
+Rejected
+: That: two ways to flash drift apart; the shell original stays in git history.
+
+---
+
+
+<a id="2026-11-10-heard"></a>
+### Both speakers heard - then withdrawn
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-10
+
+Done
+: With the author's EarPods as the lab's microphone, devlab hear played a 1000 Hz tone on each speaker and heard both: left at -24.0 dBFS, right at -29.2 dBFS, each over 70 dB above the silent room. The tones are in the manifest. Observed, not judged: the right read 5 dB quieter - the microphone's place or the speakers themselves; one measurement cannot say. WITHDRAWN the same day: the microphone was worn by the author and moved; neither the levels nor the 5 dB difference can be relied on.
+
+Considered
+: Calling the 5 dB a fault.
+
+Rejected
+: That, on one measurement from one position.
+
+---
+
+
+<a id="2026-11-10-its-idea"></a>
+### The lab's idea, told for anyone
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-10
+
+Done
+: What this lab is - one particular phone, everything true of it written down, experiments that fall back by themselves - as a piece of writing for a reader who knows nothing of it.
+
+Rejected
+: A list of files.
+
+---
+
+
+<a id="2026-11-10-suspend-crash-found"></a>
+### The suspend crash found: a FastRPC helper attached at suspend
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-10
+
+Done
+: After the flash the audio DSP died on every suspend attempt (the attempts abort at once: the USB link cannot go idle). Found by experiment, one change at a time: not a first-boot effect (9 of 9 on the second boot), not the sensor proxy (15 of 15 without it), but hexagonrpcd's RootPD helper - 0 of 8 without it, and 0 of 9 on a clean boot with it masked, all 21 checks passing. Masked in the manifest, so every flash has it. The check's resume counter, which always said 0, rewritten in awk and checked against a boot with 24.
+
+Considered
+: A hand-made change the manifest lacked; a first-boot effect; the sensor proxy; a stream left open.
+
+Rejected
+: All four, each by its own measurement. The old 'rare' crash was the same one: there the helper died with the first crashes and stayed down.
+
+---
+
+
+<a id="2026-11-10-the-ear-withdrawn"></a>
+### What the ear heard is withdrawn
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-10
+
+Done
+: The microphone was the author's earphones, worn on his head: its distance from the phone changed as he moved. The levels measured, the difference seen between the two speakers, and the passes themselves cannot be relied on. The heard checks are out of the baseline and the lab's microphone is un-named until one is fixed in place; the tool stays, proven to work mechanically.
+
+Considered
+: Keeping the results with a caveat.
+
+Rejected
+: That: evidence from an instrument that moves is not evidence, and a later failure would have looked like the phone getting worse.
+
+---
+
+
+<a id="2026-11-10-usb-flapping"></a>
+### The USB link no longer flaps
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-10
+
+Done
+: Reported by the author: the phone kept reconnecting on his PC (26 USB disconnects in 5 minutes on the lab machine). On USB a suspend cannot complete, and the shell retried every 12 seconds, each attempt dropping the link. A small service holds a kernel wake lock while the port is connected to a host - independent of any shell - baked in by the manifest, with a check. Known before, never written down: it is now.
+
+Considered
+: Changing the shell's suspend hook.
+
+Rejected
+: That: a fix inside one shell does not hold under another, or under none.
+
+---
+
+
+<a id="2026-11-11-more-measured"></a>
+### More of the phone, measured
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-11
+
+Done
+: Eight of the phone's twenty parts stood as unknown. The checks now also ask: is Wi-Fi joined and does the gateway answer; is Bluetooth powered and does it hear anything; is there a SIM and is the modem ready; does the kernel expose a headset-jack detector, a fingerprint reader, any motion or light sensor, any image sensor behind the camera pipeline. All read-only.
+
+Considered
+: Marking parts as working from a device node alone.
+
+Rejected
+: That: there and set up is what a machine can prove; the rest are witnessed tests.
+
+---
+
+
+<a id="2026-11-11-port-table-cleared"></a>
+### The port table cleared; a boot spent on a missing tool
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-11
+
+Done
+: The TX bus's port layout and timings match mainline sm8250 and the vendor's layout for the ports in use - not the cause. A boot to dump the SoundWire registers found this kernel has no SoundWire debugfs.
+
+Considered
+: Seven ports against the vendor's five as the cause.
+
+Rejected
+: That, after comparing the ports actually used. And booting before checking the tool exists - a lesson: check the instrument first.
+
+---
+
+
+<a id="2026-11-11-the-cameras-understood"></a>
+### Why the cameras are dark, and the way in
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-11
+
+Done
+: Read from the phone and from sources, changing nothing: the camera pipeline and its control buses work; the phone's description lists no sensor. The vendor's kernel yields the wiring of seven sensor slots but no model names. Written up with the wiring table and a four-step way in (research/cameras.md).
+
+Considered
+: Describing the sensors from the models reported for this phone elsewhere.
+
+Rejected
+: That: hearsay. A chip should say what it is, on its own bus, before a driver is bound to it.
+
+---
+
+
+<a id="2026-11-11-the-codec-comes-up"></a>
+### The microphone codec comes up
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-11
+
+Done
+: Traced the codec's timeout to a bus clash on the microphone-side SoundWire bus, and that to one pin muxed to the wrong function in the audio pin driver (and one more on the receive side), read against the phone's own Android kernel. Corrected and rebuilt: the codec initialises and the sound card is made with it. Recording through it is next.
+
+Considered
+: The macros' autosuspend; the upstream revert (it gives no reason).
+
+Rejected
+: Guessing at clock fixes.
+
+---
+
+
+<a id="2026-11-11-the-microphone-frontier"></a>
+### The microphone's chain, nearly whole
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-11
+
+Done
+: Booted the microphone test kernel (after finding the earlier tries had been given a gzip kernel): for the first time everything up to the codec came up; the card fails on one timeout. Measured which speaker is the bottom one. Saw a boot with no sound card and recorded it.
+
+Considered
+: Theories about the bootloader.
+
+Rejected
+: Acting before reading the bootloader's own record.
+
+---
+
+
+<a id="2026-11-11-the-modem-with-a-sim"></a>
+### The modem with a SIM
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-11
+
+Done
+: The SIM is seen and ready (1&1). The modem stays shutting-down and refuses to go online, even after a reboot; it loops on one file through tqftpserv, ending each read itself. One theory - a missing read-write directory - was checked and is wrong: the directory exists.
+
+Considered
+: A missing directory.
+
+Rejected
+: That: the program's own paths showed it exists.
+
+---
+
+
+<a id="2026-11-11-the-recording-map"></a>
+### The map to a first recording
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-11
+
+Done
+: Listed the codec's recording side in the test kernel and read how the phone's own Android build routes its main microphone; the names match closely. Found that the kernel branch's pin driver differs from the tested tree - the fix is to be ported, not pasted.
+
+Considered
+: Pasting the table change into the branch.
+
+Rejected
+: That: the branch's driver is not the one that was tested.
+
+---
+
+
+<a id="2026-11-11-two-recording-tries"></a>
+### Two recording tries
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-11
+
+Done
+: The main-microphone route from the phone's Android build sets cleanly in the test kernel; the capture stream fails when it starts - the TX bus loses the codec exactly when it is reshaped for the stream. Ruled out power management. Measured the audio processor's once-a-second handover signal.
+
+Considered
+: Keeping the bus awake.
+
+Rejected
+: That as the answer: it changed nothing.
+
+---
+
+
+<a id="2026-11-17-health-on-the-phone"></a>
+### surya checks its own health after every boot
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: The manifest says what surya is expected to have ([health]: its sound card, three signal processors and what rests on each, the known boot warnings and failed unit with their reasons, and four known gaps - fingerprint, sensors, both cameras); its amplifier checks moved to tests/health/base. devlab suite put the suite on the phone; after a reboot it ran by itself and said healthy: 29 pass, 4 in known gaps, 1 not measured (no SIM card seen: the modem reports sim-missing).
+
+---
+
+
+<a id="2026-11-16-joined"></a>
+### Joined the Open Commons Observatory
+
+Project
+: linux-phone-oco/device-template
+
+Entry date
+: 2026-11-16
+
+Done
+: The mark, the gatherer's caller and a place for this project's own records, written by ocoeco init.
+
+---
+
+
+<a id="2026-11-17-made"></a>
+### The template, made
+
+Project
+: linux-phone-oco/device-template
+
+Entry date
+: 2026-11-17
+
+Done
+: Made from what was proven on surya the same day: the phone checks its own health after every boot, every change ends with that report, gathering is one command, and devlab mcp is the door for agents - all read from device.toml.

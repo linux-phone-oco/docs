@@ -61,6 +61,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: cd .lens && ocoeco observe --hold "$RUNNER_TEMP/held" --out "$RUNNER_TEMP/data"
+      - name: what has landed since, read off the commits - the record of work since glimpses ended
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: ./bin/landings.sh "$RUNNER_TEMP/data"
       - name: the face
         run: ~/.cargo/bin/oco site --data "$RUNNER_TEMP/data" --out _site
       - name: every table, as tad renders it

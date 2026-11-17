@@ -5,6 +5,9 @@
 <a id="features:voice-calls:name:ru"></a>
 ### features:voice-calls:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -26,6 +29,9 @@ By
 
 <a id="features:voice-calls:category:ru"></a>
 ### features:voice-calls:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -49,6 +55,9 @@ By
 <a id="features:volte:name:ru"></a>
 ### features:volte:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -70,6 +79,9 @@ By
 
 <a id="features:volte:category:ru"></a>
 ### features:volte:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -93,6 +105,9 @@ By
 <a id="features:sms:name:ru"></a>
 ### features:sms:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -114,6 +129,9 @@ By
 
 <a id="features:sms:category:ru"></a>
 ### features:sms:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -137,6 +155,9 @@ By
 <a id="features:mms:name:ru"></a>
 ### features:mms:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -158,6 +179,9 @@ By
 
 <a id="features:mms:category:ru"></a>
 ### features:mms:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -181,6 +205,9 @@ By
 <a id="features:voicemail:name:ru"></a>
 ### features:voicemail:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -202,6 +229,9 @@ By
 
 <a id="features:voicemail:category:ru"></a>
 ### features:voicemail:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -225,6 +255,9 @@ By
 <a id="features:emergency-calls:name:ru"></a>
 ### features:emergency-calls:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -246,6 +279,9 @@ By
 
 <a id="features:emergency-calls:category:ru"></a>
 ### features:emergency-calls:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -269,6 +305,9 @@ By
 <a id="features:esim:name:ru"></a>
 ### features:esim:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -290,6 +329,9 @@ By
 
 <a id="features:esim:category:ru"></a>
 ### features:esim:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -313,6 +355,9 @@ By
 <a id="features:mobile-data:name:ru"></a>
 ### features:mobile-data:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -334,6 +379,9 @@ By
 
 <a id="features:mobile-data:category:ru"></a>
 ### features:mobile-data:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -357,6 +405,9 @@ By
 <a id="features:wifi:name:ru"></a>
 ### features:wifi:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -378,6 +429,9 @@ By
 
 <a id="features:wifi:category:ru"></a>
 ### features:wifi:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -401,6 +455,9 @@ By
 <a id="features:bluetooth:name:ru"></a>
 ### features:bluetooth:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -422,6 +479,9 @@ By
 
 <a id="features:bluetooth:category:ru"></a>
 ### features:bluetooth:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -445,6 +505,9 @@ By
 <a id="features:hotspot:name:ru"></a>
 ### features:hotspot:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -466,6 +529,9 @@ By
 
 <a id="features:hotspot:category:ru"></a>
 ### features:hotspot:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -489,6 +555,9 @@ By
 <a id="features:nfc:name:ru"></a>
 ### features:nfc:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -510,6 +579,9 @@ By
 
 <a id="features:nfc:category:ru"></a>
 ### features:nfc:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -533,6 +605,9 @@ By
 <a id="features:gps:name:ru"></a>
 ### features:gps:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -554,6 +629,9 @@ By
 
 <a id="features:gps:category:ru"></a>
 ### features:gps:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -577,6 +655,9 @@ By
 <a id="features:speaker:name:ru"></a>
 ### features:speaker:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -598,6 +679,9 @@ By
 
 <a id="features:speaker:category:ru"></a>
 ### features:speaker:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -621,6 +705,9 @@ By
 <a id="features:earpiece:name:ru"></a>
 ### features:earpiece:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -642,6 +729,9 @@ By
 
 <a id="features:earpiece:category:ru"></a>
 ### features:earpiece:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -665,6 +755,9 @@ By
 <a id="features:headphones:name:ru"></a>
 ### features:headphones:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -686,6 +779,9 @@ By
 
 <a id="features:headphones:category:ru"></a>
 ### features:headphones:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -709,6 +805,9 @@ By
 <a id="features:microphone:name:ru"></a>
 ### features:microphone:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -730,6 +829,9 @@ By
 
 <a id="features:microphone:category:ru"></a>
 ### features:microphone:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -753,6 +855,9 @@ By
 <a id="features:bluetooth-audio:name:ru"></a>
 ### features:bluetooth-audio:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -774,6 +879,9 @@ By
 
 <a id="features:bluetooth-audio:category:ru"></a>
 ### features:bluetooth-audio:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -797,6 +905,9 @@ By
 <a id="features:photo:name:ru"></a>
 ### features:photo:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -818,6 +929,9 @@ By
 
 <a id="features:photo:category:ru"></a>
 ### features:photo:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -841,6 +955,9 @@ By
 <a id="features:video-recording:name:ru"></a>
 ### features:video-recording:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -862,6 +979,9 @@ By
 
 <a id="features:video-recording:category:ru"></a>
 ### features:video-recording:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -885,6 +1005,9 @@ By
 <a id="features:qr-scan:name:ru"></a>
 ### features:qr-scan:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -906,6 +1029,9 @@ By
 
 <a id="features:qr-scan:category:ru"></a>
 ### features:qr-scan:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -929,6 +1055,9 @@ By
 <a id="features:touch:name:ru"></a>
 ### features:touch:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -950,6 +1079,9 @@ By
 
 <a id="features:touch:category:ru"></a>
 ### features:touch:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -973,6 +1105,9 @@ By
 <a id="features:on-screen-keyboard:name:ru"></a>
 ### features:on-screen-keyboard:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -994,6 +1129,9 @@ By
 
 <a id="features:on-screen-keyboard:category:ru"></a>
 ### features:on-screen-keyboard:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1017,6 +1155,9 @@ By
 <a id="features:auto-rotate:name:ru"></a>
 ### features:auto-rotate:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1038,6 +1179,9 @@ By
 
 <a id="features:auto-rotate:category:ru"></a>
 ### features:auto-rotate:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1061,6 +1205,9 @@ By
 <a id="features:auto-brightness:name:ru"></a>
 ### features:auto-brightness:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1082,6 +1229,9 @@ By
 
 <a id="features:auto-brightness:category:ru"></a>
 ### features:auto-brightness:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1105,6 +1255,9 @@ By
 <a id="features:proximity:name:ru"></a>
 ### features:proximity:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1126,6 +1279,9 @@ By
 
 <a id="features:proximity:category:ru"></a>
 ### features:proximity:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1149,6 +1305,9 @@ By
 <a id="features:fingerprint:name:ru"></a>
 ### features:fingerprint:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1170,6 +1329,9 @@ By
 
 <a id="features:fingerprint:category:ru"></a>
 ### features:fingerprint:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1193,6 +1355,9 @@ By
 <a id="features:deep-sleep:name:ru"></a>
 ### features:deep-sleep:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1214,6 +1379,9 @@ By
 
 <a id="features:deep-sleep:category:ru"></a>
 ### features:deep-sleep:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1237,6 +1405,9 @@ By
 <a id="features:power-discipline:name:ru"></a>
 ### features:power-discipline:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1258,6 +1429,9 @@ By
 
 <a id="features:power-discipline:category:ru"></a>
 ### features:power-discipline:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1281,6 +1455,9 @@ By
 <a id="features:all-day-battery:name:ru"></a>
 ### features:all-day-battery:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1302,6 +1479,9 @@ By
 
 <a id="features:all-day-battery:category:ru"></a>
 ### features:all-day-battery:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1325,6 +1505,9 @@ By
 <a id="features:charging:name:ru"></a>
 ### features:charging:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1346,6 +1529,9 @@ By
 
 <a id="features:charging:category:ru"></a>
 ### features:charging:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1369,6 +1555,9 @@ By
 <a id="features:encryption:name:ru"></a>
 ### features:encryption:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1390,6 +1579,9 @@ By
 
 <a id="features:encryption:category:ru"></a>
 ### features:encryption:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1413,6 +1605,9 @@ By
 <a id="features:verified-boot:name:ru"></a>
 ### features:verified-boot:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1434,6 +1629,9 @@ By
 
 <a id="features:verified-boot:category:ru"></a>
 ### features:verified-boot:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1457,6 +1655,9 @@ By
 <a id="features:secure-element:name:ru"></a>
 ### features:secure-element:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1478,6 +1679,9 @@ By
 
 <a id="features:secure-element:category:ru"></a>
 ### features:secure-element:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1501,6 +1705,9 @@ By
 <a id="features:app-sandboxing:name:ru"></a>
 ### features:app-sandboxing:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1522,6 +1729,9 @@ By
 
 <a id="features:app-sandboxing:category:ru"></a>
 ### features:app-sandboxing:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1545,6 +1755,9 @@ By
 <a id="features:ota-updates:name:ru"></a>
 ### features:ota-updates:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1566,6 +1779,9 @@ By
 
 <a id="features:ota-updates:category:ru"></a>
 ### features:ota-updates:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1589,6 +1805,9 @@ By
 <a id="features:rollback:name:ru"></a>
 ### features:rollback:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1610,6 +1829,9 @@ By
 
 <a id="features:rollback:category:ru"></a>
 ### features:rollback:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1633,6 +1855,9 @@ By
 <a id="features:support-years:name:ru"></a>
 ### features:support-years:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1654,6 +1879,9 @@ By
 
 <a id="features:support-years:category:ru"></a>
 ### features:support-years:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1677,6 +1905,9 @@ By
 <a id="features:native-apps:name:ru"></a>
 ### features:native-apps:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1698,6 +1929,9 @@ By
 
 <a id="features:native-apps:category:ru"></a>
 ### features:native-apps:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1721,6 +1955,9 @@ By
 <a id="features:android-apps:name:ru"></a>
 ### features:android-apps:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1742,6 +1979,9 @@ By
 
 <a id="features:android-apps:category:ru"></a>
 ### features:android-apps:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1765,6 +2005,9 @@ By
 <a id="features:app-store:name:ru"></a>
 ### features:app-store:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1786,6 +2029,9 @@ By
 
 <a id="features:app-store:category:ru"></a>
 ### features:app-store:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1809,6 +2055,9 @@ By
 <a id="features:contacts-calendar-sync:name:ru"></a>
 ### features:contacts-calendar-sync:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1830,6 +2079,9 @@ By
 
 <a id="features:contacts-calendar-sync:category:ru"></a>
 ### features:contacts-calendar-sync:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1853,6 +2105,9 @@ By
 <a id="features:backup:name:ru"></a>
 ### features:backup:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1874,6 +2129,9 @@ By
 
 <a id="features:backup:category:ru"></a>
 ### features:backup:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1897,6 +2155,9 @@ By
 <a id="features:push-notifications:name:ru"></a>
 ### features:push-notifications:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1918,6 +2179,9 @@ By
 
 <a id="features:push-notifications:category:ru"></a>
 ### features:push-notifications:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1941,6 +2205,9 @@ By
 <a id="features:contactless-payments:name:ru"></a>
 ### features:contactless-payments:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -1962,6 +2229,9 @@ By
 
 <a id="features:contactless-payments:category:ru"></a>
 ### features:contactless-payments:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -1985,6 +2255,9 @@ By
 <a id="features:banking-apps:name:ru"></a>
 ### features:banking-apps:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : features
 
@@ -2006,6 +2279,9 @@ By
 
 <a id="features:banking-apps:category:ru"></a>
 ### features:banking-apps:category:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : features
@@ -2029,6 +2305,9 @@ By
 <a id="components:audio-speaker:name:ru"></a>
 ### components:audio-speaker:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : components
 
@@ -2050,6 +2329,9 @@ By
 
 <a id="components:audio-headphone:name:ru"></a>
 ### components:audio-headphone:name:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : components
@@ -2073,6 +2355,9 @@ By
 <a id="components:audio-mic:name:ru"></a>
 ### components:audio-mic:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : components
 
@@ -2094,6 +2379,9 @@ By
 
 <a id="components:audio-earpiece:name:ru"></a>
 ### components:audio-earpiece:name:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : components
@@ -2117,6 +2405,9 @@ By
 <a id="components:camera-front:name:ru"></a>
 ### components:camera-front:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : components
 
@@ -2138,6 +2429,9 @@ By
 
 <a id="components:camera-rear:name:ru"></a>
 ### components:camera-rear:name:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : components
@@ -2161,6 +2455,9 @@ By
 <a id="components:display-panel:name:ru"></a>
 ### components:display-panel:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : components
 
@@ -2182,6 +2479,9 @@ By
 
 <a id="components:touchscreen:name:ru"></a>
 ### components:touchscreen:name:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : components
@@ -2205,6 +2505,9 @@ By
 <a id="components:haptics:name:ru"></a>
 ### components:haptics:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : components
 
@@ -2226,6 +2529,9 @@ By
 
 <a id="components:modem-data:name:ru"></a>
 ### components:modem-data:name:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : components
@@ -2249,6 +2555,9 @@ By
 <a id="components:modem-calls:name:ru"></a>
 ### components:modem-calls:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : components
 
@@ -2270,6 +2579,9 @@ By
 
 <a id="components:modem-sms:name:ru"></a>
 ### components:modem-sms:name:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : components
@@ -2293,6 +2605,9 @@ By
 <a id="components:wifi:name:ru"></a>
 ### components:wifi:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : components
 
@@ -2314,6 +2629,9 @@ By
 
 <a id="components:bluetooth:name:ru"></a>
 ### components:bluetooth:name:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : components
@@ -2337,6 +2655,9 @@ By
 <a id="components:nfc:name:ru"></a>
 ### components:nfc:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : components
 
@@ -2358,6 +2679,9 @@ By
 
 <a id="components:fingerprint:name:ru"></a>
 ### components:fingerprint:name:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : components
@@ -2381,6 +2705,9 @@ By
 <a id="components:sensors:name:ru"></a>
 ### components:sensors:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : components
 
@@ -2402,6 +2729,9 @@ By
 
 <a id="components:usb-otg:name:ru"></a>
 ### components:usb-otg:name:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : components
@@ -2425,6 +2755,9 @@ By
 <a id="components:fastboot:name:ru"></a>
 ### components:fastboot:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : components
 
@@ -2446,6 +2779,9 @@ By
 
 <a id="components:kernel:name:ru"></a>
 ### components:kernel:name:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : components
@@ -2469,6 +2805,9 @@ By
 <a id="milestones:lp-calls-and-messages:title:ru"></a>
 ### milestones:lp-calls-and-messages:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -2490,6 +2829,9 @@ By
 
 <a id="milestones:lp-calls-and-messages:why:ru"></a>
 ### milestones:lp-calls-and-messages:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -2513,6 +2855,9 @@ By
 <a id="milestones:lp-connected:title:ru"></a>
 ### milestones:lp-connected:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -2534,6 +2879,9 @@ By
 
 <a id="milestones:lp-connected:why:ru"></a>
 ### milestones:lp-connected:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -2557,6 +2905,9 @@ By
 <a id="milestones:lp-daily-basics:title:ru"></a>
 ### milestones:lp-daily-basics:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -2578,6 +2929,9 @@ By
 
 <a id="milestones:lp-daily-basics:why:ru"></a>
 ### milestones:lp-daily-basics:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -2601,6 +2955,9 @@ By
 <a id="milestones:lp-everything:title:ru"></a>
 ### milestones:lp-everything:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -2622,6 +2979,9 @@ By
 
 <a id="milestones:lp-everything:why:ru"></a>
 ### milestones:lp-everything:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -2645,6 +3005,9 @@ By
 <a id="milestones:lp-apps-and-services:title:ru"></a>
 ### milestones:lp-apps-and-services:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -2666,6 +3029,9 @@ By
 
 <a id="milestones:lp-apps-and-services:why:ru"></a>
 ### milestones:lp-apps-and-services:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -2689,6 +3055,9 @@ By
 <a id="milestones:lp-secure-updated:title:ru"></a>
 ### milestones:lp-secure-updated:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -2710,6 +3079,9 @@ By
 
 <a id="milestones:lp-secure-updated:why:ru"></a>
 ### milestones:lp-secure-updated:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -2733,6 +3105,9 @@ By
 <a id="milestones:lp-tested-daily:title:ru"></a>
 ### milestones:lp-tested-daily:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -2754,6 +3129,9 @@ By
 
 <a id="milestones:lp-tested-daily:why:ru"></a>
 ### milestones:lp-tested-daily:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -2777,6 +3155,9 @@ By
 <a id="milestones:lp-upstream:title:ru"></a>
 ### milestones:lp-upstream:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -2798,6 +3179,9 @@ By
 
 <a id="milestones:lp-upstream:why:ru"></a>
 ### milestones:lp-upstream:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -2821,6 +3205,9 @@ By
 <a id="milestones:surya-boots:title:ru"></a>
 ### milestones:surya-boots:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -2842,6 +3229,9 @@ By
 
 <a id="milestones:surya-boots:why:ru"></a>
 ### milestones:surya-boots:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -2865,6 +3255,9 @@ By
 <a id="milestones:surya-sound:title:ru"></a>
 ### milestones:surya-sound:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -2886,6 +3279,9 @@ By
 
 <a id="milestones:surya-sound:why:ru"></a>
 ### milestones:surya-sound:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -2909,6 +3305,9 @@ By
 <a id="milestones:surya-phone:title:ru"></a>
 ### milestones:surya-phone:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -2930,6 +3329,9 @@ By
 
 <a id="milestones:surya-phone:why:ru"></a>
 ### milestones:surya-phone:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -2953,6 +3355,9 @@ By
 <a id="milestones:surya-every-part:title:ru"></a>
 ### milestones:surya-every-part:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -2974,6 +3379,9 @@ By
 
 <a id="milestones:surya-every-part:why:ru"></a>
 ### milestones:surya-every-part:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -2997,6 +3405,9 @@ By
 <a id="milestones:surya-tested:title:ru"></a>
 ### milestones:surya-tested:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -3018,6 +3429,9 @@ By
 
 <a id="milestones:surya-tested:why:ru"></a>
 ### milestones:surya-tested:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -3041,6 +3455,9 @@ By
 <a id="milestones:surya-upstream:title:ru"></a>
 ### milestones:surya-upstream:title:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : milestones
 
@@ -3062,6 +3479,9 @@ By
 
 <a id="milestones:surya-upstream:why:ru"></a>
 ### milestones:surya-upstream:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : milestones
@@ -3085,6 +3505,9 @@ By
 <a id="platforms:linux-best:name:ru"></a>
 ### platforms:linux-best:name:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : platforms
 
@@ -3107,6 +3530,9 @@ By
 <a id="idea:02-problem:heading:ru"></a>
 ### idea:02-problem:heading:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : idea
 
@@ -3128,6 +3554,9 @@ By
 
 <a id="idea:03-idea:text:ru"></a>
 ### idea:03-idea:text:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : idea
@@ -3155,6 +3584,9 @@ By
 <a id="idea:05-idea:text:ru"></a>
 ### idea:05-idea:text:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : idea
 
@@ -3176,6 +3608,9 @@ By
 
 <a id="idea:07-start:heading:ru"></a>
 ### idea:07-start:heading:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : idea
@@ -3199,6 +3634,9 @@ By
 <a id="idea:01-lead:text:ru"></a>
 ### idea:01-lead:text:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : idea
 
@@ -3220,6 +3658,9 @@ By
 
 <a id="idea:05-idea:heading:ru"></a>
 ### idea:05-idea:heading:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : idea
@@ -3243,6 +3684,9 @@ By
 <a id="idea:03-idea:heading:ru"></a>
 ### idea:03-idea:heading:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : idea
 
@@ -3264,6 +3708,9 @@ By
 
 <a id="idea:04-picture:heading:ru"></a>
 ### idea:04-picture:heading:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : idea
@@ -3287,6 +3734,9 @@ By
 <a id="idea:06-limit:heading:ru"></a>
 ### idea:06-limit:heading:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : idea
 
@@ -3308,6 +3758,9 @@ By
 
 <a id="idea:04-picture:text:ru"></a>
 ### idea:04-picture:text:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : idea
@@ -3331,6 +3784,9 @@ By
 <a id="idea:06-limit:text:ru"></a>
 ### idea:06-limit:text:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : idea
 
@@ -3353,6 +3809,9 @@ By
 <a id="idea:07-start:text:ru"></a>
 ### idea:07-start:text:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : idea
 
@@ -3374,6 +3833,9 @@ By
 
 <a id="idea:02-problem:text:ru"></a>
 ### idea:02-problem:text:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : idea
@@ -3399,6 +3861,9 @@ By
 <a id="workings:w-manifest-fixes:how:ru"></a>
 ### workings:w-manifest-fixes:how:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3420,6 +3885,9 @@ By
 
 <a id="workings:w-parts-table:why:ru"></a>
 ### workings:w-parts-table:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : workings
@@ -3443,6 +3911,9 @@ By
 <a id="workings:w-upstream-surya:what:ru"></a>
 ### workings:w-upstream-surya:what:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3464,6 +3935,9 @@ By
 
 <a id="workings:w-upstream-queue:what:ru"></a>
 ### workings:w-upstream-queue:what:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : workings
@@ -3487,6 +3961,9 @@ By
 <a id="workings:w-health:how:ru"></a>
 ### workings:w-health:how:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3508,6 +3985,9 @@ By
 
 <a id="workings:w-parts-table:what:ru"></a>
 ### workings:w-parts-table:what:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : workings
@@ -3531,6 +4011,9 @@ By
 <a id="workings:w-watch-surya:how:ru"></a>
 ### workings:w-watch-surya:how:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3552,6 +4035,9 @@ By
 
 <a id="workings:w-upstream-surya:how:ru"></a>
 ### workings:w-upstream-surya:how:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : workings
@@ -3575,6 +4061,9 @@ By
 <a id="workings:w-feature-table:how:ru"></a>
 ### workings:w-feature-table:how:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3596,6 +4085,9 @@ By
 
 <a id="workings:w-hear:how:ru"></a>
 ### workings:w-hear:how:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : workings
@@ -3619,6 +4111,9 @@ By
 <a id="workings:w-modem-checks:how:ru"></a>
 ### workings:w-modem-checks:how:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3640,6 +4135,9 @@ By
 
 <a id="workings:w-watch:how:ru"></a>
 ### workings:w-watch:how:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : workings
@@ -3663,6 +4161,9 @@ By
 <a id="workings:w-flash:how:ru"></a>
 ### workings:w-flash:how:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3684,6 +4185,9 @@ By
 
 <a id="workings:w-health:why:ru"></a>
 ### workings:w-health:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : workings
@@ -3707,6 +4211,9 @@ By
 <a id="workings:w-manifest-fixes:what:ru"></a>
 ### workings:w-manifest-fixes:what:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3728,6 +4235,9 @@ By
 
 <a id="workings:w-modem-checks:why:ru"></a>
 ### workings:w-modem-checks:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : workings
@@ -3751,6 +4261,9 @@ By
 <a id="workings:w-upstream-queue:why:ru"></a>
 ### workings:w-upstream-queue:why:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3772,6 +4285,9 @@ By
 
 <a id="workings:w-manifest-fixes:why:ru"></a>
 ### workings:w-manifest-fixes:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : workings
@@ -3795,6 +4311,9 @@ By
 <a id="workings:w-upstream-surya:why:ru"></a>
 ### workings:w-upstream-surya:why:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3816,6 +4335,9 @@ By
 
 <a id="workings:w-feature-table:what:ru"></a>
 ### workings:w-feature-table:what:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : workings
@@ -3839,6 +4361,9 @@ By
 <a id="workings:w-feature-table:why:ru"></a>
 ### workings:w-feature-table:why:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3860,6 +4385,9 @@ By
 
 <a id="workings:w-modem-checks:what:ru"></a>
 ### workings:w-modem-checks:what:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : workings
@@ -3883,6 +4411,9 @@ By
 <a id="workings:w-watch:why:ru"></a>
 ### workings:w-watch:why:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3904,6 +4435,9 @@ By
 
 <a id="workings:w-upstream-queue:how:ru"></a>
 ### workings:w-upstream-queue:how:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : workings
@@ -3927,6 +4461,9 @@ By
 <a id="workings:w-hear:why:ru"></a>
 ### workings:w-hear:why:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3948,6 +4485,9 @@ By
 
 <a id="workings:w-watch-surya:why:ru"></a>
 ### workings:w-watch-surya:why:ru
+
+Project
+: linux-phone-oco/docs
 
 Table
 : workings
@@ -3971,6 +4511,9 @@ By
 <a id="workings:w-flash:why:ru"></a>
 ### workings:w-flash:why:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -3993,6 +4536,9 @@ By
 <a id="workings:w-parts-table:how:ru"></a>
 ### workings:w-parts-table:how:ru
 
+Project
+: linux-phone-oco/docs
+
 Table
 : workings
 
@@ -4007,6 +4553,560 @@ Lang
 
 Text
 : Каждая часть телефона с её состоянием — по проверкам и записям о работе.
+
+By
+: machine
+
+
+<a id="idea:01-lead:text:ru"></a>
+### idea:01-lead:text:ru
+
+Project
+: linux-phone-oco/lab-tools
+
+Table
+: idea
+
+Row
+: 01-lead
+
+Column
+: text
+
+Lang
+: ru
+
+Text
+: Работать с внутренностями телефона — как чинить часы, которые нельзя открыть: каждый шаг медленный, а одна оплошность оставляет их мёртвыми на столе.
+
+By
+: machine
+
+
+<a id="idea:02-problem:heading:ru"></a>
+### idea:02-problem:heading:ru
+
+Project
+: linux-phone-oco/lab-tools
+
+Table
+: idea
+
+Row
+: 02-problem
+
+Column
+: heading
+
+Lang
+: ru
+
+Text
+: Каждый телефон — та же боль заново
+
+By
+: machine
+
+
+<a id="idea:02-problem:text:ru"></a>
+### idea:02-problem:text:ru
+
+Project
+: linux-phone-oco/lab-tools
+
+Table
+: idea
+
+Row
+: 02-problem
+
+Column
+: text
+
+Lang
+: ru
+
+Text
+: Те, кто переносит Linux на телефоны, держат каждый свои скрипты, свои заметки, свои суеверия. То, что один узнал о том, как не погубить устройство, следующий узнаёт заново — на своём.
+
+By
+: machine
+
+
+<a id="idea:03-idea:heading:ru"></a>
+### idea:03-idea:heading:ru
+
+Project
+: linux-phone-oco/lab-tools
+
+Table
+: idea
+
+Row
+: 03-idea
+
+Column
+: heading
+
+Lang
+: ru
+
+Text
+: Одна лаборатория для любого телефона
+
+By
+: machine
+
+
+<a id="idea:03-idea:text:ru"></a>
+### idea:03-idea:text:ru
+
+Project
+: linux-phone-oco/lab-tools
+
+Table
+: idea
+
+Row
+: 03-idea
+
+Column
+: text
+
+Lang
+: ru
+
+Text
+: devlab — это набор инструментов лаборатории. Он добирается до телефона любым доступным путём, прошивает его до известного состояния, настраивает свежий, проверяет после каждого запуска, слушает его динамики и пробует рискованное изменение один раз — так, что оно само откатывается.
+
+То, чем телефоны отличаются, записано на одном листе — в манифесте устройства. Инструменты остаются теми же.
+
+By
+: machine
+
+
+<a id="idea:04-picture:heading:ru"></a>
+### idea:04-picture:heading:ru
+
+Project
+: linux-phone-oco/lab-tools
+
+Table
+: idea
+
+Row
+: 04-picture
+
+Column
+: heading
+
+Lang
+: ru
+
+Text
+: Чек-лист пилота
+
+By
+: machine
+
+
+<a id="idea:04-picture:text:ru"></a>
+### idea:04-picture:text:ru
+
+Project
+: linux-phone-oco/lab-tools
+
+Table
+: idea
+
+Row
+: 04-picture
+
+Column
+: text
+
+Lang
+: ru
+
+Text
+: Не потому, что пилоты забывчивы. А потому, что цена одного пропущенного шага слишком высока, чтобы доверять её памяти.
+
+By
+: machine
+
+
+<a id="idea:05-limit:heading:ru"></a>
+### idea:05-limit:heading:ru
+
+Project
+: linux-phone-oco/lab-tools
+
+Table
+: idea
+
+Row
+: 05-limit
+
+Column
+: heading
+
+Lang
+: ru
+
+Text
+: Чего он ещё не достиг
+
+By
+: machine
+
+
+<a id="idea:05-limit:text:ru"></a>
+### idea:05-limit:text:ru
+
+Project
+: linux-phone-oco/lab-tools
+
+Table
+: idea
+
+Row
+: 05-limit
+
+Column
+: text
+
+Lang
+: ru
+
+Text
+: Через него пока прошёл один телефон. Тесты, которым нужна человеческая рука или глаз, ещё не встроены. И работает он с лабораторной машины, а не из кармана.
+
+By
+: machine
+
+
+<a id="idea:06-start:heading:ru"></a>
+### idea:06-start:heading:ru
+
+Project
+: linux-phone-oco/lab-tools
+
+Table
+: idea
+
+Row
+: 06-start
+
+Column
+: heading
+
+Lang
+: ru
+
+Text
+: Где мы сейчас
+
+By
+: machine
+
+
+<a id="idea:06-start:text:ru"></a>
+### idea:06-start:text:ru
+
+Project
+: linux-phone-oco/lab-tools
+
+Table
+: idea
+
+Row
+: 06-start
+
+Column
+: text
+
+Lang
+: ru
+
+Text
+: Сегодня он прошивает, настраивает, проверяет, наблюдает, слушает и пробует тестовые ядра на одном телефоне.
+
+By
+: machine
+
+
+<a id="idea:01-lead:text:ru"></a>
+### idea:01-lead:text:ru
+
+Project
+: linux-phone-oco/surya-lab
+
+Table
+: idea
+
+Row
+: 01-lead
+
+Column
+: text
+
+Lang
+: ru
+
+Text
+: Это один конкретный телефон — Xiaomi POCO X3 NFC, известный под кодовым именем surya, — который лежит на столе и подключён к лабораторной машине, чтобы работу по запуску на нём Linux можно было делать аккуратно, каждый раз одинаково и никогда не оставляя его сломанным.
+
+By
+: machine
+
+
+<a id="idea:02-problem:heading:ru"></a>
+### idea:02-problem:heading:ru
+
+Project
+: linux-phone-oco/surya-lab
+
+Table
+: idea
+
+Row
+: 02-problem
+
+Column
+: heading
+
+Lang
+: ru
+
+Text
+: Телефон легко оставить без признаков жизни
+
+By
+: machine
+
+
+<a id="idea:02-problem:text:ru"></a>
+### idea:02-problem:text:ru
+
+Project
+: linux-phone-oco/surya-lab
+
+Table
+: idea
+
+Row
+: 02-problem
+
+Column
+: text
+
+Lang
+: ru
+
+Text
+: Работаешь с самыми глубокими частями телефона — и один неверный шаг оставляет его тёмным, а рядом нет никого, кто нажал бы кнопки. Поэтому люди работают осторожно и медленно, держат свои исправления в голове и теряют их при следующем чистом запуске.
+
+By
+: machine
+
+
+<a id="idea:03-idea:heading:ru"></a>
+### idea:03-idea:heading:ru
+
+Project
+: linux-phone-oco/surya-lab
+
+Table
+: idea
+
+Row
+: 03-idea
+
+Column
+: heading
+
+Lang
+: ru
+
+Text
+: Всё об этом телефоне, записанное
+
+By
+: machine
+
+
+<a id="idea:03-idea:text:ru"></a>
+### idea:03-idea:text:ru
+
+Project
+: linux-phone-oco/surya-lab
+
+Table
+: idea
+
+Row
+: 03-idea
+
+Column
+: text
+
+Lang
+: ru
+
+Text
+: Лаборатория хранит то, что верно для этого телефона, и ничего больше: как до него добраться, что вшивать в каждый чистый запуск, какие проверки он должен проходить, какие тоны должен услышать от него микрофон. Инструменты одни и те же для любого телефона; это тот единственный лист, который подгоняет их к этому.
+
+Каждый эксперимент — одна попытка, которая сама откатывается назад. Телефон всегда возвращается в состояние, про которое известно, что оно работает.
+
+By
+: machine
+
+
+<a id="idea:04-picture:heading:ru"></a>
+### idea:04-picture:heading:ru
+
+Project
+: linux-phone-oco/surya-lab
+
+Table
+: idea
+
+Row
+: 04-picture
+
+Column
+: heading
+
+Lang
+: ru
+
+Text
+: Карта пациента в изножье кровати
+
+By
+: machine
+
+
+<a id="idea:04-picture:text:ru"></a>
+### idea:04-picture:text:ru
+
+Project
+: linux-phone-oco/surya-lab
+
+Table
+: idea
+
+Row
+: 04-picture
+
+Column
+: text
+
+Lang
+: ru
+
+Text
+: Кто бы ни пришёл следующим — человек или агент, — он читает карту и знает, что было сделано, что держится и чего нельзя трогать без осторожности.
+
+By
+: machine
+
+
+<a id="idea:05-limit:heading:ru"></a>
+### idea:05-limit:heading:ru
+
+Project
+: linux-phone-oco/surya-lab
+
+Table
+: idea
+
+Row
+: 05-limit
+
+Column
+: heading
+
+Lang
+: ru
+
+Text
+: Чего он ещё не достиг
+
+By
+: machine
+
+
+<a id="idea:05-limit:text:ru"></a>
+### idea:05-limit:text:ru
+
+Project
+: linux-phone-oco/surya-lab
+
+Table
+: idea
+
+Row
+: 05-limit
+
+Column
+: text
+
+Lang
+: ru
+
+Text
+: Его микрофон пока не работает, и с него не сделано ни одного звонка. Камеры, сканер отпечатков и NFC ещё не пробовали.
+
+By
+: machine
+
+
+<a id="idea:06-start:heading:ru"></a>
+### idea:06-start:heading:ru
+
+Project
+: linux-phone-oco/surya-lab
+
+Table
+: idea
+
+Row
+: 06-start
+
+Column
+: heading
+
+Lang
+: ru
+
+Text
+: Где мы сейчас
+
+By
+: machine
+
+
+<a id="idea:06-start:text:ru"></a>
+### idea:06-start:text:ru
+
+Project
+: linux-phone-oco/surya-lab
+
+Table
+: idea
+
+Row
+: 06-start
+
+Column
+: text
+
+Lang
+: ru
+
+Text
+: Его можно одной командой прошить до известного состояния. Двадцать две проверки проходят после каждого запуска. Звук идёт из обоих динамиков; чтобы машина надёжно его слышала, нужен микрофон, поставленный рядом.
 
 By
 : machine

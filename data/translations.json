@@ -1,182 +1,204 @@
-{"id":"features:voice-calls:name:ru","table":"features","row":"voice-calls","column":"name","lang":"ru","text":"Голосовые звонки","by":"machine"}
-{"id":"features:voice-calls:category:ru","table":"features","row":"voice-calls","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
-{"id":"features:volte:name:ru","table":"features","row":"volte","column":"name","lang":"ru","text":"VoLTE и звонки по Wi-Fi","by":"machine"}
-{"id":"features:volte:category:ru","table":"features","row":"volte","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
-{"id":"features:sms:name:ru","table":"features","row":"sms","column":"name","lang":"ru","text":"SMS","by":"machine"}
-{"id":"features:sms:category:ru","table":"features","row":"sms","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
-{"id":"features:mms:name:ru","table":"features","row":"mms","column":"name","lang":"ru","text":"MMS","by":"machine"}
-{"id":"features:mms:category:ru","table":"features","row":"mms","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
-{"id":"features:voicemail:name:ru","table":"features","row":"voicemail","column":"name","lang":"ru","text":"Голосовая почта","by":"machine"}
-{"id":"features:voicemail:category:ru","table":"features","row":"voicemail","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
-{"id":"features:emergency-calls:name:ru","table":"features","row":"emergency-calls","column":"name","lang":"ru","text":"Экстренные вызовы","by":"machine"}
-{"id":"features:emergency-calls:category:ru","table":"features","row":"emergency-calls","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
-{"id":"features:esim:name:ru","table":"features","row":"esim","column":"name","lang":"ru","text":"eSIM","by":"machine"}
-{"id":"features:esim:category:ru","table":"features","row":"esim","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
-{"id":"features:mobile-data:name:ru","table":"features","row":"mobile-data","column":"name","lang":"ru","text":"Мобильный интернет","by":"machine"}
-{"id":"features:mobile-data:category:ru","table":"features","row":"mobile-data","column":"category","lang":"ru","text":"связь","by":"machine"}
-{"id":"features:wifi:name:ru","table":"features","row":"wifi","column":"name","lang":"ru","text":"Wi-Fi","by":"machine"}
-{"id":"features:wifi:category:ru","table":"features","row":"wifi","column":"category","lang":"ru","text":"связь","by":"machine"}
-{"id":"features:bluetooth:name:ru","table":"features","row":"bluetooth","column":"name","lang":"ru","text":"Bluetooth","by":"machine"}
-{"id":"features:bluetooth:category:ru","table":"features","row":"bluetooth","column":"category","lang":"ru","text":"связь","by":"machine"}
-{"id":"features:hotspot:name:ru","table":"features","row":"hotspot","column":"name","lang":"ru","text":"Точка доступа","by":"machine"}
-{"id":"features:hotspot:category:ru","table":"features","row":"hotspot","column":"category","lang":"ru","text":"связь","by":"machine"}
-{"id":"features:nfc:name:ru","table":"features","row":"nfc","column":"name","lang":"ru","text":"NFC","by":"machine"}
-{"id":"features:nfc:category:ru","table":"features","row":"nfc","column":"category","lang":"ru","text":"связь","by":"machine"}
-{"id":"features:gps:name:ru","table":"features","row":"gps","column":"name","lang":"ru","text":"GPS и навигация","by":"machine"}
-{"id":"features:gps:category:ru","table":"features","row":"gps","column":"category","lang":"ru","text":"связь","by":"machine"}
-{"id":"features:speaker:name:ru","table":"features","row":"speaker","column":"name","lang":"ru","text":"Динамик","by":"machine"}
-{"id":"features:speaker:category:ru","table":"features","row":"speaker","column":"category","lang":"ru","text":"звук","by":"machine"}
-{"id":"features:earpiece:name:ru","table":"features","row":"earpiece","column":"name","lang":"ru","text":"Разговорный динамик","by":"machine"}
-{"id":"features:earpiece:category:ru","table":"features","row":"earpiece","column":"category","lang":"ru","text":"звук","by":"machine"}
-{"id":"features:headphones:name:ru","table":"features","row":"headphones","column":"name","lang":"ru","text":"Наушники","by":"machine"}
-{"id":"features:headphones:category:ru","table":"features","row":"headphones","column":"category","lang":"ru","text":"звук","by":"machine"}
-{"id":"features:microphone:name:ru","table":"features","row":"microphone","column":"name","lang":"ru","text":"Микрофон","by":"machine"}
-{"id":"features:microphone:category:ru","table":"features","row":"microphone","column":"category","lang":"ru","text":"звук","by":"machine"}
-{"id":"features:bluetooth-audio:name:ru","table":"features","row":"bluetooth-audio","column":"name","lang":"ru","text":"Звук по Bluetooth","by":"machine"}
-{"id":"features:bluetooth-audio:category:ru","table":"features","row":"bluetooth-audio","column":"category","lang":"ru","text":"звук","by":"machine"}
-{"id":"features:photo:name:ru","table":"features","row":"photo","column":"name","lang":"ru","text":"Фото","by":"machine"}
-{"id":"features:photo:category:ru","table":"features","row":"photo","column":"category","lang":"ru","text":"камера","by":"machine"}
-{"id":"features:video-recording:name:ru","table":"features","row":"video-recording","column":"name","lang":"ru","text":"Запись видео","by":"machine"}
-{"id":"features:video-recording:category:ru","table":"features","row":"video-recording","column":"category","lang":"ru","text":"камера","by":"machine"}
-{"id":"features:qr-scan:name:ru","table":"features","row":"qr-scan","column":"name","lang":"ru","text":"Сканирование QR-кодов","by":"machine"}
-{"id":"features:qr-scan:category:ru","table":"features","row":"qr-scan","column":"category","lang":"ru","text":"камера","by":"machine"}
-{"id":"features:touch:name:ru","table":"features","row":"touch","column":"name","lang":"ru","text":"Сенсорный экран","by":"machine"}
-{"id":"features:touch:category:ru","table":"features","row":"touch","column":"category","lang":"ru","text":"экран и ввод","by":"machine"}
-{"id":"features:on-screen-keyboard:name:ru","table":"features","row":"on-screen-keyboard","column":"name","lang":"ru","text":"Экранная клавиатура","by":"machine"}
-{"id":"features:on-screen-keyboard:category:ru","table":"features","row":"on-screen-keyboard","column":"category","lang":"ru","text":"экран и ввод","by":"machine"}
-{"id":"features:auto-rotate:name:ru","table":"features","row":"auto-rotate","column":"name","lang":"ru","text":"Автоповорот","by":"machine"}
-{"id":"features:auto-rotate:category:ru","table":"features","row":"auto-rotate","column":"category","lang":"ru","text":"экран и ввод","by":"machine"}
-{"id":"features:auto-brightness:name:ru","table":"features","row":"auto-brightness","column":"name","lang":"ru","text":"Автояркость","by":"machine"}
-{"id":"features:auto-brightness:category:ru","table":"features","row":"auto-brightness","column":"category","lang":"ru","text":"экран и ввод","by":"machine"}
-{"id":"features:proximity:name:ru","table":"features","row":"proximity","column":"name","lang":"ru","text":"Датчик приближения","by":"machine"}
-{"id":"features:proximity:category:ru","table":"features","row":"proximity","column":"category","lang":"ru","text":"датчики","by":"machine"}
-{"id":"features:fingerprint:name:ru","table":"features","row":"fingerprint","column":"name","lang":"ru","text":"Отпечаток пальца","by":"machine"}
-{"id":"features:fingerprint:category:ru","table":"features","row":"fingerprint","column":"category","lang":"ru","text":"датчики","by":"machine"}
-{"id":"features:deep-sleep:name:ru","table":"features","row":"deep-sleep","column":"name","lang":"ru","text":"Глубокий сон","by":"machine"}
-{"id":"features:deep-sleep:category:ru","table":"features","row":"deep-sleep","column":"category","lang":"ru","text":"питание","by":"machine"}
-{"id":"features:power-discipline:name:ru","table":"features","row":"power-discipline","column":"name","lang":"ru","text":"Бережный расход энергии","by":"machine"}
-{"id":"features:power-discipline:category:ru","table":"features","row":"power-discipline","column":"category","lang":"ru","text":"питание","by":"machine"}
-{"id":"features:all-day-battery:name:ru","table":"features","row":"all-day-battery","column":"name","lang":"ru","text":"Батарея на весь день","by":"machine"}
-{"id":"features:all-day-battery:category:ru","table":"features","row":"all-day-battery","column":"category","lang":"ru","text":"питание","by":"machine"}
-{"id":"features:charging:name:ru","table":"features","row":"charging","column":"name","lang":"ru","text":"Зарядка","by":"machine"}
-{"id":"features:charging:category:ru","table":"features","row":"charging","column":"category","lang":"ru","text":"питание","by":"machine"}
-{"id":"features:encryption:name:ru","table":"features","row":"encryption","column":"name","lang":"ru","text":"Шифрование","by":"machine"}
-{"id":"features:encryption:category:ru","table":"features","row":"encryption","column":"category","lang":"ru","text":"безопасность","by":"machine"}
-{"id":"features:verified-boot:name:ru","table":"features","row":"verified-boot","column":"name","lang":"ru","text":"Проверенная загрузка","by":"machine"}
-{"id":"features:verified-boot:category:ru","table":"features","row":"verified-boot","column":"category","lang":"ru","text":"безопасность","by":"machine"}
-{"id":"features:secure-element:name:ru","table":"features","row":"secure-element","column":"name","lang":"ru","text":"Защищённый элемент","by":"machine"}
-{"id":"features:secure-element:category:ru","table":"features","row":"secure-element","column":"category","lang":"ru","text":"безопасность","by":"machine"}
-{"id":"features:app-sandboxing:name:ru","table":"features","row":"app-sandboxing","column":"name","lang":"ru","text":"Изоляция приложений","by":"machine"}
-{"id":"features:app-sandboxing:category:ru","table":"features","row":"app-sandboxing","column":"category","lang":"ru","text":"безопасность","by":"machine"}
-{"id":"features:ota-updates:name:ru","table":"features","row":"ota-updates","column":"name","lang":"ru","text":"Обновления по воздуху","by":"machine"}
-{"id":"features:ota-updates:category:ru","table":"features","row":"ota-updates","column":"category","lang":"ru","text":"обновления","by":"machine"}
-{"id":"features:rollback:name:ru","table":"features","row":"rollback","column":"name","lang":"ru","text":"Откат обновлений","by":"machine"}
-{"id":"features:rollback:category:ru","table":"features","row":"rollback","column":"category","lang":"ru","text":"обновления","by":"machine"}
-{"id":"features:support-years:name:ru","table":"features","row":"support-years","column":"name","lang":"ru","text":"Годы поддержки","by":"machine"}
-{"id":"features:support-years:category:ru","table":"features","row":"support-years","column":"category","lang":"ru","text":"обновления","by":"machine"}
-{"id":"features:native-apps:name:ru","table":"features","row":"native-apps","column":"name","lang":"ru","text":"Родные приложения","by":"machine"}
-{"id":"features:native-apps:category:ru","table":"features","row":"native-apps","column":"category","lang":"ru","text":"приложения","by":"machine"}
-{"id":"features:android-apps:name:ru","table":"features","row":"android-apps","column":"name","lang":"ru","text":"Приложения Android","by":"machine"}
-{"id":"features:android-apps:category:ru","table":"features","row":"android-apps","column":"category","lang":"ru","text":"приложения","by":"machine"}
-{"id":"features:app-store:name:ru","table":"features","row":"app-store","column":"name","lang":"ru","text":"Магазин приложений","by":"machine"}
-{"id":"features:app-store:category:ru","table":"features","row":"app-store","column":"category","lang":"ru","text":"приложения","by":"machine"}
-{"id":"features:contacts-calendar-sync:name:ru","table":"features","row":"contacts-calendar-sync","column":"name","lang":"ru","text":"Синхронизация контактов и календаря","by":"machine"}
-{"id":"features:contacts-calendar-sync:category:ru","table":"features","row":"contacts-calendar-sync","column":"category","lang":"ru","text":"синхронизация","by":"machine"}
-{"id":"features:backup:name:ru","table":"features","row":"backup","column":"name","lang":"ru","text":"Резервное копирование","by":"machine"}
-{"id":"features:backup:category:ru","table":"features","row":"backup","column":"category","lang":"ru","text":"синхронизация","by":"machine"}
-{"id":"features:push-notifications:name:ru","table":"features","row":"push-notifications","column":"name","lang":"ru","text":"Push-уведомления","by":"machine"}
-{"id":"features:push-notifications:category:ru","table":"features","row":"push-notifications","column":"category","lang":"ru","text":"сервисы","by":"machine"}
-{"id":"features:contactless-payments:name:ru","table":"features","row":"contactless-payments","column":"name","lang":"ru","text":"Бесконтактная оплата","by":"machine"}
-{"id":"features:contactless-payments:category:ru","table":"features","row":"contactless-payments","column":"category","lang":"ru","text":"сервисы","by":"machine"}
-{"id":"features:banking-apps:name:ru","table":"features","row":"banking-apps","column":"name","lang":"ru","text":"Банковские приложения","by":"machine"}
-{"id":"features:banking-apps:category:ru","table":"features","row":"banking-apps","column":"category","lang":"ru","text":"сервисы","by":"machine"}
-{"id":"components:audio-speaker:name:ru","table":"components","row":"audio-speaker","column":"name","lang":"ru","text":"Динамик","by":"machine"}
-{"id":"components:audio-headphone:name:ru","table":"components","row":"audio-headphone","column":"name","lang":"ru","text":"Выход на наушники (3,5 мм)","by":"machine"}
-{"id":"components:audio-mic:name:ru","table":"components","row":"audio-mic","column":"name","lang":"ru","text":"Микрофон","by":"machine"}
-{"id":"components:audio-earpiece:name:ru","table":"components","row":"audio-earpiece","column":"name","lang":"ru","text":"Разговорный динамик","by":"machine"}
-{"id":"components:camera-front:name:ru","table":"components","row":"camera-front","column":"name","lang":"ru","text":"Фронтальная камера","by":"machine"}
-{"id":"components:camera-rear:name:ru","table":"components","row":"camera-rear","column":"name","lang":"ru","text":"Основная камера","by":"machine"}
-{"id":"components:display-panel:name:ru","table":"components","row":"display-panel","column":"name","lang":"ru","text":"Экран","by":"machine"}
-{"id":"components:touchscreen:name:ru","table":"components","row":"touchscreen","column":"name","lang":"ru","text":"Сенсор экрана","by":"machine"}
-{"id":"components:haptics:name:ru","table":"components","row":"haptics","column":"name","lang":"ru","text":"Вибрация","by":"machine"}
-{"id":"components:modem-data:name:ru","table":"components","row":"modem-data","column":"name","lang":"ru","text":"Модем: передача данных","by":"machine"}
-{"id":"components:modem-calls:name:ru","table":"components","row":"modem-calls","column":"name","lang":"ru","text":"Модем: звонки","by":"machine"}
-{"id":"components:modem-sms:name:ru","table":"components","row":"modem-sms","column":"name","lang":"ru","text":"Модем: SMS","by":"machine"}
-{"id":"components:wifi:name:ru","table":"components","row":"wifi","column":"name","lang":"ru","text":"Wi-Fi","by":"machine"}
-{"id":"components:bluetooth:name:ru","table":"components","row":"bluetooth","column":"name","lang":"ru","text":"Bluetooth","by":"machine"}
-{"id":"components:nfc:name:ru","table":"components","row":"nfc","column":"name","lang":"ru","text":"NFC","by":"machine"}
-{"id":"components:fingerprint:name:ru","table":"components","row":"fingerprint","column":"name","lang":"ru","text":"Сканер отпечатков","by":"machine"}
-{"id":"components:sensors:name:ru","table":"components","row":"sensors","column":"name","lang":"ru","text":"Датчики","by":"machine"}
-{"id":"components:usb-otg:name:ru","table":"components","row":"usb-otg","column":"name","lang":"ru","text":"USB OTG","by":"machine"}
-{"id":"components:fastboot:name:ru","table":"components","row":"fastboot","column":"name","lang":"ru","text":"Fastboot","by":"machine"}
-{"id":"components:kernel:name:ru","table":"components","row":"kernel","column":"name","lang":"ru","text":"Ядро","by":"machine"}
-{"id":"milestones:lp-calls-and-messages:title:ru","table":"milestones","row":"lp-calls-and-messages","column":"title","lang":"ru","text":"Звонки и сообщения","by":"machine"}
-{"id":"milestones:lp-calls-and-messages:why:ru","table":"milestones","row":"lp-calls-and-messages","column":"why","lang":"ru","text":"Первое, для чего нужен телефон.","by":"machine"}
-{"id":"milestones:lp-connected:title:ru","table":"milestones","row":"lp-connected","column":"title","lang":"ru","text":"На связи: интернет, Wi-Fi, Bluetooth, GPS","by":"machine"}
-{"id":"milestones:lp-connected:why:ru","table":"milestones","row":"lp-connected","column":"why","lang":"ru","text":"Телефон без связи — не телефон.","by":"machine"}
-{"id":"milestones:lp-daily-basics:title:ru","table":"milestones","row":"lp-daily-basics","column":"title","lang":"ru","text":"Повседневное","by":"machine"}
-{"id":"milestones:lp-daily-basics:why:ru","table":"milestones","row":"lp-daily-basics","column":"why","lang":"ru","text":"Звук, камера, экран, на котором удобно печатать, и день без зарядки: тогда он может быть единственным телефоном.","by":"machine"}
-{"id":"milestones:lp-everything:title:ru","table":"milestones","row":"lp-everything","column":"title","lang":"ru","text":"Всё, что умеет телефон","by":"machine"}
-{"id":"milestones:lp-everything:why:ru","table":"milestones","row":"lp-everything","column":"why","lang":"ru","text":"Каждая функция из списка — работает.","by":"machine"}
-{"id":"milestones:lp-apps-and-services:title:ru","table":"milestones","row":"lp-apps-and-services","column":"title","lang":"ru","text":"Приложения и сервисы не хуже, чем на Android","by":"machine"}
-{"id":"milestones:lp-apps-and-services:why:ru","table":"milestones","row":"lp-apps-and-services","column":"why","lang":"ru","text":"То, в чём люди на самом деле живут.","by":"machine"}
-{"id":"milestones:lp-secure-updated:title:ru","table":"milestones","row":"lp-secure-updated","column":"title","lang":"ru","text":"Защищён и обновляется","by":"machine"}
-{"id":"milestones:lp-secure-updated:why:ru","table":"milestones","row":"lp-secure-updated","column":"why","lang":"ru","text":"Совершенство, которое держится.","by":"machine"}
-{"id":"milestones:lp-tested-daily:title:ru","table":"milestones","row":"lp-tested-daily","column":"title","lang":"ru","text":"Проверяется на настоящих устройствах","by":"machine"}
-{"id":"milestones:lp-tested-daily:why:ru","table":"milestones","row":"lp-tested-daily","column":"why","lang":"ru","text":"Каждый день, на самих телефонах.","by":"machine"}
-{"id":"milestones:lp-upstream:title:ru","table":"milestones","row":"lp-upstream","column":"title","lang":"ru","text":"Исправления — в апстриме","by":"machine"}
-{"id":"milestones:lp-upstream:why:ru","table":"milestones","row":"lp-upstream","column":"why","lang":"ru","text":"Исправлениям место там, где их получат все.","by":"machine"}
-{"id":"milestones:surya-boots:title:ru","table":"milestones","row":"surya-boots","column":"title","lang":"ru","text":"Загружается, показывает, реагирует, подключается","by":"machine"}
-{"id":"milestones:surya-boots:why:ru","table":"milestones","row":"surya-boots","column":"why","lang":"ru","text":"Основа, на которой стоит всё остальное.","by":"machine"}
-{"id":"milestones:surya-sound:title:ru","table":"milestones","row":"surya-sound","column":"title","lang":"ru","text":"Звук","by":"machine"}
-{"id":"milestones:surya-sound:why:ru","table":"milestones","row":"surya-sound","column":"why","lang":"ru","text":"Динамики, разговорный динамик, микрофон, наушники.","by":"machine"}
-{"id":"milestones:surya-phone:title:ru","table":"milestones","row":"surya-phone","column":"title","lang":"ru","text":"Настоящий телефон: звонки, сообщения, интернет","by":"machine"}
-{"id":"milestones:surya-phone:why:ru","table":"milestones","row":"surya-phone","column":"why","lang":"ru","text":"Тогда им можно пользоваться как телефоном.","by":"machine"}
-{"id":"milestones:surya-every-part:title:ru","table":"milestones","row":"surya-every-part","column":"title","lang":"ru","text":"Работает каждая деталь","by":"machine"}
-{"id":"milestones:surya-every-part:why:ru","table":"milestones","row":"surya-every-part","column":"why","lang":"ru","text":"Камеры, отпечаток, датчики, NFC — всё.","by":"machine"}
-{"id":"milestones:surya-tested:title:ru","table":"milestones","row":"surya-tested","column":"title","lang":"ru","text":"Проверяется каждый день","by":"machine"}
-{"id":"milestones:surya-tested:why:ru","table":"milestones","row":"surya-tested","column":"why","lang":"ru","text":"Наблюдение за здоровьем и прогоны тестов — зелёные.","by":"machine"}
-{"id":"milestones:surya-upstream:title:ru","table":"milestones","row":"surya-upstream","column":"title","lang":"ru","text":"Его исправления — в апстриме","by":"machine"}
-{"id":"milestones:surya-upstream:why:ru","table":"milestones","row":"surya-upstream","column":"why","lang":"ru","text":"Чтобы их получил каждый телефон на SM7150.","by":"machine"}
-{"id":"platforms:linux-best:name:ru","table":"platforms","row":"linux-best","column":"name","lang":"ru","text":"Linux-телефоны (лучшее на сегодня)","by":"machine"}
-{"id":"idea:02-problem:heading:ru","table":"idea","row":"02-problem","column":"heading","lang":"ru","text":"Две двери, обе заперты","by":"machine"}
-{"id":"idea:03-idea:text:ru","table":"idea","row":"03-idea","column":"text","lang":"ru","text":"Две вещи, вместе.\n\n**Конвейер.** Лаборатория инструментов и записанных процедур, чтобы перенос Linux на телефон был одними и теми же известными шагами каждый раз: прошить, проверить, послушать, исправить то, что не работает, отправить исправление туда, где его получат все, — силами человека или агента, и никогда не оставляя телефон сломанным.\n\n**Честная картина.** Всё, что должен уметь телефон, напротив каждой системы, которая могла бы это делать: что работает, что работает наполовину, чего нет — и, прямо показано, что ещё никто не измерил.","by":"machine"}
-{"id":"idea:05-idea:text:ru","table":"idea","row":"05-idea","column":"text","lang":"ru","text":"Цель проста: телефон на Linux, которым обычный человек мог бы пользоваться как единственным и не чувствовать, что от чего-то отказался. Мы считаем путь к ней по одной возможности за раз, и возможность засчитывается, только когда что-то показало, что она работает.","by":"machine"}
-{"id":"idea:07-start:heading:ru","table":"idea","row":"07-start","column":"heading","lang":"ru","text":"Где мы сейчас","by":"machine"}
-{"id":"idea:01-lead:text:ru","table":"idea","row":"01-lead","column":"text","lang":"ru","text":"Ваш телефон — самый личный компьютер из всех, что у вас есть, и тот, которым вы управляете меньше всего. Вы не видите, что на нём работает. Вы не можете это изменить. А когда производитель перестаёт присылать обновления — обычно через несколько лет, — исправная машина превращается в риск, который вы носите в кармане.","by":"machine"}
-{"id":"idea:05-idea:heading:ru","table":"idea","row":"05-idea","column":"heading","lang":"ru","text":"Не хуже Android — и посчитано","by":"machine"}
-{"id":"idea:03-idea:heading:ru","table":"idea","row":"03-idea","column":"heading","lang":"ru","text":"Сделать работу обычной, а правду — видимой","by":"machine"}
-{"id":"idea:04-picture:heading:ru","table":"idea","row":"04-picture","column":"heading","lang":"ru","text":"Мастерская, а не чудо","by":"machine"}
-{"id":"idea:06-limit:heading:ru","table":"idea","row":"06-limit","column":"heading","lang":"ru","text":"Что всё ещё трудно","by":"machine"}
-{"id":"idea:04-picture:text:ru","table":"idea","row":"04-picture","column":"text","lang":"ru","text":"Один блестящий механик может починить одну машину. Мастерская с нужными подъёмниками, приборами и записанными процедурами починит любую — и следующий механик начнёт там, где остановился предыдущий.","by":"machine"}
-{"id":"idea:06-limit:text:ru","table":"idea","row":"06-limit","column":"text","lang":"ru","text":"Некоторые части телефона производители держат закрытыми — модем, камеру, защищённый чип, — и работать с ними можно только снаружи. Банки и платежи зависят от решений, которые принимаем не мы. В лаборатории пока один телефон. А для телефонов на Linux в целом большая часть картины всё ещё гласит: пока неизвестно.","by":"machine"}
-{"id":"idea:07-start:text:ru","table":"idea","row":"07-start","column":"text","lang":"ru","text":"В лаборатории стоит один телефон, Xiaomi POCO X3 NFC. Его можно одной командой прошить до известного состояния, и он проверяется после каждого запуска. Звук идёт из обоих динамиков. Микрофон и звонки ещё впереди. В картине сорок шесть вещей, которые делает телефон, и семь систем.","by":"machine"}
-{"id":"idea:02-problem:text:ru","table":"idea","row":"02-problem","column":"text","lang":"ru","text":"Почти каждый телефон в мире работает на одной из двух систем, и каждая принадлежит одной компании. Железо под ними могло бы работать на чём-то другом: на Linux — свободной системе, на которой уже держится большинство серверов мира.\n\nНо телефон на Linux сегодня редко может быть единственным телефоном человека. Звонок обрывается, камера остаётся тёмной, батареи не хватает на день. И каждая модель требует своей терпеливой работы, которую делает горстка добровольцев, по большей части начиная с нуля для каждого устройства.","by":"machine"}
-{"id":"workings:w-manifest-fixes:how:ru","table":"workings","row":"w-manifest-fixes","column":"how","lang":"ru","text":"Стереопрофиль, исправленный драйвер усилителя и две замаскированные службы — записаны один раз и вшиваются в каждую прошивку.","by":"machine"}
-{"id":"workings:w-parts-table:why:ru","table":"workings","row":"w-parts-table","column":"why","lang":"ru","text":"Чтобы оставшееся было списком, а не догадкой.","by":"machine"}
-{"id":"workings:w-upstream-surya:what:ru","table":"workings","row":"w-upstream-surya","column":"what","lang":"ru","text":"Очередь в апстрим","by":"machine"}
-{"id":"workings:w-upstream-queue:what:ru","table":"workings","row":"w-upstream-queue","column":"what","lang":"ru","text":"Очередь в апстрим","by":"machine"}
-{"id":"workings:w-health:how:ru","table":"workings","row":"w-health","column":"how","lang":"ru","text":"Проверки на самом телефоне — звуковая карта, усилители, модем, Wi-Fi, накопитель — в сравнении со всем, что проходило раньше.","by":"machine"}
-{"id":"workings:w-parts-table:what:ru","table":"workings","row":"w-parts-table","column":"what","lang":"ru","text":"Таблица частей","by":"machine"}
-{"id":"workings:w-watch-surya:how:ru","table":"workings","row":"w-watch-surya","column":"how","lang":"ru","text":"Проверки после каждого запуска, сами, с записью.","by":"machine"}
-{"id":"workings:w-upstream-surya:how:ru","table":"workings","row":"w-upstream-surya","column":"how","lang":"ru","text":"Исправления усилителя и профиль Sxmo подготовлены патчами с названными мейнтейнерами.","by":"machine"}
-{"id":"workings:w-feature-table:how:ru","table":"workings","row":"w-feature-table","column":"how","lang":"ru","text":"Всё, что делает телефон, напротив каждой системы; у каждой записи — источник и день проверки.","by":"machine"}
-{"id":"workings:w-hear:how:ru","table":"workings","row":"w-hear","column":"how","lang":"ru","text":"Проигрывает тон на каждом динамике и слышит его через микрофон в лаборатории, сравнивая с тишиной комнаты. Ждёт микрофона, поставленного рядом: первые результаты, с микрофона, который двигался, отозваны.","by":"machine"}
-{"id":"workings:w-modem-checks:how:ru","table":"workings","row":"w-modem-checks","column":"how","lang":"ru","text":"Виден ли модем и готов ли он к звонкам, сообщениям и данным — но ещё не то, проходит ли звонок.","by":"machine"}
-{"id":"workings:w-watch:how:ru","table":"workings","row":"w-watch","column":"how","lang":"ru","text":"После каждого запуска телефона его проверки идут сами, результаты записываются; ухудшение ставит задачу на доску.","by":"machine"}
-{"id":"workings:w-flash:how:ru","table":"workings","row":"w-flash","column":"how","lang":"ru","text":"Записывает чистый образ с вшитыми известными исправлениями устройства и сначала сверяет отпечаток его дерева устройств.","by":"machine"}
-{"id":"workings:w-health:why:ru","table":"workings","row":"w-health","column":"why","lang":"ru","text":"Телефон — эталон: он не должен незаметно становиться хуже.","by":"machine"}
-{"id":"workings:w-manifest-fixes:what:ru","table":"workings","row":"w-manifest-fixes","column":"what","lang":"ru","text":"Манифест устройства","by":"machine"}
-{"id":"workings:w-modem-checks:why:ru","table":"workings","row":"w-modem-checks","column":"why","lang":"ru","text":"«Виден» — не то же, что «работает»; это лишь первая ступень.","by":"machine"}
-{"id":"workings:w-upstream-queue:why:ru","table":"workings","row":"w-upstream-queue","column":"why","lang":"ru","text":"Исправление, оставленное у себя, помогает одному телефону; отправленное в апстрим — каждому такому.","by":"machine"}
-{"id":"workings:w-manifest-fixes:why:ru","table":"workings","row":"w-manifest-fixes","column":"why","lang":"ru","text":"Исправление, сделанное руками, теряется при следующей прошивке.","by":"machine"}
-{"id":"workings:w-upstream-surya:why:ru","table":"workings","row":"w-upstream-surya","column":"why","lang":"ru","text":"Чтобы их получил каждый телефон на этом чипе.","by":"machine"}
-{"id":"workings:w-feature-table:what:ru","table":"workings","row":"w-feature-table","column":"what","lang":"ru","text":"Таблица возможностей","by":"machine"}
-{"id":"workings:w-feature-table:why:ru","table":"workings","row":"w-feature-table","column":"why","lang":"ru","text":"Чтобы «не хуже Android» было счётом, а не ощущением.","by":"machine"}
-{"id":"workings:w-modem-checks:what:ru","table":"workings","row":"w-modem-checks","column":"what","lang":"ru","text":"Проверки модема","by":"machine"}
-{"id":"workings:w-watch:why:ru","table":"workings","row":"w-watch","column":"why","lang":"ru","text":"Телефон, за которым никто не следит, уходит от рабочего состояния.","by":"machine"}
-{"id":"workings:w-upstream-queue:how:ru","table":"workings","row":"w-upstream-queue","column":"how","lang":"ru","text":"Каждое исправление готовится патчем для проекта, которому оно принадлежит, с названными мейнтейнерами — и отправляется от имени автора.","by":"machine"}
-{"id":"workings:w-hear:why:ru","table":"workings","row":"w-hear","column":"why","lang":"ru","text":"Загрузившийся драйвер ничего не говорит о звуке. Его должна услышать машина.","by":"machine"}
-{"id":"workings:w-watch-surya:why:ru","table":"workings","row":"w-watch-surya","column":"why","lang":"ru","text":"Проверено однажды — не проверено.","by":"machine"}
-{"id":"workings:w-flash:why:ru","table":"workings","row":"w-flash","column":"why","lang":"ru","text":"Любая прошивка даёт один и тот же известный телефон — выучено на горьком опыте.","by":"machine"}
-{"id":"workings:w-parts-table:how:ru","table":"workings","row":"w-parts-table","column":"how","lang":"ru","text":"Каждая часть телефона с её состоянием — по проверкам и записям о работе.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:voice-calls:name:ru","table":"features","row":"voice-calls","column":"name","lang":"ru","text":"Голосовые звонки","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:voice-calls:category:ru","table":"features","row":"voice-calls","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:volte:name:ru","table":"features","row":"volte","column":"name","lang":"ru","text":"VoLTE и звонки по Wi-Fi","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:volte:category:ru","table":"features","row":"volte","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:sms:name:ru","table":"features","row":"sms","column":"name","lang":"ru","text":"SMS","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:sms:category:ru","table":"features","row":"sms","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:mms:name:ru","table":"features","row":"mms","column":"name","lang":"ru","text":"MMS","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:mms:category:ru","table":"features","row":"mms","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:voicemail:name:ru","table":"features","row":"voicemail","column":"name","lang":"ru","text":"Голосовая почта","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:voicemail:category:ru","table":"features","row":"voicemail","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:emergency-calls:name:ru","table":"features","row":"emergency-calls","column":"name","lang":"ru","text":"Экстренные вызовы","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:emergency-calls:category:ru","table":"features","row":"emergency-calls","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:esim:name:ru","table":"features","row":"esim","column":"name","lang":"ru","text":"eSIM","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:esim:category:ru","table":"features","row":"esim","column":"category","lang":"ru","text":"звонки и сообщения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:mobile-data:name:ru","table":"features","row":"mobile-data","column":"name","lang":"ru","text":"Мобильный интернет","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:mobile-data:category:ru","table":"features","row":"mobile-data","column":"category","lang":"ru","text":"связь","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:wifi:name:ru","table":"features","row":"wifi","column":"name","lang":"ru","text":"Wi-Fi","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:wifi:category:ru","table":"features","row":"wifi","column":"category","lang":"ru","text":"связь","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:bluetooth:name:ru","table":"features","row":"bluetooth","column":"name","lang":"ru","text":"Bluetooth","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:bluetooth:category:ru","table":"features","row":"bluetooth","column":"category","lang":"ru","text":"связь","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:hotspot:name:ru","table":"features","row":"hotspot","column":"name","lang":"ru","text":"Точка доступа","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:hotspot:category:ru","table":"features","row":"hotspot","column":"category","lang":"ru","text":"связь","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:nfc:name:ru","table":"features","row":"nfc","column":"name","lang":"ru","text":"NFC","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:nfc:category:ru","table":"features","row":"nfc","column":"category","lang":"ru","text":"связь","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:gps:name:ru","table":"features","row":"gps","column":"name","lang":"ru","text":"GPS и навигация","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:gps:category:ru","table":"features","row":"gps","column":"category","lang":"ru","text":"связь","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:speaker:name:ru","table":"features","row":"speaker","column":"name","lang":"ru","text":"Динамик","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:speaker:category:ru","table":"features","row":"speaker","column":"category","lang":"ru","text":"звук","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:earpiece:name:ru","table":"features","row":"earpiece","column":"name","lang":"ru","text":"Разговорный динамик","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:earpiece:category:ru","table":"features","row":"earpiece","column":"category","lang":"ru","text":"звук","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:headphones:name:ru","table":"features","row":"headphones","column":"name","lang":"ru","text":"Наушники","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:headphones:category:ru","table":"features","row":"headphones","column":"category","lang":"ru","text":"звук","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:microphone:name:ru","table":"features","row":"microphone","column":"name","lang":"ru","text":"Микрофон","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:microphone:category:ru","table":"features","row":"microphone","column":"category","lang":"ru","text":"звук","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:bluetooth-audio:name:ru","table":"features","row":"bluetooth-audio","column":"name","lang":"ru","text":"Звук по Bluetooth","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:bluetooth-audio:category:ru","table":"features","row":"bluetooth-audio","column":"category","lang":"ru","text":"звук","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:photo:name:ru","table":"features","row":"photo","column":"name","lang":"ru","text":"Фото","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:photo:category:ru","table":"features","row":"photo","column":"category","lang":"ru","text":"камера","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:video-recording:name:ru","table":"features","row":"video-recording","column":"name","lang":"ru","text":"Запись видео","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:video-recording:category:ru","table":"features","row":"video-recording","column":"category","lang":"ru","text":"камера","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:qr-scan:name:ru","table":"features","row":"qr-scan","column":"name","lang":"ru","text":"Сканирование QR-кодов","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:qr-scan:category:ru","table":"features","row":"qr-scan","column":"category","lang":"ru","text":"камера","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:touch:name:ru","table":"features","row":"touch","column":"name","lang":"ru","text":"Сенсорный экран","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:touch:category:ru","table":"features","row":"touch","column":"category","lang":"ru","text":"экран и ввод","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:on-screen-keyboard:name:ru","table":"features","row":"on-screen-keyboard","column":"name","lang":"ru","text":"Экранная клавиатура","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:on-screen-keyboard:category:ru","table":"features","row":"on-screen-keyboard","column":"category","lang":"ru","text":"экран и ввод","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:auto-rotate:name:ru","table":"features","row":"auto-rotate","column":"name","lang":"ru","text":"Автоповорот","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:auto-rotate:category:ru","table":"features","row":"auto-rotate","column":"category","lang":"ru","text":"экран и ввод","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:auto-brightness:name:ru","table":"features","row":"auto-brightness","column":"name","lang":"ru","text":"Автояркость","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:auto-brightness:category:ru","table":"features","row":"auto-brightness","column":"category","lang":"ru","text":"экран и ввод","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:proximity:name:ru","table":"features","row":"proximity","column":"name","lang":"ru","text":"Датчик приближения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:proximity:category:ru","table":"features","row":"proximity","column":"category","lang":"ru","text":"датчики","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:fingerprint:name:ru","table":"features","row":"fingerprint","column":"name","lang":"ru","text":"Отпечаток пальца","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:fingerprint:category:ru","table":"features","row":"fingerprint","column":"category","lang":"ru","text":"датчики","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:deep-sleep:name:ru","table":"features","row":"deep-sleep","column":"name","lang":"ru","text":"Глубокий сон","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:deep-sleep:category:ru","table":"features","row":"deep-sleep","column":"category","lang":"ru","text":"питание","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:power-discipline:name:ru","table":"features","row":"power-discipline","column":"name","lang":"ru","text":"Бережный расход энергии","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:power-discipline:category:ru","table":"features","row":"power-discipline","column":"category","lang":"ru","text":"питание","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:all-day-battery:name:ru","table":"features","row":"all-day-battery","column":"name","lang":"ru","text":"Батарея на весь день","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:all-day-battery:category:ru","table":"features","row":"all-day-battery","column":"category","lang":"ru","text":"питание","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:charging:name:ru","table":"features","row":"charging","column":"name","lang":"ru","text":"Зарядка","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:charging:category:ru","table":"features","row":"charging","column":"category","lang":"ru","text":"питание","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:encryption:name:ru","table":"features","row":"encryption","column":"name","lang":"ru","text":"Шифрование","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:encryption:category:ru","table":"features","row":"encryption","column":"category","lang":"ru","text":"безопасность","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:verified-boot:name:ru","table":"features","row":"verified-boot","column":"name","lang":"ru","text":"Проверенная загрузка","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:verified-boot:category:ru","table":"features","row":"verified-boot","column":"category","lang":"ru","text":"безопасность","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:secure-element:name:ru","table":"features","row":"secure-element","column":"name","lang":"ru","text":"Защищённый элемент","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:secure-element:category:ru","table":"features","row":"secure-element","column":"category","lang":"ru","text":"безопасность","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:app-sandboxing:name:ru","table":"features","row":"app-sandboxing","column":"name","lang":"ru","text":"Изоляция приложений","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:app-sandboxing:category:ru","table":"features","row":"app-sandboxing","column":"category","lang":"ru","text":"безопасность","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:ota-updates:name:ru","table":"features","row":"ota-updates","column":"name","lang":"ru","text":"Обновления по воздуху","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:ota-updates:category:ru","table":"features","row":"ota-updates","column":"category","lang":"ru","text":"обновления","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:rollback:name:ru","table":"features","row":"rollback","column":"name","lang":"ru","text":"Откат обновлений","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:rollback:category:ru","table":"features","row":"rollback","column":"category","lang":"ru","text":"обновления","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:support-years:name:ru","table":"features","row":"support-years","column":"name","lang":"ru","text":"Годы поддержки","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:support-years:category:ru","table":"features","row":"support-years","column":"category","lang":"ru","text":"обновления","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:native-apps:name:ru","table":"features","row":"native-apps","column":"name","lang":"ru","text":"Родные приложения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:native-apps:category:ru","table":"features","row":"native-apps","column":"category","lang":"ru","text":"приложения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:android-apps:name:ru","table":"features","row":"android-apps","column":"name","lang":"ru","text":"Приложения Android","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:android-apps:category:ru","table":"features","row":"android-apps","column":"category","lang":"ru","text":"приложения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:app-store:name:ru","table":"features","row":"app-store","column":"name","lang":"ru","text":"Магазин приложений","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:app-store:category:ru","table":"features","row":"app-store","column":"category","lang":"ru","text":"приложения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:contacts-calendar-sync:name:ru","table":"features","row":"contacts-calendar-sync","column":"name","lang":"ru","text":"Синхронизация контактов и календаря","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:contacts-calendar-sync:category:ru","table":"features","row":"contacts-calendar-sync","column":"category","lang":"ru","text":"синхронизация","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:backup:name:ru","table":"features","row":"backup","column":"name","lang":"ru","text":"Резервное копирование","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:backup:category:ru","table":"features","row":"backup","column":"category","lang":"ru","text":"синхронизация","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:push-notifications:name:ru","table":"features","row":"push-notifications","column":"name","lang":"ru","text":"Push-уведомления","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:push-notifications:category:ru","table":"features","row":"push-notifications","column":"category","lang":"ru","text":"сервисы","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:contactless-payments:name:ru","table":"features","row":"contactless-payments","column":"name","lang":"ru","text":"Бесконтактная оплата","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:contactless-payments:category:ru","table":"features","row":"contactless-payments","column":"category","lang":"ru","text":"сервисы","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:banking-apps:name:ru","table":"features","row":"banking-apps","column":"name","lang":"ru","text":"Банковские приложения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"features:banking-apps:category:ru","table":"features","row":"banking-apps","column":"category","lang":"ru","text":"сервисы","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:audio-speaker:name:ru","table":"components","row":"audio-speaker","column":"name","lang":"ru","text":"Динамик","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:audio-headphone:name:ru","table":"components","row":"audio-headphone","column":"name","lang":"ru","text":"Выход на наушники (3,5 мм)","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:audio-mic:name:ru","table":"components","row":"audio-mic","column":"name","lang":"ru","text":"Микрофон","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:audio-earpiece:name:ru","table":"components","row":"audio-earpiece","column":"name","lang":"ru","text":"Разговорный динамик","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:camera-front:name:ru","table":"components","row":"camera-front","column":"name","lang":"ru","text":"Фронтальная камера","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:camera-rear:name:ru","table":"components","row":"camera-rear","column":"name","lang":"ru","text":"Основная камера","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:display-panel:name:ru","table":"components","row":"display-panel","column":"name","lang":"ru","text":"Экран","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:touchscreen:name:ru","table":"components","row":"touchscreen","column":"name","lang":"ru","text":"Сенсор экрана","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:haptics:name:ru","table":"components","row":"haptics","column":"name","lang":"ru","text":"Вибрация","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:modem-data:name:ru","table":"components","row":"modem-data","column":"name","lang":"ru","text":"Модем: передача данных","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:modem-calls:name:ru","table":"components","row":"modem-calls","column":"name","lang":"ru","text":"Модем: звонки","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:modem-sms:name:ru","table":"components","row":"modem-sms","column":"name","lang":"ru","text":"Модем: SMS","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:wifi:name:ru","table":"components","row":"wifi","column":"name","lang":"ru","text":"Wi-Fi","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:bluetooth:name:ru","table":"components","row":"bluetooth","column":"name","lang":"ru","text":"Bluetooth","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:nfc:name:ru","table":"components","row":"nfc","column":"name","lang":"ru","text":"NFC","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:fingerprint:name:ru","table":"components","row":"fingerprint","column":"name","lang":"ru","text":"Сканер отпечатков","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:sensors:name:ru","table":"components","row":"sensors","column":"name","lang":"ru","text":"Датчики","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:usb-otg:name:ru","table":"components","row":"usb-otg","column":"name","lang":"ru","text":"USB OTG","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:fastboot:name:ru","table":"components","row":"fastboot","column":"name","lang":"ru","text":"Fastboot","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"components:kernel:name:ru","table":"components","row":"kernel","column":"name","lang":"ru","text":"Ядро","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-calls-and-messages:title:ru","table":"milestones","row":"lp-calls-and-messages","column":"title","lang":"ru","text":"Звонки и сообщения","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-calls-and-messages:why:ru","table":"milestones","row":"lp-calls-and-messages","column":"why","lang":"ru","text":"Первое, для чего нужен телефон.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-connected:title:ru","table":"milestones","row":"lp-connected","column":"title","lang":"ru","text":"На связи: интернет, Wi-Fi, Bluetooth, GPS","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-connected:why:ru","table":"milestones","row":"lp-connected","column":"why","lang":"ru","text":"Телефон без связи — не телефон.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-daily-basics:title:ru","table":"milestones","row":"lp-daily-basics","column":"title","lang":"ru","text":"Повседневное","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-daily-basics:why:ru","table":"milestones","row":"lp-daily-basics","column":"why","lang":"ru","text":"Звук, камера, экран, на котором удобно печатать, и день без зарядки: тогда он может быть единственным телефоном.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-everything:title:ru","table":"milestones","row":"lp-everything","column":"title","lang":"ru","text":"Всё, что умеет телефон","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-everything:why:ru","table":"milestones","row":"lp-everything","column":"why","lang":"ru","text":"Каждая функция из списка — работает.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-apps-and-services:title:ru","table":"milestones","row":"lp-apps-and-services","column":"title","lang":"ru","text":"Приложения и сервисы не хуже, чем на Android","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-apps-and-services:why:ru","table":"milestones","row":"lp-apps-and-services","column":"why","lang":"ru","text":"То, в чём люди на самом деле живут.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-secure-updated:title:ru","table":"milestones","row":"lp-secure-updated","column":"title","lang":"ru","text":"Защищён и обновляется","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-secure-updated:why:ru","table":"milestones","row":"lp-secure-updated","column":"why","lang":"ru","text":"Совершенство, которое держится.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-tested-daily:title:ru","table":"milestones","row":"lp-tested-daily","column":"title","lang":"ru","text":"Проверяется на настоящих устройствах","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-tested-daily:why:ru","table":"milestones","row":"lp-tested-daily","column":"why","lang":"ru","text":"Каждый день, на самих телефонах.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-upstream:title:ru","table":"milestones","row":"lp-upstream","column":"title","lang":"ru","text":"Исправления — в апстриме","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:lp-upstream:why:ru","table":"milestones","row":"lp-upstream","column":"why","lang":"ru","text":"Исправлениям место там, где их получат все.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:surya-boots:title:ru","table":"milestones","row":"surya-boots","column":"title","lang":"ru","text":"Загружается, показывает, реагирует, подключается","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:surya-boots:why:ru","table":"milestones","row":"surya-boots","column":"why","lang":"ru","text":"Основа, на которой стоит всё остальное.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:surya-sound:title:ru","table":"milestones","row":"surya-sound","column":"title","lang":"ru","text":"Звук","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:surya-sound:why:ru","table":"milestones","row":"surya-sound","column":"why","lang":"ru","text":"Динамики, разговорный динамик, микрофон, наушники.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:surya-phone:title:ru","table":"milestones","row":"surya-phone","column":"title","lang":"ru","text":"Настоящий телефон: звонки, сообщения, интернет","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:surya-phone:why:ru","table":"milestones","row":"surya-phone","column":"why","lang":"ru","text":"Тогда им можно пользоваться как телефоном.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:surya-every-part:title:ru","table":"milestones","row":"surya-every-part","column":"title","lang":"ru","text":"Работает каждая деталь","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:surya-every-part:why:ru","table":"milestones","row":"surya-every-part","column":"why","lang":"ru","text":"Камеры, отпечаток, датчики, NFC — всё.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:surya-tested:title:ru","table":"milestones","row":"surya-tested","column":"title","lang":"ru","text":"Проверяется каждый день","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:surya-tested:why:ru","table":"milestones","row":"surya-tested","column":"why","lang":"ru","text":"Наблюдение за здоровьем и прогоны тестов — зелёные.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:surya-upstream:title:ru","table":"milestones","row":"surya-upstream","column":"title","lang":"ru","text":"Его исправления — в апстриме","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"milestones:surya-upstream:why:ru","table":"milestones","row":"surya-upstream","column":"why","lang":"ru","text":"Чтобы их получил каждый телефон на SM7150.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"platforms:linux-best:name:ru","table":"platforms","row":"linux-best","column":"name","lang":"ru","text":"Linux-телефоны (лучшее на сегодня)","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"idea:02-problem:heading:ru","table":"idea","row":"02-problem","column":"heading","lang":"ru","text":"Две двери, обе заперты","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"idea:03-idea:text:ru","table":"idea","row":"03-idea","column":"text","lang":"ru","text":"Две вещи, вместе.\n\n**Конвейер.** Лаборатория инструментов и записанных процедур, чтобы перенос Linux на телефон был одними и теми же известными шагами каждый раз: прошить, проверить, послушать, исправить то, что не работает, отправить исправление туда, где его получат все, — силами человека или агента, и никогда не оставляя телефон сломанным.\n\n**Честная картина.** Всё, что должен уметь телефон, напротив каждой системы, которая могла бы это делать: что работает, что работает наполовину, чего нет — и, прямо показано, что ещё никто не измерил.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"idea:05-idea:text:ru","table":"idea","row":"05-idea","column":"text","lang":"ru","text":"Цель проста: телефон на Linux, которым обычный человек мог бы пользоваться как единственным и не чувствовать, что от чего-то отказался. Мы считаем путь к ней по одной возможности за раз, и возможность засчитывается, только когда что-то показало, что она работает.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"idea:07-start:heading:ru","table":"idea","row":"07-start","column":"heading","lang":"ru","text":"Где мы сейчас","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"idea:01-lead:text:ru","table":"idea","row":"01-lead","column":"text","lang":"ru","text":"Ваш телефон — самый личный компьютер из всех, что у вас есть, и тот, которым вы управляете меньше всего. Вы не видите, что на нём работает. Вы не можете это изменить. А когда производитель перестаёт присылать обновления — обычно через несколько лет, — исправная машина превращается в риск, который вы носите в кармане.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"idea:05-idea:heading:ru","table":"idea","row":"05-idea","column":"heading","lang":"ru","text":"Не хуже Android — и посчитано","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"idea:03-idea:heading:ru","table":"idea","row":"03-idea","column":"heading","lang":"ru","text":"Сделать работу обычной, а правду — видимой","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"idea:04-picture:heading:ru","table":"idea","row":"04-picture","column":"heading","lang":"ru","text":"Мастерская, а не чудо","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"idea:06-limit:heading:ru","table":"idea","row":"06-limit","column":"heading","lang":"ru","text":"Что всё ещё трудно","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"idea:04-picture:text:ru","table":"idea","row":"04-picture","column":"text","lang":"ru","text":"Один блестящий механик может починить одну машину. Мастерская с нужными подъёмниками, приборами и записанными процедурами починит любую — и следующий механик начнёт там, где остановился предыдущий.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"idea:06-limit:text:ru","table":"idea","row":"06-limit","column":"text","lang":"ru","text":"Некоторые части телефона производители держат закрытыми — модем, камеру, защищённый чип, — и работать с ними можно только снаружи. Банки и платежи зависят от решений, которые принимаем не мы. В лаборатории пока один телефон. А для телефонов на Linux в целом большая часть картины всё ещё гласит: пока неизвестно.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"idea:07-start:text:ru","table":"idea","row":"07-start","column":"text","lang":"ru","text":"В лаборатории стоит один телефон, Xiaomi POCO X3 NFC. Его можно одной командой прошить до известного состояния, и он проверяется после каждого запуска. Звук идёт из обоих динамиков. Микрофон и звонки ещё впереди. В картине сорок шесть вещей, которые делает телефон, и семь систем.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"idea:02-problem:text:ru","table":"idea","row":"02-problem","column":"text","lang":"ru","text":"Почти каждый телефон в мире работает на одной из двух систем, и каждая принадлежит одной компании. Железо под ними могло бы работать на чём-то другом: на Linux — свободной системе, на которой уже держится большинство серверов мира.\n\nНо телефон на Linux сегодня редко может быть единственным телефоном человека. Звонок обрывается, камера остаётся тёмной, батареи не хватает на день. И каждая модель требует своей терпеливой работы, которую делает горстка добровольцев, по большей части начиная с нуля для каждого устройства.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-manifest-fixes:how:ru","table":"workings","row":"w-manifest-fixes","column":"how","lang":"ru","text":"Стереопрофиль, исправленный драйвер усилителя и две замаскированные службы — записаны один раз и вшиваются в каждую прошивку.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-parts-table:why:ru","table":"workings","row":"w-parts-table","column":"why","lang":"ru","text":"Чтобы оставшееся было списком, а не догадкой.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-upstream-surya:what:ru","table":"workings","row":"w-upstream-surya","column":"what","lang":"ru","text":"Очередь в апстрим","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-upstream-queue:what:ru","table":"workings","row":"w-upstream-queue","column":"what","lang":"ru","text":"Очередь в апстрим","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-health:how:ru","table":"workings","row":"w-health","column":"how","lang":"ru","text":"Проверки на самом телефоне — звуковая карта, усилители, модем, Wi-Fi, накопитель — в сравнении со всем, что проходило раньше.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-parts-table:what:ru","table":"workings","row":"w-parts-table","column":"what","lang":"ru","text":"Таблица частей","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-watch-surya:how:ru","table":"workings","row":"w-watch-surya","column":"how","lang":"ru","text":"Проверки после каждого запуска, сами, с записью.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-upstream-surya:how:ru","table":"workings","row":"w-upstream-surya","column":"how","lang":"ru","text":"Исправления усилителя и профиль Sxmo подготовлены патчами с названными мейнтейнерами.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-feature-table:how:ru","table":"workings","row":"w-feature-table","column":"how","lang":"ru","text":"Всё, что делает телефон, напротив каждой системы; у каждой записи — источник и день проверки.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-hear:how:ru","table":"workings","row":"w-hear","column":"how","lang":"ru","text":"Проигрывает тон на каждом динамике и слышит его через микрофон в лаборатории, сравнивая с тишиной комнаты. Ждёт микрофона, поставленного рядом: первые результаты, с микрофона, который двигался, отозваны.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-modem-checks:how:ru","table":"workings","row":"w-modem-checks","column":"how","lang":"ru","text":"Виден ли модем и готов ли он к звонкам, сообщениям и данным — но ещё не то, проходит ли звонок.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-watch:how:ru","table":"workings","row":"w-watch","column":"how","lang":"ru","text":"После каждого запуска телефона его проверки идут сами, результаты записываются; ухудшение ставит задачу на доску.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-flash:how:ru","table":"workings","row":"w-flash","column":"how","lang":"ru","text":"Записывает чистый образ с вшитыми известными исправлениями устройства и сначала сверяет отпечаток его дерева устройств.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-health:why:ru","table":"workings","row":"w-health","column":"why","lang":"ru","text":"Телефон — эталон: он не должен незаметно становиться хуже.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-manifest-fixes:what:ru","table":"workings","row":"w-manifest-fixes","column":"what","lang":"ru","text":"Манифест устройства","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-modem-checks:why:ru","table":"workings","row":"w-modem-checks","column":"why","lang":"ru","text":"«Виден» — не то же, что «работает»; это лишь первая ступень.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-upstream-queue:why:ru","table":"workings","row":"w-upstream-queue","column":"why","lang":"ru","text":"Исправление, оставленное у себя, помогает одному телефону; отправленное в апстрим — каждому такому.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-manifest-fixes:why:ru","table":"workings","row":"w-manifest-fixes","column":"why","lang":"ru","text":"Исправление, сделанное руками, теряется при следующей прошивке.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-upstream-surya:why:ru","table":"workings","row":"w-upstream-surya","column":"why","lang":"ru","text":"Чтобы их получил каждый телефон на этом чипе.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-feature-table:what:ru","table":"workings","row":"w-feature-table","column":"what","lang":"ru","text":"Таблица возможностей","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-feature-table:why:ru","table":"workings","row":"w-feature-table","column":"why","lang":"ru","text":"Чтобы «не хуже Android» было счётом, а не ощущением.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-modem-checks:what:ru","table":"workings","row":"w-modem-checks","column":"what","lang":"ru","text":"Проверки модема","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-watch:why:ru","table":"workings","row":"w-watch","column":"why","lang":"ru","text":"Телефон, за которым никто не следит, уходит от рабочего состояния.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-upstream-queue:how:ru","table":"workings","row":"w-upstream-queue","column":"how","lang":"ru","text":"Каждое исправление готовится патчем для проекта, которому оно принадлежит, с названными мейнтейнерами — и отправляется от имени автора.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-hear:why:ru","table":"workings","row":"w-hear","column":"why","lang":"ru","text":"Загрузившийся драйвер ничего не говорит о звуке. Его должна услышать машина.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-watch-surya:why:ru","table":"workings","row":"w-watch-surya","column":"why","lang":"ru","text":"Проверено однажды — не проверено.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-flash:why:ru","table":"workings","row":"w-flash","column":"why","lang":"ru","text":"Любая прошивка даёт один и тот же известный телефон — выучено на горьком опыте.","by":"machine"}
+{"project":"linux-phone-oco/docs","id":"workings:w-parts-table:how:ru","table":"workings","row":"w-parts-table","column":"how","lang":"ru","text":"Каждая часть телефона с её состоянием — по проверкам и записям о работе.","by":"machine"}
+{"project":"linux-phone-oco/lab-tools","id":"idea:01-lead:text:ru","table":"idea","row":"01-lead","column":"text","lang":"ru","text":"Работать с внутренностями телефона — как чинить часы, которые нельзя открыть: каждый шаг медленный, а одна оплошность оставляет их мёртвыми на столе.","by":"machine"}
+{"project":"linux-phone-oco/lab-tools","id":"idea:02-problem:heading:ru","table":"idea","row":"02-problem","column":"heading","lang":"ru","text":"Каждый телефон — та же боль заново","by":"machine"}
+{"project":"linux-phone-oco/lab-tools","id":"idea:02-problem:text:ru","table":"idea","row":"02-problem","column":"text","lang":"ru","text":"Те, кто переносит Linux на телефоны, держат каждый свои скрипты, свои заметки, свои суеверия. То, что один узнал о том, как не погубить устройство, следующий узнаёт заново — на своём.","by":"machine"}
+{"project":"linux-phone-oco/lab-tools","id":"idea:03-idea:heading:ru","table":"idea","row":"03-idea","column":"heading","lang":"ru","text":"Одна лаборатория для любого телефона","by":"machine"}
+{"project":"linux-phone-oco/lab-tools","id":"idea:03-idea:text:ru","table":"idea","row":"03-idea","column":"text","lang":"ru","text":"devlab — это набор инструментов лаборатории. Он добирается до телефона любым доступным путём, прошивает его до известного состояния, настраивает свежий, проверяет после каждого запуска, слушает его динамики и пробует рискованное изменение один раз — так, что оно само откатывается.\n\nТо, чем телефоны отличаются, записано на одном листе — в манифесте устройства. Инструменты остаются теми же.","by":"machine"}
+{"project":"linux-phone-oco/lab-tools","id":"idea:04-picture:heading:ru","table":"idea","row":"04-picture","column":"heading","lang":"ru","text":"Чек-лист пилота","by":"machine"}
+{"project":"linux-phone-oco/lab-tools","id":"idea:04-picture:text:ru","table":"idea","row":"04-picture","column":"text","lang":"ru","text":"Не потому, что пилоты забывчивы. А потому, что цена одного пропущенного шага слишком высока, чтобы доверять её памяти.","by":"machine"}
+{"project":"linux-phone-oco/lab-tools","id":"idea:05-limit:heading:ru","table":"idea","row":"05-limit","column":"heading","lang":"ru","text":"Чего он ещё не достиг","by":"machine"}
+{"project":"linux-phone-oco/lab-tools","id":"idea:05-limit:text:ru","table":"idea","row":"05-limit","column":"text","lang":"ru","text":"Через него пока прошёл один телефон. Тесты, которым нужна человеческая рука или глаз, ещё не встроены. И работает он с лабораторной машины, а не из кармана.","by":"machine"}
+{"project":"linux-phone-oco/lab-tools","id":"idea:06-start:heading:ru","table":"idea","row":"06-start","column":"heading","lang":"ru","text":"Где мы сейчас","by":"machine"}
+{"project":"linux-phone-oco/lab-tools","id":"idea:06-start:text:ru","table":"idea","row":"06-start","column":"text","lang":"ru","text":"Сегодня он прошивает, настраивает, проверяет, наблюдает, слушает и пробует тестовые ядра на одном телефоне.","by":"machine"}
+{"project":"linux-phone-oco/surya-lab","id":"idea:01-lead:text:ru","table":"idea","row":"01-lead","column":"text","lang":"ru","text":"Это один конкретный телефон — Xiaomi POCO X3 NFC, известный под кодовым именем surya, — который лежит на столе и подключён к лабораторной машине, чтобы работу по запуску на нём Linux можно было делать аккуратно, каждый раз одинаково и никогда не оставляя его сломанным.","by":"machine"}
+{"project":"linux-phone-oco/surya-lab","id":"idea:02-problem:heading:ru","table":"idea","row":"02-problem","column":"heading","lang":"ru","text":"Телефон легко оставить без признаков жизни","by":"machine"}
+{"project":"linux-phone-oco/surya-lab","id":"idea:02-problem:text:ru","table":"idea","row":"02-problem","column":"text","lang":"ru","text":"Работаешь с самыми глубокими частями телефона — и один неверный шаг оставляет его тёмным, а рядом нет никого, кто нажал бы кнопки. Поэтому люди работают осторожно и медленно, держат свои исправления в голове и теряют их при следующем чистом запуске.","by":"machine"}
+{"project":"linux-phone-oco/surya-lab","id":"idea:03-idea:heading:ru","table":"idea","row":"03-idea","column":"heading","lang":"ru","text":"Всё об этом телефоне, записанное","by":"machine"}
+{"project":"linux-phone-oco/surya-lab","id":"idea:03-idea:text:ru","table":"idea","row":"03-idea","column":"text","lang":"ru","text":"Лаборатория хранит то, что верно для этого телефона, и ничего больше: как до него добраться, что вшивать в каждый чистый запуск, какие проверки он должен проходить, какие тоны должен услышать от него микрофон. Инструменты одни и те же для любого телефона; это тот единственный лист, который подгоняет их к этому.\n\nКаждый эксперимент — одна попытка, которая сама откатывается назад. Телефон всегда возвращается в состояние, про которое известно, что оно работает.","by":"machine"}
+{"project":"linux-phone-oco/surya-lab","id":"idea:04-picture:heading:ru","table":"idea","row":"04-picture","column":"heading","lang":"ru","text":"Карта пациента в изножье кровати","by":"machine"}
+{"project":"linux-phone-oco/surya-lab","id":"idea:04-picture:text:ru","table":"idea","row":"04-picture","column":"text","lang":"ru","text":"Кто бы ни пришёл следующим — человек или агент, — он читает карту и знает, что было сделано, что держится и чего нельзя трогать без осторожности.","by":"machine"}
+{"project":"linux-phone-oco/surya-lab","id":"idea:05-limit:heading:ru","table":"idea","row":"05-limit","column":"heading","lang":"ru","text":"Чего он ещё не достиг","by":"machine"}
+{"project":"linux-phone-oco/surya-lab","id":"idea:05-limit:text:ru","table":"idea","row":"05-limit","column":"text","lang":"ru","text":"Его микрофон пока не работает, и с него не сделано ни одного звонка. Камеры, сканер отпечатков и NFC ещё не пробовали.","by":"machine"}
+{"project":"linux-phone-oco/surya-lab","id":"idea:06-start:heading:ru","table":"idea","row":"06-start","column":"heading","lang":"ru","text":"Где мы сейчас","by":"machine"}
+{"project":"linux-phone-oco/surya-lab","id":"idea:06-start:text:ru","table":"idea","row":"06-start","column":"text","lang":"ru","text":"Его можно одной командой прошить до известного состояния. Двадцать две проверки проходят после каждого запуска. Звук идёт из обоих динамиков; чтобы машина надёжно его слышала, нужен микрофон, поставленный рядом.","by":"machine"}

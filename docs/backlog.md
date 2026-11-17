@@ -5,6 +5,9 @@
 <a id="first-real-boot"></a>
 ### Boot the current sm7150-mainline kernel on the phone via lab-agent and record dmesg + audio card list
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -18,6 +21,9 @@ Opened
 <a id="kernel-fork-repo"></a>
 ### Fork sm7150-mainline/linux into linux-phone-oco and wire it into lab-agent's build/boot jobs
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -27,6 +33,9 @@ Opened
 
 <a id="custom-matrix-render"></a>
 ### A custom render.py that draws support_status as a real device x component matrix, not one page-section per row
+
+Project
+: linux-phone-oco/docs
 
 Status
 : open
@@ -41,6 +50,9 @@ Opened
 <a id="verify-headphone-mic-earpiece"></a>
 ### Verify headphone, mic and earpiece status directly on hardware instead of relying on the secondhand pmaports note
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -53,6 +65,9 @@ Opened
 
 <a id="off-state-charging"></a>
 ### The phone cannot stay off: shutdown and a charger both boot pmOS
+
+Project
+: linux-phone-oco/docs
 
 Status
 : open
@@ -67,6 +82,9 @@ Opened
 <a id="adsp-sensor-crash-loop"></a>
 ### The ADSP crashes every 13-25 s, restarting audio each time
 
+Project
+: linux-phone-oco/docs
+
 Status
 : done
 
@@ -79,6 +97,9 @@ Opened
 
 <a id="wcd937x-dt-aoncc"></a>
 ### WCD937x device tree: drop aoncc, clock the VA macro from q6afecc
+
+Project
+: linux-phone-oco/docs
 
 Status
 : done
@@ -93,6 +114,9 @@ Opened
 <a id="sensors-registry-writes"></a>
 ### ADSP sensors: let hexagonrpcd serve a writable sensor registry
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -105,6 +129,9 @@ Opened
 
 <a id="audio-cold-boot-race"></a>
 ### One cold boot came up without audio services
+
+Project
+: linux-phone-oco/docs
 
 Status
 : open
@@ -123,6 +150,9 @@ Opened
 <a id="upstream-tas2562-slot-length"></a>
 ### Upstream: tas2562 sets the I2S slot length from the sample width
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -135,6 +165,9 @@ Opened
 
 <a id="upstream-ucm-surya-stereo"></a>
 ### Upstream: stereo speaker UCM profile for surya
+
+Project
+: linux-phone-oco/docs
 
 Status
 : open
@@ -149,6 +182,9 @@ Opened
 <a id="try-shells"></a>
 ### Try every mobile shell with working sound
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -161,6 +197,9 @@ Opened
 
 <a id="microphone"></a>
 ### Microphone: check, and make it work
+
+Project
+: linux-phone-oco/docs
 
 Status
 : open
@@ -179,6 +218,9 @@ Opened
 <a id="org-board"></a>
 ### A board for linux-phone-oco
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -191,6 +233,9 @@ Opened
 
 <a id="phosh-usb"></a>
 ### Under Phosh the PC loses the phone over USB
+
+Project
+: linux-phone-oco/docs
 
 Status
 : open
@@ -205,6 +250,9 @@ Opened
 <a id="plasma-silent"></a>
 ### Plasma Mobile: speakers silent, the chain playing
 
+Project
+: linux-phone-oco/docs
+
 Status
 : done
 
@@ -217,6 +265,9 @@ Opened
 
 <a id="upstream-tas2562-volume"></a>
 ### Upstream: tas2562 digital volume writes do not reach the chips
+
+Project
+: linux-phone-oco/docs
 
 Status
 : open
@@ -231,6 +282,9 @@ Opened
 <a id="upstream-sxmo-profile"></a>
 ### Upstream: the Sxmo device profile for surya
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -244,6 +298,9 @@ Opened
 <a id="adsp-suspend-crash"></a>
 ### The audio DSP crashes right after resume from suspend
 
+Project
+: linux-phone-oco/docs
+
 Status
 : done
 
@@ -256,6 +313,9 @@ Opened
 
 <a id="device-template"></a>
 ### A device template: the conveyor any phone's support is built on
+
+Project
+: linux-phone-oco/docs
 
 Status
 : open
@@ -274,6 +334,9 @@ Opened
 <a id="rust-toolset"></a>
 ### The device toolset in Rust, for any phone
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -289,6 +352,9 @@ Opened
 <a id="check-crash-on-resume"></a>
 ### The check counts crashes on resume wrongly
 
+Project
+: linux-phone-oco/docs
+
 Status
 : done
 
@@ -302,6 +368,9 @@ Opened
 <a id="usb-flapping-on-suspend"></a>
 ### The phone kept reconnecting on the host's USB
 
+Project
+: linux-phone-oco/docs
+
 Status
 : done
 
@@ -314,6 +383,9 @@ Opened
 
 <a id="shell-free-base"></a>
 ### A shell-free base for hardware tests
+
+Project
+: linux-phone-oco/docs
 
 Status
 : open
@@ -330,6 +402,9 @@ Opened
 <a id="tty-first-shell"></a>
 ### The author's TTY-first shell
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -342,6 +417,9 @@ Opened
 
 <a id="support-from-results"></a>
 ### Support status read off the suite's results
+
+Project
+: linux-phone-oco/docs
 
 Status
 : done
@@ -356,6 +434,9 @@ Opened
 <a id="gaps-on-the-face"></a>
 ### Known gaps shown as gaps on the face, not as failures
 
+Project
+: linux-phone-oco/docs
+
 Status
 : done
 
@@ -369,6 +450,9 @@ Opened
 <a id="android-reference"></a>
 ### What Android does on the same phone, measured once and kept
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -381,6 +465,9 @@ Opened
 
 <a id="a-second-phone"></a>
 ### A second phone in the lab
+
+Project
+: linux-phone-oco/docs
 
 Status
 : open
@@ -397,6 +484,9 @@ Opened
 <a id="sleep-measured-once"></a>
 ### Deep sleep measured once: the SoC's own counters across one suspend
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -409,6 +499,9 @@ Opened
 
 <a id="sleep-cluster-params"></a>
 ### surya's own cluster sleep parameters in its device tree
+
+Project
+: linux-phone-oco/docs
 
 Status
 : open
@@ -423,6 +516,9 @@ Opened
 <a id="sleep-adsp-awake"></a>
 ### The audio DSP sleeps when nothing plays
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -435,6 +531,9 @@ Opened
 
 <a id="sleep-fastrpc-helpers"></a>
 ### FastRPC helpers stopped across suspend; the sensors back
+
+Project
+: linux-phone-oco/docs
 
 Status
 : open
@@ -449,6 +548,9 @@ Opened
 <a id="sleep-wakes-for-calls"></a>
 ### Waking from deep sleep for calls and messages
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -462,6 +564,9 @@ Opened
 <a id="sleep-standby-current"></a>
 ### Standby current measured beside Android's
 
+Project
+: linux-phone-oco/docs
+
 Status
 : open
 
@@ -470,3 +575,840 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="devlab-mcp"></a>
+### devlab mcp: the phone for any agent
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: devlab mcp (rmcp 3.10, stdio): run, put, get, health_report, health_run, kernel_install, kernel_try, kernel_status, reboot - each the function the command line calls; nothing but the protocol on standard output (what the functions said is returned, their talk goes to standard error). Proven 2026-11-17 against surya by a raw MCP exchange: initialize, the 9 tools listed, health_report with the phone's own verdict, kernel_status, run as root.
+
+Opened
+: 2026-11-17
+
+
+<a id="flash"></a>
+### Flashing
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: devlab flash did its first real flash (2026-11-10): the pristine stock image, the manifest's fixes baked in, the device tree fingerprinted (a43d069d0a49adcd), the phone back with all 20 checks passing.
+
+Opened
+: 2026-11-10
+
+
+<a id="gaps-counted-apart"></a>
+### A known gap counted apart from a failure, when a run is filed
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: devlab gather files each run test_runs row with gaps: failures in the manifest [health] gaps, counted apart from failed, as the phone own verdict counts them (docs gaps-on-the-face). Columns are named in the insert, so the table order may change without a filing breaking. Proven 2026-11-17 by filing run 20261117-013421 again into a copy of docs: 25 pass, 4 failed, 5 in gaps, 1 skipped - as the backfill counted it.
+
+Opened
+: 2026-11-17
+
+
+<a id="gather-once-quiet"></a>
+### Gathered once the phone is quiet, landed again if main moved
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: Measured 2026-11-17 (conveyor session): in about 2 h the watch gathered 5 times and 2 landings failed, other sessions having landed in docs and surya-lab meanwhile; each boot cost two PRs, two CI rounds and a Pages build. Now the board hears the verdict at once, but gathering waits until the phone has gone 15 minutes without a new boot (a run of kernel tries is one landing per place), and a landing that does not go through closes its own PR and branch and is tried again from main as it then is, 3 times in all; what is still unfiled is filed in the next quiet period.
+
+Opened
+: 2026-11-17
+
+
+<a id="guard-stop-unlanded"></a>
+### A turn does not end with unlanded changes
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: A Stop hook (devlab guard stop) that refuses to end a turn while a place the session worked in holds changes not landed: the places are read off the transcript (the cwd of its Bash calls and the files it edited), each checked with git status and its branch against origin/main. Waits on: telling what the session worked in from the hook input alone, cheaply.
+
+Opened
+: 2026-11-17
+
+
+<a id="guard-the-ways"></a>
+### The ways, held for agents: devlab guard
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: Claude Code hooks on the lab call devlab guard: PreToolUse refuses git push to main, python/pip, and ssh/scp/sftp/rsync/sshpass to a phone address devlab has met (each manifest leaves its addresses in the state); SessionStart prints lab-agent guide and the inbox. Proven by replaying each event to the built binary (refused with exit 2 and the reason; a branch push, ls, grep python allowed) and by unit tests of each shape (sudo, env, timeout, xargs, sh -c, $(...), lab-agent root-exec).
+
+Opened
+: 2026-11-17
+
+
+<a id="health"></a>
+### Health, after every boot
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: devlab test, health, watch: regressions raise one board task.
+
+Opened
+: 2026-11-10
+
+
+<a id="health-after-change"></a>
+### Every change ends with the health report
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: Every change devlab makes ends with the phone's health: phone reboot and kernel try wait for the report the new boot writes by itself (the test kernel's boot is measured like any other), provision runs the suite at once; the verdict is said, the report brought to the lab's tests/results, and the command fails when the phone is unhealthy. Proven 2026-11-17 by a reboot of surya: back, then healthy (29 pass, 4 in known gaps) and the report brought, 3 minutes in all. kernel try uses the same step and is not yet proven live. A change made by hand through phone sh/root has no step to end: devlab suite run, or the MCP door's health tool.
+
+Opened
+: 2026-11-17
+
+
+<a id="health-apk"></a>
+### devlab-health as an Alpine package
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Through the package conveyor once cv-apk publishes Alpine repositories; until then devlab puts the files on the phone.  Read 2026-11-17 (orchestration): held by three things not yet there - lab-tools cuts no releases (no tags, no release flow); the conveyor cv-apk is open and unbegun (publish.yml builds and signs pacman only); and an Alpine repository needs its own RSA signing key (abuild-keygen), kept as a secret of lab-tools, its public half committed and baked into the phone. Path: (1) the key, on the author word; (2) cv-apk in the conveyor: build the APKBUILD in an aarch64 Alpine container (an arm64 runner), abuild-sign the index, publish under the pages site alpine/aarch64, verify every signature, install it in a postmarketOS container; (3) lab-tools: release-plz, health/APKBUILD (devlab-health, the checks, lib.sh, the service and timer), packaging/conveyor.toml; (4) devlab provision adds the repository and its key, and suite put gives way to the package.
+
+Opened
+: 2026-11-17
+
+
+<a id="health-carry-old-checks"></a>
+### The checks surya-lab ran from the lab, carried into the suite
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: surya-lab tests/automatic/checks.sh retired on 2026-11-17 (its decision 2026-11-17-the-lab-s-own-conveyor-retires); four of its checks are not yet in the phone suite: bt-sees-devices (a 6 s bluetoothctl scan; skip when none answers - generic, 70-bluetooth.sh), modem-ready for modem-calls and modem-sms as well as modem-data (the modem state once a SIM is in - generic, 60-modem.sh), the audio DSP crashes that came with a suspend counted apart (awk between PM: suspend entry and 2 s after exit - generic, 30-processors.sh), and speaker-stereo (the HiFi__Speaker sink is 2ch - surya own, tests/health, bring-up). The retired file is in surya-lab history before that decision.
+
+Opened
+: 2026-11-17
+
+
+<a id="health-gather"></a>
+### Gathering is one command
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: devlab gather now: the phone's reports into the device lab's tests/results, every unfiled run into docs' test_results and test_runs. Proven 2026-11-17: 5 reports brought from surya, 9 runs filed (5 from 2026-11-10 never filed by hand; one run spoiled by a check of mine that could not write was taken out everywhere). Next: a device lab keeps its runs as its own data once the language gives a test run a shared shape (ocoeco sign a-test-run-has-no-shared-shape).
+
+Opened
+: 2026-11-17
+
+
+<a id="health-on-phone"></a>
+### The phone checks its own health after every boot
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: devlab-health (static Rust runner, health/) and the generic checks: storage, kernel (oops, new warnings, processor crashes, failed units), signal processors, sound cards, Wi-Fi, modem, Bluetooth, display and input, the other parts, then the shell's sound output; a phone's own checks and expectations from its manifest ([health]); known gaps measured but not ill health. Proven on surya 2026-11-17: put by devlab suite put now, the phone ran it by itself 120 s after a reboot and said healthy: 29 pass, 4 in known gaps, 1 not measured, 0 fail.
+
+Opened
+: 2026-11-17
+
+
+<a id="health-suspend-cycle"></a>
+### One controlled suspend and wake in the suite
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: An RTC wake alarm suspend, as postmarketos-test-suspend does, with the processor crash count before and after. Wait: the phone holds a wake lock on USB (devlab-usb-awake) and a phone that does not wake needs hands - prove one cycle by hand on surya first.  2026-11-17, from the deep-sleep research (docs decision 2026-11-17-deep-sleep-measured-s2idle; docs backlog sleep-measured-once is its first use): the cycle also reads the SoC's own counters before and after - /sys/kernel/debug/qcom_stats (cxsd, aosd, ddr, and adsp, cdsp, modem), suspend_stats, the cluster domain's idle states (pm_genpd power-domain-cluster) and every wakeup source's count - so one cycle says whether the SoC reached its floor and, if not, which processor stayed up and what woke it. On USB it can only work with the gadget let go for the length of the sleep (soft_connect) and the lab's and the shell's wake locks released; reach and read back over USB after the RTC wake. Once a cycle has run in a boot, the check soc-sleeps (base/90-sleep.sh) turns from skip to pass or fail in that boot's report.
+
+Opened
+: 2026-11-17
+
+
+<a id="hear"></a>
+### The lab's ear
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: devlab hear and devlab health --hear work: a tone on each channel, recorded through the lab's microphone, measured against the silent room; heard checks join the one baseline when listened for. Its first results on surya were withdrawn - the microphone was being worn. It counts when the microphone has been placed by the phone, on notice.
+
+Opened
+: 2026-11-10
+
+
+<a id="hear-asks-first"></a>
+### devlab hear asks for the word first
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: devlab hear and devlab health --hear refuse without --placed, and say the procedure: tell the microphone's keeper, wait for their word. The lab's microphone can stay named: nothing plays by accident.
+
+Opened
+: 2026-11-10
+
+
+<a id="hear-fixed-microphone"></a>
+### The microphone, placed on notice
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The microphone can be relied on when it is placed by the phone. Before any listening test the agent notifies its keeper and waits for his word; only then is the test run, with --placed, and counted. The tool refuses otherwise.
+
+Opened
+: 2026-11-10
+
+
+<a id="hear-phone-mic"></a>
+### The phone's own microphone, heard the same way
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The lab plays a tone, the phone records it: the instrument for the long-open microphone work. And a second lab microphone, to tell left from right.
+
+Opened
+: 2026-11-10
+
+
+<a id="hear-quiet-hours"></a>
+### Listening by itself, at decent hours
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The watcher stays silent: a tone after every start could sound at night. For it to listen unasked the lab needs to say when sound is welcome.
+
+Opened
+: 2026-11-10
+
+
+<a id="hear-room-silence"></a>
+### A room of exact zero means the microphone did not record
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Right after a reboot the room recorded at -240 dBFS (digital silence) and the tones still passed. devlab hear should refuse in that case.
+
+Opened
+: 2026-11-11
+
+
+<a id="kernel"></a>
+### Safe test kernels
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: devlab kernel: one try by boot counting, a timeout that falls back to stock.
+
+Opened
+: 2026-11-10
+
+
+<a id="lpi-debugfs-hangs"></a>
+### Never read LPASS pins through debugfs while LPASS is idle
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: in-progress
+
+Note
+: Found by the bring-up session, 2026-11-17: reading /sys/kernel/debug/gpio and the LPASS LPI pinctrl debugfs on surya while the LPASS clocks were off stalled the bus; the phone hung until a person held power. A guard for agents: devlab phone root (and the MCP door) could refuse or warn on those paths, or the health suite never touch them. Recorded in surya-lab research/microphone.md.  2026-11-17 (orchestration): devlab now refuses, saying why, any command it carries to the phone (phone sh|root, the MCP door) that names a path in the manifest [[hazard]] list; the hand-written ssh it might go around is refused by the lab hooks (devlab guard). Next: surya-lab device.toml names its hazards (bring-up: /sys/kernel/debug/gpio and the LPI pinctrl debugfs under 62b40000), then the item is done.
+
+Opened
+: 2026-11-17
+
+
+<a id="manual-tests"></a>
+### Half-manual tests
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Sequential tests with an observer - a person now, a rig later.
+
+Opened
+: 2026-11-10
+
+
+<a id="phone"></a>
+### Reaches the phone
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: devlab phone: USB or Wi-Fi, no quoting layer, boot ids.
+
+Opened
+: 2026-11-10
+
+
+<a id="pmos-conventions"></a>
+### Built on postmarketOS's conventions
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: device.toml from deviceinfo; tests in the shape of pmOS's initramfs CI; bootrr.
+
+Opened
+: 2026-11-10
+
+
+<a id="provision"></a>
+### Provisioning
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: Packages, files by {compatible}, Wi-Fi; the shared connection undone by a guard. It sets a fresh phone's clock and grows its system to fill its partition first.
+
+Opened
+: 2026-11-10
+
+
+<a id="rig"></a>
+### A proper rig
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Asked for by the author, for the future: a microphone fixed in place, a webcam that sees the screen, servos that press the buttons and touch the glass - so the tests that need a hand, an eye or an ear can run by themselves, for any phone.
+
+Opened
+: 2026-11-10
+
+
+<a id="suite-put-runner-default"></a>
+### suite put: find the runner by itself
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Asked by the bring-up session, 2026-11-17: devlab suite put now requires --runner target/aarch64-unknown-linux-musl/release/devlab-health; a device lab's session has to know lab-tools' build path. Default it to the built runner (or build it), so putting a new check is one word.
+
+Opened
+: 2026-11-17
+
+
+<a id="test-sound-level-setting"></a>
+### Test sounds at a level the manifest sets - quiet by default
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: Asked by the author, 2026-11-17 (~03:00 local): 'please use quieter sound for tests, asap' and 'there should be a setting in the test suite'. The bring-up session had played a full-scale speaker-test sine through surya's speakers at night. devlab hear plays at a hard-coded LEVEL = -12 dBFS with the sink set to 60%. Wanted: one setting in device.toml, e.g. [hear] level_dbfs (default -40) and volume (default 25%), read by devlab hear and written into the phone's /etc/devlab/health.env (TEST_TONE_DBFS, TEST_VOLUME) so any check that plays a sound - the coming microphone-hears-speaker test first - uses it; nothing in the suite plays louder. The analysis already measures SNR, so a quiet tone near the phone's own microphone is enough. 
+
+2026-11-17: done (conveyor, at the author's urgent word through bring-up): [hear] level_dbfs (default -40) and volume (default 25, percent) in device.toml; devlab hear plays at them, never above 0 dBFS or 100%, and restores the phone's volume after; devlab suite put writes TEST_TONE_DBFS and TEST_VOLUME into the phone's health.env, and the suite's lib.sh tells every sound-playing check to use them.
+
+Opened
+: 2026-11-17
+
+
+<a id="try-kernel-read-as-stock"></a>
+### kernel try: a try whose release equals the test kernel's is read as stock
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Asked by the bring-up session, 2026-11-17. Five times that night devlab kernel try said 'pmos-wcdswr was chosen and stopped before it could log anything - is it an EFI image? stock 7.1.0-rc3-sm7150-wcd came back', while uname showed the phone running the try kernel (7.1.0-rc3-sm7150-wcd, its cmdline with initrd=initramfs-wcdswr). The try came, ran its health and stayed; devlab took it for stock. Then kernel install refused ('7.1.0-rc3-sm7150-wcd is the running kernel's version'), so each new try needed a devlab phone reboot first. Wanted: decide which entry booted by the running cmdline (initrd=initramfs-NAME) rather than the log file; and say plainly that the phone stays on the try until the next reboot - or reboot back to stock at the end of try, so the reference is stock again.
+
+Opened
+: 2026-11-17
+
+
+<a id="try-reports-outcome"></a>
+### kernel try reports what came back
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: devlab kernel try reports what the try came to, said by the phone after a new boot answers: booted, not chosen, stopped early, or timed out with its log. Proven 2026-11-11: booted the microphone kernel in 81 s.
+
+Opened
+: 2026-11-11
+
+
+<a id="adsp-handover-loop"></a>
+### The audio processor signalling handover every second
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: Measured in the test kernel: 'Handover signaled, but it already happened' once a second from 11 s after boot (54 by 65 s), with or without audio. Also seen in a stock boot's crash memory. Likely an interrupt wired to the wrong signal of the audio processor; compare its interrupt mapping with the Android kernel.
+
+Opened
+: 2026-11-11
+
+
+<a id="camera-identify-slots"></a>
+### Ask each camera slot what it is
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: The first step of the cameras: a test device tree that only powers a slot (supplies, clock, reset), booted once as the second entry; then the chip's identity register read over its control bus. Turns reported sensor models into facts.
+
+Opened
+: 2026-11-11
+
+
+<a id="image-sensors"></a>
+### Image sensors: described, then identified, then seen
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: Known (research/cameras.md): the pipeline and all three control buses are bound; no sensor is described, which alone is why the cameras are dark. The vendor's kernel gives the wiring of seven sensor slots - bus, lanes, supplies, pins, clock - and names no model. Next: power one slot at a time in a test device tree and ask the chip for its identity; describe fully what this kernel already has a driver for; a frame.
+
+Opened
+: 2026-11-11
+
+
+<a id="mic-capture"></a>
+### Sound recorded through the microphone
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: Two tries on 2026-11-11 in the test kernel. The Android route sets cleanly (TX DEC0 MUX=SWR_MIC, TX SMIC MUX0=ADC0, TX_AIF1_CAP Mixer DEC0, ADC1_MIXER, ADC1, MultiMedia2 Mixer TX_CODEC_DMA_TX_3) and the card's routing wires mic bias to AMIC1-3. Starting the capture stream fails: the TX SoundWire bus can no longer read from the codec (read underflow at DPN_PortCtrl of port 1; 'Program transport params failed'), so no recording is made. Not power management: the same with the bus, macros and codec kept awake. Next lead: the moment of failure is when the bus is reshaped for the stream - compare the TX controller's frame and port parameters with the phone's Android kernel. Compared with the Android kernel: the TX bus's port layout and timings match (ports 2-5 as on sm8250 mainline and the vendor), so not the port table. The first read of a port register (DP1 PortCtrl) at stream prepare fails while hundreds of codec register accesses worked at init. Next: trace the bus's transfers (dynamic debug on the SoundWire bus and the qcom controller, or a kernel with SoundWire debugfs - this one has none). Parked 2026-11-12: the lab-agent redesign after the 2026-11-11 incident comes first; resume from the next step above (order: open-commons-observatory decision 2026-11-12-the-redesign-first).
+
+Opened
+: 2026-11-11
+
+
+<a id="mic-codec-init-timeout"></a>
+### The microphone codec times out at initialisation
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: done
+
+Note
+: Solved 2026-11-11: the audio pin driver muxed gpio19 (TX SoundWire data) to function 1 and gpio23 (RX data) to 3, where the phone's own Android kernel has 3 and 2. With both corrected the TX bus no longer clashes, the codec initialises and the sound card is made with the codec on it. The clocks going to 0 were a consequence, not the cause.
+
+Opened
+: 2026-11-11
+
+
+<a id="modem-shutting-down"></a>
+### The modem stays in shutting-down and will not go online
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: The modem stays in shutting-down from boot with the SIM in. tqftpserv 1.1.1 is installed; its read-write base is /tmp/tqftpserv and exists (an earlier note said a directory was missing - wrong: it checked the wrong paths). The loop: the modem writes /readwrite/lctoem.tmp, reads it back with rsize=0 seek=0, and itself ends the transfer at once - the option handling the Fairphone fix (pmaports !4747) changed. Next: compare tqftpserv 1.1.1 with upstream's rsize and seek handling, look at what the modem wrote, then one try with a fixed build. No calls, messages or data without the author's word.
+
+Opened
+: 2026-11-11
+
+
+<a id="needs-a-sim"></a>
+### A SIM card in the phone
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: done
+
+Note
+: Inserted by the author on 2026-11-11: the card is seen (1&1, present and ready).
+
+Opened
+: 2026-11-11
+
+Waits
+: the author
+
+
+<a id="no-sound-card-boots"></a>
+### Boots that come up without the sound card
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: On 2026-11-11 one stock boot had no phone sound card: the audio processor ran with no crash, but its service channel (APR) never appeared, so no audio driver loaded. A reboot restored it. Next: a run of reboots to measure how often.
+
+Opened
+: 2026-11-11
+
+
+<a id="port-lpi-fix-to-branch"></a>
+### Port the pin fix to the microphone kernel branch
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: The tested tree came from the phone's v7.1-rc3 source plus upstream's WIP; linux-phone-oco/linux's microphone branch has the audio pin driver laid out differently (no LPI_PINGROUP entries for pins 18-23 in that form). Port the fix deliberately, rebuild from the branch, boot it, and only then add it to pull request #1.
+
+Opened
+: 2026-11-11
+
+
+<a id="sensors-and-the-mask"></a>
+### Are the sensors broken, or masked by us?
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: The wiki reports the sensors working; our checks say broken. We masked hexagonrpcd-adsp-sensorspd for the suspend crash. One try: unmask it, check the sensors, then suspend once to see whether the crash returns - and record which we keep.
+
+Opened
+: 2026-11-11
+
+
+<a id="sensors-without-crash"></a>
+### Sensors, without crashing the audio processor
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: No motion or light sensor is exposed: the sensor hub's service is masked because with it the audio processor crashed at every suspend. Sensors return when that crash is understood.
+
+Opened
+: 2026-11-11
+
+
+<a id="telephony-checks"></a>
+### Telephony in the test suite
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: devlab checks: modem registered; mobile data (download a small file over the mobile connection); a call to the number in ~/.config/devlab/call-to, confirmed through the inbox (half-manual) or by a stand (automatic). First the modem must leave shutting-down.
+
+Opened
+: 2026-11-11
+
+
+<a id="dt-made"></a>
+### The template, made from what surya proved
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: done
+
+Note
+: device.toml with every section devlab reads (connection, provision, flash, health) and what to change; tests/health for a phone's own checks; tests/results for its reports; AGENTS.md conventions; CI for its scripts; its mark. Every tool is devlab's, reading the manifest - nothing is copied.
+
+Opened
+: 2026-11-17
+
+
+<a id="dt-onboard"></a>
+### device.toml read off a running phone
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: devlab reads a running phone (compatible, sound cards, signal processors, inputs) and proposes its device.toml, [health] included - the onboarding step of the device-template design (linux-phone-oco/docs backlog device-template, point 6).
+
+Opened
+: 2026-11-17
+
+
+<a id="dt-second-phone"></a>
+### A second phone through the template
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: The proof that surya is not the mould: a second postmarketOS phone's lab made by Use this template, reaching healthy with only its device.toml filled.
+
+Opened
+: 2026-11-17
+
+
+<a id="dt-shell-switch"></a>
+### Switching the phone shell, a word of devlab
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: surya-lab ui/switch.sh switches the shell in place (postmarketOS UI packages, tinydm session, reboot, then the shell, DSP and speaker checked); nothing in it is surya own. As devlab shell switch NAME now, it serves every lab, held and ending with the health report.
+
+Opened
+: 2026-11-17
+
+
+<a id="dt-surya-from-template"></a>
+### surya-lab re-based onto the template
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: done
+
+Note
+: surya-lab keeps scripts the template no longer needs (lib/phone.sh, tests/run.sh, tests/to-docs.sh, tests/automatic/checks.sh, flash/, provision/provision.sh): each one retires once devlab does its work, its reasons carried first (Chesterton's fence). Done when surya-lab holds only data a template-made lab holds.  Done 2026-11-17 (orchestration, surya-lab #81): lib/phone.sh, tests/run.sh, tests/automatic/checks.sh, tests/to-docs.sh and flash/flash-dtb.sh retired, each reason carried first (surya-lab decision 2026-11-17-the-lab-s-own-conveyor-retires; the four checks not yet in the suite on lab-tools health-carry-old-checks); ui/switch.sh reaches the phone through devlab. What surya-lab still holds beyond the template is its own hardware work (dt/, adsp/, patches/, ucm/, research/ - data a template-made lab holds too), the USB wake lock (dt-usb-awake) and the shell switch (dt-shell-switch).
+
+Opened
+: 2026-11-17
+
+
+<a id="dt-usb-awake"></a>
+### The lab's USB wake lock, carried by devlab
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: Every lab phone on USB needs devlab-usb-awake (a suspend attempt drops the link); surya carries it as its own overlay. It belongs to devlab, written at flash for any phone.
+
+Opened
+: 2026-11-17
+
+
+<a id="more-devices"></a>
+### More phones
+
+Project
+: linux-phone-oco/sxmo-deviceprofiles
+
+Status
+: open
+
+Note
+: Profiles for other devices, made the same way.
+
+Opened
+: 2026-11-10
+
+
+<a id="surya-hand-check"></a>
+### Checked by hand
+
+Project
+: linux-phone-oco/sxmo-deviceprofiles
+
+Status
+: open
+
+Note
+: Buttons verified by a person; vibration still to check (the first half-manual test). Settled 2026-11-11: checked by hand once; next: checked by the conveyor as scenes (agent access).
+
+Opened
+: 2026-11-10
+
+
+<a id="surya-profile"></a>
+### surya's profile
+
+Project
+: linux-phone-oco/sxmo-deviceprofiles
+
+Status
+: done
+
+Note
+: Both panel variants; Sxmo loads it; scale 3.
+
+Opened
+: 2026-11-10
+
+
+<a id="surya-upstream"></a>
+### surya's profile upstream
+
+Project
+: linux-phone-oco/sxmo-deviceprofiles
+
+Status
+: open
+
+Note
+: To sxmo-utils by mailing list, signed off by its author.
+
+Opened
+: 2026-11-10
