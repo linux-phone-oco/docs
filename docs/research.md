@@ -802,3 +802,34 @@ Sources
 
 About
 : deep-sleep
+
+
+<a id="2026-11-17-surya-s2idle-wakes-at-once"></a>
+### 2026-11-17-surya-s2idle-wakes-at-once
+
+Brief
+: surya's suspend ends at once: the serial's IRQ 157 (a storm, wake-armed) wakes s2idle; Bluetooth dies after it
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Why does surya's s2idle end after about 2 s instead of 60, and what does the first measured cycle show?
+
+Found
+: Five cycles by hand (kept kernel 7.1.0-sm7150-calls+, one with the cluster parameters of surya's own firmware tables in the device tree) all end early: the RTC advanced a few seconds only, the suspend core goes from dpm_suspend_noirq end to dpm_resume_noirq begin in microseconds and the CPUs never enter s2idle's idle loop. A function trace names the wake: s2idle_wake <- pm_system_irq_wakeup <- irq_pm_handle_wakeup, during suspend_device_irqs, no wakeup source involved. The interrupt is IRQ 157, qcom_geni_serial_isr (the serial at 88c000, wake-enabled, count 200579 ten minutes after boot): the kernel logs 'irq 157: nobody cared' and disables it. So the cluster sleep parameters and the audio DSP cannot be judged yet: the SoC has not been let sleep once. Also seen: a suspend leaves Bluetooth hci0 dead (command tx timeout, Reading QCA version information failed -110) and pm_suspend hangs in hci_resume_dev for minutes - a reboot was needed. The soc-sleeps check says fail (suspends 1, cxsd 0, aosd 0, adsp never asleep). The earlier note that the phone slept the full 60 s was wrong: it read the RTC alarm interrupt count, which fires awake too.
+
+Sources
+: /var/tmp/sleep-cycle on the phone; devlab suite run 20261117-115521
+
+About
+: deep-sleep
+
+Material
+: research/deep-sleep/2026-11-17/
+
+Supersedes
+: 2026-11-17-surya-first-s2idle-cycle

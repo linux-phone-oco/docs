@@ -617,10 +617,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: in-progress
 
 Note
-: sm7150.dtsi asks the firmware for SC7180's cluster states 0x41001244 and 0x4100b244 with surya's latencies; surya's own Android tables have cx-off 0x224 and llcc-off 0xc24, that is 0x41002244 and 0x4100c244 (SM8150 uses 0x4100c244 too); the deepest state was never entered once at runtime (research sm7150-cluster-params). A dt/ branch in linux-phone-oco/linux changing the two parameters, tried with devlab kernel try, then the measured sleep of sleep-measured-once on it. Proven by: soc-sleeps passes (cxsd above 0) where it failed on today's parameters, and the cluster domain's deepest state is entered; the health suite otherwise unchanged. Then upstream: a patch for the SM7150 series (sm7150-mainline; the upstreaming series is to be resent) through upstream-queue.
+: 2026-11-17: the changed parameters were booted once (devlab kernel try calls --dtb, a decompiled kept dtb with 0x41002244 and 0x4100c244, healthy 37 pass 0 fail) but no cycle could be judged: the suspend ended at once on the serial wake (sleep-wake-uart). Redo the cycle on that dtb after sleep-wake-uart and sleep-bt-resume; the dtb is cp.dtb (sed on the dtc output of /boot/dtbs-calls/qcom/sm7150-xiaomi-surya-huaxing.dtb).
 
 Opened
 : 2026-11-17
@@ -3367,10 +3367,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: From sleep-measured-once: entered s2idle at 811.7, exited 814.1. Read which wakeup source fired (irq counts before and after, wakeup_sources, no_console_suspend) and the RTC: rtcwake printed a 1970 date, so check the RTC is sane first. sleep-cluster-params can only be judged on a sleep that lasts.
+: Answered 2026-11-17: IRQ 157, the serial at 88c000 (research 2026-11-17-surya-s2idle-wakes-at-once); the fix is sleep-wake-uart.
 
 Opened
 : 2026-11-17
@@ -3380,6 +3380,56 @@ Proof
 
 Rank
 : 2
+
+About
+: deep-sleep
+
+
+<a id="sleep-wake-uart"></a>
+### Suspend ends at once: the serial's interrupt 157 is a wake source and a storm
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Found 2026-11-17 (research 2026-11-17-surya-s2idle-wakes-at-once). Test first: the cycle (research/deep-sleep/2026-11-17/suspend-cycle.sh) lasts 60 s by the RTC, not 2. Try: echo disabled > /sys/devices/platform/soc@0/8c0000.geniqup/88c000.serial/power/wakeup before the cycle (it was set but the cycle then hit the Bluetooth hang), then if it holds, why the UART interrupt storms (200k in 10 minutes: console on a floating RX line? the debug UART's pinctrl or the console= option) and a device tree or kernel fix (the serial node's wakeup, or status disabled). Needs sleep-bt-resume first or Bluetooth stopped for the cycle.
+
+Opened
+: 2026-11-17
+
+Proof
+: soc-sleeps
+
+Rank
+: 2
+
+About
+: deep-sleep
+
+
+<a id="sleep-bt-resume"></a>
+### Bluetooth dies across a suspend and hangs the resume
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Seen 2026-11-17 after a suspend: hci0 command tx timeout, Reading QCA version information failed (-110), retries; pm_suspend hangs in hci_suspend_notifier -> hci_resume_dev for minutes, a reboot recovers. Try rfkill block bluetooth (or stopping bluetooth.service) before suspend as the cycle's first step, then why the WCN chip does not come back (the same family as the pmOS hook that stops BT across suspend).
+
+Opened
+: 2026-11-17
+
+Proof
+: soc-sleeps
+
+Rank
+: 3
 
 About
 : deep-sleep
