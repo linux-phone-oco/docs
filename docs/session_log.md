@@ -376,3 +376,15 @@ Entry date
 
 Done
 : Four sessions at work (conveyor, bring-up, orchestration, deep-sleep research), each with a brief in prompts/; shared skills for every agent on the lab (creation-guidelines/lab-agent oco-agent/skills); a patrol every six hours checking the ways and the face; two needs of the author put on the backlog - an Android reference and a second phone.
+
+---
+
+
+<a id="2026-11-17-the-conveyor-hands-over"></a>
+### The conveyor session hands over
+
+Entry date
+: 2026-11-17
+
+Done
+: Built the conveyor for any phone (the phone's own health suite, gathering through tad, support derived from results, the face drawn in CI, devlab mcp, the phone held, the device template), organised the agents (briefs in prompts/, shared skills, the patrol, land in worktrees), measured how efficiently it all runs, and handed everything to the orchestration session.
