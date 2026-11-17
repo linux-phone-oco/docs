@@ -1124,3 +1124,53 @@ About
 
 Research
 : 2026-11-17-lpoco-health-landscape
+
+
+<a id="walleye-fastboot-first"></a>
+### walleye-fastboot-first
+
+Brief
+: Pixel 2 is fastboot-first: boot in memory, write nothing
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: Until a recorded decision says otherwise, walleye is only ever changed by 'fastboot boot' (a kernel held in memory); both A/B slots stay untouched, and the stock Android on it is measured as the android-reference before any flash.
+
+Why
+: It is the only Android reference we have and the only thing between a bad kernel and a phone that needs a factory image; fastboot boot falls back by itself on reset.
+
+Rejected
+: Flashing a boot slot for the first try (loses the reference and a slot); wiping to install postmarketOS first (loses the reference); building devlab's fastboot mode here (devlab belongs to orchestration).
+
+About
+: google-walleye
+
+
+<a id="walleye-lab-repo"></a>
+### walleye-lab-repo
+
+Brief
+: walleye gets its own lab repository, made from device-template
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: linux-phone-oco/google-walleye-lab, made from device-template, with its own device.toml and its own devlab lease; surya's lease is never touched.
+
+Why
+: The template exists for exactly this; one lease per phone keeps two lanes from blocking each other.
+
+Rejected
+: A directory in surya-lab (mixes two phones' manifests); one shared lease (one phone's keeper would stall the other).
+
+About
+: google-walleye
