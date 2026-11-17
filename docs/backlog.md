@@ -112,6 +112,8 @@ Status
 Note
 : With the sensors service off, one boot (2026-11-09) never announced the ADSP audio services, so no sound card until the ADSP was restarted by hand. Not reproduced in two further valid cold boots (audio services about 0.1-0.2 s after the ADSP, card present). Watch for it; if it recurs, check whether the in-kernel pd-mapper was loaded before the ADSP booted.
 
+2026-11-17: no longer rare - 3 of 8 boots that night (stock and test kernels alike) came up with the ADSP running but no audio services, so no sound card; restarting remoteproc0 (stop, start) brought the card back each time. The speaker's support is only as good as this; a fix, or at least a recovery at boot, is next after the microphone - or before it if it keeps recurring.
+
 Opened
 : 2026-11-09
 
@@ -163,6 +165,8 @@ Status
 
 Note
 : Taken up 2026-11-17 by the bring-up session, as the weakest link the data shows: audio-mic and audio-earpiece are both broken and two milestones rest on them (surya-sound, and the calls of surya-phone and lp-calls-and-messages), while the other broken parts (cameras, fingerprint, sensors) rest only on every-part and the modem waits for a SIM card. Where it stands (surya-audio/wcd-boots, 2026-11-11): with the LPI pin-mux fix (pins 19 and 23: swr_tx_data and swr_rx_data at their right function index) the WCD9375 enumerates on both SoundWire buses, binds, and the card POCO X3 is made with the codec's controls. Capture then fails at prepare: the TX SoundWire master (62ed0000) reads nothing back from the codec (swrm_wait_for_rd_fifo_avail read underflow, reading DPN_PortCtrl of port 1, addr 0x102), so Program transport params fails with -5 - also with the bus and codec held awake. Next: a health check that records from the main microphone and fails until it hears a signal (test first), then the read-back on the TX bus: compare the TX data pins and the controller's read settings with the vendor kernel and sibling SoCs (sm6150, sm7125).
+
+2026-11-17, night (bring-up): the check mic-records runs after every boot (a known gap until it passes). In one-off test kernels the cause narrowed: about a millisecond after the sound card registers, the WCD9375 drops off both SoundWire buses at once and is never enumerated again, so the capture's port setup gets no answer. Ruled out: the clock-stop resume path, runtime suspend, headset detection, and any traced register write, supply or GPIO in that window. Lead: our device tree's active reset pin state drives the active-low reset low, where the vendor's drives it high. Next: a try with the reset's active state output-high, logging the bus-level SoundWire writes at card registration. Full record: surya-lab research/microphone.md.
 
 Opened
 : 2026-11-09
