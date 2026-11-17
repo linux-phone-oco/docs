@@ -3320,10 +3320,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: lpoco host check after prepare now (2026-11-17): devlab 0.1.0 and tone first on PATH, off the pin. devlab-watch@surya-lab runs %h/.local/bin/devlab and the surya keeper calls devlab, so the swap waits for an idle window that the surya lane names. Steps, by orchestration: keep a copy as ~/.local/bin/devlab-0.1.0; cargo install --locked --force --git https://github.com/linux-phone-oco/lab-tools --tag lpoco-v0.2.1 lpoco-lab --root ~/.local (lpoco-lab and devlab together), the same for lpoco-tone; systemctl --user restart devlab-watch@surya-lab; it is done when the unit is active and lpoco host check shows devlab and tone at 0.2.1. Roll back by putting the copy back. Also (the coordinator): cargo warns that devlab/src/main.rs and tone/src/main.rs are each in two bin targets (the second [[bin]] alias). That is harmless, and it goes away with the aliases at the end of lpoco-names-sweep.
+: Done 2026-11-17 23:12 in the surya lane's window (keeper idle, lease released): the 0.1.0 copy is kept as ~/.local/bin/devlab-0.1.0; lpoco-lab and lpoco-tone are cargo-installed at lpoco-v0.2.1 with --root ~/.local; devlab-watch@surya-lab was restarted and is active; lpoco host check shows devlab, tone and the family at 0.2.1 (agent-env and land still FAIL: lpoco-host-script-tools). devlab --version now prints lpoco-lab 0.2.1. cargo warns that devlab/src/main.rs and tone/src/main.rs are each in two bin targets; harmless, gone when lpoco-names-sweep ends the aliases.
 
 Opened
 : 2026-11-17
