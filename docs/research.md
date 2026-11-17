@@ -1005,3 +1005,31 @@ About
 
 Material
 : research/lpoco-health/2026-11-17/
+
+
+<a id="google-walleye-bootloader-first-look"></a>
+### google-walleye-bootloader-first-look
+
+Brief
+: Pixel 2 in fastboot, read only: unlocked, A/B both slots successful, stock A/B layout, old bootloader with no fastbootd; which Android sits on it is not known yet
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: What does the Pixel 2's bootloader say about the phone, and does Android still sit on it, judged from read-only variables only?
+
+Found
+: Measured with `fastboot getvar all` (nothing flashed, booted or set): product walleye, hw-revision MP1, boot-mode FASTBOOT, unlocked yes, secure yes, kernel uefi, bootloader mw8998-003.0085.00, baseband g8998-00034-2006052136, slot-count 2, current-slot a, both slots successful=yes unbootable=no retry-count 0, max-download-size 512 MiB, avb 1.0.0 with user-settable key set, battery 4344 mV. Partitions listed with a size: boot_a/b 32 MiB raw, system_a/b 2560 MiB ext4, vendor_a/b 500 MiB ext4, userdata about 53 GiB ext4. is-userspace, slot-suffixes, snapshot-update-status and the sizes of vbmeta, dtbo and modem are not offered: an old bootloader, no fastbootd.
+Inference: both slots carry the flags Android's boot control leaves after a good boot, and the partition table is the stock A/B layout, so an Android has run on each slot; userdata of 53 GiB fits the 64 GB model. Which Android, whether it still boots and whether userdata holds data is not known yet - the bootloader cannot say.
+Not known yet: whether `fastboot boot` accepts a kernel built by us, and what it does afterwards; every Android reference measurement (sleep current, audio levels, sensors, boot time), backlog google-walleye-lab/android-reference-walleye - it needs the author to boot slot a, enable USB debugging and say when the phone is at the home screen; the paragraph is in the material README.
+Next: a first `fastboot boot` try needs a kernel from the research sessions and devlab's fastboot mode (backlog lab-tools/devlab-fastboot-mode). The IMEI the bootloader prints was left out of the kept output.
+
+About
+: google-walleye
+
+Material
+: research/google-walleye/2026-11-17/

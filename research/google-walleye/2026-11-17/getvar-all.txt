@@ -1,0 +1,57 @@
+(bootloader) have_oem_lock_id:yes
+(bootloader) avb_stored_rollback_indexes:
+(bootloader) avb_user_settable_key_set:yes
+(bootloader) avb_version:1.0.0
+(bootloader) mid:G011A
+(bootloader) version-main:1.02.0.100
+(bootloader) imei:<redacted: the device identifier is not kept in the repository>
+(bootloader) boot-mode:FASTBOOT
+(bootloader) logical-block-size:0x1000
+(bootloader) erase-block-size:0x1000000
+(bootloader) unlocked:yes
+(bootloader) off-mode-charge:1
+(bootloader) charger-screen-enabled:1
+(bootloader) battery-soc-ok:yes
+(bootloader) battery-voltage:4344
+(bootloader) version-baseband:g8998-00034-2006052136
+(bootloader) version-bootloader:mw8998-003.0085.00
+(bootloader) variant:
+(bootloader) partition-type:userdata:ext4
+(bootloader) partition-size:userdata: 0xD49BFB000
+(bootloader) partition-type:vendor_b:ext4
+(bootloader) partition-size:vendor_b: 0x1F400000
+(bootloader) partition-type:vendor_a:ext4
+(bootloader) partition-size:vendor_a: 0x1F400000
+(bootloader) partition-type:system_b:ext4
+(bootloader) partition-size:system_b: 0xA0000000
+(bootloader) partition-type:system_a:ext4
+(bootloader) partition-size:system_a: 0xA0000000
+(bootloader) partition-type:boot_b:raw
+(bootloader) partition-size:boot_b: 0x2000000
+(bootloader) partition-type:boot_a:raw
+(bootloader) partition-size:boot_a: 0x2000000
+(bootloader) has-slot:radio:yes
+(bootloader) has-slot:bootloader:yes
+(bootloader) has-slot:vendor:yes
+(bootloader) has-slot:modem:yes
+(bootloader) has-slot:system:yes
+(bootloader) has-slot:vbmeta:yes
+(bootloader) has-slot:dtbo:yes
+(bootloader) current-slot:a
+(bootloader) has-slot:boot:yes
+(bootloader) slot-retry-count:b:0
+(bootloader) slot-unbootable:b:no
+(bootloader) slot-successful:b:yes
+(bootloader) slot-retry-count:a:0
+(bootloader) slot-unbootable:a:no
+(bootloader) slot-successful:a:yes
+(bootloader) slot-count:2
+(bootloader) cid:00000000
+(bootloader) secure:yes
+(bootloader) serialno:FA81N1A00790
+(bootloader) hw-revision:MP1
+(bootloader) product:walleye
+(bootloader) max-download-size:0x20000000
+(bootloader) kernel:uefi
+all: 
+Finished. Total time: 0.002s
