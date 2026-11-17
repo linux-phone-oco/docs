@@ -951,34 +951,6 @@ Material
 : research/deep-sleep/2026-11-17-way-back/
 
 
-<a id="2026-11-17-lpoco-health-landscape"></a>
-### 2026-11-17-lpoco-health-landscape
-
-Brief
-: Tests on phones are small executables printing one line per case, shipped as packages; nothing is compiled on the device - so prebuilt static binaries or shell, not rust-script
-
-Project
-: linux-phone-oco/lab-tools
-
-Date
-: 2026-11-17
-
-Question
-: How are tests organised, shipped and provisioned on Linux phones (postmarketOS, bootrr, LAVA, CI-tron, systemd), and where do rust-script tests plus a bundle crate fit?
-
-Found
-: postmarketOS (postmarketos-test aport, initramfs CI hook), bootrr, LAVA and CI-tron share one shape: a test is a small executable, a thin runner prints one pass/fail/skip line per case, the lab collects the lines, device facts live as data (bootrr boards; CI-tron's stored record = our manifest). Nobody compiles on the device. rust-script compiles on first run and needs rust+cargo on the phone (Alpine aarch64: 72 MiB download, 206 MiB installed, plus gcc/musl-dev/llvm-libs, network for crates): fine on the lab, poor on a phone. A bundle crate that depends on tests (nextest discovery, inventory/linkme registries) is sound as a runner design, but registries are unproven on aarch64 musl and link everything into one binary; one binary per test discovered by directory gives the same independence. Provisioning: an apk gives versions, uninstall and signatures at the price of a key and a repository; a lab push is fast and leaves no version record; push while it changes, package when settled. Not known yet: postmarketos-test contents, pmOS test-farm tooling, rust-script cache path, inventory/linkme on aarch64 musl, the systemd claims (read from memory only).
-
-Sources
-: pmos-ondevice-ci-mr,bootrr,lava-test-definition,ci-tron-components,rust-script-tool,alpine-rust-aarch64,nextest-how-it-works,alpine-abuild
-
-About
-: lpoco-health
-
-Material
-: research/lpoco-health/2026-11-17/
-
-
 <a id="2026-11-17-qca-uart-wake-across-suspend"></a>
 ### 2026-11-17-qca-uart-wake-across-suspend
 
@@ -1005,3 +977,31 @@ About
 
 Material
 : research/deep-sleep/2026-11-17/
+
+
+<a id="2026-11-17-lpoco-health-landscape"></a>
+### 2026-11-17-lpoco-health-landscape
+
+Brief
+: Phone tests are small executables printing one line per case; nobody compiles on the device; upstream pmOS covers only initramfs tests today, so we keep their shape and own the runner
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Question
+: How are tests organised, shipped and provisioned on Linux phones (postmarketOS, bootrr, LAVA, CI-tron, systemd), where do rust-script tests plus a bundle crate fit, and should we build fully on postmarketOS upstream?
+
+Found
+: postmarketOS (postmarketos-test subpackages, initramfs hook), bootrr, LAVA and CI-tron share one shape: a test is a small executable, a thin runner prints one pass/fail/skip line per case, the lab collects the lines, device facts live as data. Nobody compiles on the device. rust-script compiles on first run and needs rust+cargo on the phone (Alpine aarch64: 72 MiB download, 206 MiB installed plus gcc/musl-dev/llvm-libs, network for crates): fine on the lab, poor on a phone. A bundle crate that depends on tests (nextest discovery, inventory/linkme) is sound as design but unproven on aarch64 musl; one binary per test found by directory gives the same independence. Provisioning: an apk gives versions, uninstall and signatures at the price of a key and a repository (ours is published); a lab push is fast and leaves no version record. UPSTREAM (checked 2026-11-17; their sites now redirect to nura.eco): MRs on their GitLab with Alpine-style commit rules and approval rules; on-device tests are postmarketos-test-* subpackages run by an initramfs hook that halts the boot; only kernel/initramfs tests work today, boot and system tests (modem, Wi-Fi, audio, sleep - what we need) are not built; their farm is a CI-tron gateway with one OnePlus 6T, joining is token-gated and undocumented; Python is host-side only (pipeline generation, pmbootstrap) and costs nothing on the phone. Whether rhizcuts handle a GitLab subfolder is not known. Weighed: fully upstream (A), our runner with upstreamable shell files in their shape (B), a different shape (C). Chosen B. Not known yet: pmaports licence/CLA, fork-sync cost, bootrr contribution policy, rust-script cache path, inventory/linkme on aarch64 musl, the systemd claims (memory only).
+
+Sources
+: pmos-ondevice-ci-mr,pmos-hardware-ci,bootrr,lava-test-definition,ci-tron-components,rust-script-tool,alpine-rust-aarch64,nextest-how-it-works,alpine-abuild
+
+About
+: lpoco-health
+
+Material
+: research/lpoco-health/2026-11-17/
