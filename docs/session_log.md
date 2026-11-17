@@ -1795,3 +1795,24 @@ Done
 
 About
 : ikb-recording
+
+---
+
+
+<a id="2026-11-17-walleye-lane-started"></a>
+### The walleye lane started
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Lab repository linux-phone-oco/google-walleye-lab made from device-template (manifest and mark landed, pull 1) and added as a place in docs; coordinator brief written; decisions walleye-fastboot-first and walleye-lab-repo; devlab fastboot mode asked of orchestration.
+
+Considered
+: next: walleye keeper and research sessions
+
+About
+: google-walleye

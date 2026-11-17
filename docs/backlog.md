@@ -3553,3 +3553,22 @@ Opened
 
 About
 : google-walleye
+
+
+<a id="android-reference-walleye"></a>
+### Measure Android on the Pixel 2 before anything is flashed
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: If Android still boots: sleep current, audio levels, sensors, boot time; kept beside the results. Needs the author's hands (a boot into Android, a current meter).
+
+Opened
+: 2026-11-17
+
+About
+: android-reference
