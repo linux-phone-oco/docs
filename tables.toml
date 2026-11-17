@@ -17,7 +17,7 @@ key = ["project", "id"]
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.backlog.fields]]
 name = "id"
@@ -195,7 +195,7 @@ key = ["project", "id"]
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.idea.fields]]
 name = "id"
@@ -297,7 +297,7 @@ key = ["project", "id"]
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.milestones.fields]]
 name = "id"
@@ -374,7 +374,7 @@ key = ["project", "id"]
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.session_log.fields]]
 name = "id"
@@ -448,7 +448,7 @@ key = ["project", "id"]
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.sources.fields]]
 name = "id"
@@ -658,7 +658,7 @@ key = ["project", "id"]
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.translations.fields]]
 name = "id"
@@ -732,7 +732,7 @@ key = ["project", "id"]
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.workings.fields]]
 name = "id"
@@ -795,7 +795,7 @@ type = "string"
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.decisions.fields]]
 name = "date"
@@ -841,7 +841,7 @@ type = "string"
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.research.fields]]
 name = "date"
@@ -915,7 +915,7 @@ required = true
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.concepts.fields]]
 name = "name"
@@ -947,7 +947,7 @@ required = true
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.problems.fields]]
 name = "what"
@@ -987,7 +987,7 @@ required = true
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.manual_work.fields]]
 name = "action"
@@ -1038,7 +1038,7 @@ required = true
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.manual_events.fields]]
 name = "record"
@@ -1079,7 +1079,7 @@ required = true
 name = "project"
 type = "string"
 required = true
-enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles", "linux-phone-oco/lens"]
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles", "linux-phone-oco/lens"]
 
 [[tables.landings.fields]]
 name = "at"

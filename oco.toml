@@ -4,7 +4,7 @@ schema = 1
 
 # linux-phone-oco keeps one database, this one (decided 2026-11-17): the records of its other places are held
 # here, each row naming its place in project, and stay theirs on the face.
-holds = ["linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles", "linux-phone-oco/lens"]
+holds = ["linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/google-walleye-lab", "linux-phone-oco/sxmo-deviceprofiles", "linux-phone-oco/lens"]
 
 [project]
 id = "linux-phone-oco/docs"
