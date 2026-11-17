@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.0](https://github.com/linux-phone-oco/docs/compare/v0.6.0...v0.7.0) (2026-11-17)
+
+
+### Features
+
+* docs declares idealkb's upstream tables (empty): where knowledge can flow, what is sent ([#217](https://github.com/linux-phone-oco/docs/issues/217)) ([cbec011](https://github.com/linux-phone-oco/docs/commit/cbec0116e08e37a3b1d3cc42d56f023e88daf390))
+* docs follows idealkb 0.7.1 and records with ikb: IKB.md, machine records named ([#215](https://github.com/linux-phone-oco/docs/issues/215)) ([9c0fcc4](https://github.com/linux-phone-oco/docs/commit/9c0fcc4713ca9995295eff56364b81c20f8029f2))
+
 ## [0.6.0](https://github.com/linux-phone-oco/docs/compare/v0.5.0...v0.6.0) (2026-11-17)
 
 
