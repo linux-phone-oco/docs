@@ -2581,3 +2581,27 @@ Rejected
 
 About
 : bringup
+
+---
+
+
+<a id="2026-11-17-research-bringup-follow"></a>
+### Research: how device repositories follow and extend bringup, and what rhizoid lacks
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: Read idealkb's chain-follow decision and research and rhizoid's design log and backlog. Recorded research bringup-home-follow-and-rhizoid (five sources), re-recorded decision 2026-11-17-bringup-in-lab-tools with the follow, extend, send-back and rhizoid parts, added backlog bringup-pin-and-hooks and bringup-release, updated device-template-names-bringup. Filed three items on rhizoid's own backlog (git-rhizoid.github.io PR 28).
+
+Considered
+: Tools as a slice; each device a cutting; subtree or submodule; a plugin loader in the tool; waiting for rhizoid.
+
+Rejected
+: All of those, reasons in the decision. Nothing built.
+
+About
+: bringup

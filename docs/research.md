@@ -2277,3 +2277,35 @@ About
 
 Material
 : research/bringup/2026-11-17/
+
+
+<a id="bringup-home-follow-and-rhizoid"></a>
+### bringup-home-follow-and-rhizoid
+
+Brief
+: A tool is followed by a pin, not files: device parts live beside it as data, hooks or a rust-script on the pinned library; rhizoid carries the cutting and slice cases and lacks three things.
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Question
+: How do device repositories use, extend, send back to and update from a tools home, side by side with no rebase, and where does rhizoid fit?
+
+Found
+: The question: a home for bring-up tools must also let device repositories use them, extend them with device-specific parts, send useful changes back and pull updates in, their own changes side by side with no rebase each time (the author's words, relayed by the coordinator; the problem git-rhizoid was started for). Extends research bringup-tools-landscape.
+What is: the chain already decided (idealkb decision 2026-11-17-chain-follow-by-slice, research chain-follow-world): one pin-and-follow mechanism for data and briefs - a source names its generic files, a follower pins a release and keeps its own files, a changed generic file ends follow.sh with exit 3 and goes back as an upstream item (ikb upstream-item, form patch), weekly update-pins and a release gate; device bases follow idealkb and device-template that way. It lays a slice of files. Rhizoid (git-rhizoid.github.io, rhizoid repo) is for whole forks: a cutting is a fork owned and pinned, tracking branch pristine, patch branch merged from it, rhizoid's own metadata additive-only, so a diff of patch against tracking is a clean patch back; its CLI is typed but add/update/status are stubbed, its consumption side is open (design-consumption-side) and slice-consumption was added 2026-11-17 by the idealkb chain. devlab and lpoco-health already reach consumers as released packages (release-plz tags, the packaging conveyor), not as copied files.
+Finding: a tool is not a slice. Compiled logic is followed by a version pin, not by files laid into the follower, so the rebase trouble does not arise for the tool at all as long as a device never edits the tool's tree: its own parts live in its own repository, beside the tool, in three levels. (1) Data: device.toml [boot] and the files it names (initramfs skeleton, dtb variants). (2) Hooks: executables the manifest names for a step (shell where stupid simple), called with the paths in arguments, a nonzero exit stops the job. (3) Logic: a rust-script file (or a small crate) in the device repository whose header depends on bringup's library at the pinned tag (rust-script and cargo take a git tag as a dependency). Only two things then need the follow machinery: the pin (a version line the follower owns) and the slice of files that go with the tool in device-template (the [boot] skeleton, hook examples). Sending back: a generic improvement is a pull request to lab-tools from the device's branch, recorded in the device base as an upstream item (form patch) against a lab-tools upstream row seeded beside idealkb and device-template; an update comes by a pin bump (the weekly job, a pull request per source). Side by side: the device's changes are files of its own, so a pin bump touches none of them; when a device must patch the tool itself before upstream takes it, that is a cutting of lab-tools consumed as a git dependency (Cargo [patch]) - rhizoid's exact case, rare because the three levels cover most.
+Where rhizoid carries it, and what it lacks (recorded on its own backlog, git-rhizoid.github.io PR 28, not worked around): a cutting consumed by a language manager - writing and bumping the pin where cargo or rust-script reads it (cutting-as-cargo-dependency); one pin file, one bump, one verdict for slices, cuttings and tool versions together (followers-one-pin-bump); sending a patch back as a pull request on the person's word with the follower's own record of it (send-back-writes-the-upstream-item); and slice-consumption (already open) for the template files. Until rhizoid has them: idealkb's follow.sh and update-pins for the slices, a plain fork with a [patch] line for the rare cutting, recorded as a problem.
+Not known yet: whether bringup's library API can stay stable enough for the third level while it is 0.x (the first builder's test of pin refusal tells); whether a host binary release (asset) or cargo install --git is the simpler install for a device lab (bringup-release settles it).
+
+Sources
+: rhizoid-repo,rhizoid-design-log,idealkb-chain-follow,rust-script-deps,cargo-git-and-patch
+
+About
+: bringup
+
+Material
+: research/bringup/2026-11-17/

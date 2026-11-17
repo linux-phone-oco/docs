@@ -5729,13 +5729,75 @@ Status
 : open
 
 Note
-: AGENTS.md says where a device's first-boot images are made (lab-tools bringup, not a scripts folder of its own); device.toml gets [boot] in pmOS deviceinfo's words, every value marked CHANGE, read by bringup like [flash] and [fastboot] are read by devlab. Proof: a fresh lab made from the template runs 'bringup image check' on a stock boot.img with the manifest alone.
+: AGENTS.md says where a device's first-boot images are made (lab-tools bringup, followed by pin, never a scripts folder of its own, never an edit of the tool); device.toml gets [boot] in pmOS deviceinfo's words and [tools] bringup = pin, every value marked CHANGE; a bringup hooks folder with an example; data/upstreams.json seeded with a lab-tools upstream beside idealkb and device-template (tad q upstreams shows it); idealkb's update-pins learns the [tools] line. Proof: a fresh lab made from the template runs 'bringup image check' on a stock boot.img with the manifest alone, and the weekly pin bump opens a pull request when bringup releases.
 
 Opened
 : 2026-11-17
 
 Waits
 : bringup-image-v0
+
+About
+: bringup
+
+
+<a id="bringup-pin-and-hooks"></a>
+### bringup follows by pin and extends by hooks: [tools] version check, manifest-named step hooks, a library API a rust-script can use
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-17-bringup-in-lab-tools. Failing test first: with device.toml [tools] bringup = "0.2" and a bringup 0.1.x binary, any command stops with one line naming both versions (exit non-zero, nothing written). Then hooks: a [boot.hooks] step names an executable, called with the part paths as arguments; a missing hook file or a nonzero exit stops the job; test with a shell hook that appends a byte and one that fails. Then the library: the pack/swap/check functions public and documented, with a rust-script example in the repository (a device step that depends on bringup by git tag in its header) run by a test.
+
+Opened
+: 2026-11-17
+
+Waits
+: bringup-image-v0
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: bringup-refuses-wrong-pin
+
+About
+: bringup
+
+
+<a id="bringup-release"></a>
+### bringup is released by release-plz (a bringup-vX.Y.Z tag) and installs on a lab host from the tag
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Like lpoco-health. Settle with a test which install is simpler for a device lab: a host binary as a release asset (x86_64 linux, checksum) or cargo install --git https://github.com/linux-phone-oco/lab-tools --tag bringup-vX.Y.Z bringup. Proof: on a clean host, the chosen install from the tag gives a bringup whose --version equals the tag and passes bringup-refuses-wrong-pin.
+
+Opened
+: 2026-11-17
+
+Waits
+: bringup-image-v0
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: bringup-installs-from-tag
 
 About
 : bringup
