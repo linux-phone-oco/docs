@@ -1201,3 +1201,31 @@ Rejected
 
 About
 : commons-only
+
+
+<a id="2026-11-17-mcp-one-door-by-prefix"></a>
+### 2026-11-17-mcp-one-door-by-prefix
+
+Brief
+: lpoco mcp is lpoco-lab's MCP server with every program's tools under its name: lab_*, health_*, bringup_*; the bare names stay
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Decision
+: lpoco mcp runs lpoco-lab mcp. One server lists lab_run/put/get/kernel_*/reboot (the bare names run, put, ... answer the same function), health_* and bringup_image_info/check (which run lpoco-bringup beside it). A new program joins by adding its prefixed tools to that router.
+
+Why
+: Agents look in one place; the rmcp router already held the lab tools, and prefixes by program name need no second protocol layer. Proof lpoco-mcp-lists-every-family-tool lists them over real stdio.
+
+Rejected
+: A proxy that starts each lpoco-NAME mcp and merges their tools: a child process per program and an MCP client for no gain while only the lab holds a phone. A separate lpoco-mcp crate: a second copy of the door and its device loading. Renaming the tools with no aliases: breaks every agent's saved config (lpoco-names-sweep keeps aliases until it ends).
+
+About
+: lpoco-mcp-one-door
+
+Research
+: bringup-one-roof
