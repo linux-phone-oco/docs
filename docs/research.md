@@ -1155,3 +1155,25 @@ Sources
 
 About
 : lpoco-host
+
+
+<a id="hardware-world"></a>
+### hardware-world
+
+Brief
+: Others keep a catalogue (what a thing is) apart from stock and usage; claims, prices and sources go stale unless dated.
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: How should hardware for debugging and bring-up (cables, adapters, meters) be kept for every phone, claimed versus confirmed, and read by the lanes?
+
+Found
+: Read: Snipe-IT (model vs asset; status labels deployable/pending/archived; purchase_cost with purchase_date), Part-DB (part vs lot by location; supplier price details with quantity breaks; a needs-review flag), KiCad (custom fields MPN/Manufacturer by convention; no status or price date), OpenBOM (item vs usage), the kernel's serial-console doc (software contract only), and for the Pixel UART cable bacon.dev (2020, updated 2022), Peter-Easton's howto (title says Pixel 2/3/4, body details the 3), xairy's pixel-kgdb (FT232R supports break, CP2102N does not), google/usb-cereal (DIP 1.8/3.3 V, archived 2023-01-10). Not read: postmarketOS Serial_debugging (301 to nura.eco, then Anubis denial), iFixit (404), LineageOS device pages (403), Part-DB parts page (503).
+
+About
+: no-manual-steps

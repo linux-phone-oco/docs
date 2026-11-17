@@ -3400,3 +3400,63 @@ By
 
 Takes
 : root moves to a lab-root wrapper or a narrower grant per command, written by the author and root; the tool must print the exact root commands it runs
+
+
+<a id="bacon-pixel-uart"></a>
+### Enabling serial port (console UART) on Pixel 2 and other Pixels
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://blog.bacon.dev/2020/10/enabling-serial-port-or-console-uart-on.html
+
+Author
+: bacon.dev
+
+Year
+: 2020
+
+By
+: ikb-cli
+
+Takes
+: Pixel 2 UART on USB-C SBU1/SBU2 at 1.8 V, 115200 8N1, fastboot oem uart enable; the stock cable lacks the lines; orientation differs between Pixels
+
+
+<a id="xairy-pixel-kgdb"></a>
+### Pixel KGDB over UART
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://xairy.io/articles/pixel-kgdb
+
+Author
+: Andrey Konovalov
+
+By
+: ikb-cli
+
+Takes
+: USB-Cereal at 1.8 V and 115200 on a Pixel 8; an FT232R supports break (KGDB sysrq), a CP2102N edition did not
+
+
+<a id="google-usb-cereal"></a>
+### usb-cereal
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/google/usb-cereal
+
+Author
+: Google
+
+By
+: ikb-cli
+
+Takes
+: SBU1 = TX, SBU2 = RX, DIP 1.8/3.3 V (a wrong setting can damage the target), orientation-specific, archived 2023-01-10, not an official Google product
