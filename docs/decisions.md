@@ -730,3 +730,50 @@ About
 
 Research
 : microphones-are-analog,mic-zeros-meant-no-input,bolero-v1-capture-family
+
+
+<a id="2026-11-17-calls-proven-by-echo-call"></a>
+### 2026-11-17-calls-proven-by-echo-call
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: Calls on surya are made to work as pulpoff/linux-surya carries them - q6voice from sdm845-mainline with SM7150's CVD 2.3 set-up and a hostless VoiceMMode1 link in our kernel, then UCM Voice Call with TX topology 0x10F70 and a 1-channel uplink capture on TX_CODEC_DMA_TX_3 - and proven by the phone itself calling blueSIP's public echo line (+49 89 721010 99701): three tones played on the loudspeaker are heard by the bottom mic going up and again, a round trip later, coming back on the earpiece, found by Goertzel envelopes in a Rust subcommand of devlab-health. Its tone line (99702) proves the downlink alone; the SIM's own mailbox is the fallback. At most one call of 25 s a day; skipped as unknown without a SIM, a registration or the call path. Mobile data is checked every boot over the bearer's own interface (registration, DNS, pings, 100 kB), with a weekly 5 MB throughput run, under 0.3 GB a month. The first step is the kernel: q6voice and the VoiceMMode1 link, settled by the check call-audio-path, which fails today.
+
+Why
+: An independent mainline tree on this very phone already carries calls with sound both ways, so the biggest unknown is porting, not discovery; the check call-audio-path settles it without a SIM or a call. The echo line is the only public German echo attested across years and sources, and costs a landline-rate call; its tone line splits a failure into downlink and uplink. The acoustic loop proves exactly what a person uses - loudspeaker, mic, uplink, network, downlink, earpiece - and needs no driver feature beyond what calls need anyway (the uplink capture is written to a file instead of discarded). Daily and short keeps the cost to cents and the people reached to none.
+
+Rejected
+: Digital loop through in-call record/playback ports (unknown whether sdm845-mainline's q6voice has them; kept for later if it does). A second phone on a stand that answers (hardware and a second SIM; the echo line does the same for nothing). A programmable number (Twilio and the like: an account, money, a public endpoint). sipgate's echo 10005 (SIP-internal, not dialable from a mobile, private customers dropped 2025). Old or foreign echo lines (portunity 0211, sip2sip +31, C*NET: unconfirmed, international rates). Calling the author's other phone as the automatic test (reaches a person; stays the half-manual mode of 2026-11-11-telephony-checks). Downstream's 0x10F71 topology (silence without Xiaomi's calibration). A call on every boot (45 a day in bring-up).
+
+About
+: linux-phone-oco/docs/features:voice-calls
+
+Research
+: echo-call-number, call-audio-on-surya, echo-call-test-design, mobile-data-check-budget
+
+
+<a id="2026-11-17-health-checks-shell-and-rust"></a>
+### 2026-11-17-health-checks-shell-and-rust
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Decision
+: The phones' health suites keep one contract - a check prints 'pass|fail|skip TEST COMPONENT detail', and docs' tests table says what a pass proves - and two languages by kind of work: shell for readings (sysfs, a command's output, a few readable lines on BusyBox), and Rust for anything with numbers, timing or states (tones, echoes, calls, sleep counters), as subcommands of one static multi-call binary shipped with devlab-health (devlab-health tone make|find, later call echo), unit-tested on the lab with recorded fixtures and cross-built by health/build.sh. rust-script is the lab's tool for prototypes and one-off analysis of recordings fetched from the phone; a prototype that is kept becomes a subcommand. Checks are layered by cost: base, shell, telephony (calls and data, budgeted, at most daily), witnessed (a person). Coverage is a query over docs: every device's components with no test proving works.
+
+Why
+: The shell contract is what makes a check quick to write and read, and it already runs everywhere; what goes wrong in shell is arithmetic - three of surya's checks carry an awk Goertzel and a printf-built tone that nobody unit-tests, while lab-tools' tone crate has tests and never reaches the phone. The phone has no Rust toolchain, so Rust must arrive compiled; one binary already goes there (devlab-health), so analysis joins it at no new cost. rust-script works today on the lab; Cargo's own scripts are still nightly-only (Cargo 1.99 asks for -Zscript) and can replace rust-script when they are stable.
+
+Rejected
+: Python checks (refused on the lab; the phone's python3 is the image's, not ours). rust-script or cargo script on the phone (a toolchain and network on the phone, minutes of compiling at boot). Every check in Rust (a ten-line sysfs reading becomes a cross-build per change). bats or another shell test framework (bash, not BusyBox ash; the contract already does its work). LAVA or a KTAP-native harness now (a lab of many boards; our lines map onto KTAP if ever needed). One binary per check (many cross-builds and files to ship).
+
+Research
+: health-suite-organisation

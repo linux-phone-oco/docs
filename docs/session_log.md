@@ -1129,3 +1129,24 @@ Considered
 
 Rejected
 : chatty with a Telegram plugin: no such plugin is packaged. Keeping the line live: it breaks the whole package list.
+
+---
+
+
+<a id="2026-11-17-research-echo-call"></a>
+### Research: calls proven by an echo call, and how the health suites are organised
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Read the phone (read only): the modem is online on LTE, Vodafone.de, data attached; q6voiced and callaudiod installed; no voice PCM in the kernel. Found one attested German echo line (blueSIP 99701) and its tone line (99702); read pulpoff/linux-surya's call path; designed the echo-call check and the data budget; surveyed the suites (shell checks with awk Goertzels, the tone crate never on the phone, no Rust toolchain on the phone, cargo script still nightly). Decided 2026-11-17-calls-proven-by-echo-call and 2026-11-17-health-checks-shell-and-rust; backlog calls-q6voice-kernel to calls-echo-check, health-data-check, health-analysis-in-rust, health-coverage-query; wrote surya-lab's failing check call-audio-path.
+
+Considered
+: A digital loop through in-call record ports; a two-phone stand; a programmable number; rust-script on the phone; every check in Rust.
+
+Rejected
+: Python checks; sipgate's SIP-only echo; a call on every boot.
