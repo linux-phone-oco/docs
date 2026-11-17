@@ -125,3 +125,22 @@ How
 
 Contacts
 : linux-phone-oco orchestration
+
+
+<a id="ideal-agent"></a>
+### grenudi/ideal-agent
+
+Kind
+: code-project
+
+Address
+: https://github.com/grenudi/ideal-agent
+
+How
+: a pull request through its owner session (ideal-agent-roles): an upstream item here naming ideal-agent, and a message to that session, which looks around, decides, lands and reads back
+
+Contacts
+: ideal-agent-roles (the session that keeps ideal-agent)
+
+Notes
+: Takes what is general: how agents work, roles, skills, practices, and how any device is brought up; the domain keeps a pointer (ideal-agent decision 2026-11-17-research-on-own-initiative).

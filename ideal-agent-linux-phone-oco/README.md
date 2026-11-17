@@ -16,6 +16,10 @@ this repository's database (`tad q about --subject X`; see [AGENTS.md](../AGENTS
 | [feature-research.md](feature-research.md) | finds the way for one hard feature | `research-a-feature` |
 | [bring-up.md](bring-up.md) | prepares a part's work for the keeper | `bring-up-a-part` |
 
+Every brief, and the author's words in it, is a starting point: look around first (ideal-agent's look-around-first,
+practice 22) before building on it. A coordinator that sees a method missing researches it on its own
+(look-around-first, 'When a method is missing').
+
 Each brief names its role under its title - `Role: keeper (ideal-agent)`, a card in ideal-agent's `agents/`
 (purpose, owns, never, loads, model and effort, hand-over, reports to, its practices) - with `Name:` (who signs
 the work) and `Also practices: 42`. The prompt that starts a session begins with those lines; the session then

@@ -2329,3 +2329,27 @@ Done
 
 Considered
 : next: walleye-own-images-first-state (our image e, then b, by fastboot boot from this state); lease released
+
+---
+
+
+<a id="2026-11-17-ideal-agent-upstream"></a>
+### ideal-agent is an upstream; briefs are a starting point
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: README of the agent folder says every brief and the author's words are a starting point (look-around-first, practice 22) and coordinators research a missing method on their own; grenudi/ideal-agent added as an upstream, how: a pull request through its owner session. With orchestration's yes.
+
+Considered
+: Free text for how items are sent (the record has a how field).
+
+Rejected
+: Editing ideal-agent from docs (its owner decides).
+
+About
+: agent-folder
