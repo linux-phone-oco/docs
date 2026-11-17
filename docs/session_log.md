@@ -2125,3 +2125,24 @@ Considered
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-1900-keeper9-udc-unbound-stuck"></a>
+### floor-udc-unbound stalled the phone: a step that can drop USB keeps the watchdog armed
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Unbound a6f8800.usb from dwc3-qcom-legacy, ran way-back.sh cycle 15 bt-on, rebound: the lab link did not return (no usb interface, 172.16.42.1 silent 10+ min), WLAN still unloaded from the previous item. The cycle defuses the watchdog on return, so nothing reset the phone: the author's hands (hold power) are needed. Cycle result unread in /var/tmp/k9u.out on the phone: not known yet.
+
+Considered
+: Lesson: any step that can drop the only link (UDC unbind, WLAN unload) must leave the watchdog ARMED (way-back.sh fuse 30, not defused) so the phone resets itself, and must not rely on a rebind to bring the gadget back. Next after the reboot: read /var/tmp/k9u.out first, then floor-sh0-owner / floor-aoss-knobs; floor-udc-unbound stays open until measured.
+
+About
+: deep-sleep
