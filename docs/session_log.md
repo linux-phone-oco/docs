@@ -1399,3 +1399,27 @@ Rejected
 
 About
 : kb-about-link
+
+---
+
+
+<a id="2026-11-17-agent-folder"></a>
+### The agent specifics in their own folder
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: prompts/bring-up.md, feature-research.md and orchestration.md moved into ideal-agent-linux-phone-oco/ (git mv, history kept), beside the phone keeper's brief; a README there lists the briefs with their ideal-agent skill and holds practice 42's domain part (one database, --about, signing and landing, the phone only by its keeper). Pointers fixed: the briefs' own, the keeper brief's, AGENTS.md, ~/.claude/scheduled-tasks/linux-phone-patrol. Rows that name prompts/ stay as they were said.
+
+Considered
+: Leaving prompts/ as a link to the folder.
+
+Rejected
+: A link: two names for one place, the overlap this folder ends.
+
+About
+: agent-folder

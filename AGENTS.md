@@ -9,7 +9,8 @@ Ask a query; do not read `data/` or `docs/` to answer. `tad q about --subject au
 one subject - its status, research, decisions, open work, log, tests and sources - in one read (`modem` names
 modem-data, modem-calls and modem-sms together); `tad q about` lists the subjects. Every record names what it is
 about (`--about`, checked against components, features, milestones, devices and backlog). `tad statements` lists
-every query and record with its parameters.
+every query and record with its parameters. What an agent needs that is linux-phone's own - the role briefs, the
+phone keeper, how records go here - is in [`ideal-agent-linux-phone-oco/`](ideal-agent-linux-phone-oco/README.md).
 
 ## Setup (once per session)
 ```
