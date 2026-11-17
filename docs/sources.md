@@ -3009,3 +3009,143 @@ By
 
 Takes
 : s2idle enters through dev_pm_genpd_suspend, not runtime PM; the CPU domains get pm_domain_cpu_gov only when they have idle states
+
+
+<a id="aosp-mkbootimg"></a>
+### AOSP system/tools/mkbootimg (mkbootimg, unpack_bootimg, repack_bootimg; rust/bootimg.rs header layout)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://android.googlesource.com/platform/system/tools/mkbootimg
+
+By
+: Google
+
+Takes
+: The reference for header v0-v4 and vendor_boot: the oracle our Rust packer is tested against byte for byte; its unpack prints the fields we compare.
+
+
+<a id="aosp-avbtool"></a>
+### AOSP avbtool (external/avb)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://android.googlesource.com/platform/external/avb/
+
+By
+: Google
+
+Takes
+: info_image and add_hash_footer: wrapped as a tool on PATH for the footer; no AVB crate exists on crates.io.
+
+
+<a id="magiskboot"></a>
+### Magisk magiskboot (native/src/boot, Rust and C++, GPL-3.0) and its tools.md
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/topjohnwu/Magisk/tree/master/native/src/boot
+
+Author
+: topjohnwu
+
+By
+: research-bringup-tools
+
+Takes
+: The model for swap one part: unpack to a directory, change a part, repack with the original image as the template. Not a dependency: GPL, cxx-bound, aimed at rooting.
+
+
+<a id="abootimg-oxide"></a>
+### abootimg-oxide 0.5.2: Android boot image parser (Rust, binrw)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.rs/abootimg-oxide
+
+Author
+: axelkar
+
+By
+: research-bringup-tools
+
+Takes
+: Header v0-v4 and vendor_boot read and write, MIT OR Apache-2.0, released 2026-06; the Rust header layer to wrap, if its v0 write is byte-exact (unknown, the first test settles it).
+
+
+<a id="rust-bringup-crates"></a>
+### Rust crates for the rest: cpio, cpio-archive, flate2, lz4_flex, dtoolkit, fdt
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://crates.io/crates/cpio
+
+By
+: research-bringup-tools
+
+Takes
+: cpio 0.4.2 (newc writer, MIT), flate2 and lz4_flex (maintained), dtoolkit 0.5.0 (Google, dtb read/edit, young), fdt (read). Nothing covers AVB; wrap avbtool.
+
+
+<a id="pmbootstrap-deviceinfo"></a>
+### pmbootstrap pmb/parse/deviceinfo.py and bootimg.py (Python, ~24k lines in all)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmbootstrap
+
+By
+: postmarketOS
+
+Takes
+: Only the vocabulary: deviceinfo's header_version, base, kernel_offset, ramdisk_offset, tags_offset, pagesize, cmdline names for our device.toml [boot]. The build step is not in pmbootstrap; the rest is Python and shell sprawl we leave.
+
+
+<a id="abl-exorcist"></a>
+### abl-exorcist (Rust, GPL-3.0): wrap a mainline kernel for Pixel ABL, then call mkbootimg
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/samcday/abl-exorcist
+
+Author
+: samcday
+
+By
+: research-bringup-tools
+
+Takes
+: A Rust tool that shells out to mkbootimg and does the one thing a Pixel bootloader needs; evidence that wrapping mkbootimg is what Rust tools do, and a lead for the Pixel 2 Load Error.
+
+
+<a id="abootcrafter"></a>
+### abootcrafter 1.1.0 (Rust boot image tool)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/andrewgigena/abootcrafter
+
+Author
+: andrewgigena
+
+By
+: research-bringup-tools
+
+Takes
+: Its update flow (replace kernel/ramdisk of an existing image) is our swap; no AVB, no vendor_boot, ramdisk repack unfinished: idea only.

@@ -5589,3 +5589,153 @@ Rank
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="bringup"></a>
+### bringup: the host tool that makes a device's first boot images (boot image pack, unpack, swap, check; initramfs)
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decided 2026-11-17 (decision 2026-11-17-bringup-in-lab-tools): a new workspace member of lab-tools, lib + binary 'bringup', Rust with argenv, wrapping mkbootimg/avbtool as oracles and the crates for cpio, compression and dtb. Replaces walleye's eight build/check scripts; the device's header facts go in device.toml [boot] (pmOS deviceinfo names). Steps are the bringup-* items. Next: bringup-image-v0.
+
+Opened
+: 2026-11-17
+
+About
+: bringup
+
+
+<a id="bringup-image-v0"></a>
+### bringup image info|unpack|pack|check for header v0, packed byte for byte as mkbootimg
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-17-bringup-in-lab-tools. First: create the workspace member lab-tools/bringup (lib + bin, argenv) and the FAILING test lab-tools/bringup/tests/pack_v0.rs: from small committed fixture parts (kernel, ramdisk, one appended dtb) 'bringup image pack' output equals mkbootimg's for walleye's header (base 0, kernel 0x8000, ramdisk 0x1000000, tags 0x100, page 4096, cmdline) byte for byte, and 'bringup image check' fails on a wrong ramdisk offset, passes on the right one (the fields check-bootimg.sh counts: magic, size within partition, v0, offsets, os words, cmdline, appended dtb with qcom,msm-id). The test skips as 'not measured: no mkbootimg' where android-tools is absent. First step settles the biggest unknown: does abootimg-oxide write v0 byte-exact (else wrap mkbootimg for pack and keep Rust for info/unpack/check). Header facts come from device.toml [boot]; add that table to the manifest reader.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: bringup-pack-matches-mkbootimg
+
+About
+: bringup
+
+
+<a id="bringup-image-swap"></a>
+### bringup image swap: one part of a control image replaced, the AVB hash footer kept, and what differs said
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Replaces build-bisect.sh and check-bisect.sh. Test: swapping nothing (s0) reproduces the control except the header id and the footer digest (53 bytes in walleye's case; a small synthetic control with an avbtool-made footer is the fixture); swapping the ramdisk changes exactly the ramdisk, the header sizes and the footer. Parts: ramdisk, kernel (lz4 frame as the stock one, independent 4 MiB blocks, content checksum), dtb (found by magic at the end of the kernel blob), cmdline, header fields. Footer through avbtool add_hash_footer (algorithm NONE, the control's partition size, salt and properties) - wrapped, no crate exists. 'bringup bisect FILE' runs a declared series (the s0, s0n, s1, s2, s3 of walleye).
+
+Opened
+: 2026-11-17
+
+Waits
+: bringup-image-v0
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: bringup-swap-s0-reproduces-control
+
+About
+: bringup
+
+
+<a id="bringup-initramfs"></a>
+### bringup initramfs build: a reproducible newc cpio, the gadget address as a variable, xz or gzip by the device
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Replaces build-initramfs.sh. Test: from the walleye spec (busybox, /init, udhcpd.conf, device nodes) the archive is byte for byte what the kernel's gen_init_cpio -t 0 makes, then compressed with the codec the device names (xz for the 4.4 kernel, gzip otherwise; fixed settings, same bytes twice). The NET=43 rewrite becomes a variable in the template (172.16.{net}.1, the ECM MAC byte) and a build that leaves the old address behind fails. Crates: cpio, flate2, xz2. The QEMU self-test stays shell until a second device needs it.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: bringup-cpio-matches-gen-init-cpio
+
+About
+: bringup
+
+
+<a id="walleye-scripts-call-bringup"></a>
+### walleye's build and check scripts become calls to bringup
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: After bringup-image-v0, -swap and -initramfs land: build-bootimg, build-bisect, check-bootimg, check-bisect, build-initramfs, build-all become one-line calls (or go) with the header facts in device.toml [boot]; build-kernel, build-busybox and selftest-initramfs stay as they are (make and qemu calls). Proof: the images a-i and s0-s3 rebuilt by bringup are byte for byte the ones in ~/Projects/walleye-build/images (SHA256SUMS), or differ only where the item says why.
+
+Opened
+: 2026-11-17
+
+Waits
+: bringup-image-swap
+
+About
+: google-walleye
+
+
+<a id="device-template-names-bringup"></a>
+### The device template names bringup and ships a [boot] table in device.toml
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: AGENTS.md says where a device's first-boot images are made (lab-tools bringup, not a scripts folder of its own); device.toml gets [boot] in pmOS deviceinfo's words, every value marked CHANGE, read by bringup like [flash] and [fastboot] are read by devlab. Proof: a fresh lab made from the template runs 'bringup image check' on a stock boot.img with the manifest alone.
+
+Opened
+: 2026-11-17
+
+Waits
+: bringup-image-v0
+
+About
+: bringup
