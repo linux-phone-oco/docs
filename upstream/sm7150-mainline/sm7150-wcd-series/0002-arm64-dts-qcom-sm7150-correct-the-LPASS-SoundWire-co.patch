@@ -1,0 +1,184 @@
+From c7bc7e4a0a0e17c4ff56f52027b3b39451f496c9 Mon Sep 17 00:00:00 2001
+From: grenudi <idunerg@gmail.com>
+Date: Tue, 17 Nov 2026 04:45:50 +0100
+Subject: [PATCH] arm64: dts: qcom: sm7150: correct the LPASS SoundWire
+ controllers and macro clocks
+
+The LPASS audio nodes as added did not match the hardware:
+
+- The TX and RX SoundWire controllers are at 0x62ed0000 and 0x62ef0000
+  (the vendor's swrm-io-base for this SoC), not 0x62630000 and
+  0x62610000. The TX controller also has a wakeup interrupt.
+- Their port tables are given for six data-in and one data-out port
+  (TX) and one data-in and six data-out ports (RX), as the codec's
+  ports are counted on this controller version.
+- The DSP on this SoC rejects the LPASS_HW_DCODEC_VOTE request
+  (AFE_CMD_REMOTE_LPASS_CORE_HW_VOTE_REQUEST returns error 3), which
+  made the VA macro fail to probe with -ETIMEDOUT and the whole sound
+  card defer. Drop the dcodec vote from the TX, RX and VA macros, and
+  clock the VA macro from the TX core MCLK and NPL clocks with the
+  macro vote, as the TX and RX macros are.
+
+With these the WCD9375 enumerates on both buses and the sound card
+registers with it.
+
+Tested on a Xiaomi POCO X3 NFC (surya).
+---
+ arch/arm64/boot/dts/qcom/sm7150.dtsi | 84 ++++++++++++++++------------
+ 1 file changed, 47 insertions(+), 37 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sm7150.dtsi b/arch/arm64/boot/dts/qcom/sm7150.dtsi
+index 90a212589..f8e8e2259 100644
+--- a/arch/arm64/boot/dts/qcom/sm7150.dtsi
++++ b/arch/arm64/boot/dts/qcom/sm7150.dtsi
+@@ -4701,9 +4701,8 @@ txmacro: txmacro@62ec0000 {
+ 			clocks = <&q6afecc LPASS_CLK_ID_TX_CORE_MCLK LPASS_CLK_ATTRIBUTE_COUPLE_NO>,
+ 				 <&q6afecc LPASS_CLK_ID_TX_CORE_NPL_MCLK  LPASS_CLK_ATTRIBUTE_COUPLE_NO>,
+ 				 <&q6afecc LPASS_HW_MACRO_VOTE LPASS_CLK_ATTRIBUTE_COUPLE_NO>,
+-				 <&q6afecc LPASS_HW_DCODEC_VOTE LPASS_CLK_ATTRIBUTE_COUPLE_NO>,
+ 				 <&vamacro>;
+-			clock-names = "mclk", "npl", "macro", "dcodec", "fsgen";
++			clock-names = "mclk", "npl", "macro", "fsgen";
+ 
+ 			pinctrl-names = "default";
+ 			pinctrl-0 = <&tx_swr_active>;
+@@ -4714,32 +4713,36 @@ txmacro: txmacro@62ec0000 {
+ 			status = "disabled";
+ 		};
+ 
+-		swr2: soundwire-controller@62630000 {
+-			reg = <0 0x62630000 0 0x2000>;
++		swr2: soundwire-controller@62ed0000 {
+ 			compatible = "qcom,soundwire-v1.5.1";
+-			status = "disabled";
+-			interrupts = <GIC_SPI 296 IRQ_TYPE_LEVEL_HIGH>;
++			reg = <0 0x62ed0000 0 0x2000>;
++
++			interrupts = <GIC_SPI 296 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 500 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-names = "core", "wakeup";
+ 
+ 			clocks = <&txmacro>;
+ 			clock-names = "iface";
+ 			label = "TX";
+ 
+-			qcom,din-ports = <5>;
+-			qcom,dout-ports = <0>;
+-			qcom,ports-sinterval-low =	/bits/ 8 <0xFF 0x01 0x01 0x03 0x03>;
+-			qcom,ports-offset1 =		/bits/ 8 <0xFF 0x01 0x00 0x02 0x00>;
+-			qcom,ports-offset2 =		/bits/ 8 <0xFF 0x00 0x00 0x00 0x00>;
+-			qcom,ports-block-pack-mode =	/bits/ 8 <0xFF 0xFF 0xFF 0xFF 0xFF>;
+-			qcom,ports-hstart =		/bits/ 8 <0xFF 0xFF 0xFF 0xFF 0xFF>;
+-			qcom,ports-hstop =		/bits/ 8 <0xFF 0xFF 0xFF 0xFF 0xFF>;
+-			qcom,ports-word-length =	/bits/ 8 <0xFF 0xFF 0xFF 0xFF 0xFF>;
+-			qcom,ports-block-group-count =	/bits/ 8 <0xFF 0xFF 0xFF 0xFF 0xFF>;
+-			qcom,ports-lane-control =	/bits/ 8 <0xFF 0x00 0x01 0x00 0x01>;
+-			qcom,port-offset = <1>;
++			qcom,din-ports = <6>;
++			qcom,dout-ports = <1>;
++			qcom,ports-sinterval-low = /bits/ 8 <0xFF 0x01 0x01 0x03 0x03 0xFF 0xFF>;
++			qcom,ports-offset1 = /bits/ 8 <0xFF 0x01 0x00 0x02 0x00 0xFF 0xFF>;
++			qcom,ports-offset2 = /bits/ 8 <0xFF 0x00 0x00 0x00 0x00 0xFF 0xFF>;
++			qcom,ports-block-pack-mode = /bits/ 8 <0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF>;
++			qcom,ports-hstart = /bits/ 8 <0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF>;
++			qcom,ports-hstop = /bits/ 8 <0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF>;
++			qcom,ports-word-length = /bits/ 8 <0xFF 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF>;
++			qcom,ports-block-group-count = /bits/ 8 <0xFF 0xFF 0xFF 0xFF
++									0xFF 0xFF 0xFF>;
++			qcom,ports-lane-control = /bits/ 8 <0xFF 0x00 0x01 0x00 0x01 0xFF 0xFF>;
+ 
+ 			#sound-dai-cells = <1>;
+ 			#address-cells = <2>;
+ 			#size-cells = <0>;
++
++			status = "disabled";
+ 		};
+ 
+ 		rxmacro: rxmacro@62ee0000 {
+@@ -4750,9 +4753,8 @@ rxmacro: rxmacro@62ee0000 {
+ 			clocks = <&q6afecc LPASS_CLK_ID_TX_CORE_MCLK LPASS_CLK_ATTRIBUTE_COUPLE_NO>,
+ 				 <&q6afecc LPASS_CLK_ID_TX_CORE_NPL_MCLK  LPASS_CLK_ATTRIBUTE_COUPLE_NO>,
+ 				 <&q6afecc LPASS_HW_MACRO_VOTE LPASS_CLK_ATTRIBUTE_COUPLE_NO>,
+-				 <&q6afecc LPASS_HW_DCODEC_VOTE LPASS_CLK_ATTRIBUTE_COUPLE_NO>,
+ 				 <&vamacro>;
+-			clock-names = "mclk", "npl", "macro", "dcodec", "fsgen";
++			clock-names = "mclk", "npl", "macro", "fsgen";
+ 
+ 			pinctrl-names = "default";
+ 			pinctrl-0 = <&rx_swr_active>;
+@@ -4760,33 +4762,39 @@ rxmacro: rxmacro@62ee0000 {
+ 			#clock-cells = <0>;
+ 			clock-output-names = "mclk";
+ 			#sound-dai-cells = <1>;
++			status = "disabled";
+ 		};
+ 
+-		swr1: soundwire-controller@62610000 {
+-			reg = <0 0x62610000 0 0x2000>;
++
++		swr1: soundwire-controller@62ef0000 {
+ 			compatible = "qcom,soundwire-v1.5.1";
+-			status = "disabled";
++			reg = <0 0x62ef0000 0 0x2000>;
++
+ 			interrupts = <GIC_SPI 297 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-names = "core";
+ 
+ 			clocks = <&rxmacro>;
+ 			clock-names = "iface";
+ 			label = "RX";
+ 
+-			qcom,din-ports = <0>;
+-			qcom,dout-ports = <5>;
+-			qcom,ports-sinterval-low =	/bits/ 8 <0x03 0x1F 0x1F 0x07 0x00>;
+-			qcom,ports-offset1 =		/bits/ 8 <0x00 0x00 0x0B 0x01 0x00>;
+-			qcom,ports-offset2 =		/bits/ 8 <0x00 0x00 0x0B 0x00 0x00>;
+-			qcom,ports-hstart =		/bits/ 8 <0xFF 0x03 0xFF 0xFF 0xFF>;
+-			qcom,ports-hstop =		/bits/ 8 <0xFF 0x06 0xFF 0xFF 0xFF>;
+-			qcom,ports-word-length =	/bits/ 8 <0x01 0x07 0x04 0xFF 0xFF>;
+-			qcom,ports-block-pack-mode =	/bits/ 8 <0xFF 0x00 0x01 0xFF 0xFF>;
+-			qcom,ports-block-group-count =	/bits/ 8 <0xFF 0xFF 0xFF 0xFF 0x00>;
+-			qcom,ports-lane-control =	/bits/ 8 <0x01 0x00 0x00 0x00 0x00>;
++			qcom,din-ports = <1>;
++			qcom,dout-ports = <6>;
++			qcom,ports-sinterval-low = /bits/ 8 <0x03 0x1F 0x1F 0x07 0x00 0xFF 0xFF>;
++			qcom,ports-offset1 = /bits/ 8 <0x00 0x00 0x0B 0x01 0x00 0xFF 0xFF>;
++			qcom,ports-offset2 = /bits/ 8 <0x00 0x00 0x0B 0x00 0x00 0xFF 0xFF>;
++			qcom,ports-hstart = /bits/ 8 <0xFF 0x03 0xFF 0xFF 0xFF 0xFF 0xFF>;
++			qcom,ports-hstop = /bits/ 8 <0xFF 0x06 0xFF 0xFF 0xFF 0xFF 0xFF>;
++			qcom,ports-word-length = /bits/ 8 <0x01 0x07 0x04 0xFF 0xFF 0xFF 0xFF>;
++			qcom,ports-block-pack-mode = /bits/ 8 <0xFF 0x00 0x01 0xFF 0xFF 0xFF 0xFF>;
++			qcom,ports-block-group-count = /bits/ 8 <0xFF 0xFF 0xFF 0xFF
++									0x00 0xFF 0xFF>;
++			qcom,ports-lane-control = /bits/ 8 <0x01 0x00 0x00 0x00 0x00 0xFF 0xFF>;
+ 
+ 			#sound-dai-cells = <1>;
+ 			#address-cells = <2>;
+ 			#size-cells = <0>;
++
++			status = "disabled";
+ 		};
+ 
+ 		vamacro: codec@62f20000 {
+@@ -4795,13 +4803,15 @@ vamacro: codec@62f20000 {
+ 			reg = <0 0x62f20000 0 0x1000>;
+ 
+ 			clocks = <&q6afecc LPASS_CLK_ID_TX_CORE_MCLK LPASS_CLK_ATTRIBUTE_COUPLE_NO>,
+-				 <&q6afecc LPASS_HW_MACRO_VOTE LPASS_CLK_ATTRIBUTE_COUPLE_NO>,
+-				 <&q6afecc LPASS_HW_DCODEC_VOTE LPASS_CLK_ATTRIBUTE_COUPLE_NO>;
+-			clock-names = "mclk", "macro", "dcodec";
++				 <&q6afecc LPASS_CLK_ID_TX_CORE_NPL_MCLK
++				   LPASS_CLK_ATTRIBUTE_COUPLE_NO>,
++				 <&q6afecc LPASS_HW_MACRO_VOTE LPASS_CLK_ATTRIBUTE_COUPLE_NO>;
++			clock-names = "mclk", "npl", "macro";
+ 
+ 			#clock-cells = <0>;
+ 			clock-output-names = "fsgen";
+ 			#sound-dai-cells = <1>;
++			status = "disabled";
+ 		};
+ 
+ 		lpass_tlmm: pinctrl@62b52000 {
+-- 
+2.56.1
+

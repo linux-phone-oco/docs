@@ -4,7 +4,7 @@
 
 The memory of linux-phone-oco, whose goal is Linux phones as good as Android for everyday use, and better: which phone supports which hardware, how we know, why decisions were made, and what is next. Plain versioned data; see AGENTS.md. The plan, and where Linux phones stand against Android and iOS: [the grand picture](picture.md), and the main screen, [features against Android and iOS](feature_support.md).
 
-- [Backlog](backlog.md): 138
+- [Backlog](backlog.md): 139
 - [Components](components.md): 21
 - [Concepts](concepts.md): 5
 - [Decisions](decisions.md): 54
@@ -30,7 +30,7 @@ The memory of linux-phone-oco, whose goal is Linux phones as good as Android for
 - [Test Runs](test_runs.md): 112
 - [Tests](tests.md): 46
 - [Translations](translations.md): 204
-- [Upstream Items](upstream_items.md): 0
-- [Upstreams](upstreams.md): 0
+- [Upstream Items](upstream_items.md): 8
+- [Upstreams](upstreams.md): 6
 - [Wiki Claims](wiki_claims.md): 18
 - [Workings](workings.md): 17

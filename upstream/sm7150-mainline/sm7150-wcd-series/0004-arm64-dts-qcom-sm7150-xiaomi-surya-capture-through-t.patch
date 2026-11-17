@@ -1,0 +1,39 @@
+From f75f19b541d55d82f67ab3f9e64ced8c2be1bfbf Mon Sep 17 00:00:00 2001
+From: grenudi <idunerg@gmail.com>
+Date: Tue, 17 Nov 2026 05:23:15 +0100
+Subject: [PATCH] arm64: dts: qcom: sm7150-xiaomi-surya: capture through the TX
+ SoundWire DAI
+
+The TX SoundWire controller has one data-out and six data-in ports, so
+its DAI 0 is a playback DAI: in the capture link it never gets
+hw_params, the capture ports are never programmed, and every recording
+through TX_CODEC_DMA_TX_3 is digital silence although the stream runs.
+Use the controller's DAI 1, as the sm8550/x1e boards with a WCD938x on
+the same kind of controller do.
+
+Found in pulpoff/linux-surya, which records surya's microphones this
+way on mainline.
+
+Tested on a Xiaomi POCO X3 NFC (surya).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ arch/arm64/boot/dts/qcom/sm7150-xiaomi-surya.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sm7150-xiaomi-surya.dtsi b/arch/arm64/boot/dts/qcom/sm7150-xiaomi-surya.dtsi
+index 9424915df..8ccb810fd 100644
+--- a/arch/arm64/boot/dts/qcom/sm7150-xiaomi-surya.dtsi
++++ b/arch/arm64/boot/dts/qcom/sm7150-xiaomi-surya.dtsi
+@@ -131,7 +131,7 @@ cpu {
+ 			};
+ 
+ 			codec {
+-				sound-dai = <&wcd937x 1>, <&swr2 0>, <&txmacro 0>;
++				sound-dai = <&wcd937x 1>, <&swr2 1>, <&txmacro 0>;
+ 			};
+ 
+ 			platform {
+-- 
+2.56.1
+
