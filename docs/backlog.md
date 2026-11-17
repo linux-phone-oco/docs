@@ -3477,3 +3477,22 @@ Needs
 
 About
 : deep-sleep
+
+
+<a id="lpoco-health"></a>
+### lpoco-health: the one health suite on the phone, with switches and run-time detection
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: in-progress
+
+Note
+: Research 2026-11-17-lpoco-health-landscape recorded; design and build follow (decision 2026-11-17-lpoco-health).
+
+Opened
+: 2026-11-17
+
+About
+: lpoco-health

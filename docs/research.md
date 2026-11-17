@@ -949,3 +949,31 @@ About
 
 Material
 : research/deep-sleep/2026-11-17-way-back/
+
+
+<a id="2026-11-17-lpoco-health-landscape"></a>
+### 2026-11-17-lpoco-health-landscape
+
+Brief
+: Tests on phones are small executables printing one line per case, shipped as packages; nothing is compiled on the device - so prebuilt static binaries or shell, not rust-script
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Question
+: How are tests organised, shipped and provisioned on Linux phones (postmarketOS, bootrr, LAVA, CI-tron, systemd), and where do rust-script tests plus a bundle crate fit?
+
+Found
+: postmarketOS (postmarketos-test aport, initramfs CI hook), bootrr, LAVA and CI-tron share one shape: a test is a small executable, a thin runner prints one pass/fail/skip line per case, the lab collects the lines, device facts live as data (bootrr boards; CI-tron's stored record = our manifest). Nobody compiles on the device. rust-script compiles on first run and needs rust+cargo on the phone (Alpine aarch64: 72 MiB download, 206 MiB installed, plus gcc/musl-dev/llvm-libs, network for crates): fine on the lab, poor on a phone. A bundle crate that depends on tests (nextest discovery, inventory/linkme registries) is sound as a runner design, but registries are unproven on aarch64 musl and link everything into one binary; one binary per test discovered by directory gives the same independence. Provisioning: an apk gives versions, uninstall and signatures at the price of a key and a repository; a lab push is fast and leaves no version record; push while it changes, package when settled. Not known yet: postmarketos-test contents, pmOS test-farm tooling, rust-script cache path, inventory/linkme on aarch64 musl, the systemd claims (read from memory only).
+
+Sources
+: pmos-ondevice-ci-mr,bootrr,lava-test-definition,ci-tron-components,rust-script-tool,alpine-rust-aarch64,nextest-how-it-works,alpine-abuild
+
+About
+: lpoco-health
+
+Material
+: research/lpoco-health/2026-11-17/
