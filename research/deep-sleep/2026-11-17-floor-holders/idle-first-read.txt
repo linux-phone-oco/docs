@@ -1,0 +1,478 @@
+== cmdline
+initrd=initramfs initrd=initramfs-calls quiet splash plymouth.ignore-serial-consoles plymouth.prefer-fbcon pmos_boot_uuid=50ED-7B03 pmos_root_uuid=e7062c46-3a95-48b6-82d7-13d70f98c5ba pmos_rootfsopts=defaults
+== clk enabled (enable_count>0)
+ LPASS_HW_MACRO                      3       3        0        0           0          0     50000      Y   62ee0000.rxmacro                macro                    
+                                                                                                           62ec0000.txmacro                macro                    
+                                                                                                           pinctrl@62b52000                no_connection_id         
+                                                                                                           62f20000.codec                  macro                    
+                                                                                                           deviceless                      no_connection_id         
+ LPASS_CLK_ID_TX_CORE_NPL_MCLK       2       2        0        19200000    0          0     50000      Y   62ee0000.rxmacro                npl                      
+                                                                                                           62ec0000.txmacro                npl                      
+                                                                                                           deviceless                      no_connection_id         
+                                                                                                              deviceless                      no_connection_id         
+                                                                                                              deviceless                      no_connection_id         
+ LPASS_CLK_ID_TX_CORE_MCLK           4       4        0        19200000    0          0     50000      Y   62ee0000.rxmacro                mclk                     
+                                                                                                           62ec0000.txmacro                mclk                     
+                                                                                                           62f20000.codec                  mclk                     
+                                                                                                           deviceless                      no_connection_id         
+    fsgen                            2       2        0        19200000    0          0     50000      Y      62ee0000.rxmacro                fsgen                    
+                                                                                                              62ec0000.txmacro                fsgen                    
+                                                                                                              62f20000.codec                  fsgen                    
+                                                                                                              deviceless                      no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+ gcc_usb_phy_cfg_ahb2phy_clk         1       1        0        0           0          0     50000      Y   88e2000.phy                     cfg_ahb                  
+                                                                                                           deviceless                      no_connection_id         
+ gcc_usb30_prim_sleep_clk            1       1        0        0           0          0     50000      Y   usb@a6f8800                     no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+ gcc_ufs_phy_tx_symbol_0_clk         161     161      0        0           0          0     50000      Y   ufshc@1d84000                   no_connection_id         
+                                                                                                           1d84000.ufshc                   tx_lane0_sync_clk        
+                                                                                                           1d84000.ufshc                   tx_lane0_sync_clk        
+                                                                                                           1d84000.ufshc                   tx_lane0_sync_clk        
+                                                                                                           deviceless                      no_connection_id         
+ gcc_ufs_phy_rx_symbol_0_clk         161     161      0        0           0          0     50000      Y   ufshc@1d84000                   no_connection_id         
+                                                                                                           1d84000.ufshc                   rx_lane0_sync_clk        
+                                                                                                           1d84000.ufshc                   rx_lane0_sync_clk        
+                                                                                                           1d84000.ufshc                   rx_lane0_sync_clk        
+                                                                                                           deviceless                      no_connection_id         
+ gcc_ufs_phy_ahb_clk                 161     161      0        0           0          0     50000      Y   ufshc@1d84000                   no_connection_id         
+                                                                                                           1d84000.ufshc                   iface_clk                
+                                                                                                           1d84000.ufshc                   iface_clk                
+                                                                                                           1d84000.ufshc                   iface_clk                
+                                                                                                           deviceless                      no_connection_id         
+ gcc_ufs_mem_clkref_clk              1       1        0        0           0          0     50000      Y   phy@1d87000                     no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+ gcc_qupv3_wrap_1_s_ahb_clk          1       1        0        0           0          0     50000      Y   ac0000.geniqup                  s-ahb                    
+                                                                                                           deviceless                      no_connection_id         
+ gcc_qupv3_wrap_1_m_ahb_clk          1       1        0        0           0          0     50000      Y   ac0000.geniqup                  m-ahb                    
+                                                                                                           deviceless                      no_connection_id         
+ gcc_qupv3_wrap_0_s_ahb_clk          1       1        0        0           0          0     50000      Y   8c0000.geniqup                  s-ahb                    
+                                                                                                           deviceless                      no_connection_id         
+ gcc_qupv3_wrap_0_m_ahb_clk          1       1        0        0           0          0     50000      Y   8c0000.geniqup                  m-ahb                    
+                                                                                                           deviceless                      no_connection_id         
+ gcc_npu_cfg_ahb_clk                 1       1        0        0           0          0     50000      Y   deviceless                      no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+                                                                                                           iommu@5040000                   no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+ gcc_disp_sf_axi_clk                 1       1        0        0           0          0     50000      Y   display-subsystem@ae00000       no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+ gcc_disp_hf_axi_clk                 1       1        0        0           0          0     50000      Y   ae94000.dsi                     bus                      
+                                                                                                           display-controller@ae01000      no_connection_id         
+                                                                                                           display-subsystem@ae00000       no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+ sleep-clk                           1       1        0        32000       0          0     50000      Y   17c10000.watchdog               no_connection_id         
+                                                                                                           deviceless                      no_connection_id         
+ xo-board                            2       2        0        38400000    0          0     50000      Y   deviceless                      no_connection_id         
+    bi_tcxo_ao                       1       1        0        19200000    0          0     50000      Y      deviceless                      no_connection_id         
+       gcc_cpuss_ahb_clk_src         2       2        0        19200000    0          0     50000      Y         deviceless                      no_connection_id         
+          gcc_sys_noc_cpuss_ahb_clk  1       1        0        19200000    0          0     50000      Y            deviceless                      no_connection_id         
+          gcc_cpuss_ahb_clk          1       1        0        19200000    0          0     50000      Y            deviceless                      no_connection_id         
+    bi_tcxo                          167     167      0        19200000    0          0     50000      Y      4080000.remoteproc              xo                       
+                                                                                                              8300000.remoteproc              xo                       
+                                                                                                              62400000.remoteproc             xo                       
+                                                                                                              ufshc@1d84000                   no_connection_id         
+                                                                                                              1d84000.ufshc                   ref_clk                  
+                                                                                                              1d84000.ufshc                   ref_clk                  
+                                                                                                              1d84000.ufshc                   ref_clk                  
+                                                                                                              88e2000.phy                     ref                      
+                                                                                                              phy@1d87000                     no_connection_id         
+                                                                                                              8804000.mmc                     xo                       
+                                                                                                              deviceless                      no_connection_id         
+                                                                                                                                   deviceless                      no_connection_id         
+                                                                                                                                   deviceless                      no_connection_id         
+                                                                                                                                ae94000.dsi                     byte                     
+                                                                                                                                deviceless                      no_connection_id         
+                                                                                                                    8804000.mmc                     core                     
+                                                                                                                    deviceless                      no_connection_id         
+       gcc_usb30_prim_mock_utmi_clk_src 1       1        0        19200000    0          0     50000      Y         deviceless                      no_connection_id         
+          gcc_usb30_prim_mock_utmi_clk 1       1        0        19200000    0          0     50000      Y            usb@a6f8800                     no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+       dispcc_mdss_ahb_clk_src       1       1        0        19200000    0          0     50000      ?         deviceless                      no_connection_id         
+          dispcc_mdss_ahb_clk        2       2        0        19200000    0          0     50000      Y            ae94000.dsi                     iface                    
+                                                                                                                    ae94000.dsi                     iface                    
+                                                                                                                    display-controller@ae01000      no_connection_id         
+                                                                                                                    ae94400.phy                     iface                    
+                                                                                                                    display-subsystem@ae00000       no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+       dispcc_pll0                   1       1        0        860000097   0          0     50000      Y         deviceless                      no_connection_id         
+          dispcc_mdss_mdp_clk_src    1       1        0        344000038   0          0     50000      ?            deviceless                      no_connection_id         
+                                                                                                                       deviceless                      no_connection_id         
+             dispcc_mdss_mdp_clk     1       1        0        344000038   0          0     50000      Y               display-controller@ae01000      no_connection_id         
+                                                                                                                       ae01000.display-controller      core                     
+                                                                                                                       display-subsystem@ae00000       no_connection_id         
+                                                                                                                       deviceless                      no_connection_id         
+                                                                                                                 cci@ac4b000                     no_connection_id         
+                                                                                                                 cci@ac4a000                     no_connection_id         
+                                                                                                                 deviceless                      no_connection_id         
+                                                                                                                    cci@ac4b000                     no_connection_id         
+                                                                                                                    cci@ac4a000                     no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                 deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                 deviceless                      no_connection_id         
+                                                                                                                    ace0000.camss                   vfe1                     
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                 deviceless                      no_connection_id         
+                                                                                                                    ace0000.camss                   vfe0_csid                
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                 deviceless                      no_connection_id         
+                                                                                                                    ace0000.camss                   vfe0                     
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                 deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                 deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                 ace0000.camss                   cphy_rx_src              
+                                                                                                                 deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                    ace0000.camss                   vfe0_cphy_rx             
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                 deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                 deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                 deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                    deviceless                      no_connection_id         
+                                                                                                                    cci@ac4b000                     no_connection_id         
+== regulator
+ regulator                      use open bypass  opmode voltage current     min     max
+---------------------------------------------------------------------------------------
+ regulator-dummy                  2    4      0 unknown     0mV     0mA     0mV     0mV 
+    5000000.gpu-vddcx             0                                 0mA     0mV     0mV
+    5000000.gpu-vdd               0                                 0mA     0mV     0mV
+    ldo1                          1    1      0  normal  1616mV     0mA  1616mV  1984mV 
+       wcn3998-pmu-vddxo          1                                 0mA     0mV     0mV
+    ldo8                          0    0      0  normal  1800mV     0mA  1800mV  1896mV 
+ vph_pwr                          6    6      0 unknown  3700mV     0mA  3700mV  3700mV 
+    smps1                         0    0      0 unknown  1000mV     0mA  1000mV  1200mV 
+    smps8                         2    4      0 unknown  1120mV     0mA  1120mV  1408mV 
+       ldo2                       1    1      0  normal  1200mV     0mA  1200mV  1304mV 
+          wcn3998-pmu-vddrf       1                                 0mA     0mV     0mV
+       ldo3                       1    6      0    idle  1144mV     0mA  1144mV  1256mV 
+          ace0000.camss-vdda-pll   0                                 0mA     0mV     0mV
+          ace0000.camss-vdda-pll   0                                 0mA     0mV     0mV
+          ace0000.camss-vdda-pll   0                                 0mA     0mV     0mV
+          ace0000.camss-vdda-pll   0                                 0mA     0mV     0mV
+          ae94000.dsi-vdda        0                                21mA*    0mV     0mV
+          1d87000.phy-vdda-pll    1                                18mA     0mV     0mV
+       ldo1                       0    0      0  normal  1096mV     0mA  1096mV  1304mV 
+       ldo6                       0    0      0  normal  1096mV     0mA  1096mV  1304mV 
+    bob                           5   17      0  normal  3320mV     0mA  3320mV  3960mV 
+       audio-codec-vdd-mic-bias   1                                 0mA     0mV     0mV
+       ldo4                       0    0      0  normal  1648mV     0mA  1648mV  2944mV 
+       ldo5                       0    0      0  normal  1648mV     0mA  1648mV  2944mV 
+       ldo6                       0    1      0  normal  3000mV     0mA  3000mV  3096mV 
+          8804000.mmc-vqmmc       0                                 0mA     0mV     0mV
+       ldo7                       0    0      0  normal  3000mV     0mA  3000mV  3312mV 
+       ldo9                       0    1      0    idle  3000mV     0mA  2952mV  3096mV 
+          8804000.mmc-vmmc        0                                 0mA  3000mV  3096mV
+       ldo10                      1    1      0  normal  3200mV     0mA  3200mV  3312mV 
+          wcn3998-pmu-vddch0      1                                 0mA     0mV     0mV
+       ldo11                      1    1      0  normal  2952mV     0mA  2952mV  3400mV 
+          wcn3998-pmu-vddch1      1                                 0mA     0mV     0mV
+       wide_ldo_avdd2             0    0      0 unknown  2800mV     0mA  2800mV  2800mV 
+       uw_ldo_ois_drv             0    0      0 unknown  2800mV     0mA  2800mV  2800mV 
+       camera_vdig                0    0      0 unknown  2800mV     0mA  2800mV  2800mV 
+       camera_mipi_switch_en      0    0      0 unknown  2800mV     0mA  2800mV  2800mV 
+       ldo5                       0    0      0  normal  2600mV     0mA  2600mV  2800mV 
+       ldo16                      0    0      0  normal  1800mV     0mA  1800mV  1800mV 
+       ldo17                      2    2      0  normal  3000mV     0mA  3000mV  3232mV 
+          c440000.spmi:pmic@0:typec@1500-vdd-pdphy   1                                 0mA     0mV     0mV
+          88e2000.phy-vdda-phy-dpdm   1                                 0mA     0mV     0mV
+       ldo18                      0    1      0  normal  1696mV     0mA  1696mV  1904mV 
+          ae94000.dsi.0-vddio     0                                 0mA     0mV     0mV
+       ldo19                      1    1      0  normal  2944mV     0mA  2944mV  3304mV 
+          1d84000.ufshc-vcc       1                               600mA     0mV     0mV
+    vreg_s3a_0p8                  2    1      0 unknown   800mV     0mA   800mV   800mV 
+       ldo9                       1    1      0  normal   624mV     0mA   624mV   760mV 
+          18800000.wifi-vdd-0.8-cx-mx   1                                 0mA     0mV     0mV
+    smps4                         1    3      0 unknown   824mV     0mA   824mV  1120mV 
+       ldo2                       0    0      0  normal   944mV     0mA   944mV  1056mV 
+       ldo3                       0    0      0  normal   968mV     0mA   968mV  1064mV 
+       ldo4                       2    7      0  normal   824mV     0mA   824mV   920mV 
+          ace0000.camss-vdda-phy   0                                 0mA     0mV     0mV
+          ace0000.camss-vdda-phy   0                                 0mA     0mV     0mV
+          ace0000.camss-vdda-phy   0                                 0mA     0mV     0mV
+          ace0000.camss-vdda-phy   0                                 0mA     0mV     0mV
+          ae94400.phy-vdds        0                                36mA*    0mV     0mV
+          88e2000.phy-vdd         1                                 0mA     0mV     0mV
+          1d87000.phy-vdda-phy    1                                62mA     0mV     0mV
+    smps5                         4    6      0 unknown  1744mV     0mA  1744mV  2040mV 
+       ldo10                      3    3      0  normal  1720mV     0mA  1720mV  1832mV 
+          audio-codec-vdd-px      1                                 0mA     0mV     0mV
+          audio-codec-vdd-rxtx    1                                 0mA     0mV     0mV
+          wcn3998-pmu-vddio       1                                 0mA     0mV     0mV
+       ldo11                      1    1      0  normal  1696mV     0mA  1696mV  1984mV 
+          88e2000.phy-vdda-pll    1                                 0mA     0mV     0mV
+       ldo12                      1    1      0  normal  1696mV     0mA  1696mV  1952mV 
+          1d84000.ufshc-vccq2     1                               600mA     0mV     0mV
+       ldo13                      0    0      0  normal  1696mV     0mA  1696mV  1904mV 
+       ldo14                      0    0      0  normal  1720mV     0mA  1720mV  1856mV 
+       ldo15                      1    1      0  normal  1696mV     0mA  1696mV  1904mV 
+          audio-codec-vdd-buck    1                                 0mA     0mV     0mV
+ refgen                           0    1      0 unknown     0mV     0mA     0mV     0mV 
+    ae94000.dsi-refgen            0                                 0mA     0mV     0mV
+ usb_vbus                         0    1      0 unknown     0mV  3000mA     0mV     0mV 
+    c440000.spmi:pmic@0:typec@1500-vdd-vbus   0                                 0mA     0mV     0mV
+== icc
+ node                                  tag          avg         peak
+--------------------------------------------------------------------
+osm_l3_master@18321000.interconnect                   0     46694400
+  cpu6                                   0            0     20889600
+  cpu0                                   0            0     46694400
+osm_l3_slave@18321000.interconnect                    0     46694400
+  cpu6                                   0            0     20889600
+  cpu0                                   0            0     46694400
+llcc_mc@1380000.interconnect                     240000      8752000
+  ace0000.camss                          7            0            0
+  ace0000.camss                          7            0            0
+  ace0000.camss                          7            0            0
+  1e40000.ipa                            0            0            0
+  90cd000.pmu                            3            0            0
+  ae00000.display-subsystem              7            0            0
+  ae00000.display-subsystem              7            0            0
+  1d84000.ufshc                          7            0       149422
+  ae00000.display-subsystem              7            0            0
+  ae00000.display-subsystem              7            0            0
+  a8c000.i2c                             7            0            0
+  888000.i2c                             7            0            0
+  884000.i2c                             7            0            0
+  880000.spi                             7            0            0
+  8804000.mmc                            7            0            0
+  a6f8800.usb                            7       240000       700000
+  firmware:scm                           7            0            0
+  cpu6                                   3            0      3200000
+  cpu0                                   3            0      8752000
+ebi@1380000.interconnect                         240000      8752000
+  ace0000.camss                          7            0            0
+  ace0000.camss                          7            0            0
+  ace0000.camss                          7            0            0
+  1e40000.ipa                            0            0            0
+  90cd000.pmu                            3            0            0
+  ae00000.display-subsystem              7            0            0
+  ae00000.display-subsystem              7            0            0
+  1d84000.ufshc                          7            0       149422
+  ae00000.display-subsystem              7            0            0
+  ae00000.display-subsystem              7            0            0
+  a8c000.i2c                             7            0            0
+  888000.i2c                             7            0            0
+  884000.i2c                             7            0            0
+  880000.spi                             7            0            0
+  8804000.mmc                            7            0            0
+  a6f8800.usb                            7       240000       700000
+  firmware:scm                           7            0            0
+  cpu6                                   3            0      3200000
+  cpu0                                   3            0      8752000
+qhm_spdm@1500000.interconnect                         0            0
+qnm_snoc@1500000.interconnect                         3        40000
+  ace0000.camss                          3            0            0
+  1e40000.ipa                            0            0            0
+  1d84000.ufshc                          7            0         1000
+  ae00000.display-subsystem              3            0            0
+  a8c000.i2c                             7            0            0
+  a8c000.i2c                             7            0            0
+  a88000.serial                          7            1            1
+  88c000.serial                          7            2            2
+  888000.i2c                             7            0            0
+  888000.i2c                             7            0            0
+  884000.i2c                             7            0            0
+  884000.i2c                             7            0            0
+  880000.spi                             7            0            0
+  880000.spi                             7            0            0
+  8804000.mmc                            7            0            0
+  a6f8800.usb                            7            0        40000
+xm_qdss_dap@1500000.interconnect                      0            0
+qhs_a1_noc_cfg@1500000.interconnect                   0            0
+qhs_a2_noc_cfg@1500000.interconnect                   0            0
+qhs_ahb2phy_north@1500000.interconnect                0            0
+qhs_ahb2phy_south@1500000.interconnect                0            0
+qhs_ahb2phy_west@1500000.interconnect                 0            0
+qhs_aop@1500000.interconnect                          0            0
+qhs_aoss@1500000.interconnect                         0            0
+qhs_camera_cfg@1500000.interconnect                   0            0
+  ace0000.camss                          3            0            0
+qhs_camera_nrt_thrott_cfg@1500000.interconnect            0            0
+qhs_camera_rt_throttle_cfg@1500000.interconnect            0            0
+qhs_clk_ctl@1500000.interconnect                      0            0
+qhs_compute_dsp_cfg@1500000.interconnect              0            0
+== genpd
+domain                          status          children        performance
+    /device                         runtime status                  managed by
+------------------------------------------------------------------------------
+vcodec1_gdsc                    off-0                           0
+vcodec0_gdsc                    off-0                           0
+venus_gdsc                      off-0                           0
+mdss_gdsc                       off-0                           0
+    ae00000.display-subsystem       suspended                   0           SW
+camcc_titan_top_gdsc            off-0                           0
+                                                camcc_bps_gdsc, camcc_ife_0_gdsc, camcc_ife_1_gdsc, camcc_ipe_0_gdsc, camcc_ipe_1_gdsc
+    ac4a000.cci                     suspended                   0           SW
+    ac4b000.cci                     suspended                   0           SW
+    genpd:2:ace0000.camss           suspended                   0           SW
+camcc_ipe_1_gdsc                off-0                           0
+camcc_ipe_0_gdsc                off-0                           0
+camcc_ife_1_gdsc                off-0                           0
+    genpd:1:ace0000.camss           suspended                   0           SW
+camcc_ife_0_gdsc                off-0                           0
+    genpd:0:ace0000.camss           suspended                   0           SW
+camcc_bps_gdsc                  off-0                           0
+gx_gdsc                         off-0                           0
+    genpd:1:506a000.gmu             suspended                   0           SW
+cx_gdsc                         off-0                           0
+    5040000.iommu                   suspended                   0           SW
+    genpd:0:506a000.gmu             suspended                   0           SW
+hlos1_vote_mmnoc_mmu_tbu_sf_gdsc  on                              0
+hlos1_vote_mmnoc_mmu_tbu_hf1_gdsc  on                              0
+hlos1_vote_mmnoc_mmu_tbu_hf0_gdsc  on                              0
+hlos1_vote_aggre_noc_mmu_tbu2_gdsc  on                              0
+hlos1_vote_aggre_noc_mmu_tbu1_gdsc  on                              0
+hlos1_vote_aggre_noc_mmu_pcie_tbu_gdsc  on                              0
+hlos1_vote_aggre_noc_mmu_audio_tbu_gdsc  on                              0
+usb30_prim_gdsc                 on                              256
+    a6f8800.usb                     active                      256         SW
+ufs_phy_gdsc                    on                              384
+    1d87000.phy                     unsupported                 0           SW
+    1d84000.ufshc                   active                      384         SW
+pcie_0_gdsc                     off-0                           0
+mss                             off-0                           0
+    genpd:2:4080000.remoteproc      suspended                   0           SW
+mx_ao                           off-0                           0
+                                                cx_ao
+mx                              on                              256
+                                                cx
+    genpd:1:8300000.remoteproc      suspended                   0           SW
+lmx                             off-0                           0
+    genpd:1:62400000.remoteproc     suspended                   0           SW
+lcx                             off-0                           0
+    genpd:0:62400000.remoteproc     suspended                   0           SW
+gfx                             off-0                           0
+cx_ao                           off-0                           0
+cx                              on                              256
+                                                camcc_titan_top_gdsc, mdss_gdsc, venus_gdsc, vcodec0_gdsc, vcodec1_gdsc
+    ad00000.clock-controller        unsupported                 0           SW
+    af00000.clock-controller        unsupported                 0           SW
+    ab00000.clock-controller        unsupported                 0           SW
+    8804000.mmc                     suspended                   0           SW
+    880000.spi                      suspended                   0           SW
+    884000.i2c                      suspended                   0           SW
+    888000.i2c                      suspended                   0           SW
+    88c000.serial                   active                      256         SW
+    a88000.serial                   active                      64          SW
+    a8c000.i2c                      suspended                   0           SW
+    ae01000.display-controller      suspended                   0           SW
+    ae94000.dsi                     suspended                   0           SW
+    genpd:0:8300000.remoteproc      suspended                   0           SW
+    genpd:0:4080000.remoteproc      suspended                   0           SW
+power-domain-cluster            on                              0
+                                                power-domain-cpu0, power-domain-cpu1, power-domain-cpu2, power-domain-cpu3, power-domain-cpu4, power-domain-cpu5, power-domain-cpu6, power-domain-cpu7
+    18200000.rsc                    suspended                   0           SW
+power-domain-cpu7               on                              0
+    genpd:0:cpu7                    active                      0           SW
+power-domain-cpu6               on                              0
+    genpd:0:cpu6                    active                      0           SW
+power-domain-cpu5               on                              0
+    genpd:0:cpu5                    active                      0           SW
+power-domain-cpu4               on                              0
+    genpd:0:cpu4                    active                      0           SW
+power-domain-cpu3               on                              0
+    genpd:0:cpu3                    active                      0           SW
+power-domain-cpu2               on                              0
+    genpd:0:cpu2                    active                      0           SW
+power-domain-cpu1               on                              0
+    genpd:0:cpu1                    active                      0           SW
+power-domain-cpu0               on                              0
+    genpd:0:cpu0                    active                      0           SW
+== wakeup
+sxmo_modem_warming_up	1		1		0		1		0		122176		122176		144352		0
+sxmo_modem_used	7		17		0		0		0		230		36		1262142		0
+sxmo_not_suspendable	1		3		0		0		0		131731		131731		153057		0
+devlab-usb  	1		253		0		0		1264106		1264106		1264106		13394		0
+pm8150b-charger	2		2		0		0		0		2		1		11626		0
+qcom_qg     	1		1		0		0		0		1		1		11621		0
+tcpm-source-psy-c440000.spmi:pmic@0:typec@1500	2		6		0		0		0		1		0		928		0
+c440000.spmi:pmic@0:rtc@6000	6		6		0		0		0		0		0		1066078		0
+== cpuidle
+cpu0 WFI usage=117698 time=85309310
+cpu0 cpu-sleep-0-0 usage=20700 time=59350089
+cpu0 cpu-sleep-0-1 usage=65816 time=1099426674
+cpu4 WFI usage=82249 time=80440109
+cpu4 cpu-sleep-0-0 usage=1784 time=40227477
+cpu4 cpu-sleep-0-1 usage=17673 time=1126252711
+cpu7 WFI usage=77811 time=83772316
+cpu7 cpu-sleep-1-0 usage=626 time=2829135
+cpu7 cpu-sleep-1-1 usage=11644 time=1172140132
+== qcom_stats
+adsp
+adsp_island
+aosd
+apss
+cdsp
+cdsp1
+cxsd
+ddr
+ddr_stats
+display
+gpdsp0
+gpdsp1
+gpu
+modem
+slpi
+slpi_island
+wpss
+/sys/kernel/debug/qcom_stats/adsp
+Count: 0
+Last Entered At: 0
+Last Exited At: 0
+Accumulated Duration: 0
+/sys/kernel/debug/qcom_stats/adsp_island
+/sys/kernel/debug/qcom_stats/aosd
+Count: 0
+Last Entered At: 0
+Last Exited At: 0
+Accumulated Duration: 0
+/sys/kernel/debug/qcom_stats/apss
+/sys/kernel/debug/qcom_stats/cdsp
+Count: 60
+Last Entered At: 8062628880
+Last Exited At: 8062620882
+Accumulated Duration: 24305214088
+/sys/kernel/debug/qcom_stats/cdsp1
+/sys/kernel/debug/qcom_stats/cxsd
+Count: 0
+Last Entered At: 0
+Last Exited At: 0
+Accumulated Duration: 0
+/sys/kernel/debug/qcom_stats/ddr
+Count: 0
+Last Entered At: 0
+Last Exited At: 0
+Accumulated Duration: 0
+/sys/kernel/debug/qcom_stats/ddr_stats
+DDR LPM Stat Name:0xd3	count:0	Duration (ticks):0
+DDR LPM Stat Name:0xd3	count:0	Duration (ticks):0
+DDR LPM Stat Name:0x11	count:0	Duration (ticks):0
+DDR LPM Stat Name:0xd0	count:0	Duration (ticks):0
+DDR Freq 200Mhz:	CP IDX:2	count:19818	Duration (ticks):13064635571
+DDR Freq 300Mhz:	CP IDX:3	count:2444	Duration (ticks):28842346
+DDR Freq 451Mhz:	CP IDX:4	count:7040	Duration (ticks):1530058722
+DDR Freq 547Mhz:	CP IDX:5	count:780	Duration (ticks):169896952
+DDR Freq 768Mhz:	CP IDX:7	count:4	Duration (ticks):15373
+DDR Freq 1017Mhz:	CP IDX:8	count:24	Duration (ticks):489604
+DDR Freq 1353Mhz:	CP IDX:9	count:29201	Duration (ticks):6115339244
