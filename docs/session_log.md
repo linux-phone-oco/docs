@@ -1429,3 +1429,27 @@ Considered
 
 About
 : bringup
+
+---
+
+
+<a id="2026-11-17-research-lab-host"></a>
+### Research: preparing the lab host from declarations (lpoco host)
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: Read the roof decision and its follow-ups, lab-tools (devlab provision, device reader, health/build.sh, bringup pin), lab-machine (setup, watcher unit, bin/land), lab-agent and ideal-agent's retirement decision (root-exec part 6), walleye's device.toml [host] (lab PR 54) and today's session logs (root-exec uses); measured the lab host read-only (systemd 262, groups, seat0 session, rules, modules, packages, units, ~/.local/bin). A read-only researcher read pmbootstrap, android-udev-rules, systemd's uaccess source and NEWS, nixpkgs, Ansible, LAVA and labgrid. Recorded 9 sources, research lab-host-prepare-landscape (material research/lab-host/2026-11-17/), decision 2026-11-17-lpoco-host, backlog lpoco-host (rank 1, needs build, google-walleye; the author's acceptance and the coordinator's host-tools test added) and lpoco-host-rest, research lpoco-host-how-it-stands. Nothing changed on the lab host.
+
+Considered
+: A lpoco lab host subcommand; lab-machine's scripts fed by device.toml; LAVA's static rule and root helper; a package or confext; systemd built-ins alone; a lab group first; pins in device.toml vs the lab's own lab.toml.
+
+Rejected
+: See decision 2026-11-17-lpoco-host: names labprep, hostprep, setup, provision, bootstrap, prepare, machine, env; forms above; pins in device.toml (one ~/.local/bin, tools no device owns); a hand-written udev rule meanwhile (the author waits for the tool).
+
+About
+: lpoco-host

@@ -3229,3 +3229,174 @@ By
 
 Takes
 : A git dependency pinned by tag or rev is the pin; [patch] is how a patched fork stands in for the source until upstream takes the change, side by side with no vendored copy.
+
+
+<a id="android-udev-rules"></a>
+### android-udev-rules: 51-android.rules, sysusers.d adbusers, install.sh
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/M0Rf30/android-udev-rules
+
+Year
+: 2026
+
+By
+: M0Rf30
+
+Takes
+: group plus uaccess on one grant; sysusers.d for the group; its add-only guard and replug are what not to copy
+
+
+<a id="systemd-uaccess"></a>
+### systemd: udev-builtin-uaccess.c, 70-uaccess/71-seat/73-seat-late rules, hwdb 60-usb-interface, NEWS 258 and 260
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/systemd/systemd
+
+Year
+: 2026
+
+By
+: systemd
+
+Takes
+: uaccess reaches only the seat's active session; rules setting it sort before 73 and are not add-only; 258+ tags ADB and fastboot; 260 adds xaccess-debug-appliance
+
+
+<a id="pmbootstrap-host"></a>
+### pmbootstrap: pmb/config/sudo.py, helpers/run.py, chroot/binfmt.py, chroot/shutdown.py
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmbootstrap
+
+Year
+: 2026
+
+By
+: postmarketOS
+
+Takes
+: root by doas/sudo/run0 with an override; check-then-act; a teardown verb; no udev rules, no dry plan
+
+
+<a id="lava-dispatcher-host"></a>
+### LAVA: lava_dispatcher_host udev.py and device dictionaries (device_info board_id)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://gitlab.com/lava/lava
+
+Year
+: 2026
+
+By
+: Linaro
+
+Takes
+: per-device USB serials declared in data; one static rule and a privileged helper; rules install writes only when content differs
+
+
+<a id="labgrid-udev-matching"></a>
+### labgrid: udev matching in exporter configuration, exporter unit, raw-interface helper
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/labgrid-project/labgrid
+
+Year
+: 2026
+
+By
+: labgrid-project
+
+Takes
+: match by ID_SERIAL_SHORT; group access for a headless service; narrow root by sudoers lines for fixed helpers
+
+
+<a id="nixpkgs-udev-module"></a>
+### nixpkgs: nixos/modules/services/hardware/udev.nix, boot/kernel.nix, rename.nix (programs.adb removed)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/NixOS/nixpkgs
+
+Year
+: 2026
+
+By
+: NixOS
+
+Takes
+: rules from many sources merged by file name; extraRules at 99 is too late for uaccess; modules merged into modules-load.d
+
+
+<a id="ansible-check-mode"></a>
+### Ansible check mode and community.general.modprobe
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_checkmode.html
+
+Year
+: 2026
+
+By
+: Ansible
+
+Takes
+: a dry run that changes nothing and reports per resource, with a diff
+
+
+<a id="walleye-device-host-table"></a>
+### google-walleye-lab device.toml [host]: modules and gadget serial walleye-first-boot with access block and tty (lab PR 54)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/linux-phone-oco/google-walleye-lab/blob/main/device.toml
+
+Year
+: 2026
+
+By
+: linux-phone-oco
+
+Takes
+: the first device declaration the tool reads; its shape kept and settled
+
+
+<a id="lab-agent-retires-by-parts"></a>
+### ideal-agent decision 2026-11-17-lab-agent-retires-by-parts, part 6 (root-exec), backlog lab-agent-6-root-exec-grant
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/grenudi/ideal-agent/blob/main/data/decisions.json
+
+Year
+: 2026
+
+By
+: grenudi
+
+Takes
+: root moves to a lab-root wrapper or a narrower grant per command, written by the author and root; the tool must print the exact root commands it runs
