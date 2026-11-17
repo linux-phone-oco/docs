@@ -1528,3 +1528,28 @@ Sources
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="walleye-bootimage-header-public"></a>
+### walleye-bootimage-header-public
+
+Brief
+: Public sources: walleye/taimen boot.img is header v0, base 0, page 4096; no dtb/dtbo fields in v0; os_version is set by the AOSP build, not by porthole's deviceinfo
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: What do LineageOS's wahoo build and porthole's mkbootimg inputs say about header version, page size, base and os_version, and does a v0 header fit walleye?
+
+Found
+: LineageOS wahoo (lineage-15.1 BoardConfig.mk): BOARD_KERNEL_BASE 0, PAGESIZE 4096, default kernel offset, tags 0x01E00000 and ramdisk 0x02000000 for walleye and muskie (0x80000/0x02500000/0x02700000 only for the kasan builds), no header-version, dtb or recovery_dtbo argument: header v0; BOARD_USES_RECOVERY_AS_BOOT and system-as-root, dtbo in its own partition. Porthole's taimen deviceinfo: header v0, base 0, kernel 0x8000, ramdisk 0x1000000, tags 0x100, pagesize 4096 'verified against the stock taimen boot.img', kernel with the dtb appended, dtbo flashed to its own partition, no os_version set. A v0 header has no dt size or recovery_dtbo field (those arrive with v1/v2), so v0 fits walleye as far as public sources say; walleye's own stock header is still not read. The two offset sets are the two publics': taimen's stock (a) and LineageOS's (b), and try a, with the stock offsets, did not leave fastboot while b did. os_version/patch level: the AOSP build writes them into every boot.img (PLATFORM_VERSION, PLATFORM_SECURITY_PATCH); no public source for walleye gives the value, so variants c and d use 8.1.0 / 2020-01 (a pick). Not known: whether ABL reads them, and whether the dtbo overlay id (backlog walleye-dtbo-overlay-id) or the signature/AVB footer decides instead; porthole flashes a stub dtbo, which we have not.
+
+Sources
+: lineageos-kernel-google-wahoo,porthole-pmaports
+
+About
+: walleye-bootimage
