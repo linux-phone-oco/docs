@@ -3251,3 +3251,34 @@ Proof
 
 About
 : lpoco-host
+
+
+<a id="lpoco-host-help"></a>
+### lpoco-host --help prints its usage (argenv), as ikb and land do
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Seen by the coordinator installing lpoco-host 0.2.1 for the acceptance: 'lpoco-host --help' answers '--help is not a declared flag'. Failing test first (host/tests): 'lpoco-host --help' and 'lpoco host --help' exit 0 and print the usage with plan, prepare now and check; then check the family: lpoco, lpoco-bringup, lpoco-tone, lpoco-health answer --help the same way, and fix any that do not. Blocks the lpoco-host acceptance.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lpoco-host-help-prints-usage
+
+Rank
+: 1
+
+About
+: bringup
