@@ -58,6 +58,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 |---|---|
 | [USB OTG](components.md#usb-otg) | [✅](support_status.md#usb-otg--xiaomi-surya) |
 | [Fastboot / bootloader](components.md#fastboot) | [✅](support_status.md#fastboot--xiaomi-surya) |
+| [Deep sleep that wakes for calls and messages](features.md#deep-sleep) | [❔](support_status.md#deep-sleep--xiaomi-surya) |
 
 ### Details
 
@@ -136,3 +137,7 @@ USB OTG × Xiaomi POCO X3 NFC
 <a id="fastboot--xiaomi-surya"></a>
 Fastboot / bootloader × Xiaomi POCO X3 NFC
 : works — notes: Required for Nura to be installable at all, and for lab-agent's own boot-and-test loop. — updated: 2026-11-04 — judged: works
+
+<a id="deep-sleep--xiaomi-surya"></a>
+Deep sleep that wakes for calls and messages × Xiaomi POCO X3 NFC
+: unknown — notes: Not measured yet: on USB the lab keeps the phone awake, and it has not suspended in a measured boot. Read 2026-11-17 without a suspend: the SoC's sleep counters work (CX collapse 0, AOSS sleep 0), the audio DSP never slept, and the device tree asks for SC7180's cluster parameters, not surya's. The path: decision 2026-11-17-deep-sleep-measured-s2idle; the steps are the sleep-* backlog items. — updated: 2026-11-17 — judged: unknown

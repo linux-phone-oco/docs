@@ -384,3 +384,81 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="sleep-measured-once"></a>
+### Deep sleep measured once: the SoC's own counters across one suspend
+
+Status
+: open
+
+Note
+: The first step of decision 2026-11-17-deep-sleep-measured-s2idle; it settles the biggest unknown - does surya's SoC reach its floor at all on mainline? On USB the phone cannot suspend (the link cannot go idle, and devlab-usb-awake holds a wake lock), so the lab has never measured a sleep. One sleep, falling back by itself: the USB gadget let go (soft_connect), the lab's and Sxmo's wake locks released, s2idle for 60 s woken by the RTC (rtcwake -m freeze), the gadget reconnected; qcom_stats (cxsd, aosd, ddr, adsp, cdsp, modem), suspend_stats, the cluster domain's idle states and every wakeup source's count read before and after. Wanted from the conveyor: this as a devlab verb (lab-tools backlog sleep-probe), so it is never typed by hand. Proven by: the check soc-sleeps, run in the same boot after the sleep (devlab suite run), says pass or fail instead of skip - a number either way. Expected: fail, with the reasons in its detail.
+
+Opened
+: 2026-11-17
+
+
+<a id="sleep-cluster-params"></a>
+### surya's own cluster sleep parameters in its device tree
+
+Status
+: open
+
+Note
+: sm7150.dtsi asks the firmware for SC7180's cluster states 0x41001244 and 0x4100b244 with surya's latencies; surya's own Android tables have cx-off 0x224 and llcc-off 0xc24, that is 0x41002244 and 0x4100c244 (SM8150 uses 0x4100c244 too); the deepest state was never entered once at runtime (research sm7150-cluster-params). A dt/ branch in linux-phone-oco/linux changing the two parameters, tried with devlab kernel try, then the measured sleep of sleep-measured-once on it. Proven by: soc-sleeps passes (cxsd above 0) where it failed on today's parameters, and the cluster domain's deepest state is entered; the health suite otherwise unchanged. Then upstream: a patch for the SM7150 series (sm7150-mainline; the upstreaming series is to be resent) through upstream-queue.
+
+Opened
+: 2026-11-17
+
+
+<a id="sleep-adsp-awake"></a>
+### The audio DSP sleeps when nothing plays
+
+Status
+: open
+
+Note
+: Read 2026-11-17: the audio DSP never slept once in a boot (qcom_stats adsp 0, against about 200 for the compute DSP and the modem), with no stream open but the VA, TX and RX macros active and soundwire_qcom.stay_awake=1 on the test kernel's command line (from the microphone hunt). A DSP that never sleeps holds CX up, and with it the SoC. First try without stay_awake, then find which LPASS vote stays up with no stream (the macros' clocks through q6prm, as a QCS8550 port found its LPASS votes held the floor). Proven by: soc-sleeps no longer lists adsp among the processors never asleep, and passes; the sound checks still pass.
+
+Opened
+: 2026-11-17
+
+
+<a id="sleep-fastrpc-helpers"></a>
+### FastRPC helpers stopped across suspend; the sensors back
+
+Status
+: open
+
+Note
+: With hexagonrpcd's rootpd helper attached the audio DSP crashed on every suspend attempt (24 of 24), so it and the sensors helper are masked and the sensors are gone (surya-lab: sensors-without-crash). postmarketOS stops the helper before suspend and starts it after on the Pixel 3a for the same crash. Do the same on surya with a systemd sleep hook, then unmask both helpers. Proven by: in one boot after a measured sleep, motion-and-light passes, soc-sleeps passes and no audio DSP crash is counted on resume. Upstream question kept: why an attached FastRPC client makes the DSP assert across suspend.
+
+Opened
+: 2026-11-17
+
+
+<a id="sleep-wakes-for-calls"></a>
+### Waking from deep sleep for calls and messages
+
+Status
+: open
+
+Note
+: On the floor reached above: the modem's IPCRTR glink wakeup enabled (/sys/bus/rpmsg/devices/4080000.remoteproc:glink-edge.IPCRTR.-1.-1/power/wakeup), ModemManager's quick suspend/resume quieting the modem before suspend, and Sxmo's post-wake hook putting the phone back to sleep when the wake was not a call or a message (as postmarketOS does on the OnePlus 6; still reported unreliable there, pmaports 4989). Needs a SIM card - the author's hands. Proven by: a witnessed test wakes-for-call, to be entered in tests (a call to the sleeping phone rings within 5 s; an SMS sent to it arrives), and soc-sleeps passing in the same boot.
+
+Opened
+: 2026-11-17
+
+
+<a id="sleep-standby-current"></a>
+### Standby current measured beside Android's
+
+Status
+: open
+
+Note
+: How much the floor saves, in milliamps: the fuel gauge's current over an hour asleep off USB (current_now and the charge counter, since they can disagree), on mainline and, as the number to match, on the phone's own Android or Ubuntu Touch - observed behaviour only. Proven by: a test standby-current entered in tests, passing under a threshold set from Android's measured number.
+
+Opened
+: 2026-11-17

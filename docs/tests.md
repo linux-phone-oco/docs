@@ -468,3 +468,16 @@ Proves
 
 Says
 : one second recorded from the main microphone is not digital silence
+
+
+<a id="soc-sleeps"></a>
+### soc-sleeps
+
+Component id
+: deep-sleep
+
+Proves
+: works
+
+Says
+: the SoC reached its lowest power state this boot (CX collapse or AOSS sleep, counted by the SoC itself)

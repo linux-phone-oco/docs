@@ -58,6 +58,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 |---|---|
 | [USB OTG](components.md#usb-otg) | [✅](wiki_claims.md#usb-otg--xiaomi-surya) |
 | [Fastboot / bootloader](components.md#fastboot) | [✅](wiki_claims.md#fastboot--xiaomi-surya) |
+| [Deep sleep that wakes for calls and messages](features.md#deep-sleep) | ❔ |
 
 ### Details
 

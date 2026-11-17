@@ -18,3 +18,4 @@
 {"id":"usb-otg","name":"USB OTG","category":"power"}
 {"id":"fastboot","name":"Fastboot / bootloader","category":"power"}
 {"id":"kernel","name":"Kernel (boots without unexpected warnings)","category":"other"}
+{"id":"deep-sleep","name":"Deep sleep (the SoC at its lowest power state)","category":"power"}
