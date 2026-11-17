@@ -441,7 +441,7 @@ type = "date"
 required = true
 
 # what a person judged - witnessed, read in a changelog, reasoned - with the notes as its evidence; the
-# status shown is derived from it and the latest results (derive/support-status.sql)
+# status shown is derived from it and the latest results (records/derive-support-status.sql)
 [[tables.support_status.fields]]
 name = "judged"
 type = "string"

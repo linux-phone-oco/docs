@@ -15,7 +15,7 @@ canon:            ## rewrite data/ in canonical form (only when it checks out)
 	$(TAD) canon
 render:           ## data/ -> docs/
 	$(TAD) render
-feeds:            ## refresh the tables the feeds fill (feeds/*.sql), then canonicalize and check
+feeds:            ## refresh the tables the feeds fill (records/feed-*.sql), then canonicalize and check
 	./bin/run-feeds.sh
 sql:              ## ask the data in SQL: make sql Q="SELECT ..." (a change is kept only if every rule holds)
 	$(TAD) sql "$(Q)"

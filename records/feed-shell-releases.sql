@@ -1,7 +1,5 @@
 -- Feed: the mobile shells' latest releases, from their own GitLab instances (Sxmo lives on
 -- sourcehut, whose API needs a token: not here yet). Each run replaces the last.
-CREATE TABLE IF NOT EXISTS shell_releases(id VARCHAR PRIMARY KEY, name VARCHAR NOT NULL, version VARCHAR NOT NULL,
-  released DATE, link VARCHAR NOT NULL, CHECK(starts_with(link, 'https://')));
 DELETE FROM shell_releases;
 INSERT INTO shell_releases
 SELECT 'phosh', 'Phosh', tag_name, CAST(CAST(released_at AS TIMESTAMPTZ) AS DATE),

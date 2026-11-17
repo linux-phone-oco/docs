@@ -16,7 +16,8 @@ make verify   # exactly what CI runs
 | `tables.toml` | every table declared as data - fields, types, allowed values, patterns - and the rules across tables | you, by hand (see below) |
 | `data/<table>.json` | one JSON object per line (JSONL despite the extension) | `tad` only |
 | `about` table | the index page's heading and introduction (`title`, `summary`); one row, and not a page of its own | you, with `tad set` |
-| `feeds/*.sql` | scheduled feeds: each fetches public data and reshapes it with SQL into one table (`feeds/x-y.sql` fills `x_y`) | you |
+| `records/NAME.sql` | named records: the SQL that writes the data, run as `tad r NAME --PARAM V` - feeds (`feed-*`), derivations (`derive-*`, run by devlab after filing), a run filed (`test-run`), and every kind of record of the project | you, in the same change as the work that needs it |
+| `queries/NAME.sql` | named queries: the SQL that reads it, run as `tad q NAME --PARAM V`; a query changes nothing | you |
 | `docs/*.md` (or `docs/*.rst`) | rendered pages, in the format `DOCS_FORMAT` names (published to GitHub Pages when Markdown) | `make render` only |
 
 ## Rules
@@ -34,9 +35,9 @@ Pages are written as Markdown by default. `DOCS_FORMAT=rst make render` writes r
 `[text](url)`, `**bold**`, `*emphasis*`); tad converts and escapes it for reStructuredText.
 
 ## Feeds
-`make feeds` runs every `feeds/*.sql` through DuckDB's standalone binary (pinned, its fingerprint checked in
-`bin/run-feeds.sh`): SQL is a good language for reshaping fetched JSON. DuckDB writes the rows; tad then
-canonicalizes and checks them, so a feed cannot write what `tables.toml` does not allow. The `feeds` workflow
+`make feeds` runs every named record `records/feed-*.sql` through tad (`bin/run-feeds.sh`), in the DuckDB tad
+installs for itself (pinned, its fingerprint checked): SQL is a good language for reshaping fetched JSON.
+tad keeps what a feed writes only if every rule holds, so a feed cannot write what `tables.toml` does not allow. The `feeds` workflow
 runs them every Monday and commits any change.
 
 ## This repository's schema
