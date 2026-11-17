@@ -3534,3 +3534,22 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="devlab-fastboot-mode"></a>
+### devlab reaches a phone over fastboot (walleye speaks nothing else until Linux runs)
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Needed: reach by serial, fastboot boot of a kernel in memory, getvar, a lease per phone; no flash without a recorded decision. Asked of orchestration 2026-11-17.
+
+Opened
+: 2026-11-17
+
+About
+: google-walleye
