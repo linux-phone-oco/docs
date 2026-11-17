@@ -2529,3 +2529,57 @@ By
 
 Takes
 : One report fixed Load Error by restarting the device: it appears randomly when flashing - state, not content, can cause it (excerpt read in search results only).
+
+
+<a id="sh0-bcm-voter-c"></a>
+### drivers/interconnect/qcom/bcm-voter.c (keepalive BCMs, sleep bucket)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/interconnect/qcom/bcm-voter.c
+
+By
+: surya-research
+
+Takes
+: keepalive forces x=y=1 (or enable_mask) only in the AMC and WAKE buckets; the SLEEP bucket is aggregated from consumers' tags alone
+
+
+<a id="sh0-sm7150-icc"></a>
+### drivers/interconnect/qcom/sm7150.c (bcm_sh0, qns_llcc)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/interconnect/qcom/sm7150.c
+
+By
+: surya-research
+
+Takes
+: SH0 is a keepalive BCM on qns_llcc, the same definition as sdm845, sm8150, sc7180
+
+
+<a id="aoss-qmp-patchwork"></a>
+### Qualcomm AOSS QMP driver v7 (Bjorn Andersson)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.org/lkml/2019/5/1/28
+
+Author
+: Bjorn Andersson
+
+Year
+: 2019
+
+By
+: surya-research
+
+Takes
+: qmp_send acks only when the AOP clears the length word after a kick; the timeout path is the one surya hits

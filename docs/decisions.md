@@ -1548,3 +1548,56 @@ Rejected
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="walleye-control-image-download"></a>
+### walleye-control-image-download
+
+Brief
+: The walleye lane may download LineageOS's official walleye recovery.img as the boot control
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Decision
+: On the author's word of 2026-11-17 ("Yes, download it"): download LineageOS's official walleye recovery.img from download.lineageos.org only, verify its sha256 against the site's published value, keep it in ~/Projects/walleye-build/control/ with its URL, size and checksum recorded (research row), read its boot image header and dtb ids on the host (unpack_bootimg, fdtget), and boot it once from memory as the control (devlab fastboot boot now, tries on b, slot flags read before and after). Nothing is flashed; no other source, no TWRP; the image is data until booted, never run on the host.
+
+Why
+: Research walleye-load-error-how-it-stands: a stock-format image answers whether the Load Error is the image or the phone's state, and gives the true header and dtb ids; the same distribution already runs on the phone.
+
+Rejected
+: TWRP or other recovery builds (another source, worse provenance); building a control ourselves (not a control); reading ids from forum posts (no checksum).
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="2026-11-17-sh0-owner-by-tag"></a>
+### 2026-11-17-sh0-owner-by-tag
+
+Brief
+: SH0 sleep vote: remove the console UART's (then the QUP) ALWAYS tags in a one-shot dtb; QMP is read-only first and off the path
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: Chosen vector: subtract the SH0 sleep vote at its source, in the device tree. Step 1 (read only): at late suspend list which interconnect paths through qns_llcc/SH0 carry a SLEEP-bucket vote. Step 2: one-shot dtb with uart8's (debug UART) interconnect tags set ACTIVE_ONLY, console moved or the UART unbound, then cycle 15 bt-on: judged by the sleep-set flush (SH0 gone) and soc-sleeps. Step 3, only if SH0 stays: the other QUP/crypto TAG_ALWAYS nodes one at a time. If SH0 goes to zero and the counters still read 0, SH0 is cleared as a holder and the next suspects are hypotheses 2/3/6 (clocks, UFS/GDSCs, counter validity; sleep-standby-current). QMP no-ack: read-only discriminators, no change to the AOP path.
+
+Why
+: SH0 is the keepalive BCM of LLCC on sdm845, sm8150, sc7180 and sm7150 alike (bcm-voter forces it only in AMC/WAKE), so the sleep-set x=1,y=3 is a consumer's TAG_ALWAYS vote through qns_llcc, visible and removable in the device tree; uart8 (debug UART, avg 1 peak 1 across suspend) is the recorded candidate. It is the only non-zero sleep entry and one dtb away, while the QMP no-ack has no cheap explanation and serves only a low-ranked hypothesis. Whether SH0 blocks aosd is not known yet; the test settles it by the counters.
+
+Rejected
+: Fixing QMP first (the knobs only test hypothesis 5, unlikely; wiring equals sm8150, nothing points at the cause; kept as a read-only item). A late-suspend dump kernel first (a build and install for what one dtb answers; kept waiting). Zeroing SH0 by a driver patch or keepalive=false (it is by-design on all siblings and hides the consumer; the DT tag is the honest change and the one that could go upstream as a correction). Treating SH0 as a firmware latch (the sleep bucket is built only from consumer tags). Reading the Aspire 1 sleep set as proof SH0 is harmless (not measured by anyone).
+
+About
+: deep-sleep
+
+Research
+: 2026-11-17-sh0-and-aop-research
