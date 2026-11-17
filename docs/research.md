@@ -1337,3 +1337,31 @@ About
 
 Material
 : research/google-walleye/2026-11-17-mainline/
+
+
+<a id="2026-11-17-cleanroom-agents"></a>
+### 2026-11-17-cleanroom-agents
+
+Brief
+: Clean room with agents works as an input wall (observer, scrubber, implementer, spec rows with evidence); walleye needs it for few MSM8998 parts; GPL vendor source needs none
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: How is clean-room reverse engineering best done with AI agents, and how should walleye's bring-up apply it?
+
+Found
+: Agents are now near-human at reading binaries (arXiv 2610.14960; 2608.11469 SRE-Bench: best agents solve ~27-32% of realistic ones), but no paper yet covers clean-room hardware bring-up; the practice does. AI "clean rooms" (ArtCraft: a rule on inputs; chardet 7.0: disputed) cannot prove the wall by the model's mind, only by what it was shown - so use an INPUT wall: observer (traces on the stock system, GPL vendor kernel source, public specs) writes spec rows with evidence kind + hash; a separate scrubber checks them for expression; the implementer sees only accepted rows, public specs and mainline; commits cite spec ids; per-session input log and taint register. Tools: mmiotrace/ftrace/dynamic debug/regmap/QMI logs/debugfs on the running stock system (Nouveau, Asahi m1n1 tracing, freedreno), never disassembly or vendor binaries (Asahi: 'without looking at the code'). Walleye: most MSM8998 parts are upstream and need no clean room; likely only panel init, sensor hub, audio calibration/topology, camera, vendor protocols. GPL vendor kernel (android-msm-wahoo, kcxt/linux-wahoo) is read and ported with licence kept - no clean room. EFF: clean room is good practice, not a legal requirement; no court has ruled on AI clean rooms. Not legal advice. Full proposal, table of parts and record design in the material.
+
+Sources
+: eff-reverse-engineering-faq,asahi-progress-2021-08,nouveau-mmiotrace,kyvero-clean-room-manual,wordcraft-agents-md,reversa-2605-18684,rare-2607-12507,humans-vs-machines-re-2610-14960,chardet-relicense-register,postmarketos-qualcomm-mainline
+
+About
+: google-walleye
+
+Material
+: research/cleanroom-agents/2026-11-17/
