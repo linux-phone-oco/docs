@@ -1713,3 +1713,19 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="kernel-try-dtb"></a>
+### A device-tree change is one boot: kernel try --dtb
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: Asked by bring-up, 2026-11-17: a device-tree experiment on the kept kernel took unkeep, a stock reboot, try and keep again. devlab kernel try NAME --dtb FILE now boots installed kernel NAME's kernel, initramfs and modules once with the new device tree (entry NAME-dt, one try, sorted ahead of the kept kernel, never blessed, its release said so remove keeps the modules), and a try is judged by the entry the bootloader says it booted (LoaderEntrySelected, read on surya) rather than by the release's name, which two entries can share. Proven by tests and by running the entry script in a fake boot tree; not yet tried live (the phone's experiments are bring-up's).
+
+Opened
+: 2026-11-17
