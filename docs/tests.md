@@ -611,3 +611,16 @@ Proves
 
 Says
 : A boot image of ours left fastboot: the phone's USB gadget appears on the host (lsusb by the manifest serial within 60 s) and answers on 172.16.43.1 (ping, telnet)
+
+
+<a id="walleye-vendor-gadget-image-built"></a>
+### walleye-vendor-gadget-image-built
+
+Component id
+: kernel
+
+Proves
+: present
+
+Says
+: The control boot.img repacked with only the ramdisk swapped (vendor-gadget.img = bisect s1) exists, with kernel, dtb, command line, header and AVB footer equal to the control's; counted by check-bisect

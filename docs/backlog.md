@@ -4877,62 +4877,6 @@ About
 : dl-safe
 
 
-<a id="walleye-vendor-gadget-image"></a>
-### Repack the control boot.img with our gadget initramfs (kernel, dtb, cmdline untouched)
-
-Project
-: linux-phone-oco/google-walleye-lab
-
-Status
-: open
-
-Note
-: Decision 2026-11-17-walleye-vendor-kernel-first. Unpack control/boot.img (sha256 48dbc55c...), replace only the ramdisk by build/initramfs (address 172.16.43.1; ACM + RNDIS/ECM via configfs; telnet), repack with its own offsets and cmdline; keep the header-compare. Host only, no phone.
-
-Opened
-: 2026-11-17
-
-Needs
-: build
-
-Device
-: google-walleye
-
-Proof
-: check-bootimg counts the repack: kernel/dtb/cmdline/offsets byte-equal to the control, ramdisk is ours (test: walleye-vendor-gadget-image-built)
-
-About
-: walleye-first-fastboot-boot
-
-
-<a id="walleye-gadget-up-check"></a>
-### Write the failing check walleye-gadget-up in the lab's tests/health
-
-Project
-: linux-phone-oco/google-walleye-lab
-
-Status
-: open
-
-Note
-: Finds the phone by the manifest serial (FA81N1A00790) on USB, not by VID:PID (surya's gadget 18d1:d001 is on the same host); passes only when it enumerates as a Linux gadget and 172.16.43.1 answers. Shows broken/unknown until then. Its docs row is recorded (tests: walleye-gadget-up).
-
-Opened
-: 2026-11-17
-
-Needs
-: build
-
-Device
-: google-walleye
-
-Proof
-: the check exists in google-walleye-lab/tests/health, runs, and fails with the phone in fastboot (test: walleye-gadget-up)
-
-About
-: walleye-first-fastboot-boot
-
-
 <a id="walleye-vendor-gadget-try"></a>
 ### fastboot boot the repacked control from the first state; does the gadget answer?
 
@@ -5270,6 +5214,62 @@ Device
 
 Proof
 : walleye-gadget-up for s1; for s2, s3, s0n: the phone leaves fastboot (starts) or stays at 'Booting OKAY', recorded
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-vendor-gadget-image"></a>
+### Repack the control boot.img with our gadget initramfs (kernel, dtb, cmdline untouched)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: done
+
+Note
+: Done: ~/Projects/walleye-build/images/vendor-gadget.img (= bisect s1), sha256 3f6587480d1f53fde918de8ebeef67641245e4ee7cbf9704e787075314f3b4e4, 44 bisect checks ok (lab #10, #11). Control header, os word 15.0.0/2026-11, cmdline and AVB footer kept; ramdisk ours at 172.16.43.1 (gzip). Next: walleye-vendor-gadget-try.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: check-bootimg counts the repack: kernel/dtb/cmdline/offsets byte-equal to the control, ramdisk is ours (test: walleye-vendor-gadget-image-built)
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-gadget-up-check"></a>
+### Write the failing check walleye-gadget-up in the lab's tests/health
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: done
+
+Note
+: Done: google-walleye-lab tests/host/gadget-up.sh (host-side: the phone cannot run it; GADGET_WAIT=90 waits). Finds the gadget by our strings (serial walleye-first-boot, product 'Pixel 2 walleye (mainline)'), not VID:PID nor the fastboot serial; then ping and telnet on the manifest address. Run with the phone in fastboot: 'fail ... no USB device with our gadget strings', exit 1.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: the check exists in google-walleye-lab/tests/health, runs, and fails with the phone in fastboot (test: walleye-gadget-up)
 
 About
 : walleye-first-fastboot-boot
