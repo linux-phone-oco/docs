@@ -712,10 +712,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: Published 2026-11-17: devlab-health 0.1.0 is an Alpine package, built, signed with lab-tools' own key (public half in packaging/alpine, private half the secret APK_SIGNING_KEY and ~/.config/linux-phone-oco/apk on the lab), verified and installed in a clean Alpine 3.24 by the package conveyor's alpine.yml (v1.1.3), at https://linux-phone-oco.github.io/lab-tools/ - each devlab-health-v tag that release-plz cuts is published by itself (packages.yml). Next, the phone takes it: devlab provision adds the repository and its key, apk add devlab-health, and devlab suite put gives way to the package for the generic suite (keeping the phone's own checks and health.env); the files devlab put by hand under /etc/systemd/system and /usr/lib/devlab are taken away first.
+: Done 2026-11-17: surya takes the suite from its Alpine package. devlab suite put now (lab-tools #51) adds lab-tools' signed repository and key to the phone once, installs or upgrades devlab-health, and takes away the files devlab once put by hand; the phone's own checks and health.env stay devlab's; --runner FILE still copies an unreleased runner to try it. Proven on surya: devlab-health-0.1.0-r0 installed from https://linux-phone-oco.github.io/lab-tools/alpine/v3.24/lab-tools, apk owns the runner, every generic check and the units, the timer runs /usr/lib/systemd/system/devlab-health.timer, and the suite ran healthy: 30 pass, 4 in known gaps, 0 fail. Left: the systemd units in a -systemd subpackage, as postmarketOS keeps them (abuild warns).
 
 Opened
 : 2026-11-17
