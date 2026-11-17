@@ -30,3 +30,18 @@ Says
 
 Condenses
 : 2026-11-10-suspend-crash-found, 2026-11-10-usb-flapping, 2026-11-17-1225-how-the-phone-stands, 2026-11-17-a-coordinator-per-lane, 2026-11-17-deep-sleep-measured-s2idle, 2026-11-17-deep-sleep-researched, 2026-11-17-surya-first-s2idle-cycle, 2026-11-17-surya-s2idle-bt-blocked-hang, 2026-11-17-surya-s2idle-wakes-at-once, qcom-sleep-blockers, qcom-sleep-path, qcom-wake-for-calls, sleep-other-ways, sm7150-cluster-params, surya-sleep-measured
+
+
+### Row 3
+
+About
+: lpoco-health
+
+Date
+: 2026-11-17
+
+Says
+: lpoco-health is linux-phone-oco's one health suite, shipped on the phone (renamed from devlab-health, same checks and results). Shell checks print pass|fail|skip lines; a static Rust runner gathers them into the test_results shape. What the phone finds out itself (no SIM, no modem, no network) is a detected condition reported as a skip; what somebody chooses is a switch (lpoco-health off TEST --reason ..., on, list) kept on the phone with who and when. Docs hold only hardware facts and results. Provisioned by devlab suite put now (lab-built runner; migrates old reports) until the Alpine package can be signed. Carried by research 2026-11-17-lpoco-health-landscape, decision 2026-11-17-lpoco-health, backlog lpoco-health (on the phone queue), lab-tools #75.
+
+Condenses
+: 2026-11-17-lpoco-health, 2026-11-17-lpoco-health-landscape

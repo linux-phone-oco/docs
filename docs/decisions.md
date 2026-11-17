@@ -1068,3 +1068,31 @@ About
 
 Research
 : 2026-11-17-surya-way-back-inventory
+
+
+<a id="2026-11-17-lpoco-health"></a>
+### 2026-11-17-lpoco-health
+
+Brief
+: One health suite, lpoco-health, on the phone: shell tests + static Rust runner; conditions detected at run time; switches with reasons on the phone; docs keep only facts and results
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Decision
+: linux-phone-oco has one health suite, lpoco-health (devlab-health renamed, same checks, same test_results shape, same report on the phone). It keeps the shape decision 2026-11-17-health-on-the-phone chose: small shell checks printing 'pass|fail|skip TEST COMPONENT detail', gathered by a static Rust runner. New: (1) detected conditions - conditions/*.sh work out no-sim, no-modem, no-network at every run, checks say skip_on NAME and report 'skip: no SIM card'; nothing is written down, put the SIM back and the next run measures again. (2) chosen switches - lpoco-health off TEST --reason WORDS [--by], on TEST, list, kept in /etc/lpoco-health/switches (test, reason, who, when), reported as 'skip: switched off: reason (by who, when)'; no switch without a reason; set from the lab by devlab suite off|on|list and the MCP tools health_switch_off/on, health_switches. (3) the command line is declared with argenv (health/src/cli.rs). (4) docs hold only facts about the hardware and the results: the phone's state (SIM in or out) is never recorded there; the backlog item sim-removed-skips is closed as superseded, its log entry stays. (5) provisioning: devlab suite put now builds the runner on the lab and puts it, migrating the old devlab-health reports, month data ledger and once-a-day marks to lpoco-health with nothing lost, and keeps devlab-health as another name of the program; the Alpine package lpoco-health (conveyor names renamed in the same change) takes over with devlab suite put now --package once cv-apk has its signing key.
+
+Why
+: The SIM removal showed that a state of the phone cannot live in docs: it is true for minutes and the phone knows it better. The research (2026-11-17-lpoco-health-landscape) shows every mature phone/device CI (bootrr, LAVA, postmarketOS's test package, CI-tron) keeps tests as small executables with one result line each and a thin runner, with device facts as data and an explicit skip; nobody compiles on the device. Our checks and runner already have that shape, so it is kept and extended, not replaced (decision 2026-11-17-health-on-the-phone weighed first).
+
+Rejected
+: rust-script tests with a bundle crate (the author's lean, weighed fairly): the dependency direction is right (bundle depends on tests, tests not on the bundle) and nextest shows it works, but rust-script compiles on first run and needs rust+cargo on the phone (Alpine aarch64 72 MiB download, 206 MiB installed plus gcc, musl-dev, llvm-libs, network for crates), a registry (inventory/linkme) is unproven on aarch64 musl and links everything into one binary; kept instead: the same direction by discovery - the runner finds tests in directories, tests depend on nothing of it - and Rust for the logic (runner, data ledger, tone analysis) already built on the lab as a static binary; revisit rust tests as prebuilt per-test binaries when a check needs more than shell. Building each test on the lab as its own binary now: more cross-build work for 13 small shell checks that need none. A settings store in docs or in devlab's lab-side files: it would put the phone's state in the wrong place and go stale. A new package name kept as devlab-health: the suite is linux-phone-oco's, not devlab's; the old name stays only as an alias. Waiting for cv-apk before provisioning: the lab put already works.
+
+About
+: lpoco-health
+
+Research
+: 2026-11-17-lpoco-health-landscape
