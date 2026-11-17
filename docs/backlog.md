@@ -1933,3 +1933,19 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="kernel-orphan-modules"></a>
+### Modules no entry boots with, taken away
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Seen 2026-11-17: removing bring-up's ear try proved remove keeps shared modules (it removed ear's entry only; mic stays). Left on surya: /lib/modules/7.1.0-rc3-sm7150-wcd, from the wcdswr experiment removed before entries said their release. Wanted: devlab kernel prune now - remove the modules of every release that no entry says it boots with, that is not running and that no package owns, saying each; once mic is reinstalled or its entry says its release (until then an unmarked entry keeps every release, as remove does).
+
+Opened
+: 2026-11-17
