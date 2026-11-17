@@ -1123,3 +1123,28 @@ About
 
 Research
 : bringup-one-roof
+
+
+<a id="2026-11-17-lpoco-family-version"></a>
+### 2026-11-17-lpoco-family-version
+
+Brief
+: The lpoco family has one version: release-plz version_group lpoco, tags stay per package (lpoco-vX, lpoco-health-vX)
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Decision
+: lpoco and lpoco-health (and every later lpoco-*) share one version through release-plz's version_group, starting at 0.1.7 (lpoco-health's). The dispatcher refuses a program whose --version differs, so every lpoco-* program must answer --version with 'NAME X.Y.Z' (lpoco-health now does). Tags stay one per package: lpoco-v{version} for the dispatcher (lab-side only, no phone package) and lpoco-health-v{version} for the conveyor's phone package.
+
+Why
+: Decision 2026-11-17-bringup-in-lab-tools asks for one version pin for the family and one release; version_group gives it without moving the conveyor's tag prefix. Proof: lpoco-refuses-mixed-versions.
+
+Rejected
+: One shared git tag for the whole family: the conveyor reads lpoco-health-v* for the phone package, a shared tag would break it. Independent versions per program: the dispatcher could not tell a compatible program from a stale one.
+
+About
+: lpoco-dispatcher
