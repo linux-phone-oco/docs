@@ -1759,3 +1759,21 @@ Done
 
 Considered
 : next: sleep-adsp-awake (rank 1): reboot without soundwire_qcom.stay_awake=1 (devlab kernel try, one-shot cmdline), then sh /var/tmp/way-back.sh cycle 15 bt-on as a systemd-run unit with StandardOutput=file: (devlab phone put sleep/way-back.sh first; it is on the phone now), read adsp, cxsd, aosd. Then sleep-cluster-params on the prepared dtb. Note: devlab suite put uses the lab as main has it, so a change to the checks must land before put. Open: gather stops on a 0-byte report (one was moved to /var/lib/lpoco-health/empty-reports/).
+
+---
+
+
+<a id="2026-11-17-1550-lpoco-health-v017"></a>
+### lpoco-health v0.1.7 put on the phone
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Built devlab from lab-tools main (v0.1.7), suite put now, suite run: 35 pass, 6 fail, 4 not measured as before, the SIM checks skip 'no SIM card', the eight audio and call checks pass again with the old and new lib.sh paths both present; gather now filed 20 runs. soc-sleeps is the one failing check that matters (cxsd 0, aosd 0).
+
+About
+: deep-sleep
