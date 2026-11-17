@@ -2949,10 +2949,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: The family is released together by release-plz (one tag, settled in lpoco-dispatcher) and installs on a lab host from the tag. Settle with a test which install is simpler for a device lab: host binaries as release assets (x86_64 linux, checksum) or cargo install --git https://github.com/linux-phone-oco/lab-tools --tag TAG lpoco lpoco-bringup. Proof: on a clean host, the chosen install from the tag gives lpoco whose --version equals the tag, lpoco list shows bringup, and it passes bringup-refuses-wrong-pin.
+: Done: cargo install --git --tag per package, proven by bringup-installs-from-tag against 0.2.0 (lab-tools #90, read back from main f4e55b0).
 
 Opened
 : 2026-11-17
