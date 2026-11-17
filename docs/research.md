@@ -1798,3 +1798,25 @@ Sources
 
 About
 : sensors
+
+
+<a id="walleye-control-on-slot-a-try"></a>
+### walleye-control-on-slot-a-try
+
+Brief
+: Control boot.img on slot a: Load Error again; the slot state is not the cause. Phone back on b, fastboot reachable
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: Does the LineageOS control boot.img boot by fastboot boot with slot a active (the state of the very first tries)?
+
+Found
+: No. Per decision walleye-slot-set-active-a-once: devlab fastboot set-active now a (before: current b, a unbootable yes/successful yes/retry 0, b unbootable no/successful yes/retry 0; after: current a, a unbootable no/successful no/retry 1). devlab fastboot boot now control/boot.img (sha256 48dbc55c..., LineageOS 22.2 20261113): 'Sending boot.img OKAY', then 'Booting FAILED (remote: Failed to load/authenticate boot image: Load Error)'; still in fastboot after a minute; the try changed no flags. So the refusal is not caused by slot b being active or by a being flagged unbootable: the same stock image is refused on a too. Open causes: dtbo/vbmeta state (a write, the author's or coordinator's call), or fastboot boot on this bootloader never takes an image of this kind. Restored with set-active now b: current b, a unbootable no/successful no/retry 1, b unbootable no/successful no/retry 1 (set-active resets b's successful flag; both slots bootable, retry counts 1); fastboot reachable, nothing written.
+
+About
+: walleye-first-fastboot-boot

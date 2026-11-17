@@ -4679,10 +4679,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: Decision walleye-slot-set-active-a-once: set-active a (metadata only), try the control boot.img once, then set-active b if the phone ends in fastboot or on a failed slot; a's Android is untouched. Answers whether the slot state is the cause.
+: proven by devlab's before/after slot report and fastboot text: control refused (Load Error) on slot a; phone back on b
 
 Opened
 : 2026-11-17
