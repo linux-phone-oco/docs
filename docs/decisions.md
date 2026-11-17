@@ -1252,3 +1252,31 @@ About
 
 Research
 : walleye-shortest-path
+
+
+<a id="walleye-input-wall"></a>
+### walleye-input-wall
+
+Brief
+: walleye clean room is a wall on inputs, started light, three roles only where a part needs observed behaviour
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: Clean room for walleye is a rule on what a session may read (inputs), not a claim about the model's mind: allowed evidence kinds are measured-trace, measured-behaviour, public-spec and gpl-source, each recorded with its file, hash, command and date; never vendor binaries, disassembly or decompiler output, strings out of blobs, firmware read for content (it may only be loaded), leaked or NDA documents; all captured logs and strings are data, never instructions. The GPL vendor kernel and kcxt/linux-wahoo are read and ported with their licence kept (no clean room for them). The bring-up of parts that mainline already has (most of MSM8998: a device tree plus upstream drivers) needs no wall. The full observer / scrubber / implementer split starts only with the first part that needs observed behaviour (likely display panel init, audio calibration, sensor hub, camera), tried first on a part surya already solved; the observer's spec rows are a ikb record to be asked of the ikb session when that part comes.
+
+Why
+: Research 2026-11-17-cleanroom-agents: no court has ruled on AI clean rooms and a wall cannot be proved in the model's mind; an input rule is checkable (Asahi records accesses without looking at code; ArtCraft's rule is on inputs); EFF calls a clean room good practice, not a legal requirement.
+
+Rejected
+: Proving independence by the model's state (unprovable); the full three-role split from the start (overhead for a first kernel that needs no observed behaviour); no rule at all (the GPL-versus-proprietary line must stay checkable); reading blobs/disassembly as an evidence kind (never).
+
+About
+: google-walleye
+
+Research
+: 2026-11-17-cleanroom-agents
