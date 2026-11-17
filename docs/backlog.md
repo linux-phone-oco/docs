@@ -2126,3 +2126,35 @@ Opened
 
 Waits
 : the author: a request to Alpine is made in his name
+
+
+<a id="expert-primer"></a>
+### A domain's expert primer: one named query that shows a fresh session everything docs knows of a component - research, decisions, backlog, tests, sources, support status, its how-it-stands row
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-17-experts-written-not-standing. Next: queries/expert.sql (tad q expert --component audio-mic); try it by starting a fresh audio session from it alone and asking what bring-up learned of the WCD9375.
+
+Opened
+: 2026-11-17
+
+
+<a id="briefs-end-and-route"></a>
+### Briefs say when a session ends and how questions route: hand-over into the domain's how-it-stands row, end before compaction, ask the record, then the live owner directly, then a consult
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-17-experts-written-not-standing. Next: orchestration edits prompts/bring-up.md, feature-research.md and orchestration.md; the first how-it-stands rows are audio-mic's and deep-sleep's, moved from the side-session notes.
+
+Opened
+: 2026-11-17

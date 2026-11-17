@@ -777,3 +777,28 @@ Rejected
 
 Research
 : health-suite-organisation
+
+
+<a id="2026-11-17-experts-written-not-standing"></a>
+### 2026-11-17-experts-written-not-standing
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: An expert is a domain written down in docs, not a session kept alive. Each hard domain (audio, sleep, modem, sensors, cameras) is its component's rows - research, decisions, backlog, tests, sources - plus one research row per domain, DOMAIN-how-it-stands, that holds the tacit part (dead ends, where experiments live, what to never do again), added to item by item, never rewritten whole. A session takes up a domain by its brief and that domain's rows, and becomes its expert by reading them. It is ended when its part lands, or before its context is compacted, after writing its hand-over into those rows (not into notes outside the repository); the next starts fresh from them. Questions route by the record first: whoever asks reads the domain's rows; if they do not answer, they message the domain's live session directly (the face shows where each hand stands), not through orchestration; with no live session, orchestration starts a short read-only consult from the domain's rows on a lighter model, and every answer is written back as a row. One writer per domain and one hand on the phone (devlab) stay as they are.
+
+Why
+: Measured here: sessions grow to 1000-1800 messages and re-read them every turn; multi-agent work costs about 15 times one agent; a phone serialises all bring-up. Outside: compaction loses what only later proves to matter and summaries collapse; long contexts recall worse; relayed questions play telephone; every system that keeps experts across time (Gas Town, Anthropic's harness, Claude Code's agent memory, Letta) keeps the expertise outside the session. The author's aim - knowledge that does not depend on anyone remembering - is practice 1 of the ways.
+
+Rejected
+: Standing expert sessions per domain: idle hours lose the cache, so each question re-reads a thousand-message context at full price; the expertise still vanishes at compaction or when the app's session ends; their context rots with length. Orchestration as the router of every question: a bottleneck and a game of telephone (LangChain), and it fills orchestration's own context. Claude Code subagent memory (.claude/agent-memory) or agent teams as the home: a second store beside docs' one database (decision 2026-11-17-one-database), and teams do not survive a resume. A Markdown expert-notes file per domain: a second place for what rows already hold; kept only if a lens cannot show it. A vector or memory service (Letta, Hindsight): outside the commons and opaque to the face. Forking a finished expert's whole session to consult it (Cognition's smart friend): kept as an exception for a session a few hours old whose tacit context is not yet written, not the rule.
+
+About
+: expert-primer
+
+Research
+: expert-agents-written-not-standing
