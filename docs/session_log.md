@@ -1150,3 +1150,24 @@ Considered
 
 Rejected
 : Python checks; sipgate's SIP-only echo; a call on every boot.
+
+---
+
+
+<a id="2026-11-17-research-expert-agents"></a>
+### Research: standing expert agents or written expertise
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Read Anthropic's guidance (context engineering, long-running harness, agent teams, multi-agent research), Cognition, LangChain, Gas Town, ACE, MAST, Chroma, blackboard papers, Letta; recorded 11 sources, research expert-agents-written-not-standing, decision 2026-11-17-experts-written-not-standing, backlog expert-primer and briefs-end-and-route.
+
+Considered
+: Standing experts with routed questions; agent teams; subagent memory; per-domain Markdown notes; memory services; forking an expert session to consult it.
+
+Rejected
+: See the decision's rejected.
