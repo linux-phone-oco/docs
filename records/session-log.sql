@@ -5,7 +5,8 @@
 -- --done        string        what was done
 -- --considered  string?       what was considered
 -- --rejected    string?       what was rejected, and why
+-- --about    string?       what it is about: a component, feature, milestone, device or backlog item (tad q about lists them)
 -- --date        date = today  when
 DELETE FROM session_log WHERE project = 'linux-phone-oco/' || $project AND id = $id;
-INSERT INTO session_log (project, id, entry_date, title, done, considered, rejected)
-VALUES ('linux-phone-oco/' || $project, $id, $date, $title, $done, $considered, $rejected);
+INSERT INTO session_log (project, id, entry_date, title, done, considered, rejected, about)
+VALUES ('linux-phone-oco/' || $project, $id, $date, $title, $done, $considered, $rejected, $about);

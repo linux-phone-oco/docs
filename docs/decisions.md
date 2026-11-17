@@ -77,6 +77,9 @@ Why
 Rejected
 : Status typed by hand alone (it lags the phone: nothing turned it broken when a part failed); a pass read as works (would have called calls, SMS and NFC working with no SIM and no tag ever read); a measurement-less part read as unknown (would erase what was witnessed).
 
+About
+: surya-tested
+
 
 <a id="2026-11-17-the-face-is-drawn-from-the-database"></a>
 ### 2026-11-17-the-face-is-drawn-from-the-database
@@ -135,7 +138,7 @@ Rejected
 : Waking for calls first on today's kernel (postmarketOS's OnePlus 6 recipe as it is): no SIM card in the lab to prove it, it says nothing of whether the SoC sleeps - a phone that rings but drains in a day is not deep sleep - and it is still reported broken on OnePlus 6/6T and Pixel 3a; it is the last step here, not the first. Android's kernel through Halium (Ubuntu Touch runs on surya): deep sleep works there, but on the vendor's 4.14 kernel and Android's blobs, with nothing upstream and the mainline conveyor abandoned; kept only as observed behaviour - its standby current is the number to match. Runtime idle without suspend (the screen off, userspace running, the SoC left to reach CX collapse in idle): nobody has reached the floor that way on Qualcomm mainline, userspace timers keep waking the CPUs, and it needs every vote released that s2idle needs; the counters measure runtime idle too, so nothing of it is lost. A power manager of our own, as Crust on the PinePhone: Qualcomm's always-on subsystem runs signed firmware and the modem is inside the SoC with no ring line, so it cannot be done. Guessing at the cluster parameters or the audio DSP without a measured sleep first: a change could not be told to help without the counters across a suspend.
 
 About
-: linux-phone-oco/docs/features:deep-sleep
+: deep-sleep
 
 
 <a id="2026-11-11-efi-only"></a>
@@ -155,6 +158,9 @@ Why
 
 Rejected
 : Documenting which file to pass.
+
+About
+: dl-safe
 
 
 <a id="2026-11-11-health-settles"></a>
@@ -196,6 +202,9 @@ Why
 
 Rejected
 : Un-naming the microphone's file as the safeguard: a trick only its author remembers.
+
+About
+: audio-mic
 
 
 <a id="2026-11-11-try-reports"></a>
@@ -437,7 +446,7 @@ Rejected
 : Sort keys, a stored default entry, a second boot partition - each checked and ruled out.
 
 About
-: linux-phone-oco/docs/milestones:surya-boots linux-phone-oco/docs/milestones:surya-tested
+: surya-boots
 
 
 <a id="2026-11-11-lpi-mux-from-vendor"></a>
@@ -459,7 +468,7 @@ Rejected
 : Treating the clocks switching off as the cause; changing the macros' autosuspend.
 
 About
-: linux-phone-oco/docs/milestones:surya-sound
+: surya-sound
 
 
 <a id="2026-11-11-measure-before-changing"></a>
@@ -481,7 +490,7 @@ Rejected
 : Unmasking the helper service masked for the suspend crash, on a hunch.
 
 About
-: linux-phone-oco/docs/milestones:surya-sound
+: surya-sound
 
 
 <a id="2026-11-11-modem-read-only-first"></a>
@@ -503,7 +512,7 @@ Rejected
 : Trying a call or a data connection straight away.
 
 About
-: linux-phone-oco/docs/milestones:surya-phone
+: surya-phone
 
 Research
 : the-modem-with-a-sim
@@ -528,7 +537,7 @@ Rejected
 : Changing the macros' autosuspend or the controller's clock-stop handling.
 
 About
-: linux-phone-oco/docs/milestones:surya-sound
+: surya-sound
 
 
 <a id="2026-11-11-right-is-bottom"></a>
@@ -550,7 +559,7 @@ Rejected
 : An earlier 2 dB lean, taken while the microphone was not yet placed.
 
 About
-: linux-phone-oco/docs/milestones:surya-sound
+: surya-sound
 
 
 <a id="2026-11-11-show-both"></a>
@@ -594,7 +603,7 @@ Rejected
 : Calls by hand without a check; keeping the number in the device manifest.
 
 About
-: linux-phone-oco/docs/milestones:surya-phone
+: surya-phone
 
 Research
 : checking-calls-automatically
@@ -679,7 +688,7 @@ Rejected
 : Keeping the working tree that proved something as the reference: nothing reads it, it drifts from the branches, and what is sent upstream is not what was tested.
 
 About
-: microphone
+: audio-mic
 
 Research
 : microphone-codec-drops-off
@@ -726,7 +735,7 @@ Rejected
 : DMICs through the TX decimators with the VA block's clocks (the vendor's va-without-decimation model, bring-up's lead until 05:00 on 2026-11-17): surya has no digital mics - the routes are the QRD board's and the pins are unconnected; the model stays recorded (bolero-v1-capture-family) for siblings that have DMICs. The VA macro's own path (VA_CODEC_DMA_TX_0): this ADSP rejects the port (0xb021, error 3), nobody streams it on SM6150/SM7150, and there is nothing for it to record. pulpoff/linux-surya as surya's kernel: it works, but it is 7.2.15 (end of life), squashed into one commit and packaged for Debian, while the conveyor builds tested branches of linux-phone-oco/linux toward sm7150-mainline - we take its findings with credit, not its tree. Driving LPASS codec DMA from Linux without the ADSP (lpass-cpu, as ADSP-less Chromebooks do): unnecessary and a large, risky driver. A surya capture series of our own for upstream: davinci's PR 60 already carries three of the four fixes; a parallel series would split the review.
 
 About
-: linux-phone-oco/docs/features:microphone
+: audio-mic
 
 Research
 : microphones-are-analog,mic-zeros-meant-no-input,bolero-v1-capture-family
@@ -751,7 +760,7 @@ Rejected
 : Digital loop through in-call record/playback ports (unknown whether sdm845-mainline's q6voice has them; kept for later if it does). A second phone on a stand that answers (hardware and a second SIM; the echo line does the same for nothing). A programmable number (Twilio and the like: an account, money, a public endpoint). sipgate's echo 10005 (SIP-internal, not dialable from a mobile, private customers dropped 2025). Old or foreign echo lines (portunity 0211, sip2sip +31, C*NET: unconfirmed, international rates). Calling the author's other phone as the automatic test (reaches a person; stays the half-manual mode of 2026-11-11-telephony-checks). Downstream's 0x10F71 topology (silence without Xiaomi's calibration). A call on every boot (45 a day in bring-up).
 
 About
-: linux-phone-oco/docs/features:voice-calls
+: modem-calls
 
 Research
 : echo-call-number, call-audio-on-surya, echo-call-test-design, mobile-data-check-budget
@@ -774,6 +783,9 @@ Why
 
 Rejected
 : Python checks (refused on the lab; the phone's python3 is the image's, not ours). rust-script or cargo script on the phone (a toolchain and network on the phone, minutes of compiling at boot). Every check in Rust (a ten-line sysfs reading becomes a cross-build per change). bats or another shell test framework (bash, not BusyBox ash; the contract already does its work). LAVA or a KTAP-native harness now (a lab of many boards; our lines map onto KTAP if ever needed). One binary per check (many cross-builds and files to ship).
+
+About
+: dl-reaches
 
 Research
 : health-suite-organisation
@@ -823,7 +835,7 @@ Rejected
 : clap in devlab-health (size on the phone; argenv is the commons' parser, and moving the runner onto it is its own change). A WAV reader written again by hand (hound is there and tested). Ledger arithmetic in shell (state and numbers, against the shell-and-Rust decision). once_a_day for mobile data (the research measures every boot; the budget already bounds the cost). The first connected bearer (picked IMS on surya). Marking the weekly run as made when it failed (a broken run would hide throughput for a week).
 
 About
-: devlab-health
+: dl-reaches
 
 Research
 : mobile-data-check-budget, health-suite-organisation
@@ -884,6 +896,9 @@ Why
 
 Rejected
 : A new idealkb beside text-as-data-template: one nature under two names, and the template drifts further, as the vendored engines did. Folding it into ideal-project-playbook: the playbook is how to run a software project, and a base is not one; its own docs/ is a base. Folding it into ideal-agent: a base is read by people and the face too; ideal-agent keeps only the navigation skill. Moving docs' database into a subfolder named ideal-knowledge-base-linux-phone-oco: devlab's filing (gather.rs reads data/ and records/ at the root), tad's working directory, GitHub Pages' docs/, the mark's exports and every link to a row's page stand on the root - many paths changed for a name. A copied template: copies drift, as this one has. A spec document alone: nothing checks a base follows it. A plugin skill as the vehicle: only Claude agents would get it. llms.txt as the agent's entry: it serves outside readers of a site - generate one from the data later for the published pages. Embeddings or a vector index: 4k rows answer exactly by a checked link and named queries, with no service to run. A table of questions naming their queries: a second index to keep true; the statements' first lines are the index. A folder per Diátaxis kind or per PARA bucket: the tables already sort by kind, and actionability is read off status.
+
+About
+: kb-about-link
 
 Research
 : kb-organisation-world

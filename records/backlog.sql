@@ -5,9 +5,10 @@
 -- --status   string = open  open, in-progress or done
 -- --note     string?       where it stands, and the next step
 -- --waits    string?       what it waits on, if anything (the author, a SIM card)
+-- --about    string?       what it is about: a component, feature, milestone, device or backlog item (tad q about lists them)
 -- --opened   date = today  when it was opened
 -- --needs    string?       phone: it cannot be done without the phone - its keeper's queue (tad q phone-queue)
 -- --proof    string?       the test whose pass proves it done (a tests id, or the test still to write)
 DELETE FROM backlog WHERE project = 'linux-phone-oco/' || $project AND id = $id;
-INSERT INTO backlog (project, id, title, status, note, opened, waits, needs, proof)
-VALUES ('linux-phone-oco/' || $project, $id, $title, $status, $note, $opened, $waits, $needs, $proof);
+INSERT INTO backlog (project, id, title, status, note, opened, waits, needs, proof, about)
+VALUES ('linux-phone-oco/' || $project, $id, $title, $status, $note, $opened, $waits, $needs, $proof, $about);

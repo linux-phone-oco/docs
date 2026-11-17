@@ -41,6 +41,9 @@ Considered
 Rejected
 : The user mentioned the device already has something called 'nuria' installed or flashed, which does not match any term found in the sm7150-mainline/postmarketOS sources searched; flashing or booting anything before that is understood risks overwriting or being inconsistent with whatever is actually there.
 
+About
+: surya-boots
+
 ---
 
 
@@ -83,6 +86,9 @@ Considered
 Rejected
 : Guessing credentials against a real device is not something to do unilaterally, security concerns aside from whether it would even work; the honest and correct move is to ask whoever configured this install.
 
+About
+: surya-boots
+
 ---
 
 
@@ -103,6 +109,9 @@ Considered
 
 Rejected
 : Wrong is not catastrophic here (reflash fixes it) but is still avoidable, and pmbootstrap asks the installer to choose this explicitly, so the owner may simply already know which one was chosen.
+
+About
+: surya-boots
 
 ---
 
@@ -125,6 +134,9 @@ Considered
 Rejected
 : A Python API for agents (the CLI with stable JSON is the API); a second monitor command (one command chooses local or remote).
 
+About
+: surya-boots
+
 ---
 
 
@@ -145,6 +157,9 @@ Considered
 
 Rejected
 : Guessing statuses for the Linux distributions (left unknown until tests and feeds fill them); PC-side depmod when baking in a module (it made Plasma boot-loop); trusting an image by its folder name (a reference image carried an old test device tree - fingerprints now).
+
+About
+: audio-speaker
 
 ---
 
@@ -209,6 +224,9 @@ Considered
 Rejected
 : That: the phone's own log showed the idle suspend as the trigger; nothing was changed until the log was read.
 
+About
+: dl-safe
+
 ---
 
 
@@ -251,6 +269,9 @@ Considered
 Rejected
 : That: evidence from an instrument that moves is not evidence.
 
+About
+: dl-manual
+
 ---
 
 
@@ -287,6 +308,9 @@ Considered
 Rejected
 : That: a part works when its function was shown, not when its device appears.
 
+About
+: surya-every-part
+
 ---
 
 
@@ -307,6 +331,9 @@ Considered
 
 Rejected
 : That: hearsay until a chip answers.
+
+About
+: camera-rear
 
 ---
 
@@ -329,6 +356,9 @@ Considered
 Rejected
 : That: three wrong theories cost three reboots.
 
+About
+: audio-mic
+
 ---
 
 
@@ -350,6 +380,9 @@ Considered
 Rejected
 : Guessing.
 
+About
+: audio-mic
+
 ---
 
 
@@ -370,6 +403,9 @@ Considered
 
 Rejected
 : That as the answer.
+
+About
+: audio-mic
 
 ---
 
@@ -401,6 +437,9 @@ Entry date
 Done
 : 9 runs of surya filed by devlab gather now (lab-tools): the 5 runs of 2026-11-10 that were never filed, and the first 4 reports the phone wrote itself with the health suite now on it.
 
+About
+: surya-tested
+
 ---
 
 
@@ -415,6 +454,9 @@ Entry date
 
 Done
 : The phone checks its own health after every boot and every change ends with that report; gathering into this picture is one command; agents reach the phone over MCP; and a new phone's lab is now a new device.toml (linux-phone-oco/device-template).
+
+About
+: dt-any-phone
 
 ---
 
@@ -476,6 +518,9 @@ Entry date
 Done
 : The first feature research (prompts/feature-research.md), signed research-deep-sleep. surya read without a change: s2idle only, OS-initiated PSCI, the SoC's sleep counters readable, no suspend yet in a measured boot, CX collapse and AOSS sleep at 0, the audio DSP never asleep, the deepest cluster state never entered. Six research rows (how Qualcomm reaches its floor, what blocks it, the SM7150 cluster parameters against surya's own tables, waking for calls, the other ways, surya measured), the decision with four ways rejected, six steps on the backlog each with its proof, a deep-sleep part with surya's row unknown, and the check soc-sleeps in lab-tools' suite. docs now shares its research and sources tables.
 
+About
+: deep-sleep
+
 ---
 
 
@@ -496,6 +541,9 @@ Considered
 
 Rejected
 : That: what must be known to use a tool belongs in the tool.
+
+About
+: dl-safe
 
 ---
 
@@ -539,6 +587,9 @@ Considered
 Rejected
 : The first: a tone in the night. The second: two truths about one phone.
 
+About
+: dl-manual
+
 ---
 
 
@@ -559,6 +610,9 @@ Considered
 
 Rejected
 : That: an instrument placed with care on notice is an instrument.
+
+About
+: dl-manual
 
 ---
 
@@ -581,6 +635,9 @@ Considered
 Rejected
 : That: evidence from an instrument that moves is not evidence, and a later failure would have looked like the phone getting worse.
 
+About
+: dl-manual
+
 ---
 
 
@@ -601,6 +658,9 @@ Considered
 
 Rejected
 : That: a machine should hear it. And claiming which speaker is which - one microphone cannot tell.
+
+About
+: dl-manual
 
 ---
 
@@ -623,6 +683,9 @@ Considered
 Rejected
 : Acting on any of them before the bootloader's own record (the entry's try counter) was read.
 
+About
+: dl-safe
+
 ---
 
 
@@ -637,6 +700,9 @@ Entry date
 
 Done
 : The kernel guard and the listening word, each from a mistake made today; two more steps recorded: a room of digital silence, and a try that reports its own outcome.
+
+About
+: dl-safe
 
 ---
 
@@ -659,6 +725,9 @@ Considered
 Rejected
 : That: a renamed file is a trick only its author remembers.
 
+About
+: dl-manual
+
 ---
 
 
@@ -673,6 +742,9 @@ Entry date
 
 Done
 : devlab phone reboot, kernel try and provision end with the health report of the boot they came to; proven by a reboot of surya: healthy, report brought, 3 minutes.
+
+About
+: dl-safe
 
 ---
 
@@ -689,6 +761,9 @@ Entry date
 Done
 : devlab gather now --land: one new report brought from surya, filed through tad sql into the picture, landed in surya-lab and docs in 75 s with every check passing; devlab watch now does this after every boot and says the phone's own verdict on the board.
 
+About
+: dl-reaches
+
 ---
 
 
@@ -703,6 +778,9 @@ Entry date
 
 Done
 : devlab gather now brings the phone's reports to the lab and files every unfiled run into the picture's tables; 9 runs filed, a week of gathering by hand caught up.
+
+About
+: dl-reaches
 
 ---
 
@@ -722,6 +800,9 @@ Done
 Date
 : 2026-11-17
 
+About
+: dl-reaches
+
 ---
 
 
@@ -737,6 +818,9 @@ Entry date
 Done
 : After filing, devlab runs every statement the picture keeps in derive/ through tad: support status is read off the latest results (broken on a failure, works on a proven pass, otherwise as judged). Proven with run 20261117-005911: filed, derived, landed - every measured part now names it.
 
+About
+: surya-tested
+
 ---
 
 
@@ -751,6 +835,9 @@ Entry date
 
 Done
 : devlab mcp: nine tools that let any agent run commands on the phone, move files, read and measure its health, try a kernel once and reboot - proven against surya.
+
+About
+: dl-reaches
 
 ---
 
@@ -773,6 +860,9 @@ Considered
 Rejected
 : That: two ways to flash drift apart; the shell original stays in git history.
 
+About
+: dl-safe
+
 ---
 
 
@@ -793,6 +883,9 @@ Considered
 
 Rejected
 : That, on one measurement from one position.
+
+About
+: audio-speaker
 
 ---
 
@@ -833,6 +926,9 @@ Considered
 Rejected
 : All four, each by its own measurement. The old 'rare' crash was the same one: there the helper died with the first crashes and stayed down.
 
+About
+: deep-sleep
+
 ---
 
 
@@ -853,6 +949,9 @@ Considered
 
 Rejected
 : That: evidence from an instrument that moves is not evidence, and a later failure would have looked like the phone getting worse.
+
+About
+: dl-manual
 
 ---
 
@@ -875,6 +974,9 @@ Considered
 Rejected
 : That: a fix inside one shell does not hold under another, or under none.
 
+About
+: deep-sleep
+
 ---
 
 
@@ -895,6 +997,9 @@ Considered
 
 Rejected
 : That: there and set up is what a machine can prove; the rest are witnessed tests.
+
+About
+: surya-every-part
 
 ---
 
@@ -938,6 +1043,9 @@ Considered
 Rejected
 : That: hearsay. A chip should say what it is, on its own bus, before a driver is bound to it.
 
+About
+: camera-rear
+
 ---
 
 
@@ -958,6 +1066,9 @@ Considered
 
 Rejected
 : Guessing at clock fixes.
+
+About
+: audio-mic
 
 ---
 
@@ -980,6 +1091,9 @@ Considered
 Rejected
 : Acting before reading the bootloader's own record.
 
+About
+: audio-mic
+
 ---
 
 
@@ -1000,6 +1114,9 @@ Considered
 
 Rejected
 : That: the program's own paths showed it exists.
+
+About
+: modem-data
 
 ---
 
@@ -1022,6 +1139,9 @@ Considered
 Rejected
 : That: the branch's driver is not the one that was tested.
 
+About
+: audio-mic
+
 ---
 
 
@@ -1043,6 +1163,9 @@ Considered
 Rejected
 : That as the answer: it changed nothing.
 
+About
+: audio-mic
+
 ---
 
 
@@ -1057,6 +1180,9 @@ Entry date
 
 Done
 : The manifest says what surya is expected to have ([health]: its sound card, three signal processors and what rests on each, the known boot warnings and failed unit with their reasons, and four known gaps - fingerprint, sensors, both cameras); its amplifier checks moved to tests/health/base. devlab suite put the suite on the phone; after a reboot it ran by itself and said healthy: 29 pass, 4 in known gaps, 1 not measured (no SIM card seen: the modem reports sim-missing).
+
+About
+: dl-reaches
 
 ---
 
@@ -1088,6 +1214,9 @@ Entry date
 Done
 : Made from what was proven on surya the same day: the phone checks its own health after every boot, every change ends with that report, gathering is one command, and devlab mcp is the door for agents - all read from device.toml.
 
+About
+: dt-any-phone
+
 ---
 
 
@@ -1108,6 +1237,9 @@ Considered
 
 Rejected
 : A parallel upstream series; the DMIC/VA clock model for surya.
+
+About
+: audio-mic
 
 ---
 
@@ -1151,6 +1283,9 @@ Considered
 Rejected
 : Python checks; sipgate's SIP-only echo; a call on every boot.
 
+About
+: modem-calls
+
 ---
 
 
@@ -1171,6 +1306,9 @@ Considered
 
 Rejected
 : See the decision's rejected.
+
+About
+: expert-primer
 
 ---
 
@@ -1193,6 +1331,9 @@ Considered
 Rejected
 : See decision 2026-11-17-health-analysis-subcommands.
 
+About
+: dl-reaches
+
 ---
 
 
@@ -1214,6 +1355,9 @@ Considered
 Rejected
 : All but the template grown into idealkb, the root kept as the base and only the agent folder moved - see the decision's rejected.
 
+About
+: kb-about-link
+
 ---
 
 
@@ -1231,3 +1375,27 @@ Done
 
 Considered
 : next: (1) headphones and the headset mic: need a headset plugged in and the author listening (verify-headphone-mic-earpiece; the jack detector exists since the WCD fixes). (2) upstream, waiting for the author to send: upstream-queue linux/sm7150-wcd 0001-0004 (sm7150-mainline), the tas2562 pair, upstream-alpine-tqftpserv, upstream-pd-mapper-order; q6voice is out of tree (sdm845-mainline) - its upstreaming is not ours yet. (3) the kernel is not yet a package: the kept kernel lives only on the phone's boot partition; a reflash returns stock until it goes through the package conveyor (device.toml carries the userspace side: UCM, q6voiced conf, call-uplink, pd-mapper, tqftpserv@edge, the mobile connection). (4) the deep-sleep steps, sensors, off-state charging, as the queue orders.
+
+---
+
+
+<a id="2026-11-17-about-link"></a>
+### Every record names what it is about; one query for a subject's whole knowledge
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: First step of 2026-11-17-ideal-knowledge-base. Declared about on research, backlog, session_log and concepts, and a references rule on all five record tables; the rule found decisions' about in four spellings (11 rows) and they became plain ids. Backfilled 185 rows; records take --about; queries/about.sql answers a subject in one call (prefix words: modem, audio) and lists subjects without one; AGENTS.md says to ask it instead of reading pages. ocoeco's language (reasoning.toml) now lets a decision be about a component, feature or device, as well as a milestone, concept or backlog item. Measured again: the microphone 22 KB against 206 KB of pages, the modem 17 KB; expert-primer is done by it.
+
+Considered
+: A list-valued about (several subjects per record); full ids (linux-phone-oco/docs/milestones:x) as ocoeco writes them; mapping features to components.
+
+Rejected
+: A list: tad's references check one value, and one subject per record kept every row decidable. Full ids: tad cannot check them, and the face's badges match plain ids - the four decisions about surya-sound showed none. A feature-to-component map: a hardware record names the component (audio-mic), an ability the feature; the about query reads both by id.
+
+About
+: kb-about-link

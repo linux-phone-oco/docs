@@ -14,6 +14,9 @@ Summary
 Why
 : Two baselines would be two truths about one phone.
 
+About
+: surya-tested
+
 
 <a id="refuse-what-cannot-work"></a>
 ### The conveyor refuses what cannot work
@@ -52,6 +55,9 @@ Summary
 
 Why
 : Honest about what the instrument can say.
+
+About
+: audio-mic
 
 
 <a id="the-reference"></a>
