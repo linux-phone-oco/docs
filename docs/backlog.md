@@ -4937,10 +4937,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: g is e with the initramfs on 172.16.43.1; sha256 cc3cc1affad447e87ded0f20ebefe76c08e0dfa0270a797401513963b7f895a3 (~/Projects/walleye-build/images/SHA256SUMS). From the first state, devlab fastboot boot now ~/Projects/walleye-build/images/boot-g.img, watch 90 s. Same try as e; only the ramdisk address differs. No writes. Lower priority than the bisect s1-s3 (e and b never start, so g and h cannot differ from them until the bisect says why).
+: Not needed: the vendor kernel ran with our ramdisk (research walleye-vendor-kernel-facts-s1-panic); mainline images g/h wait until the vendor-kernel gadget (walleye-try-vendor-gadget2) gives a shell and the facts. Closed by the coordinator 2026-11-17.
 
 Opened
 : 2026-11-17
@@ -4965,10 +4965,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: h is b (LineageOS offsets) with the initramfs on 172.16.43.1; sha256 3090bbcdbb17bb8c719ee75560f06c9047804ac55d4a072a94b0b2eaf812ce19. After g; same steps. No writes. Also built, not queued: i = f at 172.16.43.1 (5fdcd4ca...bae0a4).
+: Not needed: the vendor kernel ran with our ramdisk (research walleye-vendor-kernel-facts-s1-panic); mainline images g/h wait until the vendor-kernel gadget (walleye-try-vendor-gadget2) gives a shell and the facts. Closed by the coordinator 2026-11-17.
 
 Opened
 : 2026-11-17
@@ -5463,6 +5463,9 @@ Device
 
 Proof
 : walleye-gadget-up (tests/host/gadget-up.sh, GADGET_WAIT=90): a USB device with our strings enumerates and 172.16.43.1 answers ping and telnet; else record the bootreason
+
+Rank
+: 1
 
 About
 : walleye-first-fastboot-boot
