@@ -5542,7 +5542,7 @@ Status
 : open
 
 Note
-: Decision walleye-try-returns-without-hands. Keep xz, nodes from the cpio, NCM, telnetd on 172.16.43.1. Add: a background timer in init (sleep 240; test -e /tmp/hold || reboot -f) and make sure 'reboot -f' / 'echo b > /proc/sysrq-trigger' works on 4.4 (mount proc; CONFIG_MAGIC_SYSRQ in the stock config.gz? say). Also write init's start marker to /dev/kmsg early if it exists (mknod it in the cpio) so a later pstore/last_kmsg read could show it. Keep a-i, s0-s3 and vendor-gadget/2 byte-identical.
+: Decision walleye-try-returns-without-hands. Keep xz, nodes from the cpio, NCM, telnetd on 172.16.43.1. Add: a background timer in init (sleep 240; test -e /tmp/hold || reboot -f) and make sure 'reboot -f' / 'echo b > /proc/sysrq-trigger' works on 4.4 (mount proc; CONFIG_MAGIC_SYSRQ in the stock config.gz? say); write init's start marker to /dev/kmsg early (mknod it in the cpio). Keep a-i, s0-s3 and vendor-gadget/2 byte-identical. WHEN DONE: queue the keeper's try as walleye-try-vendor-gadget3 (needs phone, device google-walleye, rank 1, proof tests/host/gadget-up.sh) with the decision's outcome table filled for this image (gadget up / panic / silent hang / early hang: what happens, hands or not) in its note, and mark walleye-try-vendor-gadget2 done 'superseded by gadget3: no self-reboot'. The keeper must not try gadget2.
 
 Opened
 : 2026-11-17
