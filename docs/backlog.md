@@ -3857,3 +3857,22 @@ Proof
 
 About
 : google-walleye
+
+
+<a id="walleye-spec-records"></a>
+### A spec record: what the observer learned, with evidence kind, file, hash, command
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Wanted before the first part that needs clean-room observation (display panel init is the likely first). Ask the ikb session to add a spec record (fields from research 2026-11-17-cleanroom-agents); first trial on a part surya already solved. Not needed for the first kernel.
+
+Opened
+: 2026-11-17
+
+About
+: google-walleye
