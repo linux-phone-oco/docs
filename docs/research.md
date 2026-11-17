@@ -1212,3 +1212,128 @@ About
 
 Material
 : research/android-reference/2026-11-17/
+
+
+<a id="walleye-mainline-prior-art"></a>
+### walleye-mainline-prior-art
+
+Brief
+: No Google board in mainline v7.3; kcxt's walleye dts is a 13-line stub, porthole's taimen kernel (7.2.2 + 263 patches) is far ahead and carries an untested walleye board file
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: What exists for the Pixel 2 (walleye) on mainline: kcxt/linux-wahoo, the other trees, which nodes work, what is missing?
+
+Found
+: Mainline (v7.3, v7.4-rc3 out) has no msm8998-google-* file and nothing was submitted to the lists that a search finds.
+kcxt/linux-wahoo (last push 2022-02-27, branch wahoo/5.17 = 5.17 fork of the MSM8998 community tree): msm8998-google-wahoo.dtsi (shared) + taimen.dts (LG SW43402 panel, qcom,msm-id 0x124 0x20001) + walleye.dts, which is 13 lines: model and compatible only, no qcom,msm-id, no panel or battery. The shared dtsi enables: UART (blsp2_uart1 earlycon), Bluetooth, pm8998/pm8005/pmi8998 regulators, qusb2phy + dwc3 as USB 2.0 peripheral only (SuperSpeed does not work), UFS + PHY, Wi-Fi, adsp/slpi/mss remoteprocs with wahoo firmware names, mdss/dsi0/DSC panel, Adreno 540 (GPU voltage raised as a hack), ramoops at 0xa1810000. Its bootargs in the dts is wrong with this bootloader (see walleye-first-boot-recipe). Per the Nura wiki (taimen, kernel 5.10-rc2): boots, USB networking works enough for a shell, needs clk_ignore_unused; display broken, battery broken, everything else untested.
+porthole-dev/pmaports taimen-bringup (2026-10): kernel = kernel.org v7.2.2 + 263 numbered patches; taimen is a daily-driver port (display, GPU, touch, haptics, amps, wifi, modem, sensors, camera, suspend). For walleye only patch 0029: a 33-line board dts with a 2700 mAh battery taken from the published spec, "nobody has run this branch on an actual walleye device yet"; "no dedicated display or camera overrides" - walleye's panel and touch are not in it.
+pmaports/Nura masters: no walleye or taimen package.
+Missing for walleye (all unknown on the phone): display (S6E3FA5 command-mode panel: no mainline driver), touch (Synaptics RMI: driver in mainline, node missing), USB (taimen only), UFS (taimen only), Wi-Fi, modem, sound (amps differ from taimen), haptics (DRV2624, no mainline driver), fuel gauge (out of tree).
+
+Sources
+: kcxt-wahoo-5-17,kcxt-linux-wahoo,porthole-pmaports,pixel2xl-pmos-wiki,linux-v7-3-msm8998,pmaports-google-devices
+
+About
+: google-walleye
+
+Material
+: research/google-walleye/2026-11-17-mainline/
+
+
+<a id="walleye-first-boot-recipe"></a>
+### walleye-first-boot-recipe
+
+Brief
+: First boot: v0 boot.img, dtb appended with qcom,msm-id, no bootargs in the dts, USB 2.0 gadget instead of a display; whether fastboot boot works with a mainline dtb and the dtbo is not known
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: What does a first mainline boot of the Pixel 2 need, and what can and cannot fastboot boot do on this bootloader?
+
+Found
+: Image: boot header v0, base 0x0, kernel offset 0x8000, ramdisk 0x1000000, tags 0x100, page 4096 - verified by porthole against the stock TAIMEN boot.img; LineageOS's wahoo board config says tags 0x01E00000 / ramdisk 0x02000000 instead: two sets are reported, walleye's own stock boot.img header decides (not read yet). Boot partition is 32 MiB (getvar boot_a 0x2000000), max-download-size 0x20000000: size is no limit. The DTB is appended to the kernel; it must carry qcom,msm-id = <0x124 0x20001> (taimen has it, kcxt's walleye does not).
+Cmdline (porthole): clk_ignore_unused ignore_loglevel panic=10 earlycon=msm_serial_dm,0xc1b0000 qcom_wdt.arm_on_probe=1 watchdog.open_timeout=300 reboot=w; kcxt adds console=ttyGS0,115200. No bootargs/stdout-path in the DTS: ABL appends the boot.img cmdline with fdt_appendprop_string, and a pre-existing bootargs hides it.
+Display: command-mode panels, so no scanned-out framebuffer for simple-framebuffer; the first sign of life must be USB. Path: dwc3 peripheral, high-speed only, SuperSpeed PHY dropped, qcom,select-utmi-as-pipe-clk, assigned-clock-rates 19.2/60 MHz (works on taimen); initramfs with a configfs gadget (ACM console + RNDIS/ECM) and telnet/ssh on 172.16.42.1 (devlab's address). pstore: ramoops 0xa1810000/0x200000; a cold reset scrambles it, so the warm-reset/watchdog parameters matter. UART: the Pixel debug cable (see google-walleye-how-others-booted; fastboot oem uart enable is a change to the phone, undecided).
+Bootloader (keeper's read-only getvar, google-walleye-bootloader-first-look): mw8998-003.0085.00, hw-revision MP1, unlocked, A/B both slots successful, avb_version 1.0.0, kernel:uefi, no fastbootd.
+fastboot boot: TWRP's own instructions for walleye use it (xdaforums), but another report could not boot TWRP that way, and nobody reports a mainline kernel booted from RAM on any Pixel 2: NOT known. Also not known: whether ABL applies the stock dtbo of the active slot to a mainline DTB (taimen's bootloader refuses a kernel unless dtbo holds overlay id 2704 - kcxt's README, taimen only; porthole flashes its own stub into slot b), and what vbmeta/AVB does to an unsigned image on an unlocked phone. One try through devlab (walleye-first-fastboot-boot) answers all three; a refusal is an answer, and the stub dtbo is a write (the author's decision; backlog walleye-dtbo-overlay-id).
+
+Sources
+: porthole-pmaports,pixel2xl-pmos-wiki,kcxt-wahoo-5-17,kcxt-dtbo-wahoo-mainline,lineageos-kernel-google-wahoo,twrp-walleye-fastboot-boot,kerneltoast-wahoo-kernel,lkml-taimen-dts-patch-2021
+
+About
+: google-walleye
+
+Material
+: research/google-walleye/2026-11-17-mainline/
+
+
+<a id="walleye-shortest-path"></a>
+### walleye-shortest-path
+
+Brief
+: Shortest honest path: a tiny walleye dts on mainline v7.3 (v7.2.2 fallback), USB gadget initramfs, one fastboot boot; porthole's 263 patches come later, one at a time
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: What is the shortest honest path to a mainline fastboot boot of the Pixel 2, and which kernel is built first?
+
+Found
+: Path: (1) kernel.org v7.3 + a new msm8998-google-walleye.dts (own file, GPL, from the wahoo dtsi, carrying qcom,msm-id) with only what a USB-reachable initramfs needs: reserved memory, pm8998/pm8005/pmi8998 RPM regulators, qusb2phy + dwc3 peripheral, ramoops, UART; UFS, display, GPU, wifi, remoteprocs disabled (no firmware, no storage touched). (2) v0 boot.img with the dtb appended. (3) initramfs with a USB gadget. (4) one fastboot boot through devlab; proof = host sees the gadget and answers on 172.16.42.1. Display, touch, UFS, charger follow, each by the bring-up method.
+Rejected: starting from porthole's 263-patch kernel (taimen-shaped, hard to tell what a walleye failure comes from; kept as the fallback and the patch source); kcxt's 5.17 (old, bootargs in the dts, no msm-id, unmaintained); a display-first or simple-framebuffer start (command-mode panel: no framebuffer to reuse); flashing dtbo/boot first (breaks decision walleye-fastboot-first; only if the one try shows ABL needs the stub dtbo, and then the author decides).
+Unknown: see walleye-first-boot-recipe (walleye boot.img header, dtbo/ABL with a mainline dtb, vbmeta, whether a mainline kernel boots from RAM on a Pixel 2 at all).
+
+Sources
+: porthole-pmaports,kcxt-wahoo-5-17,linux-v7-3-msm8998,twrp-walleye-fastboot-boot
+
+About
+: google-walleye
+
+Material
+: research/google-walleye/2026-11-17-mainline/
+
+
+<a id="walleye-mainline-reuse"></a>
+### walleye-mainline-reuse
+
+Brief
+: Mainline v7.3 already holds MSM8998 DPU, DSI PHY, Adreno 540, UFS, dwc3, charger and RMI4 touch; the Pixel 2 needs a board file plus an S6E3FA5 command-mode panel driver, fuel gauge, DRV2624, TAS2557
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Which MSM8998 boards are in mainline, and which nodes and drivers can walleye reuse; what do its parts need?
+
+Found
+: Boards in v7.3: msm8998-mtp, OnePlus 5/5T (cheeseburger/dumpling, common dtsi), Xiaomi Mi 6 (sagit), Sony Xperia XZ Premium/XZ1/XZ1 Compact (yoshino lilac/maple/poplar), F(x)tec Pro1, HP Envy x2, Asus Novago, Lenovo Miix 630. Best templates: OnePlus common dtsi (blsp1_i2c5 touch, gpio-keys, ufs, usb3 peripheral, wifi, ramoops, zap shader region, qcom,msm-id 292 0x20001 "required for bootloader to select correct board") and the Mi 6 (same i2c5 touch bus).
+SoC pieces already in msm8998.dtsi: ufshc+ufsphy, dwc3+qusb2, mdss/dpu/dsi0+10nm PHY, adreno-540.1, gpucc, wcn3990 wifi, smmus, mss/adsp pas remoteprocs, pinctrl; pmi8998 charger + rradc + wled + lpg + flash; drivers rmi_i2c, rmi_f1a, qcom_smbx, stmfts.
+Walleye parts (GPL downstream dtsi): Samsung S6E3FA5 5.0" 1080x1920 DSI command mode (TE on, reset gpio94, rails PM8998 L14 1.8 V and L22 3.0 V, DCS backlight: no WLED and no LAB/IBB, which taimen needs) - mainline has s6e3fa7/fc2x01/ha2/ha8 but no fa5, an out-of-tree fa5 driver exists (OnePlus 5, Jami Kettunen) and porthole's sw43402 shows the command-mode + DPU work that is needed; touch Synaptics RMI on i2c5@0x20, irq gpio125, reset gpio89, l6/l28 rails -> node only; haptics DRV2624 (driver out of tree, porthole 0018); speaker amp TI TAS2557 as on taimen (TFA98xx is in the tree but disabled, an older revision); codec WCD934x on SLIMbus; keys gpios 40/126/121; battery 2700 mAh/4.4 V; NFC PN81A, fingerprint FPC1020 later. Fuel gauge qcom_fg out of tree (porthole 0022).
+Reuse rule: take the board file from the GPL wahoo dtsi (Caleb Connolly, Giuseppe Maggio; licence kept), patches from porthole one at a time when a part needs one.
+
+Sources
+: linux-v7-3-msm8998,kerneltoast-wahoo-kernel,lineageos-kernel-google-wahoo,kcxt-wahoo-5-17,porthole-pmaports
+
+About
+: google-walleye
+
+Material
+: research/google-walleye/2026-11-17-mainline/

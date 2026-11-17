@@ -45,3 +45,18 @@ Says
 
 Condenses
 : 2026-11-17-lpoco-health, 2026-11-17-lpoco-health-landscape
+
+
+### Row 4
+
+About
+: google-walleye
+
+Date
+: 2026-11-17
+
+Says
+: Nothing runs on walleye yet; the phone is in fastboot, unlocked, A/B, bootloader mw8998-003.0085.00, nothing written (walleye-fastboot-first, google-walleye-bootloader-first-look). Mainline v7.3 has no Google board; kcxt's walleye dts is a 13-line stub; porthole's mainline-7.2.2 kernel (263 patches) is a working Pixel 2 XL port whose walleye board file nobody has run (walleye-mainline-prior-art). Walleye's parts (S6E3FA5 command-mode panel, Synaptics touch, WCD934x + TAS2557, DRV2624, PMI8998 charger/gauge) are in google-walleye-vendor-kernel-hardware; what mainline already has and lacks is walleye-mainline-reuse. First boot: v0 boot.img, dtb appended with qcom,msm-id 0x124/0x20001, no bootargs in the dts, USB 2.0 gadget as the only sign of life (walleye-first-boot-recipe); unknown: walleye's boot.img header, whether fastboot boot works with a mainline dtb and the dtbo. Decision 2026-11-17-walleye-first-kernel: v7.3 + a minimal own dts; eight items with proofs in the walleye backlog (walleye-kernel-dts first).
+
+Condenses
+: 2026-11-17-walleye-first-kernel, 2026-11-17-walleye-lane-started, 2026-11-17-walleye-mainline-research, 2026-11-17-walleye-vendor-research, google-walleye-android-reference-public, google-walleye-bootloader-first-look, google-walleye-how-it-stands, google-walleye-how-others-booted, google-walleye-vendor-kernel-hardware, walleye-fastboot-first, walleye-first-boot-recipe, walleye-lab-repo, walleye-mainline-prior-art, walleye-mainline-reuse, walleye-shortest-path

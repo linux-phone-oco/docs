@@ -2054,3 +2054,104 @@ By
 
 Takes
 : Telnet at 192.168.2.15 from the initrd, host 192.168.2.1; useless when the kernel does not start.
+
+
+<a id="porthole-pmaports"></a>
+### porthole-dev/pmaports (branch taimen-bringup): mainline 7.2.2 + 263 patches, device-google-taimen, walleye board patch 0029
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/porthole-dev/pmaports/tree/taimen-bringup/device/testing/linux-postmarketos-qcom-msm8998-7.2
+
+Author
+: Casey Connolly, Giuseppe Maggio, porthole
+
+Year
+: 2026
+
+By
+: porthole-dev
+
+Takes
+: The one maintained mainline Pixel 2 family kernel: taimen proven, walleye board file untested. deviceinfo gives the boot image header (v0, offsets, appended dtb); the dtbo stub (id 2704) and cmdline are the first-boot facts.
+
+
+<a id="kerneltoast-wahoo-kernel"></a>
+### kerneltoast/android_kernel_google_wahoo (11.0.0-sultan): Google's GPL wahoo kernel, device-tree sources under htc/ (Pixel 2) and lge/ (Pixel 2 XL)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/kerneltoast/android_kernel_google_wahoo/tree/11.0.0-sultan/arch/arm64/boot/dts/htc
+
+Year
+: 2020
+
+By
+: Google, HTC, LG (GPL-2.0)
+
+Takes
+: Walleye's parts from GPL device-tree sources: Samsung S6E3FA5 command-mode panel, Synaptics RMI touch on i2c5, DRV2624 haptics, TFA98xx/TAS2557 amps, keys, battery; read for facts, not copied.
+
+
+<a id="linux-v7-3-msm8998"></a>
+### Linux v7.3 (mainline): arch/arm64/boot/dts/qcom msm8998 boards, drm/panel, input/rmi4, power/supply
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/torvalds/linux/tree/v7.3/arch/arm64/boot/dts/qcom
+
+Year
+: 2026
+
+By
+: kernel.org mainline
+
+Takes
+: What mainline already has for MSM8998 (DPU, DSI PHY, Adreno 540, UFS, dwc3, qusb2, wifi, charger, rmi4) and what it lacks for the Pixel 2 (no Google board, no S6E3FA5, no fuel gauge, no DRV2624, no TAS2557).
+
+
+<a id="twrp-walleye-fastboot-boot"></a>
+### TWRP 3.2.3-1 for Pixel 2 (xdaforums): temporary boot with fastboot boot
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://xdaforums.com/t/twrp-3-2-3-1-for-pixel-2.3698147/
+
+Year
+: 2018
+
+By
+: TWRP / XDA community
+
+Takes
+: fastboot boot of a recovery image works on the unlocked walleye, so a boot image can be held in memory without a flash.
+
+
+<a id="kcxt-wahoo-5-17"></a>
+### kcxt/linux-wahoo wahoo/5.17: msm8998-google-wahoo.dtsi, taimen and walleye dts, 2022
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/kcxt/linux-wahoo/tree/wahoo/5.17/arch/arm64/boot/dts/qcom
+
+Author
+: Caleb Connolly
+
+Year
+: 2022
+
+By
+: kcxt
+
+Takes
+: The first Pixel 2 family device tree; walleye dts is a 13-line stub on the taimen base; USB 2.0 peripheral, regulators, ramoops, UART facts.

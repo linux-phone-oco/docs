@@ -3648,3 +3648,212 @@ Opened
 
 About
 : google-walleye
+
+
+<a id="walleye-kernel-dts"></a>
+### Build v7.3 with a minimal msm8998-google-walleye.dts
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: From the wahoo dtsi (GPL, authors kept): memory, regulators, qusb2phy, dwc3 peripheral, ramoops, UART; UFS/display/GPU/wifi/remoteprocs disabled; qcom,msm-id 0x124 0x20001; no bootargs. v7.2.2 is the fallback.
+
+Opened
+: 2026-11-17
+
+Proof
+: make qcom/msm8998-google-walleye.dtb builds with no dtc warning from our nodes, the dtb holds msm-id 0x124/0x20001 and no /chosen/bootargs, and Image.gz builds (test to write in lab-tools: walleye-dtb-check)
+
+About
+: google-walleye
+
+
+<a id="walleye-initramfs-usb-gadget"></a>
+### Initramfs that brings up a USB gadget (ACM console + RNDIS/ECM) and telnet/ssh on 172.16.42.1
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: postmarketOS's initramfs is the model; first try without storage access; busybox only.
+
+Opened
+: 2026-11-17
+
+Proof
+: In QEMU aarch64 with dummy_hcd the initramfs creates the gadget and answers on its address (test: walleye-initramfs-gadget-qemu)
+
+About
+: google-walleye
+
+
+<a id="walleye-first-fastboot-boot"></a>
+### First fastboot boot of the walleye kernel: the phone leaves fastboot and its gadget answers
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: One try through devlab (fastboot boot now BOOT.IMG), nothing written; a person watches the first one. Answers the open questions: does ABL apply the stock dtbo to our dtb, vbmeta, bootloader version, max-download-size. If ABL rejects it, record that and stop: the dtbo stub (id 2704, porthole) needs a write, which is the author's decision.
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye-kernel-dts, walleye-bootimage, walleye-initramfs-usb-gadget; the author's go for the first witnessed try
+
+Needs
+: phone
+
+Proof
+: lsusb on the host shows the gadget within 60 s of fastboot boot and ssh/telnet to 172.16.42.1 answers (test: walleye-gadget-up)
+
+About
+: google-walleye
+
+
+<a id="walleye-debug-without-display"></a>
+### Reach a hung or crashed walleye without a display: warm reset, pstore, UART
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: ramoops at 0xa1810000/0x200000, qcom_wdt.arm_on_probe=1, watchdog.open_timeout=300, reboot=w (porthole); the Pixel debug cable is not in the lab.
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye-first-fastboot-boot
+
+Needs
+: phone
+
+Proof
+: after a deliberate panic the next boot lets the keeper read the panic log from /sys/fs/pstore (test: walleye-pstore-panic)
+
+About
+: google-walleye
+
+
+<a id="walleye-ufs-readonly"></a>
+### UFS probes and the partitions are listed, read-only
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Enable ufshc + ufsphy with the vcc/vccq rails from the wahoo dtsi; mount nothing, write nothing; this is also the way to read walleye's own boot.img header.
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye-first-fastboot-boot
+
+Needs
+: phone
+
+Proof
+: lsblk in the initramfs lists the UFS LUNs and by-name partitions without a write (test: walleye-ufs-lsblk)
+
+About
+: google-walleye
+
+
+<a id="walleye-display-s6e3fa5"></a>
+### Display: Samsung S6E3FA5 command-mode panel through DPU/DSI
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: No mainline driver; start from the out-of-tree S6E3FA5 driver (OnePlus 5) and porthole's sw43402 cmd-mode work for the DPU side; init sequence from the GPL downstream dtsi; reset gpio94, TE gpio10 (walleye) - the panel and its rails are walleye's own.
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye-ufs-readonly (not required) / walleye-first-fastboot-boot; a person witnesses the first light
+
+Needs
+: phone
+
+Proof
+: the DRM connector is connected and a test pattern is seen by a person (test: walleye-display-pattern)
+
+About
+: google-walleye
+
+
+<a id="walleye-touch-rmi4"></a>
+### Touch: Synaptics RMI4 on blsp1_i2c5 (0x20, irq gpio125, reset gpio89)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Mainline rmi_i2c driver; supplies pm8998 l6 and l28; xd boards add a pmi8998 power gpio - which board revision the lab phone is, is not known.
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye-first-fastboot-boot
+
+Needs
+: phone
+
+Proof
+: evtest shows touch events from the RMI4 device when the panel is touched (test: walleye-touch-events)
+
+About
+: google-walleye
+
+
+<a id="walleye-bootimage"></a>
+### Boot image: header v0, base 0, kernel 0x8000, ramdisk 0x1000000, tags 0x100, page 4096, dtb appended
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Offsets are taimen's stock values (porthole); walleye's own header is read from the stock boot.img by the keeper, read-only, before the first try. Built by a tool, not by hand.
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye's stock boot.img header (android-reference-walleye) to confirm the offsets
+
+Proof
+: unpack_bootimg of the result shows the offsets and cmdline, the dtb is inside the kernel blob, size is under the phone's max-download-size (test: walleye-bootimg-unpack)
+
+About
+: google-walleye
