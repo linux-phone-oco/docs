@@ -1738,3 +1738,31 @@ About
 
 Research
 : 2026-11-17-floor-aop-view-and-standby
+
+
+<a id="2026-11-17-standby-drain-test"></a>
+### 2026-11-17-standby-drain-test
+
+Brief
+: Standby drain becomes the test standby-current: median of 3 runs of >=60 min, scored from the charge counter, witness unplugs
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: Entered as a test with a witness step (the author unplugs USB), threshold 15 mA, scored as mean current from the charge_counter delta over the window (current_now only a cross-check), at least 60 min measured after a 10 min settle, Wi-Fi on, Bluetooth on and off as separate runs, screen off, samples every 30-60 s, charging samples discarded, invalid runs kept as invalid. The one-off run now prepared is the first such run (Bluetooth on).
+
+Why
+: Made repeatable so every kernel change is scored the same way; the charge counter avoids the wake-sample bias; see research standby-drain-as-a-repeatable-test.
+
+Rejected
+: A single 10 minute measurement (counter too coarse); scoring by battery percentage (least trustworthy); a name 'suitcase test' as a standard (none exists); Android's number as a gate now (not known yet).
+
+About
+: deep-sleep
+
+Research
+: standby-drain-as-a-repeatable-test

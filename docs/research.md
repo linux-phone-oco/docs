@@ -2105,3 +2105,28 @@ Sources
 
 About
 : deep-sleep
+
+
+<a id="standby-drain-as-a-repeatable-test"></a>
+### standby-drain-as-a-repeatable-test
+
+Brief
+: Standby drain is made a repeatable test, scored as average current from the charge counter delta; no standard 'suitcase test' exists
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Should standby drain be a proper repeatable test (idle, unplugged, fixed time, screen off, radios as in daily use) rather than a single measurement, and what should the one-off run prepared now take from it?
+
+Found
+: Yes, repeatable - but scored as mean current, not battery percent. Observed (Android power-component guide, source.android.com/docs/core/power/component): measure suspend with no wakelocks, confirm the device really suspends, wait for the reading to settle, average radio current over time, unplug USB first (a host can feed current). GameBench: hourly drain = capacity / average current. No standard 'suitcase test' or 'overnight drain test' found; the name is ours. pmaports#4846 (motorola-dubai 17x Droidian; method unread). Droidian miatoll 9 mA: its method not found; PinePhone anecdotes are single reports. Inference: charge_counter delta over the whole window is the primary number, current_now only a cross-check (wake samples inflate it), the gauge percentage least trustworthy. Take: average over a window, a settle period, unplug before the run, proof of real suspend. Leave: percentage scoring, the 30-80 mA 'normal' figures, 6-8 h windows. Test-catalogue fit: test standby-current, threshold 15 mA, median of 3 runs, a witness step 'unplug USB, confirm'; one run row per attempt (start/end charge_counter, elapsed, mean mA, samples, suspended fraction, radio state, kernel, unplug time), a failed unplug is an invalid run not a zero. One-off run: >=60 min measured after a 10 min settle (10 min is too short, the counter is coarse); Wi-Fi on the lab AP, Bluetooth as two separate runs (on, off), SIM out so record the modem state and do not call it airplane mode; screen off; log current_now, charge_counter, voltage_now, status every 30-60 s with a monotonic time, plus wakeup and suspend counts; discard samples while status is Charging; score from the charge_counter delta, report suspended fraction, compare with 15 mA and 9 mA now, Android 'not known yet'.
+
+Sources
+: https://source.android.com/docs/core/power/component; https://docs.gamebench.net; https://gitlab.postmarketos.org/postmarketOS/pmaports/-/work_items/4846
+
+About
+: deep-sleep
