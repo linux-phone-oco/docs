@@ -624,3 +624,16 @@ Proves
 
 Says
 : The control boot.img repacked with only the ramdisk swapped (vendor-gadget.img = bisect s1) exists, with kernel, dtb, command line, header and AVB footer equal to the control's; counted by check-bisect
+
+
+<a id="standby-current"></a>
+### standby-current
+
+Component id
+: deep-sleep
+
+Proves
+: works
+
+Says
+: battery-only average current across a suspended screen-off cycle stays under 15 mA (Droidian miatoll reads 9 mA; Android on surya not known yet)

@@ -2955,3 +2955,57 @@ By
 
 Takes
 : USB_MEMORY_AVG_HS_BW is 240 MB/s - the 240000 in surya's icc read; dwc3_qcom_suspend sets the path to 0, so USB's tag-7 vote is gone before the last CPU flushes the sleep set
+
+
+<a id="pmaports-4846-dubai-idle"></a>
+### pmaports#4846: motorola-dubai in idle consumes 17x more than a droidian device (SM7325 near-mainline)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/work_items/4846
+
+Author
+: f-izzo, Val Packett, andrew assef and others
+
+Year
+: 2026
+
+By
+: surya-research
+
+Takes
+: Closest peer: a Qualcomm phone on near-mainline, with standby current measured by current_now (mainline 150 mA then 60 mA / 0.2-0.3 W, Droidian downstream 9 mA), where regulator_summary and genpd idle_states are the tools, USB runtime PM and WLAN BB are CX holders, and removing all the known holders left the drain unchanged
+
+
+<a id="genpd-core-c"></a>
+### drivers/pmdomain/core.c: genpd_sync_power_off and the s2idle usage counter
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pmdomain/core.c
+
+By
+: surya-research
+
+Takes
+: usage_s2idle increments only when a power-down governor ran in genpd_sync_power_off, and that path needs suspended_count == device_count and sd_count == 0
+
+
+<a id="cpuidle-psci-c"></a>
+### drivers/cpuidle/cpuidle-psci.c and cpuidle-psci-domain.c: the s2idle path into the cluster domain
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/cpuidle/cpuidle-psci.c
+
+By
+: surya-research
+
+Takes
+: s2idle enters through dev_pm_genpd_suspend, not runtime PM; the CPU domains get pm_domain_cpu_gov only when they have idle states

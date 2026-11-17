@@ -1710,3 +1710,31 @@ About
 
 Research
 : 2026-11-17-floor-research-validity
+
+
+<a id="2026-11-17-standby-current-is-the-arbiter"></a>
+### 2026-11-17-standby-current-is-the-arbiter
+
+Brief
+: Standby current in a real s2idle cycle is the arbiter of deep sleep; the counters and the AOP's view are clues, regulators and wakeups are the hunt
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: The floor is judged by battery-only average current across a suspended cycle (charge_counter delta over the time, screen off, modem on), the line to match being 9 mA until Android on surya is measured. Next phone steps in order, each read-only or one change per cycle: (1) read every power-domain idle_states row and regulator_summary users before and after one cycle; (2) allow USB runtime PM (power/control auto on the PHY and controller) and read again; (3) the standby-current cycle itself. The AOP view is not chased further: the flush is sound and has no Linux-side reader.
+
+Why
+: The entry is in order (flush, deepest cluster state, quiet IRQs). The closest peer (pmaports#4846) shows counters can read poorly while holders are fixed one by one with no current change, and that regulators and USB, not the AOP, were what moved the draw; a measured 9 mA Droidian figure on the same generation gives a line. Only current is independent of the doubts about the counters.
+
+Rejected
+: Reading the AOP's log or message RAM beyond the stats (no mainline reader; downstream-only); more tracing of the flush (done: floor-entry-trace); S2RAM (rejected by floor-research-path); measuring Android by flashing surya now (changes the phone, not research's, and the miatoll figure gives a line meanwhile); treating aosd/cxsd counts as the only pass (peers show they can stay 0 while the draw is dominated by rails)
+
+About
+: deep-sleep
+
+Research
+: 2026-11-17-floor-aop-view-and-standby
