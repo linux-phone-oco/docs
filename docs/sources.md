@@ -3149,3 +3149,83 @@ By
 
 Takes
 : Its update flow (replace kernel/ramdisk of an existing image) is our swap; no AVB, no vendor_boot, ramdisk repack unfinished: idea only.
+
+
+<a id="rhizoid-repo"></a>
+### rhizoid: fork, own and sync git dependencies
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/git-rhizoid/rhizoid
+
+By
+: git-rhizoid
+
+Takes
+: Cutting (a fork owned and pinned), tracking branch pristine, patch branch merged from it, additive-only metadata: the model for patching a tool before upstream takes the change. CLI boundary typed, add/update/status stubbed.
+
+
+<a id="rhizoid-design-log"></a>
+### git-rhizoid.github.io: design log and backlog of rhizoid (tad-kept)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://git-rhizoid.github.io/
+
+By
+: git-rhizoid
+
+Takes
+: Concepts (additive file structure, tracking vs patch branch, clean patch back) and open items: design-consumption-side, slice-consumption (2026-11-17) and the three items this research added.
+
+
+<a id="idealkb-chain-follow"></a>
+### ideal-knowledge-base: decision 2026-11-17-chain-follow-by-slice, research chain-follow-world, bin/follow.sh
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/grenudi/ideal-knowledge-base
+
+By
+: grenudi
+
+Takes
+: One pin-and-follow mechanism: a source names its generic files, a follower pins a release and keeps its own files, a changed generic file exits 3 and goes back as an upstream item; rhizoid is left for whole forks, and its missing slice mode is on rhizoid's backlog.
+
+
+<a id="rust-script-deps"></a>
+### rust-script: dependencies in a script's cargo header, run single-file Rust
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://rust-script.org/
+
+By
+: fornwall
+
+Takes
+: A device-specific step can be one file that names bringup as a pinned dependency (git tag) in its own header: logic beside the device, no edit of the tool.
+
+
+<a id="cargo-git-and-patch"></a>
+### Cargo: dependencies from git, and overriding dependencies with [patch]
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://doc.rust-lang.org/cargo/reference/overriding-dependencies.html
+
+By
+: Rust
+
+Takes
+: A git dependency pinned by tag or rev is the pin; [patch] is how a patched fork stands in for the source until upstream takes the change, side by side with no vendored copy.
