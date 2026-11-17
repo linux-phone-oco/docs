@@ -1641,10 +1641,102 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Bring-up's experiment commits (DMIC pins at mux 1, TX DMIC routing, VA DMIC clocks on a module switch, clock pins without output-high) answered a question surya does not ask: its mics are analog (research microphones-are-analog). Step: keep them out of every branch that goes to the conveyor or upstream; the pin table's DMIC functions (mux 1 against the table's 2, the 'gpi26' spelling) are still worth fixing upstream as their own patch, for boards that have DMICs. Proof: test/surya-mic and the PRs carry no EXPERIMENT commit, and the mic checks still pass.
+: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bring-up's experiment commits (DMIC pins at mux 1, TX DMIC routing, VA DMIC clocks on a module switch, clock pins without output-high) answered a question surya does not ask: its mics are analog (research microphones-are-analog). Step: keep them out of every branch that goes to the conveyor or upstream; the pin table's DMIC functions (mux 1 against the table's 2, the 'gpi26' spelling) are still worth fixing upstream as their own patch, for boards that have DMICs. Proof: test/surya-mic and the PRs carry no EXPERIMENT commit, and the mic checks still pass.
+
+Done 2026-11-17 (bring-up): the DMIC experiment (pin table swap, DMIC routes, the VA DMIC clock switch) lived only as experiment commits on the local test branch and in surya-audio/patches; they were dropped before test/surya-mic was pushed, and none is in a pull request or the upstream queue.
 
 Opened
 : 2026-11-17
