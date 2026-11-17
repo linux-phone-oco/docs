@@ -827,3 +827,41 @@ About
 
 Research
 : mobile-data-check-budget, health-suite-organisation
+
+
+<a id="2026-11-17-guard-keeps-the-phones-way"></a>
+### 2026-11-17-guard-keeps-the-phones-way
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Decision
+: devlab guard keeps only the phone's way: ssh, scp, sftp, rsync and sshpass to a phone outside devlab are refused (devlab guard tool, PreToolUse). The ways every project shares - no git push to main, no Python, the practices and the inbox at session start - moved to the ideal-agent plugin's hooks (grenudi/ideal-agent), installed on the lab; devlab guard start is gone and the lab's settings keep only the PreToolUse hook (lab-tools #65).
+
+Why
+: The author, 2026-11-17: general agent know-how has one home, grenudi/ideal-agent (its decision 2026-11-17-one-home-for-agent-know-how). Held in devlab, the shared rules held only on the lab. Before devlab's rules were removed, both guards were given the same 19 events: they agreed on every push and Python case; the one difference was the phone's, which stays here.
+
+Rejected
+: Both guards holding the shared rules (two guards saying one thing drift apart). Moving the phone's rule to the plugin too (it is this lab's device: its addresses come from devlab's state).
+
+
+<a id="2026-11-17-briefs-keep-their-domain"></a>
+### 2026-11-17-briefs-keep-their-domain
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: The briefs in prompts/ keep only what is linux-phone's - what a role owns, its places, devlab and the phone, recording in docs - and name the skill for the method from the ideal-agent plugin: orchestrate-agents, research-a-feature, bring-up-a-part, with lab-session-start, land-a-change, record-the-work and change-a-device. The general research and decisions on how agents are organised (landscape photocraft-fleet, gas-town, anthropic-multi-agent, claude-code-agents; decisions 2026-11-17-agents-organised-by-the-data and -experts-written-not-standing) are carried into ideal-agent as its own; the rows here stay as linux-phone's.
+
+Why
+: The author, 2026-11-17: one home for general agent know-how (grenudi/ideal-agent), each project's docs keeping the domain-specific knowledge, so both improve in their own place.
+
+Rejected
+: Keeping the whole method in each brief (copies drift between projects); deleting the linux-phone rows that were carried over (they are linux-phone's history and decisions, cited by its own records).
