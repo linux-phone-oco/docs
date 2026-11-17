@@ -330,3 +330,29 @@ Note
 
 Opened
 : 2026-11-10
+
+
+<a id="support-from-results"></a>
+### Support status read off the suite's results
+
+Status
+: open
+
+Note
+: The Devices matrix on the face reads support_status, written by hand; the phone now measures itself after every boot and devlab files every run here through tad. A part's status should follow from its latest results (works where its tests pass on the latest boot; unknown where nothing measured it; a known gap where the manifest says so), with the witnessed tests - listening, looking - as the evidence a machine cannot give. Next: say the rule as tad SQL over test_results, beside the hand-written notes until both say the same.
+
+Opened
+: 2026-11-17
+
+
+<a id="gaps-on-the-face"></a>
+### Known gaps shown as gaps on the face, not as failures
+
+Status
+: open
+
+Note
+: The phone's own verdict leaves out the known gaps (surya: fingerprint, sensors, both cameras - healthy, 4 in known gaps), but test_runs counts them as failed, so every bar on the Tests page carries red. A run's row should say its gaps apart (a gaps count, read from the report's verdict or the manifest's [health] gaps), and the face draw them in their own colour.
+
+Opened
+: 2026-11-17
