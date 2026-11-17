@@ -4194,37 +4194,6 @@ About
 : deep-sleep
 
 
-<a id="walleye-first-fastboot-boot"></a>
-### First fastboot boot of the walleye kernel: the phone leaves fastboot and its gadget answers
-
-Project
-: linux-phone-oco/google-walleye-lab
-
-Status
-: in-progress
-
-Note
-: Tries a-f and the LineageOS control all Load Error on slot b (walleye-control-e-f-tries): the cause is the phone's state or what fastboot boot needs (dtbo, vbmeta, slot a flags), not our image. Waits: the author's word on a dtbo stub / slot a flags, via the walleye coordinator.
-
-Opened
-: 2026-11-17
-
-Needs
-: phone
-
-Device
-: google-walleye
-
-Proof
-: lsusb on the host shows the gadget within 60 s of fastboot boot and ssh/telnet to 172.16.42.1 answers (test: walleye-gadget-up)
-
-Rank
-: 1
-
-About
-: google-walleye
-
-
 <a id="commons-only"></a>
 ### docs holds only what helps every device; each device has its own open base; docs derives progress from them
 
@@ -4670,3 +4639,93 @@ Opened
 
 About
 : commons-only
+
+
+<a id="walleye-boot-refused-why"></a>
+### Why the Pixel 2's bootloader refuses even LineageOS's official boot.img from memory (Load Error), and what makes fastboot boot work on it
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Facts: the official LineageOS 22.2 20261113 walleye boot.img (stock header, AVB footer, lz4 4.4.302 + its own dtb) gives 'Failed to load/authenticate boot image: Load Error' by fastboot boot on slot b (a unbootable, b current+successful), as do our images b-f; image a once gave 'Booting OKAY' without starting. So not our image's format. Open causes: the active slot's dtbo/vbmeta (slot b holds an older Lineage build than the control), the bootloader's state (avb 1.0.0 user-settable key set, unlocked, secure yes), the slot flags, fastboot boot needing something else on this ABL (TWRP reports work for walleye in places, fail in others). Public sources only, read-only. Known cheap, reversible experiment: set-active a, then the control again (compare with the first-ever state). Ask: what do postmarketOS/porthole/TWRP/LineageOS reports say about fastboot boot and Load Error on Pixel 2/XL, 3, Qualcomm ABL source for 'Load Error' (LoadImageAndAuth, dtbo, vbmeta), and whether fastboot oem read-only commands or a UART route show the real reason. A write (dtbo, vbmeta, flash) stays named as an option with its way back only.
+
+Opened
+: 2026-11-17
+
+Needs
+: research
+
+Device
+: google-walleye
+
+Proof
+: a research row naming the cause or the ranked causes with sources, and the next experiments each with its way back; consistent with the tries in walleye-control-e-f-tries
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-control-on-slot-a"></a>
+### The control boot.img again with slot a active (the state of the very first tries)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Decision walleye-slot-set-active-a-once: set-active a (metadata only), try the control boot.img once, then set-active b if the phone ends in fastboot or on a failed slot; a's Android is untouched. Answers whether the slot state is the cause.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: devlab's before/after slot report and the phone's full fastboot text for the control on slot a; then the phone back to current b, a recoverable
+
+Rank
+: 1
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-first-fastboot-boot"></a>
+### First fastboot boot of the walleye kernel: the phone leaves fastboot and its gadget answers
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: in-progress
+
+Note
+: Six images and the official LineageOS control all refused with Load Error: the cause is the phone's state or what fastboot boot needs, not our image (walleye-control-e-f-tries). A dtbo/vbmeta write stays the author's.
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye-boot-refused-why (research), walleye-control-on-slot-a
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: lsusb on the host shows the gadget within 60 s of fastboot boot and ssh/telnet to 172.16.42.1 answers (test: walleye-gadget-up)
+
+About
+: google-walleye
