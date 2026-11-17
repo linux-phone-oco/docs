@@ -1108,3 +1108,24 @@ Considered
 
 Rejected
 : A parallel upstream series; the DMIC/VA clock model for surya.
+
+---
+
+
+<a id="2026-11-17-telegram-provision"></a>
+### Telegram at provisioning: telegram-desktop, held by Alpine v3.24
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: The author asked for a Telegram client at provisioning as firefox is. Alpine ships one Telegram client for aarch64, the official telegram-desktop (no tdlib, no libpurple Telegram plugin for chatty, no Kotatogram); it went into provision/packages.txt (surya-lab #108). Installing it on the phone failed: v3.24 community ships 6.8.5-r0 linked to libada.so.3 while ada is now 4.0, so apk cannot resolve it even after apk update. devlab provision installs the list in one apk add, so the line would have failed firefox and i2c-tools too; it now waits there as a comment (surya-lab fix right after #108). Edge has 7.4.4-r0 rebuilt against libada.so.4. Nothing was installed or changed on the phone.
+
+Considered
+: Installing telegram-desktop from the edge repository for one package: it would pull edge libraries into a v3.24 system that another session is testing audio on.
+
+Rejected
+: chatty with a Telegram plugin: no such plugin is packaged. Keeping the line live: it breaks the whole package list.
