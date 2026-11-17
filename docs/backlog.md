@@ -659,37 +659,6 @@ About
 : deep-sleep
 
 
-<a id="sleep-standby-current"></a>
-### Standby current measured beside Android's
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: How much the floor saves, in milliamps: the fuel gauge's current over an hour asleep off USB (current_now and the charge counter, since they can disagree), on mainline and, as the number to match, on the phone's own Android or Ubuntu Touch - observed behaviour only. Proven by: a test standby-current entered in tests, passing under a threshold set from Android's measured number.
-
-Opened
-: 2026-11-17
-
-Needs
-: phone
-
-Device
-: xiaomi-surya
-
-Proof
-: soc-sleeps
-
-Rank
-: 1
-
-About
-: deep-sleep
-
-
 <a id="devlab-mcp"></a>
 ### devlab mcp: the phone for any agent
 
@@ -5388,6 +5357,37 @@ Needs
 
 Device
 : xiaomi-surya
+
+About
+: deep-sleep
+
+
+<a id="sleep-standby-current"></a>
+### Standby current measured beside Android's
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: How much the floor saves, in milliamps: the fuel gauge's current over an hour asleep off USB (current_now and the charge counter, since they can disagree), on mainline and, as the number to match, on the phone's own Android or Ubuntu Touch - observed behaviour only. Proven by: a test standby-current entered in tests, passing under a threshold set from Android's measured number. Keeper 2026-11-17: cannot be taken without hands (the hour off USB); soc-sleeps also still fails, so a mainline number now is the not-at-floor one.
+
+Opened
+: 2026-11-17
+
+Waits
+: the author: unplug the phone from USB for an hour (devlab cannot cut USB power; on USB the phone stays awake); Android's number needs the phone booted into its own Android
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: soc-sleeps
 
 About
 : deep-sleep
