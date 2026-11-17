@@ -1,0 +1,21 @@
+== is-userspace
+getvar:is-userspace                                FAILED (remote: 'GetVar Variable Not found')
+Finished. Total time: 0.000s
+== slot-suffixes
+getvar:slot-suffixes                               FAILED (remote: 'GetVar Variable Not found')
+Finished. Total time: 0.000s
+== snapshot-update-status
+getvar:snapshot-update-status                      FAILED (remote: 'GetVar Variable Not found')
+Finished. Total time: 0.001s
+== partition-size:vbmeta_a
+getvar:partition-size:vbmeta_a                     FAILED (remote: 'GetVar Variable Not found')
+Finished. Total time: 0.001s
+== partition-size:dtbo_a
+getvar:partition-size:dtbo_a                       FAILED (remote: 'GetVar Variable Not found')
+Finished. Total time: 0.001s
+== partition-size:modem_a
+getvar:partition-size:modem_a                      FAILED (remote: 'GetVar Variable Not found')
+Finished. Total time: 0.001s
+== partition-size:system_a
+partition-size:system_a:  0xA0000000
+Finished. Total time: 0.000s
