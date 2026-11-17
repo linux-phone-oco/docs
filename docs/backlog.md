@@ -5539,10 +5539,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: Decision walleye-try-returns-without-hands. Keep xz, nodes from the cpio, NCM, telnetd on 172.16.43.1. Add: a background timer in init (sleep 240; test -e /tmp/hold || reboot -f) and make sure 'reboot -f' / 'echo b > /proc/sysrq-trigger' works on 4.4 (mount proc; CONFIG_MAGIC_SYSRQ in the stock config.gz? say); write init's start marker to /dev/kmsg early (mknod it in the cpio). Keep a-i, s0-s3 and vendor-gadget/2 byte-identical. WHEN DONE: queue the keeper's try as walleye-try-vendor-gadget3 (needs phone, device google-walleye, rank 1, proof tests/host/gadget-up.sh) with the decision's outcome table filled for this image (gadget up / panic / silent hang / early hang: what happens, hands or not) in its note, and mark walleye-try-vendor-gadget2 done 'superseded by gadget3: no self-reboot'. The keeper must not try gadget2.
+: Done, landed google-walleye-lab 0f14a92 (PR 13): build/build-vendor-gadget3.sh, 14 checks ok (ramdisk differs from vendor-gadget2's only in /init; timer line, kmsg node, AVB verify). Stock config: CONFIG_MAGIC_SYSRQ=y, default enable 0x1, PSTORE_RAM y. Init: kmsg marker before the first mount; timer 'sleep 240; skip if /tmp/hold; reboot -f; sysrq b'. a-i, s0-s3, vendor-gadget/2 sums unchanged (checked). Try: walleye-try-vendor-gadget3.
 
 Opened
 : 2026-11-17
@@ -5555,6 +5555,34 @@ Device
 
 Proof
 : vendor-gadget3.img = vendor-gadget2 with only the ramdisk's init changed; check script ok; the init's timer and /tmp/hold shown by sh -n and unpacking the ramdisk; hashes in SHA256SUMS; the keeper's try then returns without hands or answers gadget-up
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-try-vendor-gadget3"></a>
+### Try vendor-gadget3.img (vendor-gadget2 plus a 240 s self-reboot) by fastboot boot from the first state
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: ~/Projects/walleye-build/images/vendor-gadget3.img sha256 608afa374c53a1e748f54b7d17ccd188e6c3243fff3814fa394b337cda0b2325 (images/SHA256SUMS; ramdisk initramfs-vendor3.cpio.xz a94f3a22...2a687). Built from google-walleye-lab main 0f14a92 (build/build-vendor-gadget3.sh, 14 checks ok). Supersedes walleye-try-vendor-gadget2 (same image plus the timer): try this one instead, the keeper may close gadget2's try as superseded. Init writes 'walleye-init: vendor-gadget3 init start' to /dev/kmsg before any mount; timer reboots after 240 s unless /tmp/hold exists. If the ramdisk does not run at all, the phone still ends in the same place as gadget2 (panic/bootreason): record it.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: walleye-gadget-up (tests/host/gadget-up.sh, GADGET_WAIT=90): a USB device with our strings enumerates and 172.16.43.1 answers ping and telnet; and without hands the phone is back in fastboot or Android within ~300 s of the boot (or kept up with touch /tmp/hold over telnet); else record the bootreason
 
 About
 : walleye-first-fastboot-boot
