@@ -1840,3 +1840,24 @@ Rejected
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-1620-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Keeper surya-keeper-5, 2026-11-17 (end). Phone on the kept kernel 7.1.0-sm7150-calls+, healthy (35 pass, 0 fail, 5 known gaps, 5 not measured, no SIM), after one clean reboot from the try kernel 7.1.0-sm7150-calls-idle (installed as pmos-idle; remove with devlab kernel remove idle if not wanted). sleep-adsp-awake: the kept kernel has no stay_awake; the macros' hw-vote release did not change adsp (0), cxsd 0, aosd 0; patch and notes in research/deep-sleep/2026-11-17/. A cycle polled over ssh hung the phone once (author reset it): start the cycle as a systemd-run unit with StandardOutput=file: and leave the phone alone for 3 minutes (ssh answers slowly for about a minute after resume). Linux itself holds CX through the active UARTs (pm_genpd_summary: 88c000.serial, a88000.serial).
+
+Considered
+: next: sleep-adsp-awake stays in-progress: read the DSP side before more LPASS code (the ADSP's sensors PD, call audio q6voiced/pd-mapper, remoteproc glink channels, what other subsystem votes for it); a useful awake-idle probe is qcom_stats adsp count without suspending. Also sleep-cluster-params on the prepared dtb. Open: a try kernel needs its own release name (make LOCALVERSION=-NAME, no autoconf rebuild) and the patched qcom_wdt built as module name qcom_wdt in updates/ (way-back.sh refuses otherwise); ocoeco manual wrote rows without project (fixed by hand in PR 218): a gap in ocoeco for repositories whose tables require project.
+
+About
+: deep-sleep
