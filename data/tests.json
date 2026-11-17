@@ -33,3 +33,4 @@
 {"id":"reader-exposed","component_id":"fingerprint","proves":"present","says":"a fingerprint reader is exposed"}
 {"id":"motion-and-light","component_id":"sensors","proves":"present","says":"motion, light or proximity sensors are exposed"}
 {"id":"image-sensor","component_id":"camera-rear","proves":"present","says":"an image sensor is bound"}
+{"id":"mic-records","component_id":"audio-mic","proves":"present","says":"one second recorded from the main microphone is not digital silence"}
