@@ -455,3 +455,16 @@ Proves
 
 Says
 : an image sensor is bound
+
+
+<a id="mic-records"></a>
+### mic-records
+
+Component id
+: audio-mic
+
+Proves
+: present
+
+Says
+: one second recorded from the main microphone is not digital silence
