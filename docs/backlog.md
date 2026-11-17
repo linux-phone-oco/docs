@@ -3174,3 +3174,22 @@ Opened
 
 About
 : bringup
+
+
+<a id="devlab-tone-on-argenv"></a>
+### devlab and tone declare their command lines with argenv, not clap
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Practice 43: a program on clap moves to argenv when it is next changed; devlab changed 2026-11-17 (lab-tools 71, 72, 79, 80, 81) and still parses with clap, as does tone; lpoco-health already moved. Each subcommand and env var (DEVLAB_ROOT, LAB_AGENT, --device) declared once; completions and man from the declaration; behaviour unchanged, the 59 devlab tests and the guard's still pass. Write it through ideal-agent's programmer subagent (write-code-by-the-canon), reviewed before land. Orchestration's.
+
+Opened
+: 2026-11-17
+
+About
+: dl-reaches
