@@ -990,3 +990,28 @@ Why
 
 Rejected
 : Keeping ocoeco observe (another project's tool to read our own data); the face drawn by tad render alone (it renders tables, not the face's views - matrices, paths, the queue; the engine does those); a Rust step for the data now (jq, yq and gh do it in a page of shell, as the CI step it is - a Rust step when it grows logic); keeping the lens in its own repository (a second place for the face's one definition); renaming OCOECO_BY (only a variable's name; oco-work and land read it across the ecosystem).
+
+
+<a id="2026-11-17-summaries-and-research-material"></a>
+### 2026-11-17-summaries-and-research-material
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: docs follows idealkb 0.3.0: a subject's answer leads with its summary (tad r summary), condensed records by id; tad q about says where a summary is due. docs' own about query, research record and tables.toml take summaries, material and supersedes the way idealkb's do, keeping docs' status, feature, concept and test rows always in full. Research material lives in research/SUBJECT/YYYY-MM-DD/, named by its row; the Open Handset Commons model is the first, moved under its date. The session that records into a subject renews its summary when due; a keeper at hand-over.
+
+Why
+: The author, 2026-11-17: a subject's answer must not grow without bound, and research must be kept without loading every agent's start (idealkb decisions 2026-11-17-summary-layer and 2026-11-17-research-aside). Measured: audio-mic from 15.9 KB to 4.8 KB.
+
+Rejected
+: Summarising the domains' how-it-stands research rows in place: they are itemised hand-overs (decision 2026-11-17-experts-written-not-standing), records the summary condenses, not the summary itself. Condensing status, tests and concepts too: they are short, standing facts a reader needs every time. Writing all four due summaries now: each belongs to the session that knows its domain; this change proves the layer on one.
+
+About
+: kb-summaries
+
+Research
+: kb-navigation-summarised

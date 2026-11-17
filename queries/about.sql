@@ -1,38 +1,66 @@
--- Everything known of one subject: how it stands, what was learned and decided, the work open, how it went,
--- the tests and the sources the research cites - its whole knowledge in one read. A subject is a component, feature, milestone, device or
--- backlog item; a word before a dash names them all (modem: modem-data, modem-calls, modem-sms). Without
--- a subject: every subject records are about, and how many.
--- --subject  string?  the subject (every subject when not given)
-WITH s AS (SELECT $subject AS w),
-hit AS (SELECT a FROM (SELECT about AS a FROM decisions UNION SELECT about FROM research UNION SELECT about FROM backlog
-            UNION SELECT about FROM session_log UNION SELECT about FROM concepts UNION SELECT component_id FROM support_status
+-- Everything known of one subject, the short answer first: how it stands (its summary, dated), its status on
+-- each device and platform, then what was recorded since the summary, concepts, the open work, the tests and
+-- the sources of the research shown - and the records the summary condenses by id only (--whole gives them
+-- in full; row --id one). Research a later one supersedes leaves the answer. A subject is a component,
+-- feature, milestone, device or backlog item; a word before a dash names them all (modem: modem-data,
+-- modem-calls, modem-sms). Without a subject: every subject, with how many records it has, what they weigh,
+-- its summary's date and whether a summary is due - when they weigh over 8 KB with none, or over 4 KB were
+-- recorded since it (open work is never condensed).
+-- --subject  string?          the subject (every subject when not given)
+-- --whole    boolean = false  every record in full, the condensed ones too
+WITH s AS (SELECT $subject AS w, $whole AS whole),
+rec AS (
+    SELECT 'research' AS kind, id, about, date AS day, question || ' - ' || found || coalesce(' Material: ' || material, '') AS says
+      FROM research WHERE id NOT IN (SELECT supersedes FROM research WHERE supersedes IS NOT NULL)
+    UNION ALL SELECT 'decision', id, about, date, decision || coalesce(' Rejected: ' || rejected, '') FROM decisions
+    UNION ALL SELECT 'log', id, about, entry_date, title || ' - ' || done FROM session_log
+),
+hit AS (SELECT a FROM (SELECT about AS a FROM rec UNION SELECT about FROM backlog UNION SELECT about FROM concepts
+            UNION SELECT about FROM summaries UNION SELECT component_id FROM support_status
             UNION SELECT feature_id FROM feature_support), s
         WHERE a IS NOT NULL AND (a = s.w OR a LIKE s.w || '-%')),
+sm AS (SELECT * FROM summaries WHERE about IN (SELECT a FROM hit)),
+cond AS (SELECT about, trim(unnest(string_split(condenses, ','))) AS id FROM sm),
+shown AS (SELECT r.* FROM rec r, s WHERE r.about IN (SELECT a FROM hit)
+          AND (s.whole OR NOT EXISTS (SELECT 1 FROM cond c WHERE c.id = r.id AND c.about = r.about))),
 known AS (
-    SELECT 1 AS o, 'status' AS kind, device_id AS id, s.component_id AS about, status AS state, NULL AS day, notes AS says
-      FROM support_status s WHERE component_id IN (SELECT a FROM hit)
+    SELECT 0 AS o, 'summary' AS kind, about AS id, about, 'condenses ' || (length(condenses) - length(replace(condenses, ',', '')) + 1)::VARCHAR AS state,
+           date AS day, says FROM sm
+    UNION ALL SELECT 1, 'status', device_id, x.component_id, status, NULL, notes
+      FROM support_status x WHERE component_id IN (SELECT a FROM hit)
     UNION ALL SELECT 2, 'feature', platform_id, feature_id, status, checked, note
       FROM feature_support WHERE feature_id IN (SELECT a FROM hit)
-    UNION ALL SELECT 3, 'research', id, about, NULL, date, question || ' - ' || found
-      FROM research WHERE about IN (SELECT a FROM hit)
-    UNION ALL SELECT 4, 'decision', id, about, NULL, date, decision || coalesce(' Rejected: ' || rejected, '')
-      FROM decisions WHERE about IN (SELECT a FROM hit)
+    UNION ALL SELECT CASE kind WHEN 'research' THEN 3 WHEN 'decision' THEN 4 ELSE 7 END, kind, id, about, NULL, day, says FROM shown
     UNION ALL SELECT 5, 'concept', id, about, NULL, NULL, name || ': ' || summary
       FROM concepts WHERE about IN (SELECT a FROM hit)
     UNION ALL SELECT 6, 'work', id, about, status, opened, title || coalesce(' - ' || note, '') || coalesce(' Waits: ' || waits, '')
       FROM backlog WHERE status <> 'done' AND (about IN (SELECT a FROM hit) OR id IN (SELECT a FROM hit))
-    UNION ALL SELECT 7, 'log', id, about, NULL, entry_date, title || ' - ' || done
-      FROM session_log WHERE about IN (SELECT a FROM hit)
     UNION ALL SELECT 8, 'test', id, component_id, proves, NULL, says
       FROM tests WHERE component_id IN (SELECT a FROM hit)
     UNION ALL SELECT DISTINCT 9, 'source', id, NULL, NULL, NULL, title || ' <' || url || '>'
-      FROM sources WHERE id IN (SELECT trim(unnest(string_split(sources, ','))) FROM research WHERE about IN (SELECT a FROM hit))
+      FROM sources WHERE id IN (SELECT trim(unnest(string_split(r.sources, ','))) FROM research r WHERE r.id IN (SELECT id FROM shown))
+    UNION ALL SELECT 10, 'condensed', c.about, c.about, count(*)::VARCHAR, NULL, string_agg(c.id, ', ' ORDER BY c.id)
+      FROM cond c, s WHERE NOT s.whole AND c.id IN (SELECT id FROM rec) GROUP BY c.about
+),
+cond_all AS (SELECT about, trim(unnest(string_split(condenses, ','))) AS id FROM summaries),
+subjects AS (
+    SELECT r.about AS a, count(*) AS n, sum(length(r.says)) AS weight,
+           sum(CASE WHEN c.id IS NULL AND r.kind NOT IN ('work', 'concept') THEN length(r.says) ELSE 0 END) AS since
+      FROM (SELECT kind, id, about, says FROM rec
+            UNION ALL SELECT 'work', id, about, title || coalesce(' - ' || note, '') FROM backlog WHERE status <> 'done'
+            UNION ALL SELECT 'concept', id, about, name || ': ' || summary FROM concepts) r
+      LEFT JOIN cond_all c ON c.id = r.id AND c.about = r.about
+     WHERE r.about IS NOT NULL GROUP BY r.about
 )
 SELECT kind, id, about, state, day, says FROM (
 SELECT o, kind, id, about, state, day, says FROM known, s WHERE s.w IS NOT NULL
 UNION ALL
-SELECT 10, 'subject', a, NULL, NULL, NULL, count(*)::VARCHAR || ' records' FROM (
-    SELECT about AS a FROM decisions UNION ALL SELECT about FROM research UNION ALL SELECT about FROM backlog
-    UNION ALL SELECT about FROM session_log UNION ALL SELECT about FROM concepts), s
-WHERE s.w IS NULL AND a IS NOT NULL GROUP BY a
+SELECT 11, 'subject', x.a, NULL,
+       CASE WHEN m.about IS NULL AND x.weight > 8000 THEN 'summary due'
+            WHEN m.about IS NOT NULL AND x.since > 4000 THEN 'summary due'
+            WHEN m.about IS NOT NULL THEN 'summarised' END,
+       m.date,
+       x.n::VARCHAR || ' records, ' || round(x.weight / 1000.0, 1)::VARCHAR || ' KB'
+         || CASE WHEN m.about IS NOT NULL THEN ', ' || round(x.since / 1000.0, 1)::VARCHAR || ' KB since its summary' ELSE '' END
+  FROM subjects x LEFT JOIN summaries m ON m.about = x.a, s WHERE s.w IS NULL
 ) ORDER BY o, day DESC NULLS LAST, id;

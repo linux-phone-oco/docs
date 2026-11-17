@@ -6,4 +6,5 @@ SELECT kind, id, about, day, left(line, 100) AS line FROM (
     UNION ALL SELECT 'research', id, about, date, question FROM research
     UNION ALL SELECT 'work', id, about, opened, title FROM backlog
     UNION ALL SELECT 'log', id, about, entry_date, title FROM session_log
+    UNION ALL SELECT 'summary', about, about, date, says FROM summaries
 ) WHERE day >= current_date - $days ORDER BY day DESC, kind, id;

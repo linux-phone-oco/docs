@@ -3320,3 +3320,41 @@ Opened
 
 About
 : agent-folder
+
+
+<a id="kb-summaries"></a>
+### A summary over many records, and research kept aside, from idealkb 0.3.0
+
+Project
+: linux-phone-oco/docs
+
+Status
+: done
+
+Note
+: Done by summary-and-research-layers on 2026-11-17: pin 0.3.0; docs' own about, research record and tables.toml take summaries, material and supersedes; audio-mic summarised (15.9 KB to 4.8 KB); Open Handset Commons moved into research/open-handset-commons/2026-11-10/.
+
+Opened
+: 2026-11-17
+
+
+<a id="summaries-due"></a>
+### Write the summaries tad q about shows as due: deep-sleep, dl-reaches, sensors
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: On 2026-11-17, after audio-mic's: deep-sleep 15.7 KB in 17 records, dl-reaches 10.9 KB in 15, sensors 11.3 KB in 10. Each is written by the session that next records into it, or its keeper at hand-over (tad r summary --about S --says ...). tad q about shows which are due.
+
+Opened
+: 2026-11-17
+
+Proof
+: tad q about shows none of them as summary due
+
+About
+: kb-summaries
