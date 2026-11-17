@@ -17,9 +17,10 @@ is written so the next phone of the same family (SM7150, then any Qualcomm) star
 
 1. `lab-agent guide` - the live practices. They outrank this prompt; where they disagree, follow them and
    correct this file (linux-phone-oco/docs, `prompts/bring-up.md`).
-2. `. oco-work` in every shell that works on the ecosystem (it gives `GH_TOKEN` and the words every job
-   uses: `fresh`, `change`, `stand`, `enter`, `rust_checked`, `landit`, `turn`, ...). Never `land` from a
-   shell that has not sourced it.
+2. `export OCOECO_BY=bring-up`, then `. oco-work` in every shell that works on the ecosystem (it gives
+   `GH_TOKEN` and the words every job uses: `fresh`, `change`, `stand`, `enter`, `rust_checked`, `landit`,
+   `turn`, ...). Your name is on every record, so the face shows where each session stands. Never `land`
+   from a shell that has not sourced it.
 3. `lab-agent inbox` - print every unread message, answer each, then `--ack`.
 4. Read the state through the lenses, not from memory: from `~/Projects/marshall-oco/marshall-oco.github.io`,
    `ocoeco focus still-showing`; the face at https://linux-phone-oco.github.io/docs/ (Devices, Tests, How
