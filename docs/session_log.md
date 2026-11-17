@@ -364,3 +364,15 @@ Entry date
 
 Done
 : linux-phone-oco.github.io/docs is now the Linux Phones face, drawn in this place's CI from its open database (tad) and the family as the lens gathers it; devlab files every boot's health report here by itself and the face is drawn again - proven with the run of 2026-11-16 23:45, from the phone to the page with nobody asking.
+
+---
+
+
+<a id="2026-11-17-the-organisation-set-up"></a>
+### The organisation of the agents, set up
+
+Entry date
+: 2026-11-17
+
+Done
+: Four sessions at work (conveyor, bring-up, orchestration, deep-sleep research), each with a brief in prompts/; shared skills for every agent on the lab (creation-guidelines/lab-agent oco-agent/skills); a patrol every six hours checking the ways and the face; two needs of the author put on the backlog - an Android reference and a second phone.

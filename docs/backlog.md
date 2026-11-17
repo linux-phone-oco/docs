@@ -356,3 +356,29 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="android-reference"></a>
+### What Android does on the same phone, measured once and kept
+
+Status
+: open
+
+Note
+: The project's goal is phones as good as Android; the face says it from tests that prove parts present or working, but nothing measures 'as good'. ArtCraft keeps reference corpora an oracle compares against (photocraft-corpus: Photoshop's own renders). For a phone: on stock Android (MIUI) on a surya - a second one, or this one by the author's choice - measure what the suite can also measure on Linux: sleep current over an hour screen-off, wake-up latency for a call, speaker and microphone levels, sensor readings, Wi-Fi throughput, boot time. Kept as reference data beside the results; the face then draws each part against its Android figure. Needs the author: which phone runs Android for it.
+
+Opened
+: 2026-11-17
+
+
+<a id="a-second-phone"></a>
+### A second phone in the lab
+
+Status
+: open
+
+Note
+: One phone serialises everything that changes it: four sessions now share surya, and devlab holds the phone so that changes queue. A second phone doubles what can be tried at once and proves the device template (device-template dt-second-phone). Best: another SM7150 phone (a second surya, or a sibling such as the Redmi Note 9 Pro / Poco M2 Pro on sm7125) so the bring-up work carries over; it could also carry the Android reference (android-reference). Needs the author: the purchase and its place on the lab's USB.
+
+Opened
+: 2026-11-17
