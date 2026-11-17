@@ -90,3 +90,38 @@ How
 
 Notes
 : pmaports issue 4441 is the report for tqftpserv
+
+
+<a id="idealkb"></a>
+### ideal-knowledge-base (idealkb)
+
+Kind
+: kb-instance
+
+Address
+: https://github.com/grenudi/ideal-knowledge-base
+
+How
+: A pull request to the repository with the change to a generic file; docs' own copies of generic files (own in idealkb.toml) that idealkb changes show in update-pins' diff. Record it as an upstream item (ikb upstream-item --upstream idealkb --form patch --file auto).
+
+Contacts
+: grenudi (owner); the ikb session
+
+Notes
+: Where docs' standing tables, generic queries and records, ikb and install-ikb.sh come from; the pin is idealkb.toml.
+
+
+<a id="device-template"></a>
+### device-template
+
+Kind
+: kb-instance
+
+Address
+: https://github.com/linux-phone-oco/device-template
+
+How
+: A pull request to the template with what every device would need; the device bases take its listed files (generic) once it has releases.
+
+Contacts
+: linux-phone-oco orchestration
