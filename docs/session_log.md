@@ -2104,3 +2104,24 @@ Considered
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-1840-keeper9-wlan-off"></a>
+### floor-wlan-off: WLAN is not the holder
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Phone back on the kept dtb after the no-DSP try. ath10k unloaded, cycle 15 bt-on: cxsd/aosd/ddr 0 -> 0, cdsp 60 -> 60. Phone on the kept kernel, healthy as before (wlan returns at the next boot).
+
+Considered
+: next: floor-udc-unbound, floor-sh0-owner, floor-aoss-knobs.
+
+About
+: deep-sleep
