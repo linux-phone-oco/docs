@@ -4421,10 +4421,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: Download one LineageOS walleye zip or recovery (state filename, source and size first), unpack boot.img with unpack_bootimg, dtc the appended dtb. No phone.
+: Recorded in research walleye-stock-ids-recorded; control image at ~/Projects/walleye-build/control/boot.img (sha256 48dbc55c...7468), dtbo.img beside it (fb09009b...b8f6).
 
 Opened
 : 2026-11-17
@@ -4449,10 +4449,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: Image a was the only silent OKAY, so keep os word 0. e = a with second_offset 0 and cmdline cut to earlycon+console only; f = e with qcom,board-id and qcom,pmic-id in the dts. One change each against a. Waits on walleye-loaderror-stock-ids for the ids.
+: Built, lab PR 6 on main: ~/Projects/walleye-build/images/boot-e.img 112ab284...2daf and boot-f.img 7a42e5bd...461a (sha256 in images/SHA256SUMS; a-d unchanged). e = a with the command line cut to earlycon+console (second_offset 0 is a no-op: mkbootimg already writes second 0); f = e + qcom,board-id <8 0> (stock has none). os word 0.
 
 Opened
 : 2026-11-17
@@ -4480,7 +4480,7 @@ Status
 : open
 
 Note
-: Same path as our tries on slot b. If it also says Load Error the phone's state is the cause: then restore slot flags (set-active a, the author's word) and retry. If it boots, the cause is in our image. Read-only otherwise: no flash.
+: Image ready: ~/Projects/walleye-build/control/boot.img (LineageOS 22.2 20261113 boot.img, sha256 48dbc55c76ee47840e645707b6bf3ac322099c06358178ad8ddf2c6a53c17468); fastboot boot it once from memory, slot flags before/after, nothing flashed. If Load Error the phone's state is the cause (restore slot flags, the author's word); if it boots, the cause is in our image.
 
 Opened
 : 2026-11-17
@@ -4508,7 +4508,7 @@ Status
 : open
 
 Note
-: After walleye-loaderror-control and walleye-loaderror-variants-build. A try that leaves fastboot or turns Load Error into OKAY-silence is a result; record each.
+: After the control. Images ready: ~/Projects/walleye-build/images/boot-e.img (sha256 112ab28472e844a4d6cdabd76d703c383a658de20b48cdc970a9642cf6cea2da) then boot-f.img (7a42e5bd91a971f1d2f8c40a54a46e0f0e29002090e9bad0654d48d095be461a), one at a time; e differs from a only in the command line, f adds qcom,board-id <8 0>. Stock os word is 15.0.0/2026-11, ours 0 (c,d tried 8.1.0 and failed).
 
 Opened
 : 2026-11-17
