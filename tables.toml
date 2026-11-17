@@ -568,6 +568,13 @@ name = "failed"
 type = "integer"
 required = true
 
+# a failure in one of the phone's known gaps - a part it never had working, named in its manifest's
+# [health] gaps - counted apart from the failures, as the phone's own verdict counts it
+[[tables.test_runs.fields]]
+name = "gaps"
+type = "integer"
+required = true
+
 [[tables.test_runs.fields]]
 name = "skipped"
 type = "integer"
