@@ -971,3 +971,22 @@ About
 
 Research
 : kb-navigation-remeasured
+
+
+<a id="2026-11-17-the-face-from-docs-own-data"></a>
+### 2026-11-17-the-face-from-docs-own-data
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: linux-phone's face is drawn from docs' own data: bin/face-data makes the engine's data from docs' tables (each row naming its place), the lens kept in docs' face/ (lens.toml, its translations and log, moved from linux-phone-oco/lens), each place's mark (oco.toml) and what GitHub says the work made (commits of 90 days, each workflow's latest run, releases); the engine (oco site) draws it as before. ocoeco observe and the lens checkout left pages.yml (docs #182), and no brief has an ocoeco step: the whole is read through docs' named queries and the face.
+
+Why
+: The author, 2026-11-17: linux-phone must not depend on ocoeco. Since docs holds every linux-phone record in one tad database, observing the family through ocoeco only re-gathered what docs already keeps. Checked before landing: drawn from both, the same 120 pages; outside the build time only 16 differ, and only where the new data is fuller - activity counts every place's commits (393 in 90 days, not docs' 186), releases show (observe found none), every workflow's latest run shows. Proven on the live face after landing.
+
+Rejected
+: Keeping ocoeco observe (another project's tool to read our own data); the face drawn by tad render alone (it renders tables, not the face's views - matrices, paths, the queue; the engine does those); a Rust step for the data now (jq, yq and gh do it in a page of shell, as the CI step it is - a Rust step when it grows logic); keeping the lens in its own repository (a second place for the face's one definition); renaming OCOECO_BY (only a variable's name; oco-work and land read it across the ecosystem).
