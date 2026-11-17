@@ -23,3 +23,4 @@
 {"id":"g-20261117-011508","at":"2026-11-17T01:15:08Z","by":"claude","kind":"docs","summary":"Tests: mic-records says the main microphone's samples come back"}
 {"id":"g-20261117-012153","at":"2026-11-17T01:21:53Z","by":"devlab","kind":"docs","summary":"3 runs of xiaomi-surya filed by devlab, from the phone's own reports"}
 {"id":"g-20261117-012455","at":"2026-11-17T01:24:55Z","by":"claude","kind":"docs","summary":"How linux-phone's agents are organised: roles, briefs, the data as shared state","touches":"decisions:2026-11-17-agents-organised-by-the-data"}
+{"id":"g-20261117-012628","at":"2026-11-17T01:26:28Z","by":"claude","kind":"docs","summary":"ArtCraft's organisation, read: what fits ours and what we lack"}
