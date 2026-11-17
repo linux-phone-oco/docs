@@ -921,3 +921,28 @@ About
 
 Research
 : kb-organisation-world
+
+
+<a id="2026-11-17-sensors-registry-kept-current"></a>
+### 2026-11-17-sensors-registry-kept-current
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: The sensors on surya come through the stack postmarketOS already ships - hexagonrpcd's sensors helper, libssc and iio-sensor-proxy - with the firmware's own pre-parsed registry kept current so the audio DSP never needs to write it: the 46 sensor configs given Android's fixed mtime (1230768000) so they match the registry's record, sensorspd alone unmasked (rootpd stays masked). First a bounded probe on the kept kernel; then it made lasting in the device manifest and offered upstream (firmware-xiaomi-surya, pmaports, a word on hexagonrpc #19/#29); then the helper across suspend, tied to deep sleep's sleep-fastrpc-helpers; then proximity blanking the screen in a call. If the probe still sees the DSP write, the fallback is write support in hexagonrpcd (sensors-registry-writes). Proven by the suite: motion-and-light and proximity-reads, with no-processor-crashes and the microphone and call checks unchanged in the same boot.
+
+Why
+: The crash is explained by two conditions the trials of 2026-11-09 never met together - every config looks changed to the DSP (real mtimes against the registry's 1230768000) and the version marker is unreachable - and the first of them is settled with no code: a touch of 46 files and one service unmasked, undone by masking it again. The registry already holds the light and proximity sensor, so neither writes nor the panel property are needed if nothing is re-parsed. It disturbs the DSP that carries the microphones and calls only for the length of a probe whose fallback is the mask that holds today, and every step is proven by the same boot's audio checks. What it yields - configs at the vendor mtime - is a packaging fix every SM7150 phone with these firmware packages can take (davinci's loop looks the same), where write support is days of work on a daemon whose maintainers have not settled where writes go. Reckoned: the probe 1-2 agent-hours; lasting 1-2; across suspend 2-4; proximity in calls 3-6; the fallback, if needed, 8-16.
+
+Rejected
+: Write support in hexagonrpcd first (#27, a -S state dir, the 700-line #29 patch): days, our own build of a daemon upstream has not decided on, and on X1E it stopped the crash yet found no sensors; kept as the fallback, not the first step. Serving the phone's real persist registry (!8203, the 2026-11-09 real trial): without the marker served it changed nothing here, and serving it needs the same hexagonrpcd change; closed upstream. Linux drivers for the chips on the sensor core's buses: the DSP owns those buses and would fight for them (X1E), stk3a5x has no mainline driver, and it costs power. Android's sensor stack through Halium: the vendor's 4.14 kernel, nothing upstream, the mainline work abandoned. Leaving the sensors masked and faking proximity with the touchscreen: no light, no rotation, no real proximity - the author ranked the sensor hub second.
+
+About
+: sensors
+
+Research
+: sensors-registry-rebuild,sensors-hardware-surya,sensors-family-state,sensors-across-suspend

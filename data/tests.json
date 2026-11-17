@@ -31,7 +31,6 @@
 {"id":"usb-awake","component_id":"usb-otg","proves":"works","says":"on USB the lab link holds (wake lock held)"}
 {"id":"jack-detector","component_id":"audio-headphone","proves":"present","says":"the headset jack detector exists"}
 {"id":"reader-exposed","component_id":"fingerprint","proves":"present","says":"a fingerprint reader is exposed"}
-{"id":"motion-and-light","component_id":"sensors","proves":"present","says":"motion, light or proximity sensors are exposed"}
 {"id":"image-sensor","component_id":"camera-rear","proves":"present","says":"an image sensor is bound"}
 {"id":"mic-records","component_id":"audio-mic","proves":"present","says":"one second recorded from the main microphone is not digital silence"}
 {"id":"soc-sleeps","component_id":"deep-sleep","proves":"works","says":"the SoC reached its lowest power state this boot (CX collapse or AOSS sleep, counted by the SoC itself)"}
@@ -43,3 +42,5 @@
 {"id":"mobile-data","component_id":"modem-data","proves":"works","says":"over the interface of the modem's data bearer (not Wi-Fi, not the IMS bearer), at least 3 of 5 pings are answered and 100 kB is downloaded (5 MB once a week, for throughput); each run's bytes are kept against the month's budget, and the check skips once that is spent"}
 {"id":"call-echo","component_id":"modem-calls","proves":"works","says":"a daily call to an echo line carries a tone up and back: it is heard again after it ended"}
 {"id":"call-audio-path","component_id":"modem-calls","proves":"present","says":"the VoiceMMode1 PCM, its routing controls and q6voiced are there"}
+{"id":"motion-and-light","component_id":"sensors","proves":"present","says":"motion, light or proximity sensors are exposed - as IIO devices or through iio-sensor-proxy (a DSP's sensor core)"}
+{"id":"proximity-reads","component_id":"sensors","proves":"present","says":"the proximity sensor gives a reading through iio-sensor-proxy (near or far when covered is a witnessed test)"}

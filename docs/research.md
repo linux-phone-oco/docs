@@ -522,3 +522,113 @@ Sources
 
 About
 : idealkb-from-template
+
+
+<a id="sensors-registry-rebuild"></a>
+### sensors-registry-rebuild
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Why does the ADSP sensors service crash-loop the audio DSP on surya, and what would stop it without changing the firmware?
+
+Found
+: Measured on the phone (read only, kept kernel 7.1.0-sm7150-calls+, 2026-11-17) and read in hexagonrpcd's source. At start the DSP's registry sensor compares each config it knows (the registry's sns_reg_config: 47 configs, every one recorded with data 1230768000 - 2009-01-01, Android's fixed vendor mtime) with the config files hexagonrpcd serves, and hexagonrpcd passes their real mtime: all 46 on the phone carry 1779945838 (the package's build time), and sns_pickup.json is listed but absent. Every config therefore looks changed, the DSP re-parses and writes (temp.json), hexagonrpcd refuses every write by design, and the DSP asserts (SNS_REG_INIT, sns_registry_sensor.c) and restarts with audio. The version marker sns_reg_version, whose absence also forces a rebuild elsewhere (hexagonrpc #19), cannot be served at all: the virtual persist/sensors/registry holds only its registry subdirectory. So no trial of 2026-11-09 had both conditions of an untouched registry - the marker reached and the configs unchanged; they disproved only a registry swap. Hypothesis to settle first: configs touched to 1230768000 (and no listed config missing) make the pre-parsed registry current, so nothing is written and the ADSP stays up. Independent of it: the same assert is open upstream on X1P42100 (#29, 2026-11-14) and was stopped by writes elsewhere (#19, #27).
+
+Sources
+: hexagonrpc-source,hexagonrpc-19,hexagonrpc-27,hexagonrpc-29,firmware-xiaomi-surya,libssc
+
+About
+: sensors
+
+
+<a id="sensors-hardware-surya"></a>
+### sensors-hardware-surya
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Which sensors does surya carry, where, and is in-call proximity a real sensor?
+
+Found
+: All on the audio DSP's sensor core (no SLPI on SM7150), none on a bus Linux drives: the motion chip (accelerometer+gyroscope; one of bmi220, bmi26x, icm4x6xx, lsm6dso, probed by the DSP - the wiki names BMI220) on SPI instance 3; magnetometer AK09918 (ak0991x) on I2C 1 at 0x0c; adux1050, a capacitive SAR sensor for radio power, on I2C 1 at 0x2c (not the call proximity); Sensortek stk3a5x ambient light + infrared proximity on I2C 5 at 0x46, polled, near/far 12000/10000, one calibration value differing by panel (huaxing 2.0, tianma 1.0, chosen on Android by ro.boot.lcmtype through an apps-side get_property hexagonrpcd does not implement; the pre-parsed registry already holds stk3a5x). In-call proximity is that physical IR sensor: surya's tree has none of the ultrasound parts its sibling sweet carries (elliptic, mius, ro.vendor.audio.us), so the microphones and earpiece are not involved. The phone runs libssc 0.4.3 with ssccli, iio-sensor-proxy 3.9 with ssc support, and its udev tags fastrpc-adsp ssc-light, ssc-compass, ssc-accel, ssc-proximity; iio-sensor-proxy starts and waits ('registry sensor unavailable'). The suite's motion-and-light counted IIO devices only, so it could never pass through the sensor core.
+
+Sources
+: lineage-surya-tree,firmware-xiaomi-surya,wiki-surya-ssc-2024,iio-sensor-proxy-409,libssc
+
+About
+: sensors
+
+
+<a id="sensors-family-state"></a>
+### sensors-family-state
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: How far have SSC sensors got on SM7150 and its siblings on mainline, and what stopped them?
+
+Found
+: surya: reported working once (wiki 'SSC works', 2024-03-11, mainline 6.7.4, hexagonrpcd 0.3.x, setup unwritten), never re-checked; firmware-xiaomi-surya's registry is Android's own (mtimes 1230768000). davinci (SM7150): rarely works on v26.06, iio-sensor-proxy at 100% CPU (#4674), the audio failure loop from ADSP crashes (#3871); a fix serving the real persist (!8203) was closed unmerged. tucana works (mount matrix fixed); sweet light and accel, its proximity is ultrasonic; sunfish (Pixel 4a) does not. miatoll (SM7125, ADSP only like surya) works with a registry rebuilt on Linux (sns_reg_config 1720791834). Fairphone 4 (SM7225) works. Upstream: no hexagonrpcd release writes (v0.5.0, 2026-08, none); write support exists out of tree (#27 withdrawn, a -S state dir on SG6275P, a 700-line patch on X1P42100) and the maintainers have not settled where writes go. Other routes: Linux driving the sensor chips on the SSC buses fights the DSP for them (X1E) and needs drivers stk3a5x lacks; Ubuntu Touch on surya has sensors through Android's vendor kernel (Halium).
+
+Sources
+: wiki-surya-ssc-2024,pmaports-4674,pmaports-8203,pmaports-5941-miatoll,hexagonrpc-19,hexagonrpc-27,hexagonrpc-29,lkml-ssc-qup-from-apps,firmware-xiaomi-surya
+
+About
+: sensors
+
+
+<a id="sensors-across-suspend"></a>
+### sensors-across-suspend
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Can the sensors helper stay attached across suspend, and what brings it back after?
+
+Found
+: postmarketOS stops sensorspd and rootpd before suspend (the units Conflicts=suspend.target; !5400 on the Pixel 3a, carried to systemd in !7303) and nothing restarts them: Restart=always does not fire on a conflict stop, by design - the helper is thought needed only while the DSP asks for its registry, and libssc talks QMI to the sensor service, not through hexagonrpcd. So after a first suspend on surya the sensors would have no helper; whether they keep working without it is unmeasured. One data point (SG6275P, #19) has a sensors helper with a writable registry surviving a 15 s rtcwake. surya's rootpd crash on suspend (24 of 24) is a separate helper; rootpd stays masked. No kernel fastrpc fix for suspend was found in 2025-2026; Qualcomm said in 2026-04 that a daemon attaching to a PD crashes the privileged PD and is being investigated.
+
+Sources
+: pmaports-sargo-suspend,hexagonrpc-19
+
+About
+: sensors
+
+
+<a id="sensors-how-it-stands"></a>
+### sensors-how-it-stands
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: The sensor hub on surya: how it stands, what was tried, what never to do again
+
+Found
+: 2026-11-17 (research-sensor-hub): broken by our own mask - hexagonrpcd-adsp-sensorspd and -rootpd masked in surya-lab device.toml; iio-sensor-proxy runs and waits for the registry. Way decided: the registry kept current (decision 2026-11-17-sensors-registry-kept-current); queue sensors-and-the-mask (10, first), sensors-without-crash (11), sensors-proximity-in-calls (12), sensors-registry-writes (13, fallback only), sleep-fastrpc-helpers (4) for suspend, sensors-upstream (no phone). Dead ends: swapping registries (packaged, or the phone's own persist with the marker beside it) - hexagonrpcd cannot serve the marker, so those trials changed nothing (2026-11-09, surya-lab adsp/registry-trial.sh, which counts crashes and can take the probe). Tools on the phone: ssccli --sensor proximity|light|accelerometer|magnetometer, monitor-sensor, busctl on net.hadess.SensorProxy. Never: unmask rootpd (the DSP dies at every suspend attempt); leave sensorspd crash-looping - each crash restarts the DSP that carries the microphones and calls; read /sys/kernel/debug/gpio or the LPI pinctrl at 62b40000 - the sensor core's pins are there. The sensor chips are not on any bus Linux drives.
+
+Sources
+: hexagonrpc-source,firmware-xiaomi-surya
+
+About
+: sensors
