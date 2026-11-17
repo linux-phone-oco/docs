@@ -2,3 +2,17 @@
 {"device_id":"xiaomi-surya","source_id":"pmos-community-promotion"}
 {"device_id":"xiaomi-surya","source_id":"sm7150-mainline-org"}
 {"device_id":"xiaomi-surya","source_id":"lab-agent-repo"}
+{"device_id":"google-taimen","source_id":"kcxt-linux-wahoo"}
+{"device_id":"google-taimen","source_id":"mainline-qcom-dts"}
+{"device_id":"google-taimen","source_id":"pmaports-google-devices"}
+{"device_id":"google-taimen","source_id":"lineageos-wahoo"}
+{"device_id":"google-taimen","source_id":"aosp-wahoo-kernel"}
+{"device_id":"google-taimen","source_id":"pmos-wiki-oneplus5"}
+{"device_id":"google-walleye","source_id":"kcxt-linux-wahoo"}
+{"device_id":"google-walleye","source_id":"mainline-qcom-dts"}
+{"device_id":"google-walleye","source_id":"pmaports-google-devices"}
+{"device_id":"google-walleye","source_id":"lineageos-wahoo"}
+{"device_id":"google-walleye","source_id":"aosp-wahoo-kernel"}
+{"device_id":"google-walleye","source_id":"pmos-wiki-oneplus5"}
+{"device_id":"google-taimen","source_id":"pixel2xl-pmos-wiki"}
+{"device_id":"google-walleye","source_id":"ubuntu-touch-walleye"}

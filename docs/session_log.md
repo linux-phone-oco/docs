@@ -1444,3 +1444,24 @@ Rejected
 
 About
 : idealkb-from-template
+
+---
+
+
+<a id="2026-11-17-pixel-2-survey"></a>
+### The Pixel 2 and 2 XL on the radar, from sources
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Surveyed walleye and taimen from published sources; added devices rows with their SoC (joining the SoC families view), 21 unknown parts each with the reports in the notes, taimen's wiki claims through the wiki feed (now one page per phone), sources and research; records device, device-source, support-unknown added.
+
+Considered
+: Writing the claims by hand: the feed would delete them on its next Monday run.
+
+About
+: google-taimen
