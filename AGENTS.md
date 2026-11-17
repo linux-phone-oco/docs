@@ -21,7 +21,7 @@ Ask a query; never read `data/` or `docs/` to answer - they are the database's f
 
 | To know | Ask |
 |---|---|
-| everything known of a subject | `tad q about --subject S` (`tad q about` lists the subjects) |
+| how a subject stands, then all that is known of it | `tad q about --subject S` (`--whole true` for every record in full; `tad q about` lists the subjects, and where a summary is due) |
 | the work ahead | `tad q next` (`--about S` for one subject) |
 | where something is said | `tad q find --text WORDS` |
 | one record whole | `tad q row --id ID` |
@@ -33,6 +33,9 @@ Long answers read best with `--format csv`.
 ## Recording
 Through the named records, never by hand: `tad r decision` (with what was rejected), `tad r research`,
 `tad r source`, `tad r backlog`, `tad r session-log` - each naming what it is about (`--about`). Then
-`tad canon && tad render`, and land. A thing there are many of with one shape is a row; prose read once in
-order is a file (README, this entry, a brief; an essay too long for a row goes in `research/`, cited by a row).
+`tad canon && tad render`, and land. Where `tad q about` says a summary is due for a subject you recorded
+into, renew it: `tad r summary --about S --says ...` - how it stands now, naming the records that carry it.
+A thing there are many of with one shape is a row; prose read once in order is a file (README, this entry,
+a brief). Research is both: its finding a row, its own material - notes, excerpts, measurements - a dated
+folder the row names (`--material research/SUBJECT/YYYY-MM-DD/`); redone, a new row `--supersedes` the old.
 <!-- idealkb:end -->

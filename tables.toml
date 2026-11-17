@@ -855,6 +855,44 @@ type = "string"
 name = "about"
 type = "string"
 
+# Where the research's own material is kept, out of every reader's way: a dated folder research/SUBJECT/YYYY-MM-DD/
+# (idealkb 0.2.0). The row says the finding; the folder is read only when needed.
+[[tables.research.fields]]
+name = "material"
+type = "string"
+pattern = "^research/[a-z0-9]+(-[a-z0-9]+)*/[0-9]{4}-[0-9]{2}-[0-9]{2}(-[a-z0-9]+)*/$"
+
+# The research this one is a later version of; the old stays, reachable by find and row, but leaves about's answer.
+[[tables.research.fields]]
+name = "supersedes"
+type = "string"
+
+# How a subject stands, in short, on top of its records (idealkb 0.2.0): one per subject, renewed in place; the
+# records stay. condenses is filled by tad r summary from the records about the subject when written.
+[tables.summaries]
+key = ["about"]
+
+[[tables.summaries.fields]]
+name = "about"
+type = "string"
+required = true
+
+[[tables.summaries.fields]]
+name = "date"
+type = "date"
+required = true
+
+[[tables.summaries.fields]]
+name = "says"
+type = "string"
+required = true
+pattern = "^(?s).{1,1500}$"
+
+[[tables.summaries.fields]]
+name = "condenses"
+type = "string"
+required = true
+
 [tables.concepts]
 key = ["project", "id"]
 
@@ -1093,6 +1131,14 @@ to = ["components", "features", "milestones", "devices", "backlog"]
 [[rules.references]]
 field = "research.about"
 to = ["components", "features", "milestones", "devices", "backlog"]
+
+[[rules.references]]
+field = "summaries.about"
+to = ["components", "features", "milestones", "devices", "backlog"]
+
+[[rules.references]]
+field = "research.supersedes"
+to = ["research"]
 
 [[rules.references]]
 field = "backlog.about"

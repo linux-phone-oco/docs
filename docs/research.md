@@ -739,3 +739,44 @@ Found
 
 About
 : agent-folder
+
+
+<a id="open-handset-commons-model"></a>
+### open-handset-commons-model
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-10
+
+Question
+: What must a phone have, structurally, to be a daily driver - judged from everything the open and proprietary platforms already built, learned and failed at?
+
+Found
+: Nine structural concepts, from ten projects, two operating systems and one firmware: Two Minds (a small always-on processor beside the main one, proven by Crust), Radio Wall, Notification Sovereignty, Consolidation Path, Platform Compatibility, Security Substrate, Update Covenant, Power Covenant, and the Observatory that maps every project against them. The open ecosystem's hard gaps are standby with push, a hardware security processor and long-term updates; Android and iOS solved them in closed ways. The model, its map and the prior-art files for Android/AOSP, iOS and GrapheneOS are the material; it is the why layer of the grand picture. (Moved into the dated layout on 2026-11-17.)
+
+About
+: lp-everything
+
+Material
+: research/open-handset-commons/2026-11-10/
+
+
+<a id="kb-navigation-summarised"></a>
+### kb-navigation-summarised
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: With docs at idealkb 0.3.0 and audio-mic summarised, how much must an agent read to know where surya's microphone stands?
+
+Found
+: Measured 2026-11-17 (bytes, tad q about --subject audio-mic --format csv): 4.8 KB, against 15.9 KB before the summary with the same 26 rows behind it (9.4 KB at 18 records) - the summary (1.3 KB) first, the status per device, the open work and tests in full, and the 14 condensed research, decision and log records by id on one line; --whole true gives the 15.9 KB. tad q about lists every subject with its weight and says which are due: audio-mic summarised; deep-sleep (15.7 KB), dl-reaches (10.9 KB) and sensors (11.3 KB) due. What grows now with each new record is about 30 bytes of id until the summary is renewed - at 4 KB since, the query says so.
+
+About
+: kb-summaries
