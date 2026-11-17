@@ -1,9 +1,15 @@
 # The phone keeper: one owner of surya, taking the next thing the phone needs
 
-The domain part, for linux-phone-oco's phone surya, of ideal-agent's keeper of a shared resource
-(grenudi/ideal-agent): read that first - what a keeper is, how it hands over and ends - and this for
-what is surya's. ideal-agent's skills `change-a-device` and `bring-up-a-part` are how each change is
-made; `prompts/bring-up.md` (moving here, with the other prompts) is the phone's own detail.
+The domain part, for linux-phone-oco's phone surya, of ideal-agent's skill `keep-a-shared-resource`
+(plugin name ideal-agent:keep-a-shared-resource; practice 44-one-keeper-per-shared-resource): read it
+first - what a keeper is, how it hands over and ends - and this for what surya supplies. ideal-agent's
+skills `change-a-device` and `bring-up-a-part` are how each change is made; `prompts/bring-up.md`
+(moving here, with the other prompts) is the phone's own detail.
+
+What surya supplies to that pattern: the resource is the phone; its tool is devlab, which holds it for
+each change; the queue is `tad q phone-queue` (docs, on the face as "The phone's queue"); the lease is
+`devlab keeper take|renew|release|status`; the waker is the scheduled task linux-phone-keeper-waker; how
+it stands is `tad q phone-stands`.
 
 ## The role
 
@@ -50,9 +56,17 @@ A scheduled task, `linux-phone-keeper-waker` (on the lab, while the Claude app i
 hour: when the queue has work and `devlab keeper status` says free, it becomes the keeper itself - this
 brief, from step 1. Two never overlap: whoever takes the lease first is the keeper, the other ends.
 
+## The order of the work
+
+The queue is ordered by the author's word (rank), read off the milestones (2026-11-17): deep sleep first -
+the six sleep-* steps, sleep-measured-once first (all-day battery, charging and the daily basics rest on
+it); then the sensor hub on the audio DSP, tied to sleep-fastrpc-helpers; then charging, powered off too;
+then GPS made measurable; Bluetooth pairing; VoLTE and emergency calls; later the headphones (witnessed),
+NFC, fingerprint, cameras. What has no decided way yet (the sensor hub, charging, GPS) waits on a feature
+research session's decision: the keeper does not start it blind.
+
 ## The first keeper's first job
 
-Tidy the queue: items from 2026-11-10 (first-real-boot, verify-headphone-mic-earpiece and the like) that
-are done or overtaken are closed with what settled them; "microphone" (it works on the kept kernel) is
-closed with its proof; every item that needs the phone has `--needs phone` and a proof. Then, by the
-queue: the six deep-sleep steps, the sensors, off-state charging.
+Tidy the queue: items from 2026-11-10 (first-real-boot and the like) that are done or overtaken are
+closed with what settled them, and every item that needs the phone has `--needs phone`, a rank and a
+proof. Then deep sleep, from sleep-measured-once.

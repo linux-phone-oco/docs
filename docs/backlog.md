@@ -68,6 +68,9 @@ Opened
 Needs
 : phone
 
+Rank
+: 60
+
 
 <a id="off-state-charging"></a>
 ### The phone cannot stay off: shutdown and a charger both boot pmOS
@@ -84,8 +87,14 @@ Note
 Opened
 : 2026-11-09
 
+Waits
+: the decision of a feature research session: the author has hard ones researched first (2026-11-17)
+
 Needs
 : phone
+
+Rank
+: 20
 
 
 <a id="adsp-sensor-crash-loop"></a>
@@ -135,11 +144,17 @@ Note
 Opened
 : 2026-11-09
 
+Waits
+: the decision of a feature research session: the author has hard ones researched first (2026-11-17)
+
 Needs
 : phone
 
 Proof
 : motion-and-light
+
+Rank
+: 12
 
 
 <a id="audio-cold-boot-race"></a>
@@ -556,6 +571,9 @@ Needs
 Proof
 : soc-sleeps
 
+Rank
+: 1
+
 
 <a id="sleep-cluster-params"></a>
 ### surya's own cluster sleep parameters in its device tree
@@ -577,6 +595,9 @@ Needs
 
 Proof
 : soc-sleeps
+
+Rank
+: 2
 
 
 <a id="sleep-adsp-awake"></a>
@@ -600,6 +621,9 @@ Needs
 Proof
 : soc-sleeps
 
+Rank
+: 3
+
 
 <a id="sleep-fastrpc-helpers"></a>
 ### FastRPC helpers stopped across suspend; the sensors back
@@ -618,6 +642,9 @@ Opened
 
 Needs
 : phone
+
+Rank
+: 4
 
 
 <a id="sleep-wakes-for-calls"></a>
@@ -641,6 +668,9 @@ Needs
 Proof
 : wakes-for-call
 
+Rank
+: 6
+
 
 <a id="sleep-standby-current"></a>
 ### Standby current measured beside Android's
@@ -659,6 +689,9 @@ Opened
 
 Needs
 : phone
+
+Rank
+: 5
 
 
 <a id="devlab-mcp"></a>
@@ -1188,6 +1221,9 @@ Needs
 Proof
 : image-sensor
 
+Rank
+: 70
+
 
 <a id="image-sensors"></a>
 ### Image sensors: described, then identified, then seen
@@ -1209,6 +1245,9 @@ Needs
 
 Proof
 : image-sensor
+
+Rank
+: 71
 
 
 <a id="mic-capture"></a>
@@ -1628,11 +1667,17 @@ Note
 Opened
 : 2026-11-11
 
+Waits
+: the decision of a feature research session: the author has hard ones researched first (2026-11-17)
+
 Needs
 : phone
 
 Proof
 : motion-and-light
+
+Rank
+: 10
 
 
 <a id="sensors-without-crash"></a>
@@ -1650,11 +1695,17 @@ Note
 Opened
 : 2026-11-11
 
+Waits
+: the decision of a feature research session: the author has hard ones researched first (2026-11-17)
+
 Needs
 : phone
 
 Proof
 : motion-and-light
+
+Rank
+: 11
 
 
 <a id="telephony-checks"></a>
@@ -2794,3 +2845,81 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="gps-measurable"></a>
+### GPS: a component and a failing test, so location can be measured
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: The author, 2026-11-17: lp-connected needs the feature gps, but components has no GPS row, so nothing can measure it. Add the component and a failing test first; on SM7150 location comes through the modem (QMI LOC / ModemManager location). Then research the way.
+
+Opened
+: 2026-11-17
+
+Waits
+: the decision of a feature research session: the author has hard ones researched first (2026-11-17)
+
+Needs
+: phone
+
+Proof
+: gps-fix
+
+Rank
+: 30
+
+
+<a id="bt-pairing"></a>
+### Bluetooth pairs and carries audio: from partial to works
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: The author, 2026-11-17: bluetooth is partial (controller and powered pass). A works test: pair with a device the lab keeps, carry audio or a file; witnessed where a person must confirm.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Proof
+: bt-pairs
+
+Rank
+: 40
+
+
+<a id="volte-and-emergency"></a>
+### VoLTE and emergency calls, to finish calls and messages
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: The author, 2026-11-17: confirm first whether today's working calls go over VoLTE (Germany has switched 3G off; read the modem's call and IMS state during the daily echo call). Emergency calls are proven without dialling an emergency number: the modem's emergency number list and its readiness, never a real 112 call.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Proof
+: volte-call
+
+Rank
+: 50
