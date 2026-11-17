@@ -546,3 +546,16 @@ Proves
 
 Says
 : the DSP's voice path is there: the VoiceMMode1 PCM, its Voice Mixer and Capture Mixer controls, and q6voiced
+
+
+<a id="mobile-data"></a>
+### mobile-data
+
+Component id
+: modem-data
+
+Proves
+: works
+
+Says
+: over the modem's own interface, three pings are answered and 100 kB is downloaded
