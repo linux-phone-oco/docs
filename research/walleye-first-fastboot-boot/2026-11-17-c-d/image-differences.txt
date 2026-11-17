@@ -1,5 +1,0 @@
-a  taimen offsets (ramdisk 0x1000000, tags 0x100), os_version/patch level 0      - tried: stayed in fastboot
-b  LineageOS offsets (ramdisk 0x2000000, tags 0x1e00000), os 0                   - tried: left fastboot, Android back on slot b
-c  a + header os_version 8.1.0, os_patch_level 2020-01 (only the header's os word differs from a)
-d  b + header os_version 8.1.0, os_patch_level 2020-01 (only the header's os word differs from b)
-kernel, dtb, initramfs, cmdline are the same bytes in all four.
