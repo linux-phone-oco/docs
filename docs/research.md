@@ -2005,3 +2005,25 @@ Sources
 
 About
 : deep-sleep
+
+
+<a id="walleye-try-s1-s2-s3"></a>
+### walleye-try-s1-s2-s3
+
+Brief
+: s1 (our gadget ramdisk), s2 (our kernel), s3 (our dtb) tried from the first state: none started; s1 and s2 fell back to stock Android on a, s3 accepted but stayed in fastboot
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: Which stock part, swapped for ours, makes walleye's bootloader stop starting the image?
+
+Found
+: From the first state (current-slot a, a successful, b unbootable), no writes. s1: left fastboot after 12 s, Android on slot _a kernel 4.4.302 after 75 s, no 172.16.43.1, no new USB device (only the stock adb): our gadget did NOT come up; stock vendor kernel/dtb/cmdline with our ramdisk did not start (a stock boot of slot a is what ran). s2: same shape (12 s, Android on a, 4.4.302 after 72 s). s3: 'Booting OKAY' then stayed in fastboot, no USB event. Flags unchanged each time (a successful, b unbootable). Together with s0n (no start) and s0 (stock with AVB footer, accepted earlier): every image that differs from the stock footer-carrying boot.img, even ramdisk only, fails to start; s0n shows the footer or padding alone may be enough. Next: rebuild s1 with the AVB footer (algorithm NONE, padded to 32 MiB like s0) and try it.
+
+About
+: walleye-first-fastboot-boot
