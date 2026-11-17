@@ -4644,34 +4644,6 @@ About
 : commons-only
 
 
-<a id="walleye-boot-refused-why"></a>
-### Why the Pixel 2's bootloader refuses even LineageOS's official boot.img from memory (Load Error), and what makes fastboot boot work on it
-
-Project
-: linux-phone-oco/google-walleye-lab
-
-Status
-: open
-
-Note
-: Facts: the official LineageOS 22.2 20261113 walleye boot.img (stock header, AVB footer, lz4 4.4.302 + its own dtb) gives 'Failed to load/authenticate boot image: Load Error' by fastboot boot on slot b (a unbootable, b current+successful), as do our images b-f; image a once gave 'Booting OKAY' without starting. So not our image's format. Open causes: the active slot's dtbo/vbmeta (slot b holds an older Lineage build than the control), the bootloader's state (avb 1.0.0 user-settable key set, unlocked, secure yes), the slot flags, fastboot boot needing something else on this ABL (TWRP reports work for walleye in places, fail in others). Public sources only, read-only. Known cheap, reversible experiment: set-active a, then the control again (compare with the first-ever state). Ask: what do postmarketOS/porthole/TWRP/LineageOS reports say about fastboot boot and Load Error on Pixel 2/XL, 3, Qualcomm ABL source for 'Load Error' (LoadImageAndAuth, dtbo, vbmeta), and whether fastboot oem read-only commands or a UART route show the real reason. A write (dtbo, vbmeta, flash) stays named as an option with its way back only.
-
-Opened
-: 2026-11-17
-
-Needs
-: research
-
-Device
-: google-walleye
-
-Proof
-: a research row naming the cause or the ranked causes with sources, and the next experiments each with its way back; consistent with the tries in walleye-control-e-f-tries
-
-About
-: walleye-first-fastboot-boot
-
-
 <a id="walleye-control-on-slot-a"></a>
 ### The control boot.img again with slot a active (the state of the very first tries)
 
@@ -4819,6 +4791,34 @@ Device
 
 Proof
 : a captured serial log of one refused control try that names the failing step (LoadImageAndAuth, dtbo, vbmeta or other), attached to a research row
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-boot-refused-why"></a>
+### Why the Pixel 2's bootloader refuses even LineageOS's official boot.img from memory (Load Error), and what makes fastboot boot work on it
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: done
+
+Note
+: Answered in research walleye-boot-refused-why-how-it-stands and decision walleye-load-error-vector; next phone items: walleye-load-error-first-state, then walleye-load-error-restart-host, walleye-load-error-uart
+
+Opened
+: 2026-11-17
+
+Needs
+: research
+
+Device
+: google-walleye
+
+Proof
+: a research row naming the cause or the ranked causes with sources, and the next experiments each with its way back; consistent with the tries in walleye-control-e-f-tries
 
 About
 : walleye-first-fastboot-boot
