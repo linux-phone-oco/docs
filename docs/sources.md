@@ -2155,3 +2155,163 @@ By
 
 Takes
 : The first Pixel 2 family device tree; walleye dts is a 13-line stub on the taimen base; USB 2.0 peripheral, regulators, ramoops, UART facts.
+
+
+<a id="eff-reverse-engineering-faq"></a>
+### EFF Coders' Rights: Reverse Engineering FAQ
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.eff.org/issues/coders/reverse-engineering-faq
+
+By
+: research-cleanroom-agents
+
+Takes
+: Clean room is good practice, not a legal requirement; least intrusive technique first; EULAs can bind
+
+
+<a id="asahi-progress-2021-08"></a>
+### Asahi Linux progress report, August 2021 (m1n1 hypervisor tracing)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://asahilinux.org/2021/08/progress-report-august-2021/
+
+By
+: research-cleanroom-agents
+
+Takes
+: Trace hardware accesses on the real system without looking at the vendor code; disassembly would endanger copyright status
+
+
+<a id="nouveau-mmiotrace"></a>
+### Nouveau: Memory Mapped I/O Trace
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://nouveau.freedesktop.org/MmioTrace.html
+
+By
+: research-cleanroom-agents
+
+Takes
+: mmiotrace plus envytools register database; one person documents, another implements
+
+
+<a id="kyvero-clean-room-manual"></a>
+### Clean-room reverse engineering process manual v1 (Kyvero-Vexus)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/Kyvero-Vexus/clean-room-reverse-engineering/blob/master/2026-03-21-clean-room-reverse-engineering-complete-writeup-v1.md
+
+By
+: research-cleanroom-agents
+
+Takes
+: A/B/C team roles, access matrix, taint register, spec-to-test traceability, evidence bundle (not peer reviewed)
+
+
+<a id="wordcraft-agents-md"></a>
+### storytold/wordcraft AGENTS.md (ArtCraft clean-room house rules)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/storytold/wordcraft
+
+By
+: research-cleanroom-agents
+
+Takes
+: Clean room as a rule on inputs: black-box observation plus public specs; never read the app bundle
+
+
+<a id="reversa-2605-18684"></a>
+### Reversa: reverse documentation engineering for AI agents (arXiv 2605.18684)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://arxiv.org/abs/2605.18684
+
+By
+: research-cleanroom-agents
+
+Takes
+: Spec shape: claims with confidence, gaps, traceability, parity scenarios; no clean-room discussion
+
+
+<a id="rare-2607-12507"></a>
+### When Binaries Talk Back: Representation-Confusion Attacks on LLM-assisted RE (arXiv 2607.12507)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://arxiv.org/abs/2607.12507
+
+By
+: research-cleanroom-agents
+
+Takes
+: Captured data is data, never instructions; count evidence by origin
+
+
+<a id="humans-vs-machines-re-2610-14960"></a>
+### Humans vs. Machines: AI agents in software reverse engineering (arXiv 2610.14960)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://arxiv.org/abs/2610.14960
+
+By
+: research-cleanroom-agents
+
+Takes
+: Agents competitive but need persistent analysis state
+
+
+<a id="chardet-relicense-register"></a>
+### Chardet dispute shows how AI will kill software licensing (The Register, 2026-03-06)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.theregister.com/2026/03/06/ai_kills_software_licensing/
+
+By
+: research-cleanroom-agents
+
+Takes
+: An AI clean room is not yet a defence; the wall cannot be shown by the model's mind
+
+
+<a id="postmarketos-qualcomm-mainline"></a>
+### postmarketOS: Qualcomm mainline porting
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.postmarketos.org/wiki/Qualcomm_mainline_porting
+
+By
+: research-cleanroom-agents
+
+Takes
+: Downstream vendor kernel is the reference; device tree plus mainline drivers
