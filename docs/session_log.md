@@ -1525,3 +1525,24 @@ Done
 
 About
 : kb-summaries
+
+---
+
+
+<a id="2026-11-17-1225-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Keeper surya-keeper, 2026-11-17. Phone runs the kept kernel 7.1.0-sm7150-calls+ (default; the one-shot dtb with cluster parameters 0x41002244/0x4100c244 was tried once and is gone), healthy 37 pass 0 fail after a reboot. Deep sleep: the first measured suspend cycles (5, by hand: research/deep-sleep/2026-11-17/) show soc-sleeps = fail and the real cause of no sleep so far: the suspend ends at once on the wake-armed, storming serial IRQ 157 (qcom_geni_serial 88c000); and Bluetooth dies across a suspend and hangs the resume, a reboot recovers. sleep-measured-once and sleep-wake-source are done.
+
+Considered
+: next: sleep-wake-uart (disable the serial's wakeup and find why it storms), with sleep-bt-resume (rfkill/stop bluetooth before suspend) in the same cycle; then repeat the cycle on the kept kernel for a real number, then sleep-cluster-params on the prepared dtb (decompile /boot/dtbs-calls/qcom/sm7150-xiaomi-surya-huaxing.dtb, sed the two values, dtc, devlab kernel try calls --dtb). Must not be undone: sensorspd and rootpd stay masked. Cycle method: put the script on the phone and run it with systemd-run, never nohup; never read /sys/power/wakeup_count with a wake lock held (it blocks); read sleep length from the RTC, not date or dmesg.
+
+About
+: deep-sleep
