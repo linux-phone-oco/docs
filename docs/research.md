@@ -1026,3 +1026,33 @@ Sources
 
 About
 : bringup
+
+
+<a id="orchestration-2026-11-17-late"></a>
+### orchestration-2026-11-17-late
+
+Brief
+: Orchestration hand-over, 2026-11-17 late: both lanes moved into their own bases, docs pulls their parts; owed: derive-parts-in-base, about-across-bases, older items.
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Where does orchestration's work stand, for a fresh orchestration session to take it up without this session's long context?
+
+Found
+: ROLE: orchestrator (brief ideal-agent-linux-phone-oco/orchestration.md). Notes and the move scripts (move-lane.sh, replay.sh, select.sh): side-session-notes/local_7d95b264-ad32-49ad-932a-7f19e9f9806d/move/.
+DONE 2026-11-17 (decision 2026-11-17-commons-and-device-bases, all landed and read back from main): google-walleye-lab #14 and surya-lab #134 got their own tad bases from device-template; walleye's rows moved (google-walleye-lab #15, docs #353) and surya's (surya-lab #136 with all 143 runs identical row for row, docs #360), each under the lease orchestration-move, by the rule of decision 2026-11-17-moving-a-lane; the lane briefs (walleye-coordinator, surya-coordinator, phone-keeper), the five launchers and the waker read the lab's own base (phone-next, lane-next --needs, phone-stands) and record with ikb; device-template got lane-next and phone-stands; lab-tools #82 (gather files into the base; devlab-watch@surya-lab restarted on it); tad 0.7.1 (references by a table's key; pins bumped in the template and both labs); feed-device-bases (#355, #356) pulls each base's parts daily and devices.base names both labs (#361); the face rendered from the pulled parts. move-device-rows, gather-into-device-base, launchers-per-device done.
+OPEN (commons-only): derive-parts-in-base (a base derives parts.measured from its own runs; until then surya's measured fields stay as seeded at the move), about-across-bases (abouts naming the device, a milestone or another base's subject were left empty in the move), device-template-follow; the older owed items of orchestration-2026-11-17-night (keeper read-weight, trimming briefs, kernel-orphan-modules) still stand.
+WAITS ON OTHERS: the walleye coordinator closes docs PRs 335, 337, 310 and settles 316 (two unlanded s0n-try rows contradicting main; to be recorded in the lab if they hold).
+SIGNS: a shared ~/.local/bin/tad was overwritten by another project's make setup (0.5.0) - install-tad.sh defaults to ~/.local/bin on a shared lab; jq's index(.) inside a pipe evaluates . against the array (bind $x first); the ideal-agent guard now refuses writing tad sql (TAD_SQL_WRITE_OK=1 for a recorded one-time migration); a refused command skips its git checkout too - read the branch before committing; land refuses a branch that puts back lines main changed; a pages build is not triggered by the feeds bot's push (the 3-hourly schedule catches up).
+DO NOT UNDO: the previous hand-overs' lists; no walleye or surya rows land in docs any more - a lane records in its lab.
+
+About
+: agent-folder
+
+Supersedes
+: orchestration-2026-11-17-night

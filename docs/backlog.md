@@ -2610,7 +2610,7 @@ Status
 : in-progress
 
 Note
-: Decided 2026-11-17 (decision 2026-11-17-commons-and-device-bases; research and reasons in grenudi/ideal-knowledge-base: commons-and-unit-bases-world). The parts below are for the owners named; the umbrella closes when the data has moved and docs shows derived status only.
+: Both lanes record only in their own base (google-walleye-lab #15, surya-lab #136; docs #353, #360); docs pulls their parts daily (feed-device-bases, #355; surya's base named #361) and the face reads them. Left: derive-parts-in-base, about-across-bases, device-template-follow.
 
 Opened
 : 2026-11-17
@@ -2667,10 +2667,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Owner: roles session / orchestration. Follows move-device-rows; until then lane-next --device stays.
+: Done in the moves: the walleye and surya coordinator briefs, phone-keeper.md, the walleye-keeper/research/builder and surya-keeper/research launchers and the waker work in the lab repository and ask its base (phone-next, lane-next --needs, phone-stands; ikb to record); docs' lane-next stays for general rows (needs --device).
 
 Opened
 : 2026-11-17
