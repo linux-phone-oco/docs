@@ -4557,7 +4557,7 @@ Proof
 : soc-sleeps
 
 Rank
-: 1
+: 15
 
 About
 : deep-sleep
@@ -5298,6 +5298,9 @@ Device
 
 Proof
 : soc-sleeps
+
+Rank
+: 1
 
 About
 : deep-sleep
