@@ -2105,3 +2105,25 @@ Sources
 
 About
 : deep-sleep
+
+
+<a id="walleye-vendor-kernel-facts-s1-panic"></a>
+### walleye-vendor-kernel-facts-s1-panic
+
+Brief
+: s1 boots the stock kernel (bootreason kernel_panic, back on a after 75 s); the vendor kernel has no ACM/ECM/RNDIS, only NCM and FunctionFS, no devtmpfs - our gadget init cannot show up on it
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: What did the s1 try do, and what does the running vendor kernel offer our gadget init?
+
+Found
+: Bootloader first: after the earlier Load Errors both slots ended unbootable (a: unbootable yes, retry 0) and the phone stayed in fastboot after a reboot; one metadata-only 'devlab fastboot set-active now a' cleared a (unbootable no, successful no, retry 1) and Android completed on a (successful yes again). s1 re-run from that healthy first state: left fastboot after 12 s, Android on a after 75 s, ro.boot.bootreason=kernel_panic - so the stock kernel DID start with our ramdisk and panicked, then the bootloader fell back to a. (Load Error appeared only when run from the state after several refusals.) Facts, read-only from the vendor kernel 4.4.302 (adb root, debuggable): UDC a800000.dwc3. Config: USB_CONFIGFS=y, F_FS, NCM, MASS_STORAGE, MTP, PTP, ACC, AUDIO_SRC, MIDI, HID, DIAG, GSI, CDEV, QDSS = y; ACM, SERIAL, OBEX, ECM, RNDIS, EEM are NOT set; DEVTMPFS not set; PSTORE, PSTORE_CONSOLE, PSTORE_PMSG, PSTORE_RAM, ACCESS_RAMOOPS = y. Our gadget init (ACM + RNDIS/ECM) therefore could not bring up a gadget on this kernel even if init ran; it needs NCM (host sees a cdc_ncm interface) and, with no devtmpfs, mounting devtmpfs fails - our init must mknod or use mdev. Ramoops: ramoops_region reg 0xa1100000 size 0x200000; alt_ramoops_region 0xa3800000 size 0x200000; meta region 0xaffff000 size 0x1000; params record 524288, console 262144? (from /sys/module/ramoops: mem_size 2097152, record 524288, console 131072 order as listed). The pstore is encrypted by vendor ramoops (init.ramoops.sh: ramoops -D after the user unlocks, files appear in /data/vendor_ce/0/ramoops, absent here), so the s1 panic text is NOT readable from Android; /sys/fs/pstore empty. Cmdline of the vendor boot: androidboot.hardware=walleye console=ttyMSM0 ... root=PARTUUID, androidboot.dtbo_idx=3, panel mdss_dsi_samsung_s6e3fa5_1080p_cmd, serial redacted. Next: rebuild s1's init for NCM (+ mknod, no devtmpfs), keep the panic hunt by making init print to /dev/kmsg-less console only if needed; or make our init never exit (sleep loop) to see if the panic was init exiting.
+
+About
+: walleye-first-fastboot-boot

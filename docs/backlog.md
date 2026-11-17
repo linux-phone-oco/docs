@@ -4887,10 +4887,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: In the gadget shell: /proc/cmdline, /proc/iomem (ramoops, cont-splash framebuffer), /proc/device-tree qcom,msm-id/board-id/pmic-id, dmesg, dwc3/USB mode, regulators and clocks in use, /sys/fs/pstore, last_kmsg; copy out with the gadget network. Record as a research row with the files in material/.
+: read from the running vendor kernel; see research walleye-vendor-kernel-facts-s1-panic
 
 Opened
 : 2026-11-17
