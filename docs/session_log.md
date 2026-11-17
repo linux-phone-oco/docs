@@ -1594,3 +1594,27 @@ Rejected
 
 About
 : sim-removed-skips
+
+---
+
+
+<a id="2026-11-17-way-back-decided"></a>
+### Deep sleep's way back: decided before the next suspend
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Looked around (research 2026-11-17-surya-way-back-inventory): the stock qcom_wdt is stopped in late suspend, so it would not have rescued the first hang; ramoops (4 MiB) and a settable RTC exist. Decided (2026-11-17-deep-sleep-way-back): a patched qcom_wdt module that stays armed through sleep, the RTC set, the log from ramoops; built it for the running kernel (vermagic matches), wrote sleep/way-back.sh and sleep/build-wdt.sh.
+
+Considered
+: Timed reboot, USB awake, pstore alone, a kernel rebuild, serial console.
+
+Rejected
+: See the decision.
+
+About
+: deep-sleep

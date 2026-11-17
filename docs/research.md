@@ -899,3 +899,28 @@ Found
 
 About
 : deep-sleep
+
+
+<a id="2026-11-17-surya-way-back-inventory"></a>
+### 2026-11-17-surya-way-back-inventory
+
+Brief
+: surya has the qcom_wdt watchdog, 4 MiB ramoops and a PMIC RTC (1970); the stock watchdog is stopped in late suspend, so no way back covers a hang inside s2idle
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: What does surya have, and what do mainline and others do, for a way back from a suspend that may not return?
+
+Found
+: On the phone: qcom_wdt (17c10000.watchdog) with /dev/watchdog0, ramoops 4 MiB reserved at 0x9d800000 with pstore (console 1 MiB), the PMIC RTC reading 1970 and settable with hwclock -w -u; the kernel has no suspend timeout of its own (no PM_DEBUG, hung-task, DPM watchdog). Mainline qcom-wdt.c registers late system sleep ops that STOP an active watchdog in suspend and start it on resume: so a hang before the late phase is covered by a watchdog, one inside s2idle is not. A module with that stop made optional (one parameter, no other change) builds for the running kernel (no MODVERSIONS; vermagic equals uname -r) and loads without a kernel rebuild or reboot-to-test; a reboot undoes it. The RTC alarm cannot be the way back: if the RTC wake does not reach the GIC out of s2idle the phone sleeps for good, which looks the same as a hang. A bite resets the SoC; whether it reaches a normal boot and whether ramoops survives it is what the dry run measures.
+
+About
+: deep-sleep
+
+Material
+: research/deep-sleep/2026-11-17-way-back/
