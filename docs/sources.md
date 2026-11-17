@@ -1752,3 +1752,16 @@ Url
 
 Takes
 : Compiles on first run and caches the executable; needs a Rust toolchain on the machine that runs it.
+
+
+<a id="pmos-hardware-ci"></a>
+### postmarketOS hardware CI and on-device CI docs (nura.eco)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.nura.eco/pmaports/main/ci/hardware-ci.html
+
+Takes
+: On-device tests are postmarketos-test subpackages run by an initramfs hook; only kernel tests work; farm is CI-tron with one OnePlus 6T.

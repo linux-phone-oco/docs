@@ -69,3 +69,39 @@ https://github.com/fornwall/rust-script
 https://pkgs.alpinelinux.org/package/edge/main/aarch64/rust
 https://nexte.st/docs/design/how-it-works/
 https://wiki.alpinelinux.org/wiki/Abump
+
+## Addendum: building on postmarketOS upstream (asked by the author, 2026-11-17)
+Checked by a second researcher run against docs.nura.eco (postmarketOS' sites now redirect to nura.eco, "formerly
+postmarketOS"; the redirect is server-supplied, likely not independently verified), rhizcut read in git-rhizoid's concepts.
+- Confirmed: contribution is by merge request on their GitLab, commit style follows Alpine aports (device packages
+  `device-vendor-codename: ...`, forks `temp/pkg: fork from Alpine`); approval: no maintainer = two team approvals, one
+  maintainer = that maintainer + one team member, 48 h for co-maintainers, two weeks before fallback.
+  https://docs.nura.eco/pmaports/main/merge-requests/commitstyle.html , .../approval-rules.html
+- Confirmed: on-device tests are subpackages of `postmarketos-test` (named: postmarketos-test-suspend, -unl0kr), run by the
+  initramfs hook package `postmarketos-mkinitfs-hook-ci` from /usr/libexec/pmos-tests-initramfs, which reports pass/fail
+  and halts the boot; a device opts in with a `$pkgname-pmtest` subpackage and a gitlab-ci.yml.j2. Only kernel (initramfs)
+  tests work today; boot and system tests (Wi-Fi, Bluetooth, ...) are NOT implemented upstream.
+  https://docs.nura.eco/pmaports/main/ci/hardware-ci.html
+- Python is host-side: .ci/lib/generate_build_jobs.py builds the pipeline; pmbootstrap. Nothing on the phone.
+- bootrr: BSD-3-Clause, 128 commits, 1 open PR; packaged by pmOS as bootrr-pmtest. Contributions accepted: not known yet.
+- Their farm: CI-tron gateway, one OnePlus 6T plus four QEMU runners, a custom control PCB (20 boards to Trusted
+  Contributors). Other devices need CI-tron support added (boots_db.yml.j2); production registration tokens only from their
+  infrastructure team; outsiders joining is promised documentation, not yet documented.
+  https://docs.nura.eco/hardware-ci/gateway.html , https://nura.eco/blog/2026/01/21/hw-ci-mvp/
+- rhizcut (git-rhizoid concepts): a real GitHub fork of an upstream, owned and pinned. pmaports lives on GitLab, and a fork
+  of a subfolder only: whether rhizcuts handle a GitLab upstream or a subfolder is NOT KNOWN; check before relying on it.
+- Not known yet: licences/CLA of pmaports, cost of keeping an APKBUILD fork in step with generated CI templates.
+
+### Three ways, weighed
+A. Fully on upstream (fork their test pieces, sync a subfolder, send back MRs).
+   + hook, subpackages, device pipelines, QEMU runs, review rules, shared maintenance exist; our tests get upstream eyes.
+   - the phone-level tests we need (modem, SIM, audio, sensors, sleep, once-a-day budgets) are the part not built upstream;
+     everything runs in the initramfs and halts the boot, ours runs after boot on the system; their farm has one phone and
+     is token-gated; fork sync cost unknown; their process moves (rename, "unstable" docs). Python is only on the host side
+     (pipeline generation) and costs nothing on the phone, so it is not what decides this.
+B. Middle way: tests as small shell files in their shape (one `pass|fail|skip TEST COMPONENT detail` line each, board facts
+   as data), our runner, switches, conditions and result gathering.
+   + keeps every existing check and result; stays upstreamable (a check can become a postmarketos-test-* subpackage by an
+     MR later); no fork to keep in step; works today, after boot, on the system.
+   - not in their farm until someone does the CI-tron device work; the shape match is by convention, not by code.
+C. Ours alone, a different shape: nothing to gain, set aside.
