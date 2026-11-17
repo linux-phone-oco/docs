@@ -1922,3 +1922,31 @@ Found
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="walleye-bootstrap-method-how-it-stands"></a>
+### walleye-bootstrap-method-how-it-stands
+
+Brief
+: Best-known bootstrap: feedback channel first, vendor kernel as known-good, then mainline by fastboot boot; lk2nd is not for MSM8998/ABL; walleye skipped the vendor-kernel step
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: What is the best-known way to bootstrap an Android phone to mainline almost from zero (pmOS, Mobian/Halium, sdm845/sm8150 communities, MSM8998 siblings), and how does the walleye lane's work compare?
+
+Found
+: THE METHOD, in order (pmOS Porting/Mainlining guides, Qualcomm mainline porting, Halium early-init, MSM8998 pages): 1 unlock, keep the stock boot.img and a way back to Android; read offsets/ids from it. 2 Get a feedback channel BEFORE mainline: UART first, then simple-framebuffer, ramoops last (pmOS order); for a no-display phone the USB gadget shell is the channel. 3 Vendor kernel first as a known-good: Halium/UBports/Droidian boot the vendor kernel with their own initramfs (telnet 192.168.2.15, break= levels) - it proves image format, offsets, cmdline, gadget, and shows ids, rails, reserved memory. pmOS recommends a downstream port as the base but no MSM8998 sibling did it; they went straight to mainline. 4 Board dts from msm8998-mtp: fix model/compatible/board-id, delete CoreSight nodes, match regulators, clk_ignore_unused (still the normal first flag, Dybcio 2025). 5 Image.gz + dtb appended, mkbootimg base 0 page 4096, initramfs with debug-shell and USB gadget; fastboot boot (OnePlus 5, Mi 6, Pixel 3 XL with a stub dtbo; OnePlus 5T OxygenOS 9 cannot fastboot boot - flash instead). 6 First shell over USB peripheral (QMP + QUSB2 PHY, dr_mode peripheral); Pixel 2 XL reached exactly this, black screen. 7 Then UFS (not on Sony), display, touch, radios; upstream with b4.
+LK2ND: not a route. Its device list stops at msm8996, msm8998 is '?' in targets.md, no Pixel, and it is an LK fork loaded by LK-based aboot; Pixel 2 runs a Qualcomm ABL/UEFI-derived bootloader. Pixel 3/sdm845 recipe is plain fastboot boot plus a stub dtbo, not lk2nd. U-Boot as second stage under ABL exists for sdm845 (FOSDEM 2024), not known for msm8998. Whether an LK image could run under ABL is not known yet.
+WALLEYE LANE vs THE METHOD: done - stock ids and header read from the public LineageOS image, boot images a-f (17 checks), gadget initramfs proven in QEMU, minimal dts, control test, and the finding that Load Error follows the slot's successful flag (control accepted only from the first state). Gaps: (a) step 3 never done - no image has run a kernel on this phone, so cmdline, ids, rails, ramoops address, and the gadget on real hardware are unseen; (b) step 2 - no feedback channel chosen: UART needs a cable and an oem decision, ramoops address unverified, simplefb unlikely (command-mode DSC panel); (c) the order: the lane went to its own mainline image before any known-good boot. The control (LineageOS boot.img, vendor 4.4 kernel) is accepted from the first state but then left USB with no sign for 6+ min, so even a stock image gives no feedback on this phone yet.
+NOT KNOWN YET: whether the vendor kernel in the control reaches a configfs gadget (LineageOS kernels normally do for adb); whether fastboot oem uart enable persists; walleye's dtbo overlay id; first-shell method on taimen (flash vs fastboot boot); sm8150 practice and the FOSDEM 2024 slides were not read. pmOS wiki now at wiki.nura.eco behind a bot wall; read as raw wikitext.
+
+Sources
+: pmos-porting-new-device,pmos-mainlining-guide,pmos-qualcomm-mainline-porting,pmos-msm8998,oneplus5-mainline-jamikettunen,pmos-mi6-sagit,lk2nd-devices,pmaports-crosshatch-153,halium-early-init,ramoops-doc,android-debug-cable-howto,dybcio-ignore-unused,kcxt-dtbo-wahoo,xda-fastboot-boot-ab-psa
+
+About
+: google-walleye

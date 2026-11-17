@@ -4959,3 +4959,227 @@ Proof
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="fastboot-found-by-serial-or-port"></a>
+### fastboot: a phone out of fastboot found by its serial or USB port, else gone from USB
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: Done 2026-11-17 (lab-tools PR 81, f904196), asked by walleye-coordinator: after a boot try devlab took surya's postmarketOS gadget (18d1:d001) and a shared address for walleye's Linux while walleye had left USB. Now only a USB device carrying the phone's serial, or one on the USB port it sat on in fastboot (remembered at STATE/CODENAME/usb-port), answers for it; ping and vendor:product alone are gone; nothing found after three minutes is said as gone from USB, needing hands. Installed. Sign: walleye's manifest shares surya's USB address 172.16.42.1 - when Linux runs on both, devlab phone must tell them apart (by interface/port), not by address.
+
+Opened
+: 2026-11-17
+
+About
+: dl-safe
+
+
+<a id="walleye-initramfs-address-43"></a>
+### walleye's gadget initramfs answers on 172.16.43.1, not surya's 172.16.42.1
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Both phones share one host; surya's pmOS gadget is 172.16.42.1 and devlab must tell the phones apart (lab-tools fastboot-found-by-serial-or-port). The manifest [connection] addresses is already 172.16.43.1 (lab main). Do not change e or b (a keeper is trying them): new images g/h only, host only.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: images g and h (e and b with the initramfs address changed, nothing else) built, checked by the same check-bootimg, SHA256SUMS updated; images a-f byte-identical to before
+
+About
+: walleye-initramfs-usb-gadget
+
+
+<a id="walleye-vendor-gadget-image"></a>
+### Repack the control boot.img with our gadget initramfs (kernel, dtb, cmdline untouched)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Decision 2026-11-17-walleye-vendor-kernel-first. Unpack control/boot.img (sha256 48dbc55c...), replace only the ramdisk by build/initramfs (address 172.16.43.1; ACM + RNDIS/ECM via configfs; telnet), repack with its own offsets and cmdline; keep the header-compare. Host only, no phone.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: check-bootimg counts the repack: kernel/dtb/cmdline/offsets byte-equal to the control, ramdisk is ours (test: walleye-vendor-gadget-image-built)
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-gadget-up-check"></a>
+### Write the failing check walleye-gadget-up in the lab's tests/health
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Finds the phone by the manifest serial (FA81N1A00790) on USB, not by VID:PID (surya's gadget 18d1:d001 is on the same host); passes only when it enumerates as a Linux gadget and 172.16.43.1 answers. Shows broken/unknown until then. Its docs row is recorded (tests: walleye-gadget-up).
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: the check exists in google-walleye-lab/tests/health, runs, and fails with the phone in fastboot (test: walleye-gadget-up)
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-vendor-gadget-try"></a>
+### fastboot boot the repacked control from the first state; does the gadget answer?
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: From the first state (Android completed on a, adb reboot bootloader), devlab fastboot boot now vendor-gadget.img, before/after slot report, lsusb by serial for 90 s, then ssh/telnet 172.16.43.1. No writes. A hang or vanishing from USB is an answer: tell the coordinator in one line (hand power-cycle). If it answers: do not change anything, go to walleye-vendor-kernel-facts in the same boot.
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye-vendor-gadget-image,walleye-gadget-up-check
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: walleye-gadget-up passes (phone enumerates by serial, 172.16.43.1 answers) and the slot report shows what changed
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-vendor-kernel-facts"></a>
+### From the running vendor kernel, read the facts our dts guesses (read-only)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: In the gadget shell: /proc/cmdline, /proc/iomem (ramoops, cont-splash framebuffer), /proc/device-tree qcom,msm-id/board-id/pmic-id, dmesg, dwc3/USB mode, regulators and clocks in use, /sys/fs/pstore, last_kmsg; copy out with the gadget network. Record as a research row with the files in material/.
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye-vendor-gadget-try
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: a research row walleye-vendor-kernel-facts with cmdline, ramoops region and ids, checked against the dts (test: walleye-gadget-up passes during the read)
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-own-images-first-state"></a>
+### Our images e, then b, by fastboot boot from the first state (Android booted on slot a, then adb reboot bootloader)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: The control boot.img was accepted from this state (walleye-first-state-control-accepted). Now ours: first e (a with a short cmdline), then b (LineageOS offsets). Per try: Android on a booted (adb device, slot a successful yes), adb reboot bootloader, devlab fastboot boot now IMAGE, watch 90 s. If the phone vanishes from USB, say so to the coordinator in one line (the author's hands: hold Power 10-30 s); a hang is an answer, a gadget is the goal. No writes; set-active only as in the recorded decisions. Order now: after walleye-vendor-gadget-try (decision 2026-11-17-walleye-vendor-kernel-first); use the ramoops address and ids read by walleye-vendor-kernel-facts.
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye-vendor-gadget-try
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: devlab's before/after slot report and the phone's full fastboot text for each; lsusb polling (by the manifest serial, not VID:PID: surya's gadget 18d1:d001 is on the same host) shows whether a Linux gadget of ours appears (lsusb on the host within 60 s, 172.16.42.1 answering: test walleye-gadget-up)
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-bootstrap-method"></a>
+### The best-known way to bootstrap an Android phone to mainline almost from zero, compared with what the walleye lane did
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: done
+
+Note
+: Done 2026-11-17: research walleye-bootstrap-method-how-it-stands, decision 2026-11-17-walleye-vendor-kernel-first; next walleye-vendor-gadget-image, walleye-gadget-up-check, then walleye-vendor-gadget-try.
+
+Opened
+: 2026-11-17
+
+Needs
+: research
+
+Device
+: google-walleye
+
+Proof
+: a research row with sources, a comparison, a decision with what was rejected: landed
+
+About
+: google-walleye

@@ -2690,3 +2690,179 @@ By
 
 Takes
 : The bootloader picks overlays from dtbo by id and rev, applies them to the base dtb and passes androidboot.dtbo_idx; an overlay that fails to apply is a bootloader-side boot failure
+
+
+<a id="pmos-porting-new-device"></a>
+### postmarketOS: Porting to a new device
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://wiki.postmarketos.org/wiki/Porting_to_a_new_device
+
+By
+: walleye-research
+
+Takes
+: Steps: unlock, pmbootstrap, device+kernel package, build, test; read offsets from the stock boot.img
+
+
+<a id="pmos-mainlining-guide"></a>
+### postmarketOS: Mainlining Guide
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://wiki.postmarketos.org/wiki/Mainlining_Guide
+
+By
+: walleye-research
+
+Takes
+: Assumes a downstream port and a USB shell; serial recommended; start from a similar dts; second stage only if TrustZone/bootloader needs it
+
+
+<a id="pmos-qualcomm-mainline-porting"></a>
+### postmarketOS: Qualcomm mainline porting
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://wiki.postmarketos.org/wiki/Qualcomm_mainline_porting
+
+By
+: walleye-research
+
+Takes
+: First feedback order: UART, then simple framebuffer, then ramoops as last resort
+
+
+<a id="pmos-msm8998"></a>
+### postmarketOS: Snapdragon 835 (MSM8998)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://wiki.postmarketos.org/wiki/Qualcomm_Snapdragon_835_(MSM8998)
+
+By
+: walleye-research
+
+Takes
+: MTP-derived dts boots only after CoreSight nodes are removed; clk_ignore_unused; simplefb from XBL strings; DSC panels (Pixel 2 XL) likely no simplefb; USB peripheral PHYs
+
+
+<a id="oneplus5-mainline-jamikettunen"></a>
+### Jami Kettunen: linux-mainline-oneplus5 (branch history)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://github.com/JamiKettunen/linux-mainline-oneplus5
+
+By
+: walleye-research
+
+Takes
+: MSM8998 first-boot order: dts from mtp, drop CoreSight, simplefb, then touch/UFS; cat Image.gz dtb, mkbootimg base 0 page 4096
+
+
+<a id="pmos-mi6-sagit"></a>
+### postmarketOS: Xiaomi Mi 6 (sagit)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://wiki.postmarketos.org/wiki/Xiaomi_Mi_6_(xiaomi-sagit)
+
+By
+: walleye-research
+
+Takes
+: Mainline first shell by fastboot boot of Image.gz-dtb in the stock boot.img; UART pads; edk2 for OTG
+
+
+<a id="lk2nd-devices"></a>
+### lk2nd Documentation/devices.md and targets.md
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://github.com/msm8916-mainline/lk2nd/blob/master/Documentation/devices.md
+
+By
+: walleye-research
+
+Takes
+: Platforms to msm8996 only; msm8998 row '?'; no Pixel; LK-based stock bootloaders only
+
+
+<a id="pmaports-crosshatch-153"></a>
+### pmaports issue 153: crosshatch mainlining attempt
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://gitlab.com/postmarketOS/pmaports/issues/153
+
+By
+: walleye-research
+
+Takes
+: Pixel 3 XL: fastboot boot of a mainline image with a stub dtbo; no UART, pstore planned
+
+
+<a id="halium-early-init"></a>
+### Halium docs: Early Init (debug build)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://docs.halium.org/en/latest/porting/debug-build/early-init.html
+
+By
+: walleye-research
+
+Takes
+: Vendor kernel + halium-boot initramfs gives a telnet shell on 192.168.2.15; break= levels; serial-number string reports debug state
+
+
+<a id="ramoops-doc"></a>
+### Linux kernel: ramoops
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://docs.kernel.org/admin-guide/ramoops.html
+
+By
+: walleye-research
+
+Takes
+: Log survives a warm/watchdog reset usually; address must be reserved and stable
+
+
+<a id="dybcio-ignore-unused"></a>
+### Dybcio: clk/pd ignore_unused warning thread
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://patchew.org/linux/20250201-topic-ignore._5Funused._5Fwarn-v1-1-f29db78cea3a@oss.qualcomm.com
+
+By
+: walleye-research
+
+Takes
+: clk_ignore_unused is still the normal first-boot flag, hiding an incomplete platform description
