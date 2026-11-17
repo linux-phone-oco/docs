@@ -589,10 +589,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: The first step of decision 2026-11-17-deep-sleep-measured-s2idle; it settles the biggest unknown - does surya's SoC reach its floor at all on mainline? On USB the phone cannot suspend (the link cannot go idle, and devlab-usb-awake holds a wake lock), so the lab has never measured a sleep. One sleep, falling back by itself: the USB gadget let go (soft_connect), the lab's and Sxmo's wake locks released, s2idle for 60 s woken by the RTC (rtcwake -m freeze), the gadget reconnected; qcom_stats (cxsd, aosd, ddr, adsp, cdsp, modem), suspend_stats, the cluster domain's idle states and every wakeup source's count read before and after. Wanted from the conveyor: this as a devlab verb (lab-tools backlog health-suspend-cycle, where what this needs of it is written), so it is never typed by hand. Proven by: the check soc-sleeps, run in the same boot after the sleep (devlab suite run), says pass or fail instead of skip - a number either way. Expected: fail, with the reasons in its detail.
+: Done 2026-11-17 by surya-keeper: one cycle by hand, soc-sleeps = fail (cxsd 0, aosd 0, adsp never asleep, cluster S2 never entered). Research 2026-11-17-surya-first-s2idle-cycle. The phone woke after 2.4 s, not 60: sleep-wake-source is next. Still wanted from lab-tools: the cycle as a devlab verb (health-suspend-cycle).
 
 Opened
 : 2026-11-17
@@ -3358,3 +3358,28 @@ Proof
 
 About
 : kb-summaries
+
+
+<a id="sleep-wake-source"></a>
+### Why the first s2idle woke after 2.4 s, not 60
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: From sleep-measured-once: entered s2idle at 811.7, exited 814.1. Read which wakeup source fired (irq counts before and after, wakeup_sources, no_console_suspend) and the RTC: rtcwake printed a 1970 date, so check the RTC is sane first. sleep-cluster-params can only be judged on a sleep that lasts.
+
+Opened
+: 2026-11-17
+
+Proof
+: soc-sleeps
+
+Rank
+: 2
+
+About
+: deep-sleep
