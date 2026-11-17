@@ -604,10 +604,10 @@ Says
 ### walleye-gadget-up
 
 Component id
-: usb-otg
+: kernel
 
 Proves
 : works
 
 Says
-: the phone, found by its manifest serial, runs a Linux gadget of ours and its address answers
+: A boot image of ours left fastboot: the phone's USB gadget appears on the host (lsusb by the manifest serial within 60 s) and answers on 172.16.43.1 (ping, telnet)
