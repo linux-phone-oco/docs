@@ -35,3 +35,5 @@
 {"id":"image-sensor","component_id":"camera-rear","proves":"present","says":"an image sensor is bound"}
 {"id":"mic-records","component_id":"audio-mic","proves":"present","says":"one second recorded from the main microphone is not digital silence"}
 {"id":"soc-sleeps","component_id":"deep-sleep","proves":"works","says":"the SoC reached its lowest power state this boot (CX collapse or AOSS sleep, counted by the SoC itself)"}
+{"id":"mic-hears-speaker","component_id":"audio-mic","proves":"works","says":"a quiet tone from the phone's speaker found by its own microphone, 20 dB above the noise"}
+{"id":"speaker-stereo","component_id":"audio-speaker","proves":"present","says":"the speaker plays in two channels"}

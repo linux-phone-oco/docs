@@ -481,3 +481,29 @@ Proves
 
 Says
 : the SoC reached its lowest power state this boot (CX collapse or AOSS sleep, counted by the SoC itself)
+
+
+<a id="mic-hears-speaker"></a>
+### mic-hears-speaker
+
+Component id
+: audio-mic
+
+Proves
+: works
+
+Says
+: a quiet tone from the phone's speaker found by its own microphone, 20 dB above the noise
+
+
+<a id="speaker-stereo"></a>
+### speaker-stereo
+
+Component id
+: audio-speaker
+
+Proves
+: present
+
+Says
+: the speaker plays in two channels
