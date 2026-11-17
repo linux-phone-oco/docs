@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/linux-phone-oco/docs/compare/v0.2.0...v0.3.0) (2026-11-17)
+
+
+### Features
+
+* docs follows ideal-knowledge-base 0.1.0: the short entry, next, find, row and recent ([#180](https://github.com/linux-phone-oco/docs/issues/180)) ([a094eb9](https://github.com/linux-phone-oco/docs/commit/a094eb9e6b3c1897b04667ffc9a5eac3f3dcd201))
+* feat: the Pixel 2 and 2 XL tracked beside surya, from published sources (all unknown) ([#177](https://github.com/linux-phone-oco/docs/issues/177)) ([ce464d6](https://github.com/linux-phone-oco/docs/commit/ce464d6e9f05d09115bc294aa6fa2c7a07aeb588))
+
 ## [0.2.0](https://github.com/linux-phone-oco/docs/compare/v0.1.0...v0.2.0) (2026-11-17)
 
 
