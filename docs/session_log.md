@@ -2461,3 +2461,21 @@ Done
 
 Considered
 : next: the holder is not the entry; look at what the AOP or a master holds (floor-sh0-owner stays paused, standby current as arbiter); deeper decision for the coordinator
+
+---
+
+
+<a id="2026-11-17-1905-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Stock-config kept kernel 7.1.0-sm7150-calls+ running, nothing kept from the try; healthy after one traced s2idle cycle (back by RTC alarm, BT unblocked, watchdog stopped). floor-entry-trace done, floor-irq-quiet dropped.
+
+Considered
+: next: soc-sleeps still fails with the entry in order; the holder is not the entry - a deeper decision (what the AOP sees on this flush, standby current as arbiter, genpd S2idle column 0); floor-sh0-owner paused; sensors-registry-writes, sleep-fastrpc-helpers
