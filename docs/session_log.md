@@ -2017,3 +2017,27 @@ Rejected
 
 About
 : walleye-kernel-dts
+
+---
+
+
+<a id="2026-11-17-floor-research"></a>
+### Why the SoC floor is not reached: researched
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Read the recorded cycles, qcom_stats and apps_rsc in the tree; two researchers on mainline/other SoCs and downstream/observed SM7150; ranked six holders; chose subtraction; nine backlog items with proofs.
+
+Considered
+: S2RAM, other cluster values, a smp2p sleepstate port, a downstream power-mode port.
+
+Rejected
+: Anything touching the phone: it is the keeper's.
+
+About
+: deep-sleep

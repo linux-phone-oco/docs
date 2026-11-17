@@ -20,21 +20,6 @@ Condenses
 ### Row 2
 
 About
-: deep-sleep
-
-Date
-: 2026-11-17
-
-Says
-: Surya does not reach deep sleep yet, and a timed s2idle cycle can lose the phone. Measured twice on kernel 7.1.0-sm7150-calls+: (1) a cycle by hand ended after 2.4 s, woken by IRQ 157; (2) IRQ 157 is the Bluetooth UART (serial@88c000, hci0), and with Bluetooth rfkill-blocked a timed cycle (rtcwake -m freeze -s 60) hung the phone hard at suspend entry: no return on USB, it sat in the initramfs gadget until force-rebooted; suspend_stats 0/0, no log survived. Sleep counters (cxsd, aosd) still 0; the audio DSP has never slept. Not known: whether the hang is the unset RTC (reads 1970) not waking s2idle, or a crash entering s2idle. Next try needs a way back that does not depend on USB networking (hardware watchdog or timed reboot, RTC set first, a log that survives: sync, pstore/ramoops, serial console), and one change at a time; Bluetooth block alone is not yet shown to cure the IRQ 157 wake. The author removed surya's SIM on 2026-11-17, for now (device note and backlog item sim-removed-skips, docs PR 200); nothing before deep sleep needs it. Research: 2026-11-17-surya-s2idle-bt-blocked-hang, 2026-11-17-surya-first-s2idle-cycle. Note: devlab health fails on a missing tests/automatic/checks.sh in surya-lab; devlab suite run works.
-
-Condenses
-: 2026-11-10-suspend-crash-found, 2026-11-10-usb-flapping, 2026-11-17-1225-how-the-phone-stands, 2026-11-17-a-coordinator-per-lane, 2026-11-17-deep-sleep-measured-s2idle, 2026-11-17-deep-sleep-researched, 2026-11-17-surya-first-s2idle-cycle, 2026-11-17-surya-s2idle-bt-blocked-hang, 2026-11-17-surya-s2idle-wakes-at-once, qcom-sleep-blockers, qcom-sleep-path, qcom-wake-for-calls, sleep-other-ways, sm7150-cluster-params, surya-sleep-measured
-
-
-### Row 3
-
-About
 : lpoco-health
 
 Date
@@ -47,7 +32,7 @@ Condenses
 : 2026-11-17-lpoco-health, 2026-11-17-lpoco-health-landscape
 
 
-### Row 4
+### Row 3
 
 About
 : google-walleye
@@ -60,3 +45,18 @@ Says
 
 Condenses
 : 2026-11-17-walleye-first-kernel, 2026-11-17-walleye-lane-started, 2026-11-17-walleye-mainline-research, 2026-11-17-walleye-vendor-research, google-walleye-android-reference-public, google-walleye-bootloader-first-look, google-walleye-how-it-stands, google-walleye-how-others-booted, google-walleye-vendor-kernel-hardware, walleye-fastboot-first, walleye-first-boot-recipe, walleye-lab-repo, walleye-mainline-prior-art, walleye-mainline-reuse, walleye-shortest-path
+
+
+### Row 4
+
+About
+: deep-sleep
+
+Date
+: 2026-11-17
+
+Says
+: Surya does not reach the SoC floor: after real 15 s s2idle cycles (cluster state 0x4100c244 taken, CX/MX votes 0, sleep set clean but SH0 x=1,y=3) cxsd, aosd and ddr read 0; wake and way back are solved (decisions 2026-11-17-way-back, serial-wakeup-off). Ruled out by measurement: cluster parameters and a stopped audio DSP / all DSPs - but those were stops of DSPs that had run, so latched votes are not excluded. Others reach the floor on mainline s2idle only by removing holders (research 2026-11-17-floor-research); the path is decision 2026-11-17-floor-research-path: read what is held (cmdline, clocks, icc), boot with DSPs never started, then subtract WLAN, USB, the SH0 owner, one per cycle, each judged by way-back.sh cycle 15 bt-on and the soc-sleeps check, which fails until the floor. Not known yet: the holder; whether this firmware fills the counters (adsp 0, apss/display/gpu empty); standby current (sleep-standby-current).
+
+Condenses
+: 2026-11-10-suspend-crash-found, 2026-11-10-usb-flapping, 2026-11-17-1225-how-the-phone-stands, 2026-11-17-1500-sleep-wake-uart, 2026-11-17-1530-lpoco-health-on-the-phone, 2026-11-17-1550-lpoco-health-v017, 2026-11-17-1620-how-the-phone-stands, 2026-11-17-1650-how-the-phone-stands, 2026-11-17-a-coordinator-per-lane, 2026-11-17-adsp-is-not-the-floor, 2026-11-17-adsp-stopped-cx-aosd-ddr-stay-0, 2026-11-17-cluster-params-are-not-the-floor, 2026-11-17-cluster-params-clean-yet-no-collapse, 2026-11-17-deep-sleep-measured-s2idle, 2026-11-17-deep-sleep-researched, 2026-11-17-deep-sleep-way-back, 2026-11-17-floor-research, 2026-11-17-floor-research-path, 2026-11-17-keeper-6-adsp-floor, 2026-11-17-qca-uart-wake-across-suspend, 2026-11-17-serial-wakeup-off, 2026-11-17-sleep-adsp-awake-first-try, 2026-11-17-surya-first-s2idle-cycle, 2026-11-17-surya-s2idle-bt-blocked-hang, 2026-11-17-surya-s2idle-wakes-at-once, 2026-11-17-surya-way-back-inventory, 2026-11-17-the-macro-hw-vote-release-stays-out-of-the-kept, 2026-11-17-way-back-decided, 2026-11-17-way-back-measured, 2026-11-17-way-back-proven, dropping-the-lpass-macros-hw-votes-at-runtime, qcom-sleep-blockers, qcom-sleep-path, qcom-wake-for-calls, sleep-other-ways, sm7150-cluster-params, surya-sleep-measured
