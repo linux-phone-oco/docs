@@ -1816,3 +1816,27 @@ Considered
 
 About
 : google-walleye
+
+---
+
+
+<a id="2026-11-17-sleep-adsp-awake-first-try"></a>
+### sleep-adsp-awake: first try
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Baseline cycle without stay_awake (the kept kernel has none): adsp 0. Built the macros' hw-vote release (rx, tx, va), tried once as 7.1.0-sm7150-calls-idle with the patched qcom_wdt: healthy, cycle adsp 0. Stopped services live: no change. Phone back on the kept kernel, healthy.
+
+Considered
+: Linux holds CX through the UARTs (pm_genpd_summary); the LPI pinctrl also votes LPASS_HW_MACRO.
+
+Rejected
+: Polling the phone during a cycle: it hung the phone once (author reset it).
+
+About
+: deep-sleep
