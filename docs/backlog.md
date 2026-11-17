@@ -904,10 +904,12 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
 : Found by the bring-up session, 2026-11-17: reading /sys/kernel/debug/gpio and the LPASS LPI pinctrl debugfs on surya while the LPASS clocks were off stalled the bus; the phone hung until a person held power. A guard for agents: devlab phone root (and the MCP door) could refuse or warn on those paths, or the health suite never touch them. Recorded in surya-lab research/microphone.md.  2026-11-17 (orchestration): devlab now refuses, saying why, any command it carries to the phone (phone sh|root, the MCP door) that names a path in the manifest [[hazard]] list; the hand-written ssh it might go around is refused by the lab hooks (devlab guard). Next: surya-lab device.toml names its hazards (bring-up: /sys/kernel/debug/gpio and the LPI pinctrl debugfs under 62b40000), then the item is done.
+
+Done 2026-11-17: devlab refuses any command it carries to the phone (phone sh|root, the MCP door) that names a path in the manifest's [[hazard]] list (orchestration, lab-tools main). surya's device.toml names /sys/kernel/debug/gpio and /sys/kernel/debug/pinctrl/62b40000 with why (bring-up, surya-lab main). Learned since: the hang came from the old 32-pin LPI driver of the WCD test kernels mapping the sensor DSP's pins; the branch driver (pinctrl at 62b52000) reads safely.
 
 Opened
 : 2026-11-17
