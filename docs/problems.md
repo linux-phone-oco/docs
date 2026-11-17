@@ -215,3 +215,41 @@ By
 
 Kind
 : unclear
+
+
+<a id="agent-folder-over-3kb"></a>
+### agent-folder-over-3kb
+
+Project
+: linux-phone-oco/docs
+
+What
+: start-weight 2026-11-17 17:08: ideal-agent-linux-phone-oco/AGENTS.md is 3467 B and its README.md 3280 B, both over the 3 KB budget (keep-the-start-light); no open item for it. Role totals are under 32 KB (orchestration 26425, phone-keeper 23937); briefs under 8 KB.
+
+Seen
+: 2026-11-17
+
+By
+: patrol
+
+Kind
+: unclear
+
+
+<a id="first-reads-whole-records"></a>
+### first-reads-whole-records
+
+Project
+: linux-phone-oco/docs
+
+What
+: read-weight 2026-11-17 17:08: sessions started since 11:08 UTC read far past brief and task summary before the first act: f7309841 (walleye lane, 15:22) 118 KB in 38 results, largest 14.8 KB scratch file and a 10 KB tad row; 07bf3625 (15:23) 197 KB, two paper searches of 27-30 KB each; 5510fa28 (16:33) 50 KB; d2219fca (15:17) 50 KB. Named query output, not whole records, was meant.
+
+Seen
+: 2026-11-17
+
+By
+: patrol
+
+Kind
+: unclear
