@@ -2353,3 +2353,45 @@ Rejected
 
 About
 : agent-folder
+
+---
+
+
+<a id="2026-11-17-1940-surya-keeper-sh0-bt"></a>
+### floor-sh0-owner: BT-blocked cycle
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: One cycle 15 with BT blocked on the kept kernel: phone reset by the watchdog, no reading; rebooted, healthy except Wi-Fi (saved SSID out of range, lab AP renamed). Nothing kept.
+
+Considered
+: next: SH0 looks by-design; a deeper decision on holders (clocks/GDSC/counter validity) or floor-suspend-late-dump
+
+About
+: deep-sleep
+
+---
+
+
+<a id="2026-11-17-1945-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Kept kernel 7.1.0-sm7150-calls+ on the kept dtb, rebooted by the watchdog after a BT-blocked cycle; suite 33 pass 6 fail (5 known gaps + Wi-Fi: the saved SSID is out of range, the lab AP shows another name). Nothing kept from the try.
+
+Considered
+: next: floor-sh0-owner is at a turning point (deeper decision), sensors-registry-writes, sleep-fastrpc-helpers
+
+About
+: deep-sleep

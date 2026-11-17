@@ -1950,3 +1950,25 @@ Sources
 
 About
 : google-walleye
+
+
+<a id="2026-11-17-sh0-bt-blocked-cycle-resets"></a>
+### 2026-11-17-sh0-bt-blocked-cycle-resets
+
+Brief
+: cycle 15 with Bluetooth blocked does not return: the phone reset, no reading; icc bw is 0 on every QUP/UFS/MMC path, so SH0 looks by-design
+
+Project
+: linux-phone-oco/surya-lab
+
+Date
+: 2026-11-17
+
+Question
+: Does blocking Bluetooth (88c000 quiet) drop the SH0 sleep vote?
+
+Found
+: On the kept kernel, way-back.sh enable then cycle 15 (BT blocked): the journal ends at 'cycle: sleep 15 s, fuse 30 s' and the phone came back after a reset (uptime 1 min, no pstore record), so the watchdog fired and no counters were read. icc_summary before the cycle: only usb (240000) and cpus carry bw on llcc/ebi; ufshc, i2c, spi, mmc, scm paths carry tag 7 at bw 0. So there is no consumer with bandwidth to subtract; SH0 x=1,y=3 may be by design and the holder elsewhere (clocks, GDSCs, counter validity). Wi-Fi after the reset stayed down: the saved SSID is not in range (the lab AP shows another name) - an environment change, not the cycle.
+
+About
+: deep-sleep
