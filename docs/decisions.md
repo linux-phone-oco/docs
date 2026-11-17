@@ -1280,3 +1280,28 @@ About
 
 Research
 : 2026-11-17-cleanroom-agents
+
+
+<a id="walleye-boot-tries-standing-go"></a>
+### walleye-boot-tries-standing-go
+
+Brief
+: fastboot boot tries on walleye need no further word from the author
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: On the author's word of 2026-11-17 ("lets do it ... no need to wait on me"), the walleye keeper runs 'devlab fastboot boot now' tries (a kernel in memory only, nothing written) whenever an image is ready, without asking. The author is asked, in one line through the top coordinator, only when the phone needs his hands (holding power to get back to fastboot after a hang). Anything that writes to the phone - flashing a partition, a stub dtbo, switching slots, 'fastboot oem' - still needs its own recorded decision and his word, and devlab's [fastboot] writes stays false until then.
+
+Why
+: A boot from memory leaves both slots as they were and falls back to the stock boot on reset; the author wants the least of his attention.
+
+Rejected
+: Asking for each try (needless attention); a standing go for writes too (a write can cost the Android reference or a slot).
+
+About
+: google-walleye
