@@ -4259,10 +4259,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-17-commons-and-device-bases: test_runs/test_results belong to each device's base (device-template #4 has the tables and the test-run record). devlab gather (and devlab's tad record test-run) still files into docs. When move-device-rows has moved a device's rows, devlab files that device's into its lab repository's base (the manifest's folder), and docs pulls them (feed-device-bases). Orchestration's.
+: devlab gather files into the lab's own base when it has a devicebase.toml (same test-run record; filed() and derivations from the lab; land lands the lab alone); --docs keeps the old path; the output says where it filed. lab-tools #82, devlab rebuilt into ~/.local/bin. Dry check on a scratch walleye base: run filed, test_runs/test_results rows present.
 
 Opened
 : 2026-11-17
