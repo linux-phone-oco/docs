@@ -1766,3 +1766,28 @@ About
 
 Research
 : standby-drain-as-a-repeatable-test
+
+
+<a id="walleye-try-returns-without-hands"></a>
+### walleye-try-returns-without-hands
+
+Brief
+: Every walleye try image carries its own way back; the author's hands are only for what no image can undo
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Decision
+: No image goes to the phone without a recorded way back that needs no hands. Outcomes of a vendor-gadget try: (1) gadget up: the keeper explores read-only over telnet and ends the try with the init's own reboot (sysrq b / reboot -f) which boots Android on slot a (a is successful), then adb reboot bootloader; (2) kernel panic: the bootloader falls back to Android on a after ~75 s (seen with s1); (3) a silent hang (no panic, no gadget): the init arms a self-reboot timer (reboot -f after 240 s unless a file /tmp/hold exists, which a telnet session may create) - so no hands; (4) a hang before init or in the kernel: the Qualcomm watchdog bites and the phone restarts into a (the s1 case). Hands (hold Power 10-30 s) remain only for a phone that neither panics nor resets (a kernel hang with the watchdog off), and for images that boot a mismatched Android (the stock-ramdisk control images: stopped for good). A try is announced to the coordinator with this table filled for the image.
+
+Why
+: The author held Power three times today for the same pattern (the control-style images boot Android with a system of another build and stick on the logo); the init that never exits would add a fourth kind unless it reboots by itself.
+
+Rejected
+: Asking the author for each hang (his attention is the scarce resource); an init that exits (panics, but falls back in 75 s: acceptable only as the last way); controlling power from the lab (no power control exists: a USB power switch or relay is a purchase for the author).
+
+About
+: walleye-first-fastboot-boot
