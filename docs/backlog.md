@@ -2935,6 +2935,9 @@ Device
 Proof
 : bringup-refuses-wrong-pin
 
+Rank
+: 3
+
 About
 : bringup
 
@@ -2965,6 +2968,9 @@ Device
 
 Proof
 : bringup-installs-from-tag
+
+Rank
+: 4
 
 About
 : bringup
@@ -3066,6 +3072,9 @@ Device
 Proof
 : lpoco-lab-and-devlab-are-one-program
 
+Rank
+: 1
+
 About
 : bringup
 
@@ -3096,6 +3105,9 @@ Device
 
 Proof
 : lpoco-mcp-lists-every-family-tool
+
+Rank
+: 2
 
 About
 : bringup
