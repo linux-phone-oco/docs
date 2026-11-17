@@ -1414,3 +1414,31 @@ Rejected
 
 About
 : dl-safe
+
+
+<a id="walleye-slot-flags-tries-on-b"></a>
+### walleye-slot-flags-tries-on-b
+
+Brief
+: Tries run on slot b with a left as it is; set-active (metadata only) is allowed to keep a slot bootable
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Decision
+: 1) Leave the flags as they are now (b current and successful, a unbootable but successful, its image untouched and known good: Android ran on it and was measured); no set_active now. 2) Further 'devlab fastboot boot now' tries run with b as the active slot. 3) The keeper reads devlab's before/after slot report on every try and records it with the phone's full fastboot text. 4) devlab's 'set-active now SLOT' (metadata only: priority, retry, flags, partition GUIDs, boot LUN; undone by set_active back) is allowed for exactly one purpose: when a try leaves no good active slot (current slot unbootable, or Android not reachable), the keeper makes b active again (b is the tries' slot; a stays the untouched reserve), and a only when the author wants Android on a. [fastboot] slot_switch = true in the lab's device.toml; writes stays false. 5) Nothing is flashed or erased: a stub dtbo (id 2704, which the Pixel 2 XL bootloader needs) is a write with no known way back (fastboot cannot read the stock dtbo) and stays the author's decision, to be asked only if the tries show the bootloader refusing our kernel for that reason. 6) Next try variants are the builder's: header os_version and patch level set (ours are 0), panic=10 kept (a hang needs hands).
+
+Why
+: Research walleye-slot-flip-why: a failed fastboot boot on the active slot makes Qualcomm's ABL flag it unbootable and switch to the other successful slot, which is what we saw; the kernel probably never ran. set_active is metadata only and reversible, a and b both boot Android and fastboot stays reachable, so the way back is on record (a two-way door).
+
+Rejected
+: set_active a now (a stays successful=no, the next failed try flips it again, a write for nothing); set_active before every try (a write per try); flashing a stub dtbo now (no known way back: the author's decision); waiting for the author (the flags are reversible and the way back is recorded).
+
+About
+: walleye-first-fastboot-boot
+
+Research
+: walleye-slot-flip-why
