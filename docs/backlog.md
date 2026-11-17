@@ -4141,34 +4141,6 @@ About
 : deep-sleep
 
 
-<a id="floor-sh0-owner"></a>
-### Find who holds the SH0 x=1,y=3 sleep vote and drop it
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: From the icc_summary at late suspend (floor-read-holders) name the path that leaves SH0 set; the likely owner is a88000.serial (avg 1 peak 1 across suspend) or a tag-7 (always) path. Test by closing or unbinding that device before the cycle (one change), then cycle 15 bt-on and read the sleep-set flush trace (rpmh_send_msg) and counters.
-
-Opened
-: 2026-11-17
-
-Needs
-: phone
-
-Device
-: xiaomi-surya
-
-Proof
-: soc-sleeps
-
-About
-: deep-sleep
-
-
 <a id="fastboot-slots-told"></a>
 ### fastboot boot says where the phone went and the slots' flags; set-active gated
 
@@ -4442,34 +4414,6 @@ About
 : google-walleye
 
 
-<a id="floor-aop-qmp-no-ack"></a>
-### Why the AOP does not ack QMP sends (qcom_aoss_qmp c300000)
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: Found by floor-aoss-knobs 2026-11-17 (keeper-9): the channel opens at probe, but every knob send times out ('ucore did not ack channel'). Either this AOP firmware ignores those messages or stops acking after open. Read only first: does a send the driver itself makes (the qmp clock/cooling messages) ack? the AOP message RAM at the channel offset, dmesg at probe, the aoss node against sm8150/sc7180. Then one change.
-
-Opened
-: 2026-11-17
-
-Needs
-: phone
-
-Device
-: xiaomi-surya
-
-Proof
-: soc-sleeps
-
-About
-: deep-sleep
-
-
 <a id="walleye-loaderror-stock-ids"></a>
 ### Read walleye's stock boot header and dtb ids (qcom,board-id, pmic-id, msm-id) from a public LineageOS walleye build, host only
 
@@ -4620,10 +4564,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: After keeper-9: DSPs never started, WLAN off, no ignore_unused, cluster params - none moves cxsd/aosd/ddr off 0; the apps side looks clean (cluster S2 used, CX/MX 0, sleep set zero but SH0 x=1,y=3). Open: floor-sh0-owner, floor-aop-qmp-no-ack, floor-suspend-late-dump. Question: what is SH0 x=1,y=3 (an RPMh/AOSS resource and its owner on SM7150), who votes it, what do SDM845/SM8150/SC7180 ports and Android do about it, and why does the AOP at c300000 not ack QMP sends. Ends with a decision and phone backlog items (each one change, measured by way-back.sh cycle 15 bt-on with the watchdog armed).
+: Answered 2026-11-17-sh0-and-aop-research; decision 2026-11-17-sh0-owner-by-tag; phone items floor-sh0-owner, floor-sh0-qup-tags, floor-aop-qmp-no-ack.
 
 Opened
 : 2026-11-17
@@ -4633,6 +4577,96 @@ Needs
 
 Device
 : xiaomi-surya
+
+About
+: deep-sleep
+
+
+<a id="floor-sh0-owner"></a>
+### Find who holds the SH0 x=1,y=3 sleep vote and drop it
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decided 2026-11-17-sh0-owner-by-tag: SH0 is a keepalive BCM; the sleep residual is a TAG_ALWAYS consumer (uart8 debug UART the recorded candidate). (1) read only: at late suspend, icc_summary paths via qns_llcc with a sleep vote. (2) one change: one-shot dtb with uart8 interconnects ACTIVE_ONLY (console off the UART for the cycle, way-back by the kept dtb), cycle 15 bt-on with the watchdog armed; read rpmh_send_msg sleep flush: SH0 present or gone; then the counters. Proof: soc-sleeps (fails until the floor); the step's own pass is 'SH0 absent from the sleep flush'.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="floor-sh0-qup-tags"></a>
+### If SH0 stays: the other TAG_ALWAYS QUP and crypto consumers, one per cycle
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: One-shot dtb per change: the serial toward SLAVE_LLCC (sm7150.dtsi ~1259), then the crypto engine (~460), then the rest of the QUP ALWAYS paths; each judged by the sleep-set flush and soc-sleeps. Skip when floor-sh0-owner removes SH0.
+
+Opened
+: 2026-11-17
+
+Waits
+: floor-sh0-owner
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="floor-aop-qmp-no-ack"></a>
+### Why the AOP does not ack QMP sends (qcom_aoss_qmp c300000)
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Lower rank (research 2026-11-17-sh0-and-aop-research: node equals sm8150/sc7180, serves only the aoss knobs, hypothesis 5). Read only: dump msgram descriptor and mailbox words (magic, version, mcore/ucore states, offset/size) before and after a send; count the AOP irq 389; trace aoss_send/aoss_send_done; whether the AOP changes the length word. Then one change at most. Not known yet: downstream irq-reg-base.
+
+Opened
+: 2026-11-17
+
+Waits
+: floor-sh0-owner
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: soc-sleeps
 
 About
 : deep-sleep

@@ -1698,3 +1698,31 @@ Sources
 
 About
 : google-walleye
+
+
+<a id="2026-11-17-sh0-and-aop-research"></a>
+### 2026-11-17-sh0-and-aop-research
+
+Brief
+: SH0 is a keepalive LLCC BCM; its sleep residual is a TAG_ALWAYS consumer (QUP/uart8), not a latch; AOP QMP wiring equals sm8150, no-ack unexplained
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: What is SH0 x=1,y=3, who votes it, what do SDM845/SM8150/SC7180 do, and why does the AOP not ack QMP?
+
+Found
+: SH0 is not a holder someone took; it is a keepalive BCM. In mainline sm7150.c, bcm_sh0 is "SH0", keepalive, node qns_llcc, identical to sdm845, sm8150 and sc7180 (the sc7180 Acer Aspire 1 reaches cxsd/aosd/ddr counts with the same definition). bcm-voter.c forces keepalive BCMs to x=y=1 (or enable_mask) only in the AMC and WAKE buckets. The SLEEP bucket is aggregated from consumers' tags only, so a sleep-set SH0 x=1,y=3 means a consumer whose tag includes SLEEP (QCOM_ICC_TAG_ALWAYS = AMC|WAKE|SLEEP) has a path through qns_llcc with a tiny bandwidth. In sm7150.dtsi the candidates are the QUP nodes, which use TAG_ALWAYS interconnects (one serial toward gem_noc SLAVE_LLCC, near line 1259), the crypto engine (ALWAYS to EBI, line 460), and uart8 serial@a88000 (the debug UART), which the recorded cycles show at avg 1 peak 1 across suspend. The owner is a DT tag on a consumer, not a firmware latch.
+Whether the SH0 sleep vote blocks aosd is NOT known yet: no source shows the sleep-set contents of the Aspire 1 or any SM7150-class phone; SH0 is only the sole non-zero sleep entry on surya, which makes it the cheapest subtraction.
+QMP: the aoss_qmp node (c300000, spi 389, mboxes apss_shared 0, apss_shared at 17c00000) is identical to sm8150 and sc7180, so the wiring in the tree is not the difference. Open succeeds, every send times out: the AOP does not clear the length word after the kick; qmp_send gives no other signal. Downstream wiring (irq-reg-base 17c0000c, mask 1) could not be confirmed from a source this session - not known yet. QMP matters only for the aoss prevent knobs (cx_mol, ddr_mol; hypothesis 5, unlikely) and is not on the path to the SH0 owner.
+Read from the tree at kernel-rc3; nothing on the phone was touched.
+
+Sources
+: sh0-bcm-voter-c,sh0-sm7150-icc,aoss-qmp-patchwork,floor-travkin-aspire1
+
+About
+: deep-sleep

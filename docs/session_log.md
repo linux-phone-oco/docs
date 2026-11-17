@@ -2167,3 +2167,27 @@ Considered
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-surya-research-sh0-aop"></a>
+### SH0 and AOP QMP researched
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Read bcm-voter, sm7150/sm8150/sc7180/sdm845 icc tables, qcom_aoss and the three DTs in the kernel-rc3 tree; found SH0 is keepalive-by-design and the sleep residual a consumer tag; chose DT subtraction; queued phone items.
+
+Considered
+: QMP-first, late-suspend dump kernel, keepalive patch, firmware-latch reading
+
+Rejected
+: QMP-first and the dump kernel: more build for what one dtb answers; keepalive patch: hides the consumer. Nothing on the phone was touched.
+
+About
+: deep-sleep
