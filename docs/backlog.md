@@ -4884,10 +4884,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: in-progress
 
 Note
-: From the first state (Android completed on a, adb reboot bootloader), devlab fastboot boot now vendor-gadget.img, before/after slot report, lsusb by serial for 90 s, then ssh/telnet 172.16.43.1. No writes. A hang or vanishing from USB is an answer: tell the coordinator in one line (hand power-cycle). If it answers: do not change anything, go to walleye-vendor-kernel-facts in the same boot.
+: tried twice, Load Error; gadget-up fails
 
 Opened
 : 2026-11-17
