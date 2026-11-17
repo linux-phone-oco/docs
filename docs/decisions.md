@@ -1229,3 +1229,28 @@ About
 
 Research
 : bringup-one-roof
+
+
+<a id="2026-11-17-bringup-parts-hook"></a>
+### 2026-11-17-bringup-parts-hook
+
+Brief
+: bringup's one step hook is 'parts': a manifest-named executable run on scratch copies of kernel and ramdisk before packing
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Decision
+: [boot.hooks] parts = EXE (relative to the manifest) is called with the kernel and ramdisk paths in a scratch folder; what they hold afterwards is packed. A missing or non-zero hook stops the job (exit 2, nothing written). The pin [tools] lpoco = "X.Y" is a version prefix checked before any verb that finds a manifest.
+
+Why
+: Test-first: bringup-refuses-wrong-pin and hook tests in bringup/tests/pin_and_hooks.rs; the ramdisk is the part device repositories change.
+
+Rejected
+: Hooks editing the user's own files in place: a failed hook would leave them changed. A hook per image field: no device asked for one yet. Skipping the rust-script test when rust-script is absent: a skipped check is not a check; CI installs it instead.
+
+About
+: bringup
