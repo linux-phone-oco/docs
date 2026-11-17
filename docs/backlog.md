@@ -1949,3 +1949,22 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="telegram-at-provisioning"></a>
+### Telegram client at provisioning: uncomment telegram-desktop in provision/packages.txt
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: Alpine v3.24 telegram-desktop 6.8.5-r0 needs libada.so.3, gone with ada 4.0; edge 7.4.4-r0 is rebuilt. Check with: echo apk add --simulate telegram-desktop | devlab phone root. When it passes, uncomment the line and apk add it on the phone.
+
+Opened
+: 2026-11-17
+
+Waits
+: Alpine v3.24 rebuilding telegram-desktop against ada 4 (libada.so.4)
