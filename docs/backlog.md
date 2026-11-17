@@ -215,6 +215,8 @@ Note
 
 2026-11-17, ~04:40 UTC (bring-up): THE MICROPHONE WORKS, on a test kernel built from branches (linux-phone-oco/linux test/surya-mic). The last fault: the capture link used the TX SoundWire controller's playback DAI (swr2 0); capture through DAI 1 (PR #6, found in pulpoff/linux-surya, a mainline surya tree on Mobian whose device tree also confirmed tonight's other fixes). surya's microphones are analog (ADC1 bottom, ADC2 top). Proof decided by the phone: surya's check mic-hears-speaker plays a 1 kHz tone at -6 dBFS and 20% volume (the author heard it: 'nice and soft') and finds it 57 dB above the noise - pass. All four fixes queued in upstream-queue for sm7150-mainline, waiting for the author. Next: the proven kernel as the phone's default (lab-tools kernel-promote, asked of the conveyor) so audio-mic leaves the known gaps and the face keeps works; then the top mic (ADC2), the headset mic, a UCM capture profile, and the earpiece through the WCD EAR PA.
 
+Correction (2026-11-17, bring-up): where this item and research/microphone.md (steps 10, 11, 14) speak of surya's built-in microphones as digital mics, that reading came from the vendor's QRD reference board and is wrong for surya: its microphones are analog, WCD9375 ADC1 (bottom) and ADC2 via INP3 (top), both proven by mic-hears-speaker. The DMIC path is dropped (research decision 2026-11-17-microphones-analog-wcd-path). The kept kernel records with both on every boot; audio-mic left surya's known gaps. Queue from the research, in order: mic-ucm-capture, mic-held, mic-upstream, mic-dmic-dropped.
+
 Opened
 : 2026-11-09
 
@@ -290,10 +292,12 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
 : Written and in use (2026-11-10): both panel variants, values from a running Sxmo, shellcheck clean; Sxmo loads it (SXMO_DEVICE_NAME=xiaomi,surya-huaxing, scale 3). Kept on linux-phone-oco/sxmo-utils, branch deviceprofile/xiaomi-surya; the patch waits in ~/Projects/linux-phone-oco/upstream-queue/sxmo-utils on the lab machine. sxmo-utils takes patches by mailing list (sourcehut) - to send signed off by the user, when the user decides. Until then surya-lab provisioning installs it.
+
+Sent 2026-11-17 04:25 UTC by the author, signed off by him, with git send-email (plain text; the first try through the Gmail connector was refused by lists.sr.ht for its HTML part): '[PATCH sxmo-utils] deviceprofiles: add xiaomi,surya (POCO X3 NFC)', rebased on upstream master eb237fe, in the list archive lists.sr.ht/~mil/sxmo-devel. Review comments are watched there; replies in his name need his word.
 
 Opened
 : 2026-11-10
