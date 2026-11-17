@@ -3263,3 +3263,60 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="bring-up-brief-light"></a>
+### The bring-up brief over budget (13.3 KB, budget 8 KB): its detail behind summaries and queries
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Proposed by housekeeping (ideal-agent practice 45, research start-weight-measured); orchestration owns the brief. Its long sections - 'The loop, for one part' with linux-phone's places, 'As of 2026-11-17' parts list, 'Two sessions, one lab' - repeat the skills bring-up-a-part and change-a-device, the phone-keeper brief, and what tad q next / tad q about --subject S answer. Next: keep one line each and the query; move the dated parts list into the parts' records or a summary.
+
+Opened
+: 2026-11-17
+
+About
+: agent-folder
+
+
+<a id="start-weight-on-the-face"></a>
+### The start weight per role, a number on the face
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Housekeeping (ideal-agent practice 45) measures the bytes a fresh session reads per role (scripts/start-weight). Next: a table or named record for the measurement (role, bytes, date), filed by the patrol, and a line per role on the face beside its budget.
+
+Opened
+: 2026-11-17
+
+About
+: agent-folder
+
+
+<a id="patrol-measures-the-start"></a>
+### The patrol measures the start weight each run and files bring-up-brief-light-like items when over budget
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Proposed to orchestration, which owns the linux-phone-patrol scheduled task: add to its round 'run ~/.claude/plugins/cache/ideal-agent/ideal-agent/VERSION/scripts/start-weight on docs at main; over budget (ideal-agent skill keep-the-start-light), file one backlog item about agent-folder with the numbers'. Also in the patrol's SKILL.md: lab-agent signs still say ocoeco note problems.
+
+Opened
+: 2026-11-17
+
+About
+: agent-folder

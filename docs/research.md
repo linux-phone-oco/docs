@@ -720,3 +720,22 @@ Sources
 
 About
 : kb-entry
+
+
+<a id="start-weight-measured"></a>
+### start-weight-measured
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: What must a fresh linux-phone session read before its first useful action, per role, and is it within ideal-agent's budget (practice 45-keep-the-start-light: 32 KB a role, 3 KB a front file, 8 KB a brief)?
+
+Found
+: Measured 2026-11-17 on docs' main (495bbc6) with ideal-agent 0.2.1's scripts/start-weight, in bytes. Every role reads: the session start 14,353 (the practices without their reasons, and the inbox - 22.5 KB before ideal-agent #13 put the reasons a command away), skill and agent descriptions 4,057, lab-session-start 2,012, AGENTS.md 2,141, ideal-agent-linux-phone-oco/README.md 2,306 - 24,869 in all. Then the brief: bring-up 13,313 (38,182 in all: over the 32 KB budget, and the brief over 8 KB), orchestration 6,248 (31,117), phone-keeper 4,559 (29,428), feature-research 2,417 (27,286). Before #13 the same roles read 35-46 KB. The front files are within 3 KB. Whether summaries are due cannot be read yet: docs pins idealkb 0.1.0, whose about query has no summaries (0.3.0 comes with the weekly pin).
+
+About
+: agent-folder
