@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.2.0](https://github.com/linux-phone-oco/docs/compare/v0.1.0...v0.2.0) (2026-11-17)
+
+
+### Features
+
+* Every record names what it is about; tad q about gives a subject's whole knowledge ([#170](https://github.com/linux-phone-oco/docs/issues/170)) ([bfb5853](https://github.com/linux-phone-oco/docs/commit/bfb5853bf9df7594d59860839abb6dba326fbacc))
+* feeds and the status derivation as named records; devlab's filing as a record; tad 0.6.0 ([#115](https://github.com/linux-phone-oco/docs/issues/115)) ([5789774](https://github.com/linux-phone-oco/docs/commit/57897747e77f3cac65a2e548af4066451c826452))
+* linux-phone's face, drawn in CI from its open database ([#82](https://github.com/linux-phone-oco/docs/issues/82)) ([d72b13b](https://github.com/linux-phone-oco/docs/commit/d72b13bd5cac387e536961fd65d3cd629b350ea9))
+* one database for linux-phone: every place's records, through named records ([#118](https://github.com/linux-phone-oco/docs/issues/118)) ([ccc6e74](https://github.com/linux-phone-oco/docs/commit/ccc6e74e314a6cb4f783f41b41328a123f44de1f))
+* support status looks past skips to each test's latest measurement ([#158](https://github.com/linux-phone-oco/docs/issues/158)) ([b5c0222](https://github.com/linux-phone-oco/docs/commit/b5c022217f1ae3be63b9e2ae3b12e10d578dc27e))
+* Support status read off the suite's results, beside what was judged ([#86](https://github.com/linux-phone-oco/docs/issues/86)) ([ba01aae](https://github.com/linux-phone-oco/docs/commit/ba01aaeee8dc51403c46f437a6def2cf490b8515))
+* tad q coverage: each device's parts no test proves work ([#151](https://github.com/linux-phone-oco/docs/issues/151)) ([8afdf9c](https://github.com/linux-phone-oco/docs/commit/8afdf9ce2833cb46127b07c43e56fb0061f6a048))
+* Tests: a known gap counted apart from a failure, in every run ([#98](https://github.com/linux-phone-oco/docs/issues/98)) ([b6f5db4](https://github.com/linux-phone-oco/docs/commit/b6f5db48a1ed634babefeb565e2bfaa706a415c6))
+* the phone keeper: one owner of surya, its queue, its hand-over ([#162](https://github.com/linux-phone-oco/docs/issues/162)) ([b517df8](https://github.com/linux-phone-oco/docs/commit/b517df87f49946c4e5156ace6431e418c486e3c2))
+* the phone's queue in the author's order: deep sleep first ([#168](https://github.com/linux-phone-oco/docs/issues/168)) ([87f9eb4](https://github.com/linux-phone-oco/docs/commit/87f9eb4640fb39680d8e573e750ccacce980217f))
+* the sensor hub's way decided: the registry kept current, steps on the phone's queue ([#176](https://github.com/linux-phone-oco/docs/issues/176)) ([02edd49](https://github.com/linux-phone-oco/docs/commit/02edd49f36d92b512ac96741b12939bf4835653e))
+
+
+### Bug Fixes
+
+* the one-database decision's about pointed nowhere ([#119](https://github.com/linux-phone-oco/docs/issues/119)) ([0956e27](https://github.com/linux-phone-oco/docs/commit/0956e27ed75d4605b90c4f444e2f0de20bb09928))
+* the phone's queue reads in the author's order, waiting items in their place ([#169](https://github.com/linux-phone-oco/docs/issues/169)) ([fb831b2](https://github.com/linux-phone-oco/docs/commit/fb831b2ce94088727c0201cf9bba8bd1491d7147))
+
 ## 0.1.0 (2026-11-16)
 
 
