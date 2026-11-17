@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/linux-phone-oco/docs/compare/v0.3.0...v0.4.0) (2026-11-17)
+
+
+### Features
+
+* audio-mic's answer leads with its summary; research material in dated folders ([#186](https://github.com/linux-phone-oco/docs/issues/186)) ([00afdde](https://github.com/linux-phone-oco/docs/commit/00afdde1431c37410528cd5bcb2306748bf05a59))
+* the face from docs' own data: no ocoeco observe ([#182](https://github.com/linux-phone-oco/docs/issues/182)) ([480170d](https://github.com/linux-phone-oco/docs/commit/480170d6cdb5de01a9ee8c8764ce04af0dc4cccc))
+
 ## [0.3.0](https://github.com/linux-phone-oco/docs/compare/v0.2.0...v0.3.0) (2026-11-17)
 
 
