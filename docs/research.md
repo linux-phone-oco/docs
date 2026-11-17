@@ -1820,3 +1820,39 @@ Found
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="walleye-boot-refused-why-how-it-stands"></a>
+### walleye-boot-refused-why-how-it-stands
+
+Brief
+: Load Error is not the slot flags (control refused on a too); the one accepted try came with healthy Android on a, so the next test restores that state, then cold restart, host checks, UART
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: Why does the Pixel 2's bootloader refuse even LineageOS's official boot.img by fastboot boot (Load Error), and what makes fastboot boot work on it?
+
+Found
+: What is: the control (LineageOS 22.2 20261113 boot.img, stock header, AVB footer, own dtb) is refused with "Failed to load/authenticate boot image: Load Error" on slot b and, per walleye-control-on-slot-a-try, on slot a too; so are our b-f. Seen to be accepted: our boot-b on the very first try (slot a active, phone entered fastboot from healthy Android): the phone left USB, Android came up on b, a flagged unbootable; and boot-a, "Booting OKAY" with nothing starting, on slot b. The same image was refused later. So the refusal is not the image's format and, after the slot-a try, not the active slot or the unbootable flag alone. The same string and A/B flip are reported for walleye since 2017 (XDA PSA); on other Qualcomm ABL phones it comes "randomly" and goes with a restart, another port or cable, set_active or a stock reflash.
+
+Ranked causes now (each by what it predicts):
+1. State left by the first tries that set_active does not undo. The one accepted try came from a phone booted into Android on a, with a successful=yes (Android marks it when boot completes). Now a is successful=no, retry 1, and b's flag was reset by our set-active (b successful no). Predicts: after Android boots on a to completion (marks it successful) and the phone is put into the bootloader from that Android, the control is accepted again. Cheapest and reversible; it is the exact first state. Not tested.
+2. A bootloader that has stayed up since a failed boot (the 'restart cures it' reports). Predicts: a cold power-off and start into the bootloader, then the same try, is accepted. Not tested; also covered by 1, which reboots the phone.
+3. dtbo (or vbmeta) of the active slot. The bootloader picks overlays from dtbo by id and rev and refuses if none fits (AOSP DTO; the taimen bootloader wants id 2704, kcxt). Slot b's is an older Lineage build's and a's is current, yet both refuse, so a mismatch with the new dtb is unlikely; a cause only if 1 and 2 fail. A write; stays named, with no way back for the stock dtbo (fastboot cannot read it back).
+4. Host: old fastboot, USB port, cable. The transfer succeeds and the refusal comes back at "booting", so least likely; recorded with each try (fastboot --version).
+5. AVB and lock state: the phone reports unlocked yes, where verification errors are warnings; not measured.
+
+Not known yet: the bootloader's own reason. Google's ABL is not public (the CAF Qualcomm ABL only shows the shape) and fastboot has no read-only oem command that prints it. The way to see it is the serial log over the Pixel 2's Android Debug Cable (Nura wiki), which needs the author's hardware.
+
+Vector chosen: restore the first state, since it is the only state in which an image was accepted: set-active a, boot Android on a normally to completion (a's own Android, nothing written), adb reboot bootloader, the control once; then, if still refused, cold power-off start and host checks; then UART; a write last.
+
+Sources
+: xda-fastboot-boot-ab-psa,xda-load-error-restart,kcxt-dtbo-wahoo,nura-taimen-wiki,aosp-dto-compile
+
+About
+: walleye-first-fastboot-boot

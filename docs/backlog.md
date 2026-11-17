@@ -4732,3 +4732,93 @@ Proof
 
 About
 : google-walleye
+
+
+<a id="walleye-load-error-first-state"></a>
+### Restore the first state: boot Android on slot a to completion, adb reboot bootloader, control once
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: set-active a, fastboot reboot, wait until Android on a is up (sys.boot_completed 1, so it marks a successful), then adb reboot bootloader and one devlab fastboot boot now of the control. Back: set-active b if the phone ends on a failed slot. Nothing is written.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: devlab's before/after slot report (a successful yes before the try) and the fastboot text of the control try, accepted (phone leaves fastboot) or refused; the phone back on a bootable slot
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-load-error-restart-host"></a>
+### If refused: cold restart, then the same try on the same slot, with host checks
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Only when the first-state try is refused. Power off fully (not fastboot reboot), start into the bootloader, record fastboot --version and that the phone is on a direct USB port; the control once; the phone back on its start slot.
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye-load-error-first-state
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: devlab's before/after slot report and the fastboot text of one control try after the cold restart, with the fastboot version and port in the log; the phone back on its start slot
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-load-error-uart"></a>
+### Read the bootloader's own reason for Load Error over the Android Debug Cable (UART)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: The bootloader logs the reason to the serial console; the Nura wiki names the Pixel 2 Android Debug Cable. Hands needed; the phone itself is not changed.
+
+Opened
+: 2026-11-17
+
+Waits
+: the author's debug cable
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: a captured serial log of one refused control try that names the failing step (LoadImageAndAuth, dtbo, vbmeta or other), attached to a research row
+
+About
+: walleye-first-fastboot-boot

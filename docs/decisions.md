@@ -1601,3 +1601,31 @@ Rejected
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="walleye-load-error-vector"></a>
+### walleye-load-error-vector
+
+Brief
+: Restore the first state (Android booted on slot a, then bootloader) and try the control; then cold restart, host checks, UART; no write
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Decision
+: Order for the keeper: (1) walleye-load-error-first-state: set-active a, let a's Android finish booting, adb reboot bootloader, the control once; (2) walleye-load-error-restart-host if refused; (3) walleye-load-error-uart with the author's cable; writes (dtbo, vbmeta) come back as new items with their way back after those.
+
+Why
+: The control on slot a was refused too, so the slot flags alone are out; the only accepted image was tried from a phone that had booted Android on a normally, and that state (a successful=yes, bootloader entered from Android) is the one thing not repeated since. It writes nothing and set-active b is the way back.
+
+Rejected
+: Flash a stub dtbo or vbmeta now: no way back for the stock dtbo and no evidence it is the cause. Change the image again: the Lineage control already fails with a stock header. Treat the string as one fault: reports show restart, cable, set_active and reflash all cure it, so each is a separate small try.
+
+About
+: walleye-first-fastboot-boot
+
+Research
+: walleye-boot-refused-why-how-it-stands

@@ -2583,3 +2583,110 @@ By
 
 Takes
 : qmp_send acks only when the AOP clears the length word after a kick; the timeout path is the one surya hits
+
+
+<a id="xda-fastboot-boot-ab-psa"></a>
+### PSA: fastboot booting a bad image can confuse the A/B bootloader (Pixel 2 walleye)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://xdaforums.com/t/psa-fastboot-booting-a-bad-image-can-confuse-the-a-b-bootloader-fix-inside.3692932/
+
+Author
+: joshua_
+
+Year
+: 2017
+
+By
+: walleye-research
+
+Takes
+: On walleye, fastboot boot of MSM8998 TWRP images was refused before any kernel ran and flipped slots; set_active a restores; later posters got Load Error for every image after it, even after stock flashes, until both slots were reflashed; use a current fastboot
+
+
+<a id="xda-load-error-restart"></a>
+### Troubles reinstalling TWRP [Load Error] (Mi 8 SE thread, another Qualcomm ABL phone)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://xdaforums.com/t/troubles-reinstalling-twrp-failed-to-load-authenticate-boot-image-load-error.3926815/
+
+Author
+: greendra8 et al.
+
+Year
+: 2019
+
+By
+: walleye-research
+
+Takes
+: Same ABL string on another phone: reported cures are restart, another USB port or cable, set_active, reflashing stock; the string is generic with several unrelated causes
+
+
+<a id="kcxt-dtbo-wahoo"></a>
+### dtbo-google-wahoo-mainline README (Casey Connolly)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://gitlab.com/kcxt/dtbo-google-wahoo-mainline
+
+Author
+: Caleb Connolly
+
+Year
+: 2021
+
+By
+: walleye-research
+
+Takes
+: Taimen bootloader refuses to boot unless the dtbo partition holds an overlay with id 2704 (androidboot.dtbo_idx=12); a minimal dtbo makes mainline boot
+
+
+<a id="nura-taimen-wiki"></a>
+### Google Pixel 2 XL (google-taimen) mainline status
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://wiki.nura.eco/wiki/Google_Pixel_2_XL_(google-taimen)
+
+Author
+: Casey, Nura wiki
+
+Year
+: 2026
+
+By
+: walleye-research
+
+Takes
+: Mainline boots on taimen through pmbootstrap flasher with basic dts and clk_ignore_unused; pstore is unreliable after cold reboot; a serial Android Debug Cable is the way to see early boot
+
+
+<a id="aosp-dto-compile"></a>
+### AOSP: Compile and verify device tree overlays
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Url
+: https://source.android.com/docs/core/architecture/dto/compile
+
+Year
+: 2026
+
+By
+: walleye-research
+
+Takes
+: The bootloader picks overlays from dtbo by id and rev, applies them to the base dtb and passes androidboot.dtbo_idx; an overlay that fails to apply is a bootloader-side boot failure
