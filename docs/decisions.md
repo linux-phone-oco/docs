@@ -1629,3 +1629,28 @@ About
 
 Research
 : walleye-boot-refused-why-how-it-stands
+
+
+<a id="walleye-bisect-from-the-control"></a>
+### walleye-bisect-from-the-control
+
+Brief
+: After 'Booting OKAY' with no start, bisect from the accepted stock control, not UART or a dtbo write
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Decision
+: Our images e and b are accepted from the first state but never start; the stock control boots. The next step is a bisect: images s1 (stock kernel + stock dtb + our initramfs), s2 (our kernel + stock dtb), s3 (stock kernel + our dtb), one swap each, built from the control's own unpacked parts; the keeper tries them from the first state. UART (the author's cable) and a dtbo/vbmeta write come after, only if the bisect leaves the question open.
+
+Why
+: A bisect uses only what we can read and rebuild on the host, changes nothing on the phone, and s1 may give a working USB shell on the stock kernel with our initramfs, a real foothold; research walleye-own-images-e-b-first-state.
+
+Rejected
+: UART first (needs the author's cable, a purchase or wait); a stub dtbo or vbmeta write (no way back for the stock dtbo, no evidence it is the cause: acceptance already happens); changing our images at random again.
+
+About
+: walleye-first-fastboot-boot

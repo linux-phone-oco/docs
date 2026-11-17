@@ -4931,3 +4931,31 @@ Proof
 
 About
 : google-walleye
+
+
+<a id="walleye-bisect-stock-to-ours"></a>
+### Bisect from the accepted control to our image: stock kernel+dtb with our initramfs, then one part of ours at a time
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: From the first state the control boot.img is accepted and starts; ours (e, b) are accepted ('Booting OKAY') but never start (stays in fastboot). Bisect, one change per image: s1 = stock kernel + stock dtb + OUR gadget initramfs (172.16.43.1) + stock cmdline (if it runs, the stock 4.4 kernel gives a known-good USB shell with our initramfs: a real result), s2 = OUR kernel (as the same compression/format as the stock kernel: lz4 Image + appended dtb) + stock dtb + stock ramdisk, s3 = stock kernel + OUR dtb + stock ramdisk. Say what differs between stock and ours that ABL could care about (kernel compression lz4 vs gzip, image size, dtb compatible/msm-id, dtb count, cmdline, header fields). Decision walleye-bisect-from-the-control. Host only; do not alter a-h.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: images s1..s3 built by a script from control/boot.img's own parts (unpack_bootimg) with exactly one part swapped each, check-bootimg ok, hashes in SHA256SUMS; the keeper's tries then show which swap makes the bootloader stop at 'Booting OKAY'
+
+About
+: walleye-first-fastboot-boot
