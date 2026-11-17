@@ -1,3 +1,3 @@
 {"id":"2026-11-11T15:04:23Z-read-the-modem-s-state-by-hand","project":"linux-phone-oco/surya-lab","record":"read-the-modem-s-state-by-hand","at":"2026-11-11T15:04:23Z","change":"data/the-modem-with-a-sim","minutes":1,"effort":1,"load":5}
-{"id":"2026-11-17T15:23:15Z-ran-read-only-fastboot-getvar-on-the","record":"ran-read-only-fastboot-getvar-on-the","at":"2026-11-17T15:23:15Z","minutes":1,"load":5,"effort":1,"change":"walleye-keeper-first-look"}
-{"id":"2026-11-17T15:23:15Z-wrote-the-material-readme-by-hand","record":"wrote-the-material-readme-by-hand","at":"2026-11-17T15:23:15Z","minutes":1,"load":5,"effort":1,"change":"walleye-keeper-first-look"}
+{"id":"2026-11-17T15:23:15Z-ran-read-only-fastboot-getvar-on-the","project":"linux-phone-oco/google-walleye-lab","record":"ran-read-only-fastboot-getvar-on-the","at":"2026-11-17T15:23:15Z","change":"walleye-keeper-first-look","minutes":1,"effort":1,"load":5}
+{"id":"2026-11-17T15:23:15Z-wrote-the-material-readme-by-hand","project":"linux-phone-oco/google-walleye-lab","record":"wrote-the-material-readme-by-hand","at":"2026-11-17T15:23:15Z","change":"walleye-keeper-first-look","minutes":1,"effort":1,"load":5}

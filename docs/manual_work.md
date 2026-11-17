@@ -98,6 +98,37 @@ Load
 : 5
 
 
+<a id="ran-read-only-fastboot-getvar-on-the"></a>
+### ran-read-only-fastboot-getvar-on-the
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Action
+: ran read-only fastboot getvar on the phone
+
+Count
+: 1
+
+First
+: 2026-11-17
+
+Last
+: 2026-11-17
+
+Status
+: manual
+
+Minutes
+: 1
+
+Effort
+: 1
+
+Load
+: 5
+
+
 <a id="read-the-modem-s-state-by-hand"></a>
 ### read-the-modem-s-state-by-hand
 
@@ -158,6 +189,37 @@ Minutes
 
 Effort
 : 21
+
+Load
+: 5
+
+
+<a id="wrote-the-material-readme-by-hand"></a>
+### wrote-the-material-readme-by-hand
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Action
+: wrote the material README by hand
+
+Count
+: 1
+
+First
+: 2026-11-17
+
+Last
+: 2026-11-17
+
+Status
+: manual
+
+Minutes
+: 1
+
+Effort
+: 1
 
 Load
 : 5
