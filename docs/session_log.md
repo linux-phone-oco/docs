@@ -1171,3 +1171,24 @@ Considered
 
 Rejected
 : See the decision's rejected.
+
+---
+
+
+<a id="2026-11-17-conveyor-health"></a>
+### Analysis in Rust on the phone, and mobile data under a budget
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: lab-tools #57, #60, #62 and releases 0.1.2, 0.1.3, 0.1.4; surya-lab #115 and #116; devlab installed from main (the previous one kept at ~/.local/bin/devlab.before-data-budget). devlab-health 0.1.4 put on surya, and suite run 20261117-093527 was healthy, with the tone checks and mobile-data passing. The static aarch64 runner went from 528,656 to 594,192 bytes. Signs seen: land exited 1 with nothing said when GitHub refused a merge for a conflict (main had moved); release PRs' ci runs fail to start, as before; one run's earpiece recording held exact zeros (-240 dBFS) right after suite put, and two runs of the check alone passed at -22.3 dBFS.
+
+Considered
+: A telephony-layer mobile-data check gated by once_a_day, as the layer's README first said; a hand-written WAV reader in the runner.
+
+Rejected
+: See decision 2026-11-17-health-analysis-subcommands.

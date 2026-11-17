@@ -40,5 +40,5 @@
 {"id":"mic-top-hears-speaker","component_id":"audio-mic","proves":"works","says":"the top microphone finds a quiet tone from the phone's speaker, 20 dB above the noise"}
 {"id":"earpiece-heard","component_id":"audio-earpiece","proves":"works","says":"a quiet tone played through the earpiece as a mono stream is found by the top microphone beside it, 20 dB above the noise"}
 {"id":"call-audio-path","component_id":"modem-calls","proves":"present","says":"the DSP's voice path is there: the VoiceMMode1 PCM, its Voice Mixer and Capture Mixer controls, and q6voiced"}
-{"id":"mobile-data","component_id":"modem-data","proves":"works","says":"over the modem's own interface, three pings are answered and 100 kB is downloaded"}
 {"id":"sms-loopback","component_id":"modem-sms","proves":"works","says":"an SMS the phone sends to its own number arrives, at most once a day"}
+{"id":"mobile-data","component_id":"modem-data","proves":"works","says":"over the interface of the modem's data bearer (not Wi-Fi, not the IMS bearer), at least 3 of 5 pings are answered and 100 kB is downloaded (5 MB once a week, for throughput); each run's bytes are kept against the month's budget, and the check skips once that is spent"}

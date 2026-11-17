@@ -802,3 +802,28 @@ About
 
 Research
 : expert-agents-written-not-standing
+
+
+<a id="2026-11-17-health-analysis-subcommands"></a>
+### 2026-11-17-health-analysis-subcommands
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Decision
+: devlab-health takes analysis as subcommands of its own binary: tone make|find (lab-tools' tone crate, linked with only its wav feature) and data plan|spent (the month's mobile-data ledger, a JSON file in /var/lib/devlab/health-data that pruning never touches). Their arguments are parsed by hand, and each prints one JSON line with exit 0/1/2. A check reads that line with lib.sh's json_field. mobile-data runs every boot in the telephony layer and is bounded by the month's budget, not by once_a_day. It measures the connected bearer that carries a default route and is not IMS. The week's 5 MB run counts as made only when its download came whole.
+
+Why
+: The tone crate already had tests, and the checks' awk Goertzel had none. Linking the crate costs 64 KiB on the phone, against two copies of the arithmetic. hound was already the lab's WAV reader, so one read_mono now serves tone, devlab hear and the runner instead of three. The research (mobile-data-check-budget) measures data every boot and bounds it by a monthly ledger; a byte count kept across runs is state, which the shell-and-Rust decision puts in Rust. On surya an IMS bearer (APN ims, IPv6, no route) sits beside the data bearer, and the first-connected rule measured it as 0 of 5 pings.
+
+Rejected
+: clap in devlab-health (size on the phone; argenv is the commons' parser, and moving the runner onto it is its own change). A WAV reader written again by hand (hound is there and tested). Ledger arithmetic in shell (state and numbers, against the shell-and-Rust decision). once_a_day for mobile data (the research measures every boot; the budget already bounds the cost). The first connected bearer (picked IMS on surya). Marking the weekly run as made when it failed (a broken run would hide throughput for a week).
+
+About
+: devlab-health
+
+Research
+: mobile-data-check-budget, health-suite-organisation
