@@ -868,3 +868,31 @@ Gaps
 
 Skipped
 : 1
+
+
+<a id="20261117-020247"></a>
+### 20261117-020247
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 02:02:47
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 25
+
+Failed
+: 4
+
+Gaps
+: 5
+
+Skipped
+: 1
