@@ -855,3 +855,25 @@ Found
 
 About
 : agent-folder
+
+
+<a id="orchestration-how-it-stands"></a>
+### orchestration-how-it-stands
+
+Brief
+: Orchestration hand-over, 2026-11-17 13:00 UTC: conveyor sound, face drawn from docs alone, keeper flow live; open: dispatcher's permission mode, read-weight, start weight on the face.
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Where does orchestration's work stand, for a fresh orchestration session to take it up without the old session's long context?
+
+Found
+: ROLE: owns the conveyor - lab-tools (devlab: phone, kernel try/keep/--dtb/remove, suite put from the Alpine package and the lab's main, gather once quiet, watch, guard for the phone, hazards, keeper lease), device-template, the package conveyor's Alpine path (alpine.yml, v1), docs' face (bin/face-data + engine, no ocoeco) and derive/queries - and tends the agents. Brief: ideal-agent-linux-phone-oco/orchestration.md; method: ideal-agent orchestrate-agents. LIVE: phone keeper flow (phone-keeper.md; lease devlab keeper; queue tad q phone-queue in the author's rank order, deep sleep first; waker = scheduled task linux-phone-keeper-waker titled surya dispatcher, hourly; patrol every 6 h). surya-keeper-2 held the lease at 12:49 UTC. OPEN, the author's: the dispatcher task's permission mode/model (its runs stall on the first prompt; Sonnet 5.5 medium proposed); whether dispatcher runs start from orchestration instead (visible in the left pane); gather.yml in five repos and land's observatory pings (passive ocoeco links, his call); archiving linux-phone-oco/lens; cards waiting: research charging, research GPS, programs on argenv. OPEN, orchestration's: run read-weight on surya-keeper-2's transcript and send ideal-agent its read and first-turn tokens (where read-weight lives was asked of ideal-agent); add read-weight to the patrol round; backlog start-weight-on-the-face, kernel-orphan-modules, health-carry-old-checks, guard items moved to ideal-agent. DO NOT UNDO: suite put reads the lab at main (a stale clone once regressed the phone); gather lands only after 15 quiet minutes; the face's data sorts like observe did and maps a non-linux-phone project field to docs; a kept kernel sorts 1-kept-* after tries; remove keeps shared modules. Notes: side-session-notes/local_12b18c70-.../orchestration-2026-11-17.md.
+
+About
+: agent-folder
