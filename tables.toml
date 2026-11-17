@@ -49,6 +49,18 @@ required = true
 name = "waits"
 type = "string"
 
+# the shared resource the item cannot be done without: phone - its keeper takes it up, one change at a
+# time (tad q phone-queue); research and other sessions put such items here instead of touching the phone
+[[tables.backlog.fields]]
+name = "needs"
+type = "string"
+enum = ["phone"]
+
+# the test whose pass proves the item done (a tests id, or the test still to write)
+[[tables.backlog.fields]]
+name = "proof"
+type = "string"
+
 [tables.components]
 key = ["id"]
 

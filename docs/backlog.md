@@ -17,6 +17,9 @@ Note
 Opened
 : 2026-11-04
 
+Needs
+: phone
+
 
 <a id="kernel-fork-repo"></a>
 ### Fork sm7150-mainline/linux into linux-phone-oco and wire it into lab-agent's build/boot jobs
@@ -62,6 +65,9 @@ Note
 Opened
 : 2026-11-04
 
+Needs
+: phone
+
 
 <a id="off-state-charging"></a>
 ### The phone cannot stay off: shutdown and a charger both boot pmOS
@@ -77,6 +83,9 @@ Note
 
 Opened
 : 2026-11-09
+
+Needs
+: phone
 
 
 <a id="adsp-sensor-crash-loop"></a>
@@ -125,6 +134,12 @@ Note
 
 Opened
 : 2026-11-09
+
+Needs
+: phone
+
+Proof
+: motion-and-light
 
 
 <a id="audio-cold-boot-race"></a>
@@ -198,6 +213,9 @@ Note
 Opened
 : 2026-11-09
 
+Needs
+: phone
+
 
 <a id="microphone"></a>
 ### Microphone: check, and make it work
@@ -221,6 +239,12 @@ Correction (2026-11-17, bring-up): where this item and research/microphone.md (s
 
 Opened
 : 2026-11-09
+
+Needs
+: phone
+
+Proof
+: mic-hears-speaker
 
 
 <a id="org-board"></a>
@@ -253,6 +277,9 @@ Note
 
 Opened
 : 2026-11-09
+
+Needs
+: phone
 
 
 <a id="plasma-silent"></a>
@@ -408,6 +435,9 @@ Note
 Opened
 : 2026-11-10
 
+Needs
+: phone
+
 
 <a id="tty-first-shell"></a>
 ### The author's TTY-first shell
@@ -506,6 +536,12 @@ Note
 Opened
 : 2026-11-17
 
+Needs
+: phone
+
+Proof
+: soc-sleeps
+
 
 <a id="sleep-cluster-params"></a>
 ### surya's own cluster sleep parameters in its device tree
@@ -521,6 +557,12 @@ Note
 
 Opened
 : 2026-11-17
+
+Needs
+: phone
+
+Proof
+: soc-sleeps
 
 
 <a id="sleep-adsp-awake"></a>
@@ -538,6 +580,12 @@ Note
 Opened
 : 2026-11-17
 
+Needs
+: phone
+
+Proof
+: soc-sleeps
+
 
 <a id="sleep-fastrpc-helpers"></a>
 ### FastRPC helpers stopped across suspend; the sensors back
@@ -553,6 +601,9 @@ Note
 
 Opened
 : 2026-11-17
+
+Needs
+: phone
 
 
 <a id="sleep-wakes-for-calls"></a>
@@ -570,6 +621,12 @@ Note
 Opened
 : 2026-11-17
 
+Needs
+: phone
+
+Proof
+: wakes-for-call
+
 
 <a id="sleep-standby-current"></a>
 ### Standby current measured beside Android's
@@ -585,6 +642,9 @@ Note
 
 Opened
 : 2026-11-17
+
+Needs
+: phone
 
 
 <a id="devlab-mcp"></a>
@@ -793,6 +853,9 @@ Note
 
 Opened
 : 2026-11-17
+
+Needs
+: phone
 
 
 <a id="hear"></a>
@@ -1086,6 +1149,9 @@ Note
 Opened
 : 2026-11-11
 
+Needs
+: phone
+
 
 <a id="camera-identify-slots"></a>
 ### Ask each camera slot what it is
@@ -1102,6 +1168,12 @@ Note
 Opened
 : 2026-11-11
 
+Needs
+: phone
+
+Proof
+: image-sensor
+
 
 <a id="image-sensors"></a>
 ### Image sensors: described, then identified, then seen
@@ -1117,6 +1189,12 @@ Note
 
 Opened
 : 2026-11-11
+
+Needs
+: phone
+
+Proof
+: image-sensor
 
 
 <a id="mic-capture"></a>
@@ -1236,6 +1314,9 @@ Note
 Opened
 : 2026-11-11
 
+Needs
+: phone
+
 
 <a id="needs-a-sim"></a>
 ### A SIM card in the phone
@@ -1271,6 +1352,12 @@ Note
 Opened
 : 2026-11-11
 
+Needs
+: phone
+
+Proof
+: sound-card
+
 
 <a id="port-lpi-fix-to-branch"></a>
 ### Port the pin fix to the microphone kernel branch
@@ -1286,6 +1373,9 @@ Note
 
 Opened
 : 2026-11-11
+
+Needs
+: phone
 
 
 <a id="sensors-and-the-mask"></a>
@@ -1303,6 +1393,12 @@ Note
 Opened
 : 2026-11-11
 
+Needs
+: phone
+
+Proof
+: motion-and-light
+
 
 <a id="sensors-without-crash"></a>
 ### Sensors, without crashing the audio processor
@@ -1319,6 +1415,12 @@ Note
 Opened
 : 2026-11-11
 
+Needs
+: phone
+
+Proof
+: motion-and-light
+
 
 <a id="telephony-checks"></a>
 ### Telephony in the test suite
@@ -1334,6 +1436,9 @@ Note
 
 Opened
 : 2026-11-11
+
+Needs
+: phone
 
 
 <a id="dt-made"></a>
@@ -1462,6 +1567,9 @@ Note
 
 Opened
 : 2026-11-10
+
+Needs
+: phone
 
 
 <a id="surya-profile"></a>
@@ -1616,6 +1724,9 @@ First step of decision 2026-11-17-microphones-analog-wcd-path. Every check so fa
 
 Opened
 : 2026-11-17
+
+Needs
+: phone
 
 
 <a id="mic-upstream"></a>

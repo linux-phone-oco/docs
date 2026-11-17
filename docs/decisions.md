@@ -887,3 +887,22 @@ Rejected
 
 Research
 : kb-organisation-world
+
+
+<a id="2026-11-17-the-phone-keeper"></a>
+### 2026-11-17-the-phone-keeper
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: surya has one keeper: the one session that owns the phone's flow, taking up the phone's queue one change at a time; devlab still holds the phone for each change. The keeper is a role filled by successive fresh sessions: each takes a lease (devlab keeper take), reads how the phone stands (tad q phone-stands, the last keeper's hand-over) and the queue (tad q phone-queue: backlog items marked needs=phone, each with the test that proves it; also on the face), works to proofs, writes how the phone stands and ends when its piece lands or its context grows large. Research, expert and conveyor sessions never change the phone; they put work on its queue. A waker (a scheduled task on the lab) becomes the keeper when the queue has work and the lease is free. The brief is docs ideal-agent-linux-phone-oco/phone-keeper.md, the domain part of ideal-agent's keeper of a shared resource. Bring-up's role becomes the phone keeper's.
+
+Why
+: The author, 2026-11-17 ('yes, hand it over'): one owner of the phone, always taking the next thing it needs, filled by successive sessions. The bring-up session had grown to about 1,770 messages: a session held as the phone's long memory is slow and costly, while the phone's state and work are already data. devlab's hold makes each change safe but says nothing of what comes next; a queue read off the backlog does, and research sessions had no way to hand the phone work but a message.
+
+Rejected
+: Bring-up as one long-lived session (its context grows without end, and the phone's knowledge lives in a conversation); several sessions changing the phone in turn without an owner (devlab serialises changes, not intentions - experiments interleave); a separate queue table (one nature in two places - the backlog already holds the work; needs and proof are two fields on it); a lock of our own around devlab (it would wait on itself; the lease says who keeps the phone, not who holds it for a change); a waker that starts a second session beside a live keeper (the lease refuses the second).

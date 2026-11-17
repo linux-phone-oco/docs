@@ -6,6 +6,8 @@
 -- --note     string?       where it stands, and the next step
 -- --waits    string?       what it waits on, if anything (the author, a SIM card)
 -- --opened   date = today  when it was opened
+-- --needs    string?       phone: it cannot be done without the phone - its keeper's queue (tad q phone-queue)
+-- --proof    string?       the test whose pass proves it done (a tests id, or the test still to write)
 DELETE FROM backlog WHERE project = 'linux-phone-oco/' || $project AND id = $id;
-INSERT INTO backlog (project, id, title, status, note, opened, waits)
-VALUES ('linux-phone-oco/' || $project, $id, $title, $status, $note, $opened, $waits);
+INSERT INTO backlog (project, id, title, status, note, opened, waits, needs, proof)
+VALUES ('linux-phone-oco/' || $project, $id, $title, $status, $note, $opened, $waits, $needs, $proof);
