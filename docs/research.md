@@ -1499,3 +1499,32 @@ Sources
 
 About
 : sensors
+
+
+<a id="walleye-slot-flip-why"></a>
+### walleye-slot-flip-why
+
+Brief
+: Why a failed fastboot boot flipped the Pixel 2's slots, how to restore, how to keep tries from flipping them
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: Why did two fastboot boot tries change the A/B state, how do we restore it, how do we keep tries from flipping it, and should tries run on slot b?
+
+Found
+: Probable, not proven: the Pixel 2's bootloader is Qualcomm-derived ABL (Google's build is not public). In Qualcomm's ABL source (CAF pie mirror, QcomModulePkg FastbootCmds.c, PartitionTableUpdate.c, avb/VerifiedBoot.c), `fastboot boot` runs LoadImageAndAuth on the active slot; when that fails, HandleActiveSlotUnbootable sets slot a's unbootable flag (leaving successful set - the odd pair we saw), makes b active because b is successful, and cold-resets before the reply (our "Status read failed"). So our kernel probably never ran, and panic=10 is not the cause. `fastboot boot` does not decrement retry-count; a kernel crash falls back to a normal boot of the stock boot partition; a slot that is successful=yes is never counted down.
+set_active X (ABL source): makes the slot active at priority 3, retry 7, clears unbootable and successful; swaps the a/b partition-type GUIDs and switches the UFS boot LUN: metadata only, undone by set_active back. a stays successful=no until Android on a marks itself good. `--slot` is ignored by `boot`.
+Pixel 2 reports: loops end in "Slot Unbootable: Load Error", fixed by set_active (UBports forum 5639); after 7 unsuccessful boots the bootloader switches slot (pmaports MR 3190); the Pixel 2 XL bootloader refuses a kernel unless dtbo holds overlay id 2704 (kcxt dtbo README) - the likely real cause of the failed authentication, unconfirmed for walleye.
+Not known yet: the real failure point; why try a stayed in fastboot and whether it changed flags; why b shows retry 0 after the switch; whether Google's ABL matches Qualcomm's.
+Ways: leave flags and try on b (no write; if b is flagged too, set_active is the way out); set_active a now (a stays successful=no, the next failed try flips again); set_active before each try (a write per try); flash a stub dtbo to the active slot (a write, no known way back: the stock dtbo cannot be read back by fastboot); image changes (os_version 0 in our header untested).
+
+Sources
+: https://github.com/tadiphone-caf/bootable_bootloader_edk2/tree/pie/QcomModulePkg, https://android.googlesource.com/platform/system/core/+/refs/heads/main/fastboot/fastboot.cpp, https://source.android.com/docs/core/ota/ab/ab_implement, https://android.googlesource.com/platform/hardware/qcom/bootctrl/+/refs/heads/main/boot_control.cpp, https://gitlab.com/postmarketOS/pmaports/-/merge_requests/3190, https://forums.ubports.com/topic/5639/no-luck-installing-on-my-pixel-2-walleye/8, https://gitlab.com/kcxt/dtbo-google-wahoo-mainline
+
+About
+: walleye-first-fastboot-boot
