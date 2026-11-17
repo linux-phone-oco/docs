@@ -1,0 +1,6 @@
+before: current-slot=b slot-unbootable:a=yes slot-successful:a=yes slot-retry-count:a=0 slot-unbootable:b=no slot-successful:b=yes slot-retry-count:b=0
+still in fastboot after a minute: it did not start (fastboot said: Sending 'boot.img' (32768 KB)                      OKAY [  0.774s]
+Booting                                            FAILED (remote: 'Failed to load/authenticate boot image: Load Error')
+fastboot: error: Command failed)
+after: current-slot=b slot-unbootable:a=yes slot-successful:a=yes slot-retry-count:a=0 slot-unbootable:b=no slot-successful:b=yes slot-retry-count:b=0
+the slots' flags did not change

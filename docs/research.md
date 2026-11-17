@@ -1751,3 +1751,25 @@ Sources
 
 About
 : walleye-loaderror-stock-ids
+
+
+<a id="walleye-control-e-f-tries"></a>
+### walleye-control-e-f-tries
+
+Brief
+: Control (LineageOS walleye boot.img) and our e, f all refused with Load Error on slot b: the cause is the phone's state, not our image
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: Does a real stock-format walleye image boot by fastboot boot where ours is refused?
+
+Found
+: No. The LineageOS 22.2 boot.img, boot-e and boot-f each got Load Error ('Failed to load/authenticate boot image') within a second of the transfer; the phone stayed in fastboot (18d1:4ee0 in all 90 polls each); slot flags unchanged. Files: research/walleye-first-fastboot-boot/2026-11-17-control-e-f. So our images are not the (only) cause; open: dtbo/vbmeta/slot a flags, all writes or the author's.
+
+About
+: google-walleye

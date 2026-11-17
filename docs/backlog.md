@@ -4204,7 +4204,7 @@ Status
 : in-progress
 
 Note
-: Images built (lab PR 3). Tries 1-2: the bootloader flipped the slots, our kernel probably never ran (walleye-first-fastboot-boot-tries, walleye-slot-flip-why). Tries now run on b under decision walleye-slot-flags-tries-on-b; header variants follow. A refusal over the dtbo (overlay id 2704) is the author's decision (a write).
+: Tries a-f and the LineageOS control all Load Error on slot b (walleye-control-e-f-tries): the cause is the phone's state or what fastboot boot needs (dtbo, vbmeta, slot a flags), not our image. Waits: the author's word on a dtbo stub / slot a flags, via the walleye coordinator.
 
 Opened
 : 2026-11-17
@@ -4458,10 +4458,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: Image ready: ~/Projects/walleye-build/control/boot.img (LineageOS 22.2 20261113 boot.img, sha256 48dbc55c76ee47840e645707b6bf3ac322099c06358178ad8ddf2c6a53c17468); fastboot boot it once from memory, slot flags before/after, nothing flashed. If Load Error the phone's state is the cause (restore slot flags, the author's word); if it boots, the cause is in our image.
+: proven by research walleye-control-e-f-tries: control, e and f all Load Error, flags unchanged
 
 Opened
 : 2026-11-17
@@ -4486,10 +4486,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: After the control. Images ready: ~/Projects/walleye-build/images/boot-e.img (sha256 112ab28472e844a4d6cdabd76d703c383a658de20b48cdc970a9642cf6cea2da) then boot-f.img (7a42e5bd91a971f1d2f8c40a54a46e0f0e29002090e9bad0654d48d095be461a), one at a time; e differs from a only in the command line, f adds qcom,board-id <8 0>. Stock os word is 15.0.0/2026-11, ours 0 (c,d tried 8.1.0 and failed).
+: proven by research walleye-control-e-f-tries: control, e and f all Load Error, flags unchanged
 
 Opened
 : 2026-11-17
