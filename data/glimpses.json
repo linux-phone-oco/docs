@@ -42,3 +42,4 @@
 {"id":"g-20261117-021047","at":"2026-11-17T02:10:47Z","by":"devlab","kind":"docs","summary":"2 runs of xiaomi-surya filed by devlab, from the phone's own reports"}
 {"id":"g-20261117-023245","at":"2026-11-17T02:32:45Z","by":"claude","kind":"docs","summary":"Microphone: the codec drops off both buses at card registration; the boot race recurs"}
 {"id":"g-20261117-025735","at":"2026-11-17T02:57:35Z","by":"conveyor-tad","kind":"feat","summary":"feeds and the status derivation as named records; devlab's filing as a record; tad 0.6.0"}
+{"id":"g-20261117-032404","at":"2026-11-17T03:24:04Z","by":"bring-up","kind":"docs","summary":"Microphone: the reset fault found and queued; capture prepares, still silent"}
