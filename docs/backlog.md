@@ -2088,3 +2088,41 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="sms-loopback"></a>
+### SMS: the phone texts itself and receives it, after every boot or daily
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Opened 2026-11-17 (bring-up), with mobile data working (Vodafone.de network, a 1&1 SIM). A check sends a short SMS from the phone to its own number with mmcli and waits for it to arrive - proving modem-sms works without messaging anyone else. The number is kept in a private file on the lab machine (~/.config/devlab/xiaomi-surya/own-number, mode 600), never in a repository. Cost: one SMS a run; daily rather than every boot.
+
+Opened
+: 2026-11-17
+
+Waits
+: the SIM's own phone number (the SIM does not store it)
+
+
+<a id="upstream-alpine-tqftpserv"></a>
+### Upstream: tqftpserv >= 1.2 in Alpine v3.24-stable
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Found 2026-11-17 on surya (bring-up): Alpine v3.24 (postmarketOS v26.06) ships tqftpserv 1.1.1, which never writes the modem's short state files, so SM7150/SM7125 modems never come online and their SIMs read as missing (pmaports #4441). Edge has 1.3 (fixed upstream in 9ef11c0); surya takes it from edge as tqftpserv@edge until then. To send: an aports merge request (or a backport request on the 3.24-stable branch) upgrading tqftpserv to 1.3, citing pmaports #4441 and this phone's result (online, LTE, data on the next boot).
+
+Opened
+: 2026-11-17
+
+Waits
+: the author: a request to Alpine is made in his name
