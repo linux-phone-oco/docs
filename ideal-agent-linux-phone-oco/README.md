@@ -9,6 +9,7 @@ this repository's database (`tad q about --subject X`; see [AGENTS.md](../AGENTS
 | Brief | The role | Its method (ideal-agent skill) |
 |---|---|---|
 | [coordinator.md](coordinator.md) | the author's one session: relays his words, keeps the records true, routes work | `keep-the-start-light` (renewing itself) |
+| [surya-coordinator.md](surya-coordinator.md) | surya's lane coordinator: starts and renews the phone keepers, never touches the phone | `keep-a-shared-resource`, `keep-the-start-light` |
 | [orchestration.md](orchestration.md) | tends the conveyor and the sessions on it | `orchestrate-agents` |
 | [phone-keeper.md](phone-keeper.md) | keeps surya: its queue, one change at a time, through devlab (bring-up folded in) | `keep-a-shared-resource`, `bring-up-a-part`, `change-a-device` |
 | [feature-research.md](feature-research.md) | finds the way for one hard feature | `research-a-feature` |
