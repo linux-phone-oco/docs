@@ -9,11 +9,14 @@
 -- --subject  string?          the subject (every subject when not given)
 -- --whole    boolean = false  every record in full, the condensed ones too
 WITH s AS (SELECT $subject AS w, $whole AS whole),
+-- a record's brief is its one line; where none was written, the first sentence of what it says
 rec AS (
-    SELECT 'research' AS kind, id, about, date AS day, question || ' - ' || found || coalesce(' Material: ' || material, '') AS says
+    SELECT 'research' AS kind, id, about, date AS day, question || ' - ' || found || coalesce(' Material: ' || material, '') AS says,
+           coalesce(brief, CASE WHEN strpos(found, '. ') > 0 THEN left(found, strpos(found, '. ')) ELSE found END) AS brief
       FROM research WHERE id NOT IN (SELECT supersedes FROM research WHERE supersedes IS NOT NULL)
-    UNION ALL SELECT 'decision', id, about, date, decision || coalesce(' Rejected: ' || rejected, '') FROM decisions
-    UNION ALL SELECT 'log', id, about, entry_date, title || ' - ' || done FROM session_log
+    UNION ALL SELECT 'decision', id, about, date, decision || coalesce(' Rejected: ' || rejected, ''),
+           coalesce(brief, CASE WHEN strpos(decision, '. ') > 0 THEN left(decision, strpos(decision, '. ')) ELSE decision END) FROM decisions
+    UNION ALL SELECT 'log', id, about, entry_date, title || ' - ' || done, title FROM session_log
 ),
 hit AS (SELECT a FROM (SELECT about AS a FROM rec UNION SELECT about FROM backlog UNION SELECT about FROM concepts
             UNION SELECT about FROM summaries UNION SELECT component_id FROM support_status
@@ -30,11 +33,13 @@ known AS (
       FROM support_status x WHERE component_id IN (SELECT a FROM hit)
     UNION ALL SELECT 2, 'feature', platform_id, feature_id, status, checked, note
       FROM feature_support WHERE feature_id IN (SELECT a FROM hit)
-    UNION ALL SELECT CASE kind WHEN 'research' THEN 3 WHEN 'decision' THEN 4 ELSE 7 END, kind, id, about, NULL, day, says FROM shown
+    UNION ALL SELECT CASE kind WHEN 'research' THEN 3 WHEN 'decision' THEN 4 ELSE 7 END, kind, id, about, NULL, day,
+           CASE WHEN s.whole THEN says ELSE brief END FROM shown, s
     UNION ALL SELECT 5, 'concept', id, about, NULL, NULL, name || ': ' || summary
       FROM concepts WHERE about IN (SELECT a FROM hit)
-    UNION ALL SELECT 6, 'work', id, about, status, opened, title || coalesce(' - ' || note, '') || coalesce(' Waits: ' || waits, '')
-      FROM backlog WHERE status <> 'done' AND (about IN (SELECT a FROM hit) OR id IN (SELECT a FROM hit))
+    UNION ALL SELECT 6, 'work', id, about, status, opened,
+           CASE WHEN s.whole THEN title || coalesce(' - ' || note, '') || coalesce(' Waits: ' || waits, '') ELSE title || coalesce(' Waits: ' || waits, '') END
+      FROM backlog, s WHERE status <> 'done' AND (about IN (SELECT a FROM hit) OR id IN (SELECT a FROM hit))
     UNION ALL SELECT 8, 'test', id, component_id, proves, NULL, says
       FROM tests WHERE component_id IN (SELECT a FROM hit)
     UNION ALL SELECT DISTINCT 9, 'source', id, NULL, NULL, NULL, title || ' <' || url || '>'

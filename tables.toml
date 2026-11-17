@@ -786,6 +786,11 @@ name = "id"
 type = "string"
 required = true
 
+# the record in one line, at most 200 characters: what answers show (idealkb 0.4.0, briefs first)
+[[tables.decisions.fields]]
+name = "brief"
+type = "string"
+
 [[tables.decisions.fields]]
 name = "project"
 type = "string"
@@ -826,6 +831,11 @@ key = ["project", "id"]
 name = "id"
 type = "string"
 required = true
+
+# the record in one line, at most 200 characters: what answers show (idealkb 0.4.0, briefs first)
+[[tables.research.fields]]
+name = "brief"
+type = "string"
 
 [[tables.research.fields]]
 name = "project"
