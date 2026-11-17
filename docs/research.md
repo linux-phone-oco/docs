@@ -780,3 +780,25 @@ Found
 
 About
 : kb-summaries
+
+
+<a id="2026-11-17-surya-first-s2idle-cycle"></a>
+### 2026-11-17-surya-first-s2idle-cycle
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Does surya's SoC reach its sleep floor in one measured s2idle on the kept kernel 7.1.0-sm7150-calls+?
+
+Found
+: No. One cycle by hand (USB gadget let go via soft_connect, rtcwake -m freeze -s 60, run as a transient systemd unit so it survives the link dropping; nohup in the ssh session was killed on exit): the phone entered s2idle at 811.7 s and left 2.4 s later, not 60, so something woke it early (source not yet identified; rtcwake printed an alarm date in 1970, so the RTC may be unset). suspend_stats success 0 to 1, fail 0. qcom_stats: cxsd 0, aosd 0, ddr 0 before and after; adsp never counted a sleep, cdsp 58, modem +7. Cluster domain: S1 usage 9417 to 9482 across the run, S2 (the deep state) never entered. The suite's soc-sleeps now says fail: suspended, yet the SoC never reached its lowest state: cxsd 0, aosd 0; suspends this boot: 1; processors never asleep: adsp; wake locks: devlab-usb (devlab-health 20261117-115521). The devlab-usb wake lock was held again after the cycle. No hands needed: the phone woke by itself and came back over USB.
+
+Sources
+: devlab suite run 20261117-115521; /var/tmp/sleep-cycle/before and after on the phone
+
+About
+: deep-sleep
