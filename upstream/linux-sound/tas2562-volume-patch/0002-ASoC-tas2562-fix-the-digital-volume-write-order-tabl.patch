@@ -1,0 +1,125 @@
+From 2e6c6521df865cf4493f6ce3350221376a397312 Mon Sep 17 00:00:00 2001
+From: lab-agent-session <agent@creation-guidelines>
+Date: Tue, 10 Nov 2026 04:57:46 +0100
+Subject: [PATCH 2/2] ASoC: tas2562: fix the digital volume: write order,
+ table, and resume
+
+Three faults made the digital volume wrong, and its maximum silent:
+
+- The chip takes the 32-bit volume when its last byte (DVC_CFG4) is written, from what the other
+  three hold at that moment. The driver wrote DVC_CFG4 first, so every change latched the previous
+  value's upper bytes and left the new ones waiting. Write DVC_CFG1 to DVC_CFG4, most significant
+  byte first.
+- float_vol_db_lookup had 55 entries for the control's 0..110 in 2 dB steps (56 values): -90 dB was
+  a second -92 dB, -20 dB was missing, and 110 (0 dB) read past the end of the table - on this build
+  zeros, which mute the amplifier. Regenerate the table, -110 dB to 0 dB: floor(10^(dB/20) * 2^30),
+  which reproduces 54 of the 55 old entries exactly; and clamp the index.
+- regcache_sync after resume skips cached values equal to their defaults, and the defaults table
+  listed DVC_CFG2 as 0x40 (the chip resets it to 0x00): bytes were skipped and the latch never ran.
+  Leave the volume registers out of the defaults, so a sync always writes all four, in order.
+
+Measured on a Xiaomi POCO X3 NFC (two TAS2562/2564, i2c 0x4c and 0x4d): the chips now hold
+40 00 00 00 at 110, 00 10 62 4d (-60 dB) at 50, and keep the value across suspend and resume.
+---
+ sound/soc/codecs/tas2562.c | 55 +++++++++++++++++++++-----------------
+ 1 file changed, 30 insertions(+), 25 deletions(-)
+
+diff --git a/sound/soc/codecs/tas2562.c b/sound/soc/codecs/tas2562.c
+index d7cccade2..e68268b0c 100644
+--- a/sound/soc/codecs/tas2562.c
++++ b/sound/soc/codecs/tas2562.c
+@@ -26,21 +26,24 @@
+ 			 SNDRV_PCM_FORMAT_S32_LE)
+ 
+ /* DVC equation involves floating point math
+- * round(10^(volume in dB/20)*2^30)
++ * floor(10^(volume in dB/20)*2^30), -110 dB to 0 dB in 2 dB steps
+  * so create a lookup table for 2dB step
+  */
+ static const unsigned int float_vol_db_lookup[] = {
+-0x00000d43, 0x000010b2, 0x00001505, 0x00001a67, 0x00002151,
+-0x000029f1, 0x000034cd, 0x00004279, 0x000053af, 0x0000695b,
+-0x0000695b, 0x0000a6fa, 0x0000d236, 0x000108a4, 0x00014d2a,
+-0x0001a36e, 0x00021008, 0x000298c0, 0x000344df, 0x00041d8f,
+-0x00052e5a, 0x000685c8, 0x00083621, 0x000a566d, 0x000d03a7,
+-0x0010624d, 0x0014a050, 0x0019f786, 0x0020b0bc, 0x0029279d,
+-0x0033cf8d, 0x004139d3, 0x00521d50, 0x00676044, 0x0082248a,
+-0x00a3d70a, 0x00ce4328, 0x0103ab3d, 0x0146e75d, 0x019b8c27,
+-0x02061b89, 0x028c423f, 0x03352529, 0x0409c2b0, 0x05156d68,
+-0x080e9f96, 0x0a24b062, 0x0cc509ab, 0x10137987, 0x143d1362,
+-0x197a967f, 0x2013739e, 0x28619ae9, 0x32d64617, 0x40000000
++	0x00000d43, 0x000010b2, 0x00001505, 0x00001a76,
++	0x00002151, 0x000029f1, 0x000034cd, 0x00004279,
++	0x000053af, 0x0000695b, 0x000084a2, 0x0000a6fa,
++	0x0000d236, 0x000108a4, 0x00014d2a, 0x0001a36e,
++	0x00021008, 0x000298c0, 0x000344df, 0x00041d8f,
++	0x00052e5a, 0x000685c8, 0x00083621, 0x000a566d,
++	0x000d03a7, 0x0010624d, 0x0014a050, 0x0019f786,
++	0x0020b0bc, 0x0029279d, 0x0033cf8d, 0x004139d3,
++	0x00521d50, 0x00676044, 0x0082248a, 0x00a3d70a,
++	0x00ce4328, 0x0103ab3d, 0x0146e75d, 0x019b8c27,
++	0x02061b89, 0x028c423f, 0x03352529, 0x0409c2b0,
++	0x05156d68, 0x06666666, 0x080e9f96, 0x0a24b062,
++	0x0cc509ab, 0x10137987, 0x143d1362, 0x197a967f,
++	0x2013739e, 0x28619ae9, 0x32d64617, 0x40000000,
+ };
+ 
+ struct tas2562_data {
+@@ -496,21 +499,25 @@ static int tas2562_volume_control_put(struct snd_kcontrol *kcontrol,
+ 	int ret;
+ 	u32 reg_val;
+ 
+-	reg_val = float_vol_db_lookup[ucontrol->value.integer.value[0]/2];
+-	ret = snd_soc_component_write(component, TAS2562_DVC_CFG4,
+-				      (reg_val & 0xff));
++	/* -110 dB to 0 dB in 2 dB steps: 56 entries for the control's 0..110 */
++	reg_val = float_vol_db_lookup[min_t(long, ucontrol->value.integer.value[0] / 2,
++						 ARRAY_SIZE(float_vol_db_lookup) - 1)];
++	/* The chip takes the 32-bit volume when its last byte (DVC_CFG4) is written, from what the
++	 * other three hold at that moment: write them first, most significant byte first. */
++	ret = snd_soc_component_write(component, TAS2562_DVC_CFG1,
++			((reg_val >> 24) & 0xff));
+ 	if (ret)
+ 		return ret;
+-	ret = snd_soc_component_write(component, TAS2562_DVC_CFG3,
+-				      ((reg_val >> 8) & 0xff));
++	ret = snd_soc_component_write(component, TAS2562_DVC_CFG2,
++			((reg_val >> 16) & 0xff));
+ 	if (ret)
+ 		return ret;
+-	ret = snd_soc_component_write(component, TAS2562_DVC_CFG2,
+-				      ((reg_val >> 16) & 0xff));
++	ret = snd_soc_component_write(component, TAS2562_DVC_CFG3,
++			((reg_val >> 8) & 0xff));
+ 	if (ret)
+ 		return ret;
+-	ret = snd_soc_component_write(component, TAS2562_DVC_CFG1,
+-				      ((reg_val >> 24) & 0xff));
++	ret = snd_soc_component_write(component, TAS2562_DVC_CFG4,
++			(reg_val & 0xff));
+ 	if (ret)
+ 		return ret;
+ 
+@@ -652,6 +659,8 @@ static const struct regmap_range_cfg tas2562_ranges[] = {
+ 	},
+ };
+ 
++/* No defaults for the volume (DVC_CFG1-4): a cache sync must always write them, in order, so the
++ * chip latches the full value - a byte equal to a default would be skipped and never latched. */
+ static const struct reg_default tas2562_reg_defaults[] = {
+ 	{ TAS2562_PAGE_CTRL, 0x00 },
+ 	{ TAS2562_SW_RESET, 0x00 },
+@@ -659,10 +668,6 @@ static const struct reg_default tas2562_reg_defaults[] = {
+ 	{ TAS2562_PB_CFG1, 0x20 },
+ 	{ TAS2562_TDM_CFG0, 0x09 },
+ 	{ TAS2562_TDM_CFG1, 0x02 },
+-	{ TAS2562_DVC_CFG1, 0x40 },
+-	{ TAS2562_DVC_CFG2, 0x40 },
+-	{ TAS2562_DVC_CFG3, 0x00 },
+-	{ TAS2562_DVC_CFG4, 0x00 },
+ };
+ 
+ static const struct regmap_config tas2562_regmap_config = {
+-- 
+2.56.0
+

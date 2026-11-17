@@ -6,4 +6,6 @@ UNION ALL SELECT 'research', to_json(r) FROM research r WHERE id = $id
 UNION ALL SELECT 'backlog', to_json(r) FROM backlog r WHERE id = $id
 UNION ALL SELECT 'session_log', to_json(r) FROM session_log r WHERE id = $id
 UNION ALL SELECT 'sources', to_json(r) FROM sources r WHERE id = $id
-UNION ALL SELECT 'summaries', to_json(r) FROM summaries r WHERE about = $id;
+UNION ALL SELECT 'summaries', to_json(r) FROM summaries r WHERE about = $id
+UNION ALL SELECT 'upstream_items', to_json(r) FROM upstream_items r WHERE id = $id
+UNION ALL SELECT 'upstreams', to_json(r) FROM upstreams r WHERE id = $id;

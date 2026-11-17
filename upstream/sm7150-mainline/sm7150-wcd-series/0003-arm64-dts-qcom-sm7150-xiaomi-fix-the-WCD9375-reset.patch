@@ -1,0 +1,75 @@
+From 535e949f777bd5f45bf816d58ac4cb2be119c6eb Mon Sep 17 00:00:00 2001
+From: grenudi <idunerg@gmail.com>
+Date: Tue, 17 Nov 2026 04:21:16 +0100
+Subject: [PATCH] arm64: dts: qcom: sm7150-xiaomi: fix the WCD9375 reset
+
+Three things kept the WCD9375 codec in reset or put it back there:
+
+- The reset line is active low (the vendor's pin states drive it high
+  while the codec runs and low to reset it), but reset-gpios declared it
+  active high, so the driver's reset pulse ended with the line low.
+- The pin was muxed to cdc_pdm_rx while the driver drives it as a GPIO;
+  mux it to gpio and leave its level to the driver.
+- The codec had a "sleep" pin state that drives the reset low. ASoC
+  selects a component's sleep state whenever nothing is streaming through
+  it - at card registration and after every stream - so the codec was
+  held in reset whenever it was idle: about a millisecond after the card
+  registered it dropped off both SoundWire buses at once, and every later
+  command to it went unanswered (the capture's port setup failed with
+  -EIO). A function trace of pinctrl_commit_state showed the sleep state
+  committed from snd_soc_bind_card 0.24 ms before both interfaces
+  reported UNATTACHED. Drop the sleep state; the reset belongs to the
+  driver.
+
+With these the codec stays attached on both buses across boot and
+streams.
+
+Tested on a Xiaomi POCO X3 NFC (surya).
+---
+ arch/arm64/boot/dts/qcom/sm7150-xiaomi-common.dtsi |  5 ++---
+ arch/arm64/boot/dts/qcom/sm7150.dtsi               | 10 +---------
+ 2 files changed, 3 insertions(+), 12 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sm7150-xiaomi-common.dtsi b/arch/arm64/boot/dts/qcom/sm7150-xiaomi-common.dtsi
+index 7181b5cb4..006792c24 100644
+--- a/arch/arm64/boot/dts/qcom/sm7150-xiaomi-common.dtsi
++++ b/arch/arm64/boot/dts/qcom/sm7150-xiaomi-common.dtsi
+@@ -125,10 +125,9 @@ vreg_s3a_0p8: smpa3-regulator {
+ 	wcd937x: audio-codec {
+ 		compatible = "qcom,wcd9375-codec";
+ 
+-		reset-gpios = <&lpass_tlmm 6 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&lpass_tlmm 6 GPIO_ACTIVE_LOW>;
+ 		pinctrl-0 = <&wcd9375_reset_active>;
+-		pinctrl-1 = <&wcd9375_reset_sleep>;
+-		pinctrl-names = "default", "sleep";
++		pinctrl-names = "default";
+ 
+ 		vdd-buck-supply = <&vreg_l15a_1p8>;
+ 		vdd-rxtx-supply = <&vreg_l10a_1p8>;
+diff --git a/arch/arm64/boot/dts/qcom/sm7150.dtsi b/arch/arm64/boot/dts/qcom/sm7150.dtsi
+index 90a212589..42651a47d 100644
+--- a/arch/arm64/boot/dts/qcom/sm7150.dtsi
++++ b/arch/arm64/boot/dts/qcom/sm7150.dtsi
+@@ -4897,17 +4897,9 @@ data-pins {
+ 
+ 			wcd9375_reset_active: wcd9375-reset-active-state {
+ 				pins = "gpio6";
+-				function = "cdc_pdm_rx";
+-				drive-strength = <16>;
+-				output-high;
+-			};
+-
+-			wcd9375_reset_sleep: wcd9375-reset-sleep-state {
+-				pins = "gpio6";
+-				function = "cdc_pdm_rx";
++				function = "gpio";
+ 				drive-strength = <16>;
+ 				bias-disable;
+-				output-low;
+ 			};
+ 
+ 			dmic01_active: dmic01-active-state {
+-- 
+2.56.1
+

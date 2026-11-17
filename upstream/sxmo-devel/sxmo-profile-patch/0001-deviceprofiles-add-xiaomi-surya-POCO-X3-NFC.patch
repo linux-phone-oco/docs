@@ -1,0 +1,50 @@
+From 868b5c91e6335094b8a11114576523addf417322 Mon Sep 17 00:00:00 2001
+From: lab-agent-session <agent@creation-guidelines>
+Date: Tue, 10 Nov 2026 03:56:25 +0100
+Subject: [PATCH] deviceprofiles: add xiaomi,surya (POCO X3 NFC)
+
+Both panel variants (Huaxing and Tianma) have their own compatible, so each has a profile, as
+beryllium does. Values from a running Sxmo on the Huaxing variant: DSI-1, the PMIC power key and
+resin plus gpio-keys for volume, scale 3 for the 1080x2400 6.67" panel, the aw8695 haptics.
+---
+ .../sxmo_deviceprofile_xiaomi,surya-huaxing.sh         | 10 ++++++++++
+ .../sxmo_deviceprofile_xiaomi,surya-tianma.sh          | 10 ++++++++++
+ 2 files changed, 20 insertions(+)
+ create mode 100755 scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-huaxing.sh
+ create mode 100755 scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-tianma.sh
+
+diff --git a/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-huaxing.sh b/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-huaxing.sh
+new file mode 100755
+index 0000000..16f7fe2
+--- /dev/null
++++ b/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-huaxing.sh
+@@ -0,0 +1,10 @@
++#!/bin/sh
++# poco x3 nfc (huaxing panel)
++# SPDX-License-Identifier: AGPL-3.0-only
++# Copyright 2026 Sxmo Contributors
++
++export SXMO_MONITOR="DSI-1"
++export SXMO_POWER_BUTTON="0:0:pm8941_pwrkey"
++export SXMO_VOLUME_BUTTON="1:1:gpio-keys 0:0:pm8941_resin"
++export SXMO_SWAY_SCALE="3"
++export SXMO_VIBRATE_DEV="/dev/input/by-path/platform-884000.i2c-event"
+diff --git a/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-tianma.sh b/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-tianma.sh
+new file mode 100755
+index 0000000..92f6bd6
+--- /dev/null
++++ b/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-tianma.sh
+@@ -0,0 +1,10 @@
++#!/bin/sh
++# poco x3 nfc (tianma panel)
++# SPDX-License-Identifier: AGPL-3.0-only
++# Copyright 2026 Sxmo Contributors
++
++export SXMO_MONITOR="DSI-1"
++export SXMO_POWER_BUTTON="0:0:pm8941_pwrkey"
++export SXMO_VOLUME_BUTTON="1:1:gpio-keys 0:0:pm8941_resin"
++export SXMO_SWAY_SCALE="3"
++export SXMO_VIBRATE_DEV="/dev/input/by-path/platform-884000.i2c-event"
+-- 
+2.56.0
+

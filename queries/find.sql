@@ -9,6 +9,7 @@ said AS (
     UNION ALL SELECT 'log', id, about, entry_date, title, concat_ws(' ', id, title, done, considered, rejected) FROM session_log
     UNION ALL SELECT 'summary', about, about, date, says, concat_ws(' ', about, says) FROM summaries
     UNION ALL SELECT 'source', id, NULL, NULL, title, concat_ws(' ', id, title, url, takes) FROM sources
+    UNION ALL SELECT 'upstream', id, about, last_update, title, concat_ws(' ', id, upstream, title, form, domain, tags, note, waits, forwarded, bug) FROM upstream_items
 )
 SELECT kind, id, about, day, left(line, 200) AS line FROM said, t
 WHERE contains(lower(hay), t.w) ORDER BY day DESC NULLS LAST, kind, id;

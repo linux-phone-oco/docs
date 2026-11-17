@@ -38,4 +38,5 @@ Read `IKB.md`: every record of this base with its options, written from its `rec
 A thing there are many of with one shape is a row; prose read once in order is a file (README, this entry,
 a brief), and a file opens with its own brief: its first paragraph says what it holds. Research is both: its finding a row, its own material - notes, excerpts, measurements - a dated
 folder the row names (`--material auto` makes `research/ABOUT/DATE/`); redone, a new row `--supersedes` the old.
+Work headed to others (a patch, finding, correction or question for a project, list, wiki, standard, person or another base) is an upstream item: `tad q upstream` shows where each stands; record with `ikb upstream-item --from-work ID`.
 <!-- idealkb:end -->

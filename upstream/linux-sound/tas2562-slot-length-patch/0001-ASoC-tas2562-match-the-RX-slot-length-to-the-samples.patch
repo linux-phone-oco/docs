@@ -1,0 +1,74 @@
+From c2815377c48450ea8a4f1c14424e790b5ab3f823 Mon Sep 17 00:00:00 2001
+From: lab agent session <agent@creation-guidelines>
+Date: Mon, 9 Nov 2026 22:19:48 +0100
+Subject: [PATCH 1/2] ASoC: tas2562: match the RX slot length to the samples in
+ I2S mode
+
+When no machine driver sets TDM slots the bus is plain I2S, and each slot is
+as wide as the samples' container. The RX slot length was only ever set by
+set_dai_tdm_slot(), so it stayed at the 32-bit reset default. On a link
+clocked at 32 * fs with 16-bit samples (sm8250 machine driver, MI2S at
+1.536 MHz) the right slot then lies beyond the frame: an amplifier set to the
+right channel plays silence. Two amplifiers sharing one I2S line for stereo -
+the Xiaomi POCO X3 NFC (surya) has a TAS2562 and a TAS2564 - lose the right
+channel entirely.
+
+Without TDM slots, set the RX slot length from the format's physical width
+on every hw_params. Setups that set TDM slots keep theirs.
+
+Tested on surya with the registers written live: left channel from the top
+speaker, right channel from the bottom one.
+---
+ sound/soc/codecs/tas2562.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/sound/soc/codecs/tas2562.c b/sound/soc/codecs/tas2562.c
+index 2f7cfc2be..d7cccade2 100644
+--- a/sound/soc/codecs/tas2562.c
++++ b/sound/soc/codecs/tas2562.c
+@@ -55,6 +55,8 @@ struct tas2562_data {
+ 	int model_id;
+ 	bool dac_powered;
+ 	bool unmuted;
++	/* the machine driver set TDM slots: their width is not ours to change */
++	bool tdm_slots_set;
+ };
+ 
+ enum tas256x_model {
+@@ -207,6 +209,9 @@ static int tas2562_set_dai_tdm_slot(struct snd_soc_dai *dai,
+ 	if (ret < 0)
+ 		return ret;
+ 
++	if (slot_width)
++		tas2562->tdm_slots_set = true;
++
+ 	ret = snd_soc_component_update_bits(component, TAS2562_TDM_CFG5,
+ 					    TAS2562_TDM_CFG5_VSNS_SLOT_MASK,
+ 					    tas2562->v_sense_slot);
+@@ -253,6 +258,23 @@ static int tas2562_set_bitwidth(struct tas2562_data *tas2562, int bitwidth)
+ 		return -EINVAL;
+ 	}
+ 
++	/*
++	 * Without TDM slots from the machine driver the bus is plain I2S, its
++	 * slots as wide as the samples' container. The reset default is 32 bits:
++	 * with 16-bit samples on a 32 * fs bit clock the right slot then lies
++	 * beyond the frame, and the right channel is silent.
++	 */
++	if (!tas2562->tdm_slots_set) {
++		ret = snd_soc_component_update_bits(tas2562->component,
++						    TAS2562_TDM_CFG2,
++						    TAS2562_TDM_CFG2_RXLEN_MASK,
++						    snd_pcm_format_physical_width(bitwidth) == 16 ?
++						    TAS2562_TDM_CFG2_RXLEN_16B :
++						    TAS2562_TDM_CFG2_RXLEN_32B);
++		if (ret < 0)
++			return ret;
++	}
++
+ 	val = snd_soc_component_read(tas2562->component, TAS2562_PWR_CTRL);
+ 	if (val < 0)
+ 		return val;
+-- 
+2.56.0
+

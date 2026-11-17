@@ -3594,3 +3594,19 @@ Needs
 
 About
 : dl-safe
+
+
+<a id="upstream-records"></a>
+### Upstream work is kept as records: upstreams and upstream_items (idealkb 0.8), the upstream-* items headed in them
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: Seeded 2026-11-17: six upstreams, nine items (sxmo profile sent; tas2562 x2, WCD series, UCM, pd-mapper, tqftpserv, PR 60 comment as drafts); patches and messages copied into upstream/UPSTREAM/ITEM/. Next: the author's word moves a draft to ready; the surya coordinator writes the deep-sleep upstream plan as items. upstream-queue/README stays a copy until it is retired.
+
+Opened
+: 2026-11-17

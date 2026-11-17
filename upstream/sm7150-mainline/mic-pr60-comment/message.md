@@ -1,0 +1,3 @@
+# From the backlog item mic-upstream (2026-11-17), as it stood when the upstream item was made
+
+sm7150-mainline/linux PR 60 (davinci, open since 2026-08) already carries the swr_tx_data mux, the TX wakeup IRQ, the port numbering and the capture DAI 1. Step: review and test it on surya, comment with surya's findings (ADC2 needs its own port, <2 3 4 5>, as pulpoff found; the codec node without pin states, linux-phone-oco/linux PR 4; the SoundWire addresses, PR 5), and send surya's device tree on top once it lands, through upstream-queue. Proof: the surya patches merged in sm7150-mainline, and a kernel built from it passes mic-hears-speaker and mic-top-hears-speaker.
