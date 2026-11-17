@@ -9,9 +9,8 @@ this repository's database (`tad q about --subject X`; see [AGENTS.md](../AGENTS
 | Brief | The role | Its method (ideal-agent skill) |
 |---|---|---|
 | [orchestration.md](orchestration.md) | tends the conveyor and the sessions on it | `orchestrate-agents` |
-| [bring-up.md](bring-up.md) | makes surya's parts work, through devlab | `bring-up-a-part`, `change-a-device` |
+| [phone-keeper.md](phone-keeper.md) | keeps surya: its queue, one change at a time, through devlab (bring-up folded in) | `keep-a-shared-resource`, `bring-up-a-part`, `change-a-device` |
 | [feature-research.md](feature-research.md) | finds the way for one hard feature | `research-a-feature` |
-| [phone-keeper.md](phone-keeper.md) | the one owner of surya, taking the phone's queue | `keep-a-shared-resource` |
 
 ## How records go here (practice 42's domain part)
 
