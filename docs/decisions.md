@@ -1529,7 +1529,7 @@ Research
 ### walleye-control-image-download
 
 Brief
-: The walleye lane may download LineageOS's official walleye recovery.img as the boot control
+: The walleye lane may download LineageOS's official walleye boot.img as the boot control; downloads of public checksummed files are the lane's call
 
 Project
 : linux-phone-oco/google-walleye-lab
@@ -1538,13 +1538,13 @@ Date
 : 2026-11-17
 
 Decision
-: On the author's word of 2026-11-17 ("Yes, download it"): download LineageOS's official walleye recovery.img from download.lineageos.org only, verify its sha256 against the site's published value, keep it in ~/Projects/walleye-build/control/ with its URL, size and checksum recorded (research row), read its boot image header and dtb ids on the host (unpack_bootimg, fdtget), and boot it once from memory as the control (devlab fastboot boot now, tries on b, slot flags read before and after). Nothing is flashed; no other source, no TWRP; the image is data until booted, never run on the host.
+: On the author's words of 2026-11-17 ("Yes, download it"; then "no need to ask for my permission for downloads ... by roles expertise can be handled by themselves"): download LineageOS's official walleye boot.img (build 20261113, sha256 48dbc55c76ee47840e645707b6bf3ac322099c06358178ad8ddf2c6a53c17468; download.lineageos.org publishes no recovery.img for walleye: on A/B LineageOS carries the recovery in boot) from download.lineageos.org only, verify the sha256, keep it in ~/Projects/walleye-build/control/ with its URL, size and checksum recorded, read its header and dtb ids on the host (unpack_bootimg, fdtget; data, never run on the host), and boot it once from memory as the control (devlab fastboot boot now, tries on b, slot flags read before and after). Nothing is flashed. From now on downloads of public, checksummed files that the lane's work needs are the lane's decision, recorded with source and checksum; the author is asked only for his hands, a write that cannot be undone, money or outward actions.
 
 Why
-: Research walleye-load-error-how-it-stands: a stock-format image answers whether the Load Error is the image or the phone's state, and gives the true header and dtb ids; the same distribution already runs on the phone.
+: Research walleye-load-error-how-it-stands: a stock-format image answers whether the Load Error is our image or the phone's state; boot.img is the smallest official file holding the true header.
 
 Rejected
-: TWRP or other recovery builds (another source, worse provenance); building a control ourselves (not a control); reading ids from forum posts (no checksum).
+: TWRP or other sources (worse provenance); building a control ourselves (not a control); asking the author per download (his word: not needed).
 
 About
 : walleye-first-fastboot-boot
