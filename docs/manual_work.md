@@ -191,6 +191,68 @@ Load
 : 5
 
 
+<a id="read-the-phone-s-properties-by-adb"></a>
+### read-the-phone-s-properties-by-adb
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Action
+: read the phone's properties by adb
+
+Count
+: 1
+
+First
+: 2026-11-17
+
+Last
+: 2026-11-17
+
+Status
+: manual
+
+Minutes
+: 1
+
+Effort
+: 1
+
+Load
+: 5
+
+
+<a id="summarize-the-measurements-into-notes"></a>
+### summarize-the-measurements-into-notes
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Action
+: summarize the measurements into notes
+
+Count
+: 1
+
+First
+: 2026-11-17
+
+Last
+: 2026-11-17
+
+Status
+: manual
+
+Minutes
+: 1
+
+Effort
+: 1
+
+Load
+: 5
+
+
 <a id="wait-phone-settle-check-health"></a>
 ### wait-phone-settle-check-health
 
