@@ -120,3 +120,60 @@ By
 
 Kind
 : lacking
+
+
+<a id="landings-signed-by-no-session-again"></a>
+### landings-signed-by-no-session-again
+
+Project
+: linux-phone-oco/docs
+
+What
+: 19 more landings between 06:11 and 11:35 carry no session's name, only 'Claude Opus 5.5': docs #134, #136, #141, #151, #153, #157, #158, #162, #168, #169; lab-tools #54, #55, #56, #59, #64, #66, #67; surya-lab #108, #109 - and #176 is signed by a 'Signed:' line instead of oco-work's co-author, so the same thing is read two ways; the earlier sign (landings-signed-by-no-session) asks for a mechanism, none came
+
+Seen
+: 2026-11-17
+
+By
+: patrol
+
+Kind
+: unclear
+
+
+<a id="watch-restarted-by-hand-again"></a>
+### watch-restarted-by-hand-again
+
+Project
+: linux-phone-oco/lab-tools
+
+What
+: devlab-watch@surya-lab was restarted by hand five more times (10:12, 10:16, 10:47, 11:18, 11:30 local), each right after a lab-tools landing (#57, #59, #64, #66, #67) put a new devlab in place - nine in all today, none counted in docs' manual_events; installing devlab still does not restart the watch itself
+
+Seen
+: 2026-11-17
+
+By
+: patrol
+
+Kind
+: lacking
+
+
+<a id="board-rows-say-what-docs-unsaid"></a>
+### board-rows-say-what-docs-unsaid
+
+Project
+: linux-phone-oco/docs
+
+What
+: three linux-phone-oco rows on the lab board contradict docs: 'sim' waits for a SIM card that is in (mobile data, SMS and calls proven today, #147, #152, #155); 'microphone' needs bus tracing though both microphones are judged working (#140); 'cameras' says it is refocused on booting the microphone's device tree - the board is said by hand and nobody said it again
+
+Seen
+: 2026-11-17
+
+By
+: patrol
+
+Kind
+: stale
