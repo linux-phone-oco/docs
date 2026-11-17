@@ -19,3 +19,4 @@
 {"id":"g-20261117-005950","at":"2026-11-17T00:59:50Z","by":"devlab","kind":"docs","summary":"1 runs of xiaomi-surya filed by devlab, from the phone's own reports"}
 {"id":"g-20261117-010419","at":"2026-11-17T01:04:19Z","by":"claude","kind":"docs","summary":"A prompt for the bring-up session: each part of a phone, made to work","touches":"decisions:2026-11-17-two-sessions-one-lab"}
 {"id":"g-20261117-010828","at":"2026-11-17T01:08:28Z","by":"claude","kind":"docs","summary":"The bring-up prompt: devlab holds the phone itself"}
+{"id":"g-20261117-011238","at":"2026-11-17T01:12:38Z","by":"claude","kind":"docs","summary":"Microphone taken up by bring-up: the weakest link, where it stands, the next step"}
