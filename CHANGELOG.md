@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.13.0](https://github.com/linux-phone-oco/docs/compare/v0.12.0...v0.13.0) (2026-11-17)
+
+
+### Features
+
+* backlog: gather-into-device-base done (lab-tools [#82](https://github.com/linux-phone-oco/docs/issues/82)) ([#351](https://github.com/linux-phone-oco/docs/issues/351)) ([c134e20](https://github.com/linux-phone-oco/docs/commit/c134e2023f2bc20c07ab617a72a38ecf8326277e))
+* **feeds:** docs pulls each device base's parts; unread, stale or unclaimed shows as not known yet ([#355](https://github.com/linux-phone-oco/docs/issues/355)) ([317c9b1](https://github.com/linux-phone-oco/docs/commit/317c9b1518c1b6540789504d4eb5b61a274d452f))
+
+
+### Bug Fixes
+
+* **feeds:** install tad's pinned DuckDB before the feeds run ([#356](https://github.com/linux-phone-oco/docs/issues/356)) ([7632404](https://github.com/linux-phone-oco/docs/commit/7632404cbd1d6c0b901608abc84b3fecba7a6d84))
+
 ## [0.12.0](https://github.com/linux-phone-oco/docs/compare/v0.11.0...v0.12.0) (2026-11-17)
 
 
