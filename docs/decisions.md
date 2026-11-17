@@ -1176,3 +1176,28 @@ About
 
 Research
 : bringup-image-v0-oxide-writes-v0
+
+
+<a id="2026-11-17-docs-serves-no-lane"></a>
+### 2026-11-17-docs-serves-no-lane
+
+Brief
+: docs retires lane-next, phone-next and phone-queue and the face's phone-queue lens: every lane reads its own device base; item waits in docs become blocked_by
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: Removed queries/lane-next.sql, phone-next.sql, phone-queue.sql and the phone-queue view of face/lens.toml; the briefs (README, orchestration) and tables.toml's comments point at each lab's own base. docs' needs and device fields stay as words of the item (what it would need, for which phone), routing nothing. The lpoco roof items whose waits named another item (bringup-image-swap, bringup-pin-and-hooks, bringup-release, device-template-names-bringup, lpoco-rename-lab-tone, lpoco-mcp-one-door) now carry blocked_by and an empty waits (idealkb 0.12 rule). Open docs items with needs phone (health-suspend-cycle and older ones) are queued for their lanes by backlog docs-phone-items-to-lanes.
+
+Why
+: ikb-cli (2026-11-17, via the top coordinator): since surya-lab #136 and google-walleye-lab #15 both launchers, the keepers and the waker read their own base; nothing in idealkb depends on docs' copies, and they test waits IS NULL only, so they ignore blocked_by. Two routes to one queue are one nature under two names (practice 32): one route stays, the device base's.
+
+Rejected
+: Keeping them for a general queue: docs' general queue is tad q next, which already shows blocked_on; a second docs-only lane queue would drift from the device bases' form. Updating them to blocked_by: work for a route nobody reads.
+
+About
+: commons-only

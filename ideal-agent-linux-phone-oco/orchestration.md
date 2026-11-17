@@ -54,7 +54,7 @@ wrote rows in one place.
 
 Follow orchestrate-agents, "The loop". Here:
 
-- **The whole**: `tad q next`, `tad q phone-queue --device D`, `tad q coverage` (in docs), the face
+- **The whole**: `tad q next`, `tad q coverage` (in docs), each lab's `tad q phone-queue` (in its own base), the face
   (https://linux-phone-oco.github.io/docs/), and the linked sessions' reports.
 - **Hand-work** is counted in docs, through tad; what is done by hand a third time becomes a tool for
   lab-tools or a word for ideal-agent's agent-env.
@@ -64,7 +64,7 @@ Follow orchestrate-agents, "The loop". Here:
   ideal-agent hook.
 - **Hard features** (deep sleep, the microphones, the modem's calls, the cameras, the sensors) get a research
   session first: write its brief from `ideal-agent-linux-phone-oco/feature-research.md`. Its decision goes to
-  the phone keeper's queue (`tad q phone-queue --device D`: backlog items with --needs phone and their device).
+  the phone keeper's queue in that device's own base (`tad q phone-queue` there, through its lane coordinator).
 - **One phone** means one session changing it at a time: implementation is queued on the phone's queue for its keeper, not raced.
 
 ## Sessions on the lab
