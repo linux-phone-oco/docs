@@ -2191,3 +2191,27 @@ Rejected
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-walleye-builder-stock-ids"></a>
+### Stock boot.img read; variants e and f built
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Downloaded LineageOS walleye boot.img and dtbo.img (the author's word, decision walleye-control-image-download), verified sha256, unpacked on the host, read header and dtb ids (research walleye-stock-ids-recorded). Built e and f; check-bootimg counts 20 ok for each of a-f (lab PR 6).
+
+Considered
+: Building f with the stock board-id/pmic-id as asked: none exist in the stock dtb; chose qcom,board-id <8 0> from its qcom,mtp compatible, no pmic-id, labelled a guess.
+
+Rejected
+: qcom,board-id from the dtbo table id 0x1bc: Google's overlay id, not a Qualcomm platform id. Changing the os word: a was the only silent OKAY.
+
+About
+: walleye-loaderror-stock-ids

@@ -1726,3 +1726,28 @@ Sources
 
 About
 : deep-sleep
+
+
+<a id="walleye-stock-ids-recorded"></a>
+### walleye-stock-ids-recorded
+
+Brief
+: Walleye's stock boot.img (LineageOS 22.2 20261113): header v0, offsets as our image a, one dtb with msm-id 0x124/0x20001 and no board-id/pmic-id; ids are in the dtbo table
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: What do walleye's stock boot header and dtb carry (page size, offsets, cmdline, os word, qcom,msm-id/board-id/pmic-id), and is a dtbo present?
+
+Found
+: Source: LineageOS official walleye boot.img, build 20261113, https://mirrorbits.lineageos.org/full/walleye/20261113/boot.img, 33554432 bytes, sha256 48dbc55c76ee47840e645707b6bf3ac322099c06358178ad8ddf2c6a53c17468 (equals the site's published value; kept at ~/Projects/walleye-build/control/boot.img, data only, never run on the host). download.lineageos.org publishes no recovery.img for walleye; on A/B the recovery is in boot. unpack_bootimg: header v0; page size 4096; kernel load 0x8000; ramdisk 0x1000000; second size 0 and address 0; tags 0x100 (base 0: taimen/blueline offsets, the same as our image a); os_version 15.0.0, os_patch_level 2026-11 (a nonzero os word; ours are 0, or 8.1.0/2020-01 in c,d); product name empty; cmdline: androidboot.hardware=walleye androidboot.console=ttyMSM0 lpm_levels.sleep_disabled=1 user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 service_locator.enable=1 swiotlb=2048 firmware_class.path=/vendor/firmware loop.max_part=7 raid=noautodetect usbcore.autosuspend=7 androidboot.dtbo_idx=3. Kernel: lz4 (sha256 0256983d1002752214fde5035f78ce07e088d167bad993f3f16e1e9f78162872), Linux 4.4.302 arm64, with ONE dtb appended at byte 17613814 (376259 bytes, sha256 37dd8612cab84bd96025bd5831eac194fcf1f10bc8f8f08ea6ff72717a8f5751): model 'Qualcomm Technologies, Inc. MSM8998 v2.1', compatible qcom,msm8998-mtp / qcom,msm8998 / qcom,mtp, qcom,msm-id <0x124 0x20001>; NO qcom,board-id and NO qcom,pmic-id at the root. Ramdisk is xz (sha256 a0d50bc3063f3fd60e93c067ca9b54d16e670b6171eb498decc294d658f5dcbf). So the stock dtb is matched on msm-id alone, as ours is. The board identity is in the dtbo: dtbo.img of the same build (8388608 bytes, sha256 fb09009b7946bf33d860ee94cadfabdfcf3cf63a872314bc650d9220486bb8f6, equals the site's) holds a DT table of 13 entries, ids 0x1bc (revs 0-4 and 0x80), 0x190, 0x490, 0x590, 0x690 and more; androidboot.dtbo_idx=3 names the one merged; the overlays carry no qcom,board-id. So variant f's premise (stock board-id/pmic-id to copy) does not hold: f adds qcom,board-id <8 0> only (what qcom,mtp means), a guess, no pmic-id.
+
+Sources
+: aosp-dto-multiple,inoki-abl-dt-selection
+
+About
+: walleye-loaderror-stock-ids
