@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v7
       - name: tad, from its pinned release
         run: TAD_DEST="$HOME/.local/bin" ./bin/install-tad.sh && echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: DuckDB, its pinned binary (tad engine)
+        run: tad engine
       - name: Run every feed (DuckDB's pinned binary reshapes the fetched data; tad checks it)
         run: make feeds
       - name: Render and verify
