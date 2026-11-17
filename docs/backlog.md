@@ -4905,34 +4905,6 @@ About
 : walleye-initramfs-usb-gadget
 
 
-<a id="walleye-bootstrap-method"></a>
-### The best-known way to bootstrap an Android phone to mainline almost from zero, compared with what the walleye lane did
-
-Project
-: linux-phone-oco/google-walleye-lab
-
-Status
-: open
-
-Note
-: The author asks (via the top coordinator): has the lane done proper delegated research on bootstrapping a phone like this almost from zero, gathered from pmOS, Mobian and the best sources? Our research so far is about walleye itself. Sources to read: postmarketOS porting guide and the pmaports steps for a new device; MSM8998 devices in pmaports or mainline (taimen, OnePlus 5/5T, Xperia XZ1/XZ Premium, Mi 6) and how each got its first shell; lk2nd as a second-stage bootloader (matters for Load Error: an lk2nd boots mainline kernels where the vendor bootloader refuses); Mobian's and Droidian's routes (Halium); the sm8150/sdm845 mainlining communities (how the first boot, UART, earlycon, simple-framebuffer, USB gadget, pstore are done). Public sources, read-only, clean room (input wall). Then say what it changes for walleye: e.g. lk2nd/second stage vs fastboot boot, debug route (UART cable), Android-kernel-first (boot the vendor 4.4 kernel with our initramfs as a known-good before mainline), order of parts.
-
-Opened
-: 2026-11-17
-
-Needs
-: research
-
-Device
-: google-walleye
-
-Proof
-: a research row with sources (a method: the steps in order, with who does each how), a comparison with the walleye lane's tries so far, and a decision with what it changes in the next steps (what was rejected)
-
-About
-: google-walleye
-
-
 <a id="walleye-bisect-stock-to-ours"></a>
 ### Bisect from the accepted control to our image: stock kernel+dtb with our initramfs, then one part of ours at a time
 
@@ -4959,53 +4931,6 @@ Proof
 
 About
 : walleye-first-fastboot-boot
-
-
-<a id="fastboot-found-by-serial-or-port"></a>
-### fastboot: a phone out of fastboot found by its serial or USB port, else gone from USB
-
-Project
-: linux-phone-oco/lab-tools
-
-Status
-: done
-
-Note
-: Done 2026-11-17 (lab-tools PR 81, f904196), asked by walleye-coordinator: after a boot try devlab took surya's postmarketOS gadget (18d1:d001) and a shared address for walleye's Linux while walleye had left USB. Now only a USB device carrying the phone's serial, or one on the USB port it sat on in fastboot (remembered at STATE/CODENAME/usb-port), answers for it; ping and vendor:product alone are gone; nothing found after three minutes is said as gone from USB, needing hands. Installed. Sign: walleye's manifest shares surya's USB address 172.16.42.1 - when Linux runs on both, devlab phone must tell them apart (by interface/port), not by address.
-
-Opened
-: 2026-11-17
-
-About
-: dl-safe
-
-
-<a id="walleye-initramfs-address-43"></a>
-### walleye's gadget initramfs answers on 172.16.43.1, not surya's 172.16.42.1
-
-Project
-: linux-phone-oco/google-walleye-lab
-
-Status
-: open
-
-Note
-: Both phones share one host; surya's pmOS gadget is 172.16.42.1 and devlab must tell the phones apart (lab-tools fastboot-found-by-serial-or-port). The manifest [connection] addresses is already 172.16.43.1 (lab main). Do not change e or b (a keeper is trying them): new images g/h only, host only.
-
-Opened
-: 2026-11-17
-
-Needs
-: build
-
-Device
-: google-walleye
-
-Proof
-: images g and h (e and b with the initramfs address changed, nothing else) built, checked by the same check-bootimg, SHA256SUMS updated; images a-f byte-identical to before
-
-About
-: walleye-initramfs-usb-gadget
 
 
 <a id="walleye-vendor-gadget-image"></a>
@@ -5121,37 +5046,6 @@ Device
 
 Proof
 : a research row walleye-vendor-kernel-facts with cmdline, ramoops region and ids, checked against the dts (test: walleye-gadget-up passes during the read)
-
-About
-: walleye-first-fastboot-boot
-
-
-<a id="walleye-own-images-first-state"></a>
-### Our images e, then b, by fastboot boot from the first state (Android booted on slot a, then adb reboot bootloader)
-
-Project
-: linux-phone-oco/google-walleye-lab
-
-Status
-: open
-
-Note
-: The control boot.img was accepted from this state (walleye-first-state-control-accepted). Now ours: first e (a with a short cmdline), then b (LineageOS offsets). Per try: Android on a booted (adb device, slot a successful yes), adb reboot bootloader, devlab fastboot boot now IMAGE, watch 90 s. If the phone vanishes from USB, say so to the coordinator in one line (the author's hands: hold Power 10-30 s); a hang is an answer, a gadget is the goal. No writes; set-active only as in the recorded decisions. Order now: after walleye-vendor-gadget-try (decision 2026-11-17-walleye-vendor-kernel-first); use the ramoops address and ids read by walleye-vendor-kernel-facts.
-
-Opened
-: 2026-11-17
-
-Waits
-: walleye-vendor-gadget-try
-
-Needs
-: phone
-
-Device
-: google-walleye
-
-Proof
-: devlab's before/after slot report and the phone's full fastboot text for each; lsusb polling (by the manifest serial, not VID:PID: surya's gadget 18d1:d001 is on the same host) shows whether a Linux gadget of ours appears (lsusb on the host within 60 s, 172.16.42.1 answering: test walleye-gadget-up)
 
 About
 : walleye-first-fastboot-boot
