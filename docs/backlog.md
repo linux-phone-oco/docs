@@ -4611,3 +4611,28 @@ Proof
 
 About
 : google-walleye
+
+
+<a id="floor-research-sh0-aop"></a>
+### Research: who holds the SH0 x=1,y=3 sleep vote, and why the AOP does not ack QMP
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: After keeper-9: DSPs never started, WLAN off, no ignore_unused, cluster params - none moves cxsd/aosd/ddr off 0; the apps side looks clean (cluster S2 used, CX/MX 0, sleep set zero but SH0 x=1,y=3). Open: floor-sh0-owner, floor-aop-qmp-no-ack, floor-suspend-late-dump. Question: what is SH0 x=1,y=3 (an RPMh/AOSS resource and its owner on SM7150), who votes it, what do SDM845/SM8150/SC7180 ports and Android do about it, and why does the AOP at c300000 not ack QMP sends. Ends with a decision and phone backlog items (each one change, measured by way-back.sh cycle 15 bt-on with the watchdog armed).
+
+Opened
+: 2026-11-17
+
+Needs
+: research
+
+Device
+: xiaomi-surya
+
+About
+: deep-sleep
