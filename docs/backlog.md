@@ -134,7 +134,7 @@ Project
 : linux-phone-oco/docs
 
 Status
-: in-progress
+: done
 
 Note
 : With the sensors service off, one boot (2026-11-09) never announced the ADSP audio services, so no sound card until the ADSP was restarted by hand. Not reproduced in two further valid cold boots (audio services about 0.1-0.2 s after the ADSP, card present). Watch for it; if it recurs, check whether the in-kernel pd-mapper was loaded before the ADSP booted.
@@ -144,6 +144,8 @@ Note
 2026-11-17, read from the phone's journal (bring-up): in a bad boot the ADSP comes up but the APR audio services (aprsvc:service:4:3/4/7/8) are never added; in a good boot they appear 0.2 s after 'remote processor adsp is now up'. In the bad boot they appeared only right after the manual ADSP restart. So the protection-domain up notification (PDR, through the in-kernel PD mapper) never arrived. qcom_pd_mapper is a module nothing depends on (lsmod: used by 0), so it can load after the ADSP has booted. Next: load qcom_pd_mapper before the remoteprocs (modules-load.d through the device manifest, or the initramfs), count bad boots over twenty reboots before and after; then the kernel fix (pas depending on the PD mapper) for upstream.
 
 2026-11-17 trial (bring-up): with /etc/modprobe.d/devlab-pd-mapper.conf on the phone (softdep qcom_q6v5_pas pre: qcom_pd_mapper) 13 of 13 boots came up with the sound card, against 8 failing of 42 health runs before. Other distributions do the same (omarchy puts qcom_pd_mapper in the initramfs for Snapdragon laptops). Next: twenty more boots, then carry the file in device.toml's flash overlays with its reason, and the kernel-side fix (the remoteproc driver depending on the PD mapper) for upstream.
+
+Done 2026-11-17 (bring-up): 21 of 21 boots with the sound card since the PD mapper loads before the remoteproc driver; surya's device.toml now carries lab/devlab-pd-mapper.conf to /etc/modprobe.d in every flash. The kernel-side form for upstream is backlog upstream-pd-mapper-order.
 
 Opened
 : 2026-11-09
@@ -1674,10 +1676,104 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: The mic kernel is the phone's default (devlab kernel keep) and audio-mic is out of surya's known gaps (surya-lab #102, bring-up). Left: show that it holds. Proof: mic-hears-speaker and mic-top-hears-speaker pass in three consecutive boots of the kept kernel; a boot without audio services (audio-cold-boot-race) would show here.
+: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The mic kernel is the phone's default (devlab kernel keep) and audio-mic is out of surya's known gaps (surya-lab #102, bring-up). Left: show that it holds. Proof: mic-hears-speaker and mic-top-hears-speaker pass in three consecutive boots of the kept kernel; a boot without audio services (audio-cold-boot-race) would show here.
+
+Done 2026-11-17 (bring-up): three reboots in a row on the kept kernel (health 05:21, 05:24, 05:27 UTC), each healthy with mic-records, mic-hears-speaker and mic-top-hears-speaker passing.
 
 Opened
 : 2026-11-17
@@ -1726,6 +1822,22 @@ Status
 
 Note
 : Asked by bring-up, 2026-11-17: a device-tree experiment on the kept kernel took unkeep, a stock reboot, try and keep again. devlab kernel try NAME --dtb FILE now boots installed kernel NAME's kernel, initramfs and modules once with the new device tree (entry NAME-dt, one try, sorted ahead of the kept kernel, never blessed, its release said so remove keeps the modules), and a try is judged by the entry the bootloader says it booted (LoaderEntrySelected, read on surya) rather than by the release's name, which two entries can share. Proven by tests and by running the entry script in a fake boot tree; not yet tried live (the phone's experiments are bring-up's).
+
+Opened
+: 2026-11-17
+
+
+<a id="upstream-pd-mapper-order"></a>
+### Upstream: the ADSP must not boot before the in-kernel PD mapper
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Found 2026-11-17 on surya (bring-up): remoteproc's qcom_common only adds an auxiliary pd-mapper device when it prepares a remote processor; qcom_pd_mapper is a module that udev loads later, so on about one boot in five the ADSP asks for its domains before the mapper answers and its audio PD never comes up (no APR services, no sound card). Worked around in the device lab with 'softdep qcom_q6v5_pas pre: qcom_pd_mapper' (21 of 21 boots good); other distributions put qcom_pd_mapper in the initramfs (omarchy, Snapdragon laptops). Next: check lore for an existing fix; otherwise a patch (a MODULE_SOFTDEP in qcom_q6v5_pas or qcom_common, or making the mapper built-in where remoteproc is), queued for the author; and for postmarketOS, qcom_pd_mapper in the SM7150 initramfs modules.
 
 Opened
 : 2026-11-17
