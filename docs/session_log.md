@@ -1570,3 +1570,27 @@ Rejected
 
 About
 : agent-folder
+
+---
+
+
+<a id="2026-11-17-sim-removed-skips"></a>
+### SIM out: the four SIM checks skip
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Added no_sim to the health suite's lib.sh (ModemManager: sim-missing or no SIM object); modem-registered and mobile-data (lab-tools #73, released as devlab-health 0.1.6) and call-echo and sms-loopback (surya-lab #123) now say 'skip: no SIM card'. The SIM check sits before once_a_day, so a skip does not use up the day. Put the suite, rebooted once: modem-registered, mobile-data, call-echo, sms-loopback all skip; 35 pass, 5 fail (only the known gaps), 5 skip. The support status of calls, SMS and data stays 'works'.
+
+Considered
+: Detecting the missing SIM per check (the checks already skipped on 'modem state failed', but under that wording and, for the echo call, after the day was marked).
+
+Rejected
+: A manifest flag 'sim = false' (a state to keep true by hand; the modem says it itself).
+
+About
+: sim-removed-skips
