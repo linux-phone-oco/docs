@@ -450,3 +450,78 @@ Failed
 
 Skipped
 : 1
+
+
+<a id="20261117-011413"></a>
+### 20261117-011413
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 01:14:13
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 4
+
+Skipped
+: 1
+
+
+<a id="20261117-011425"></a>
+### 20261117-011425
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 01:14:25
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 5
+
+Skipped
+: 1
+
+
+<a id="20261117-012108"></a>
+### 20261117-012108
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 01:21:08
+
+Kernel
+: 7.1.0-rc3-sm7150-wcd
+
+Shell
+: swmo
+
+Passed
+: 28
+
+Failed
+: 6
+
+Skipped
+: 1
