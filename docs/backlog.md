@@ -1249,10 +1249,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Asked by the bring-up session, 2026-11-17: devlab suite put now requires --runner target/aarch64-unknown-linux-musl/release/devlab-health; a device lab's session has to know lab-tools' build path. Default it to the built runner (or build it), so putting a new check is one word.
+: Done 2026-11-17 (lab-tools PR 72): devlab suite put now --runner (no file) builds devlab-health with health/build.sh in the lab-tools devlab was built from and copies it with that tree's checks; --runner FILE as before. The lab's devlab is now built from ~/Projects/linux-phone-oco/lab-tools at main, so that tree lasts. Not yet put on the phone by it: the keeper's to do on its next suite put.
 
 Opened
 : 2026-11-17
