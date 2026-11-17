@@ -8,5 +8,5 @@
 -- --by       string?   who made what it describes
 -- --takes    string?   what we take from it
 DELETE FROM sources WHERE project = 'linux-phone-oco/' || $project AND id = $id;
-INSERT INTO sources (project, id, title, url, author, year, by, takes)
+INSERT INTO sources (project, id, title, url, author, year, "by", takes)
 VALUES ('linux-phone-oco/' || $project, $id, $title, $url, $author, $year, $by, $takes);

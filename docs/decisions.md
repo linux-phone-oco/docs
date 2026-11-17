@@ -705,3 +705,28 @@ Rejected
 
 About
 : health-apk
+
+
+<a id="2026-11-17-microphones-analog-wcd-path"></a>
+### 2026-11-17-microphones-analog-wcd-path
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: surya's microphones are made to work as the analog mics they are: AMIC1 (bottom) and AMIC3 (top) on the WCD9375's ADC1 and ADC2 (ADC2 MUX at INP3), over the TX SoundWire bus (capture on <&swr2 1>, ADC2 on its own master port 3 by qcom,tx-port-mapping <2 3 4 5>), the TX macro's decimators and the DSP's TX_CODEC_DMA_TX_3 - the path pulpoff/linux-surya and sm7150-mainline PR 60 use, and the one bring-up proved on 2026-11-17 (run 20261117-044744: mic-hears-speaker and mic-top-hears-speaker pass on the kept kernel 7.1.0-sm7150-mic+). What is left, in order: capture through the sound server by a UCM profile (mic-ucm-capture, first: the biggest unknown left for anyone using the phone, since every check so far sets the mixer by hand), the microphones held across boots and out of the known gaps (mic-held), the fixes upstream by joining PR 60 (mic-upstream), the DMIC experiment kept out (mic-dmic-dropped), and the call uplink with the calls feature (calls-audio-q6voice).
+
+Why
+: Measured, not inferred: both built-in mics hear a quiet tone 45-67 dB above their noise on this phone. An independent mainline tree on the same phone records both mics and carries calls this way and names the DMIC pins unconnected; the DMIC reading came from Qualcomm's reference board. What is left is configuration and carrying it upstream, each step proven by a check on the phone; no reverse engineering is needed.
+
+Rejected
+: DMICs through the TX decimators with the VA block's clocks (the vendor's va-without-decimation model, bring-up's lead until 05:00 on 2026-11-17): surya has no digital mics - the routes are the QRD board's and the pins are unconnected; the model stays recorded (bolero-v1-capture-family) for siblings that have DMICs. The VA macro's own path (VA_CODEC_DMA_TX_0): this ADSP rejects the port (0xb021, error 3), nobody streams it on SM6150/SM7150, and there is nothing for it to record. pulpoff/linux-surya as surya's kernel: it works, but it is 7.2.15 (end of life), squashed into one commit and packaged for Debian, while the conveyor builds tested branches of linux-phone-oco/linux toward sm7150-mainline - we take its findings with credit, not its tree. Driving LPASS codec DMA from Linux without the ADSP (lpass-cpu, as ADSP-less Chromebooks do): unnecessary and a large, risky driver. A surya capture series of our own for upstream: davinci's PR 60 already carries three of the four fixes; a parallel series would split the review.
+
+About
+: linux-phone-oco/docs/features:microphone
+
+Research
+: microphones-are-analog,mic-zeros-meant-no-input,bolero-v1-capture-family
