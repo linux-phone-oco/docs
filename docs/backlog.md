@@ -680,8 +680,11 @@ Needs
 Device
 : xiaomi-surya
 
+Proof
+: soc-sleeps
+
 Rank
-: 5
+: 1
 
 About
 : deep-sleep
@@ -5282,7 +5285,7 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
 : Decision 2026-11-17-floor-read-the-entry. One cycle: way-back.sh cycle 15 bt-on, watchdog armed (BT-blocked cycles reset). Before and after: /proc/interrupts, every cpuN/cpuidle/stateN usage+time, pm_genpd idle_states of the cluster domain, wakeup_sources, suspend_stats, all qcom_stats nodes. During: tracefs events rpmh (rpmh_send_msg), power:cpu_idle, power:suspend_resume. Record a research row with: (1) is rpmh_send_msg state=sleep written after the last CPU_PM_ENTER, and its addr/data list; (2) the last CPU's idle state; (3) interrupts/s by source over the 15 s. Proven by: soc-sleeps stays the failing test; this item is done when the research row holds those three facts (not known yet until then).
@@ -5360,6 +5363,31 @@ Device
 
 Proof
 : suspend-irq-quiet
+
+About
+: deep-sleep
+
+
+<a id="floor-research-aop-view"></a>
+### Research: what the AOP sees on the sleep flush; standby current as the arbiter
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: keeper docs PR 322: the entry is in order and quiet - cpu7 (last CPU) writes wake and sleep sets right before cluster-sleep-2 (0x4100b244), only the RTC alarm interrupts; cxsd/aosd/ddr still 0, soc-sleeps fails; cluster genpd S2idle column stays 0 (not known why). Questions: (1) does the AOP actually receive the RSC sleep flush (what could it need first: the unacked QMP, a clock/regulator vote, the CPUs' deepest state really being entered - residency in cpuidle states and PSCI state; why the cluster genpd S2idle stays 0 while cluster-sleep-2 is written)? (2) is the SoC possibly asleep already - how does standby current (fuel gauge off USB, charge counter) arbitrate when the counters say 0 - and what would Android's observed standby current be to match? Ends with a decision and phone items measured by way-back.sh cycle 15 bt-on, watchdog armed.
+
+Opened
+: 2026-11-17
+
+Needs
+: research
+
+Device
+: xiaomi-surya
 
 About
 : deep-sleep
