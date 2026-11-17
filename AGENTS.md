@@ -28,14 +28,16 @@ Ask a query; never read `data/` or `docs/` to answer - they are the database's f
 | what was recorded lately | `tad q recent` (`--days N`) |
 | anything else | `tad statements`: every query and record, with its parameters |
 
-Long answers read best with `--format csv`.
+Every answer gives each record by its brief, its one line. Read deeper - `row --id`, `--whole true`, a file
+past its first paragraph - only when the task needs more. Long answers read best with `--format csv`.
 
 ## Recording
 Through the named records, never by hand: `tad r decision` (with what was rejected), `tad r research`,
-`tad r source`, `tad r backlog`, `tad r session-log` - each naming what it is about (`--about`). Then
+`tad r source`, `tad r backlog`, `tad r session-log` - each naming what it is about (`--about`), a decision
+and a research with its brief (`--brief`, the record in one line; the title is the brief of the rest). Then
 `tad canon && tad render`, and land. Where `tad q about` says a summary is due for a subject you recorded
 into, renew it: `tad r summary --about S --says ...` - how it stands now, naming the records that carry it.
 A thing there are many of with one shape is a row; prose read once in order is a file (README, this entry,
-a brief). Research is both: its finding a row, its own material - notes, excerpts, measurements - a dated
+a brief), and a file opens with its own brief: its first paragraph says what it holds. Research is both: its finding a row, its own material - notes, excerpts, measurements - a dated
 folder the row names (`--material research/SUBJECT/YYYY-MM-DD/`); redone, a new row `--supersedes` the old.
 <!-- idealkb:end -->

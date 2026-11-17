@@ -3,6 +3,7 @@
 -- Research redone is a new row that supersedes the old: the old stays, reachable, and leaves about's answer.
 -- --project     string        the place
 -- --id          string        a-short-name
+-- --brief       string        what was found, in one line of at most 200 characters: what answers show
 -- --question    string        what was asked
 -- --found       string        what was found, condensed
 -- --sources     string?       the sources' ids, comma-separated
@@ -11,5 +12,6 @@
 -- --supersedes  string?       the research it is a later version of (its id)
 -- --date        date = today  when
 DELETE FROM research WHERE project = 'linux-phone-oco/' || $project AND id = $id;
-INSERT INTO research (id, project, date, question, found, sources, about, material, supersedes)
-VALUES ($id, 'linux-phone-oco/' || $project, $date, $question, $found, $sources, $about, $material, $supersedes);
+INSERT INTO research (id, project, date, brief, question, found, sources, about, material, supersedes)
+SELECT $id, 'linux-phone-oco/' || $project, $date, $brief, $question, $found, $sources, $about, $material, $supersedes
+WHERE CASE WHEN length($brief) > 200 THEN error('the brief is ' || length($brief) || ' characters; at most 200') ELSE true END;
