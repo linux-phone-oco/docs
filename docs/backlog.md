@@ -4730,6 +4730,9 @@ Device
 Proof
 : devlab's before/after slot report (a successful yes before the try) and the fastboot text of the control try, accepted (phone leaves fastboot) or refused; the phone back on a bootable slot
 
+Rank
+: 1
+
 About
 : walleye-first-fastboot-boot
 
