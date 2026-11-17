@@ -18,8 +18,8 @@ The memory of linux-phone-oco, whose goal is Linux phones as good as Android for
 - [Shell Releases](shell_releases.md): 2
 - [Sources](sources.md): 4
 - [Support Status](support_status.md): 19
-- [Test Results](test_results.md): 352
-- [Test Runs](test_runs.md): 16
+- [Test Results](test_results.md): 386
+- [Test Runs](test_runs.md): 17
 - [Translations](translations.md): 182
 - [Wiki Claims](wiki_claims.md): 16
 - [Workings](workings.md): 11
