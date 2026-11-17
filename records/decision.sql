@@ -4,7 +4,7 @@
 -- --decision  string        what was decided
 -- --why       string        why: the evidence, the author's words
 -- --rejected  string?       what was weighed and not chosen, and why not
--- --about     string?       the thing it is about (a backlog item, a component)
+-- --about     string?       what it is about: a component, feature, milestone, device or backlog item (tad q about lists them)
 -- --research  string?       the research it rests on (its id)
 -- --date      date = today  when
 DELETE FROM decisions WHERE project = 'linux-phone-oco/' || $project AND id = $id;

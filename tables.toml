@@ -61,6 +61,10 @@ enum = ["phone"]
 name = "proof"
 type = "string"
 
+[[tables.backlog.fields]]
+name = "about"
+type = "string"
+
 [tables.components]
 key = ["id"]
 
@@ -399,6 +403,10 @@ type = "string"
 [[tables.session_log.fields]]
 name = "date"
 type = "date"
+
+[[tables.session_log.fields]]
+name = "about"
+type = "string"
 
 [tables.shell_releases]
 key = ["id"]
@@ -838,6 +846,10 @@ required = true
 name = "sources"
 type = "string"
 
+[[tables.research.fields]]
+name = "about"
+type = "string"
+
 [tables.concepts]
 key = ["project", "id"]
 
@@ -864,6 +876,10 @@ required = true
 
 [[tables.concepts.fields]]
 name = "why"
+type = "string"
+
+[[tables.concepts.fields]]
+name = "about"
 type = "string"
 
 [tables.problems]
@@ -1064,3 +1080,23 @@ to = ["sources"]
 [[rules.references]]
 field = "tests.component_id"
 to = ["components"]
+
+[[rules.references]]
+field = "decisions.about"
+to = ["components", "features", "milestones", "devices", "backlog"]
+
+[[rules.references]]
+field = "research.about"
+to = ["components", "features", "milestones", "devices", "backlog"]
+
+[[rules.references]]
+field = "backlog.about"
+to = ["components", "features", "milestones", "devices", "backlog"]
+
+[[rules.references]]
+field = "session_log.about"
+to = ["components", "features", "milestones", "devices", "backlog"]
+
+[[rules.references]]
+field = "concepts.about"
+to = ["components", "features", "milestones", "devices", "backlog"]
