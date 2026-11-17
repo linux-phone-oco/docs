@@ -2074,3 +2074,34 @@ Found
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="2026-11-17-floor-aop-view-and-standby"></a>
+### 2026-11-17-floor-aop-view-and-standby
+
+Brief
+: The AOP's view is not readable from Linux; the flush is sound; peers on near-mainline never read the counters as good either, so standby current, not aosd, is the arbiter
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Does the AOP receive the RSC sleep flush, why is the cluster genpd S2idle column 0, and is the SoC perhaps already asleep - how does standby current arbitrate, and what is Android's to match?
+
+Found
+: (1) Does the AOP get the flush. The entry trace already shows the Apps RSC writes wake and sleep sets in one instant on the last CPU and then requests the deepest cluster state (0x4100b244), so Linux's half is done in order. The AOP's half is not observable from Linux: the only outputs are the counters it fills (aosd, cxsd, ddr in the message RAM) and the rails. Nothing in mainline reads an AOP log. What the AOP needs for cxsd is every master's sleep vote on CX gone (Apps, modem, adsp, cdsp, display, WLAN BB), not only Apps'. A peer found exactly that kind of cause: on SM7325 a WLAN BB vote prevented CX power collapse (CXPC) and, once removed, "HLOS and DDR votes remain" (pmaports#4846, 2026-11-16); on SM8550 an SD-controller IRQ storm and a USB PHY vote did (armada#274). So the entry is not the open question any more; the other masters' votes and the wakeups are.
+
+(2) Why the cluster genpd S2idle column stays 0. From core.c: usage_s2idle is incremented only in genpd_sync_power_off, after the domain's governor (pm_domain_cpu_gov, set by cpuidle-psci-domain only when the domain has idle states) approved the power-down, and that function returns early unless every device attached to the cluster domain has been suspended (suspended_count == device_count) and every child CPU domain is off. s2idle reaches it through dev_pm_genpd_suspend, not runtime PM. The trace shows the cluster bits in the PSCI state (0x4100b244), so the cluster power-off callback did run; then either the counter is read from the wrong row/domain, or the state composed is from a path that did not count. Both are cheap to tell apart and are not known yet: read idle_states of every power-domain-* after one cycle (all rows, all columns) and the psci_domain_idle_enter trace's s2idle flag.
+
+(3) Is the SoC asleep already, and the arbiter. The peer record says the counters are not the whole picture: motorola-dubai (SM7325) reads S2 for ~1 ms, and the author of the qclaptops tree removed WLAN BB, touch, audio and regulator holders with "idle drain lowered by 0.00000 W". Standby current moved only with: USB runtime PM allowed (0.196 -> 0.180 W), the camera VCM and always-on audio regulators released, modem off. The same report measures current_now: near-mainline 152 mA (later 60 mA, 0.2-0.3 W), the same-era Droidian downstream kernel on xiaomi-miatoll (SM6250) 9 mA. So a number exists to match: about 9 mA average with screen off on a Snapdragon 6/7-series phone running the vendor kernel. Android's own number on surya is not known yet: nobody has measured it, and the public sources give no standby current (android-reference).
+
+(4) Cheaper tools than the AOP: regulator_summary (what rails stay on, with users), pm_genpd_summary, qcom_stats, and current_now / charge_counter. Android's value is the end, regulators the where.
+
+Sources
+: pmaports-4846-dubai-idle,genpd-core-c,cpuidle-psci-c,floor-travkin-aspire1,armada-odin2-s2idle-274,qcom-debug-high-sleep-current,2026-11-17-floor-entry-trace
+
+About
+: deep-sleep

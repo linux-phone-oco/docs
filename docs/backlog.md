@@ -5344,10 +5344,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: keeper docs PR 322: the entry is in order and quiet - cpu7 (last CPU) writes wake and sleep sets right before cluster-sleep-2 (0x4100b244), only the RTC alarm interrupts; cxsd/aosd/ddr still 0, soc-sleeps fails; cluster genpd S2idle column stays 0 (not known why). Questions: (1) does the AOP actually receive the RSC sleep flush (what could it need first: the unacked QMP, a clock/regulator vote, the CPUs' deepest state really being entered - residency in cpuidle states and PSCI state; why the cluster genpd S2idle stays 0 while cluster-sleep-2 is written)? (2) is the SoC possibly asleep already - how does standby current (fuel gauge off USB, charge counter) arbitrate when the counters say 0 - and what would Android's observed standby current be to match? Ends with a decision and phone items measured by way-back.sh cycle 15 bt-on, watchdog armed.
+: Answered by research 2026-11-17-floor-aop-view-and-standby and decision 2026-11-17-standby-current-is-the-arbiter; phone items floor-genpd-rows-and-regulators, floor-usb-runtime-pm, floor-standby-current-cycle
 
 Opened
 : 2026-11-17
@@ -5388,6 +5388,90 @@ Device
 
 Proof
 : soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="floor-genpd-rows-and-regulators"></a>
+### Read all power-domain idle_states rows and regulator_summary users across one way-back cycle 15 bt-on (read-only)
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Settles why the cluster S2idle column is 0 (wrong row/domain or a path that did not count) and lists the rails that stay on in suspend. Write the output into the cycle log. Watchdog armed.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="floor-usb-runtime-pm"></a>
+### Allow USB runtime PM (power/control auto on the HS PHY and the dwc3 controller) for one cycle and read counters and current
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: pmaports#4846: lowers draw slightly and keeps USB from holding CX. Needs the lab link to survive: keep the watchdog armed, one change per cycle.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="floor-standby-current-cycle"></a>
+### Standby current: battery-only suspended cycle of 10 minutes, charge_counter delta over time
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Needs the cable out for the window (the witness's hands) or the fuel gauge's discharge read while charging is held off; the RTC wakes the phone and the cycle log is read after. Pass: under 15 mA average; the number is recorded beside Droidian miatoll 9 mA. Same measure as sleep-standby-current.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: standby-current
 
 About
 : deep-sleep

@@ -46,3 +46,4 @@
 {"id":"proximity-reads","component_id":"sensors","proves":"present","says":"the proximity sensor gives a reading through iio-sensor-proxy (near or far when covered is a witnessed test)"}
 {"id":"walleye-gadget-up","component_id":"kernel","proves":"works","says":"A boot image of ours left fastboot: the phone's USB gadget appears on the host (lsusb by the manifest serial within 60 s) and answers on 172.16.43.1 (ping, telnet)"}
 {"id":"walleye-vendor-gadget-image-built","component_id":"kernel","proves":"present","says":"The control boot.img repacked with only the ramdisk swapped (vendor-gadget.img = bisect s1) exists, with kernel, dtb, command line, header and AVB footer equal to the control's; counted by check-bisect"}
+{"id":"standby-current","component_id":"deep-sleep","proves":"works","says":"battery-only average current across a suspended screen-off cycle stays under 15 mA (Droidian miatoll reads 9 mA; Android on surya not known yet)"}
