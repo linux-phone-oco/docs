@@ -1224,3 +1224,31 @@ Rejected
 
 About
 : deep-sleep
+
+
+<a id="2026-11-17-walleye-first-kernel"></a>
+### 2026-11-17-walleye-first-kernel
+
+Brief
+: First walleye kernel: kernel.org v7.3 + our own minimal msm8998-google-walleye.dts, USB gadget initramfs; porthole's v7.2.2 series only as fallback and patch source
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: The first kernel is pristine kernel.org v7.3 with arm64 defconfig plus gadget/configfs options, and a new msm8998-google-walleye.dts (GPL, derived from the wahoo dtsi of kcxt/porthole with licence and authors kept) that enables only reserved memory, RPM regulators, qusb2phy, dwc3 peripheral (USB 2.0), ramoops and UART, and carries qcom,msm-id = <0x124 0x20001> and no bootargs. It is booted once with fastboot boot, in a boot image of header v0 with the dtb appended. Further parts are added one at a time, taking porthole's patches singly.
+
+Why
+: Mainline has no Google board; the only maintained Pixel 2 family kernel (porthole) is shaped by taimen and its walleye board is untested, so a walleye failure on it would not say which of 263 patches or which board difference caused it; a minimal dts keeps the first try small and attributable (bring-up-a-part: test first, one part at a time). v7.3 is the newest release; v7.2.2 is what porthole proved on taimen.
+
+Rejected
+: porthole's whole 7.2.2 series as the first kernel (too large to attribute a failure); kcxt wahoo/5.17 (old, bootargs in the dts hides the bootloader cmdline, no msm-id); display-first or simple-framebuffer start (command-mode panel has no scanned-out framebuffer); flashing dtbo/boot first (decision walleye-fastboot-first); adopting a downstream 4.4 kernel (not the aim).
+
+About
+: google-walleye
+
+Research
+: walleye-shortest-path
