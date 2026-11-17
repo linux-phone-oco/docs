@@ -1604,3 +1604,35 @@ Material
 
 Supersedes
 : walleye-first-fastboot-boot-tries
+
+
+<a id="orchestration-2026-11-17-night"></a>
+### orchestration-2026-11-17-night
+
+Brief
+: Orchestration hand-over, 2026-11-17 night: fastboot slots told, briefs restored, docs split decided, template base reviewed; owed: role keeper read-weight, brief trimming.
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Where does orchestration's work stand, for a fresh orchestration session to take it up without this session's long context?
+
+Found
+: ROLE: orchestrator (brief ideal-agent-linux-phone-oco/orchestration.md, which opens with its Role/Name lines). Owns the conveyor - lab-tools/devlab, device-template, the Alpine path, docs' face and queries - and tends the agents. Notes: side-session-notes/local_325ef65d-55c6-44bd-85b9-53de24869d6e/orchestration-3.md (state, signs, every landing of 2026-11-17).
+LIVE: surya lane - surya coordinator (local_0ecf107e) starts keepers with Role: keeper / Name: surya-keeper-N / Also practices: 42 and phone-keeper.md by path; waker linux-phone-keeper-waker only nudges it, reading tad q phone-next --device xiaomi-surya. Walleye lane - walleye coordinator (local_7fb92f70); google-walleye in fastboot on slot b with slot a unbootable (its bootloader's doing in a RAM boot try); slot_switch stays false until its decision and the author's word. ~/.local/bin/devlab is built from ~/Projects/linux-phone-oco/lab-tools at main (d510232); devlab-watch@surya-lab restarted on it.
+LANDED SINCE THE EVENING HAND-OVER: lab-tools 80 (fastboot boot reads the slots' flags before/after and says where the phone went; set-active gated by [fastboot] slot_switch); docs 242 (the eight briefs restored after 226 reverted 230's role start), the slots item closed, gather-into-device-base recorded; reviewed: device-template 4 (each device's own tad base: parts contract, phone-next/phone-queue/next without --device), docs 260 (backlog.device, lane-next; kept until the split moves rows).
+DECIDED (the author, via the Top Coordinator): docs holds only what helps every device; each device has its own base from device-template; docs pulls parts and derives support_status (decision 2026-11-17-commons-and-device-bases; backlog tad q next --about commons-only). Next links: feed-device-bases (docs), move-device-rows (with each keeper), then lab-tools/gather-into-device-base (orchestration's, waits on the move) and launchers-per-device (roles).
+OWED: the clean 'after' read-weight - the first keeper started with Role lines on ideal-agent 0.3.6+ (keeper-6: 80,864 tok/30 KB; keeper-7: 79,870 tok but every practice, the hook then skipped started sessions) -> ideal-agent-roles local_dd7369b2; trimming the briefs of what the role cards say; tad-engine sign: a conditional rule (needs requires device), after the split; lab-tools kernel-orphan-modules. lab-agent's future is the Top Coordinator's research (research-lab-agent); devlab's root-exec/board uses move only on its word.
+WAITS ON OTHERS: surya-lab surya-fastboot-serial (devlab flash refuses surya until its manifest has [fastboot] serial, likely dc21014b unread, and writes = true); walleye's slot decision.
+DO NOT UNDO: the previous hand-over's list; every fastboot call names its serial; no partition write without writes = true, no slot switch without slot_switch = true; a boot's verdict is where the phone went and the flags, not fastboot's exit.
+SIGNS: rebase and read diff --stat origin/main...HEAD before land (226 reverted 230); land's commit title is at most 100 characters and a research brief at most 200; a hold sent after a yes may arrive after the landing - say hold before yes when a direction is open.
+
+About
+: agent-folder
+
+Supersedes
+: orchestration-2026-11-17-evening
