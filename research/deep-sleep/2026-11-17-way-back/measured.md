@@ -11,3 +11,7 @@ Findings: the qcom watchdog counts 32 s at most (kpss data: 0xFFFFF ticks at 32 
 30 s default holds, so the fuse is 30 s and the sleep at most 15 s. ramoops/pstore does NOT survive the watchdog's reset (empty
 every time): the log that survives is the persistent journal, synced before the arm. The PMIC RTC cannot be set
 (`hwclock -w`: No such device, no allow-set-time) - alarms work relative to its 1970 clock, so it is not a way back and not a cause.
+
+After the watchdog resets the speaker amplifier 0x4c read digital volume 0x00 (silent) and the health check `amp-volume-0x4c`
+failed once (boot of 13:41); one clean reboot cured it (health back to the 5 known gaps). A bite is an unclean reset of the SoC
+while the amplifiers keep power: after a try that ended in a bite, reboot once cleanly and read the health before the next try.
