@@ -2915,10 +2915,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-17-bringup-in-lab-tools (one roof: the pin is the family's, device.toml [tools] lpoco = "X.Y"). Failing test first: with [tools] lpoco = "0.2" and an lpoco 0.1.x, any command stops with one line naming both versions (non-zero, nothing written). Then hooks: a [boot.hooks] step names an executable, called with the part paths as arguments; a missing hook or a nonzero exit stops the job; test with a shell hook that appends a byte and one that fails. Then the library: lpoco-bringup's pack, swap and check public and documented, with a rust-script example in the repository (a device step that depends on lpoco-bringup by git tag in its header) run by a test.
+: Landed in lab-tools PR 88 (squash on main). Proof bringup-refuses-wrong-pin: bringup/tests/pin_and_hooks.rs (pin refusal, matching pin, parts hook changes ramdisk, failing/missing hook stops) and rust_script_step.rs (rust-script example through the library); cargo test --workspace passed in CI. Library docs cover pack, check, pin, hooks; there is no swap yet (not built), so none is documented.
 
 Opened
 : 2026-11-17

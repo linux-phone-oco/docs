@@ -1363,3 +1363,24 @@ Rejected
 
 About
 : lpoco-mcp-one-door
+
+---
+
+
+<a id="2026-11-17-bringup-pin-and-hooks-built"></a>
+### bringup pin and hooks built
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: Failing tests first, then pin module, parts hook, documented library and examples/step.rs run by rust-script; CI first failed for lack of rust-script, fixed by installing it in ci.yml; landed as PR 88 and read back from main.
+
+Rejected
+: Skipping the script test without rust-script.
+
+About
+: bringup-pin-and-hooks
