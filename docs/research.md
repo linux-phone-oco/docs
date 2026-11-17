@@ -833,3 +833,25 @@ Material
 
 Supersedes
 : 2026-11-17-surya-first-s2idle-cycle
+
+
+<a id="coordinator-how-it-stands"></a>
+### coordinator-how-it-stands
+
+Brief
+: Coordinator hand-over, 2026-11-17 13:00 UTC: deep sleep first; the keeper is on what wakes the phone; ideal-agent, idealkb and orchestration hold the general and conveyor work.
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Where does the coordinator's work stand, for a fresh coordinator to take it up without the old session's 840k tokens?
+
+Found
+: ROLE: the author's one session for linux-phone-oco - relays his words to the working sessions, keeps docs' records true through tad, routes work by the weakest link; does not build. SESSIONS (list_sessions linked): orchestration local_325ef65d (devlab, the queue, the face, the agent folder, the patrol and the waker); the phone keeper, started by the waker (surya dispatcher) - the one holder of the phone; ideal-agent-ikb local_05818060 (general agent know-how: practices, skills, hooks, housekeeping); idealkb build local_b8ca2fb5 (ideal-knowledge-base; docs and ideal-agent follow it, 0.5.0); phone lover local_f93a213b (bring-up, retired to the upstream queue). IN FLIGHT: deep sleep - after a timed s2idle test surya showed the initramfs gadget (18d1:d001); the author force-rebooted it and the keeper was to check health and record it; the wake IRQ 157 is the Bluetooth UART. Next on the queue: the sensor hub (sensors-and-the-mask, sensors-without-crash), off-state charging; gps-measurable waits on a research session; telegram-at-provisioning waits on Alpine v3.24; upstream-alpine-tqftpserv is a request in the author's name. Ask: tad q phone-queue, tad q next. WAITING ON THE AUTHOR: hands for any phone reboot or physical test; his word before anything goes upstream in his name; whether to start a GPS or sensors research session. STANDING WORDS: nothing depends on ocoeco; everything through tad in docs, idealkb the layer on top; deep sleep first, hard features researched first; a small look around before any change, with sources; summaries kept current; Gmail and Claude Docs off by default; quiet test sounds; fewer, longer-lived roles renewed by hand-over; sign as grenudi upstream; patches by git send-email. DON'T: widen ocoeco for another project; send HTML mail to lists.sr.ht; let a session re-read history to start; devlab kernel remove on entries sharing a release; treat idealkb as tad. Read from the old coordinator's transcript (7007ce97, 12.9 MB, 1,222 turns) by a subagent that returned 2.5 KB; corrected against main: docs follows idealkb 0.4.0 and the bring-up brief is folded into the keeper's.
+
+About
+: agent-folder
