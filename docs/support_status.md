@@ -76,7 +76,7 @@ Microphone × Xiaomi POCO X3 NFC
 
 <a id="audio-earpiece--xiaomi-surya"></a>
 Earpiece (call speaker) × Xiaomi POCO X3 NFC
-: broken — notes: Same source as audio-mic. — updated: 2026-11-04 — judged: broken
+: broken — notes: The earpiece is the top speaker: the TAS2564 at 0x4d (left of the stereo pair), not the WCD9375's EAR amplifier, which is silent (the author listened, 2026-11-17). The UCM profile's Earpiece device plays through it alone at -18 dB, both channels mixed. The phone proves it after every boot: earpiece-heard - a soft tone through the Earpiece found by the top microphone, 50 dB above the noise. — updated: 2026-11-17 — judged: works
 
 <a id="camera-front--xiaomi-surya"></a>
 Front camera × Xiaomi POCO X3 NFC
