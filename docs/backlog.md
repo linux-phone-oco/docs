@@ -3601,10 +3601,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: From the wahoo dtsi (GPL, authors kept): memory, regulators, qusb2phy, dwc3 peripheral, ramoops, UART; UFS/display/GPU/wifi/remoteprocs disabled; qcom,msm-id 0x124 0x20001; no bootargs. v7.2.2 is the fallback.
+: Built 2026-11-17: dt/msm8998-google-walleye.dts (lab PR 3) + v7.3 + build/walleye.config; counted: dtb builds, no dtc warning at W=1 from our file, msm-id 292/131073 (0x124/0x20001), 0 bootargs/stdout-path, Image.gz 15038692 bytes. Run: build/build-kernel.sh via oco-agent. Next: the keeper's one fastboot boot; UFS/display/touch stay off.
 
 Opened
 : 2026-11-17
@@ -3623,10 +3623,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: in-progress
 
 Note
-: postmarketOS's initramfs is the model; first try without storage access; busybox only.
+: Built (build/initramfs, busybox 1.36.1 static arm64, 1148576 bytes gz). Proven under x86_64 QEMU with dummy_hcd (build/selftest-initramfs.sh): gadget binds, lease 172.16.42.2, ping and telnet command answered on 172.16.42.1, ttyGS0 exists. NOT proven on arm64: qemu-system-aarch64 is not installed here, so the arm64 busybox and the real UDC first run on the phone try. No ssh yet (telnet only; dropbear is a later piece).
 
 Opened
 : 2026-11-17
@@ -3785,10 +3785,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: in-progress
 
 Note
-: Offsets are taimen's stock values (porthole); walleye's own header is read from the stock boot.img by the keeper, read-only, before the first try. Built by a tool, not by hand.
+: Both offset sets built and checked (15 checks each, 0 failed): boot-a.img (taimen: ramdisk 0x1000000, tags 0x100) sha256 fbcf0673..., boot-b.img (Lineage: ramdisk 0x2000000, tags 0x1e00000) sha256 c37693d4...; 16248832 bytes (<32 MiB), header v0, page 4096, dtb appended with msm-id. At ~/Projects/walleye-build/images. Waits on walleye's stock boot.img header to choose the set; try a first, b if it does not leave fastboot.
 
 Opened
 : 2026-11-17

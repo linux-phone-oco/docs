@@ -196,3 +196,22 @@ By
 
 Kind
 : lacking
+
+
+<a id="oco-agent-one-run-per-name"></a>
+### oco-agent-one-run-per-name
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+What
+: Two oco-agent run processes under one name park each other's job ('the agent restarted while doing it') and a killed run leaves a job parked; submit without --as is recorded as the user's login, not the session's name
+
+Seen
+: 2026-11-17
+
+By
+: walleye-builder
+
+Kind
+: unclear
