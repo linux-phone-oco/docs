@@ -3295,6 +3295,7 @@ Status
 
 Note
 : Seen writing lab.toml (lab-machine #36): plan says land 'found not found' and oco-work 'not installed' though both are in ~/.local/bin, since scripts print no --version and a script pin needs version (0.1.0 set as a label, rev is the real pin), so check fails for both. devices is one glob, so the clones are named [gs]*-lab. The land pin clones the private grenudi/lab-machine over https, which needs credentials. Failing test first: a fixture script tool pinned by rev is found on PATH and judged by its rev (a stamp the install writes, or the content hash), not by --version; devices accepts a list. Or land and agent-env learn --version (owners: lab-machine, ideal-agent).
+Also (2026-11-17, orchestration): plan read the shared google-walleye-lab clone, detached at an old commit without [host], and so planned no udev rule at all. A device declaration read from a working clone drifts with that clone; read it from the repository's origin/main (git show after a fetch), or say which commit was read and how far it is behind.
 
 Opened
 : 2026-11-17
