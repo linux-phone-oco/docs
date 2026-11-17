@@ -4539,10 +4539,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: in-progress
 
 Note
-: Decided 2026-11-17-sh0-owner-by-tag: SH0 is a keepalive BCM; the sleep residual is a TAG_ALWAYS consumer (uart8 debug UART the recorded candidate). (1) read only: at late suspend, icc_summary paths via qns_llcc with a sleep vote. (2) one change: one-shot dtb with uart8 interconnects ACTIVE_ONLY (console off the UART for the cycle, way-back by the kept dtb), cycle 15 bt-on with the watchdog armed; read rpmh_send_msg sleep flush: SH0 present or gone; then the counters. Proof: soc-sleeps (fails until the floor); the step's own pass is 'SH0 absent from the sleep flush'.
+: uart8 ruled out (research 2026-11-17-sh0-not-uart8): SH0 stays with uart8 disabled; DT tags are overridden by geni-se. Next: floor-sh0-qup-tags by unbind / BT off, or floor-suspend-late-dump
 
 Opened
 : 2026-11-17

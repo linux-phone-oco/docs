@@ -1878,3 +1878,25 @@ Found
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="2026-11-17-sh0-not-uart8"></a>
+### 2026-11-17-sh0-not-uart8
+
+Brief
+: SH0 x=1,y=3 (0x5003c data 0x60004003) stays in the suspend sleep flush with uart8 disabled: uart8 is not its owner; the GENI driver forces tag ALWAYS on every QUP path
+
+Project
+: linux-phone-oco/surya-lab
+
+Date
+: 2026-11-17
+
+Question
+: Does the debug UART (uart8, a88000) hold the SH0 sleep vote?
+
+Found
+: Read-only: icc_summary on the kept kernel lists non-zero bw only for usb, a88000 (1), 88c000 BT (2, 3200 aggre1), cpus. Try 1: dtb with uart8 interconnect tags 7->3 (ACTIVE_ONLY): the kernel summary still shows tag 7 - qcom-geni-se sets ALWAYS on its paths whatever the DT says, so tags in the DT cannot subtract a QUP vote. Try 2: dtb with serial@a88000 disabled; booted (health showed audio failures on that boot only; the next normal boot is healthy). cycle 15 bt-on, rpmh trace: the suspend-time sleep flush (tcs 2 [sleep], 6 cmds) at 153.75 reads addr 0x5003c data 0x60004003 = SH0 x=1,y=3 unchanged; cxsd/aosd/ddr 0 -> 0. So uart8 is not the owner, and DT tag changes are the wrong tool for the QUP consumers. Next suspects: the BT UART 88c000 (in use in bt-on), other QUP/crypto always-consumers by driver unbind, or SH0 not coming from an icc consumer at all.
+
+About
+: deep-sleep
