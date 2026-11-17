@@ -683,3 +683,25 @@ About
 
 Research
 : microphone-codec-drops-off
+
+
+<a id="2026-11-17-devlab-health-as-an-alpine-package"></a>
+### 2026-11-17-devlab-health-as-an-alpine-package
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Decision
+: devlab-health reaches phones as an Alpine package: release-plz tags devlab-health-vX.Y.Z, and the package conveyor's alpine.yml builds it from the tag's APKBUILD, signs it with lab-tools' own RSA key, verifies it and publishes an apk repository on lab-tools' pages for postmarketOS v26.06 (Alpine 3.24), then installs it in a clean container.
+
+Why
+: One way for code to reach a phone, measured, instead of devlab copying files: the phone updates the suite with the rest of its system, and any postmarketOS phone can take it without the lab. The conveyor already did this for pacman; the Alpine path was its open cv-apk.
+
+Rejected
+: Keeping devlab suite put as the only way (files no package manager knows, nothing for a phone outside the lab); building in lab-tools' own CI (copying what the conveyor keeps once); a key shared across the commons (keys stay per project for now); publishing as release assets (apk needs an index under a stable path).
+
+About
+: health-apk
