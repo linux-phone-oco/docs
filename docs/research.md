@@ -2127,3 +2127,25 @@ Found
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="walleye-try-s0-control-healthy-state"></a>
+### walleye-try-s0-control-healthy-state
+
+Brief
+: s0 control from the healthy state (a active+successful, b unbootable): accepted, left fastboot after 12 s, phone then gone from USB - needs a hand power hold
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: Is the footer-carrying stock control s0 accepted from the healthy state, and what does it do?
+
+Found
+: Same state as the s1 panic try. s0: left fastboot after 12 s and then no adb, no fastboot, nothing on its USB port for 3+ min (as the earlier control-accepted try). So s0 differs from s1: the stock image runs (no fallback to Android a, no panic reboot visible) but the phone then sits off USB - a hang or the vendor kernel with no adb (control cmdline and ramdisk are stock, so Android should have come up: more likely it shut off or hung). Needs hands: hold Power 10-30 s; slot a is successful so it then boots Android on a. Nothing written. Contrast: s1 (our ramdisk) panics and falls back in 75 s, s0 does not fall back.
+
+About
+: walleye-first-fastboot-boot
