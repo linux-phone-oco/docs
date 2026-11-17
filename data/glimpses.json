@@ -28,3 +28,4 @@
 {"id":"g-20261117-013537","at":"2026-11-17T01:35:37Z","by":"devlab","kind":"docs","summary":"3 runs of xiaomi-surya filed by devlab, from the phone's own reports"}
 {"id":"g-20261117-013753","at":"2026-11-17T01:37:53Z","by":"orchestration","kind":"feat","summary":"Tests: a known gap counted apart from a failure, in every run","advances":"backlog:gaps-on-the-face","touches":"backlog:gaps-on-the-face"}
 {"id":"g-20261117-013935","at":"2026-11-17T01:39:35Z","by":"claude","kind":"docs","summary":"A second phone: not now, the author says","advances":"backlog:a-second-phone","touches":"backlog:a-second-phone"}
+{"id":"g-20261117-014133","at":"2026-11-17T01:41:33Z","by":"devlab","kind":"docs","summary":"2 runs of xiaomi-surya filed by devlab, from the phone's own reports"}
