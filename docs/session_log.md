@@ -2443,3 +2443,21 @@ Rejected
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-1900-floor-entry-trace"></a>
+### Floor: the suspend entry read
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: floor-entry-trace: one way-back cycle 15 bt-on traced; the sleep set is flushed by the last CPU (7) just before cluster-sleep-2 (0x4100b244); one wake IRQ (RTC alarm); floor-irq-quiet dropped; soc-sleeps still fails (cxsd/aosd/ddr 0)
+
+Considered
+: next: the holder is not the entry; look at what the AOP or a master holds (floor-sh0-owner stays paused, standby current as arbiter); deeper decision for the coordinator
