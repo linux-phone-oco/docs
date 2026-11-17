@@ -49,5 +49,8 @@ Soc
 Notes
 : Mainline-kernel support tracked by the sm7150-mainline community; Nura (formerly postmarketOS) package status: community. The device name includes NFC; that refers to the stock Android feature, not yet confirmed working under mainline (see the nfc component). SIM card: removed by the author 2026-11-17, for now - checks that need one (call-echo, the SMS self-test, mobile data, modem-registered) skip with 'skip: no SIM card'; calls, SMS and data keep their last real measurement.
 
+Base
+: linux-phone-oco/surya-lab
+
 Sources
 : [linux-postmarketos-qcom-sm7150: the sm7150-mainline kernel fork and its changelog across releases](https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/4818), [device-xiaomi-{davinci,surya}: Move from testing to community](https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/6210), [sm7150-mainline: the community org hosting the kernel fork, nightly builds, and firmware repos](https://github.com/orgs/sm7150-mainline/repositories), [lab-agent: the pull-based agent that runs jobs on the real phone and reports back through git](https://github.com/creation-guidelines/lab-agent)
