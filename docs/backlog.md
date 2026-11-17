@@ -4421,10 +4421,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: Four images tried, none started our kernel: a 'Booting OKAY' then stayed in fastboot, b, c, d 'Failed to load/authenticate boot image: Load Error'; the os_version/patch-level word turned a's OKAY into Load Error. Questions: header v0 vs what Pixel 2 ABL expects (page size, base, cmdline length, dtb appended vs header fields), kernel format (Image.gz-dtb vs Image+dtb, gzip vs raw), the appended dtb's qcom,msm-id/board-id/pmic-id matching, vbmeta/AVB on an unlocked unsigned image, dtbo overlay id 2704 (taimen) and whether walleye's differs. Read-only: no writes to the phone. Known: porthole's mkbootimg call for taimen, LineageOS wahoo BoardConfig, kcxt README. A dtbo stub is a write: only name it as an option with its way back.
+: Answered: research walleye-load-error-how-it-stands, decision 2026-11-17-walleye-load-error-control-first; steps walleye-loaderror-* (stock-ids, variants-build, control, variants-try, dtbo-stub).
 
 Opened
 : 2026-11-17
@@ -4468,3 +4468,146 @@ Proof
 
 About
 : deep-sleep
+
+
+<a id="walleye-loaderror-stock-ids"></a>
+### Read walleye's stock boot header and dtb ids (qcom,board-id, pmic-id, msm-id) from a public LineageOS walleye build, host only
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Download one LineageOS walleye zip or recovery (state filename, source and size first), unpack boot.img with unpack_bootimg, dtc the appended dtb. No phone.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: walleye-stock-ids-recorded: research row naming the header fields and the dtb's board-id/pmic-id/msm-id, each with the file hash
+
+About
+: google-walleye
+
+
+<a id="walleye-loaderror-variants-build"></a>
+### Build variants e,f: blueline recipe (second 0, os word 0) and e plus the stock board-id/pmic-id in the dts; check-bootimg counts both
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Image a was the only silent OKAY, so keep os word 0. e = a with second_offset 0 and cmdline cut to earlycon+console only; f = e with qcom,board-id and qcom,pmic-id in the dts. One change each against a. Waits on walleye-loaderror-stock-ids for the ids.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: check-bootimg.sh passes for e and f and counts board-id/pmic-id in f
+
+About
+: google-walleye
+
+
+<a id="walleye-loaderror-control"></a>
+### Control try: fastboot boot of a public walleye stock-format image (LineageOS recovery or TWRP) with devlab's before/after slot report
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Same path as our tries on slot b. If it also says Load Error the phone's state is the cause: then restore slot flags (set-active a, the author's word) and retry. If it boots, the cause is in our image. Read-only otherwise: no flash.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: walleye-fastboot-boot-control: devlab report shows the phone left fastboot (18d1:4ee0 gone for 90 s polls) or Load Error, recorded either way as a research row
+
+About
+: google-walleye
+
+
+<a id="walleye-loaderror-variants-try"></a>
+### Try e then f (one at a time) with fastboot boot, after the control, with before/after slot report
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: After walleye-loaderror-control and walleye-loaderror-variants-build. A try that leaves fastboot or turns Load Error into OKAY-silence is a result; record each.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: walleye-fastboot-boot-variants: each image's outcome recorded as research; success is a USB id other than 18d1:4ee0 appearing (our gadget) for e or f
+
+About
+: google-walleye
+
+
+<a id="walleye-loaderror-dtbo-stub"></a>
+### dtbo_b stub with overlay id for walleye - only if the control boots and e,f still end in Load Error
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: A write to the phone: needs the author's word and the way back first (stock dtbo from the LineageOS zip read in walleye-loaderror-stock-ids, flashed back with fastboot flash dtbo_b). Overlay id for walleye is not known: read from the stock dtbo table, not guessed (kcxt's 2704 is for taimen).
+
+Opened
+: 2026-11-17
+
+Waits
+: the author's word (a write to the phone)
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: walleye-dtbo-stub-boot: after the stub, fastboot boot of e or f leaves fastboot; stock dtbo flashed back and its hash equals the one from the zip
+
+About
+: google-walleye

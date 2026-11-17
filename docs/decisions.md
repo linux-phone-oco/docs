@@ -1495,3 +1495,31 @@ About
 
 Research
 : commons-and-device-bases-world
+
+
+<a id="2026-11-17-walleye-load-error-control-first"></a>
+### 2026-11-17-walleye-load-error-control-first
+
+Brief
+: Find why the Pixel 2 refuses our images with a control image first, then host-built variants one change each; a dtbo stub only after both, on the author's word
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: 1) A control: a public stock-format walleye image (LineageOS recovery or TWRP) through the same fastboot boot, to learn whether the phone's state or our image causes Load Error. 2) Host-only rebuild of the image on the pmaports blueline recipe (second offset 0, os word 0, short cmdline) and a dts with qcom,board-id/pmic-id read from the stock walleye dtb, tried one change at a time. 3) Only if both still end in Load Error, a stub dtbo in dtbo_b - a write with a recorded way back, needing the author's word.
+
+Why
+: Nothing reported on a Pixel 2 booting mainline; the image format already equals what pmaports boots on Pixel 3; Load Error is also given to known-good TWRP in a bad state, so a control separates state from content cheaply and with no write; the board-id change costs nothing on the host; the dtbo stub is the one proven fix on taimen (kcxt) but changes the phone.
+
+Rejected
+: Flash a stub dtbo first (kcxt's way): proven on taimen only, a write, and the cause may be state or ids; Read slot b's dtbo or boot header via Android first: needs set-active/boot of Android, which flips slot flags; Keep trying more offset variants (a/b style): both offset sets already behave the same under Load Error, so offsets are not the lever; Download Google's factory image to read ids: a proprietary download needing a decision, when LineageOS's public build holds the same header and dtb ids.
+
+About
+: google-walleye
+
+Research
+: walleye-load-error-how-it-stands
