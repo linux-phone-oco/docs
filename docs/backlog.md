@@ -2010,10 +2010,10 @@ Project
 : linux-phone-oco/sxmo-deviceprofiles
 
 Status
-: open
+: done
 
 Note
-: To sxmo-utils by mailing list, signed off by its author.
+: In sxmo-utils master as 1fd7822 (sxmo-profile-patch landed).
 
 Opened
 : 2026-11-10
