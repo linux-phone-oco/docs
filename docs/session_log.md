@@ -2269,3 +2269,45 @@ Done
 
 Considered
 : next: walleye-boot-refused-why - remaining causes need a dtbo/vbmeta write (walleye-loaderror-dtbo-stub waits on the author's word); never repeat the slot-a control
+
+---
+
+
+<a id="2026-11-17-1815-keeper10-sh0-owner"></a>
+### floor-sh0-owner: uart8 is not the SH0 owner
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Read icc_summary; two one-shot dtbs on the kept kernel. Tags ACTIVE_ONLY: ignored (geni-se forces ALWAYS). uart8 disabled: cycle 15 bt-on, sleep flush still has SH0 x=1,y=3; counters 0 -> 0. Phone rebooted to the kept dtb, healthy 35 pass 0 fail.
+
+Considered
+: next: floor-sh0-qup-tags by driver unbind not DT tag (BT UART 88c000 with bt off; i2c/spi QUPs; crypto), or a late-suspend dump (floor-suspend-late-dump) to see who holds SH0; SH0 may not come from an icc consumer.
+
+About
+: deep-sleep
+
+---
+
+
+<a id="2026-11-17-1820-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Kept kernel 7.1.0-sm7150-calls+ on the kept dtb, rebooted after the uart8 tries, healthy 35 pass 0 fail (5 known gaps). Nothing kept from the tries.
+
+Considered
+: next: floor-sh0-qup-tags (by driver unbind, BT-off cycle), sensors-registry-writes (rank 3), sleep-fastrpc-helpers. sleep-cluster-params waits on a deeper decision.
+
+About
+: deep-sleep
