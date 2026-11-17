@@ -104,7 +104,7 @@ Mobile data × Xiaomi POCO X3 NFC
 
 <a id="modem-calls--xiaomi-surya"></a>
 Phone calls × Xiaomi POCO X3 NFC
-: unknown — notes: Not known: there is no SIM card in the phone, and without one the modem reports a failed state. Nothing about calls can be shown until a SIM is in. — updated: 2026-11-11 — judged: unknown — measured: modem-seen pass (present) — measured run: 20261110-045059
+: unknown — notes: Calls work both ways on mainline (2026-11-17, Vodafone.de network, 1&1 SIM): q6voice (from pulpoff/linux-surya, sdm845-mainline's drivers) in the kept kernel, a Voice Call UCM verb with earpiece and speaker, q6voiced and an uplink capture service. The phone proves it once a day: call-echo calls an echo line, plays a tone and hears it come back. The author heard the echo line's announcement on the earpiece. — updated: 2026-11-17 — judged: works — measured: modem-seen pass (present) — measured run: 20261110-045059
 
 <a id="modem-sms--xiaomi-surya"></a>
 SMS × Xiaomi POCO X3 NFC
