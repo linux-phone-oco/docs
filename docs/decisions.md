@@ -1347,3 +1347,31 @@ About
 
 Research
 : lab-host-prepare-landscape
+
+
+<a id="2026-11-17-hardware-is-one-table-in-every-base"></a>
+### 2026-11-17-hardware-is-one-table-in-every-base
+
+Brief
+: Hardware is one table in one shape: the general catalogue in docs, stock and what is confirmed on a phone in its base; items await it.
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: Hardware a phone's work needs beyond the phone - cables, adapters, breakouts, meters, and the setups made of them - is one table, hardware, in one shape: in docs as the general catalogue (status general: what a thing is, its spec, wiring and sources, written once for every phone) and in each device base (what that lab wants, has or lacks, and whether it is CONFIRMED on that phone). Fields: id, kind (cable, adapter, breakout, meter, tool, part, setup), name (with the chip or conductors that tell variants apart), status (general, wanted, ordered, owned, lent, broken, retired), fit (claimed, confirmed, refuted - on that phone; confirmed needs fit_ref, the evidence), spec, wiring, serves, about, general (docs:ID of the catalogue entry), qty, price with price_on (a price needs its day), sources, file, note, checked_on (required). A backlog item names the hardware it cannot be done without (hardware, ids): phone-next and phone-queue read it off the data - it waits until each is owned and none refuted (phone-queue shows awaits_hardware), the same way blocked_by clears itself. Stock is kept in the base of the lab that holds the thing; the catalogue holds no stock. Records: hardware, hardware-status (it arrived, it was tried), query: tad q hardware (status, kind, about; days since checked). device-template carries the structure (surya-lab and google-walleye-lab have it); the first rows are the Pixel 2's UART cable: four sources, the 1.8 V adapter, the SBU breakout, USB-Cereal and the setup, all claimed and none confirmed.
+
+Why
+: Read: how Snipe-IT (model vs asset, typed status labels, purchase cost with purchase date), Part-DB (lots by location, supplier price details, a needs-review flag), KiCad (custom fields, no status or price date) and OpenBOM (item vs usage) keep parts, and what the sources of the Pixel UART cable say (bacon.dev, Peter-Easton, xairy, google/usb-cereal): prose and SKUs, claims told from tests only by reading, prices undated, a repository archived. Failure modes seen there - stale prices, claimed read as confirmed, the same name for different chips (FT232R vs CP2102N; a stock cable without the SBU lines), settings lost (1.8 or 3.3 V, orientation) - are what the fit/fit_ref and price/price_on rules and the spec line answer. The lanes read only their own base (decision 2026-11-17-commons-and-device-bases), so the question 'is it owned?' has to be answered there.
+
+Rejected
+: Stock only in the docs catalogue, with device rows deriving it (the research's recommendation): a lane would have to read docs for 'owned?', which the device-base decision ended; a shared adapter listed in two bases is the cost, noted in `general`. A separate lab-inventory base: a third place for two labs; revisit if more than a few things are shared. A hardware section inside parts: parts say what the phone's components do, not what the bench needs. A new idealkb generic table: hardware is linux-phone's, one domain uses it; extract when a second does. Free-text notes on backlog items for 'needs the UART cable': nothing reads them, so a try would start without it. Quoting a retailer's claim as a fact: fit defaults to claimed, and confirmed needs evidence.
+
+About
+: no-manual-steps
+
+Research
+: hardware-world

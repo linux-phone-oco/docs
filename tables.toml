@@ -1343,3 +1343,95 @@ to = ["upstreams"]
 [[rules.references]]
 field = "upstream_items.supersedes"
 to = ["upstream_items"]
+
+# The general hardware catalogue (the shape every device base uses, in tables.toml of device-template): what a thing is,
+# its wiring and sources, status = general. A lab's stock and what is confirmed on a phone live in that phone's base.
+[tables.hardware]
+key = ["id"]
+requires = [["price", "price_on"], ["fit_ref", "fit"]]
+
+[[tables.hardware.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.hardware.fields]]
+name = "kind"
+type = "string"
+required = true
+enum = ["cable", "adapter", "breakout", "meter", "tool", "part", "setup"]
+
+[[tables.hardware.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.hardware.fields]]
+name = "status"
+type = "string"
+required = true
+enum = ["general", "wanted", "ordered", "owned", "lent", "broken", "retired"]
+
+[[tables.hardware.fields]]
+name = "fit"
+type = "string"
+enum = ["claimed", "confirmed", "refuted"]
+
+[[tables.hardware.fields]]
+name = "fit_ref"
+type = "string"
+
+[[tables.hardware.fields]]
+name = "spec"
+type = "string"
+
+[[tables.hardware.fields]]
+name = "wiring"
+type = "string"
+
+[[tables.hardware.fields]]
+name = "serves"
+type = "string"
+
+[[tables.hardware.fields]]
+name = "about"
+type = "string"
+
+[[tables.hardware.fields]]
+name = "general"
+type = "string"
+
+[[tables.hardware.fields]]
+name = "qty"
+type = "integer"
+minimum = 0
+
+[[tables.hardware.fields]]
+name = "price"
+type = "string"
+
+[[tables.hardware.fields]]
+name = "price_on"
+type = "date"
+
+[[tables.hardware.fields]]
+name = "sources"
+type = "string"
+
+[[tables.hardware.fields]]
+name = "file"
+type = "string"
+
+[[tables.hardware.fields]]
+name = "note"
+type = "string"
+
+[[tables.hardware.fields]]
+name = "checked_on"
+type = "date"
+required = true
+
+[[rules.references]]
+field = "hardware.about"
+to = ["components", "features", "milestones", "devices", "backlog", "concepts"]
