@@ -4,7 +4,7 @@
 
 Add to this knowledge base with `ikb RECORD --option value ...`; you need nothing else - not SQL, not the layout of the files.
 
-- A text option takes its text from a file with `@FILE`, or from standard input with `@-` (`--found @-`): long text and apostrophes need no quoting. `@@x` is the text `@x`.
+- A text option takes its text from a file with `@FILE`, or from standard input with `@-` (`--found @-`, once per call): long text and apostrophes need no quoting. `@@x` is the text `@x`.
 - A record is checked before it is kept; a wrong call says what is wrong and what is accepted, and nothing is changed. A record of an id that exists replaces it.
 - After a record `ikb` runs `tad canon` and `tad render` (`--skip-render` to batch several records and run them once), and says one line. Then land your change.
 - `--id` is made from the brief when you leave it out; `--date` is today; `--by` is `$OCOECO_BY`.
