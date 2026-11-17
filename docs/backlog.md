@@ -3695,6 +3695,9 @@ Device
 Proof
 : lsusb on the host shows the gadget within 60 s of fastboot boot and ssh/telnet to 172.16.42.1 answers (test: walleye-gadget-up)
 
+Rank
+: 1
+
 About
 : google-walleye
 
