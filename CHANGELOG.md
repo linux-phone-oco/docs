@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/linux-phone-oco/docs/compare/v0.5.0...v0.6.0) (2026-11-17)
+
+
+### Features
+
+* **docs:** phone-next, the keeper's one item in one row ([#202](https://github.com/linux-phone-oco/docs/issues/202)) ([9b028df](https://github.com/linux-phone-oco/docs/commit/9b028df4d53a25513f723331bc6c29bc42e639c8))
+
 ## [0.5.0](https://github.com/linux-phone-oco/docs/compare/v0.4.0...v0.5.0) (2026-11-17)
 
 
