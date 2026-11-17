@@ -349,10 +349,10 @@ Opened
 ### Known gaps shown as gaps on the face, not as failures
 
 Status
-: open
+: done
 
 Note
-: The phone's own verdict leaves out the known gaps (surya: fingerprint, sensors, both cameras - healthy, 4 in known gaps), but test_runs counts them as failed, so every bar on the Tests page carries red. A run's row should say its gaps apart (a gaps count, read from the report's verdict or the manifest's [health] gaps), and the face draw them in their own colour.
+: The phone's own verdict leaves out the known gaps (surya: fingerprint, sensors, both cameras - healthy, 4 in known gaps), but test_runs counts them as failed, so every bar on the Tests page carries red. A run's row should say its gaps apart (a gaps count, read from the report's verdict or the manifest's [health] gaps), and the face draw them in their own colour.  Done 2026-11-17 (orchestration): test_runs has a gaps column - failures in the manifest [health] gaps, counted apart from failed as the phone verdict counts them (devlab gather files it so; the runs filed before were counted again with surya gaps); the engine draws them in their own colour on the Tests page (ocoeco-engine #60), and a run with only gap failures is a run that works.
 
 Opened
 : 2026-11-17
