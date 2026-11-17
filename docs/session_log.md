@@ -1477,3 +1477,27 @@ Rejected
 
 About
 : lpoco-host
+
+---
+
+
+<a id="2026-11-17-lpoco-family-answers-help"></a>
+### lpoco family answers --help
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: Wrote tests/help.rs per crate (failing: '--help is not a declared flag'), declared HELP (-h/--help) once with argenv in four cli.rs, usage printed from the records; landed #93 and release v0.2.2, read back from main and tag.
+
+Considered
+: A shared help crate for the family.
+
+Rejected
+: A shared crate: one 25-line fn per crate is smaller than a new release unit, and health ships to phones. Hand-written usage text: it would drift from the declaration.
+
+About
+: lpoco-host-help

@@ -3260,10 +3260,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Seen by the coordinator installing lpoco-host 0.2.1 for the acceptance: 'lpoco-host --help' answers '--help is not a declared flag'. Failing test first (host/tests): 'lpoco-host --help' and 'lpoco host --help' exit 0 and print the usage with plan, prepare now and check; then check the family: lpoco, lpoco-bringup, lpoco-tone, lpoco-health answer --help the same way, and fix any that do not. Blocks the lpoco-host acceptance.
+: Landed in lab-tools #93, released as lpoco-v0.2.2: --help and -h print the usage (arguments and environment read from the argenv declaration) in lpoco, lpoco-host, lpoco-bringup, lpoco-health; lpoco-tone and devlab already did (clap). Proof: help_prints_the_usage_and_exits_0 in each crate's tests/help.rs, failing first. Unblocks the lpoco-host acceptance: install 0.2.2.
 
 Opened
 : 2026-11-17
