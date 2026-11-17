@@ -352,3 +352,15 @@ Entry date
 
 Done
 : The phone checks its own health after every boot and every change ends with that report; gathering into this picture is one command; agents reach the phone over MCP; and a new phone's lab is now a new device.toml (linux-phone-oco/device-template).
+
+---
+
+
+<a id="2026-11-17-the-face"></a>
+### linux-phone's own face
+
+Entry date
+: 2026-11-17
+
+Done
+: linux-phone-oco.github.io/docs is now the Linux Phones face, drawn in this place's CI from its open database (tad) and the family as the lens gathers it; devlab files every boot's health report here by itself and the face is drawn again - proven with the run of 2026-11-16 23:45, from the phone to the page with nobody asking.
