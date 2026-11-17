@@ -1494,4 +1494,4 @@ About
 : commons-only
 
 Research
-: kb-navigation-remeasured
+: commons-and-device-bases-world
