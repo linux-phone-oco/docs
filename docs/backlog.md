@@ -4039,10 +4039,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: One change: unbind the UDC (a6f8800.usb: gadget off, usb30_prim_gdsc and its tag-7 icc vote released) a second before the suspend, the RTC alarm brings the way back (reboot or rebind after). Read counters. The lab link is lost for the cycle by design; the way-back watchdog covers it.
+: Done 2026-11-17 (keeper-9): UDC a6f8800.usb unbound, cycle 15 bt-on: cxsd/aosd/ddr 0 -> 0. USB is not the holder. The rebind did not bring the lab link back (needed a hard reboot). research/deep-sleep/2026-11-17-floor-udc-unbound/README.md
 
 Opened
 : 2026-11-17
