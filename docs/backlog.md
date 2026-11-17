@@ -2026,22 +2026,6 @@ Waits
 : calls-first-call
 
 
-<a id="health-data-check"></a>
-### A mobile-data check over the bearer's own interface, within budget
-
-Project
-: linux-phone-oco/lab-tools
-
-Status
-: open
-
-Note
-: In health/suite/checks/base/60-modem.sh or beside it: with a connected bearer, its interface from mmcli; over it only (curl --interface): DNS, 5 pings, a 100 kB HTTPS download timed; the bytes used from the interface's counters, said in the detail; a weekly 5 MB throughput run; skip when the month's total passes the manifest's budget (default 250 MB). About 150 kB a run, under 0.3 GB a month (research mobile-data-check-budget). Proof: tests rows modem-data-online (works) pass on surya, and the detail states bytes used.
-
-Opened
-: 2026-11-17
-
-
 <a id="health-analysis-in-rust"></a>
 ### devlab-health tone make|find on the phone, the awk Goertzels retired
 
@@ -2085,6 +2069,22 @@ Status
 
 Note
 : Researched (research call-audio-on-surya) and decided (2026-11-17-calls-proven-by-echo-call); the work continues as calls-q6voice-kernel, calls-voice-ucm-uplink, calls-first-call and calls-echo-check.
+
+Opened
+: 2026-11-17
+
+
+<a id="health-data-check"></a>
+### The mobile-data check made generic, counting its bytes against a budget
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: surya-lab's tests/health/base/mobile-data.sh (bring-up, surya-lab #112) already does the per-boot part: over the modem's own interface, 3 pings and a 100 kB download. Left, per research mobile-data-check-budget: move it into lab-tools' generic suite (any phone with a modem); state the bytes the run used from /sys/class/net/IFACE/statistics; skip when the month's total passes a budget in the manifest (default 250 MB); a weekly 5 MB throughput run. Proof: the check passes on surya with the bytes used in its detail, and skips once a test budget of 1 MB is set.
 
 Opened
 : 2026-11-17
