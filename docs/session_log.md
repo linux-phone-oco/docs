@@ -2041,3 +2041,24 @@ Rejected
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-1800-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Keeper-8: phone on the kept kernel 7.1.0-sm7150-calls+, rebooted after the sensors probe, healthy 35 pass 0 fail (5 known gaps). sensorspd and rootpd masked as before, config mtimes restored, nothing kept from the probe. sleep-fastrpc-helpers could not be measured: the probe (research 2026-11-17-sensorspd-probe-still-writes) shows the DSP still writes temp.json and sns_reg_version with the configs current, 7 ADSP crashes in 25 s and the audio card gone until reboot.
+
+Considered
+: next: sensors-registry-writes (rank 3, needs phone): build hexagonrpcd with write support limited to a state copy of the registry (hexagonrpc PR #27 commits 40e5041, or the -S state dir of #19, or the #29 patch) for aarch64 musl, seed the copy from the package, serve sns_reg_version, one try per boot; reboot after any try that crashes the ADSP. No hexagonrpc source tree is on the lab yet. Then sleep-fastrpc-helpers (measure sensors after a resume with sensorspd stopped). Also: sleep-cluster-params waits on a deeper decision (research session).
+
+About
+: deep-sleep
