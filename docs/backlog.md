@@ -3442,10 +3442,10 @@ Project
 : linux-phone-oco/surya-lab
 
 Status
-: open
+: done
 
 Note
-: The author removed the SIM 2026-11-17. Make call-echo, the SMS self-test, mobile data and modem-registered report 'skip: no SIM card' (detect: ModemManager shows no SIM / sim-missing) instead of failing; support status keeps calls, SMS and data at their last real measurement (the face already looks past skips - verify after the next boot, tad q support-status / the face). Nothing on the queue needs the SIM before deep sleep; if something does it waits (waits: the SIM back). Proof: after a boot, healthy with those four skipping and no part turned broken.
+: Done 2026-11-17 (lab-tools #73 no_sim helper, surya-lab #123): with the SIM out, modem-registered, mobile-data, call-echo and sms-loopback say 'skip: no SIM card' (before the once-a-day stamp, so a skip costs nothing). After one reboot on devlab-health 0.1.6: 35 pass, 5 fail (the known gaps: fingerprint, sensors, cameras), 5 skip; calls, SMS and data stay 'works' at their last real measurement.
 
 Opened
 : 2026-11-17
