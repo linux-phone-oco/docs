@@ -1636,3 +1636,29 @@ About
 
 Supersedes
 : orchestration-2026-11-17-evening
+
+
+<a id="walleye-first-fastboot-boot-tries-c-d"></a>
+### walleye-first-fastboot-boot-tries-c-d
+
+Brief
+: boot-c and boot-d (os_version and patch level set): both refused with Load Error, phone stays in fastboot, no USB event, flags unchanged; no image has started our kernel
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: Does setting os_version and patch level in the header make the bootloader start our boot image?
+
+Found
+: Try c (boot-a plus the header os word) and try d (boot-b plus it), on slot b with devlab's before/after report: both fastboot "Booting FAILED (remote: 'Failed to load/authenticate boot image: Load Error')" after the 0.368 s transfer. The phone stayed in fastboot: 18d1:4ee0 in all 90 one-second lsusb polls after each, nothing new on USB (no Linux gadget, no serial port), host kernel log empty. Slot flags identical before and after (current b, a unbootable). No write, no set-active.
+So the os_version/patch level word does not make the bootloader accept our images, and it turned boot-a's silent "Booting OKAY" into a Load Error. No image has started our kernel; what the loader dislikes (header, kernel format, dtb, missing dtbo) is not known yet. Open: a dtbo stub is a write and stays the author's decision; the builder may try other header fields or a kernel with the dtb as Android expects.
+
+About
+: walleye-first-fastboot-boot
+
+Material
+: research/walleye-first-fastboot-boot/2026-11-17-c-d/
