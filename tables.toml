@@ -61,6 +61,11 @@ enum = ["phone"]
 name = "proof"
 type = "string"
 
+# where it stands in its resource's queue, by the author's order (1 first; empty: after the ranked)
+[[tables.backlog.fields]]
+name = "rank"
+type = "integer"
+
 [tables.components]
 key = ["id"]
 
