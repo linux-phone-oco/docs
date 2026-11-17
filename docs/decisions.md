@@ -1467,3 +1467,31 @@ Rejected
 
 About
 : agent-folder
+
+
+<a id="2026-11-17-commons-and-device-bases"></a>
+### 2026-11-17-commons-and-device-bases
+
+Brief
+: docs keeps general knowledge for all devices; each device has its own open base; docs pulls and derives progress. one-database stays for docs and its tools.
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: Decision 2026-11-17-one-database is superseded for devices only. Each device (surya, walleye, a third) has its own open base, made from device-template and following idealkb: queue, tries, measurements, decisions, research about it, its parts with status, evidence and date. docs holds concepts, the components and features catalogue, landscape, general decisions and research, shared sources, the tests catalogue, the lab tooling, and a registry of devices with the address of each base; support status and progress are derived from the devices' declared parts, pulled in CI, never typed or copied (stale or missing: not known yet). Lanes and launchers ask their device's own base. A third device is made from the template and registered with one record. The work to get there is on docs' backlog under commons-only, each part with its owner.
+
+Why
+: 40 of docs' own 81 backlog items, 34 of 49 research rows and 14 of 28 decisions name a device; test_results is 1.3 MB of 2.0 MB; the keeper's landings conflict in docs' data; the author wants docs to hold only what helps all devices. The device field and lane-next (docs 260) separate lanes but not weight or conflicts.
+
+Rejected
+: One database with a device field (lanes only); status typed in docs and in the device; submodules or subtrees; push from each device; CI-only derivation (a phone cannot run in CI); superseding one-database wholesale - its reasons still hold for docs and the lab tools. Full reasons: grenudi/ideal-knowledge-base decision 2026-11-17-commons-and-unit-bases.
+
+About
+: commons-only
+
+Research
+: kb-navigation-remeasured
