@@ -2440,3 +2440,24 @@ Considered
 
 About
 : move-device-rows
+
+---
+
+
+<a id="2026-11-17-feed-device-bases"></a>
+### docs pulls each device base's parts
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: devices.base field and records/device-base.sql (walleye named; surya's name waits for its rows to move: its parts.json is empty now, so naming it would turn its status unknown on the next feed); records/feed-device-parts.sql and device-parts-unknown.sql, run per device by bin/run-feeds.sh; derive-support-status leaves devices with a base alone; feeds.yml daily. make feeds pulled walleye's 21 parts, all unknown (its base says so); an unreachable base tested on a made-up base: all unknown, 'not known yet'.
+
+Considered
+: A single feed record over all bases: DuckDB aborts the statement on one 404, so the runner loops per device and falls back.
+
+About
+: feed-device-bases

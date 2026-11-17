@@ -5,5 +5,6 @@
 -- --codename  string  its codename
 -- --soc       string  Qualcomm CHIP (Snapdragon NAME)
 -- --notes     string? what is known of the phone as a whole, and where it is not measured here
+-- --base      string? its base: owner/name of its lab repository, when it has one (records/device-base.sql)
 DELETE FROM devices WHERE id = $id;
-INSERT INTO devices (id, name, codename, soc, notes) VALUES ($id, $name, $codename, $soc, $notes);
+INSERT INTO devices (id, name, codename, soc, notes, base) VALUES ($id, $name, $codename, $soc, $notes, $base);

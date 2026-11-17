@@ -30,6 +30,9 @@ Soc
 Notes
 : Surveyed from published sources on 2026-11-17, never touched: nothing is measured here, so every part is unknown. No Nura wiki page, no pmaports package, no mainline device tree; only the out-of-tree fork kcxt/linux-wahoo (last pushed 2022-02-27) carries a walleye device tree, and no source says it boots. The smaller sibling of taimen (Pixel 2 XL), same SoC.
 
+Base
+: linux-phone-oco/google-walleye-lab
+
 Sources
 : [kcxt/linux-wahoo: Mainline Linux for the Google Pixel 2XL (And 2?)](https://github.com/kcxt/linux-wahoo), [Linux mainline: arch/arm64/boot/dts/qcom (MSM8998 device trees)](https://github.com/torvalds/linux/tree/master/arch/arm64/boot/dts/qcom), [Nura pmaports: device packages of Google phones (device/community, device/testing)](https://gitlab.nura.eco/nura/pmaports/-/tree/master/device/testing), [Ubuntu Touch: Google Pixel 2 (walleye), old releases](https://devices.ubuntu-touch.io/device/walleye/), [LineageOS wiki: Google Pixel 2 (walleye)](https://wiki.lineageos.org/devices/walleye/), [AOSP: Build Pixel kernels (legacy branches)](https://source.android.com/docs/setup/build/building-pixel-kernels), [Nura wiki: OnePlus 5 (oneplus-cheeseburger), the MSM8998 phone best supported in mainline](https://wiki.nura.eco/wiki/OnePlus_5_%28oneplus-cheeseburger%29)
 

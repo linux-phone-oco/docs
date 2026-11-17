@@ -9,7 +9,9 @@
 --   works   - a test that proves the part does its work last passed, and none failed
 --   judged  - otherwise: a pass that only shows the part is there, or no measurement at all, says nothing
 --             against what a person witnessed or read
-UPDATE support_status SET status = judged, measured = NULL, measured_run = NULL;
+-- A device that has a base (devices.base) is left alone: its status is the feed's (records/feed-device-parts.sql).
+UPDATE support_status SET status = judged, measured = NULL, measured_run = NULL
+WHERE device_id NOT IN (SELECT id FROM devices WHERE base IS NOT NULL);
 UPDATE support_status s SET
     status = CASE WHEN m.failed > 0 THEN 'broken' WHEN m.works > 0 THEN 'works' ELSE s.judged END,
     measured = m.said,
@@ -39,4 +41,5 @@ FROM (
     WHERE e.n = 1
     GROUP BY e.device_id, e.component_id
 ) m
-WHERE s.device_id = m.device_id AND s.component_id = m.component_id;
+WHERE s.device_id = m.device_id AND s.component_id = m.component_id
+  AND s.device_id NOT IN (SELECT id FROM devices WHERE base IS NOT NULL);
