@@ -1960,10 +1960,12 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
 : First step of 2026-11-17-calls-proven-by-echo-call. On linux-phone-oco/linux, a branch with q6voice (q6mvm, q6cvs, q6cvp, the voice DAI) from sdm845-mainline and pulpoff/linux-surya's SM7150 changes (CVD 2.3 from the CVP version, codec DMA ports, zeroed command buffer, start in prepare), and in surya's device tree the APR voice services and a hostless VoiceMMode1 link; merged into a test branch over test/surya-mic and tried by devlab kernel try. Proof: surya-lab's check call-audio-path passes (the VoiceMMode1 PCM, 'TERT_MI2S_RX Voice Mixer VoiceMMode1', 'VoiceMMode1 Capture Mixer TX_CODEC_DMA_TX_3', q6voiced); it fails today.
+
+Done 2026-11-17 (bring-up): pulpoff/linux-surya's c314b3bdf cherry-picked onto test/surya-mic as test/surya-calls (linux-phone-oco/linux PR #7), CONFIG_SND_SOC_QDSP6_Q6VOICE=m; the VoiceMMode1 link is PCM 0,6 here. Kernel 7.1.0-sm7150-calls+ is the kept default; call-audio-path passes.
 
 Opened
 : 2026-11-17
@@ -1976,10 +1978,12 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
 : In surya-lab ucm/: a Voice Call verb (earpiece and speaker, bottom mic; 'VoiceMMode1 TX Topology' 0x10F70), and a small service that runs a 1-channel capture on TX_CODEC_DMA_TX_3 for as long as ModemManager has an active call (pulpoff's surya-call-uplink), writing it to a file when the echo check asks. Proof: with no call, alsaucm lists the verb and setting it sets the routes (a base check); the call itself is proven by calls-first-call.
+
+Done 2026-11-17 (bring-up): surya-lab has the Voice Call verb (ucm/Xiaomi/surya/VoiceCall.conf, listed by ucm/conf.d/sm8250/POCO-X3.conf) with Earpiece, Speaker and Mic; PulseAudio dropped the verb until its MultiMedia1 and MultiMedia2 routes were in it too (it test-opens the devices' PCMs). q6voiced reads /etc/conf.d/q6voiced (card 0, PCM 6); devlab-call-uplink keeps a 1-channel capture on MultiMedia3 during a call. The TX topology 0x10F70 is now set in the HiFi verb at boot: the DSP builds its voice processor once, at the first call, with whatever topology is set then - a first call placed before the switch kept the uplink silent for every later call until a reboot.
 
 Opened
 : 2026-11-17
@@ -1995,10 +1999,12 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
 : With the author's word (2026-11-11-modem-read-only-first), the bring-up session calls +49 89 721010 99702 (blueSIP's tone line) and then +49 89 721010 99701 (blueSIP's echo) through mmcli, 20 s each, recording the uplink capture. Settles: whether the lines answer from this SIM, whether VoLTE or GSM carries the call, the round-trip delay, the downlink level at the mic. If the echo line is dead, the fallback is the SIM's own mailbox (record, then play back by DTMF). Proof: a tone found in the recording of the tone-line call, and the played pattern found again a round trip later in the echo call.
+
+Done 2026-11-17 (bring-up), with the author's word: blueSIP's tone line answered from this SIM and its 1004 Hz tone reached the microphone through the earpiece at -9.9 dBFS, 78 dB above the noise (the downlink works). The echo line plays an announcement of about 19 s first (the author heard it; tones played before it ends are not echoed), then echoes at once: a 1500 Hz burst at 20 s came back round after round, losing 6-7 dB a second (-14.9, -21.9, -28.9 ... dBFS) - the uplink works.
 
 Opened
 : 2026-11-17
@@ -2014,10 +2020,12 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
 : A telephony-layer check in surya-lab tests/health (generic in lab-tools once a second phone calls): skip as unknown without modem, SIM, registration, voice, call-audio-path, a number in the manifest, or with today's call already made (a stamp under /var/lib/devlab/health); else call the echo line, play three tones (800, 1300, 1900 Hz, 200 ms, 300 ms apart) quietly on the loudspeaker, record the uplink capture, hang up within 25 s, and let 'devlab-health call echo' find the pattern twice at one delay of 150-1500 ms, 15 dB above the noise. Proof: its pass is the works test for modem-calls (docs' tests row call-echo, works).
+
+Done 2026-11-17 (bring-up): surya-lab tests/health/shell/call-echo.sh, once a day: Voice Call profile before dialing, the echo line, 20 s for the announcement, a 1 s 1500 Hz tone on the earpiece, the microphone recorded through the call; devlab-health tone find looks 1-2 s after the tone ended. First run: pass, the echo at -48.4 dBFS against -81.2 dBFS of noise. About 30 s of a landline call a day.
 
 Opened
 : 2026-11-17

@@ -535,19 +535,6 @@ Says
 : a quiet tone played through the earpiece as a mono stream is found by the top microphone beside it, 20 dB above the noise
 
 
-<a id="call-audio-path"></a>
-### call-audio-path
-
-Component id
-: modem-calls
-
-Proves
-: present
-
-Says
-: the DSP's voice path is there: the VoiceMMode1 PCM, its Voice Mixer and Capture Mixer controls, and q6voiced
-
-
 <a id="sms-loopback"></a>
 ### sms-loopback
 
@@ -572,3 +559,29 @@ Proves
 
 Says
 : over the interface of the modem's data bearer (not Wi-Fi, not the IMS bearer), at least 3 of 5 pings are answered and 100 kB is downloaded (5 MB once a week, for throughput); each run's bytes are kept against the month's budget, and the check skips once that is spent
+
+
+<a id="call-echo"></a>
+### call-echo
+
+Component id
+: modem-calls
+
+Proves
+: works
+
+Says
+: a daily call to an echo line carries a tone up and back: it is heard again after it ended
+
+
+<a id="call-audio-path"></a>
+### call-audio-path
+
+Component id
+: modem-calls
+
+Proves
+: present
+
+Says
+: the VoiceMMode1 PCM, its routing controls and q6voiced are there
