@@ -977,3 +977,31 @@ About
 
 Material
 : research/lpoco-health/2026-11-17/
+
+
+<a id="2026-11-17-qca-uart-wake-across-suspend"></a>
+### 2026-11-17-qca-uart-wake-across-suspend
+
+Brief
+: The suspend wake is irq 158 (GPIO 41, the UART RX line, the serial's dedicated wake irq), not 157; the serial's power/wakeup is its mainline switch
+
+Project
+: linux-phone-oco/surya-lab
+
+Date
+: 2026-11-17
+
+Question
+: What ends surya's s2idle at once with Bluetooth up, and what do mainline and others do for a qca UART Bluetooth across suspend?
+
+Found
+: Measured 2026-11-17 on 7.1.0-sm7150-calls+ with ftrace and a kprobe on pm_system_irq_wakeup (suspend-wake-arm-trace.sh in the material): s2idle was ended by irq 158 ('88c000.serial:wakeup', msmgpio 41, edge), armed by dev_pm_arm_wake_irq in the late phase because the platform device 88c000.serial has power/wakeup enabled (qcom_geni_serial sets device_init_wakeup and dev_pm_set_dedicated_wake_irq when the DT gives a second interrupt: the RX pin). The main irq 157 (GIC 636) fires 6 times at the end of qca_suspend, which waits up to 2 s for the chip's sleep indication (hci_qca.c); no 'nobody cared' appeared in these tries. Mainline source read (torvalds/linux master): uart_suspend_port keeps the irq wake only if the tty device serial0 may wakeup (here disabled); hci_qca qca_wakeup() returns device_may_wakeup of the serdev controller and the Bluetooth core then arms a passive scan for suspend, so an RX edge from the chip is a wake by design; the switch is the serial's power/wakeup, a plain sysfs file. With it off for a cycle, s2idle ends by the RTC alarm (RTC counted 7 s for 5 asked, 7 s for 5, 17 s for 15) with hci0 up and scanning after. Not read this time: what postmarketOS ships for qca Bluetooth across suspend (only the earlier note of its hook stopping Bluetooth for the Pixel 3a FastRPC crash). The earlier hang on resume was seen with Bluetooth blocked; not reproduced with it unblocked and wakeup off.
+
+Sources
+: https://github.com/torvalds/linux/blob/master/drivers/tty/serial/qcom_geni_serial.c; https://github.com/torvalds/linux/blob/master/drivers/tty/serial/serial_core.c; https://github.com/torvalds/linux/blob/master/drivers/bluetooth/hci_qca.c
+
+About
+: deep-sleep
+
+Material
+: research/deep-sleep/2026-11-17/

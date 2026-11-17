@@ -638,34 +638,6 @@ About
 : deep-sleep
 
 
-<a id="sleep-adsp-awake"></a>
-### The audio DSP sleeps when nothing plays
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: Read 2026-11-17: the audio DSP never slept once in a boot (qcom_stats adsp 0, against about 200 for the compute DSP and the modem), with no stream open but the VA, TX and RX macros active and soundwire_qcom.stay_awake=1 on the test kernel's command line (from the microphone hunt). A DSP that never sleeps holds CX up, and with it the SoC. First try without stay_awake, then find which LPASS vote stays up with no stream (the macros' clocks through q6prm, as a QCS8550 port found its LPASS votes held the floor). Proven by: soc-sleeps no longer lists adsp among the processors never asleep, and passes; the sound checks still pass.
-
-Opened
-: 2026-11-17
-
-Needs
-: phone
-
-Proof
-: soc-sleeps
-
-Rank
-: 3
-
-About
-: deep-sleep
-
-
 <a id="sleep-fastrpc-helpers"></a>
 ### FastRPC helpers stopped across suspend; the sensors back
 
@@ -3385,56 +3357,6 @@ About
 : deep-sleep
 
 
-<a id="sleep-wake-uart"></a>
-### Suspend ends at once: the serial's interrupt 157 is a wake source and a storm
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: Now with a way back (sleep/way-back.sh cycle SLEEP): with Bluetooth unblocked s2idle ends in 2-3 s on IRQ 157; with it blocked the phone hangs at suspend entry (reproduced 13:41, reset by the watchdog after 30 s). Next try, one change: Bluetooth unblocked but the UART's wakeup off (power/wakeup of serial@88c000) or hci_uart unbound before suspend, then cycle 15; the log is the journal, not pstore.
-
-Opened
-: 2026-11-17
-
-Proof
-: soc-sleeps
-
-Rank
-: 2
-
-About
-: deep-sleep
-
-
-<a id="sleep-bt-resume"></a>
-### Bluetooth dies across a suspend and hangs the resume
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: Seen 2026-11-17 after a suspend: hci0 command tx timeout, Reading QCA version information failed (-110), retries; pm_suspend hangs in hci_suspend_notifier -> hci_resume_dev for minutes, a reboot recovers. Try rfkill block bluetooth (or stopping bluetooth.service) before suspend as the cycle's first step, then why the WCN chip does not come back (the same family as the pmOS hook that stops BT across suspend).
-
-Opened
-: 2026-11-17
-
-Proof
-: soc-sleeps
-
-Rank
-: 3
-
-About
-: deep-sleep
-
-
 <a id="sim-removed-skips"></a>
 ### Checks that need the SIM skip, not fail, while it is out
 
@@ -3521,3 +3443,81 @@ Needs
 
 About
 : surya-tested
+
+
+<a id="sleep-wake-uart"></a>
+### Suspend ends at once: the serial's interrupt 157 is a wake source and a storm
+
+Project
+: linux-phone-oco/docs
+
+Status
+: done
+
+Note
+: 2026-11-17 (surya-keeper-4): done. The wake was irq 158, the UART's RX wake pin, armed by the serial's power/wakeup; way-back.sh cycle SLEEP bt-on turns it off for the cycle with Bluetooth unblocked. 3 cycles (5, 5, 15 s) ended by the RTC alarm, hci0 up and scanning after (decision 2026-11-17-serial-wakeup-off). What it did not do: soc-sleeps still fails (cxsd 0, aosd 0), so the SoC did not reach its lowest state.
+
+Opened
+: 2026-11-17
+
+Proof
+: soc-sleeps
+
+Rank
+: 2
+
+About
+: deep-sleep
+
+
+<a id="sleep-bt-resume"></a>
+### Bluetooth dies across a suspend and hangs the resume
+
+Project
+: linux-phone-oco/docs
+
+Status
+: done
+
+Note
+: 2026-11-17 (surya-keeper-4): not seen again. With Bluetooth unblocked and the serial's wakeup off, 3 cycles of 5-15 s resumed in time and hci0 scanned afterwards (no tx timeout, no QCA retries in dmesg). The earlier hang came with the wakeup on or Bluetooth blocked; only these 3 cycles are counted, nothing longer than 15 s.
+
+Opened
+: 2026-11-17
+
+Proof
+: soc-sleeps
+
+Rank
+: 3
+
+About
+: deep-sleep
+
+
+<a id="sleep-adsp-awake"></a>
+### The audio DSP sleeps when nothing plays
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Read 2026-11-17: the audio DSP never slept once in a boot (qcom_stats adsp 0, against about 200 for the compute DSP and the modem), with no stream open but the VA, TX and RX macros active and soundwire_qcom.stay_awake=1 on the test kernel's command line (from the microphone hunt). A DSP that never sleeps holds CX up, and with it the SoC. First try without stay_awake, then find which LPASS vote stays up with no stream (the macros' clocks through q6prm, as a QCS8550 port found its LPASS votes held the floor). Proven by: soc-sleeps no longer lists adsp among the processors never asleep, and passes; the sound checks still pass. 2026-11-17 (surya-keeper-4): now the first thing between the phone and CX collapse: with the UART wake gone (cycle 15 bt-on) the suspend lasts as asked, yet cxsd 0, aosd 0 and qcom_stats adsp 0 before and after.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Proof
+: soc-sleeps
+
+Rank
+: 1
+
+About
+: deep-sleep
