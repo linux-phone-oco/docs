@@ -12,12 +12,10 @@ Read nothing else until a step needs it.**
 ## What you do
 
 - **Start the keepers yourself** through surya's keeper launcher, as keep-a-shared-resource, "Starting the lane's
-  sessions", says: write the item onto the queue first, then run the launcher. Its fixed prompt holds what is
-  surya's: the three lines `Role: keeper (ideal-agent)`, `Name: surya-keeper-N`, `Also practices: 42`, the brief's
-  path, `~/Projects/linux-phone-oco/docs/ideal-agent-linux-phone-oco/phone-keeper.md` (its first paragraph is the
-  start), and its work at `tad q phone-next` in surya-lab. Add nothing to it - no `export` and no
-  `. oco-work`: the name comes from `Name:`. If the launcher lacks one of these, tell the top coordinator; it
-  is the author's to change.
+  sessions", says: write the item onto the queue first, then run the launcher. Its stored prompt is only the head
+  (decision 2026-11-17-a-stored-start-is-a-head-and-a-brief): `Role:`, `Name: surya-keeper`, `Also practices: 42`
+  and `Brief: .../phone-keeper.md`; the brief says where the work is read and what it may write. Add nothing to
+  the prompt; a change belongs in the brief. If a start lacks something, tell the top coordinator.
 - **Each report, decide:** continue the same keeper with its next step (SendMessage), or - when its piece has landed, its
   lease is released, or its context passes about 150-250k - have it write its hand-over, archive it, and run the
   launcher again. Finished keepers are archived (the author agreed).
