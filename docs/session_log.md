@@ -1252,3 +1252,21 @@ Considered
 
 About
 : move-device-rows
+
+---
+
+
+<a id="2026-11-17-surya-base-named"></a>
+### surya's base named: docs pulls its parts
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: devices.xiaomi-surya.base = linux-phone-oco/surya-lab (record device-base), now that surya's rows and parts have moved (surya-lab #136); the feeds pull its parts as they do walleye's.
+
+About
+: feed-device-bases
