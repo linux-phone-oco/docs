@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/linux-phone-oco/docs/compare/v0.7.0...v0.8.0) (2026-11-17)
+
+
+### Features
+
+* docs follows idealkb 0.8.1: upstream records seeded from the queue ([#221](https://github.com/linux-phone-oco/docs/issues/221)) ([fbf6b2d](https://github.com/linux-phone-oco/docs/commit/fbf6b2de6638f2aa68bb790647058a5a9bcf50be))
+
 ## [0.7.0](https://github.com/linux-phone-oco/docs/compare/v0.6.0...v0.7.0) (2026-11-17)
 
 
