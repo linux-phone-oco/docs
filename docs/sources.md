@@ -2397,3 +2397,135 @@ Url
 
 Author
 : Caleb Connolly
+
+
+<a id="uboot-qcom-abl-gzip-dtb"></a>
+### U-Boot doc: Qualcomm generic boards (booting through ABL on Pixel 3)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/u-boot/u-boot/blob/6487c50b8a40f2668ab98a892b9300ad5c181f38/doc/board/qualcomm/board.rst
+
+Author
+: U-Boot
+
+Year
+: 2024
+
+By
+: walleye-research
+
+Takes
+: Stock ABL (Pixel 3 family, same ABL line as walleye) expects a gzipped kernel with the dtb appended, packed as an Android boot image; U-Boot mimics Linux to satisfy it.
+
+
+<a id="pmaports-blueline-deviceinfo"></a>
+### pmaports device-google-blueline deviceinfo (Pixel 3, booted on stock ABL)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.com/postmarketOS/pmaports/-/raw/master/device/testing/device-google-blueline/deviceinfo
+
+Author
+: postmarketOS
+
+Year
+: 2025
+
+By
+: walleye-research
+
+Takes
+: A working recipe on a sibling Pixel ABL: base 0, kernel 0x8000, ramdisk 0x1000000, second 0x0, tags 0x100, page 4096, dtb appended, cmdline console=ttyMSM0,115200 only, no os_version.
+
+
+<a id="inoki-abl-dt-selection"></a>
+### Android Bootloader and Linux Internal based on Nokia 8 (NB1): DT loading in ABL
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://blog.inoki.cc/2022/05/09/android-bootloader-linux-nokia-nb1-dt/
+
+Author
+: Inoki
+
+Year
+: 2022
+
+By
+: walleye-research
+
+Takes
+: On an MSM8998 phone ABL's DeviceTreeAppended scans every dtb appended to the kernel and DeviceTreeCompatible picks the best by qcom,msm-id, qcom,board-id, qcom,pmic-id; the ABL, not the kernel, chooses and patches the dt.
+
+
+<a id="aosp-dto-multiple"></a>
+### Android: Use multiple DTs (device tree overlays in the bootloader)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://source.android.com/docs/core/architecture/dto/multiple
+
+Author
+: AOSP
+
+Year
+: 2026
+
+By
+: walleye-research
+
+Takes
+: The bootloader loads the SoC dtb, identifies the board, loads the matching dtbo overlay from the dtbo partition and merges them before starting the kernel: a failed merge is a bootloader refusal.
+
+
+<a id="se-walleye-twrp-load-error"></a>
+### Android SE: Pixel 2 bootloader loop, fastboot boot of TWRP walleye gives Load Error
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://android.stackexchange.com/questions/213819/bootloader-boot-loop
+
+Author
+: Joachim
+
+Year
+: 2019
+
+By
+: walleye-research
+
+Takes
+: A known-good walleye TWRP image also gets 'Failed to load/authenticate boot image: Load Error' from fastboot boot when the phone's slot state is odd: the message is not proof the image is bad.
+
+
+<a id="xda-twrp-load-error-random"></a>
+### XDA: Troubles reinstalling TWRP [Failed to load/authenticate boot image: Load Error]
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://xdaforums.com/t/troubles-reinstalling-twrp-failed-to-load-authenticate-boot-image-load-error.3926815/
+
+Author
+: XDA
+
+Year
+: 2020
+
+By
+: walleye-research
+
+Takes
+: One report fixed Load Error by restarting the device: it appears randomly when flashing - state, not content, can cause it (excerpt read in search results only).

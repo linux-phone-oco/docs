@@ -1662,3 +1662,39 @@ About
 
 Material
 : research/walleye-first-fastboot-boot/2026-11-17-c-d/
+
+
+<a id="walleye-load-error-how-it-stands"></a>
+### walleye-load-error-how-it-stands
+
+Brief
+: Pixel 2 Load Error: format matches what Pixel 3 ABL accepts; likely causes are the dtbo overlay merge, missing board-id/pmic-id, slot state, the os word - a control image first
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: What does the Pixel 2 bootloader dislike in our boot images (Load Error), from public sources, and which variants should be tried next?
+
+Found
+: What is: four images, one kernel/dtb/initramfs, all v0 with the dtb appended to a gzipped Image (Image.gz+dtb). a (taimen offsets, os word 0) got "Booting OKAY" then silence; b (LineageOS offsets) first left fastboot (Android came back on slot b), later Load Error; c and d (a, b plus os_version 8.1.0 / patch 2020-01) both Load Error. The only difference between a and c is that header word.
+
+What others show (not the Pixel 2 itself - nobody reports a mainline fastboot boot there):
+1. The format is the accepted one. Stock ABL on the same line (Pixel 3) takes a gzipped kernel with the dtb appended in a v0 boot image (U-Boot's board doc), and postmarketOS boots blueline with exactly base 0 / kernel 0x8000 / ramdisk 0x1000000 / tags 0x100 / page 4096 / dtb appended (pmaports deviceinfo). Two differences from our images: pmaports sets second offset 0 (we use 0xf00000; second is empty, so it should not matter) and no os_version/patch level at all. So "header v0 vs what ABL expects" and "Image.gz-dtb vs Image+dtb" are not the likely cause; the os word is, if anything, the one thing we added that pmaports does not have.
+2. ABL, not the kernel, picks and patches the dtb (Inoki, MSM8998 Nokia 8): DeviceTreeAppended scans the appended blobs and DeviceTreeCompatible matches qcom,msm-id, qcom,board-id and qcom,pmic-id. Our dts carries only msm-id (0x124 0x20001, as kcxt's taimen, which boots with msm-id alone); it has no board-id or pmic-id. Whether walleye's ABL accepts that is not known; the stock walleye dtb's ids are not read yet (not in the public sources reached today).
+3. The bootloader merges a dtbo overlay into the dtb before the kernel starts (AOSP DTO). kcxt found the taimen bootloader refuses a mainline kernel unless the dtbo partition holds an overlay with id 2704, and flashes a stub. Stock overlays patch downstream nodes a mainline base does not have, so a failed merge is the best-fitting reading of an immediate "Load Error" that comes from the bootloader after the transfer. Not proven for walleye: the dtbo of slot b is an older LineageOS build's, its overlay table not read.
+4. "Load Error" is not proof the image is bad. Known-good TWRP for walleye got the same words from fastboot boot (Android SE), and one XDA report says it appeared randomly and went away on restart. Our slot flags (a unbootable, current b) were left by the first try; whether they feed the refusal is not known.
+5. "Booting OKAY" then silence (a) means the bootloader sent its OK and a later step failed or the kernel died before any sign of life; it is a different outcome from Load Error, and a is the only image that got it. The os word turning OKAY into Load Error says the refusal is sensitive to the header word - the likeliest reason is the bootloader comparing the os_version/patch level with the active slot's recorded one (not read anywhere; unknown).
+
+Ranked causes (each has a try that tells it apart): (H1) overlay merge fails against a mainline base, so a stub dtbo or a dtb that survives the stock overlay is needed - only fixable by a write (dtbo_b stub) or by finding that slot b's dtbo is not the cause; (H2) dtb ids: msm-id only, no board-id/pmic-id; free to test on the host; (H3) state: slot flags or random Load Error; test with a control image; (H4) header word: only os word 0 passes, so keep 0.
+Control first: a stock-format image known to boot on walleye (LineageOS or TWRP recovery for walleye, public) through the same fastboot boot path. If the control also gets Load Error, the cause is the phone's state and no image change helps; if it boots, the cause is in our image and the variants below tell which part. The control is a try, not a write.
+Not read yet and worth reading without writing: walleye's stock boot.img header and dtb ids from a public LineageOS wahoo build (host only), slot b's dtbo overlay ids (pstore/Android adb read - keeper only).
+
+Sources
+: uboot-qcom-abl-gzip-dtb,pmaports-blueline-deviceinfo,inoki-abl-dt-selection,aosp-dto-multiple,se-walleye-twrp-load-error,xda-twrp-load-error-random,kcxt-dtbo-wahoo-mainline,porthole-pmaports,kcxt-wahoo-5-17-dts
+
+About
+: google-walleye
