@@ -1361,3 +1361,31 @@ About
 
 Research
 : 2026-11-17-cluster-params-clean-yet-no-collapse
+
+
+<a id="2026-11-17-floor-research-path"></a>
+### 2026-11-17-floor-research-path
+
+Brief
+: Way to the floor: subtract holders one at a time, DSPs-never-started and a clock/cmdline read first; not more cluster or DSP code, not S2RAM
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: Chosen vector: measured subtraction on the existing s2idle, ranked by evidence. Order: (1) floor-read-holders (read only: cmdline, clk, regulator, icc, genpd, cpuidle); (2) floor-dsps-never-started (module_blacklist=qcom_q6v5_pas); (3) floor-no-ignore-unused if the cmdline has it; then one subtraction per cycle: WLAN, UDC, the SH0 owner, aoss knobs; a late-suspend dump kernel only if still open. Each is one change judged by way-back.sh cycle 15 bt-on and the soc-sleeps check (the failing test: it fails after a suspend with cxsd and aosd 0, and passes only at the floor). health-soc-sleeps-ddr widens the check to ddr and the rung. The decisions adsp-is-not-the-floor and cluster-params-are-not-the-floor stand for what they measured, but adsp-is-not-the-floor rested on stopped DSPs, not never-started ones; floor-dsps-never-started settles that.
+
+Why
+: Others reach the floor on mainline s2idle only by removing holders one by one (X1E, QCS8550) or fail on named clock votes (sm8250); surya's cluster state equals downstream's and apps_rsc equals sc7180's, so no system mode is missing. The counters are valid but name no client on this layout, so subtraction is the only instrument; the biggest unknowns (kernel cmdline, clk holders, latched DSP votes) are read-only or one cmdline away.
+
+Rejected
+: Another cluster-state value (state taken equals downstream/sm8150; 8 cycles repeat zeros); PSCI SYSTEM_SUSPEND / s2ram (firmware does not offer it, kernel series NACKed); smp2p sleepstate port (not in mainline for this SoC, weakest evidence, large work); more LPASS macro clock work (no effect twice); treating the counters as broken before standby current says so (kept as hypothesis 6 / sleep-standby-current); a downstream-style lpm-levels port (the flush mainline does matches).
+
+About
+: deep-sleep
+
+Research
+: 2026-11-17-floor-research

@@ -2315,3 +2315,85 @@ By
 
 Takes
 : Downstream vendor kernel is the reference; device tree plus mainline drivers
+
+
+<a id="floor-travkin-aspire1"></a>
+### Split up TF-A related PSCI configuration for sc7180 (counts ddr, cxsd, aosd)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.rescloud.iu.edu/2308.1/00706.html
+
+Author
+: Nikita Travkin
+
+
+<a id="floor-x1e-s2idle"></a>
+### archiso-aarch64-sp11 issue 38: s2idle reaches CXSD/DDR/AOSD after removing votes
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/dwhinham/archiso-aarch64-sp11/issues/38
+
+
+<a id="floor-rp5-sm8250"></a>
+### pocknix-os PR 161: Retroid Pocket 5 s2idle aosd/cxsd stay 0
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/shuuri-labs/pocknix-os/pull/161
+
+
+<a id="floor-sleep-stats-v12"></a>
+### Sleep stats driver v12 thread (all subsystems must power down)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.iu.edu/hypermail/linux/kernel/2110.2/05647.html
+
+Author
+: Maulik Shah
+
+
+<a id="floor-osi-s2idle-rfc"></a>
+### RFC on s2idle behaving like s2ram on pre-Hamoa SoCs, reply by Bjorn
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.iu.edu/2601.0/03006.html
+
+Author
+: Manivannan Sadhasivam
+
+
+<a id="floor-floral-pm"></a>
+### Pixel 4 downstream sm6150-pm.dtsi, lpm-levels, system_pm (GPL, read for observed behaviour)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/kerneltoast/android_kernel_google_floral
+
+
+<a id="floor-oneplus6-stats"></a>
+### OnePlus 6 qcom_stats counts, aosd 0 cxsd 0 (stats node patch thread)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.iu.edu/hypermail/linux/kernel/2208.2/01166.html
+
+Author
+: Caleb Connolly

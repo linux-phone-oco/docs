@@ -1446,3 +1446,31 @@ About
 
 Material
 : research/walleye-first-fastboot-boot/2026-11-17/
+
+
+<a id="2026-11-17-floor-research"></a>
+### 2026-11-17-floor-research
+
+Brief
+: Nobody shows a phone-class SM7150/8150/845 reaching cxsd/aosd on mainline; surya's DSP floor tests were stops not never-started, holders' clocks never read; six ranked holders
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Why do cxsd, aosd and ddr never count on surya after a real s2idle, and what is the way to the SoC floor?
+
+Found
+: See the material. Counters are the SoC's own (rpmh-stats; no client-votes field on this layout), so they are valid but name no culprit. It can be done on mainline s2idle: Acer Aspire 1 (sc7180, OSI) counts all three; X1E s2idle reaches 99.9% after subtracting icc-bwmon, PCIe, LPASS macro and console votes (AOSD only with the CDSP running); sm8250 RP5 stays 0/0 with camcc and DSI clock votes and the ADSP up. No system-level mode is missing: surya's cluster state equals downstream's and sm8150's, apps_rsc matches sc7180. Surya's weak points: the floor tests stopped DSPs that had run (their RPMh votes may stay latched) instead of never starting them; clk_summary was never captured (files empty) and the kernel command line (clk_ignore_unused?) is unrecorded; tag-7 icc votes and the a88000 serial vote through suspend (SH0 x=1,y=3). Ranked: DSP latched votes, unclaimed bootloader clocks, peripheral votes (USB/UFS/WLAN/UARTs), SH0 owner, AOSS prevent knobs, counter validity.
+
+Sources
+: floor-travkin-aspire1,floor-x1e-s2idle,floor-rp5-sm8250,floor-sleep-stats-v12,floor-osi-s2idle-rfc,floor-floral-pm,floor-oneplus6-stats
+
+About
+: deep-sleep
+
+Material
+: research/deep-sleep/2026-11-17-floor-research/

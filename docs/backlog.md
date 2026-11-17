@@ -3904,3 +3904,231 @@ Proof
 
 About
 : google-walleye
+
+
+<a id="floor-read-holders"></a>
+### Read what is held before and at a cycle: cmdline, clocks, regulators, icc, genpd
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Read only, first (decision 2026-11-17-floor-research-path). On the phone at idle and again from a late-suspend hook if one exists: cat /proc/cmdline (is clk_ignore_unused or pd_ignore_unused set?); debugfs clk_summary (enable_count>0 for dispcc, camcc, videocc, gpucc and the rpmh clocks bi_tcxo/ln_bb_clk/rf_clk, with consumers), regulator_summary (use_count, always-on), icc_summary, pm_genpd_summary, power/wakeup_sources, cpuidle state usage and time per cpu. The floor runs kept clk files empty. Keep in research/deep-sleep/DATE-floor-holders/. Output: the list of what is on, each with its owner.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="floor-dsps-never-started"></a>
+### Boot with the DSPs never started, then cycle 15 bt-on
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: One change: a one-shot kernel cmdline (devlab kernel try) with module_blacklist=qcom_q6v5_pas, so adsp, cdsp and modem never run and cannot have latched RPMh votes (the floor tests stopped DSPs that had run). Then way-back.sh cycle 15 bt-on and read cxsd, aosd, ddr. Sound, calls and WLAN are off for the test; Bluetooth and the lab link stay. Count > 0 means a DSP's vote was the holder; 0 retires hypothesis 1 for good (and the ADSP question with it).
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="floor-no-ignore-unused"></a>
+### Drop clk_ignore_unused / pd_ignore_unused if the cmdline has them
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Only if floor-read-holders finds either on the command line: one change, remove it (one-shot via devlab kernel try), cycle 15 bt-on, read the counters and the 35-check suite. Unclaimed bootloader clocks and GDSCs (display splash, camcc) held sm8250's floor.
+
+Opened
+: 2026-11-17
+
+Waits
+: floor-read-holders
+
+Needs
+: phone
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="floor-wlan-off"></a>
+### Cycle with WLAN unloaded
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: One change: rmmod ath10k_snoc (and ath10k_core) before cycle 15 bt-on; read counters. WLAN floods the modem IPC and holds votes on SDM845.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="floor-udc-unbound"></a>
+### Cycle with the USB controller unbound
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: One change: unbind the UDC (a6f8800.usb: gadget off, usb30_prim_gdsc and its tag-7 icc vote released) a second before the suspend, the RTC alarm brings the way back (reboot or rebind after). Read counters. The lab link is lost for the cycle by design; the way-back watchdog covers it.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="floor-aoss-knobs"></a>
+### Write the qcom_aoss prevent_* knobs to off, then cycle
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: One change, cheap and unlikely: echo 0 into debugfs qcom_aoss prevent_aoss_sleep, prevent_cx_collapse, prevent_ddr_collapse (they send sleep disable / cx off / ddr off) before cycle 15 bt-on. Settles whether firmware left a minimum-operating-level request set.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="floor-suspend-late-dump"></a>
+### A debug kernel that dumps held votes in late suspend
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Only if the reads above leave the holder open: a debug patch (builder) with a pm notifier / syscore op that prints clk enable counts, regulator use counts and icc votes at dpm_suspend_late, out of tree; the keeper installs it as a kernel try and reads dmesg after the cycle.
+
+Opened
+: 2026-11-17
+
+Waits
+: floor-read-holders and the subtractions above
+
+Needs
+: phone
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="health-soc-sleeps-ddr"></a>
+### soc-sleeps also reads ddr and says which rung is missing (lab-tools)
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: No phone. In lab-tools health/suite/checks/base/90-sleep.sh: read ddr Count and the DDR LPM stat too, and name the rung reached (cluster S2 usage, cxsd, aosd, ddr). Today a pass needs cxsd or aosd and the detail lacks ddr and the cpuidle usage; the check stays failing after a suspend until the floor is reached - it is the feature's failing test.
+
+Opened
+: 2026-11-17
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="floor-sh0-owner"></a>
+### Find who holds the SH0 x=1,y=3 sleep vote and drop it
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: From the icc_summary at late suspend (floor-read-holders) name the path that leaves SH0 set; the likely owner is a88000.serial (avg 1 peak 1 across suspend) or a tag-7 (always) path. Test by closing or unbinding that device before the cycle (one change), then cycle 15 bt-on and read the sleep-set flush trace (rpmh_send_msg) and counters.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
