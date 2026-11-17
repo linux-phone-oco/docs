@@ -3562,10 +3562,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: in-progress
 
 Note
-: If Android still boots: sleep current, audio levels, sensors, boot time; kept beside the results. Needs the author's hands (a boot into Android, a current meter).
+: Measured read-only 2026-11-17 (research android-reference-walleye-measured): build, sensors, battery, boot time, audio config. Left: sleep current (needs a meter, radios stated), audio levels (tone source and microphone), boot time from power on
 
 Opened
 : 2026-11-17
