@@ -3061,40 +3061,6 @@ About
 : sensors
 
 
-<a id="sensors-without-crash"></a>
-### Sensors kept: the probe's state in every flash, three boots without an ADSP crash
-
-Project
-: linux-phone-oco/surya-lab
-
-Status
-: open
-
-Note
-: Decided 2026-11-17 (research-sensor-hub, decision 2026-11-17-sensors-registry-kept-current). After sensors-and-the-mask passes: carry its state in device.toml - the configs at mtime 1230768000 (a flash step or a tmpfiles 'z'/touch at boot, since apk sets the package's mtime on every upgrade) and hexagonrpcd-adsp-sensorspd out of [flash] mask (its reason comment updated; rootpd stays masked); remove 'sensors' from [health] gaps. Proven by three boots in a row with motion-and-light and proximity-reads passing, no-processor-crashes passing and the microphone and call checks unchanged. Then upstream (sensors-upstream).
-
-Opened
-: 2026-11-11
-
-Waits
-: sensors-registry-writes: the DSP still writes with its configs current (probe 2026-11-17)
-
-Needs
-: phone
-
-Device
-: xiaomi-surya
-
-Proof
-: motion-and-light
-
-Rank
-: 11
-
-About
-: sensors
-
-
 <a id="sensors-proximity-in-calls"></a>
 ### Proximity blanks the screen at the ear in a call
 
@@ -3133,10 +3099,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Decided 2026-11-17 (research-sensor-hub, decision 2026-11-17-sensors-registry-kept-current). Only if sensors-and-the-mask shows the DSP writing even with every config matching. Then: hexagonrpcd with write support limited to a state copy of the registry (hexagonrpc #27's commits at 40e5041, or the -S state directory of #19, or the #29 patch), built for the phone, sns_reg_version served beside the registry, the copy seeded from the package; one probe as in sensors-and-the-mask. A restart loop at start can leave the sensor PD unusable until reboot (#19): one try per boot. Results go to hexagonrpc #19/#29 as SM7150 data. The 2026-11-09 draft that served sns_reg_version was not kept anywhere in the lab.
+: proven by a 150 s run with 0 ADSP crashes and monitor-sensor showing accelerometer, light, proximity and compass; research 2026-11-17-sns-reg-version-served. Lasting install not yet (transient run)
 
 Opened
 : 2026-11-09
@@ -5533,3 +5499,31 @@ Proof
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="sensors-without-crash"></a>
+### Sensors kept: hexagonrpcd with a served version marker made lasting, three boots without an ADSP crash
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: Re-shaped 2026-11-17 by the fallback's success (research 2026-11-17-sns-reg-version-served): the mtime route alone left the DSP writing (probe), but hexagonrpcd of PR #27 plus the 62-line patch surya-lab/patches/hexagonrpcd-sns-reg-version.patch ran sensorspd 150 s with 0 crashes and gave accelerometer, light, proximity and compass through iio-sensor-proxy. To do: build that daemon as a package or a flash step (static aarch64 by hand so far, meson is not on the lab), a state root made from the package tree (config, registry, sns_reg.conf, dsp, acdb, socinfo; registry also copied to sensors/persist/registry/registry; owner fastrpc), a drop-in for hexagonrpcd-adsp-sensorspd with -R STATE and the unit unmasked in device.toml (rootpd stays masked), the helper across suspend (sensors-across-suspend), 'sensors' out of [health] gaps. One try per boot: a restart loop can leave the sensor PD unusable until reboot. Proven by three boots in a row with motion-and-light and proximity-reads passing, no-processor-crashes passing and the microphone and call checks unchanged. Then upstream (sensors-upstream; the patch to shape for hexagonrpc #19/#29).
+
+Opened
+: 2026-11-11
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: motion-and-light
+
+About
+: sensors

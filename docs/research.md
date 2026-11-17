@@ -2199,3 +2199,28 @@ About
 
 Supersedes
 : walleye-vendor-kernel-facts-s1-panic
+
+
+<a id="2026-11-17-sns-reg-version-served"></a>
+### 2026-11-17-sns-reg-version-served
+
+Brief
+: hexagonrpcd of PR 27 plus a served writable sns_reg_version: sensorspd runs 150 s with no ADSP crash and iio-sensor-proxy shows accelerometer, light, proximity, compass
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Does hexagonrpcd, with the version marker served as a writable file and the packaged sns_reg.conf in the state root, stop the ADSP registry-write crash on surya, and do the sensors then appear?
+
+Found
+: Yes. 40e5041 (PR #27) plus a 62-line patch (surya-lab/patches/hexagonrpcd-sns-reg-version.patch: a create op on the virtual root that opens a mapped file entry for writing, and a mapped sns_reg_version entry at the root), static aarch64, run once as a transient unit over a state root made of the package tree (config, registry, sns_reg.conf, dsp, acdb, socinfo) with the registry copied to sensors/persist/registry/registry. The earlier try's failures were the state root lacking sns_reg.conf (so /vendor/etc/sensors/sns_reg_config was not found) and no way to create the marker. Result on the kept kernel 7.1.0-sm7150-calls+: sensorspd alone, 60 s then 150 s, 0 ADSP crashes, the daemon active throughout; the DSP read then wrote sns_reg_version into the state copy ('version=2') and 174 state files; iio-sensor-proxy started and monitor-sensor reported accelerometer (orientation right-up), ambient light (values changing, lux), proximity sensor and compass. Stopping the daemon afterwards: still 0 crashes. The suite after: 35 pass, 6 fail, 4 not measured - as before (known gaps; deep-sleep soc-sleeps lists adsp never asleep). Not done: motion-and-light and proximity-reads as suite tests with the daemon lasting (it ran as a transient unit and is stopped; the stock unit is masked as before); a witnessed proximity cover; suspend with the helper (sensors-across-suspend). Hand-built binary only; upstream would want the patch shaped for hexagonrpc #19/#29.
+
+Sources
+: hexagonrpc-27,hexagonrpc-19
+
+About
+: sensors

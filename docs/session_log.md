@@ -2497,3 +2497,21 @@ Done
 
 About
 : walleye-first-fastboot-boot
+
+---
+
+
+<a id="2026-11-17-2010-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Kept kernel 7.1.0-sm7150-calls+ and kept dtb, stock services as before (sensorspd and rootpd still masked); one try of a patched hexagonrpcd ran sensorspd 150 s with 0 ADSP crashes and showed accelerometer, light, proximity, compass; transient units stopped, suite 35 pass 6 fail 4 not measured (known gaps, deep-sleep soc-sleeps lists adsp never asleep).
+
+Considered
+: next: sensors-without-crash (make the patched daemon lasting: build, state root, drop-in, unmask, across suspend), sleep-fastrpc-helpers, floor-sh0-owner (turning point)
