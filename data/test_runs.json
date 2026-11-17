@@ -110,3 +110,12 @@
 {"id":"20261117-141026","device_id":"xiaomi-surya","run_at":"2026-11-17 14:10:26","kernel":"7.1.0-sm7150-calls+","shell":"swmo","passed":26,"failed":9,"gaps":5,"skipped":2}
 {"id":"20261117-141109","device_id":"xiaomi-surya","run_at":"2026-11-17 14:11:09","kernel":"7.1.0-sm7150-calls+","shell":"swmo","passed":26,"failed":9,"gaps":5,"skipped":2}
 {"id":"20261117-141155","device_id":"xiaomi-surya","run_at":"2026-11-17 14:11:55","kernel":"7.1.0-sm7150-calls+","shell":"swmo","passed":35,"failed":1,"gaps":5,"skipped":4}
+{"id":"20261117-141433","device_id":"xiaomi-surya","run_at":"2026-11-17 14:14:33","kernel":"7.1.0-sm7150-calls+","shell":"swmo","passed":35,"failed":1,"gaps":5,"skipped":4}
+{"id":"20261117-145023","device_id":"xiaomi-surya","run_at":"2026-11-17 14:50:23","kernel":"7.1.0-sm7150-calls+","shell":"swmo","passed":35,"failed":0,"gaps":5,"skipped":5}
+{"id":"20261117-145104","device_id":"xiaomi-surya","run_at":"2026-11-17 14:51:04","kernel":"7.1.0-sm7150-calls+","shell":"swmo","passed":35,"failed":0,"gaps":5,"skipped":5}
+{"id":"20261117-150149","device_id":"xiaomi-surya","run_at":"2026-11-17 15:01:49","kernel":"7.1.0-sm7150-calls-idle","shell":"swmo","passed":35,"failed":0,"gaps":5,"skipped":5}
+{"id":"20261117-150746","device_id":"xiaomi-surya","run_at":"2026-11-17 15:07:46","kernel":"7.1.0-sm7150-calls+","shell":"swmo","passed":35,"failed":0,"gaps":5,"skipped":5}
+{"id":"20261117-151116","device_id":"xiaomi-surya","run_at":"2026-11-17 15:11:16","kernel":"7.1.0-sm7150-calls-idle","shell":"swmo","passed":35,"failed":0,"gaps":5,"skipped":5}
+{"id":"20261117-151723","device_id":"xiaomi-surya","run_at":"2026-11-17 15:17:23","kernel":"7.1.0-sm7150-calls+","shell":"swmo","passed":35,"failed":0,"gaps":5,"skipped":5}
+{"id":"20261117-154217","device_id":"xiaomi-surya","run_at":"2026-11-17 15:42:17","kernel":"7.1.0-sm7150-calls+","shell":"swmo","passed":35,"failed":0,"gaps":5,"skipped":5}
+{"id":"20261117-154328","device_id":"xiaomi-surya","run_at":"2026-11-17 15:43:28","kernel":"7.1.0-sm7150-calls+","shell":"swmo","passed":35,"failed":0,"gaps":5,"skipped":5}

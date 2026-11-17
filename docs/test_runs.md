@@ -3136,3 +3136,255 @@ Gaps
 
 Skipped
 : 4
+
+
+<a id="20261117-141433"></a>
+### 20261117-141433
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 14:14:33
+
+Kernel
+: 7.1.0-sm7150-calls+
+
+Shell
+: swmo
+
+Passed
+: 35
+
+Failed
+: 1
+
+Gaps
+: 5
+
+Skipped
+: 4
+
+
+<a id="20261117-145023"></a>
+### 20261117-145023
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 14:50:23
+
+Kernel
+: 7.1.0-sm7150-calls+
+
+Shell
+: swmo
+
+Passed
+: 35
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 5
+
+
+<a id="20261117-145104"></a>
+### 20261117-145104
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 14:51:04
+
+Kernel
+: 7.1.0-sm7150-calls+
+
+Shell
+: swmo
+
+Passed
+: 35
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 5
+
+
+<a id="20261117-150149"></a>
+### 20261117-150149
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 15:01:49
+
+Kernel
+: 7.1.0-sm7150-calls-idle
+
+Shell
+: swmo
+
+Passed
+: 35
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 5
+
+
+<a id="20261117-150746"></a>
+### 20261117-150746
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 15:07:46
+
+Kernel
+: 7.1.0-sm7150-calls+
+
+Shell
+: swmo
+
+Passed
+: 35
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 5
+
+
+<a id="20261117-151116"></a>
+### 20261117-151116
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 15:11:16
+
+Kernel
+: 7.1.0-sm7150-calls-idle
+
+Shell
+: swmo
+
+Passed
+: 35
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 5
+
+
+<a id="20261117-151723"></a>
+### 20261117-151723
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 15:17:23
+
+Kernel
+: 7.1.0-sm7150-calls+
+
+Shell
+: swmo
+
+Passed
+: 35
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 5
+
+
+<a id="20261117-154217"></a>
+### 20261117-154217
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 15:42:17
+
+Kernel
+: 7.1.0-sm7150-calls+
+
+Shell
+: swmo
+
+Passed
+: 35
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 5
+
+
+<a id="20261117-154328"></a>
+### 20261117-154328
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 15:43:28
+
+Kernel
+: 7.1.0-sm7150-calls+
+
+Shell
+: swmo
+
+Passed
+: 35
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 5
