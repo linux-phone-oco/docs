@@ -980,3 +980,1235 @@ Gaps
 
 Skipped
 : 2
+
+
+<a id="20261117-021254"></a>
+### 20261117-021254
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 02:12:54
+
+Kernel
+: 7.1.0-rc3-sm7150-wcd
+
+Shell
+: swmo
+
+Passed
+: 28
+
+Failed
+: 1
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-023135"></a>
+### 20261117-023135
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 02:31:35
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 28
+
+Failed
+: 1
+
+Gaps
+: 5
+
+Skipped
+: 1
+
+
+<a id="20261117-023214"></a>
+### 20261117-023214
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 02:32:14
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-023313"></a>
+### 20261117-023313
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 02:33:13
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-024216"></a>
+### 20261117-024216
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 02:42:16
+
+Kernel
+: 7.1.0-rc3-sm7150-wcd
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 1
+
+Gaps
+: 4
+
+Skipped
+: 2
+
+
+<a id="20261117-024905"></a>
+### 20261117-024905
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 02:49:05
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-025217"></a>
+### 20261117-025217
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 02:52:17
+
+Kernel
+: 7.1.0-rc3-sm7150-wcd
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 1
+
+Gaps
+: 4
+
+Skipped
+: 2
+
+
+<a id="20261117-030253"></a>
+### 20261117-030253
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 03:02:53
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-030553"></a>
+### 20261117-030553
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 03:05:53
+
+Kernel
+: 7.1.0-rc3-sm7150-wcd
+
+Shell
+: swmo
+
+Passed
+: 28
+
+Failed
+: 1
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-030953"></a>
+### 20261117-030953
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 03:09:53
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-031244"></a>
+### 20261117-031244
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 03:12:44
+
+Kernel
+: 7.1.0-rc3-sm7150-wcd
+
+Shell
+: swmo
+
+Passed
+: 27
+
+Failed
+: 2
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-031617"></a>
+### 20261117-031617
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 03:16:17
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-031909"></a>
+### 20261117-031909
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 03:19:09
+
+Kernel
+: 7.1.0-rc3-sm7150-wcd
+
+Shell
+: swmo
+
+Passed
+: 28
+
+Failed
+: 1
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-033356"></a>
+### 20261117-033356
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 03:33:56
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-033656"></a>
+### 20261117-033656
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 03:36:56
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-033956"></a>
+### 20261117-033956
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 03:39:56
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-034326"></a>
+### 20261117-034326
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 03:43:26
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 25
+
+Failed
+: 4
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-034928"></a>
+### 20261117-034928
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 03:49:28
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-035220"></a>
+### 20261117-035220
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 03:52:20
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-040231"></a>
+### 20261117-040231
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:02:31
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-040545"></a>
+### 20261117-040545
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:05:45
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-040950"></a>
+### 20261117-040950
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:09:50
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-041240"></a>
+### 20261117-041240
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:12:40
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-041752"></a>
+### 20261117-041752
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:17:52
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-042045"></a>
+### 20261117-042045
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:20:45
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-042338"></a>
+### 20261117-042338
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:23:38
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-042630"></a>
+### 20261117-042630
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:26:30
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 29
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-043035"></a>
+### 20261117-043035
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:30:35
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 30
+
+Failed
+: 0
+
+Gaps
+: 4
+
+Skipped
+: 2
+
+
+<a id="20261117-043533"></a>
+### 20261117-043533
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:35:33
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 30
+
+Failed
+: 0
+
+Gaps
+: 4
+
+Skipped
+: 2
+
+
+<a id="20261117-043658"></a>
+### 20261117-043658
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:36:58
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 31
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-043721"></a>
+### 20261117-043721
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:37:21
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 32
+
+Failed
+: 0
+
+Gaps
+: 4
+
+Skipped
+: 2
+
+
+<a id="20261117-044714"></a>
+### 20261117-044714
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:47:14
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 32
+
+Failed
+: 0
+
+Gaps
+: 4
+
+Skipped
+: 2
+
+
+<a id="20261117-044744"></a>
+### 20261117-044744
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:47:44
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 33
+
+Failed
+: 0
+
+Gaps
+: 4
+
+Skipped
+: 2
+
+
+<a id="20261117-045709"></a>
+### 20261117-045709
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 04:57:09
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 33
+
+Failed
+: 0
+
+Gaps
+: 4
+
+Skipped
+: 2
+
+
+<a id="20261117-050042"></a>
+### 20261117-050042
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 05:00:42
+
+Kernel
+: 7.1.0-rc3-sm7150
+
+Shell
+: swmo
+
+Passed
+: 30
+
+Failed
+: 0
+
+Gaps
+: 6
+
+Skipped
+: 2
+
+
+<a id="20261117-050444"></a>
+### 20261117-050444
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 05:04:44
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 33
+
+Failed
+: 0
+
+Gaps
+: 4
+
+Skipped
+: 2
+
+
+<a id="20261117-050819"></a>
+### 20261117-050819
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 05:08:19
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 33
+
+Failed
+: 0
+
+Gaps
+: 4
+
+Skipped
+: 2
+
+
+<a id="20261117-051422"></a>
+### 20261117-051422
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 05:14:22
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 32
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-051513"></a>
+### 20261117-051513
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 05:15:13
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 32
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-051546"></a>
+### 20261117-051546
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 05:15:46
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 32
+
+Failed
+: 0
+
+Gaps
+: 5
+
+Skipped
+: 2
+
+
+<a id="20261117-051614"></a>
+### 20261117-051614
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 05:16:14
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 33
+
+Failed
+: 0
+
+Gaps
+: 4
+
+Skipped
+: 2
+
+
+<a id="20261117-052124"></a>
+### 20261117-052124
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 05:21:24
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 33
+
+Failed
+: 0
+
+Gaps
+: 4
+
+Skipped
+: 2
+
+
+<a id="20261117-052429"></a>
+### 20261117-052429
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 05:24:29
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 33
+
+Failed
+: 0
+
+Gaps
+: 4
+
+Skipped
+: 2
+
+
+<a id="20261117-052724"></a>
+### 20261117-052724
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 05:27:24
+
+Kernel
+: 7.1.0-sm7150-mic+
+
+Shell
+: swmo
+
+Passed
+: 33
+
+Failed
+: 0
+
+Gaps
+: 4
+
+Skipped
+: 2
