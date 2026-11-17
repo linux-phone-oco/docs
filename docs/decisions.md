@@ -1174,3 +1174,28 @@ Rejected
 
 About
 : google-walleye
+
+
+<a id="2026-11-17-fastboot-by-serial-writes-by-manifest"></a>
+### 2026-11-17-fastboot-by-serial-writes-by-manifest
+
+Brief
+: devlab reaches a phone over fastboot only by its manifest's serial, and writes over fastboot only where the manifest says writes = true.
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Decision
+: device.toml [fastboot] serial (as fastboot devices lists it) and writes (default false). Every fastboot call devlab makes passes -s SERIAL; devlab flash refuses a phone without writes = true; devlab fastboot offers only reading, boot from memory and reboot - no flash, erase or set_active verb. The guard refuses raw fastboot other than devices, getvar and help.
+
+Why
+: A second phone (google-walleye) sits in fastboot on the lab beside surya: devlab flash checked any phone in fastboot and flashed without -s, so a surya flash would have written to walleye. walleye's slots must stay as they are until a recorded decision (walleye-fastboot-first); a default of no writing makes that the phone's state, not a rule to remember.
+
+Rejected
+: writes defaulting to true (a manifest that forgets the line would let walleye be flashed); a flash that takes the only phone in fastboot when there is one (true today, false the moment two are); a separate fastboot tool beside devlab (the lease, hold and guard are devlab's, one way per phone); writing surya's serial from its soc0 serial (3693150539 = dc21014b) unread from fastboot: not known yet is said as not known, so surya's flash refuses until a keeper reads it.
+
+About
+: dl-safe

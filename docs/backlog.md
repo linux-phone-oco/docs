@@ -3543,10 +3543,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Needed: reach by serial, fastboot boot of a kernel in memory, getvar, a lease per phone; no flash without a recorded decision. Asked of orchestration 2026-11-17.
+: Done 2026-11-17 (lab-tools PR 79, device-template fastboot-serial): device.toml [fastboot] serial + writes (false unless said); devlab fastboot state | getvar NAME | boot now BOOT.IMG | reboot now [--bootloader], by serial, held, nothing written; lease and hold already per codename. devlab flash names its serial and refuses without writes = true; the guard refuses raw fastboot but devices/getvar/help. Read on the lab: devlab fastboot state on google-walleye (product walleye, unlocked yes, slot-count 2, current-slot a). Wanted next: google-walleye-lab's device.toml gets [fastboot] serial = FA81N1A00790 (its own lab's change). boot now not yet tried on walleye: no boot image yet.
 
 Opened
 : 2026-11-17
@@ -3572,3 +3572,25 @@ Opened
 
 About
 : android-reference
+
+
+<a id="surya-fastboot-serial"></a>
+### surya's fastboot serial in its manifest, read from fastboot
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: devlab flash now refuses surya until surya-lab device.toml says [fastboot] serial and writes = true (lab-tools PR 79, decision 2026-11-17-fastboot-by-serial-writes-by-manifest). Next time surya sits in its bootloader, read fastboot devices (likely dc21014b, its soc0 serial 3693150539 in hex - not yet read from fastboot), then add [fastboot] serial and writes = true with the decision that allows flashing surya.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+About
+: dl-safe
