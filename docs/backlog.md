@@ -4067,10 +4067,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: One change, cheap and unlikely: echo 0 into debugfs qcom_aoss prevent_aoss_sleep, prevent_cx_collapse, prevent_ddr_collapse (they send sleep disable / cx off / ddr off) before cycle 15 bt-on. Settles whether firmware left a minimum-operating-level request set.
+: Done 2026-11-17 (keeper-9): knobs written 0 before cycle 15 bt-on: cx/ddr writes time out, 'ucore did not ack channel': the QMP link to the AOP is dead, so the knobs settle nothing; counters 0 -> 0. research/deep-sleep/2026-11-17-floor-aoss-knobs/README.md
 
 Opened
 : 2026-11-17
@@ -4440,3 +4440,31 @@ Proof
 
 About
 : google-walleye
+
+
+<a id="floor-aop-qmp-no-ack"></a>
+### Why the AOP's ucore never acks the QMP channel (qcom_aoss_qmp c300000)
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Found by floor-aoss-knobs 2026-11-17 (keeper-9): every QMP send times out, 'ucore did not ack channel'; prevent_* knobs cannot be tested. Read only first: the aoss node (reg, mboxes, interrupts) against sm8150/sc7180 and downstream, the AOP message RAM at the channel offset, the mailbox/APCS ipc bit, dmesg at probe. Then one change.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep

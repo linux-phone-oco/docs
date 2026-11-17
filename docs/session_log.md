@@ -2146,3 +2146,24 @@ Considered
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-1950-keeper9-udc-and-aoss"></a>
+### floor-udc-unbound and floor-aoss-knobs measured
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: UDC unbound: cxsd/aosd/ddr 0 -> 0 (result survived in /var/tmp/k9u.out, phone healthy after the hard reboot: 35 pass 0 fail). aoss knobs: cx/ddr writes time out, 'ucore did not ack channel': the QMP link to the AOP is dead, counters 0 -> 0. Holders subtracted so far with no change: DSPs, WLAN, USB.
+
+Considered
+: next: floor-aop-qmp-no-ack (new, read only first), floor-sh0-owner, floor-suspend-late-dump.
+
+About
+: deep-sleep
