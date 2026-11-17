@@ -12,7 +12,7 @@ Setup once: `make setup`. Editing the data: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 | one place's work, decisions, research | `tad q backlog --project lab-tools` (also `decisions`, `research`) |
 | the role briefs, the phone keeper, how records go here | [`ideal-agent-linux-phone-oco/`](ideal-agent-linux-phone-oco/README.md) |
 
-Record with `ikb`: `ikb decision --project docs ...`; [`IKB.md`](IKB.md) lists every record and option. Records name their place.
+Record with `ikb`: `ikb --help`, then `ikb help RECORD`; [`IKB.md`](IKB.md) is the same for people to browse. Records name their place: `ikb decision --project docs ...`.
 `unknown` is not a weaker `broken`: it means nobody has checked.
 
 <!-- idealkb:begin - kept by grenudi/ideal-knowledge-base at the release idealkb.toml names: change it there -->
@@ -34,7 +34,7 @@ its first paragraph, another subject, `tad statements` - only when a step needs 
 with `--format csv`.
 
 ## Recording
-Read `IKB.md`: every record of this base with its options, written from its `records/*.sql`. Record with `ikb RECORD --option value` (`ikb help` lists them; `sh bin/install-ikb.sh` once installs it): long text from a file or stdin (`--found @-`), the id made from the brief, canon and render done after - never SQL, never by hand. Each record names what it is about (`--about`) and, for a decision or a research, its brief (the record in one line; the title is the brief of the rest), then land. Where `tad q about` says a summary is due for a subject you recorded into, renew it: `ikb summary --about S --says ...` - how it stands now, naming the records that carry it.
+Record with `ikb` (`sh bin/install-ikb.sh` once installs it): `ikb --help` lists the records of this base, one line each; `ikb help RECORD` gives the one you need, its options written from `records/*.sql` (`IKB.md` is the same for people to browse). Then `ikb RECORD --option value`: long text from a file or stdin (`--found @-`), the id made from the brief, canon and render done after - never SQL, never by hand. Each record names what it is about (`--about`) and, for a decision or a research, its brief (the record in one line; the title is the brief of the rest), then land. Where `tad q about` says a summary is due for a subject you recorded into, renew it: `ikb summary --about S --says ...` - how it stands now, naming the records that carry it.
 A thing there are many of with one shape is a row; prose read once in order is a file (README, this entry,
 a brief), and a file opens with its own brief: its first paragraph says what it holds. Research is both: its finding a row, its own material - notes, excerpts, measurements - a dated
 folder the row names (`--material auto` makes `research/ABOUT/DATE/`); redone, a new row `--supersedes` the old.

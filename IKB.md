@@ -2,7 +2,7 @@
 
 # IKB - recording into this knowledge base
 
-Add to this knowledge base with `ikb RECORD --option value ...`; you need nothing else - not SQL, not the layout of the files.
+This page is for people to browse; an agent runs `ikb --help` and then `ikb help RECORD`, which say the same, record by record. Add to this knowledge base with `ikb RECORD --option value ...`; you need nothing else - not SQL, not the layout of the files.
 
 - A text option takes its text from a file with `@FILE`, or from standard input with `@-` (`--found @-`, once per call): long text and apostrophes need no quoting. `@@x` is the text `@x`.
 - A record is checked before it is kept; a wrong call says what is wrong and what is accepted, and nothing is changed. A record of an id that exists replaces it.
