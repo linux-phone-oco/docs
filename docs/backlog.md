@@ -3310,10 +3310,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Proposed to orchestration, which owns the linux-phone-patrol scheduled task: add to its round 'run ~/.claude/plugins/cache/ideal-agent/ideal-agent/VERSION/scripts/start-weight on docs at main; over budget (ideal-agent skill keep-the-start-light), file one backlog item about agent-folder with the numbers'. Also in the patrol's SKILL.md: lab-agent signs still say ocoeco note problems.
+: Done 2026-11-17 (orchestration): the linux-phone-patrol round measures the start with ideal-agent's scripts/start-weight on docs at main each run, and files one backlog item about agent-folder when a role or part is over the budget of keep-the-start-light; its leftover ocoeco note problems step for lab-agent signs is gone (said in its report instead).
 
 Opened
 : 2026-11-17
