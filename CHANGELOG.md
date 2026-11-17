@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/linux-phone-oco/docs/compare/v0.9.0...v0.10.0) (2026-11-17)
+
+
+### Features
+
+* the first walleye kernel, initramfs and boot images are built (records) ([#243](https://github.com/linux-phone-oco/docs/issues/243)) ([4c84451](https://github.com/linux-phone-oco/docs/commit/4c84451fbf7d2370a949bb005d8c1575c759ae88))
+
 ## [0.9.0](https://github.com/linux-phone-oco/docs/compare/v0.8.0...v0.9.0) (2026-11-17)
 
 
