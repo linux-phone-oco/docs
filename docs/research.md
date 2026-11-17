@@ -2052,3 +2052,25 @@ Sources
 
 About
 : deep-sleep
+
+
+<a id="walleye-try-s1-gadget-up"></a>
+### walleye-try-s1-gadget-up
+
+Brief
+: s1 = vendor-gadget image (footer, 32 MiB) refused with Load Error on slot a twice; gadget-up fails; earlier s1/s2 'left fastboot' were fallbacks to stock a
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: Does the stock kernel with our gadget initramfs (s1, AVB footer present, size 33554432 checked) start from the first state, and does 172.16.43.1 answer?
+
+Found
+: Checked: boot-s0/s1/s2/s3 are 33554432 bytes and end in AVBf; s0n is 26472448 without. Then, current-slot a (a successful, b unbootable yes retry 1): devlab fastboot boot now boot-s1.img -> 'Failed to load/authenticate boot image: Load Error', flags unchanged; again with images/vendor-gadget.img (same bytes) while GADGET_WAIT=90 gadget-up.sh (from the builder's worktree wt-walleye-builder-lab, not yet landed in the lab) ran: same Load Error, gadget-up: fail, no USB device with our strings, 2 google devices (the phone in fastboot and surya?). The earlier s1/s2 runs this session (left fastboot after 12 s, Android on a 4.4.302) were therefore fallbacks to stock, not starts; my earlier suggestion to rebuild s1 with the footer was wrong - it has it. Earlier research showed Load Error followed the slot state; b is unbootable now and tries have been run with a active this time, so the open question is whether the state (b unbootable, active a) or the image causes it. No write.
+
+About
+: walleye-first-fastboot-boot
