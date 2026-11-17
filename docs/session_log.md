@@ -2311,3 +2311,21 @@ Considered
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-walleye-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: First state restored and control accepted; phone in fastboot, unlocked, slot a active and successful, b untouched (retry 1); nothing flashed
+
+Considered
+: next: walleye-own-images-first-state (our image e, then b, by fastboot boot from this state); lease released

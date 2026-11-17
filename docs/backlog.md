@@ -4713,10 +4713,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: in-progress
+: done
 
 Note
-: control accepted from restored first state (walleye-first-state-control-accepted); phone now off USB, needs the author's hand power-cycle before it is back in fastboot
+: proven by devlab fastboot state: control accepted from restored first state (walleye-first-state-control-accepted); after the author's power-cycle Android booted on slot a, adb reboot bootloader, fastboot reachable, slot a active and successful
 
 Opened
 : 2026-11-17
