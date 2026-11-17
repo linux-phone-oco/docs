@@ -1270,3 +1270,27 @@ Done
 
 About
 : feed-device-bases
+
+---
+
+
+<a id="2026-11-17-lpoco-dispatcher"></a>
+### lpoco dispatcher built and landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: New workspace member lpoco (argenv, no tokio): failing tests first, then dispatch by path (beside itself, then PATH), version check against --version, list, --version, completions, man; lpoco-health gained --version; release-plz version_group for the family.
+
+Considered
+: Reading args after NAME through argenv: no, they belong to the program, so only built-ins and flags are declared.
+
+Rejected
+: A shared family tag (breaks the conveyor prefix).
+
+About
+: lpoco-dispatcher
