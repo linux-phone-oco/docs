@@ -1951,3 +1951,27 @@ Considered
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-briefs-restored"></a>
+### The briefs' role start restored after a stale branch reverted it
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: docs 226 (walleye research), merged a minute after 230, carried the briefs as they were before 230 and reverted all eight: oco-work and OCOECO_BY came back to every start, so keepers started after it read the old start. Restored the eight briefs exactly as 230 left them (nothing else touched them since). surya-coordinator.md now says how a keeper's start reads: the three Role/Name/Also-practices lines, the brief by its path (a keeper had searched ~/Projects for phone-keeper.md, 2.4 KB), no export, no oco-work.
+
+Considered
+: Reverting 226 whole; asking the walleye research session to fix its own merge.
+
+Rejected
+: Reverting 226 whole: its research files are good and wanted. Asking its session: it may have ended, and the briefs are orchestration's.
+
+About
+: agent-folder
