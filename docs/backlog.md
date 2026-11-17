@@ -5486,10 +5486,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: Facts (research walleye-vendor-kernel-facts-s1-panic): s1 from a healthy state started the stock kernel with our ramdisk and it PANICKED (ro.boot.bootreason=kernel_panic, back on a after 75 s). Vendor 4.4.302 config: UDC a800000.dwc3; USB_CONFIGFS + F_FS, NCM, MTP, MASS_STORAGE = y; ACM, SERIAL, ECM, RNDIS, EEM NOT set; DEVTMPFS NOT set; PSTORE/RAMOOPS y (ramoops 0xa1100000, 2 MiB; vendor ramoops is encrypted: panic text unreadable). Suspects for the panic, check each in the stock config.gz the keeper saved (research row/material): ramdisk compression (ours xz? the stock is gzip; check CONFIG_RD_XZ/RD_GZIP), the busybox/init architecture (aarch64 static, verified with file), /init exit (a script that ends panics: loop forever), no devtmpfs (mknod /dev nodes, mount procfs/sysfs/configfs). Gadget: NCM (host side cdc_ncm; keep 172.16.43.1), no ACM/RNDIS/ECM; telnetd/ssh over it; mount debugfs/pstore. Keep control's kernel, dtb, cmdline (androidboot.* as stock), header, footer. Keep a-i and s0-s3 byte-identical. Also say how the ramdisk is checked on the host without arm64 (qemu-aarch64 is not installed: look for static aarch64 emulation options, e.g. unpack + file + readelf, or qemu-user in a container, but installing on the lab machine is a change: say, do not do).
+: Built and landed: google-walleye-lab a41a721 (PR 12), build/build-vendor-gadget.sh; image ~/Projects/walleye-build/images/vendor-gadget2.img sha256 9c0a8946cb65dc46311d6efc87da6393c152e3878d148bc773cc360180806ea4, ramdisk initramfs-vendor.cpio.xz 67c3d77915c4cd3e0c274444984c18f136278a196cf1cdbe6d0da29801ff9f91; 10 checks ok. Try queued as walleye-try-vendor-gadget2.
 
 Opened
 : 2026-11-17
