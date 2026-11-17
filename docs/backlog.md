@@ -3103,7 +3103,7 @@ Status
 : open
 
 Note
-: From 2026-11-17-ideal-knowledge-base, after kb-about-link. The generic queries next, find, row and recent come with it; queries print compactly (tad's box format prints 327 KB where csv is 37 KB - an improvement for tad itself).
+: Still open (2026-11-17): AGENTS.md is 7.9 KB and mostly about editing the data. Only its first section, 'Finding what is known' (tad q about, tad statements, the agent folder), is the entry part. Next: under 3 KB, an orientation table from typical question to command, with the editing recipes moved to CONTRIBUTING; then next, find, row and recent, and compact query output.
 
 Opened
 : 2026-11-17
@@ -3135,7 +3135,7 @@ Status
 : open
 
 Note
-: From 2026-11-17-ideal-knowledge-base; waits for the author's word on the repository (moving it to grenudi is his).
+: From 2026-11-17-ideal-knowledge-base; waits for the author's word on the repository (moving text-as-data-template to grenudi is his). The about link and the agent folder it rests on have landed in docs.
 
 Opened
 : 2026-11-17
