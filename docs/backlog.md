@@ -5477,3 +5477,31 @@ Rank
 
 About
 : deep-sleep
+
+
+<a id="walleye-vendor-gadget-v2"></a>
+### A gadget initramfs the vendor 4.4.302 kernel can run: gzip, aarch64, NCM, mknod, init that never exits (image vendor-gadget2)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Facts (research walleye-vendor-kernel-facts-s1-panic): s1 from a healthy state started the stock kernel with our ramdisk and it PANICKED (ro.boot.bootreason=kernel_panic, back on a after 75 s). Vendor 4.4.302 config: UDC a800000.dwc3; USB_CONFIGFS + F_FS, NCM, MTP, MASS_STORAGE = y; ACM, SERIAL, ECM, RNDIS, EEM NOT set; DEVTMPFS NOT set; PSTORE/RAMOOPS y (ramoops 0xa1100000, 2 MiB; vendor ramoops is encrypted: panic text unreadable). Suspects for the panic, check each in the stock config.gz the keeper saved (research row/material): ramdisk compression (ours xz? the stock is gzip; check CONFIG_RD_XZ/RD_GZIP), the busybox/init architecture (aarch64 static, verified with file), /init exit (a script that ends panics: loop forever), no devtmpfs (mknod /dev nodes, mount procfs/sysfs/configfs). Gadget: NCM (host side cdc_ncm; keep 172.16.43.1), no ACM/RNDIS/ECM; telnetd/ssh over it; mount debugfs/pstore. Keep control's kernel, dtb, cmdline (androidboot.* as stock), header, footer. Keep a-i and s0-s3 byte-identical. Also say how the ramdisk is checked on the host without arm64 (qemu-aarch64 is not installed: look for static aarch64 emulation options, e.g. unpack + file + readelf, or qemu-user in a container, but installing on the lab machine is a change: say, do not do).
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: vendor-gadget2.img = the control with only the ramdisk swapped (header, AVB footer, 32 MiB as vendor-gadget.img), check-bisect ok; the ramdisk is a gzip cpio of aarch64 binaries (file/readelf shown); then the keeper's try shows walleye-gadget-up (tests/host/gadget-up.sh) or, failing that, a new bootreason
+
+About
+: walleye-first-fastboot-boot
