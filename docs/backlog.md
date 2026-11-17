@@ -4903,3 +4903,31 @@ Proof
 
 About
 : walleye-initramfs-usb-gadget
+
+
+<a id="walleye-bootstrap-method"></a>
+### The best-known way to bootstrap an Android phone to mainline almost from zero, compared with what the walleye lane did
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: The author asks (via the top coordinator): has the lane done proper delegated research on bootstrapping a phone like this almost from zero, gathered from pmOS, Mobian and the best sources? Our research so far is about walleye itself. Sources to read: postmarketOS porting guide and the pmaports steps for a new device; MSM8998 devices in pmaports or mainline (taimen, OnePlus 5/5T, Xperia XZ1/XZ Premium, Mi 6) and how each got its first shell; lk2nd as a second-stage bootloader (matters for Load Error: an lk2nd boots mainline kernels where the vendor bootloader refuses); Mobian's and Droidian's routes (Halium); the sm8150/sdm845 mainlining communities (how the first boot, UART, earlycon, simple-framebuffer, USB gadget, pstore are done). Public sources, read-only, clean room (input wall). Then say what it changes for walleye: e.g. lk2nd/second stage vs fastboot boot, debug route (UART cable), Android-kernel-first (boot the vendor 4.4 kernel with our initramfs as a known-good before mainline), order of parts.
+
+Opened
+: 2026-11-17
+
+Needs
+: research
+
+Device
+: google-walleye
+
+Proof
+: a research row with sources (a method: the steps in order, with who does each how), a comparison with the walleye lane's tries so far, and a decision with what it changes in the next steps (what was rejected)
+
+About
+: google-walleye
