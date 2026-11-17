@@ -1,0 +1,76 @@
+#!/bin/sh
+# The data the face is drawn from, made from this place alone - its own tables, the lens it keeps in
+# face/, each place's mark, and what GitHub says the work made - with no observatory in between
+# (decision 2026-11-17-the-face-from-docs-own-data). The engine draws the face from OUT as it is.
+#
+#   bin/face-data OUT        (needs jq, yq, and gh with a token that reads the family's repositories)
+set -eu
+out="${1:?usage: bin/face-data OUT - writes the data the face is drawn from}"
+here=$(cd "$(dirname "$0")/.." && pwd)
+owner=linux-phone-oco
+# the places whose records docs keeps (backlog's project), and the lens, which docs keeps in face/
+places="docs lab-tools surya-lab device-template sxmo-deviceprofiles"
+since=$(date -u -d '90 days ago' +%Y-%m-%dT%H:%M:%SZ)
+mkdir -p "$out"
+
+# 1. every table this place keeps, each row naming its place: a row that names a linux-phone place keeps it,
+#    any other is docs' own (a project column of another meaning, as landscape's, is the place here too)
+for f in "$here"/data/*.json; do
+	jq -s -c 'map(if (.project // "" | startswith("linux-phone-oco/")) then . else . + {project: "linux-phone-oco/docs"} end)
+		| sort_by(.project, (.id // "" | tostring)) | .[]' "$f" > "$out/$(basename "$f")"
+done
+# the lens's own words in other languages join the translations
+jq -c '. + {project: "linux-phone-oco/lens"}' "$here/face/lens-translations.json" >> "$out/translations.json"
+# and the lens's own log, from when it was a place of its own
+jq -c '. + {project: "linux-phone-oco/lens"}' "$here/face/lens-session-log.json" >> "$out/session_log.json"
+
+# 2. the lens: its views, as the engine reads them
+yq -p toml -o json "$here/face/lens.toml" |
+	jq -c '{id: "linux-phone-oco/lens", project: "linux-phone-oco/lens", lens: .}' > "$out/lenses.json"
+
+# 3. the places, each from its own mark (oco.toml); the lens is a place of the face, kept here
+: > "$out/projects.json"
+for p in $places; do
+	gh api "repos/$owner/$p/contents/oco.toml" -H "Accept: application/vnd.github.raw" |
+		yq -p toml -o json |
+		jq -c --arg id "$owner/$p" '.project + {id: $id, project: $id, link: ("https://github.com/" + $id),
+			platform: "github", gathers: [], tables: ((.exports // {}) | keys), also: {}, order: null, is: null}' >> "$out/projects.json"
+done
+yq -p toml -o json "$here/face/lens.toml" |
+	jq -c '{id: "linux-phone-oco/lens", project: "linux-phone-oco/lens", name: (.lens.title + ": " + .lens.goal),
+		title: .lens.title, kind: "lens", parent: "open-commons-observatory", link: "https://github.com/linux-phone-oco/docs",
+		platform: "github", gathers: ["linux-phone-oco/*"], tables: ["session_log", "translations"], also: {}, order: null, is: null}' >> "$out/projects.json"
+
+# 4. what the work made, as GitHub keeps it: commits of the last 90 days, each day's count, the latest
+#    run of every workflow on main, and the releases
+: > "$out/commits.json"
+: > "$out/runs.json"
+: > "$out/releases.json"
+for p in $places; do
+	gh api --paginate "repos/$owner/$p/commits?since=$since&per_page=100" |
+		jq -c --arg pr "$owner/$p" '.[] | {id: .sha[0:7], at: .commit.author.date,
+			by: (.author.login // .commit.author.name), says: (.commit.message | split("\n")[0]), project: $pr}' >> "$out/commits.json"
+	# each workflow's own latest run that a pull request did not start (one that runs seldom is not lost)
+	for w in $(gh api "repos/$owner/$p/actions/workflows" --jq '.workflows[] | select(.state == "active" and (.path | startswith("dynamic/") | not)) | .id'); do
+		gh api "repos/$owner/$p/actions/workflows/$w/runs?per_page=20" |
+			jq -c --arg pr "$owner/$p" '[.workflow_runs[] | select(.event != "pull_request")] | first // empty |
+				{id: ($pr + ":" + .name), project: $pr, workflow: .name, conclusion: (.conclusion // .status),
+				at: .created_at, url: .html_url}' >> "$out/runs.json"
+	done
+	gh api "repos/$owner/$p/releases?per_page=30" |
+		jq -c --arg pr "$owner/$p" '.[] | select(.draft | not) |
+			{id: .tag_name, at: (.published_at // ""), link: .html_url, project: $pr}' >> "$out/releases.json"
+done
+jq -s -c 'group_by([.project, .at[0:10]]) | .[] | {id: .[0].at[0:10], project: .[0].project, commits: length}' \
+	"$out/commits.json" > "$out/activity.json"
+# the newest release last among those of one day: the engine takes the latest by its date
+jq -s -c 'sort_by(.at) | .[] | {id, published: .at[0:10], link, project}' "$out/releases.json" > "$out/releases.tmp" &&
+	mv "$out/releases.tmp" "$out/releases.json"
+jq -s -c 'sort_by(.id) | .[]' "$out/runs.json" > "$out/runs.tmp" && mv "$out/runs.tmp" "$out/runs.json"
+# the places in the order the engine reads them, by id; what each shares, with what the work made of it
+jq -s -c --slurpfile act "$out/activity.json" --slurpfile rel "$out/releases.json" '
+	sort_by(.id) | .[] | .project as $p
+	| .tables = ((.tables + (if any($act[]; .project == $p) then ["activity"] else [] end)
+		+ (if any($rel[]; .project == $p) then ["releases"] else [] end)) | unique)' \
+	"$out/projects.json" > "$out/projects.tmp" && mv "$out/projects.tmp" "$out/projects.json"
+echo "face data: $(ls "$out" | wc -l) tables in $out"

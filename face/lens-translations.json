@@ -1,0 +1,20 @@
+{"id":"lenses:linux-phone-oco/lens:lens.goal:ru","table":"lenses","row":"linux-phone-oco/lens","column":"lens.goal","lang":"ru","text":"телефоны на Linux, не хуже Android — и насколько мы к этому близки","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:lens.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"lens.title","lang":"ru","text":"Linux-телефоны","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.backlog.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.backlog.title","lang":"ru","text":"Бэклог","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.devices.lead:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.devices.lead","lang":"ru","text":"Что работает на каждом телефоне, деталь за деталью — по тестам и записям его лаборатории.","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.devices.row_title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.devices.row_title","lang":"ru","text":"Деталь","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.devices.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.devices.title","lang":"ru","text":"Устройства","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.families.lead:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.families.lead","lang":"ru","text":"Поддержка по семействам чипов: для каждой детали — лучшее, чего достигло любое устройство семейства.","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.families.row_title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.families.row_title","lang":"ru","text":"Деталь","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.families.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.families.title","lang":"ru","text":"Семейства SoC","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.features.lead:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.features.lead","lang":"ru","text":"Что умеет телефон — по каждому кандидату; лучшие первыми, по числу работающего. Наведите на ячейку, чтобы увидеть источник.","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.features.row_title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.features.row_title","lang":"ru","text":"Функция","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.features.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.features.title","lang":"ru","text":"Функции","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.how-close.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.how-close.title","lang":"ru","text":"Насколько мы близки","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.idea.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.idea.title","lang":"ru","text":"Идея","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.index.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.index.title","lang":"ru","text":"Суть","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.landscape.lead:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.landscape.lead","lang":"ru","text":"Проекты вокруг наших — что делает каждый и как мы строим на них, а не рядом с ними.","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.landscape.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.landscape.title","lang":"ru","text":"Окружение","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.surya.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.surya.title","lang":"ru","text":"Телефон в лаборатории","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.tests.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.tests.title","lang":"ru","text":"Тесты","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.work.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.work.title","lang":"ru","text":"Сделано работой","by":"machine"}

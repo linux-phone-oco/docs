@@ -1,0 +1,120 @@
+# The Linux Phones lens: the grand view of the linux-phone-oco family, declared as data
+# (ocoeco SPEC.md section 8). The observatory renders it; anyone may fork it.
+schema = 1
+
+[lens]
+title = "Linux Phones"
+goal = "phones running Linux, as good as Android - and how close we are"
+
+[family]
+owners = ["linux-phone-oco"]
+
+[[view]]   # the signature view: why, what, how and now, on one page
+id = "index"
+title = "Essence"
+kind = "essence"
+project = "linux-phone-oco/docs"
+subject = "linux-phones"
+
+[[view]]   # the idea, as the project wrote it
+id = "idea"
+title = "The idea"
+kind = "idea"
+project = "linux-phone-oco/docs"
+
+[[view]]
+id = "how-close"
+title = "How close we are"
+kind = "path"
+subject = "linux-phones"
+
+[[view]]   # the phone in the lab: its own essence
+id = "surya"
+title = "The phone in the lab"
+kind = "essence"
+project = "linux-phone-oco/surya-lab"
+subject = "xiaomi-surya"
+
+[[view]]
+id = "features"
+title = "Features"
+kind = "matrix"
+lead = "What a phone does, against every candidate - best first, ranked by what works. Hover a cell for its source."
+table = "feature_support"
+rows = "features"
+row_title = "Feature"
+groups = ["calls and messages", "connectivity", "audio", "camera", "display and input", "sensors", "power", "security", "updates", "apps", "sync", "services"]
+row_key = "feature_id"
+columns = "platforms"
+column_key = "platform_id"
+
+[[view]]
+id = "devices"
+title = "Devices"
+kind = "matrix"
+lead = "What works on each phone, part by part - from its lab's tests and records."
+table = "support_status"
+reports = "wiki_claims"
+reports_research = "wiki-against-our-checks"
+rows = "components"
+row_title = "Part"
+row_key = "component_id"
+columns = "devices"
+column_key = "device_id"
+
+[[view]]
+id = "families"
+title = "SoC families"
+kind = "families"
+lead = "Support by chip family: for each part, the best any device of the family reaches."
+table = "support_status"
+rows = "components"
+row_title = "Part"
+row_key = "component_id"
+columns = "devices"
+column_key = "device_id"
+group_by = "soc"
+
+[[view]]
+id = "tests"
+title = "Tests"
+kind = "runs"
+
+[[view]]   # what was learned, with its sources - a feature's research, before what was decided
+id = "research"
+title = "Research"
+kind = "research"
+
+[[view]]   # the ideas the work rests on, and each decision with why and what was rejected
+id = "decisions"
+title = "Decisions"
+kind = "ideas"
+lead = "What the work rests on, and each decision: why, and what was rejected."
+
+[[view]]
+id = "backlog"
+title = "Backlog"
+kind = "backlog"
+
+[[view]]   # the work that cannot be done without the phone: its keeper takes it up, one change at a time
+id = "phone-queue"
+title = "The phone's queue"
+kind = "backlog"
+needs = "phone"
+lead = "What only the phone can prove, taken up by its keeper one change at a time - each with the test that proves it."
+
+[[view]]
+id = "landscape"
+title = "Landscape"
+kind = "cards"
+lead = "The projects around ours - what each does, and how we build on it rather than beside it."
+table = "landscape"
+title_field = "name"
+text_field = "what"
+note_field = "for_us"
+link_field = "link"
+
+[[view]]
+id = "work"
+title = "Made by work"
+kind = "heartbeat"
