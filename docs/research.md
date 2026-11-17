@@ -1100,3 +1100,58 @@ Found
 
 About
 : no-manual-steps
+
+
+<a id="lab-host-prepare-landscape"></a>
+### lab-host-prepare-landscape
+
+Brief
+: The lab host is prepared by hand today (udev, modules, toolchain, watchers, host tools); nobody derives host rules from device declarations; uaccess reaches only the seat's active session
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Question
+: How does the lab host get prepared for the devices it serves, from each device repository's device.toml, by a tool under the lpoco roof, with no manual step outside a tool - and how do others do it?
+
+Found
+: INSIDE. Nothing prepares the lab host from declarations today; each part got there by hand or by a one-machine script. Measured read-only on the lab (grig, systemd 262): the lab user (uid 1000) is in neither disk (/dev/sdX) nor uucp (/dev/ttyACM* on Arch), so walleye's gadget nodes were unreadable after the reboot; uaccess would reach that uid while it holds the active seat0 session (it does: Plasma on tty2), but nothing tags our gadget. /etc/udev/rules.d/51-android.rules (MODE 0666 for vendors 18d1, 05c6, 2717; group plugdev, absent here) came from lab-agent's connect.sh, run by hand; android-udev and systemd 262's own hwdb tags already cover adb and fastboot, and none of it covers block or tty. usb_storage and cdc_acm could not load today until the host was rebooted into its installed kernel (the running kernel's modules were gone). The aarch64 musl Rust toolchain in ~/.local/share/devlab-cross (health/build.sh) is unrecorded hand work. devlab-watch@ units come from lab-machine setup/devlab-watch.sh, enabled by hand per device (surya yes, walleye no). The host's own tools are hand copies: ~/.local/bin/land (from grenudi/lab-machine bin/land), oco-work (its only tracked home is creation-guidelines/lab-agent oco-agent/tools/oco-work, a place that is retiring), devlab and its .before-* copies; agent-env is sourced from the ideal-agent clone or plugin; tad and ikb by their install scripts; nothing names their versions. Root is only `sudo -n lab-agent root-exec --` (devlab reads DEVLAB_ROOT); ideal-agent's 2026-11-17-lab-agent-retires-by-parts part 6 moves it to a lab-root wrapper in lab-machine or narrower per-command grants, written by the author and root. walleye's device.toml already declares [host] modules usb_storage, cdc_acm and [[host.gadget]] serial walleye-first-boot, access block and tty (lab PR 54); devlab ignores the table (no deny_unknown_fields at the top). Session logs show root-exec used by hand today for fastboot devices, pacman -S (git send-email's perl modules), the host reboot, and ssh to the phone.
+OUTSIDE. Nobody derives host rules from per-device declarations. LAVA declares per-device serials in data but ships one static rule calling a privileged helper; labgrid matches udev properties at run time and leaves rules to the administrator; pmbootstrap writes no rules and runs flashers as root in its chroot (whole-command doas/sudo/run0, no dry plan, a teardown verb); android-udev-rules grants MODE 0660, GROUP adbusers and TAG uaccess in one line at 51; NixOS merges rule files from many modules by name and puts extraRules at 99, too late for uaccess; Ansible's check mode is the dry plan with a diff. systemd (source and NEWS): uaccess grants only the seat's active session, so ssh-only users and services get nothing; a rule setting it must sort before 73 and must not be add-only since 258; 258+ tags ADB and fastboot by itself; 260 adds xaccess-debug-appliance for headless sessions asking through PAM; only GROUP/MODE covers services. `udevadm trigger --action=change` re-applies GROUP, MODE and uaccess to present nodes, no replug.
+TAKEN. A rule file per device below 73, ACTION!="remove", matching the gadget serial on the parent (ATTRS{serial}), TAG+="uaccess"; a lab group with MODE 0660 later for a headless host; nothing by vendor for adb/fastboot (systemd covers it, a check proves it); a plan that is a content diff per file plus the exact root commands, the verb writing, reloading and triggering change only where it touched; modules-load.d only for declared modules, with "the running kernel has no modules: reboot" said by the plan; root by one prefix and a printed fixed list of commands, the list a narrow grant is written from.
+
+Sources
+: android-udev-rules,systemd-uaccess,pmbootstrap-host,lava-dispatcher-host,labgrid-udev-matching,nixpkgs-udev-module,ansible-check-mode,walleye-device-host-table,lab-agent-retires-by-parts
+
+About
+: lpoco-host
+
+Material
+: research/lab-host/2026-11-17/
+
+
+<a id="lpoco-host-how-it-stands"></a>
+### lpoco-host-how-it-stands
+
+Brief
+: lpoco host: decided, not built; next lpoco-host (rank 1) with its failing plan test; acceptance its first use granting walleye-first-boot; walleye waits on it
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Question
+: Where does preparing the lab host stand, and what is next?
+
+Found
+: How it stands, 2026-11-17 night. Decided, not built: lpoco-host (`lpoco host plan | prepare now | check`), a new crate in lab-tools under the lpoco roof (decision 2026-11-17-lpoco-host, research lab-host-prepare-landscape). Next for the lab-tools builder: backlog lpoco-host, rank 1, needs build, device google-walleye - its first test host/tests/plan.rs plan_grants_gadget_serial_and_changes_nothing does not exist yet and must fail first, then plan_lists_host_tools_at_pins_and_installs_nothing; acceptance is the tool's first real use on the lab: prepare now grants walleye-first-boot, the walleye keeper reads /dev/sda and /dev/ttyACM0 as the lab user. The walleye lane waits on it (its base: walleye-host-access-via-lab-prepare and the two retry items). Declared already: walleye device.toml [host] (lab PR 54). Not yet: a lab.toml in grenudi/lab-machine (the builder proposes it there with the tools at today's versions); a living home for oco-work (today only in the retiring creation-guidelines/lab-agent); the narrow root grant (ideal-agent lab-agent-6-root-exec-grant, the author's) - meanwhile root goes through LPOCO_ROOT/DEVLAB_ROOT/root-exec. The host on 2026-11-17: systemd 262, lab user on seat0, no rule for our gadget, 51-android.rules a hand leftover, usb_storage loaded, cross toolchain in ~/.local/share/devlab-cross by hand, devlab-watch@surya-lab only, land and oco-work hand copies. Later: lpoco-host-rest (headless group, watchers, cross targets, host commands, foreign rules named, NCM).
+
+Sources
+: walleye-device-host-table,lab-agent-retires-by-parts
+
+About
+: lpoco-host

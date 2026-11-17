@@ -3193,3 +3193,61 @@ Opened
 
 About
 : dl-reaches
+
+
+<a id="lpoco-host"></a>
+### lpoco host: the lab host prepared from the lab's and each device's declarations - udev access for gadget serials, host modules, the host's own tools at their pins; plan by default, prepare now to change
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decided 2026-11-17 (decision 2026-11-17-lpoco-host; research lab-host-prepare-landscape, lpoco-host-how-it-stands). A new workspace member host/ in lab-tools: the crate and binary lpoco-host, run as `lpoco host`, command line declared with argenv, Rust, no Python. It reads two declarations: the lab's own (lab.toml at the root of grenudi/lab-machine, or --lab PATH / LPOCO_LAB: its devices glob, default ~/Projects/linux-phone-oco/*/device.toml, its root prefix, and [tools] with each host tool at its pin) and each device's device.toml [host] (modules, [[host.gadget]] serial + access block|tty, deny_unknown_fields inside [host]; walleye's table from lab PR 54 is the shape). Verbs: `lpoco host plan` (the default: a content diff per file and the exact root commands; changes nothing), `lpoco host prepare now` (writes, reloads, triggers change only where it touched), `lpoco host check` (the lab user can open each declared node present; each tool at its pin; fastboot by the device's serial as the lab user).
+FIRST BUILD: (1) per device /etc/udev/rules.d/70-lpoco-CODENAME.rules, one line per access kind: ACTION!="remove", SUBSYSTEM=="block"|"tty", ATTRS{serial}=="SERIAL", TAG+="uaccess"; (2) /etc/modules-load.d/lpoco.conf from the declared modules, and the plan says "reboot: the running kernel has no modules" when /lib/modules/$(uname -r) is gone; (3) the host's own tools from lab.toml [tools] at their pins, user-level into ~/.local/bin, no root: land (grenudi/lab-machine bin/land at a commit), oco-work (its source must first get a home that is not retiring: today only creation-guidelines/lab-agent oco-agent/tools/oco-work), agent-env (grenudi/ideal-agent scripts/agent-env at a commit), the lpoco family by `cargo install --locked --git https://github.com/linux-phone-oco/lab-tools --tag lpoco-vX PACKAGE` for lpoco, lpoco-lab, lpoco-bringup, lpoco-health's host side and lpoco-host itself; every device's [tools] lpoco pin must be met by the lab's, else the plan names the device and nothing is installed for it. Root: one prefix, LPOCO_ROOT, falling back to DEVLAB_ROOT, then `sudo -n lab-agent root-exec --`; the commands are a fixed list the plan prints (install -D -m 0644 into the two paths above, udevadm control --reload, udevadm trigger --action=change --attr-match=serial=S, modprobe M), which is what lab-agent-6's narrower grant can be written from. The device template gains a commented [host] table; lab-machine's README names the one bootstrap line (cargo install lpoco and lpoco-host at the tag) and its hand-installed land goes.
+TESTS, in order. First, failing now: host/tests/plan.rs plan_grants_gadget_serial_and_changes_nothing - from a fixture device.toml (walleye's [host]: serial walleye-first-boot, access block and tty, modules usb_storage and cdc_acm) `lpoco-host plan` lists /etc/udev/rules.d/70-lpoco-google-walleye.rules with a uaccess line for block and one for tty on ATTRS{serial}=="walleye-first-boot" and the modules-load.d file, exits 0, and the root prefix (a stub that records its calls) is never called; with `prepare` but no `now` it refuses and calls nothing. Second: host/tests/plan.rs plan_lists_host_tools_at_pins_and_installs_nothing - from a fixture lab.toml naming land, oco-work, agent-env and the lpoco family at pins (lpoco-v0.2.0), with stub cargo/git and an older stub land on PATH, the plan lists each tool with its pinned version and the version found and the command it would run, and nothing is installed (the stubs record no calls, ~/.local/bin unchanged). ACCEPTANCE, the author's ("ill wait for the tool, so its use would be its test"): released and installed from its tag, `lpoco host prepare now` on the lab grants walleye's gadget (serial walleye-first-boot) access; then the walleye keeper, with m1 and then n3 up, reads /dev/sda and opens /dev/ttyACM0 as the lab user with no root (walleye base: walleye-host-access-via-lab-prepare, walleye-retry-massstorage-after-reboot, walleye-retry-ffs-acm-after-reboot). No udev rule is written by hand meanwhile. Later items: lpoco-host-rest (lab group for a headless host, watcher units, cross targets, host commands).
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: host/tests/plan.rs plan_grants_gadget_serial_and_changes_nothing (first, failing); then plan_lists_host_tools_at_pins_and_installs_nothing; acceptance: lpoco host prepare now on the lab, then the walleye keeper reads /dev/sda and /dev/ttyACM0 as the lab user
+
+Rank
+: 1
+
+About
+: lpoco-host
+
+
+<a id="lpoco-host-rest"></a>
+### lpoco host, the rest: lab group for headless, watcher units, cross targets, host commands, foreign rules named, NCM
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: After lpoco-host's first build (its acceptance on walleye passed), the rest of the host from declarations, each its own small change with its plan test first: (1) a lab group (sysusers.d, MODE 0660 on the gadget rules, the lab user a member) for a host with no seat session and for services - uaccess alone covers only the active seat; (2) watcher units: devlab-watch@ for every device found, user-level, replacing lab-machine setup/devlab-watch.sh; (3) cross targets: a device's [host] targets (aarch64-unknown-linux-musl) made ready the way health/build.sh uses ~/.local/share/devlab-cross, user-level; (4) host commands a device needs (fastboot, adb, mkbootimg, avbtool; git send-email's perl modules for upstreaming) checked on PATH, installed by the host's package manager through the root prefix only with the verb; (5) the plan names foreign rules touching declared devices (51-android.rules from lab-agent's connect.sh) for the author to retire; (6) net access (CDC NCM has no node: a NetworkManager or networkd file). Proof for each: a plan test from fixtures that lists it and changes nothing without the verb.
+
+Opened
+: 2026-11-17
+
+Blocked by
+: lpoco-host
+
+Proof
+: a plan test per part from fixtures: listed, nothing changed without the verb
+
+About
+: lpoco-host
