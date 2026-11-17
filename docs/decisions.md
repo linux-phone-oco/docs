@@ -1442,3 +1442,28 @@ About
 
 Research
 : walleye-slot-flip-why
+
+
+<a id="2026-11-17-a-backlog-item-names-its-device"></a>
+### 2026-11-17-a-backlog-item-names-its-device
+
+Brief
+: A backlog item names the device it is for; phone-next and phone-queue require --device, and lane-next gives a lane's next item of a kind (phone, research, build)
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: backlog gains device (a devices id) and needs takes phone, research or build. The records that set needs refuse a phone, research or build item without a device (tad has no conditional rule). phone-next and phone-queue require --device; lane-next --device D --needs N gives the lane's next item, for its keeper and launchers. Filled once: open phone items in docs, surya-lab, lab-tools (about deep-sleep) and sxmo-deviceprofiles (about sx-surya) are xiaomi-surya; google-walleye-lab's and lab-tools' about google-walleye are google-walleye. The briefs, AGENTS.md and the README name the device.
+
+Why
+: Per-lane launchers (ideal-agent decision 2026-11-17-a-lane-starts-its-own) need a lane's next item; needs said only phone, and phone-next could hand surya's items to walleye's keeper. Orchestration (owner of docs), 2026-11-17: the device is a fact of the item, devices.id the reference; required, not optional; list what cannot be placed.
+
+Rejected
+: An optional --device (a walleye keeper would still take surya's items); the lane read off the project (surya's phone items live in docs, about components); a device on components (components are shared across devices); a needs value per device (needs says what kind, device says whose); a table rule (tad has none conditional yet - the records enforce it).
+
+About
+: agent-folder

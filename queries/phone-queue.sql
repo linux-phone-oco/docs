@@ -4,8 +4,8 @@
 -- test that proves it, then the oldest. One change to the phone at a time (devlab holds it); research and
 -- other sessions put work here (tad r backlog-needs ... --needs phone --proof TEST), never on the phone.
 -- (Ordered by the weakest link once each item says what it is about: idealkb's about link, proposed.)
--- --project  string?  the place (all when not given)
+-- --device   string   the device, a devices id (xiaomi-surya, google-walleye): each phone has its own queue
 SELECT project, id, status, rank, title, coalesce(proof, '') AS proof, coalesce(waits, '') AS waits, note
 FROM backlog
-WHERE needs = 'phone' AND status <> 'done' AND ($project IS NULL OR project = 'linux-phone-oco/' || $project)
+WHERE device = $device AND needs = 'phone' AND status <> 'done'
 ORDER BY status <> 'in-progress', rank IS NULL, rank, waits IS NOT NULL, proof IS NULL, opened, project, id;

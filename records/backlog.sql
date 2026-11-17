@@ -7,8 +7,11 @@
 -- --waits    string?       what it waits on, if anything (the author, a SIM card)
 -- --about    string?       what it is about: a component, feature, milestone, device or backlog item (tad q about lists them)
 -- --opened   date = today  when it was opened
--- --needs    string?       phone: it cannot be done without the phone - its keeper's queue (tad q phone-queue)
+-- --needs    string?       phone, research or build: the lane's queue of that kind (tad q lane-next --device D --needs N)
+-- --device   string?       the device it is for, a devices id (xiaomi-surya, google-walleye); required with needs
 -- --proof    string?       the test whose pass proves it done (a tests id, or the test still to write)
+SELECT CASE WHEN $needs IS NOT NULL AND $device IS NULL
+    THEN error('an item that needs ' || $needs || ' names its device: --device xiaomi-surya or google-walleye') END;
 DELETE FROM backlog WHERE project = 'linux-phone-oco/' || $project AND id = $id;
-INSERT INTO backlog (project, id, title, status, note, opened, waits, needs, proof, about)
-VALUES ('linux-phone-oco/' || $project, $id, $title, $status, $note, $opened, $waits, $needs, $proof, $about);
+INSERT INTO backlog (project, id, title, status, note, opened, waits, needs, device, proof, about)
+VALUES ('linux-phone-oco/' || $project, $id, $title, $status, $note, $opened, $waits, $needs, $device, $proof, $about);

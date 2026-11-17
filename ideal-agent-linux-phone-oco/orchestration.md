@@ -61,7 +61,7 @@ The method is the skill **orchestrate-agents** of the ideal-agent plugin (grenud
 the lab): look at the whole through the lenses, check the ways by measurement, turn rules into mechanisms,
 keep the face fluent, choose and start the work by the weakest link, mind the cost. Here, in linux-phone:
 
-- **The whole**: `tad q next`, `tad q phone-queue`, `tad q coverage` (in docs), the face (https://linux-phone-oco.github.io/docs/),
+- **The whole**: `tad q next`, `tad q phone-queue --device D`, `tad q coverage` (in docs), the face (https://linux-phone-oco.github.io/docs/),
   and each linked session's latest report.
 - **Hand-work** is counted in docs, through tad; a third time by hand is a tool for lab-tools or a word for
   ideal-agent's agent-env.
@@ -72,7 +72,7 @@ keep the face fluent, choose and start the work by the weakest link, mind the co
   an ideal-agent hook.
 - **Hard features** (deep sleep, the microphones, the modem's calls, the cameras, the sensors) get a research
   session first: write its brief from `ideal-agent-linux-phone-oco/feature-research.md`. What it decides goes to the phone keeper's
-  queue (`tad q phone-queue`: backlog items with --needs phone).
+  queue (`tad q phone-queue --device D`: backlog items with --needs phone and their device).
 - **One phone** means one session changing it at a time: implementation is queued on the phone's queue for its keeper, not raced.
 
 ## Two sessions and more, one lab

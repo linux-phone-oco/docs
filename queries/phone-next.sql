@@ -1,9 +1,8 @@
--- What the phone's keeper takes now: the top row of phone-queue that waits on nothing, in one row - the
--- item, the test that proves it, what it is about and its note - so a keeper's start asks once.
--- --project  string?  the place (all when not given)
+-- What a phone's keeper takes now: the top item of its device's phone queue that waits on nothing, in one row
+-- (lane-next --needs phone) - the item, the test that proves it, what it is about and its note.
+-- --device  string   the device, a devices id (xiaomi-surya, google-walleye): each phone has its own keeper
 SELECT project, id, status, title, coalesce(proof, '') AS proof, coalesce(about, '') AS about, note
 FROM backlog
-WHERE needs = 'phone' AND status <> 'done' AND waits IS NULL
-  AND ($project IS NULL OR project = 'linux-phone-oco/' || $project)
+WHERE device = $device AND needs = 'phone' AND status <> 'done' AND waits IS NULL
 ORDER BY status <> 'in-progress', rank IS NULL, rank, proof IS NULL, opened, project, id
 LIMIT 1;

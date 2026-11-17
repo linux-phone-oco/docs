@@ -8,7 +8,7 @@ Also practices: 42
 nothing, work it to its proof through devlab, record it, hand over, end.** Start with exactly these, in
 `~/Projects/linux-phone-oco/surya-lab` and a docs worktree of your own at origin/main:
 `devlab keeper take NAME` (refused: another keeper is live -
-end); `tad q phone-stands --format csv` (the last hand-over); `tad q phone-next --format csv` (the one item
+end); `tad q phone-stands --format csv` (the last hand-over); `tad q phone-next --device xiaomi-surya --format csv` (the one item
 to take: the top of the queue that waits on nothing); `tad q about --subject S --format csv` for that
 item's subject (its summary first); `devlab suite latest`. Then act. Read the rest of this file only when a step below names it.
 

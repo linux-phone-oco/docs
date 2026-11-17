@@ -32,7 +32,7 @@ reads the card and only its practices, and the brief keeps only what linux-phone
 - **No ocoeco.** The record of work is git itself: the session's shell is ready by ideal-agent's agent-env
   (signed as the brief's `Name:`), work from a worktree of your own, commit, and `land --no-manual`.
 - **The phone.** Only through devlab, and only by its keeper; anything that needs the phone goes on the
-  phone's queue (`tad r backlog ... --needs phone`; `tad q phone-queue`).
+  phone's queue (`tad r backlog ... --needs phone --device D`; `tad q phone-queue --device D`; a lane's next item of a kind: `tad q lane-next --device D --needs phone|research|build`).
 
 Why: the author, 2026-11-17 - for linux-phone everything goes through tad in one database (decision
 2026-11-17-one-database), and an agent's domain is kept beside the knowledge, not in the general agent
