@@ -3142,6 +3142,9 @@ Note
 Opened
 : 2026-11-11
 
+Waits
+: sensors-registry-writes: the DSP still writes with its configs current (probe 2026-11-17)
+
 Needs
 : phone
 
@@ -3197,9 +3200,6 @@ Note
 
 Opened
 : 2026-11-09
-
-Waits
-: sensors-and-the-mask: the fallback, taken only if the DSP still writes with its registry current
 
 Needs
 : phone
