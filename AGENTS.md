@@ -12,7 +12,7 @@ Setup once: `make setup`. Editing the data: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 | the role briefs, the phone keeper, how records go here | [`ideal-agent-linux-phone-oco/`](ideal-agent-linux-phone-oco/README.md) |
 
 Record with `ikb`: `ikb --help`, then `ikb help RECORD`. Records name their place: `ikb decision --project docs ...`.
-`unknown` is not a weaker `broken`: it means nobody has checked.
+Principles, cited by id and never restated (`tad q principles`): [as-good-as-android](docs/concepts.md#as-good-as-android), [measured-not-claimed](docs/concepts.md#measured-not-claimed) (`unknown` is not a weaker `broken`), [mainline-first](docs/concepts.md#mainline-first), [no-manual-steps](docs/concepts.md#no-manual-steps), [rust-with-argenv](docs/concepts.md#rust-with-argenv).
 
 <!-- idealkb:begin - kept by grenudi/ideal-knowledge-base at the release idealkb.toml names: change it there -->
 ## Finding what is known

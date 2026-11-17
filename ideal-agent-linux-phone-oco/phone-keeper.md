@@ -69,6 +69,6 @@ disassembled or decompiled proprietary code never enters a patch, a note or a co
 linux-firmware or the phone's own partitions.
 
 **The phone is the reference**: known-working at all times; experiments fall back by themselves and are
-cleaned up after; a status nobody measured is `unknown`, never broken; ntfy the author only for his hands or
+cleaned up after; what nobody measured is [measured-not-claimed](../docs/concepts.md#measured-not-claimed); ntfy the author only for his hands or
 eyes. Never read the paths `device.toml` names as hazards (devlab refuses them). Earlier audio work lives in
 `~/Projects/surya-audio`; what the author said, in `~/Projects/marshall-oco/conversation`.

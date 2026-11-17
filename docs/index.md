@@ -6,8 +6,8 @@ The memory of linux-phone-oco, whose goal is Linux phones as good as Android for
 
 - [Backlog](backlog.md): 136
 - [Components](components.md): 21
-- [Concepts](concepts.md): 5
-- [Decisions](decisions.md): 54
+- [Concepts](concepts.md): 10
+- [Decisions](decisions.md): 55
 - [Devices](devices.md): 3
 - [Feature Support](feature_support.md): 101
 - [Features](features.md): 46
@@ -20,7 +20,7 @@ The memory of linux-phone-oco, whose goal is Linux phones as good as Android for
 - [Milestones](milestones.md): 23
 - [Platforms](platforms.md): 7
 - [Problems](problems.md): 14
-- [Research](research.md): 43
+- [Research](research.md): 44
 - [Session Log](session_log.md): 67
 - [Shell Releases](shell_releases.md): 2
 - [Sources](sources.md): 193

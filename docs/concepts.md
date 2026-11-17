@@ -71,3 +71,95 @@ Summary
 
 Why
 : A reference that drifts cannot tell a regression from a mistake.
+
+
+<a id="as-good-as-android"></a>
+### As good as Android
+
+Project
+: linux-phone-oco/docs
+
+Summary
+: A phone running Linux that an ordinary person could use as their only phone and not feel they gave something up - counted one feature at a time.
+
+Why
+: The aim is plain and counted against Android's everyday use (the idea, section 05); without a measure it would be a hope.
+
+Ord
+: 1
+
+
+<a id="measured-not-claimed"></a>
+### Measured, not claimed
+
+Project
+: linux-phone-oco/docs
+
+Summary
+: A feature counts only when a test run has shown it works; what nobody measured is unknown, never broken.
+
+Why
+: The picture is honest or it is worth nothing: status is read off the runs (decision 2026-11-17-support-read-off-results).
+
+Ord
+: 2
+
+Rests on
+: ideal-agent
+
+
+<a id="mainline-first"></a>
+### Mainline first, everything upstream
+
+Project
+: linux-phone-oco/docs
+
+Summary
+: Work is done on mainline Linux and written to be sent upstream: each fix its own series, checkpatch-clean, to the upstream it belongs to; vendor code is read as a specification, never copied.
+
+Why
+: A fix kept in a fork helps one phone; a fix upstream helps every phone and stays maintained.
+
+Ord
+: 3
+
+Rests on
+: ideal-agent
+
+
+<a id="no-manual-steps"></a>
+### No manual steps outside tools
+
+Project
+: linux-phone-oco/docs
+
+Summary
+: What a person does twice becomes a command, a record or a test, so that bringing a phone up can run by itself; where hands or eyes are the measurement, the step is a witnessed test, said before and recorded.
+
+Why
+: The conveyor's point (the idea, section 03): the same known steps every time, by a person or an agent; manual_work counts what is still by hand and whether it is automated.
+
+Ord
+: 4
+
+Rests on
+: ideal-agent
+
+
+<a id="rust-with-argenv"></a>
+### Rust, with argenv
+
+Project
+: linux-phone-oco/docs
+
+Summary
+: linux-phone's tools are Rust, each declaring its command line and environment once with argenv.
+
+Why
+: One declaration gives the parser, the help, the man page and the completions, so they cannot disagree.
+
+Ord
+: 5
+
+Rests on
+: ideal-agent
