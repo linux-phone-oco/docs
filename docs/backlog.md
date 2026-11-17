@@ -3005,22 +3005,6 @@ Opened
 : 2026-11-17
 
 
-<a id="kb-entry"></a>
-### AGENTS.md is the one entry: under 3 KB, an orientation table from typical question to the command that answers it, tad statements for the rest, never read data/ or docs/ to answer; CLAUDE.md is @AGENTS.md; editing recipes move to CONTRIBUTING
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: Still open (2026-11-17): AGENTS.md is 7.9 KB and mostly about editing the data. Only its first section, 'Finding what is known' (tad q about, tad statements, the agent folder), is the entry part. Next: under 3 KB, an orientation table from typical question to command, with the editing recipes moved to CONTRIBUTING; then next, find, row and recent, and compact query output.
-
-Opened
-: 2026-11-17
-
-
 <a id="agent-folder"></a>
 ### The agent specifics of linux-phone-oco in their own folder, ideal-agent-linux-phone-oco/: prompts/ moved there with git mv, the domain part of practice 42 beside them, extending ideal-agent
 
@@ -3032,22 +3016,6 @@ Status
 
 Note
 : Done 2026-11-17: prompts/ moved with git mv into ideal-agent-linux-phone-oco/ beside phone-keeper.md, with a README holding practice 42's domain part and the table of briefs; pointers fixed in the briefs, the keeper brief, AGENTS.md and the patrol's scheduled task. ideal-agent's own wording (the project's prompts/) is its owner's - told.
-
-Opened
-: 2026-11-17
-
-
-<a id="idealkb-from-template"></a>
-### grenudi/ideal-knowledge-base: a new repository that pins tad's release and adds the knowledge-base layer - the file-or-table rule, the about link, the generic queries (about, next, find, recent), the short AGENTS.md entry and the standing tables (backlog, session_log, decisions, research); with tad init in tad for a bare database, and text-as-data-template retired with a pointer once its reasons are carried over
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: Corrected by the author 2026-11-17: tad stays a database and idealkb is a layer on top of it, not the template renamed (decision 2026-11-17-ideal-knowledge-base). Accepted by the author 2026-11-17 ('looks clean, i like it'); nothing waits on him. Steps: tad init in tad-engine (the scaffold); idealkb made, with its own records; the template's reasons carried into both (Chesterton's fence), then the template retired with a pointer. Built in its own session. Later: rendering may move from tad to the knowledge base and the face.
 
 Opened
 : 2026-11-17
@@ -3263,3 +3231,35 @@ Opened
 
 About
 : sensors
+
+
+<a id="kb-entry"></a>
+### AGENTS.md is the one entry: under 3 KB, an orientation table from typical question to the command that answers it, tad statements for the rest, never read data/ or docs/ to answer; CLAUDE.md is @AGENTS.md; editing recipes move to CONTRIBUTING
+
+Project
+: linux-phone-oco/docs
+
+Status
+: done
+
+Note
+: Done 2026-11-17: AGENTS.md is 2.1 KB - two lines, linux-phone's own questions and idealkb's generic part (the orientation table, the rule never to read data/ or docs/); the editing recipes are in CONTRIBUTING.md; CLAUDE.md is @AGENTS.md. Measured again in kb-navigation-remeasured: the modem question 0.2 KB, the microphone 15.9 KB as csv (91 KB in box format: compact output is idealkb's backlog compact-query-output).
+
+Opened
+: 2026-11-17
+
+
+<a id="idealkb-from-template"></a>
+### grenudi/ideal-knowledge-base: a new repository that pins tad's release and adds the knowledge-base layer - the file-or-table rule, the about link, the generic queries (about, next, find, recent), the short AGENTS.md entry and the standing tables (backlog, session_log, decisions, research); with tad init in tad for a bare database, and text-as-data-template retired with a pointer once its reasons are carried over
+
+Project
+: linux-phone-oco/docs
+
+Status
+: done
+
+Note
+: Done 2026-11-17: tad init in tad 0.7.0 (tad-engine decision 2026-11-17-tad-init); grenudi/ideal-knowledge-base made and released 0.1.0 (public, oco-project, its own tad base: concepts, decisions, research with 18 sources, backlog, log); text-as-data-template's reasons carried into both and the template retired (archived) with a pointer; docs follows idealkb 0.1.0 (decision 2026-11-17-docs-follows-idealkb). What is left is idealkb's own backlog: tad q next in grenudi/ideal-knowledge-base.
+
+Opened
+: 2026-11-17

@@ -946,3 +946,28 @@ About
 
 Research
 : sensors-registry-rebuild,sensors-hardware-surya,sensors-family-state,sensors-across-suspend
+
+
+<a id="2026-11-17-docs-follows-idealkb"></a>
+### 2026-11-17-docs-follows-idealkb
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: docs is ideal-knowledge-base's first follower: idealkb.toml pins release 0.1.0, the generic queries next, find, row and recent are idealkb's, and AGENTS.md is the short entry - two lines on what docs is, linux-phone's own questions (phone-queue, phone-stands, coverage, a place's records, the agent folder), and idealkb's generic part between idealkb:begin and idealkb:end. docs keeps as its own: its about query (it also reads the support matrix, feature support and the tests), its records (they take --project: one database of several places) and tables.toml (its standing tables carry project, needs and proof). The editing recipes moved to CONTRIBUTING.md whole.
+
+Why
+: Decision 2026-11-17-ideal-knowledge-base, accepted by the author; backlog kb-entry and idealkb-from-template. A base's extensions named as own are not overwritten by the weekly pin job, which says when idealkb changes one of them.
+
+Rejected
+: Taking idealkb's records and about query (they would drop --project and the support matrix: docs' own CI and devlab's filing stand on them); renaming docs' queries to fit (every link and brief naming tad q about would break); deleting the recipes from AGENTS.md (they are still how the data is edited - they belong in CONTRIBUTING.md, which a person reads to change it); moving the base into a subfolder (devlab's filing, Pages and the mark stand on the root - the decision's own rejection).
+
+About
+: kb-entry
+
+Research
+: kb-navigation-remeasured

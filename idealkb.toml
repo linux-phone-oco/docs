@@ -1,0 +1,7 @@
+# This knowledge base follows grenudi/ideal-knowledge-base at the release named here: the generic named
+# statements, and AGENTS.md's and tables.toml's part between idealkb:begin and idealkb:end. Its weekly pin
+# job (idealkb's bin/update-pins.sh) moves it; own names the generic files this base keeps as its own.
+# docs is one database of several places: its records take --project, its about query also reads the
+# support matrix and the tests, and its standing tables carry project, needs and proof - so those are its own.
+version = "0.1.0"
+own = ["queries/about.sql", "records/decision.sql", "records/research.sql", "records/backlog.sql", "records/session-log.sql", "records/source.sql", "tables.toml"]

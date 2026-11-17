@@ -1465,3 +1465,27 @@ Considered
 
 About
 : google-taimen
+
+---
+
+
+<a id="2026-11-17-idealkb-built"></a>
+### ideal-knowledge-base built; docs its first follower
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: tad init (tad-engine #85, tad 0.7.0). grenudi/ideal-knowledge-base #1 and release 0.1.0: five generic queries tried first against docs' data, standing tables, the entry, bin/follow.sh and bin/update-pins.sh now. text-as-data-template retired (#15, archived). docs pins idealkb 0.1.0 with its own extensions named own, and AGENTS.md went from 7.9 KB to 2.1 KB.
+
+Considered
+: A declaration tad includes from another file; generic queries that know project.
+
+Rejected
+: Each fits one base and not the next (decision 2026-11-17-follow-by-pin in ideal-knowledge-base).
+
+About
+: idealkb-from-template

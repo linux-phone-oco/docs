@@ -698,3 +698,25 @@ Sources
 
 About
 : google-walleye
+
+
+<a id="kb-navigation-remeasured"></a>
+### kb-navigation-remeasured
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: With docs following ideal-knowledge-base 0.1.0, how much must an agent read to answer the three questions of kb-navigation-measured?
+
+Found
+: Measured on the branch that follows it, 2026-11-17 (bytes). The entry: AGENTS.md is 2.1 KB (was 7.9 KB) - two lines on what docs is, linux-phone's own questions, and idealkb's generic part; the editing recipes went to CONTRIBUTING.md. What is known of surya's microphone: tad q about --subject audio-mic, one call, 15.9 KB as csv (26 records about it now, against 18 before) - but 91 KB in tad's default box format, which pads every cell: the format is now the weight, not the finding (was 206 KB of pages). What to do next on the modem: tad q next --about modem, one call, 0.2 KB as csv, 1.8 KB as box (was an 84 KB page or 327 KB of tad q backlog). How to record a decision: the entry names tad r decision --project docs and tad statements (4.8 KB with every parameter; was 3.5 KB with fewer statements) - unchanged in kind. So two of the three questions are one call each, as the decision expected; what is left is tad printing compact rows when not at a terminal (idealkb backlog compact-query-output).
+
+Sources
+: text-as-data-template
+
+About
+: kb-entry
