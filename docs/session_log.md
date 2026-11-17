@@ -1975,3 +1975,21 @@ Rejected
 
 About
 : agent-folder
+
+---
+
+
+<a id="2026-11-17-1650-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Keeper surya-keeper-7: phone on the kept kernel 7.1.0-sm7150-calls+ (the cp.dtb try booted once, healthy 35 pass 0 fail; since then the kept dtb again after the next reboot). 8 cycles 15 bt-on on cp.dtb: real 15 s s2idle, cluster S2 0x4100c244 used, cxsd/aosd/ddr 0. Tracing was left on in ftrace (reset by reboot).
+
+Considered
+: next: sleep-cluster-params waits on a deeper decision (what holds AOSS/CX/DDR is unknown); candidates: owner of the SH0 x=1,y=3 sleep vote, qcom_aoss prevent_* knobs, XO/VRM votes, USB gadget, display RSC. Then sleep-wake items.

@@ -1395,3 +1395,28 @@ About
 
 Material
 : research/deep-sleep/2026-11-17-adsp-floor/
+
+
+<a id="2026-11-17-cluster-params-clean-yet-no-collapse"></a>
+### 2026-11-17-cluster-params-clean-yet-no-collapse
+
+Brief
+: On the cluster-params dtb the cluster entered 0x4100c244 for a real 15 s s2idle, RPMh CX/MX at 0 and the sleep set clean but SH0 x=1,y=3; cxsd, aosd, ddr still 0
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: With surya's own cluster sleep parameters booted, does a timed cycle collapse CX/AOSS/DDR, and if not what is held?
+
+Found
+: See notes.md: cluster S2 used (genpd idle_states), wake by the RTC alarm after 15 s (trace clock stops in s2idle), CX/MX active votes 0, sleep set all zero except SH0 (x=1,y=3), stats cxsd/aosd/ddr 0 in 8 cycles. Cause not found in genpd, clk, icc or rpmh traces; candidates untested: SH0 owner, qcom_aoss prevent_* knobs, XO/VRM votes, USB gadget, display RSC.
+
+About
+: deep-sleep
+
+Material
+: research/deep-sleep/2026-11-17-cluster-params/

@@ -1333,3 +1333,31 @@ About
 
 Research
 : 2026-11-17-adsp-stopped-cx-aosd-ddr-stay-0
+
+
+<a id="2026-11-17-cluster-params-are-not-the-floor"></a>
+### 2026-11-17-cluster-params-are-not-the-floor
+
+Brief
+: surya's cluster sleep parameters are not what blocks CX/AOSS/DDR sleep: the cluster enters 0x4100c244 and cxsd/aosd/ddr still read 0; the cause is unknown
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: sleep-cluster-params waits on a deeper decision; no more cycles on this dtb until a candidate (SH0 owner, qcom_aoss knobs, XO/VRM, USB, display RSC) is chosen
+
+Why
+: 8 cycles with ftrace: cluster S2 used, CX/MX 0, sleep set clean except SH0 x=1 y=3, counters 0
+
+Rejected
+: More cycles on the same dtb: they repeat the same zeros
+
+About
+: deep-sleep
+
+Research
+: 2026-11-17-cluster-params-clean-yet-no-collapse

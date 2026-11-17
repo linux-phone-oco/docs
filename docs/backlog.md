@@ -610,34 +610,6 @@ About
 : deep-sleep
 
 
-<a id="sleep-cluster-params"></a>
-### surya's own cluster sleep parameters in its device tree
-
-Project
-: linux-phone-oco/docs
-
-Status
-: in-progress
-
-Note
-: 2026-11-17: the changed parameters were booted once (devlab kernel try calls --dtb, a decompiled kept dtb with 0x41002244 and 0x4100c244, healthy 37 pass 0 fail) but no cycle could be judged: the suspend ended at once on the serial wake (sleep-wake-uart). Redo the cycle on that dtb after sleep-wake-uart and sleep-bt-resume; the dtb is cp.dtb (sed on the dtc output of /boot/dtbs-calls/qcom/sm7150-xiaomi-surya-huaxing.dtb).
-
-Opened
-: 2026-11-17
-
-Needs
-: phone
-
-Proof
-: soc-sleeps
-
-Rank
-: 2
-
-About
-: deep-sleep
-
-
 <a id="sleep-fastrpc-helpers"></a>
 ### FastRPC helpers stopped across suspend; the sensors back
 
@@ -3873,6 +3845,37 @@ Proof
 
 Rank
 : 3
+
+About
+: deep-sleep
+
+
+<a id="sleep-cluster-params"></a>
+### surya's own cluster sleep parameters in its device tree
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: 2026-11-17 keeper-7: cycle 15 bt-on on the cp.dtb (0x41002244, 0x4100c244) 8 times: a real 15 s s2idle (RTC alarm wake), cluster S2 entered, cxsd/aosd/ddr 0 (research 2026-11-17-cluster-params-clean-yet-no-collapse). The parameters are not the blocker. Untried: the SH0 residual's owner, qcom_aoss prevent_* knobs, XO/VRM votes, USB gadget, display RSC.
+
+Opened
+: 2026-11-17
+
+Waits
+: a deeper decision: WHAT holds CX, AOSS and DDR with an apps side that looks clean (cluster S2 used, CX/MX 0, sleep set zero but SH0 x=1,y=3) is unknown
+
+Needs
+: phone
+
+Proof
+: soc-sleeps
+
+Rank
+: 2
 
 About
 : deep-sleep
