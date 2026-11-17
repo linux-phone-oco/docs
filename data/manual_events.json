@@ -9,3 +9,5 @@
 {"id":"2026-11-17T16:42:28Z-typed-the-tries-notes-by-hand","project":"linux-phone-oco/google-walleye-lab","record":"typed-the-tries-notes-by-hand","at":"2026-11-17T16:42:28Z","change":"walleye-first-boot-tries","minutes":1,"effort":1,"load":5}
 {"id":"2026-11-17T17:23:55Z-ran-two-fastboot-boot-tries","project":"linux-phone-oco/google-walleye-lab","record":"ran-two-fastboot-boot-tries","at":"2026-11-17T17:23:55Z","change":"walleye-boot-tries-on-b","minutes":1,"effort":1,"load":5}
 {"id":"2026-11-17T17:24:03Z-typed-the-tries-notes-by-hand","project":"linux-phone-oco/google-walleye-lab","record":"typed-the-tries-notes-by-hand","at":"2026-11-17T17:24:03Z","change":"walleye-boot-tries-on-b","minutes":1,"effort":1,"load":5}
+{"id":"2026-11-17T17:29:25Z-ran-two-fastboot-boot-tries","record":"ran-two-fastboot-boot-tries","at":"2026-11-17T17:29:25Z","minutes":1,"load":5,"effort":1,"change":"walleye-boot-tries-c-d"}
+{"id":"2026-11-17T17:29:25Z-polled-the-host-usb-bus-by-script","record":"polled-the-host-usb-bus-by-script","at":"2026-11-17T17:29:25Z","minutes":1,"load":5,"effort":1,"change":"walleye-boot-tries-c-d"}
