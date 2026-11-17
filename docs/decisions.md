@@ -1791,3 +1791,37 @@ Rejected
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="2026-11-17-bringup-in-lab-tools"></a>
+### 2026-11-17-bringup-in-lab-tools
+
+Brief
+: bringup: a new Rust crate in lab-tools (lib + binary) builds, swaps and checks a device's first boot images; devlab keeps the phone; device repos call it.
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Decision
+: WHERE: one place for tools that bring a device up - linux-phone-oco/lab-tools, which already says it holds "tools for bringing up and testing Linux phones, not tied to one device". A new workspace member `bringup` (a library with a binary), beside devlab, health and tone. Not a new repository (lab-tools has the CI, the release-plz and the package conveyor; the device template already points there), and not devlab subcommands (devlab is the phone-facing tool - fastboot, ssh, keeper lease, MCP, tokio and rmcp - and building an image needs no phone, no lease and no network; the boundary stays: bringup makes files on the host, devlab puts them on the phone). devlab may call bringup's library later (kernel try building its own image); it does not grow image code.
+NAME: `bringup`. The package and the binary are both `bringup`; the long form in prose is "linux-phone-oco bring-up tools". No acronym: the word is already the method's own (the ideal-agent skill bring-up-a-part, "A device from nothing"), it is what the author says, and it is short enough to type. It sits beside devlab, tone and lpoco-health, which are one word each.
+SHAPE: Rust, command line declared once with argenv (as lpoco-health), wrapping and not reinventing: mkbootimg, unpack_bootimg and avbtool (android-tools, found on PATH, the oracles) for what only they do well - the AVB footer first - and crates for the rest (a header layer such as abootimg-oxide if its v0 write is byte-exact; cpio, flate2, lz4_flex, xz for the initramfs and kernel container; dtoolkit or fdt to read the appended dtb). Our own code is the part nobody has: the checks against the device's expected fields, the swap of one part against a control image, and the reproducible initramfs. The packer is proven against mkbootimg byte for byte by test, so a later Rust writer replaces the wrapped call without changing a result.
+FIRST COMMANDS: bringup image info|unpack|pack|swap|check (header v0 first; the swap takes a control image and one part - ramdisk, kernel, dtb, cmdline or a header field - and says what differs; check counts the fields the device's [boot] expects and stops the job on a miss); bringup initramfs build (a newc cpio with fixed times, a template variable for the USB-gadget address instead of the sed rewrite, xz or gzip by the device); bringup bisect FILE (a declared series of swaps against stock). AVB hash footer with algorithm NONE and the control's size and properties is part of pack and swap. Not first: vendor_boot and header v3/v4 (read-only at first), a native AVB, QEMU selftest.
+STAYS SHELL, stupid simple: build-kernel (a make call with the config) and build-busybox are a few lines each over a strong tool (make); they stay in the device repository, as thin as they are, shellchecked. rust-script is for one-off analysis of a boot image or a log (decision 2026-11-17-health-checks-shell-and-rust); a rust-script that is used a second time becomes a bringup subcommand. tests/host/gadget-up.sh, a host-side check that the phone's gadget answers, belongs with devlab (it is about the phone) and is a later item.
+HOW DEVICES CALL IT: the device's facts move out of the scripts into device.toml, a [boot] table in pmOS deviceinfo's words (header_version, base, kernel_offset, ramdisk_offset, tags_offset, second_offset, pagesize, os_version, os_patch_level, cmdline, dtb = appended, kernel_compression, ramdisk_compression, avb_footer, partition_size). The device's build scripts become one line each (bringup image pack, bringup initramfs build, bringup bisect), then go away where one command says it; the device template names bringup in its AGENTS.md and ships the [boot] table with every value marked CHANGE, like [flash] and [fastboot].
+BUILD: queued as backlog for a builder with the first failing test (bringup-image-v0, proof bringup-pack-matches-mkbootimg); this session builds nothing.
+
+Why
+: Walleye wrote eight shell scripts (~520 lines) in a day, the bisect one alone 87 lines of sed, od and grep over unpack_bootimg's output, and surya's was done by hand: every new device would write them again, and their checks (a count that exits 1) are exactly what a typed tool does better with tests. The author's rule is shell only where stupid simple and a strong tool stands behind it; these scripts are logic (header fields, offsets, a dtb found by magic bytes, a footer copied from a control), so they become Rust, and the two that are only make calls stay shell. Earlier decisions already point here: backlog rust-toolset (one Rust toolset in lab-tools, surya is the test subject and not the mould) and 2026-11-17-health-checks-shell-and-rust (Rust for logic, shell for readings, rust-script for one-offs). The landscape (research bringup-tools-landscape) shows nothing covers the job - pmbootstrap does not build the image and is ~24k lines of Python, magiskboot is GPL and aimed at rooting, abootimg-oxide has the header but no checks, no swap, no footer - so wrapping the oracles and the crates is cheaper and safer than writing a packer first. The name: the author offered linux-phone-oco-bootstrap-helpers (lp-oco-bh); "bootstrap" is pmbootstrap's word and the compiler world's, and means something else to every reader; "helpers" says nothing; five words and an unpronounceable shorthand do not suit a command; lab-tools' names are one plain word each.
+
+Rejected
+: A new repository (a second CI, release and package conveyor for one crate; lab-tools is already where the device template sends people). Devlab subcommands (devlab would take build-time crates and a second job, and its 5.4k lines already carry the phone's whole life; an offline tool should not need a phone manifest's fastboot section to run - it reads only [boot]). Growing the shell scripts into a shared shell library (the pmbootstrap path: more shell, hand-parsed text, no tests, nothing a second device can share by name). Python (refused). Porting mkbootimg and avbtool into Rust first (cost before need; the byte-for-byte test lets it come later). Taking magiskboot or pmbootstrap as a dependency (GPL and rooting-aimed; Python sprawl). Names: linux-phone-oco-bootstrap-helpers and lp-oco-bh (bootstrap means pmbootstrap or a compiler's; helpers has no meaning; too long and unpronounceable), bootstrap, bootkit (a malware word), bootimg (a crate's name and only half the job), imgtool (mcuboot's), mkboot, forge, kit. Shorthand: none - bringup is the short form.
+
+About
+: bringup
+
+Research
+: bringup-tools-landscape

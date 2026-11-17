@@ -60,3 +60,18 @@ Says
 
 Condenses
 : 2026-11-10-suspend-crash-found, 2026-11-10-usb-flapping, 2026-11-17-1225-how-the-phone-stands, 2026-11-17-1500-sleep-wake-uart, 2026-11-17-1530-lpoco-health-on-the-phone, 2026-11-17-1550-lpoco-health-v017, 2026-11-17-1620-how-the-phone-stands, 2026-11-17-1650-how-the-phone-stands, 2026-11-17-a-coordinator-per-lane, 2026-11-17-adsp-is-not-the-floor, 2026-11-17-adsp-stopped-cx-aosd-ddr-stay-0, 2026-11-17-cluster-params-are-not-the-floor, 2026-11-17-cluster-params-clean-yet-no-collapse, 2026-11-17-deep-sleep-measured-s2idle, 2026-11-17-deep-sleep-researched, 2026-11-17-deep-sleep-way-back, 2026-11-17-floor-research, 2026-11-17-floor-research-path, 2026-11-17-keeper-6-adsp-floor, 2026-11-17-qca-uart-wake-across-suspend, 2026-11-17-serial-wakeup-off, 2026-11-17-sleep-adsp-awake-first-try, 2026-11-17-surya-first-s2idle-cycle, 2026-11-17-surya-s2idle-bt-blocked-hang, 2026-11-17-surya-s2idle-wakes-at-once, 2026-11-17-surya-way-back-inventory, 2026-11-17-the-macro-hw-vote-release-stays-out-of-the-kept, 2026-11-17-way-back-decided, 2026-11-17-way-back-measured, 2026-11-17-way-back-proven, dropping-the-lpass-macros-hw-votes-at-runtime, qcom-sleep-blockers, qcom-sleep-path, qcom-wake-for-calls, sleep-other-ways, sm7150-cluster-params, surya-sleep-measured
+
+
+### Row 5
+
+About
+: bringup
+
+Date
+: 2026-11-17
+
+Says
+: bringup is linux-phone-oco's host tool that makes a device's first boot images, kept in lab-tools as its own Rust crate (lib + binary, argenv) beside devlab, which keeps the phone. It wraps mkbootimg and avbtool as oracles and crates for cpio, compression and dtb, and owns the checks, the swap of one part against a control image, and the reproducible initramfs. Name and place: decision 2026-11-17-bringup-in-lab-tools (rejected: a new repository, devlab subcommands, shell library, bootstrap-helpers/lp-oco-bh). Research: bringup-tools-landscape. Replaces walleye's eight build/check scripts; device facts go into device.toml [boot]. Not built yet: backlog bringup-image-v0 first (failing test pack_v0), then bringup-image-swap, bringup-initramfs, walleye-scripts-call-bringup, device-template-names-bringup.
+
+Condenses
+: 2026-11-17-bringup-in-lab-tools, 2026-11-17-research-bringup-tools, bringup-tools-landscape

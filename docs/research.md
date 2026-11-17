@@ -2246,3 +2246,34 @@ Found
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="bringup-tools-landscape"></a>
+### bringup-tools-landscape
+
+Brief
+: No tool does build, swap and check of a boot image in Rust; the parts exist (header, cpio, dtb, compression) and the oracles are mkbootimg and avbtool, so we wrap.
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Question
+: What exists to build, unpack, swap and check Android boot images and initramfs for a phone bring-up, and what does walleye's shell do today?
+
+Found
+: What is: walleye's bring-up is 8 POSIX shell scripts (~520 lines) in google-walleye-lab/build plus tests/host/gadget-up.sh; they call mkbootimg, unpack_bootimg and avbtool (Python from android-tools), the kernel's gen_init_cpio, lz4, fdtget/fdtdump, with their own checks (check-bootimg, check-bisect count fields and fail). Their knowledge is worth keeping: header v0 offsets by variant, the appended dtb, the lz4 frame shape of the stock kernel, the AVB hash footer (algorithm NONE, padded to the control's size), the NET=43 address rewrite, xz because the 4.4 kernel has no gzip. surya's bring-up had no scripts (by hand). Earlier records already decided the family: backlog rust-toolset (one Rust toolset in lab-tools, rust-script for small scripts, pmbootstrap read as reference) and decision 2026-11-17-health-checks-shell-and-rust (shell for plain readings, Rust for logic, rust-script for prototypes and one-offs).
+Others: nothing covers the whole job. Android's mkbootimg/unpack_bootimg/repack_bootimg and avbtool (Python) are the authoritative oracles; magiskboot (Rust+C++, GPL) has the model of swapping one part (unpack to a directory, change, repack with the original as template) but is aimed at rooting; abootimg-oxide 0.5.2 (Rust, MIT/Apache, 2026-06) reads and writes header v0-v4 and vendor_boot; abootcrafter has an update flow, no AVB; abl-exorcist (Rust, GPL) shells out to mkbootimg; no AVB crate exists on crates.io (avbroot, GPL, does vbmeta, is no library). Rust crates for the rest: cpio 0.4.2 (newc writer), flate2, lz4_flex (maintained), dtoolkit 0.5.0 (Google, dtb read/edit, young), fdt (read). pmbootstrap is Python, ~24k lines in 129 files; its deviceinfo names (header_version, base, kernel_offset, ramdisk_offset, tags_offset, pagesize, cmdline) are the vocabulary to reuse; the boot image is not built there. Mobian, Droidian (initramfs-tools-halium: shell hooks for an initramfs only), lk2nd (a bootloader, no host tooling): nothing to take. No tool checks an image against expected header fields; unpack_bootimg plus a comparison is all there is, which is what our check scripts do.
+Not known yet: whether abootimg-oxide writes byte-identical v0 images; dtoolkit's maturity; whether cpio 0.4.2 reads; whether boot-deploy, Mobian and Halium scripts add anything (not read; the outside look was done by a read-only researcher from page summaries, so counts are weaker than a source read).
+Where tools live today: lab-tools (its README: tools for bringing up and testing Linux phones, not tied to one device) is the one place already: devlab (the phone: fastboot, flash, kernel try, provision, keeper, health, MCP; 5.4k lines with rmcp and tokio), health (runs on the phone) and tone. Device repos hold data and thin scripts.
+
+Sources
+: aosp-mkbootimg,aosp-avbtool,magiskboot,abootimg-oxide,rust-bringup-crates,pmbootstrap-deviceinfo,abl-exorcist,abootcrafter
+
+About
+: bringup
+
+Material
+: research/bringup/2026-11-17/
