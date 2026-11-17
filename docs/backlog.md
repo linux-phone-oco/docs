@@ -4475,7 +4475,7 @@ Status
 : open
 
 Note
-: Decided 2026-11-17 (decision 2026-11-17-bringup-in-lab-tools): a new workspace member of lab-tools, lib + binary named lpoco-bringup (the family prefix marks what others install or pin), Rust with argenv, wrapping mkbootimg/avbtool as oracles and crates for cpio, compression and dtb. Replaces walleye's eight build/check scripts; device facts go in device.toml [boot] (pmOS deviceinfo names), the tool is followed by a [tools] pin and extended beside it. Steps are the bringup-* items; the crate and package are named lpoco-bringup, the test and item ids keep bringup. Next: bringup-image-v0.
+: Decided 2026-11-17 (decision 2026-11-17-bringup-in-lab-tools): lpoco-bringup, a workspace member of lab-tools run as 'lpoco bringup' under one roof - the lpoco dispatcher (lpoco-dispatcher), one pin, one release - Rust with argenv, wrapping mkbootimg/avbtool and crates for cpio, compression and dtb. Replaces walleye's eight build/check scripts; device facts in device.toml [boot]. Steps: lpoco-dispatcher, bringup-image-v0, -swap, -initramfs, -pin-and-hooks, -release, lpoco-rename-lab-tone, lpoco-mcp-one-door. Next: lpoco-dispatcher with bringup-image-v0.
 
 Opened
 : 2026-11-17
@@ -4494,7 +4494,7 @@ Status
 : open
 
 Note
-: Decision 2026-11-17-bringup-in-lab-tools. First: create the workspace member lab-tools/bringup (lib + bin, argenv) and the FAILING test lab-tools/bringup/tests/pack_v0.rs: from small committed fixture parts (kernel, ramdisk, one appended dtb) 'bringup image pack' output equals mkbootimg's for walleye's header (base 0, kernel 0x8000, ramdisk 0x1000000, tags 0x100, page 4096, cmdline) byte for byte, and 'bringup image check' fails on a wrong ramdisk offset, passes on the right one (the fields check-bootimg.sh counts: magic, size within partition, v0, offsets, os words, cmdline, appended dtb with qcom,msm-id). The test skips as 'not measured: no mkbootimg' where android-tools is absent. First step settles the biggest unknown: does abootimg-oxide write v0 byte-exact (else wrap mkbootimg for pack and keep Rust for info/unpack/check). Header facts come from device.toml [boot]; add that table to the manifest reader.
+: One roof (decision 2026-11-17-bringup-in-lab-tools): the crate and binary are named lpoco-bringup from the first commit, run as 'lpoco bringup ...', born with or after lpoco-dispatcher; wherever this note says bringup for the program, read lpoco-bringup. Decision 2026-11-17-bringup-in-lab-tools. First: create the workspace member lab-tools/bringup (lib + bin, argenv) and the FAILING test lab-tools/bringup/tests/pack_v0.rs: from small committed fixture parts (kernel, ramdisk, one appended dtb) 'bringup image pack' output equals mkbootimg's for walleye's header (base 0, kernel 0x8000, ramdisk 0x1000000, tags 0x100, page 4096, cmdline) byte for byte, and 'bringup image check' fails on a wrong ramdisk offset, passes on the right one (the fields check-bootimg.sh counts: magic, size within partition, v0, offsets, os words, cmdline, appended dtb with qcom,msm-id). The test skips as 'not measured: no mkbootimg' where android-tools is absent. First step settles the biggest unknown: does abootimg-oxide write v0 byte-exact (else wrap mkbootimg for pack and keep Rust for info/unpack/check). Header facts come from device.toml [boot]; add that table to the manifest reader.
 
 Opened
 : 2026-11-17
@@ -4603,7 +4603,7 @@ Status
 : open
 
 Note
-: Decision 2026-11-17-bringup-in-lab-tools. Failing test first: with device.toml [tools] bringup = "0.2" and a bringup 0.1.x binary, any command stops with one line naming both versions (exit non-zero, nothing written). Then hooks: a [boot.hooks] step names an executable, called with the part paths as arguments; a missing hook file or a nonzero exit stops the job; test with a shell hook that appends a byte and one that fails. Then the library: the pack/swap/check functions public and documented, with a rust-script example in the repository (a device step that depends on bringup by git tag in its header) run by a test.
+: Decision 2026-11-17-bringup-in-lab-tools (one roof: the pin is the family's, device.toml [tools] lpoco = "X.Y"). Failing test first: with [tools] lpoco = "0.2" and an lpoco 0.1.x, any command stops with one line naming both versions (non-zero, nothing written). Then hooks: a [boot.hooks] step names an executable, called with the part paths as arguments; a missing hook or a nonzero exit stops the job; test with a shell hook that appends a byte and one that fails. Then the library: lpoco-bringup's pack, swap and check public and documented, with a rust-script example in the repository (a device step that depends on lpoco-bringup by git tag in its header) run by a test.
 
 Opened
 : 2026-11-17
@@ -4634,13 +4634,13 @@ Status
 : open
 
 Note
-: Like lpoco-health. Settle with a test which install is simpler for a device lab: a host binary as a release asset (x86_64 linux, checksum) or cargo install --git https://github.com/linux-phone-oco/lab-tools --tag bringup-vX.Y.Z bringup. Proof: on a clean host, the chosen install from the tag gives a bringup whose --version equals the tag and passes bringup-refuses-wrong-pin.
+: The family is released together by release-plz (one tag, settled in lpoco-dispatcher) and installs on a lab host from the tag. Settle with a test which install is simpler for a device lab: host binaries as release assets (x86_64 linux, checksum) or cargo install --git https://github.com/linux-phone-oco/lab-tools --tag TAG lpoco lpoco-bringup. Proof: on a clean host, the chosen install from the tag gives lpoco whose --version equals the tag, lpoco list shows bringup, and it passes bringup-refuses-wrong-pin.
 
 Opened
 : 2026-11-17
 
 Waits
-: bringup-image-v0
+: lpoco-dispatcher
 
 Needs
 : build
@@ -4681,16 +4681,106 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-17-bringup-in-lab-tools (family rule, research bringup-family-names). Not now: ~450 references, the installed path and the MCP tool names. When triggered: choose the word (lpoco-devlab stutters; weigh lpoco-lab), rename the package and binary, keep devlab as another name as lpoco-health did, update the MCP names with a notice. tone stays while its binary is not installed; if it is published or installed, rename (crates.io already has tone).
+: Superseded 2026-11-17 by the one-roof decision: the rename is lpoco-rename-lab-tone, behind lpoco-dispatcher.
 
 Opened
 : 2026-11-17
 
 Waits
 : devlab first pinned or installed by a device repository
+
+About
+: bringup
+
+
+<a id="lpoco-dispatcher"></a>
+### lpoco: the dispatcher - lpoco NAME runs lpoco-NAME, one version for the family, list and completions
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-17-bringup-in-lab-tools (one roof). First, before or in the same change as lpoco-bringup (bringup-image-v0). Failing tests first: (1) lpoco-runs-subcommand-by-path: with a fixture program lpoco-fake on PATH, 'lpoco fake x' runs it with x and returns its exit code; a missing NAME stops with one line naming what was searched; (2) lpoco-refuses-mixed-versions: a subcommand reporting a different --version stops the run naming both. Then 'lpoco list' (the programs found with versions), completions and a man page from the argenv declaration, 'lpoco --version'. A new workspace member of lab-tools, argenv, no tokio. Settle the one family tag with release-plz. The phone gets no dispatcher.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lpoco-runs-subcommand-by-path
+
+About
+: bringup
+
+
+<a id="lpoco-rename-lab-tone"></a>
+### devlab becomes lpoco-lab (lpoco lab), tone lpoco-tone; the old names stay as other names
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Package and binary renamed, a second [[bin]] keeps devlab (and tone) running the same code. Failing test first: 'lpoco lab phone find --help' and 'devlab phone find --help' print the same, and lpoco list shows lab, health, tone, bringup under one version. The ~450 references (AGENTS.md, READMEs, device.toml comments, scripts) are swept in later, small changes; nothing breaks at once. The MCP door moves to 'lpoco mcp' (backlog lpoco-mcp-one-door) with the old tool names kept.
+
+Opened
+: 2026-11-17
+
+Waits
+: lpoco-dispatcher
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lpoco-lab-and-devlab-are-one-program
+
+About
+: bringup
+
+
+<a id="lpoco-mcp-one-door"></a>
+### lpoco mcp: one MCP server for the family, every subcommand's tools under its name, old names kept
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Today devlab serves the MCP door (rmcp, tokio). Test: 'lpoco mcp' lists the tools of lab, health and bringup, and the old names answer too. Agents then look in one place.
+
+Opened
+: 2026-11-17
+
+Waits
+: lpoco-rename-lab-tone
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lpoco-mcp-lists-every-family-tool
 
 About
 : bringup

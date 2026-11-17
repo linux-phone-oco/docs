@@ -1831,3 +1831,28 @@ Sources
 
 About
 : bringup
+
+
+<a id="bringup-one-roof"></a>
+### bringup-one-roof
+
+Brief
+: One roof: an lpoco dispatcher (git-style) runs lpoco-NAME programs, one pin, one release, one MCP door; each tool stays its own small crate; old names stay as aliases.
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Question
+: Should all lpoco tools sit under one command, one pin and one release (the author: one roof), and in what form?
+
+Found
+: Asked by the author after the prefix amendment: the point was to gather all tools of lpoco under one roof. Forms: (a) one lpoco command with subcommands, as git and cargo do - a dispatcher that runs lpoco-NAME found beside it or on PATH; (b) every tool renamed lpoco-* now, released together; (c) the prefix rule with devlab and tone deferred (the first amendment). What a roof buys: one install, one pin in device.toml [tools], one completion and man page, one MCP server, one place agents look. What it costs: ~450 references to devlab and the MCP tool names, softened by keeping the old names as other names (the lpoco-health precedent). Constraint: lpoco-health ships to phones as a small static binary (opt-level s, no tokio, no rmcp), so a single fat binary would grow the phone's program; a dispatcher keeps every tool its own crate and binary, testable and runnable alone. Finding: (a) as a dispatcher over lpoco-* programs, family released together with a version lockstep check, the new tool born as lpoco-bringup under it; devlab becomes lpoco lab (devlab kept as another name), tone lpoco tone, the MCP door becomes lpoco mcp. Not known yet: whether release-plz makes one family tag easily (the builder of lpoco-dispatcher settles it); whether a feature-gated single binary would later be simpler.
+
+Sources
+: rhizoid-repo
+
+About
+: bringup
