@@ -1865,8 +1865,8 @@ About
 ---
 
 
-<a id="2026-11-17-briefs-name-their-role"></a>
-### The briefs name their role and drop . oco-work
+<a id="2026-11-17-walleye-vendor-research"></a>
+### Walleye research: vendor GPL kernel, how others booted it, Android reference
 
 Project
 : linux-phone-oco/docs
@@ -1875,13 +1875,13 @@ Entry date
 : 2026-11-17
 
 Done
-: Each brief in ideal-agent-linux-phone-oco/ names its role under its title (ideal-agent 0.3.2's cards): coordinator; surya and walleye coordinators lane-coordinator; phone-keeper keeper; orchestration orchestrator; feature-research research-lead; bring-up builder (it prepares work, the keeper alone changes the phone - practice 44). With Name: (who signs, ideal-agent's agent-env) and Also practices: 42. export OCOECO_BY and . oco-work, landit removed; README says how a brief references a role. Agreed with orchestration (owner of docs); its trimming of what the cards now say follows.
+: Read walleye's (HTC 'muskie') device tree in LineageOS' wahoo kernel and kcxt's mainline tree; hardware table kept as material; read pmOS, kcxt, LKML, LineageOS, Ubuntu Touch and Halium sources for how Pixel 2 phones were booted without a display; collected public Android reference numbers; 3 research rows, 16 sources, 2 backlog items.
 
 Considered
-: bring-up as keeper (rejected by orchestration: one keeper per phone).
+: A full clone of the kernel (about 1 GB) - single files read through the raw host instead.
 
 Rejected
-: Keeping . oco-work in the briefs: ideal-agent's start now gives the token, PATH, the name and land (decision grenudi/ideal-agent 2026-11-17-a-neutral-start).
+: Copying panel init sequences, battery profiles or firmware names into records: facts for a table only, the GPL file is named where a later port needs it.
 
 About
-: agent-folder
+: google-walleye

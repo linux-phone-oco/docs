@@ -1765,3 +1765,292 @@ Url
 
 Takes
 : On-device tests are postmarketos-test subpackages run by an initramfs hook; only kernel tests work; farm is CI-tron with one OnePlus 6T.
+
+
+<a id="lineageos-kernel-google-wahoo"></a>
+### LineageOS android_kernel_google_wahoo (lineage-22.2): device-tree sources of walleye and taimen
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/LineageOS/android_kernel_google_wahoo
+
+Year
+: 2025
+
+By
+: Google, HTC, LG, Qualcomm; kept by LineageOS
+
+Takes
+: GPL-2.0 Linux 4.4 kernel of both wahoo phones. Walleye (HTC-built, project name muskie) is under arch/arm64/boot/dts/htc: panel, touch, audio amp, haptics, NFC, camera, battery, memory map. Read as facts for a hardware table; ports of code keep copyright and licence.
+
+
+<a id="kcxt-wahoo-5-17-dts"></a>
+### kcxt/linux-wahoo branch wahoo/5.17: msm8998-google-walleye.dts and the shared wahoo dtsi
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/kcxt/linux-wahoo/tree/wahoo/5.17/arch/arm64/boot/dts/qcom
+
+Author
+: Caleb Connolly (shared dtsi header); kcxt
+
+Year
+: 2022
+
+By
+: walleye-research-vendor
+
+Takes
+: What mainline can already express for wahoo: UFS, USB peripheral, one DSI, GPU, Wi-Fi, SLPI/ADSP, regulators; walleye file is 13 lines and sets no panel; boots with console on ttyMSM1 and USB-gadget ttyGS0, ramoops at 0xa1810000.
+
+
+<a id="lineageos-wiki-data-walleye"></a>
+### LineageOS wiki data file for walleye (devices/walleye.yml)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://raw.githubusercontent.com/LineageOS/lineage_wiki/main/_data/devices/walleye.yml
+
+By
+: walleye-research-vendor
+
+Takes
+: Public spec as LineageOS lists it: SoC, 4 GB, 2700 mAh, stereo front speakers, Bluetooth 5, branches 16.0 to 22.2, kernel repo, fastboot install.
+
+
+<a id="ifixit-pixel-2-xl-teardown"></a>
+### iFixit: Google Pixel 2 XL teardown
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.ifixit.com/Teardown/Google+Pixel+2+XL+Teardown/98093
+
+Year
+: 2017
+
+By
+: iFixit
+
+Takes
+: Chip names (IMU LSM6DSM, magnetometer AK09915C, barometer BMP280, Hall AK8789, light TMD4903, ToF VL53L0X, amp TAS2557, haptics DRV2624, charger SMB1381, NFC PN81A, Pixel Visual Core). Pixel 2 XL only: likely, not stated, for walleye.
+
+
+<a id="notebookcheck-pixel-2"></a>
+### Notebookcheck: Google Pixel 2 review
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.notebookcheck.net/Google-Pixel-2-Smartphone-Review.257596.0.html
+
+Year
+: 2017
+
+By
+: walleye-research-vendor
+
+Takes
+: Measured display (426 cd/m2 peak, PWM about 245 Hz), speaker level, battery runtimes on Android (idle Wi-Fi off 24 h 17 min), GPS walk test.
+
+
+<a id="wikipedia-pixel-2"></a>
+### Wikipedia: Pixel 2
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://en.wikipedia.org/wiki/Pixel_2
+
+By
+: walleye-research-vendor
+
+Takes
+: Cameras (rear IMX362 12.2 MP, front IMX179 8 MP), Pixel Visual Core, eSIM, software versions (Android 8.0 to 11).
+
+
+<a id="pixel-2-final-update"></a>
+### 9to5Google: Pixel 2 final update (December 2020)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://9to5google.com/2020/12/10/final-pixel-2-update/
+
+Year
+: 2020
+
+By
+: walleye-research-vendor
+
+Takes
+: End of Pixel 2 support: last build RP1A.201005.004.A1, Android 11.
+
+
+<a id="android-doze-standby"></a>
+### Android developers: Optimize for Doze and App Standby
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://developer.android.com/training/monitoring-device-state/doze-standby
+
+By
+: walleye-research-vendor
+
+Takes
+: What Android does when idle: network suspended, wake locks ignored, alarms deferred, maintenance windows; the sleep behaviour a Linux phone is measured against.
+
+
+<a id="droidlife-pixel-2-battery"></a>
+### Droid Life: Pixel 2 battery life
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.droid-life.com/2017/10/17/pixel-2-battery-life-pixel-2-xl-good/
+
+Year
+: 2017
+
+By
+: walleye-research-vendor
+
+Takes
+: Field figures: 4 to 5+ h screen-on, 15 to 17 h unplugged a day.
+
+
+<a id="kcxt-dtbo-wahoo-mainline"></a>
+### kcxt/dtbo-google-wahoo-mainline: minimal dtbo for the Pixel 2 XL
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.com/kcxt/dtbo-google-wahoo-mainline
+
+Author
+: kcxt
+
+Year
+: 2020
+
+By
+: walleye-research-vendor
+
+Takes
+: The Pixel 2 XL bootloader refuses a kernel unless dtbo holds an overlay with id 2704 (0xa90); stock cmdline has androidboot.dtbo_idx=12. XL only; walleye's id not known.
+
+
+<a id="lkml-taimen-dts-patch-2021"></a>
+### LKML March 2021: [PATCH] arm64: dts: add support for the Pixel 2 XL, with review
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.iu.edu/hypermail/linux/kernel/2103.0/09974.html
+
+Author
+: Caleb Connolly; reply Konrad Dybcio
+
+Year
+: 2021
+
+By
+: walleye-research-vendor
+
+Takes
+: Boots with USB networking, panel needs DSC, dtbo overlay id required, clk_ignore_unused, Wi-Fi needs diag-router; no sign it was merged.
+
+
+<a id="pmos-wiki-serial-cable"></a>
+### postmarketOS (Nura) wiki: Serial debugging / Cable schematics, Google Pixel Android Debug Cable
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.postmarketos.org/wiki/Serial_debugging/Cable_schematics
+
+By
+: walleye-research-vendor
+
+Takes
+: USB-C sideband UART cable tested with Pixel 2 (walleye), 2 XL, 3 and later; fastboot oem uart enable; Suzy-Q is the wrong cable.
+
+
+<a id="android-debug-cable-howto"></a>
+### Peter-Easton/android-debug-cable-howto
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/Peter-Easton/android-debug-cable-howto
+
+By
+: walleye-research-vendor
+
+Takes
+: How to build the Pixel USB-C debug UART cable (A1 GND, SBU1 RX, SBU2 TX, 115200 baud).
+
+
+<a id="ubports-walleye-forum"></a>
+### UBports forum: walleye install threads (topics 5639, 6251, 12600)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://forums.ubports.com/topic/5639/no-luck-installing-on-my-pixel-2-walleye
+
+By
+: walleye-research-vendor
+
+Takes
+: Halium 9 on walleye: boot loops, Slot Unbootable, no RNDIS after flashing halium-boot; Pixel 2 XL Ubuntu 24.04 claim Sept 2026, unverified.
+
+
+<a id="lineageos-walleye-install"></a>
+### LineageOS wiki: Install LineageOS on walleye
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.lineageos.org/devices/walleye/install/
+
+By
+: walleye-research-vendor
+
+Takes
+: Latest Android 11 firmware first; OEM unlock then fastboot flashing unlock; recovery flashed into boot; no set_active step, no fastboot boot step.
+
+
+<a id="halium-usbnet-debug"></a>
+### Halium docs: debug build over USB networking
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.halium.org/en/latest/porting/debug-build/usbnet.html
+
+By
+: walleye-research-vendor
+
+Takes
+: Telnet at 192.168.2.15 from the initrd, host 192.168.2.1; useless when the kernel does not start.

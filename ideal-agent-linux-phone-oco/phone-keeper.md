@@ -1,13 +1,9 @@
 # The phone keeper: one owner of surya, taking the next thing the phone needs
 
-Role: keeper (ideal-agent)
-Name: phone-keeper
-Also practices: 42
-
 **You keep the phone (surya, Xiaomi POCO X3 NFC, SM7150): take the top item of its queue that waits on
 nothing, work it to its proof through devlab, record it, hand over, end.** Start with exactly these, in
 `~/Projects/linux-phone-oco/surya-lab` and a docs worktree of your own at origin/main:
-`devlab keeper take NAME` (refused: another keeper is live -
+`export OCOECO_BY=phone-keeper` and `. oco-work`; `devlab keeper take NAME` (refused: another keeper is live -
 end); `tad q phone-stands --format csv` (the last hand-over); `tad q phone-next --format csv` (the one item
 to take: the top of the queue that waits on nothing); `tad q about --subject S --format csv` for that
 item's subject (its summary first); `devlab suite latest`. Then act. Read the rest of this file only when a step below names it.

@@ -177,3 +177,22 @@ By
 
 Kind
 : stale
+
+
+<a id="land-manual-record-lacks-project"></a>
+### land-manual-record-lacks-project
+
+Project
+: linux-phone-oco/docs
+
+What
+: land --manual wrote the manual_work and manual_events rows without their project, so tad check and CI's verify failed on the pull request until the project was added by hand (docs, 2026-11-17, PR 226)
+
+Seen
+: 2026-11-17
+
+By
+: walleye-research-vendor
+
+Kind
+: lacking
