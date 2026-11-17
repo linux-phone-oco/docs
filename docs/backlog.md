@@ -2200,3 +2200,19 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="reports-not-in-clones"></a>
+### A change's health report stays on the phone until the watch files it
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: Seen by bring-up 2026-11-17: a suite run from its worktree brought the phone's reports into that worktree and they rode along in a landing. devlab no longer brings reports into the clone a command runs from (after a reboot, a try, a suite run, or through the MCP door); the watch gathers every report into devlab's own clone and lands it, the only way in. devlab gather now (without --land) still writes into the lab it is asked to, by its name. Proven: a suite run from the shared surya-lab clone left its tests/results as it was.
+
+Opened
+: 2026-11-17
