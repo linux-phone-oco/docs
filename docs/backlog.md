@@ -2160,3 +2160,35 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="health-telephony-layer"></a>
+### The telephony layer: checks that cost something, at most once a day
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: Per decision 2026-11-17-health-checks-shell-and-rust, asked by bring-up for surya's SMS loopback and mobile data: devlab-health 0.1.1 runs a third layer after base and shell, telephony (a call, an SMS, mobile data), and lib.sh's once_a_day NAME lets such a check run once on a day and skip with 'ran today' after; devlab suite put carries a lab's tests/health/telephony/. Released by release-plz, published and installed on surya.
+
+Opened
+: 2026-11-17
+
+
+<a id="suite-put-from-main"></a>
+### suite put puts the lab as its main has it
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: Seen 2026-11-17 (orchestration's own slip): suite put run in a surya-lab clone 40 commits behind main put old checks and a known gap main had left (audio-mic) onto the phone, until the suite was put again from main. Now suite put reads the lab's manifest and checks from devlab's own clone at main (state places-put); --here takes the clone's, to try a check before it lands. Proven: run from the stale clone, it put main's 19 checks.
+
+Opened
+: 2026-11-17
