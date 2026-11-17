@@ -1856,3 +1856,25 @@ Sources
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="walleye-first-state-control-accepted"></a>
+### walleye-first-state-control-accepted
+
+Brief
+: First state restored: control ACCEPTED by fastboot boot after Android completed on a; phone then left USB entirely (no adb/fastboot) - needs a hand power-cycle
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: Does restoring the first state (Android completed on slot a, adb reboot bootloader) make the bootloader accept the control boot.img?
+
+Found
+: Yes. set-active a, fastboot reboot, Android up on a (sys.boot_completed 1, slot _a). After adb reboot bootloader: current-slot a, a unbootable no/successful yes/retry 0, b unbootable no/successful no/retry 1. devlab fastboot boot now control/boot.img: left fastboot after 12 s. devlab's 'came back as Linux, USB network answering' is a false match: the 18d1:d001 gadget (Qualcomm SM7150, serial postmarketOS) on the bus is the surya phone; walleye FA81N1A00790 was on no USB, no adb, no fastboot for 6+ min. So cause 1 (state left by the first tries) is confirmed: Load Error follows the slot's successful flag, not the image. Nothing written. The lab has no power control for walleye, so it is not back in fastboot: a hand hold of power 10-30 s is needed (slot a is successful, so it boots Android on a; then adb reboot bootloader). Next: boot-b/e from the same first state; fix devlab's came-back check to match the manifest serial.
+
+About
+: walleye-first-fastboot-boot
