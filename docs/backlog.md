@@ -4905,34 +4905,6 @@ About
 : walleye-initramfs-usb-gadget
 
 
-<a id="walleye-bootstrap-method"></a>
-### The best-known way to bootstrap an Android phone to mainline almost from zero, compared with what the walleye lane did
-
-Project
-: linux-phone-oco/google-walleye-lab
-
-Status
-: open
-
-Note
-: The author asks (via the top coordinator): has the lane done proper delegated research on bootstrapping a phone like this almost from zero, gathered from pmOS, Mobian and the best sources? Our research so far is about walleye itself. Sources to read: postmarketOS porting guide and the pmaports steps for a new device; MSM8998 devices in pmaports or mainline (taimen, OnePlus 5/5T, Xperia XZ1/XZ Premium, Mi 6) and how each got its first shell; lk2nd as a second-stage bootloader (matters for Load Error: an lk2nd boots mainline kernels where the vendor bootloader refuses); Mobian's and Droidian's routes (Halium); the sm8150/sdm845 mainlining communities (how the first boot, UART, earlycon, simple-framebuffer, USB gadget, pstore are done). Public sources, read-only, clean room (input wall). Then say what it changes for walleye: e.g. lk2nd/second stage vs fastboot boot, debug route (UART cable), Android-kernel-first (boot the vendor 4.4 kernel with our initramfs as a known-good before mainline), order of parts.
-
-Opened
-: 2026-11-17
-
-Needs
-: research
-
-Device
-: google-walleye
-
-Proof
-: a research row with sources (a method: the steps in order, with who does each how), a comparison with the walleye lane's tries so far, and a decision with what it changes in the next steps (what was rejected)
-
-About
-: google-walleye
-
-
 <a id="walleye-bisect-stock-to-ours"></a>
 ### Bisect from the accepted control to our image: stock kernel+dtb with our initramfs, then one part of ours at a time
 
@@ -4959,3 +4931,149 @@ Proof
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="walleye-vendor-gadget-image"></a>
+### Repack the control boot.img with our gadget initramfs (kernel, dtb, cmdline untouched)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Decision 2026-11-17-walleye-vendor-kernel-first. Unpack control/boot.img (sha256 48dbc55c...), replace only the ramdisk by build/initramfs (address 172.16.43.1; ACM + RNDIS/ECM via configfs; telnet), repack with its own offsets and cmdline; keep the header-compare. Host only, no phone.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: check-bootimg counts the repack: kernel/dtb/cmdline/offsets byte-equal to the control, ramdisk is ours (test: walleye-vendor-gadget-image-built)
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-gadget-up-check"></a>
+### Write the failing check walleye-gadget-up in the lab's tests/health
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Finds the phone by the manifest serial (FA81N1A00790) on USB, not by VID:PID (surya's gadget 18d1:d001 is on the same host); passes only when it enumerates as a Linux gadget and 172.16.43.1 answers. Shows broken/unknown until then. Its docs row is recorded (tests: walleye-gadget-up).
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: the check exists in google-walleye-lab/tests/health, runs, and fails with the phone in fastboot (test: walleye-gadget-up)
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-vendor-gadget-try"></a>
+### fastboot boot the repacked control from the first state; does the gadget answer?
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: From the first state (Android completed on a, adb reboot bootloader), devlab fastboot boot now vendor-gadget.img, before/after slot report, lsusb by serial for 90 s, then ssh/telnet 172.16.43.1. No writes. A hang or vanishing from USB is an answer: tell the coordinator in one line (hand power-cycle). If it answers: do not change anything, go to walleye-vendor-kernel-facts in the same boot.
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye-vendor-gadget-image,walleye-gadget-up-check
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: walleye-gadget-up passes (phone enumerates by serial, 172.16.43.1 answers) and the slot report shows what changed
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-vendor-kernel-facts"></a>
+### From the running vendor kernel, read the facts our dts guesses (read-only)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: In the gadget shell: /proc/cmdline, /proc/iomem (ramoops, cont-splash framebuffer), /proc/device-tree qcom,msm-id/board-id/pmic-id, dmesg, dwc3/USB mode, regulators and clocks in use, /sys/fs/pstore, last_kmsg; copy out with the gadget network. Record as a research row with the files in material/.
+
+Opened
+: 2026-11-17
+
+Waits
+: walleye-vendor-gadget-try
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: a research row walleye-vendor-kernel-facts with cmdline, ramoops region and ids, checked against the dts (test: walleye-gadget-up passes during the read)
+
+About
+: walleye-first-fastboot-boot
+
+
+<a id="walleye-bootstrap-method"></a>
+### The best-known way to bootstrap an Android phone to mainline almost from zero, compared with what the walleye lane did
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: done
+
+Note
+: Done 2026-11-17: research walleye-bootstrap-method-how-it-stands, decision 2026-11-17-walleye-vendor-kernel-first; next walleye-vendor-gadget-image, walleye-gadget-up-check, then walleye-vendor-gadget-try.
+
+Opened
+: 2026-11-17
+
+Needs
+: research
+
+Device
+: google-walleye
+
+Proof
+: a research row with sources, a comparison, a decision with what was rejected: landed
+
+About
+: google-walleye

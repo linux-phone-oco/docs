@@ -598,3 +598,16 @@ Proves
 
 Says
 : the proximity sensor gives a reading through iio-sensor-proxy (near or far when covered is a witnessed test)
+
+
+<a id="walleye-gadget-up"></a>
+### walleye-gadget-up
+
+Component id
+: usb-otg
+
+Proves
+: works
+
+Says
+: the phone, found by its manifest serial, runs a Linux gadget of ours and its address answers

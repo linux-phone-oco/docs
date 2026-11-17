@@ -44,3 +44,4 @@
 {"id":"call-audio-path","component_id":"modem-calls","proves":"present","says":"the VoiceMMode1 PCM, its routing controls and q6voiced are there"}
 {"id":"motion-and-light","component_id":"sensors","proves":"present","says":"motion, light or proximity sensors are exposed - as IIO devices or through iio-sensor-proxy (a DSP's sensor core)"}
 {"id":"proximity-reads","component_id":"sensors","proves":"present","says":"the proximity sensor gives a reading through iio-sensor-proxy (near or far when covered is a witnessed test)"}
+{"id":"walleye-gadget-up","component_id":"usb-otg","proves":"works","says":"the phone, found by its manifest serial, runs a Linux gadget of ours and its address answers"}
