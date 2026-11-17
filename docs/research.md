@@ -877,3 +877,25 @@ Found
 
 About
 : agent-folder
+
+
+<a id="2026-11-17-surya-s2idle-bt-blocked-hang"></a>
+### 2026-11-17-surya-s2idle-bt-blocked-hang
+
+Brief
+: IRQ 157 is the Bluetooth UART; with it blocked, a timed s2idle cycle hung the phone hard (no way back on USB).
+
+Project
+: linux-phone-oco/surya-lab
+
+Date
+: 2026-11-17
+
+Question
+: What holds IRQ 157 up in surya's s2idle, and what does a timed cycle do once Bluetooth is blocked?
+
+Found
+: IRQ 157 is the Bluetooth UART: GICv3 hwirq 636 = serial@88c000 (interrupts 0x25c), with hci0 UP RUNNING on it (TX 444 KB, 1847 commands); the console UART ttyMSM0 is a88000, a different device with no wakeup attribute. With bluetooth rfkill-blocked, one timed cycle (soft_connect 0, rtcwake -m freeze -s 60, run as transient unit cycle1) did NOT return: the phone showed the pmOS initramfs gadget (18d1:d001) with no network until the author force-rebooted it (vol-down+power). The previous boot's journal ends at 12:37:25, the cycle script and its log are not on disk, suspend_stats this boot 0/0: so the phone went down hard right at suspend entry, losing the last seconds, and its wake path (the PMIC RTC reads 1970, epoch 1280063 s) did not bring it back. Not known yet: whether the hang is the RTC alarm not waking s2idle, a crash entering s2idle with the audio DSP up, or a reset; and whether the IRQ-157 wake was cured. Health after reboot: healthy, 36 pass, 0 fail. Next try needs a way back not depending on USB networking: a hardware watchdog or timed reboot, the RTC set first, a log written to a place that survives (sync, pstore/ramoops or a serial console).
+
+About
+: deep-sleep
