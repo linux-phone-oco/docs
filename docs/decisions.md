@@ -1279,3 +1279,31 @@ Rejected
 
 About
 : bringup-release
+
+
+<a id="2026-11-17-principles-are-concepts-cited-by-id"></a>
+### 2026-11-17-principles-are-concepts-cited-by-id
+
+Brief
+: Five principles are concepts with an ord; briefs and guides cite them by anchor and never restate; a check fails on dead ids.
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: linux-phone-oco's founding principles are five concepts of docs with an ord (tad q principles; the page is concepts.md, each an anchor): as-good-as-android, measured-not-claimed, mainline-first, no-manual-steps, rust-with-argenv. Each has a one-line statement, a why, and - where it rests on a general practice - rests_on cites ideal-agent's practice by number, never its words. Briefs, guides and the device repositories' AGENTS.md cite a principle by a link to its anchor and never restate it; bin/check-principles.sh (in make verify) fails on a cited id that is no concept and on a principle the briefs' README does not cite. A decision or a piece of work that rests on one names it in --about (concepts are now valid subjects), so tad q about --subject no-manual-steps lists them and tad q principles counts them. An id keeps its meaning: a principle that changes in meaning gets a new id, the old row stays as it was. The face already shows concepts under its ideas view; a view for the principles alone is for the face's owner. The tool side of no-manual-steps (manual_work, the lab preparation) stays with orchestration. Proposed to ideal-agent's owner: overlay-check takes the principles' text as an extra base, so a brief that restates one is flagged like one that restates a practice (measured: nothing restates them now).
+
+Why
+: The principles were scattered: the story in the idea table, practice-12-style lines repeated in briefs (phone-keeper) and device AGENTS.md, nothing numbered or citable, and the author asked for them to be noted once and referenced. Every durable charter read (Debian's Social Contract and DFSG, the Mozilla Manifesto, Wikipedia's five pillars, Rust's API guidelines checklist) is small (5 to 10), on one page, with short stable ids that are link targets; none enforces refer-not-restate mechanically, so here the link is checked and the restating is measured (overlay-check). Concepts already render with anchors and the face already shows them, so a new table or page would duplicate.
+
+Rejected
+: A separate manifesto file (MANIFESTO.md): prose nobody can cite by id, with no check and no place on the face. A new principles table: another page and a second kind of concept beside the five conveyor concepts, not shown on the face. Putting the principles into ideal-agent: they are linux-phone's; ideal-agent keeps the general practices, and the principles cite them. Numbering by 1..5 only: a number changes meaning when one is inserted (Wikipedia and Rust keep stable names). Restating a principle's words in each brief for convenience: the drift the author asked to avoid. Versioned texts as in Debian's 1.2 or the kernel's DCO 1.1: ceremony for five rows; a changed meaning gets a new id instead.
+
+About
+: no-manual-steps
+
+Research
+: principles-world

@@ -952,6 +952,17 @@ required = true
 name = "why"
 type = "string"
 
+# a principle of the project is a concept with an ord (1, 2, ...): a small set, cited by id from briefs and guides, never restated
+[[tables.concepts.fields]]
+name = "ord"
+type = "integer"
+minimum = 1
+
+# the general practice of ideal-agent a principle rests on, by number (cited, not repeated)
+[[tables.concepts.fields]]
+name = "rests_on"
+type = "string"
+
 [[tables.concepts.fields]]
 name = "about"
 type = "string"
@@ -1157,11 +1168,11 @@ to = ["components"]
 
 [[rules.references]]
 field = "decisions.about"
-to = ["components", "features", "milestones", "devices", "backlog"]
+to = ["components", "features", "milestones", "devices", "backlog", "concepts"]
 
 [[rules.references]]
 field = "research.about"
-to = ["components", "features", "milestones", "devices", "backlog"]
+to = ["components", "features", "milestones", "devices", "backlog", "concepts"]
 
 [[rules.references]]
 field = "summaries.about"
@@ -1177,11 +1188,11 @@ to = ["devices"]
 
 [[rules.references]]
 field = "backlog.about"
-to = ["components", "features", "milestones", "devices", "backlog"]
+to = ["components", "features", "milestones", "devices", "backlog", "concepts"]
 
 [[rules.references]]
 field = "session_log.about"
-to = ["components", "features", "milestones", "devices", "backlog"]
+to = ["components", "features", "milestones", "devices", "backlog", "concepts"]
 
 [[rules.references]]
 field = "concepts.about"

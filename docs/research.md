@@ -1078,3 +1078,25 @@ Found
 
 About
 : bringup-image-v0
+
+
+<a id="principles-world"></a>
+### principles-world
+
+Brief
+: Durable charters are small, on one page, with short stable ids as link targets; none enforces cite-not-restate, so check the link and measure the restating.
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Where do linux-phone-oco's founding principles live, and how do briefs and guides cite them without restating?
+
+Found
+: Read: Debian Social Contract and DFSG (5 and 10 numbered points, versioned 1.0-1.2, cited as DFSG #n), Mozilla Manifesto (10 principles, anchors principles-01..10), Wikipedia five pillars (shortcuts WP:5P1..5, redirects keep citations after renames), Rust API guidelines (54 items with ids such as C-CASE that are the anchors), RFC 7282 and PEP 20 (cited by section or wording), the kernel's Developer's Certificate of Origin 1.1 (the version is part of the name), MADR decision drivers (local to one record). Not read: Arch principles (blocked), PEP 1, Nygard's ADR post, the Rust RFC process. Locally: the idea table holds the story (as good as Android, counted), conveyor concepts are five rows, restating lines sat in phone-keeper and device AGENTS.md; overlay-check (ideal-agent) flags a brief that restates ideal-agent's words by 6-word runs, 15 percent limit.
+
+About
+: no-manual-steps

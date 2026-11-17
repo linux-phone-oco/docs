@@ -27,6 +27,14 @@ with `Name:` (who signs the work) and `Also practices: 42`. The prompt that star
 those lines; the session then reads the card and only its practices, and the brief keeps only what
 linux-phone adds to the role.
 
+## Principles
+
+Every brief stands on linux-phone-oco's principles and cites them by id; none restates them (`tad q principles`, `bin/check-principles.sh`):
+[as-good-as-android](../docs/concepts.md#as-good-as-android), [measured-not-claimed](../docs/concepts.md#measured-not-claimed),
+[mainline-first](../docs/concepts.md#mainline-first), [no-manual-steps](../docs/concepts.md#no-manual-steps),
+[rust-with-argenv](../docs/concepts.md#rust-with-argenv). A step a person does by hand twice is a sign of the fourth: record it
+(manual_work) and make it a tool.
+
 ## How records go here (practice 42's domain part)
 
 Recorded as ideal-agent's record-the-work says; linux-phone's part:
