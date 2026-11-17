@@ -4856,3 +4856,22 @@ Rank
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="fastboot-found-by-serial-or-port"></a>
+### fastboot: a phone out of fastboot found by its serial or USB port, else gone from USB
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: Done 2026-11-17 (lab-tools PR 82 - see main), asked by walleye-coordinator: after a boot try devlab took surya's postmarketOS gadget (18d1:d001) and a shared address for walleye's Linux while walleye had left USB. Now only a USB device carrying the phone's serial, or one on the USB port it sat on in fastboot (remembered at STATE/CODENAME/usb-port), answers for it; ping and vendor:product alone are gone; nothing found after three minutes is said as gone from USB, needing hands. Installed. Sign: walleye's manifest shares surya's USB address 172.16.42.1 - when Linux runs on both, devlab phone must tell them apart (by interface/port), not by address.
+
+Opened
+: 2026-11-17
+
+About
+: dl-safe
