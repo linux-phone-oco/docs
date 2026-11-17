@@ -3126,7 +3126,7 @@ Opened
 
 
 <a id="idealkb-from-template"></a>
-### grenudi/ideal-knowledge-base: text-as-data-template renamed and grown, its own tad base, released and pinned by every base like tad - extracted once the about link and the entry hold in docs and ideal-agent
+### grenudi/ideal-knowledge-base: a new repository that pins tad's release and adds the knowledge-base layer - the file-or-table rule, the about link, the generic queries (about, next, find, recent), the short AGENTS.md entry and the standing tables (backlog, session_log, decisions, research); with tad init in tad for a bare database, and text-as-data-template retired with a pointer once its reasons are carried over
 
 Project
 : linux-phone-oco/docs
@@ -3135,7 +3135,7 @@ Status
 : open
 
 Note
-: From 2026-11-17-ideal-knowledge-base; waits for the author's word on the repository (moving text-as-data-template to grenudi is his). The about link and the agent folder it rests on have landed in docs.
+: Corrected by the author 2026-11-17: tad stays a database and idealkb is a layer on top of it, not the template renamed (decision 2026-11-17-ideal-knowledge-base). Steps, once he gives the word: tad init in tad-engine (the scaffold); idealkb made, with its own records; the template's reasons carried into both (Chesterton's fence), then the template retired with a pointer. Building waits for his word. Later: rendering may move from tad to the knowledge base and the face.
 
 Opened
 : 2026-11-17
