@@ -1213,3 +1213,21 @@ Considered
 
 Rejected
 : All but the template grown into idealkb, the root kept as the base and only the agent folder moved - see the decision's rejected.
+
+---
+
+
+<a id="2026-11-17-1000-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Hand-over from the bring-up session (2026-11-17, ~10:00 UTC) to the phone keeper. RUNS: kernel 7.1.0-sm7150-calls+ is the KEPT default (boot entry pmos-calls.conf, blessed); built from linux-phone-oco/linux branch test/surya-calls = tas2562 fixes + PR3 (LPI SoundWire pin mux) + PR5 (SoundWire controllers at 0x62ed/0x62ef, no DCODEC vote) + PR4 (WCD9375 reset: active-low, gpio mux, no sleep state) + PR6 (capture through swr2 DAI 1) + PR7 (q6voice from pulpoff/linux-surya). The proven microphone-only kernel (pmos-mic, 7.1.0-sm7150-mic+) is still installed as a fallback; stock (7.1.0-rc3-sm7150) boots after 3 bad boots. The old /lib/modules/7.1.0-rc3-sm7150-wcd belongs to a removed experiment and can go. HEALTHY: the last runs say healthy, 37-39 pass, 4 known gaps (fingerprint, sensors, both cameras). WORKS, proven by the phone itself: speakers (stereo), earpiece (= the top TAS2564 speaker; the WCD9375 EAR amplifier is silent), both microphones (bottom ADC1, top ADC2 at INP3) through the UCM profile, mobile data (Vodafone.de LTE; tqftpserv 1.3 from Alpine edge, a gsm connection with no APN), SMS (texts its own number, telephony layer, daily), calls both ways (q6voice, Voice Call UCM verb, q6voiced on PCM 0,6, devlab-call-uplink, daily call-echo to blueSIP's echo line +49 89 721010 99701 - its announcement lasts ~19 s). MUST NOT BE UNDONE: the VoiceMMode1 TX Topology 69488 set in the HiFi verb at boot (the DSP builds its voice processor once, at the first call of a boot; a call set up with the default 0x10F71 keeps the uplink silent until a reboot); the codec node has no sleep pin state (ASoC holds it in reset otherwise); /etc/modprobe.d/devlab-pd-mapper.conf (loads qcom_pd_mapper before the ADSP; without it ~1 boot in 5 has no sound card); tqftpserv@edge (1.1.1 keeps the modem in shutting-down); the SIM's own number lives only in ~/.config/devlab/xiaomi-surya/own-number and /etc/devlab/private/own-number - never in a repository. Test sounds are -6 dBFS at 20% (the author: soft). The SIM is in slot 2 (slot 1: no ATR). Never read /sys/kernel/debug/gpio or the LPI pinctrl at 62b40000 (manifest hazards).
+
+Considered
+: next: (1) headphones and the headset mic: need a headset plugged in and the author listening (verify-headphone-mic-earpiece; the jack detector exists since the WCD fixes). (2) upstream, waiting for the author to send: upstream-queue linux/sm7150-wcd 0001-0004 (sm7150-mainline), the tas2562 pair, upstream-alpine-tqftpserv, upstream-pd-mapper-order; q6voice is out of tree (sdm845-mainline) - its upstreaming is not ours yet. (3) the kernel is not yet a package: the kept kernel lives only on the phone's boot partition; a reflash returns stock until it goes through the package conveyor (device.toml carries the userspace side: UCM, q6voiced conf, call-uplink, pd-mapper, tqftpserv@edge, the mobile connection). (4) the deep-sleep steps, sensors, off-state charging, as the queue orders.
