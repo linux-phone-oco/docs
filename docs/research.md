@@ -1420,3 +1420,29 @@ About
 
 Material
 : research/deep-sleep/2026-11-17-cluster-params/
+
+
+<a id="walleye-first-fastboot-boot-tries"></a>
+### walleye-first-fastboot-boot-tries
+
+Brief
+: First fastboot boot tries on the Pixel 2: try a stayed in fastboot, try b left it and Android came back on slot b with slot a flagged unbootable; our kernel's life is not known yet
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: What did the Pixel 2 do when given the builder's first boot images with fastboot boot, and what did it leave behind?
+
+Found
+: Try a (boot-a.img, taimen offsets): sent, the phone stayed in fastboot, no USB event on the host for 60 s. Try b (boot-b.img, LineageOS offsets): image accepted, "Booting" then the phone left USB at once; 20 s later it was Android's adb gadget (18d1:4ee7), Android on slot b (an older LineageOS build than slot a's), boot reason reboot,ota. Nothing of ours answered: no serial port, no RNDIS/ECM, 172.16.42.1 silent, pstore empty. Whether our kernel ran is not known yet.
+The bootloader's A/B logic changed the state, with no write command from us: after try b the phone reports current-slot b and slot a unbootable = yes (first look: slot a current, unbootable no). Slot a's Android is presumably intact; restoring the flags is `set_active a`, a write that needs a recorded decision and the author's word. devlab called try b "refused", though the host log shows the phone left fastboot; it should read slot flags before and after a try and say what changed. Until the author decides about the slot flags no further try should be made.
+
+About
+: walleye-first-fastboot-boot
+
+Material
+: research/walleye-first-fastboot-boot/2026-11-17/
