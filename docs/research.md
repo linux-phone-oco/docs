@@ -1553,3 +1553,25 @@ Sources
 
 About
 : walleye-bootimage
+
+
+<a id="commons-and-device-bases-world"></a>
+### commons-and-device-bases-world
+
+Brief
+: Open projects keep schema and process in the commons, each unit its own claim; the commons pulls and derives. Full: idealkb commons-and-unit-bases-world.
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: How should docs split general knowledge from per-device work, and how does it learn each device's progress?
+
+Found
+: Read and summarised in grenudi/ideal-knowledge-base (research commons-and-unit-bases-world, material research/commons-bases/2026-11-17/): Linux MAINTAINERS, devicetree bindings vs board dts, Debian ports wiki, Renovate, GitHub templates and Copier agree on a commons with schema and process and units that declare their own status; the commons pulls and derives, a status typed twice drifts. Measured here: test_results 1.3 MB of 2.0 MB; 40 of 81 docs backlog items, 34 of 49 research rows and 14 of 28 decisions name a device. Not read: postmarketOS, Fedora ARM.
+
+About
+: commons-only
