@@ -4390,3 +4390,25 @@ Opened
 
 About
 : commons-only
+
+
+<a id="gather-into-device-base"></a>
+### devlab gather files a device's runs and results into its own base
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-17-commons-and-device-bases: test_runs/test_results belong to each device's base (device-template #4 has the tables and the test-run record). devlab gather (and devlab's tad record test-run) still files into docs. When move-device-rows has moved a device's rows, devlab files that device's into its lab repository's base (the manifest's folder), and docs pulls them (feed-device-bases). Orchestration's.
+
+Opened
+: 2026-11-17
+
+Waits
+: move-device-rows
+
+About
+: commons-only
