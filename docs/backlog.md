@@ -3272,10 +3272,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Proposed by housekeeping (ideal-agent practice 45, research start-weight-measured); orchestration owns the brief. Its long sections - 'The loop, for one part' with linux-phone's places, 'As of 2026-11-17' parts list, 'Two sessions, one lab' - repeat the skills bring-up-a-part and change-a-device, the phone-keeper brief, and what tad q next / tad q about --subject S answer. Next: keep one line each and the query; move the dated parts list into the parts' records or a summary.
+: Done 2026-11-17 (orchestration): bring-up folded into phone-keeper.md (5.7 KB) and bring-up.md left as a pointer (0.4 KB); the keeper's first paragraph is its whole start - purpose and the exact commands (phone-stands, phone-queue --format csv, about --subject S, devlab suite latest) - and the rest is read only when a step names it. start-weight: phone-keeper 29.4 -> 26.2 KB, bring-up 38.2 -> 21.0 KB. orchestration, feature-research and the README point to the keeper.
 
 Opened
 : 2026-11-17
