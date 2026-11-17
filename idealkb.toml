@@ -6,5 +6,5 @@
 version = "0.8.4"
 own = ["queries/about.sql", "records/decision.sql", "records/research.sql", "records/backlog.sql", "records/session-log.sql", "records/source.sql", "tables.toml"]
 # Records kept for machines - feeds, derivations, a run filed, a filing from a script: ikb runs them like any
-# other but leaves them out of IKB.md, the page an agent reads.
+# other but leaves them out of ikb --help and ikb help.
 machine = ["feed-kernel-activity", "feed-shell-releases", "feed-wiki-claims", "derive-support-status", "test-run", "support-unknown", "device-source", "milestone-readiness"]
