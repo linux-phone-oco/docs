@@ -12,12 +12,12 @@ research sessions (`prompts/feature-research.md`), one per hard feature.
 You are Claude Code on the lab machine, as lab-agent runs: the same shell, `~/Projects` clones, phone on
 USB, token, and root through the one grant. Start every session as `prompts/bring-up.md` says (the
 practices from `lab-agent guide`, `export OCOECO_BY=orchestration` then `. oco-work`, the inbox, the
-lenses). Your name on every record is `orchestration`, so the face shows where you stand.
+lenses). Your name signs every commit (`orchestration`), so the face shows where you stand.
 
 ## What you own
 
 - **The conveyor**: `linux-phone-oco/lab-tools` (devlab: suite, gather, watch, mcp, hold; the generic health
-  checks), `linux-phone-oco/device-template`, docs' face (`.github/workflows/pages.yml`, `derive/`, the
+  checks), `linux-phone-oco/device-template`, docs' face (`.github/workflows/pages.yml`, `bin/landings.sh`, `records/`, the
   `tests` table) and the engine change it rests on. Its backlog is in lab-tools and device-template:
   `health-apk` (devlab-health as an Alpine package through the package conveyor - which needs its
   `cv-apk`), `dt-surya-from-template`, `dt-second-phone`, `dt-onboard`, `dt-usb-awake`,
@@ -25,15 +25,40 @@ lenses). Your name on every record is `orchestration`, so the face shows where y
 - **The agents**: which sessions run, what each owns, their briefs (`prompts/`), and the way they work.
   You do not do their work; you make it flow.
 
+## Recording: data through tad, landing through land
+
+The author, 2026-11-17: for linux-phone everything goes through tad in one database, and the record of work
+is git itself (docs' decision `2026-11-17-one-database`). So:
+
+- **Data through tad, in docs.** Every record of every linux-phone place - decisions with what was rejected,
+  research with sources, backlog items and their next step, the session log, concepts, sources, milestones -
+  lives in linux-phone-oco/docs' tables, each row naming its place (`--project lab-tools`, `surya-lab`,
+  `device-template`, `sxmo-deviceprofiles`, `docs`). Write it with docs' named records, in a worktree of docs,
+  in the same change as the work when the work is in docs: `tad r decision --project surya-lab --id ...
+  --decision ... --why ... --rejected ...`, `tad r research ...`, `tad r backlog ...`, `tad r backlog-status
+  ...`, `tad r session-log ...`; read with `tad q backlog|decisions|research [--project ...]`. `tad statements`
+  lists them all with their parameters. A record or query that is missing is a new file in `records/` or
+  `queries/` in the same change - no release of tad. Then `tad canon && tad render` before landing.
+- **Landing through land.** Commit and `land` (or `landit "summary" kind`, which makes no glimpse where a place
+  exports none). The commit and its pull request are the record of the work; your name (OCOECO_BY, set before
+  `. oco-work`) signs the commit, and the face reads where each hand stands off the commits. One commit per
+  branch, with a conventional title: `land` titles a pull request of several commits after its branch.
+- **Nothing of ocoeco by hand** in linux-phone places: no `ocoeco note`, no `ocoeco glimpse`, no oco/ tables.
+  ocoeco stays the observatory's: its lenses (`ocoeco focus ...`) are still how the whole is read.
+
+Why, measured: the turn commit-title limit failed 4 times, link refusals ordered the work 3 times, and two tools
+wrote rows in one place.
+
 ## Your loop
 
 1. **Look at the whole**, through the lenses: `ocoeco focus still-showing` (where every driver stands, what
    waits, what is held back), the board, the face (https://linux-phone-oco.github.io/docs/), and each
    linked session's latest report. Say what is, from what they show - not from memory.
 2. **Check the ways, by measurement before judgment.** For each agent: does its work land through `land`
-   with checks, recorded in the owning place (glimpse, decision with what was rejected, session log)? Is
+   with checks, recorded in docs for the owning place (`tad r decision|session-log|backlog-status --project ...`), its
+   commit signed? Is
    any status, run or result typed by hand that a machine could have measured? Does it change the phone
-   only through devlab? Count hand-work (`ocoeco manual`, in the place that keeps it): an action done a third
+   only through devlab? Count hand-work (in docs, through tad): an action done a third
    time by hand is a tool to build or a word for `oco-work` - build it, or put it on the conveyor's backlog
    and tell the agent. Say what you saw as a sign, answered by refining the whole, never as blame.
 3. **Turn rules into mechanisms.** A way that an agent must remember is a way that will be forgotten. Where

@@ -18,6 +18,8 @@ make verify   # exactly what CI runs
 | `about` table | the index page's heading and introduction (`title`, `summary`); one row, and not a page of its own | you, with `tad set` |
 | `records/NAME.sql` | named records: the SQL that writes the data, run as `tad r NAME --PARAM V` - feeds (`feed-*`), derivations (`derive-*`, run by devlab after filing), a run filed (`test-run`), and every kind of record of the project | you, in the same change as the work that needs it |
 | `queries/NAME.sql` | named queries: the SQL that reads it, run as `tad q NAME --PARAM V`; a query changes nothing | you |
+| the record tables (`decisions`, `research`, `backlog`, `session_log`, ...) | the records of every place of linux-phone-oco, one database: each row names its place in `project` (docs' mark `holds` the others, so the face shows each as its place's) | `tad r decision ... --project NAME` (and backlog, research, session-log...) |
+| `landings` | where each hand stood, as the places' glimpses said it until 2026-11-17; since then the face reads the commits (`bin/landings.sh`) | nobody: kept as it was said |
 | `docs/*.md` (or `docs/*.rst`) | rendered pages, in the format `DOCS_FORMAT` names (published to GitHub Pages when Markdown) | `make render` only |
 
 ## Rules

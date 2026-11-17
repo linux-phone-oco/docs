@@ -11,7 +11,13 @@ type = "string"
 required = true
 
 [tables.backlog]
-key = ["id"]
+key = ["project", "id"]
+
+[[tables.backlog.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.backlog.fields]]
 name = "id"
@@ -38,6 +44,10 @@ type = "string"
 name = "opened"
 type = "date"
 required = true
+
+[[tables.backlog.fields]]
+name = "waits"
+type = "string"
 
 [tables.components]
 key = ["id"]
@@ -158,7 +168,13 @@ type = "string"
 required = true
 
 [tables.idea]
-key = ["id"]
+key = ["project", "id"]
+
+[[tables.idea.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.idea.fields]]
 name = "id"
@@ -254,7 +270,13 @@ type = "date"
 required = true
 
 [tables.milestones]
-key = ["id"]
+key = ["project", "id"]
+
+[[tables.milestones.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.milestones.fields]]
 name = "id"
@@ -325,7 +347,13 @@ name = "notes"
 type = "string"
 
 [tables.session_log]
-key = ["id"]
+key = ["project", "id"]
+
+[[tables.session_log.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.session_log.fields]]
 name = "id"
@@ -356,6 +384,10 @@ type = "string"
 name = "rejected"
 type = "string"
 
+[[tables.session_log.fields]]
+name = "date"
+type = "date"
+
 [tables.shell_releases]
 key = ["id"]
 
@@ -385,7 +417,13 @@ required = true
 starts_with = "https://"
 
 [tables.sources]
-key = ["id"]
+key = ["project", "id"]
+
+[[tables.sources.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.sources.fields]]
 name = "id"
@@ -411,6 +449,14 @@ type = "string"
 [[tables.sources.fields]]
 name = "year"
 type = "integer"
+
+[[tables.sources.fields]]
+name = "by"
+type = "string"
+
+[[tables.sources.fields]]
+name = "takes"
+type = "string"
 
 [tables.support_status]
 key = ["device_id", "component_id"]
@@ -581,7 +627,13 @@ type = "integer"
 required = true
 
 [tables.translations]
-key = ["id"]
+key = ["project", "id"]
+
+[[tables.translations.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.translations.fields]]
 name = "id"
@@ -649,7 +701,13 @@ type = "string"
 required = true
 
 [tables.workings]
-key = ["id"]
+key = ["project", "id"]
+
+[[tables.workings.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
 
 [[tables.workings.fields]]
 name = "id"
@@ -693,8 +751,287 @@ type = "string"
 required = true
 
 # Rules across tables (written by hand from the SQL checks they replaced; proven to give the same verdicts)
+# The records of every place of linux-phone-oco, one database (decided 2026-11-17): each row names the
+# place it is of in project; written through named records (records/), read on the face as of its place.
+[tables.decisions]
+key = ["project", "id"]
+
+[[tables.decisions.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.decisions.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+
+[[tables.decisions.fields]]
+name = "date"
+type = "date"
+required = true
+
+[[tables.decisions.fields]]
+name = "decision"
+type = "string"
+required = true
+
+[[tables.decisions.fields]]
+name = "why"
+type = "string"
+required = true
+
+[[tables.decisions.fields]]
+name = "rejected"
+type = "string"
+
+[[tables.decisions.fields]]
+name = "about"
+type = "string"
+
+[[tables.decisions.fields]]
+name = "research"
+type = "string"
+
+[tables.research]
+key = ["project", "id"]
+
+[[tables.research.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.research.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+
+[[tables.research.fields]]
+name = "date"
+type = "date"
+
+[[tables.research.fields]]
+name = "question"
+type = "string"
+required = true
+
+[[tables.research.fields]]
+name = "found"
+type = "string"
+required = true
+
+[[tables.research.fields]]
+name = "sources"
+type = "string"
+
+[tables.concepts]
+key = ["project", "id"]
+
+[[tables.concepts.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.concepts.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+
+[[tables.concepts.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.concepts.fields]]
+name = "summary"
+type = "string"
+required = true
+
+[[tables.concepts.fields]]
+name = "why"
+type = "string"
+
+[tables.problems]
+key = ["project", "id"]
+
+[[tables.problems.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.problems.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+
+[[tables.problems.fields]]
+name = "what"
+type = "string"
+required = true
+
+[[tables.problems.fields]]
+name = "seen"
+type = "date"
+
+[[tables.problems.fields]]
+name = "by"
+type = "string"
+
+[[tables.problems.fields]]
+name = "countermeasure"
+type = "string"
+
+[[tables.problems.fields]]
+name = "handled"
+type = "date"
+
+[[tables.problems.fields]]
+name = "kind"
+type = "string"
+enum = ["stale", "overlapping", "lacking", "unclear"]
+
+[tables.manual_work]
+key = ["project", "id"]
+
+[[tables.manual_work.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.manual_work.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+
+[[tables.manual_work.fields]]
+name = "action"
+type = "string"
+required = true
+
+[[tables.manual_work.fields]]
+name = "count"
+type = "integer"
+
+[[tables.manual_work.fields]]
+name = "first"
+type = "date"
+
+[[tables.manual_work.fields]]
+name = "last"
+type = "date"
+
+[[tables.manual_work.fields]]
+name = "status"
+type = "string"
+
+[[tables.manual_work.fields]]
+name = "automated_by"
+type = "string"
+
+[[tables.manual_work.fields]]
+name = "minutes"
+type = "number"
+
+[[tables.manual_work.fields]]
+name = "effort"
+type = "number"
+
+[[tables.manual_work.fields]]
+name = "load"
+type = "number"
+
+[tables.manual_events]
+key = ["project", "id"]
+
+[[tables.manual_events.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.manual_events.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles"]
+
+[[tables.manual_events.fields]]
+name = "record"
+type = "string"
+required = true
+
+[[tables.manual_events.fields]]
+name = "at"
+type = "string"
+
+[[tables.manual_events.fields]]
+name = "change"
+type = "string"
+
+[[tables.manual_events.fields]]
+name = "minutes"
+type = "number"
+
+[[tables.manual_events.fields]]
+name = "effort"
+type = "number"
+
+[[tables.manual_events.fields]]
+name = "load"
+type = "number"
+
+# Where each hand stood, as the places said it until 2026-11-17 (glimpses: who landed what, where, when) - kept
+# as it was said. Since then the commits are the record, and the face reads new landings off them (bin/landings.sh).
+[tables.landings]
+key = ["project", "id"]
+
+[[tables.landings.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.landings.fields]]
+name = "project"
+type = "string"
+required = true
+enum = ["linux-phone-oco/docs", "linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles", "linux-phone-oco/lens"]
+
+[[tables.landings.fields]]
+name = "at"
+type = "string"
+required = true
+
+[[tables.landings.fields]]
+name = "by"
+type = "string"
+
+[[tables.landings.fields]]
+name = "kind"
+type = "string"
+
+[[tables.landings.fields]]
+name = "summary"
+type = "string"
+required = true
+
+[[tables.landings.fields]]
+name = "touches"
+type = "string"
+
+[[tables.landings.fields]]
+name = "advances"
+type = "string"
+
+[[tables.landings.fields]]
+name = "where"
+type = "string"
+
 [[rules.unique_ids]]
-tables = ["devices", "components", "sources", "backlog", "session_log"]
+tables = ["devices", "components", "sources"]
 
 [[rules.references]]
 field = "support_status.device_id"

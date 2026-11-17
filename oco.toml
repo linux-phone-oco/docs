@@ -2,6 +2,10 @@
 # https://github.com/open-commons-observatory/open-commons-observatory.github.io/tree/main/marks
 schema = 1
 
+# linux-phone-oco keeps one database, this one (decided 2026-11-17): the records of its other places are held
+# here, each row naming its place in project, and stay theirs on the face.
+holds = ["linux-phone-oco/lab-tools", "linux-phone-oco/surya-lab", "linux-phone-oco/device-template", "linux-phone-oco/sxmo-deviceprofiles", "linux-phone-oco/lens"]
+
 [project]
 id = "linux-phone-oco/docs"
 name = "Linux Phones: phones running Linux, as good as Android - and how close we are"
@@ -10,13 +14,16 @@ kind = "picture"
 parent = "open-commons-observatory"
 
 [exports]
-glimpses = "data/glimpses.json"
 wiki_claims = "data/wiki_claims.json"
 backlog = "data/backlog.json"
 decisions = "data/decisions.json"
 research = "data/research.json"
 sources = "data/sources.json"
 problems = "data/problems.json"
+concepts = "data/concepts.json"
+manual_work = "data/manual_work.json"
+manual_events = "data/manual_events.json"
+landings = "data/landings.json"
 session_log = "data/session_log.json"
 test_runs = "data/test_runs.json"
 support_status = "data/support_status.json"

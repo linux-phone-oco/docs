@@ -5,6 +5,9 @@
 <a id="w-feature-table"></a>
 ### w-feature-table
 
+Project
+: linux-phone-oco/docs
+
 What
 : The feature table
 
@@ -26,6 +29,9 @@ Evidence
 
 <a id="w-watch"></a>
 ### w-watch
+
+Project
+: linux-phone-oco/docs
 
 What
 : devlab watch
@@ -52,6 +58,9 @@ Uses
 <a id="w-upstream-queue"></a>
 ### w-upstream-queue
 
+Project
+: linux-phone-oco/docs
+
 What
 : The upstream queue
 
@@ -73,6 +82,9 @@ Evidence
 
 <a id="w-flash"></a>
 ### w-flash
+
+Project
+: linux-phone-oco/docs
 
 What
 : devlab flash
@@ -99,6 +111,9 @@ Uses
 <a id="w-health"></a>
 ### w-health
 
+Project
+: linux-phone-oco/docs
+
 What
 : devlab health
 
@@ -123,6 +138,9 @@ Uses
 
 <a id="w-hear"></a>
 ### w-hear
+
+Project
+: linux-phone-oco/docs
 
 What
 : devlab hear
@@ -149,6 +167,9 @@ Uses
 <a id="w-manifest-fixes"></a>
 ### w-manifest-fixes
 
+Project
+: linux-phone-oco/docs
+
 What
 : The device's manifest
 
@@ -173,6 +194,9 @@ Uses
 
 <a id="w-modem-checks"></a>
 ### w-modem-checks
+
+Project
+: linux-phone-oco/docs
 
 What
 : The modem checks
@@ -199,6 +223,9 @@ Uses
 <a id="w-parts-table"></a>
 ### w-parts-table
 
+Project
+: linux-phone-oco/docs
+
 What
 : The parts table
 
@@ -220,6 +247,9 @@ Evidence
 
 <a id="w-watch-surya"></a>
 ### w-watch-surya
+
+Project
+: linux-phone-oco/docs
 
 What
 : devlab watch
@@ -246,6 +276,9 @@ Uses
 <a id="w-upstream-surya"></a>
 ### w-upstream-surya
 
+Project
+: linux-phone-oco/docs
+
 What
 : The upstream queue
 
@@ -263,3 +296,135 @@ Why
 
 Evidence
 : backlog:upstream-tas2562-slot-length
+
+
+<a id="w-01"></a>
+### w-01
+
+Project
+: linux-phone-oco/lab-tools
+
+What
+: devlab phone
+
+Kind
+: tool
+
+Serves
+: dl-reaches
+
+How
+: Finds the phone on any of its addresses and works on it by its key.
+
+Why
+: Everything else begins with reaching it, every time.
+
+
+<a id="w-02"></a>
+### w-02
+
+Project
+: linux-phone-oco/lab-tools
+
+What
+: devlab health
+
+Kind
+: check
+
+Serves
+: dl-reaches
+
+How
+: The device's checks, compared with everything that passed before.
+
+Why
+: Worse than yesterday is the thing to catch.
+
+
+<a id="w-03"></a>
+### w-03
+
+Project
+: linux-phone-oco/lab-tools
+
+What
+: devlab flash and provision
+
+Kind
+: tool
+
+Serves
+: dl-life
+
+How
+: From bare to ready: the image with the device's fixes baked in; then clock, storage, packages, Wi-Fi.
+
+Why
+: A phone's whole life should be repeatable from nothing.
+
+
+<a id="w-04"></a>
+### w-04
+
+Project
+: linux-phone-oco/lab-tools
+
+What
+: devlab watch
+
+Kind
+: gatherer
+
+Serves
+: dl-life
+
+How
+: Runs the checks after every start and raises a task when something got worse.
+
+Why
+: Nobody has to remember to look.
+
+
+<a id="w-05"></a>
+### w-05
+
+Project
+: linux-phone-oco/lab-tools
+
+What
+: devlab kernel try
+
+Kind
+: tool
+
+Serves
+: dl-safe
+
+How
+: A test kernel beside the stock one, started once, falling back to stock by itself.
+
+Why
+: An experiment must never cost the phone.
+
+
+<a id="w-06"></a>
+### w-06
+
+Project
+: linux-phone-oco/lab-tools
+
+What
+: devlab hear
+
+Kind
+: test
+
+Serves
+: dl-manual
+
+How
+: A tone on each speaker, heard through a microphone in the lab: the first test that needs something outside the phone. It waits for a microphone fixed in place.
+
+Why
+: Some truths cannot be read from inside the device.

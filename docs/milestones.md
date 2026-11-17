@@ -5,6 +5,9 @@
 <a id="lp-calls-and-messages"></a>
 ### Calls and messages
 
+Project
+: linux-phone-oco/docs
+
 Subject
 : linux-phones
 
@@ -26,6 +29,9 @@ Why
 
 <a id="lp-connected"></a>
 ### Connected: data, Wi-Fi, Bluetooth, GPS
+
+Project
+: linux-phone-oco/docs
 
 Subject
 : linux-phones
@@ -49,6 +55,9 @@ Why
 <a id="lp-daily-basics"></a>
 ### The daily basics
 
+Project
+: linux-phone-oco/docs
+
 Subject
 : linux-phones
 
@@ -70,6 +79,9 @@ Why
 
 <a id="lp-everything"></a>
 ### Everything a phone does
+
+Project
+: linux-phone-oco/docs
 
 Subject
 : linux-phones
@@ -93,6 +105,9 @@ Why
 <a id="lp-apps-and-services"></a>
 ### Apps and services as good as Android's
 
+Project
+: linux-phone-oco/docs
+
 Subject
 : linux-phones
 
@@ -114,6 +129,9 @@ Why
 
 <a id="lp-secure-updated"></a>
 ### Secure and kept up to date
+
+Project
+: linux-phone-oco/docs
 
 Subject
 : linux-phones
@@ -137,6 +155,9 @@ Why
 <a id="lp-tested-daily"></a>
 ### Tested on real devices
 
+Project
+: linux-phone-oco/docs
+
 Subject
 : linux-phones
 
@@ -158,6 +179,9 @@ Why
 
 <a id="lp-upstream"></a>
 ### Fixes upstream
+
+Project
+: linux-phone-oco/docs
 
 Subject
 : linux-phones
@@ -181,6 +205,9 @@ Why
 <a id="surya-boots"></a>
 ### Boots, shows, touches, connects
 
+Project
+: linux-phone-oco/docs
+
 Subject
 : xiaomi-surya
 
@@ -202,6 +229,9 @@ Why
 
 <a id="surya-sound"></a>
 ### Sound
+
+Project
+: linux-phone-oco/docs
 
 Subject
 : xiaomi-surya
@@ -225,6 +255,9 @@ Why
 <a id="surya-phone"></a>
 ### A real phone: calls, messages, data
 
+Project
+: linux-phone-oco/docs
+
 Subject
 : xiaomi-surya
 
@@ -246,6 +279,9 @@ Why
 
 <a id="surya-every-part"></a>
 ### Every part works
+
+Project
+: linux-phone-oco/docs
 
 Subject
 : xiaomi-surya
@@ -269,6 +305,9 @@ Why
 <a id="surya-tested"></a>
 ### Tested every day
 
+Project
+: linux-phone-oco/docs
+
 Subject
 : xiaomi-surya
 
@@ -291,6 +330,9 @@ Why
 <a id="surya-upstream"></a>
 ### Its fixes upstream
 
+Project
+: linux-phone-oco/docs
+
 Subject
 : xiaomi-surya
 
@@ -308,3 +350,228 @@ Criteria
 
 Why
 : So every SM7150 phone gets them.
+
+
+<a id="dl-life"></a>
+### A phone's whole life
+
+Project
+: linux-phone-oco/lab-tools
+
+Subject
+: devlab
+
+Ord
+: 3
+
+Horizon
+: perfection
+
+Readiness
+: 8
+
+Criteria
+: backlog:flash backlog:provision
+
+Why
+: From image to working phone.
+
+
+<a id="dl-manual"></a>
+### Half-manual tests
+
+Project
+: linux-phone-oco/lab-tools
+
+Subject
+: devlab
+
+Ord
+: 4
+
+Horizon
+: perfection
+
+Readiness
+: 8
+
+Criteria
+: backlog:manual-tests
+
+Why
+: What needs eyes and hands, as a conveyor.
+
+
+<a id="dl-reaches"></a>
+### Reaches and checks a phone
+
+Project
+: linux-phone-oco/lab-tools
+
+Subject
+: devlab
+
+Ord
+: 1
+
+Horizon
+: working
+
+Readiness
+: 7
+
+Criteria
+: backlog:phone backlog:health
+
+Why
+: The ground of every other tool.
+
+
+<a id="dl-safe"></a>
+### Safe experiments
+
+Project
+: linux-phone-oco/lab-tools
+
+Subject
+: devlab
+
+Ord
+: 2
+
+Horizon
+: working
+
+Readiness
+: 7
+
+Criteria
+: backlog:kernel
+
+Why
+: Tries that never strand the phone.
+
+
+<a id="dl-upstream"></a>
+### Built on postmarketOS
+
+Project
+: linux-phone-oco/lab-tools
+
+Subject
+: devlab
+
+Ord
+: 5
+
+Horizon
+: ongoing
+
+Readiness
+: 9
+
+Criteria
+: backlog:pmos-conventions
+
+Why
+: Fitting in, contributing back.
+
+
+<a id="dt-any-phone"></a>
+### A new phone is a new device.toml
+
+Project
+: linux-phone-oco/device-template
+
+Subject
+: device-template
+
+Ord
+: 1
+
+Horizon
+: working
+
+Readiness
+: 5
+
+Criteria
+: backlog:dt-made backlog:dt-second-phone
+
+Why
+: Support for another phone needs no copying of tools: the conveyor is shared, the phone is data.
+
+
+<a id="sx-more"></a>
+### More phones
+
+Project
+: linux-phone-oco/sxmo-deviceprofiles
+
+Subject
+: sxmo-deviceprofiles
+
+Ord
+: 2
+
+Horizon
+: perfection
+
+Readiness
+: 8
+
+Criteria
+: backlog:more-devices
+
+Why
+: Every phone the conveyor brings.
+
+
+<a id="sx-surya"></a>
+### surya's profile, checked
+
+Project
+: linux-phone-oco/sxmo-deviceprofiles
+
+Subject
+: sxmo-deviceprofiles
+
+Ord
+: 1
+
+Horizon
+: working
+
+Readiness
+: 7
+
+Criteria
+: backlog:surya-profile backlog:surya-hand-check
+
+Why
+: Made from a running phone, checked by hand.
+
+
+<a id="sx-upstream"></a>
+### Upstream
+
+Project
+: linux-phone-oco/sxmo-deviceprofiles
+
+Subject
+: sxmo-deviceprofiles
+
+Ord
+: 3
+
+Horizon
+: ongoing
+
+Readiness
+: 9
+
+Criteria
+: backlog:surya-upstream
+
+Why
+: Where every Sxmo user gets them.

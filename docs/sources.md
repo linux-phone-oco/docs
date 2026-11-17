@@ -5,6 +5,9 @@
 <a id="sm7150-mainline-kernel"></a>
 ### linux-postmarketos-qcom-sm7150: the sm7150-mainline kernel fork and its changelog across releases
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/4818
 
@@ -18,6 +21,9 @@ Cited by
 <a id="pmos-community-promotion"></a>
 ### device-xiaomi-{davinci,surya}: Move from testing to community
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/6210
 
@@ -28,6 +34,9 @@ Cited by
 <a id="sm7150-mainline-org"></a>
 ### sm7150-mainline: the community org hosting the kernel fork, nightly builds, and firmware repos
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://github.com/orgs/sm7150-mainline/repositories
 
@@ -37,6 +46,9 @@ Cited by
 
 <a id="lab-agent-repo"></a>
 ### lab-agent: the pull-based agent that runs jobs on the real phone and reports back through git
+
+Project
+: linux-phone-oco/docs
 
 Url
 : https://github.com/creation-guidelines/lab-agent
@@ -54,12 +66,18 @@ Cited by
 <a id="sm7150-dtsi-v72"></a>
 ### sm7150-mainline's sm7150.dtsi (branch v7.2): CPU and cluster idle states, PSCI domains, apps_rsc on the cluster domain, rpmh-stats
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://github.com/sm7150-mainline/linux/blob/v7.2/arch/arm64/boot/dts/qcom/sm7150.dtsi
 
 
 <a id="surya-downstream-fdt"></a>
 ### sm7150-mainline/downstream-fdt: the device trees of the phones' own Android kernels (fdt-surya: lpm-levels, rpm-stats)
+
+Project
+: linux-phone-oco/docs
 
 Url
 : https://github.com/sm7150-mainline/downstream-fdt
@@ -68,12 +86,18 @@ Url
 <a id="sm7150-upstream-series"></a>
 ### Danila Tikhonov: the SM7150 upstreaming series (v1, 2025-04-22)
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://lore.kernel.org/linux-arm-msm/?q=s%3Asm7150+d%3A2025-04-21..2025-04-24
 
 
 <a id="psci-osi-hierarchy"></a>
 ### LWN: hierarchical CPU idle and PSCI OS-initiated mode (Ulf Hansson's series)
+
+Project
+: linux-phone-oco/docs
 
 Url
 : https://lwn.net/Articles/788306/
@@ -82,12 +106,18 @@ Url
 <a id="rpmh-rsc-cluster-pd"></a>
 ### rpmh-rsc: attach RSC to the cluster PM domain - sleep votes flushed when the cluster powers off (Ulf Hansson, 2022)
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://github.com/torvalds/linux/commit/25092e6100ac
 
 
 <a id="sm8150-cluster-idle"></a>
 ### sm8150.dtsi in mainline: one cluster sleep state, PSCI parameter 0x4100c244
+
+Project
+: linux-phone-oco/docs
 
 Url
 : https://github.com/torvalds/linux/blob/master/arch/arm64/boot/dts/qcom/sm8150.dtsi
@@ -96,12 +126,18 @@ Url
 <a id="qcom-stats-binding"></a>
 ### The qcom-stats binding: the SoC's sleep counters (aosd, cxsd, ddr, per subsystem)
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://kernel.org/doc/Documentation/devicetree/bindings/soc/qcom/qcom-stats.yaml
 
 
 <a id="qcom-soc-sleep-states"></a>
 ### Qualcomm: SoC power-saving states (CXSD, AOSD) on QCS6490
+
+Project
+: linux-phone-oco/docs
 
 Url
 : https://docs.qualcomm.com/doc/80-70020-30/topic/qcs6490-soc-power-saving-state.html
@@ -110,12 +146,18 @@ Url
 <a id="portareos-sleep-votes"></a>
 ### PortareOS issue 62: aosd/cxsd/ddr stuck at 0 on QCS8550 until the USB, PCIe and LPASS votes were released (2026-10)
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://github.com/portare-ch/portareos/issues/62
 
 
 <a id="pmaports-sargo-hexagonrpcd"></a>
 ### pmaports, google-sargo: hexagonrpcd's sensors helper stopped before suspend, the DSP crashing otherwise
+
+Project
+: linux-phone-oco/docs
 
 Url
 : https://ayakael.net/forge/pmaports/src/commit/bb5d9920e19c018b0ed69e2710b147c210aa5b4c/device/testing/device-google-sargo/no-hexagonrpcd-on-suspend.sh
@@ -124,12 +166,18 @@ Url
 <a id="nura-sdm845-wiki"></a>
 ### Nura (postmarketOS) wiki, SDM845: s2idle only; waking for calls through the modem's IPCRTR glink wakeup
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://wiki.nura.eco/wiki/Qualcomm_Snapdragon_845/850_(SDM845/SDM850)
 
 
 <a id="nura-enchilada-wiki"></a>
 ### Nura (postmarketOS) wiki, OnePlus 6: ModemManager's quick suspend/resume and the IPCRTR wakeup
+
+Project
+: linux-phone-oco/docs
 
 Url
 : https://wiki.nura.eco/wiki/OnePlus_6_(oneplus-enchilada)
@@ -138,12 +186,18 @@ Url
 <a id="nura-sm7150-wiki"></a>
 ### Nura (postmarketOS) wiki, SM7150: suspend listed as working, no detail
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://wiki.nura.eco/wiki/Qualcomm_Snapdragon_730/730G/732G_(SM7150)
 
 
 <a id="pmaports-4194"></a>
 ### pmaports 4194: calls signalled late or lost across suspend - fixed by ModemManager's quick suspend/resume
+
+Project
+: linux-phone-oco/docs
 
 Url
 : https://gitlab.nura.eco/nura/pmaports/-/work_items/4194
@@ -152,12 +206,18 @@ Url
 <a id="pmaports-4989"></a>
 ### pmaports 4989: waking from suspend for calls does not work (OnePlus 6/6T, Pixel 3a; open)
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://gitlab.nura.eco/nura/pmaports/-/work_items/4989
 
 
 <a id="pmaports-4783"></a>
 ### pmaports 4783: with the modem wakeup on, every modem event wakes the phone; Wi-Fi blocks suspend
+
+Project
+: linux-phone-oco/docs
 
 Url
 : https://gitlab.nura.eco/nura/pmaports/-/work_items/4783
@@ -166,12 +226,18 @@ Url
 <a id="pmaports-4823"></a>
 ### pmaports 4823: surya wakes at random while asleep (open)
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://gitlab.nura.eco/postmarketOS/pmaports/-/work_items/4823
 
 
 <a id="ut-surya"></a>
 ### Ubuntu Touch on surya: Halium 10 with the vendor's 4.14 kernel
+
+Project
+: linux-phone-oco/docs
 
 Url
 : https://devices.ubuntu-touch.io/device/surya/
@@ -180,12 +246,18 @@ Url
 <a id="crust-pinephone"></a>
 ### Crust on the PinePhone: deep sleep on a separate power-management core
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://pine64.org/documentation/PinePhone/Software_tricks/Crust/
 
 
 <a id="lwn-autosleep"></a>
 ### LWN: Android's opportunistic suspend in mainline - wakeup sources and autosleep
+
+Project
+: linux-phone-oco/docs
 
 Url
 : https://lwn.net/Articles/479841/
@@ -194,6 +266,9 @@ Url
 <a id="uninsane-push"></a>
 ### Push notifications through suspend on the PinePhone: WoWLAN and an RTC safety net (2023)
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://uninsane.org/blog/mobile-linux-push-notifications/
 
@@ -201,5 +276,107 @@ Url
 <a id="soc-sleeps-check"></a>
 ### lab-tools: the soc-sleeps check - the SoC's own sleep counters after every boot
 
+Project
+: linux-phone-oco/docs
+
 Url
 : https://github.com/linux-phone-oco/lab-tools/blob/main/health/suite/checks/base/90-sleep.sh
+
+
+<a id="lineage-sm6150-wcd937x"></a>
+### The vendor-derived WCD937x driver (LineageOS sm6150 kernel)
+
+Project
+: linux-phone-oco/surya-lab
+
+Url
+: https://github.com/LineageOS/android_kernel_xiaomi_sm6150/tree/lineage-23.2/techpack/audio/asoc/codecs/wcd937x
+
+By
+: LineageOS, from Qualcomm's GPL audio techpack
+
+Takes
+: Bring-up: supplies, a reset pulse, 5 ms for enumeration, then bind; the reset is touched only at bind and on DSP restart; nothing in headset detection touches reset, supplies or SoundWire. Insertion debounce 256 ms (mainline uses less).
+
+
+<a id="pmaports-tqftpserv-4747"></a>
+### modem/tqftpserv: upgrade and add patches for rsize & seek option handling (pmaports !4747)
+
+Project
+: linux-phone-oco/surya-lab
+
+Url
+: https://gitlab.com/postmarketOS/pmaports/-/merge_requests/4747
+
+By
+: Luca Weiss
+
+Takes
+: A modem's file transfers with rsize and seek options need a tqftpserv that handles them; it made the modem work on two close Qualcomm phones (sm6350, qcm6490).
+
+
+<a id="surya-wiki"></a>
+### Xiaomi POCO X3 NFC (xiaomi-surya) - device wiki page
+
+Project
+: linux-phone-oco/surya-lab
+
+Url
+: https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29
+
+By
+: postmarketOS community
+
+Takes
+: What the community reports working, part by part. The address is as the claims recorded it, to be confirmed as the current wiki.
+
+
+<a id="twilio-voice"></a>
+### Programmable voice (a number that answers and plays a tone)
+
+Project
+: linux-phone-oco/surya-lab
+
+Url
+: https://www.twilio.com/docs/voice
+
+Year
+: 2010
+
+By
+: Twilio and others
+
+Takes
+: A telephone number driven by a program can answer a test call and play a known tone - a fully automatic call check without a second phone.
+
+
+<a id="vendor-sm6150-audio-overlay"></a>
+### Xiaomi's GPL kernel for surya: the WCD937x node
+
+Project
+: linux-phone-oco/surya-lab
+
+Url
+: https://github.com/MiCode/Xiaomi_Kernel_OpenSource/blob/surya-q-oss/arch/arm64/boot/dts/qcom/sm6150-audio-overlay.dtsi
+
+By
+: Xiaomi (GPL release, surya-q-oss)
+
+Takes
+: Supplies: L10A rxtx and px and BOB mic bias always on, L15A buck only on demand; micbias 1-3 at 2.7 V; a plain 3.5 mm jack with both MBHC switches set (hphl-swh, gnd-swh), no USB-C audio switch.
+
+
+<a id="vendor-sm6150-lpi-dtsi"></a>
+### Xiaomi's GPL kernel for surya: the LPASS pin states
+
+Project
+: linux-phone-oco/surya-lab
+
+Url
+: https://github.com/MiCode/Xiaomi_Kernel_OpenSource/blob/surya-q-oss/arch/arm64/boot/dts/qcom/sm6150-lpi.dtsi
+
+By
+: Xiaomi (GPL release, surya-q-oss)
+
+Takes
+: The SoundWire pins' functions (TX data1 gpio19 func3, data2 gpio20 func2, RX data gpio22/23 func2) - mainline's corrected table agrees; the WCD937x reset is gpio24, active state driven high, sleep state low.

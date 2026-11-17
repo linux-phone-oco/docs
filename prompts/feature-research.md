@@ -29,8 +29,10 @@ is the bring-up session's.
 4. **Choose**, by the canon and the project's interest: the vector with the best ratio of certain progress to
    cost, with a first step that settles the biggest unknown. Record it as a decision with every vector
    rejected and why.
-5. **Hand over**: write the research rows (`ocoeco note research`, with sources) and the decision in
-   linux-phone-oco/docs, and the chosen vector's steps as backlog items there, each with how it is proven -
+5. **Hand over**: write the research rows (`tad r research --project docs ...`, with its sources as `tad r
+   source ...`) and the decision (`tad r decision ...`) in linux-phone-oco/docs - data through tad, landing
+   through land, nothing of ocoeco by hand (bring-up.md, "Recording") - and the chosen vector's steps as
+   backlog items there (`tad r backlog ...`), each with how it is proven -
    the bring-up session's queue. Write the failing test the feature needs (generic in lab-tools'
    `health/suite/checks/` with its row in docs' `tests`, or the phone's own in its lab's `tests/health/`), so
    the conveyor shows the feature `broken` or `unknown` until it works.
