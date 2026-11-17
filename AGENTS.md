@@ -12,7 +12,7 @@ Setup once: `make setup`. Editing the data: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 | one place's work, decisions, research | `tad q backlog --project lab-tools` (also `decisions`, `research`) |
 | the role briefs, the phone keeper, how records go here | [`ideal-agent-linux-phone-oco/`](ideal-agent-linux-phone-oco/README.md) |
 
-Record with `ikb`: `ikb --help`, then `ikb help RECORD`; [`IKB.md`](IKB.md) is the same for people to browse. Records name their place: `ikb decision --project docs ...`.
+Record with `ikb`: `ikb --help`, then `ikb help RECORD`. Records name their place: `ikb decision --project docs ...`.
 `unknown` is not a weaker `broken`: it means nobody has checked.
 
 <!-- idealkb:begin - kept by grenudi/ideal-knowledge-base at the release idealkb.toml names: change it there -->
