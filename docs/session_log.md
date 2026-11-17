@@ -1423,3 +1423,24 @@ Rejected
 
 About
 : agent-folder
+
+---
+
+
+<a id="2026-11-17-idealkb-on-tad"></a>
+### idealkb corrected: a layer on tad, not the template renamed
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Recorded the author's correction (relayed by the conveyor session): tad stays a database; idealkb is a new repository that pins tad and adds the knowledge-base layer; a bare database starts with tad itself (tad init); text-as-data-template hands its pieces to both, its reasons carried over, and is retired with a pointer. Decision 2026-11-17-ideal-knowledge-base and idealkb-from-template rewritten to match. Record only: building waits for the author's word.
+
+Rejected
+: The first form, the template renamed into idealkb: a database's scaffold folded into a knowledge base.
+
+About
+: idealkb-from-template
