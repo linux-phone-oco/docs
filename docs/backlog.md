@@ -20,6 +20,9 @@ Opened
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 About
 : surya-boots
 
@@ -74,6 +77,9 @@ Opened
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 Rank
 : 60
 
@@ -101,6 +107,9 @@ Waits
 
 Needs
 : phone
+
+Device
+: xiaomi-surya
 
 Rank
 : 20
@@ -230,6 +239,9 @@ Opened
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 
 <a id="microphone"></a>
 ### Microphone: check, and make it work
@@ -311,6 +323,9 @@ Opened
 
 Needs
 : phone
+
+Device
+: xiaomi-surya
 
 
 <a id="plasma-silent"></a>
@@ -490,6 +505,9 @@ Opened
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 
 <a id="tty-first-shell"></a>
 ### The author's TTY-first shell
@@ -628,6 +646,9 @@ Opened
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 Proof
 : wakes-for-call
 
@@ -655,6 +676,9 @@ Opened
 
 Needs
 : phone
+
+Device
+: xiaomi-surya
 
 Rank
 : 5
@@ -902,6 +926,9 @@ Opened
 
 Needs
 : phone
+
+Device
+: xiaomi-surya
 
 About
 : deep-sleep
@@ -1252,6 +1279,9 @@ Opened
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 
 <a id="camera-identify-slots"></a>
 ### Ask each camera slot what it is
@@ -1270,6 +1300,9 @@ Opened
 
 Needs
 : phone
+
+Device
+: xiaomi-surya
 
 Proof
 : image-sensor
@@ -1298,6 +1331,9 @@ Opened
 
 Needs
 : phone
+
+Device
+: xiaomi-surya
 
 Proof
 : image-sensor
@@ -1979,6 +2015,9 @@ Opened
 
 Needs
 : phone
+
+Device
+: xiaomi-surya
 
 About
 : sx-surya
@@ -2956,6 +2995,9 @@ Waits
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 Proof
 : gps-fix
 
@@ -2981,6 +3023,9 @@ Opened
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 Proof
 : bt-pairs
 
@@ -3005,6 +3050,9 @@ Opened
 
 Needs
 : phone
+
+Device
+: xiaomi-surya
 
 Proof
 : volte-call
@@ -3062,6 +3110,9 @@ Waits
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 Proof
 : motion-and-light
 
@@ -3090,6 +3141,9 @@ Opened
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 Proof
 : proximity-reads
 
@@ -3117,6 +3171,9 @@ Opened
 
 Needs
 : phone
+
+Device
+: xiaomi-surya
 
 Proof
 : motion-and-light
@@ -3506,6 +3563,9 @@ Opened
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 About
 : dl-safe
 
@@ -3629,6 +3689,9 @@ Waits
 Needs
 : phone
 
+Device
+: google-walleye
+
 Proof
 : lsusb on the host shows the gadget within 60 s of fastboot boot and ssh/telnet to 172.16.42.1 answers (test: walleye-gadget-up)
 
@@ -3656,6 +3719,9 @@ Waits
 
 Needs
 : phone
+
+Device
+: google-walleye
 
 Proof
 : after a deliberate panic the next boot lets the keeper read the panic log from /sys/fs/pstore (test: walleye-pstore-panic)
@@ -3685,6 +3751,9 @@ Waits
 Needs
 : phone
 
+Device
+: google-walleye
+
 Proof
 : lsblk in the initramfs lists the UFS LUNs and by-name partitions without a write (test: walleye-ufs-lsblk)
 
@@ -3713,6 +3782,9 @@ Waits
 Needs
 : phone
 
+Device
+: google-walleye
+
 Proof
 : the DRM connector is connected and a test pattern is seen by a person (test: walleye-display-pattern)
 
@@ -3740,6 +3812,9 @@ Waits
 
 Needs
 : phone
+
+Device
+: google-walleye
 
 Proof
 : evtest shows touch events from the RMI4 device when the panel is touched (test: walleye-touch-events)
@@ -3841,6 +3916,9 @@ Waits
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 Proof
 : soc-sleeps
 
@@ -3868,6 +3946,9 @@ Opened
 
 Needs
 : phone
+
+Device
+: google-walleye
 
 Proof
 : a test that fails when devlab reports a slot change as only refused
@@ -3972,6 +4053,9 @@ Opened
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 Proof
 : soc-sleeps
 
@@ -3997,6 +4081,9 @@ Opened
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 Proof
 : soc-sleeps
 
@@ -4021,6 +4108,9 @@ Opened
 
 Needs
 : phone
+
+Device
+: xiaomi-surya
 
 Proof
 : soc-sleeps
@@ -4049,6 +4139,9 @@ Waits
 
 Needs
 : phone
+
+Device
+: xiaomi-surya
 
 Proof
 : soc-sleeps
@@ -4097,6 +4190,9 @@ Opened
 Needs
 : phone
 
+Device
+: xiaomi-surya
+
 Proof
 : soc-sleeps
 
@@ -4143,6 +4239,9 @@ Waits
 
 Needs
 : phone
+
+Device
+: xiaomi-surya
 
 Proof
 : motion-and-light

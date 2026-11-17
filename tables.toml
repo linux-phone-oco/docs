@@ -54,7 +54,14 @@ type = "string"
 [[tables.backlog.fields]]
 name = "needs"
 type = "string"
-enum = ["phone"]
+enum = ["phone", "research", "build"]
+
+# the device the item is for - its lane (devices.id): a phone item is taken only by that device's keeper, a
+# research or build item by that lane's launcher (tad q lane-next --device D --needs N). Required where needs
+# is phone, by the records that set needs (tad has no conditional rule yet).
+[[tables.backlog.fields]]
+name = "device"
+type = "string"
 
 # the test whose pass proves the item done (a tests id, or the test still to write)
 [[tables.backlog.fields]]
@@ -1149,6 +1156,10 @@ to = ["components", "features", "milestones", "devices", "backlog"]
 [[rules.references]]
 field = "research.supersedes"
 to = ["research"]
+
+[[rules.references]]
+field = "backlog.device"
+to = ["devices"]
 
 [[rules.references]]
 field = "backlog.about"
