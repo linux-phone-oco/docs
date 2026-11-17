@@ -1777,3 +1777,21 @@ Done
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-docs-follows-ikb-0-1-1"></a>
+### docs follows ikb 0.1.1
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: docs pins idealkb 0.6.1 and takes ikb 0.1.1: IKB.md is generated (ikb page --write) and kept fresh by make verify; machine records are named in idealkb.toml. It's the first follower of ikb.
+
+About
+: ikb-recording

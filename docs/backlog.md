@@ -3518,3 +3518,19 @@ Opened
 
 About
 : lpoco-health
+
+
+<a id="ikb-recording"></a>
+### Record into docs with ikb: one command per record, one page (IKB.md)
+
+Project
+: linux-phone-oco/docs
+
+Status
+: done
+
+Note
+: docs follows idealkb 0.6.1 and ikb 0.1.1; IKB.md generated, kept fresh by make verify; machine records named in idealkb.toml.
+
+Opened
+: 2026-11-17

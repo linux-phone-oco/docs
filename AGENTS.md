@@ -12,7 +12,7 @@ Setup once: `make setup`. Editing the data: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 | one place's work, decisions, research | `tad q backlog --project lab-tools` (also `decisions`, `research`) |
 | the role briefs, the phone keeper, how records go here | [`ideal-agent-linux-phone-oco/`](ideal-agent-linux-phone-oco/README.md) |
 
-Records name their place: `tad r decision --project docs ...` (`tad statements` gives every parameter).
+Record with `ikb`: `ikb decision --project docs ...`; [`IKB.md`](IKB.md) lists every record and option. Records name their place.
 `unknown` is not a weaker `broken`: it means nobody has checked.
 
 <!-- idealkb:begin - kept by grenudi/ideal-knowledge-base at the release idealkb.toml names: change it there -->
@@ -28,16 +28,14 @@ Ask a query; never read `data/` or `docs/` to answer - they are the database's f
 | what was recorded lately | `tad q recent` (`--days N`) |
 | anything else | `tad statements`: every query and record, with its parameters |
 
-Every answer gives each record by its brief, its one line. Read deeper - `row --id`, `--whole true`, a file
-past its first paragraph - only when the task needs more. Long answers read best with `--format csv`.
+At a task's start ask only about its subject (`about --subject S`, or `next --about S`) and act. Every
+answer gives each record by its brief, its one line. Read deeper - `row --id`, `--whole true`, a file past
+its first paragraph, another subject, `tad statements` - only when a step needs more. Long answers read best
+with `--format csv`.
 
 ## Recording
-Through the named records, never by hand: `tad r decision` (with what was rejected), `tad r research`,
-`tad r source`, `tad r backlog`, `tad r session-log` - each naming what it is about (`--about`), a decision
-and a research with its brief (`--brief`, the record in one line; the title is the brief of the rest). Then
-`tad canon && tad render`, and land. Where `tad q about` says a summary is due for a subject you recorded
-into, renew it: `tad r summary --about S --says ...` - how it stands now, naming the records that carry it.
+Read `IKB.md`: every record of this base with its options, written from its `records/*.sql`. Record with `ikb RECORD --option value` (`ikb help` lists them; `sh bin/install-ikb.sh` once installs it): long text from a file or stdin (`--found @-`), the id made from the brief, canon and render done after - never SQL, never by hand. Each record names what it is about (`--about`) and, for a decision or a research, its brief (the record in one line; the title is the brief of the rest), then land. Where `tad q about` says a summary is due for a subject you recorded into, renew it: `ikb summary --about S --says ...` - how it stands now, naming the records that carry it.
 A thing there are many of with one shape is a row; prose read once in order is a file (README, this entry,
 a brief), and a file opens with its own brief: its first paragraph says what it holds. Research is both: its finding a row, its own material - notes, excerpts, measurements - a dated
-folder the row names (`--material research/SUBJECT/YYYY-MM-DD/`); redone, a new row `--supersedes` the old.
+folder the row names (`--material auto` makes `research/ABOUT/DATE/`); redone, a new row `--supersedes` the old.
 <!-- idealkb:end -->
