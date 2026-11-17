@@ -1517,3 +1517,19 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="earpiece"></a>
+### Earpiece: through the WCD9375's EAR amplifier, proven by the top microphone
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: Taken up 2026-11-17 (bring-up), after the microphones work on the kept kernel. The earpiece is driven by the WCD9375's EAR amplifier (pulpoff/linux-surya: MultiMedia3 -> RX_CODEC_DMA_RX_0 -> RX macro RX0 -> INT0 -> codec RX1 -> RDAC3_MUX RX1 -> EAR_RDAC -> EAR PA), not by the two TAS amplifiers. Tried on the phone: the whole path powers on in DAPM (RX INT0_1 MIX1, RX1, RDAC3_MUX, RDAC3, EAR_RDAC, EAR PGA, EAR all On), EAR_PA Volume at its loudest (+6 dB), class-H mode set (CLS_H_LOHIFI), and with pulpoff's qcom,rx-channel-mapping <1 2 1 1 2 1 1 2> too - yet a 1 kHz tone (-6 dBFS, RX digital -20 dB) is not found by the top microphone next to the earpiece. Next: ask the author whether the earpiece is heard at all (a witnessed check), compare the RX SoundWire port programming during playback with pulpoff's (regmap and SoundWire debug), and read pulpoff's earpiece route if published. The rx-channel-mapping change is on local branch dt/surya-wcd-rx-channel-map, not pushed until it proves something. Proof when done: a mic-hears-earpiece check in surya's suite (works).
+
+Opened
+: 2026-11-17
