@@ -5254,10 +5254,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: ~/Projects/walleye-build/bisect/boot-s0n.img (sha in bisect/SHA256SUMS); see walleye-bisect-stock-to-ours. Per try as walleye-own-images-first-state; answer = does the phone leave fastboot, and does 172.16.43.1 answer (s1). No writes.
+: tried: s0n fails to start, phone falls back to slot a, b unbootable - footer missing is the likely cause; see walleye-try-s0n-stock-no-footer
 
 Opened
 : 2026-11-17

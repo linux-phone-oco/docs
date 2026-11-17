@@ -2419,3 +2419,21 @@ Rejected
 
 About
 : walleye-initramfs-usb-gadget
+
+---
+
+
+<a id="2026-11-17-1950-walleye-how-the-phone-stands"></a>
+### How walleye stands
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: s0n tried from the first state: no start, fell back to slot a (stock 4.4.302, healthy), slot b unbootable; phone in fastboot, a active+successful, nothing written
+
+Considered
+: next: images without an AVB footer (s0n, and so a-i, s1-s3 as built) look refused; the coordinator decides whether s1-s3 are rebuilt with the footer (s0 style) before trying; b needs its unbootable flag cleared (only a successful boot of b or a flash does)

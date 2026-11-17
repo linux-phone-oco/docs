@@ -1972,3 +1972,25 @@ Found
 
 About
 : deep-sleep
+
+
+<a id="walleye-try-s0n-stock-no-footer"></a>
+### walleye-try-s0n-stock-no-footer
+
+Brief
+: s0n (stock parts, no AVB footer) from the first state: fastboot boot failed, yet the phone left and came back as Android on slot a; slot b now unbootable
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: Is the stock control without its AVB footer (s0n, the shape of images a-i) accepted and started by fastboot boot from the first state?
+
+Found
+: First state (current-slot a, a successful yes, b retry 1). set-active b (metadata), devlab fastboot boot now boot-s0n.img (sha ok vs SHA256SUMS): fastboot said 'Command failed' but the phone left fastboot after 0 s and was Android 21 s later, serial FA81N1A00790, slot _a, kernel 4.4.302 (vendor, not s0n-specific). Slot b went to unbootable=yes, retry 1; a unchanged and successful. Reading: the s0n try on b failed and the bootloader fell to a - the stock kernel that ran is slot a's own, so s0n did NOT start (same pattern as the XDA slot-flip PSA). So the missing AVB footer is the likely difference: s0 (with footer) is accepted, s0n (without) is not. Phone left in fastboot via adb reboot bootloader, slot a active and successful, nothing written. Note: devlab 'left fastboot' counts a fallback boot as a start; it should match slot and kernel.
+
+About
+: walleye-first-fastboot-boot
