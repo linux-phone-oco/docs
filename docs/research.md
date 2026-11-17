@@ -632,3 +632,69 @@ Sources
 
 About
 : sensors
+
+
+<a id="pixel-2-linux-survey"></a>
+### pixel-2-linux-survey
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: What works on the Google Pixel 2 (walleye) and Pixel 2 XL (taimen) on Linux today, by published sources, and how does their SoC (MSM8998) relate to surya's SM7150?
+
+Found
+: A survey from published sources only (nothing touched, nothing measured here; every part of both phones is unknown, the reports sit in support_status notes and wiki_claims). (1) Nura (postmarketOS) wiki: only the Pixel 2 XL has a page (kernel field 5.10-rc2; 'Boots but no display output'; usbnet Y, flashing Y, screen N, battery N; page by Casey/kcxt, edited 2026-09-05, bot edit 2026-09-27); the Pixel 2 has none. (2) pmaports: neither device-google-walleye nor device-google-taimen exists in device/main, community or testing (listed 2026-11-17). (3) Mainline Linux: no Pixel 2 device tree; arm64/qcom has MSM8998 boards (OnePlus 5/5T, Xiaomi Mi 6, Sony yoshino, F(x)tec Pro1, HP Envy x2, Lenovo Miix 630, Asus NovaGo) and msm8998.dtsi was still edited on 2026-09-17. (4) The port lives out of tree: kcxt/linux-wahoo, created 2020-07-20, last pushed 2022-02-27; branch wahoo/5.17 has msm8998-google-taimen.dts, -walleye.dts and wahoo.dtsi, plus panel and DPU/DSC work (unfinished), and a taimen-5.11-submit branch whose mainline submission is not found upstream. (5) Other distributions: Ubuntu Touch has only a 16.04 (Halium, Android kernel) release for walleye, the current release does not support it (taimen page exists, not read); LineageOS 22.2 runs both on Android (kernel 4.4, AOSP branch android-msm-wahoo-4.4-android10-qpr3 shared by both). Not found for either: Mobian, Droidian, Sailfish, a pmOS issue or MR (search only; absence is not a report). SoC and surya: MSM8998 (Snapdragon 835, 2017) vs SM7150 (Snapdragon 732G). Per mainline msm8998.dtsi it has Adreno 540, DPU/MDSS with 10 nm DSI PHY, UFS 2.0, DWC3 USB with QMP PHYs, ADSP/SLPI/modem remoteprocs, Venus and the older RPM (rpm-msm8998, glink-smd-rpm), so what surya's SM7150 shares is the kind of block (UFS, DWC3/QMP USB, DSI/DPU display, remoteproc DSPs, SPMI PMIC) but not the drivers or tables: SM7150 itself is not in mainline Linux (surya runs the sm7150-mainline fork; the nearest mainline Qualcomm sibling is sdm670, the Pixel 3a), and MSM8998 has Adreno 5xx and RPM where SM7150 has Adreno 6xx and RPMh (our reading of the trees, not a source's claim). Sibling evidence for the SoC: the wiki's OnePlus 5 (archived, kernel field 6.0) reports touch, screen, wifi, Bluetooth, 3D, GPS Y and audio, mobile data, calls, SMS, sensors N: a different phone, stale, context only. Distance: surya has 12 of 20 parts working by its own tests; the Pixel 2 XL has 1 community 'works' (flashing), 1 'broken' (screen) and 19 unknown; the Pixel 2 has nothing reported.
+
+Sources
+: pixel2xl-pmos-wiki,kcxt-linux-wahoo,mainline-qcom-dts,pmaports-google-devices,ubuntu-touch-walleye,lineageos-wahoo,aosp-wahoo-kernel,pmos-wiki-oneplus5
+
+About
+: google-taimen
+
+
+<a id="google-taimen-how-it-stands"></a>
+### google-taimen-how-it-stands
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: How does the Pixel 2 XL (taimen) stand?
+
+Found
+: Far from surya. Nothing is measured here. By community report it boots mainline 5.10-rc2 on a basic device tree from an out-of-tree fork (kcxt/linux-wahoo, last push 2022-02-27), USB networking and flashing work, there is no display, the battery does not work. No mainline device tree, no pmaports package, no one has reported touch, audio, modem, wifi or the rest. Worth a lab test one day only as the cheap member of the pair, after surya's list: it is the one with a documented boot.
+
+Sources
+: pixel2xl-pmos-wiki,kcxt-linux-wahoo,mainline-qcom-dts,pmaports-google-devices
+
+About
+: google-taimen
+
+
+<a id="google-walleye-how-it-stands"></a>
+### google-walleye-how-it-stands
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: How does the Pixel 2 (walleye) stand?
+
+Found
+: Nothing reported on mainline: no wiki page, no pmaports package, no mainline device tree. Only the out-of-tree fork kcxt/linux-wahoo has a walleye device tree (wahoo/5.17), and nobody says it boots. Android (LineageOS 22.2) and an old Ubuntu Touch 16.04 port exist. Everything is unknown; test it only after taimen has shown the way, since both share the SoC and the kernel fork.
+
+Sources
+: kcxt-linux-wahoo,ubuntu-touch-walleye,lineageos-wahoo,pmaports-google-devices
+
+About
+: google-walleye

@@ -1520,3 +1520,131 @@ By
 
 Takes
 : Bit-banging an SSC QUP's pins from Linux works on X1E, but the DSP may drive the same bus; the DSP route is preferred for power.
+
+
+<a id="pixel2xl-pmos-wiki"></a>
+### Nura (postmarketOS) wiki: Google Pixel 2 XL (google-taimen)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.nura.eco/wiki/Google_Pixel_2_XL_%28google-taimen%29
+
+Takes
+: Mainline boots with a basic DT (5.10-rc2), USB networking and flashing work, no display; the only wiki page of either phone (walleye has none). Revised 2026-09-05 and 2026-09-27 (bot); status by Casey/kcxt.
+
+Cited by
+: [Google Pixel 2 XL](devices.md#google-taimen)
+
+
+<a id="kcxt-linux-wahoo"></a>
+### kcxt/linux-wahoo: Mainline Linux for the Google Pixel 2XL (And 2?)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/kcxt/linux-wahoo
+
+Takes
+: Out-of-tree mainline port, created 2020-07-20, last pushed 2022-02-27: msm8998-google-taimen.dts, -walleye.dts and wahoo.dtsi (branch wahoo/5.17), panel and DPU/DSC work, a 5.11 submission branch.
+
+Cited by
+: [Google Pixel 2 XL](devices.md#google-taimen), [Google Pixel 2](devices.md#google-walleye)
+
+
+<a id="mainline-qcom-dts"></a>
+### Linux mainline: arch/arm64/boot/dts/qcom (MSM8998 device trees)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/torvalds/linux/tree/master/arch/arm64/boot/dts/qcom
+
+Takes
+: No Pixel 2 / 2 XL device tree in mainline (checked 2026-11-17); MSM8998 boards there: OnePlus 5/5T, Xiaomi Mi 6, Sony yoshino, F(x)tec Pro1, HP Envy x2, Lenovo Miix 630, Asus NovaGo; msm8998.dtsi still edited (2026-09-17).
+
+Cited by
+: [Google Pixel 2 XL](devices.md#google-taimen), [Google Pixel 2](devices.md#google-walleye)
+
+
+<a id="pmaports-google-devices"></a>
+### Nura pmaports: device packages of Google phones (device/community, device/testing)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.nura.eco/nura/pmaports/-/tree/master/device/testing
+
+Takes
+: device-google-walleye and device-google-taimen are absent from device/main, community and testing (listed 2026-11-17); Google packages there are sargo/bonito (community), blueline, flame, oriole, raven (testing).
+
+Cited by
+: [Google Pixel 2 XL](devices.md#google-taimen), [Google Pixel 2](devices.md#google-walleye)
+
+
+<a id="ubuntu-touch-walleye"></a>
+### Ubuntu Touch: Google Pixel 2 (walleye), old releases
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://devices.ubuntu-touch.io/device/walleye/
+
+Takes
+: Only the 16.04 (xenial) release exists; the current release does not support the phone. A Halium/Android-kernel port, not mainline.
+
+Cited by
+: [Google Pixel 2](devices.md#google-walleye)
+
+
+<a id="lineageos-wahoo"></a>
+### LineageOS wiki: Google Pixel 2 (walleye)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.lineageos.org/devices/walleye/
+
+Takes
+: Android, current LineageOS 22.2 (Android 15) on kernel 4.4 for walleye; taimen has the same page shape. Shows the phones stay alive on Android, not on mainline.
+
+Cited by
+: [Google Pixel 2 XL](devices.md#google-taimen), [Google Pixel 2](devices.md#google-walleye)
+
+
+<a id="aosp-wahoo-kernel"></a>
+### AOSP: Build Pixel kernels (legacy branches)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://source.android.com/docs/setup/build/building-pixel-kernels
+
+Takes
+: Pixel 2 and 2 XL share one kernel, device/google/wahoo-kernel, branch android-msm-wahoo-4.4-android10-qpr3.
+
+Cited by
+: [Google Pixel 2 XL](devices.md#google-taimen), [Google Pixel 2](devices.md#google-walleye)
+
+
+<a id="pmos-wiki-oneplus5"></a>
+### Nura wiki: OnePlus 5 (oneplus-cheeseburger), the MSM8998 phone best supported in mainline
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.nura.eco/wiki/OnePlus_5_%28oneplus-cheeseburger%29
+
+Takes
+: Same SoC family; category archived, kernel field 6.0; touch, screen, wifi, bluetooth, 3D, GPS Y; audio, mobile data, calls, SMS, sensors N. A claim about a different phone: context for the SoC, not a status of the Pixels.
+
+Cited by
+: [Google Pixel 2 XL](devices.md#google-taimen), [Google Pixel 2](devices.md#google-walleye)
