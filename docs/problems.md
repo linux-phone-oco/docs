@@ -253,3 +253,22 @@ By
 
 Kind
 : unclear
+
+
+<a id="land-release-silent"></a>
+### land-release-silent
+
+Project
+: linux-phone-oco/lab-tools
+
+What
+: In lab-tools on 2026-11-17, 'land --release' exited without a line and without merging release-plz PR 84 (v0.2.0). The bringup-release builder then merged it with 'gh pr merge', outside land. A release step that ends silently leaves the builder to decide alone, and the family tags then rest on a merge land never checked. Seen by lab-tools-builder run local_72f506e8; reported to orchestration.
+
+Seen
+: 2026-11-17
+
+By
+: orchestration
+
+Kind
+: unclear

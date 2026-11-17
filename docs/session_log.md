@@ -1408,3 +1408,24 @@ Rejected
 
 About
 : bringup-release
+
+---
+
+
+<a id="2026-11-17-orchestration-lpoco-roof"></a>
+### Orchestration: the lpoco roof, six pieces landed
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: One builder at a time in lab-tools, each read back from main: lpoco-dispatcher (#83), bringup-image-v0 (#85), lpoco-rename-lab-tone (#86), lpoco-mcp-one-door (#87), bringup-pin-and-hooks (#88), bringup-release (#90; release v0.2.0 #84, every family tag on one commit; install by cargo install --git --tag). From piece 3 on, the builders came from the coordinator's stored launcher lab-tools-builder, ordered by rank. Along the way: docs retired its lane queries (#368, decision 2026-11-17-docs-serves-no-lane); ranks set; leftovers queued (lpoco-lab-argenv, lpoco-names-sweep, docs-phone-items-to-lanes); the launcher's first run read a stale shared clone, and the coordinator's prompt now makes fresh worktrees; a reboot stopped piece 5, which was resumed in its own session; sign land-release-silent recorded.
+
+Considered
+: Starting each builder as its own session (refused on turns started by another session; the launcher answers that).
+
+About
+: bringup
