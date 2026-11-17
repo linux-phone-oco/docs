@@ -1537,3 +1537,19 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="kernel-remove-keeps-shared"></a>
+### kernel remove never takes modules another kernel boots with
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: Asked by bring-up, 2026-11-17: its ear try is the same 7.1.0-sm7150-mic+ build as the kept mic kernel, so removing ear could have taken the default kernel's modules. Now install says the release in the entry (# devlab release, a comment the bootloader skips) and remove keeps the release's modules when the running kernel is it, another entry boots with it, another entry does not say its release, or a package owns them; the kept kernel is not removed at all. Proven by a test that runs the removal under sh in a fake boot tree (lab-tools kernel.rs); on surya, mic and ear were installed before entries said their release, so removing ear removes its own files only.
+
+Opened
+: 2026-11-17
