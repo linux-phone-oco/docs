@@ -1452,22 +1452,6 @@ Opened
 : 2026-11-17
 
 
-<a id="mic-held"></a>
-### The microphones held across boots: audio-mic out of the known gaps
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: The mic kernel is now the phone's default (devlab kernel keep, lab-tools kernel-promote done). Step: audio-mic out of surya's [health] gaps once it holds. Proof: mic-hears-speaker and mic-top-hears-speaker pass in three consecutive boots of the kept kernel (the boot race without audio services, audio-cold-boot-race, would show here).
-
-Opened
-: 2026-11-17
-
-
 <a id="mic-upstream"></a>
 ### Upstream: surya's capture joins sm7150-mainline PR 60
 
@@ -1517,3 +1501,19 @@ Opened
 
 Waits
 : a SIM card
+
+
+<a id="mic-held"></a>
+### The microphones held across boots
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: The mic kernel is the phone's default (devlab kernel keep) and audio-mic is out of surya's known gaps (surya-lab #102, bring-up). Left: show that it holds. Proof: mic-hears-speaker and mic-top-hears-speaker pass in three consecutive boots of the kept kernel; a boot without audio services (audio-cold-boot-race) would show here.
+
+Opened
+: 2026-11-17
