@@ -1909,3 +1909,45 @@ Rejected
 
 About
 : google-walleye
+
+---
+
+
+<a id="2026-11-17-keeper-6-adsp-floor"></a>
+### sleep-adsp-awake: the DSP side read, two floor tests
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Read the DSP and the others' votes awake; two measured cycles with adsp stopped, then adsp+cdsp+modem stopped (adsp-floor.sh): cxsd/aosd/ddr 0 both times. Phone rebooted once cleanly, suite 35 pass 0 fail. Recorded research, decision 2026-11-17-adsp-is-not-the-floor, backlog.
+
+Considered
+: A trace of the rpmh sleep set: no rpmh trace events in this kernel.
+
+About
+: deep-sleep
+
+---
+
+
+<a id="2026-11-17-1650-how-the-phone-stands"></a>
+### How the phone stands, keeper surya-keeper-6 end
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Keeper surya-keeper-6, 2026-11-17 (end). Phone on the kept kernel 7.1.0-sm7150-calls+, rebooted once cleanly after the floor tests (about 15:42), healthy 35 pass, 0 fail, SIM checks skip; no watchdog bite. sleep-adsp-awake: two measured cycles with the audio DSP stopped, then adsp+cdsp+modem stopped: cxsd, aosd, ddr 0 both - the DSP is not what holds the SoC (research 2026-11-17-adsp-stopped-cx-aosd-ddr-stay-0, decision 2026-11-17-adsp-is-not-the-floor, script research/deep-sleep/2026-11-17-adsp-floor/adsp-floor.sh). The PSCI cluster domain reached its deepest state (S2) in the cycle. Sensorspd and rootpd stay masked.
+
+Considered
+: next: sleep-cluster-params (now rank 1): redo the cycle on the prepared dtb (devlab kernel try calls --dtb cp.dtb; one-shot), adsp-floor.sh keep OUTDIR as the cycle with summaries before and after. Then the UARTs' CX vote (cycle with both UARTs closed) and the rpmh sleep set (no trace events in this kernel: not known yet how to read it). sleep-adsp-awake keeps only: does the ADSP firmware fill its own qcom_stats entry (not known yet).
+
+About
+: deep-sleep
