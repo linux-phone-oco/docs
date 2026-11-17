@@ -100,7 +100,7 @@ Haptics (vibration motor) × Xiaomi POCO X3 NFC
 
 <a id="modem-data--xiaomi-surya"></a>
 Mobile data × Xiaomi POCO X3 NFC
-: partial — notes: Mobile data fix landed (6.2.0); calls and SMS not separately confirmed. — updated: 2026-11-04 — judged: partial — measured: modem-registered skip (works), modem-running pass (present), modem-seen pass (present) — measured run: 20261117-052724
+: partial — notes: Mobile data works on mainline with a SIM (2026-11-17, Vodafone.de, LTE): tqftpserv >= 1.2 (from Alpine edge until v3.24 carries it) lets the modem finish starting, and a NetworkManager gsm connection with no APN uses the network's default. The phone proves it after every boot: mobile-data - three pings and a 100 kB download over the modem's interface. surya-lab provisions both (packages tqftpserv@edge, lab/mobile.nmconnection). — updated: 2026-11-17 — judged: works — measured: modem-registered skip (works), modem-running pass (present), modem-seen pass (present) — measured run: 20261117-052724
 
 <a id="modem-calls--xiaomi-surya"></a>
 Phone calls × Xiaomi POCO X3 NFC

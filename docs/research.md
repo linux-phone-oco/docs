@@ -355,3 +355,22 @@ Question
 
 Found
 : Per run: the modem registered and its bearer connected (mmcli), the bearer's interface found from ModemManager, then over that interface only (curl --interface, so Wi-Fi cannot pass for it): a DNS lookup, five pings to a fixed address (round trip, loss), and a 100 kB HTTPS download timed (speed.cloudflare.com/__down?bytes=100000 or a file the project hosts), about 150 kB with overheads. Boots run up to ~45 a day in bring-up, so about 7 MB on a heavy day; once a week a 5 MB download measures throughput. That is under 0.3 GB a month even on busy months: the 3 GB lasts most of a year at the worst rate and years at an ordinary one. A check also reads the bearer's own byte counters (the interface's /sys/class/net/IFACE/statistics before and after) so each run states what it used, and skips when the month's total passes a budget set in the manifest. Skips without a SIM, as the modem checks already do.
+
+
+<a id="modem-online-tqftpserv"></a>
+### modem-online-tqftpserv
+
+Project
+: linux-phone-oco/surya-lab
+
+Date
+: 2026-11-17
+
+Question
+: Why did surya's modem fail as soon as a SIM went in, and what makes mobile data work?
+
+Found
+: The modem looped 4769 times reading and writing /readwrite/lctoem.tmp: tqftpserv 1.1.1 (Alpine v3.24) never writes short WRQ files, so the state files stayed 0 bytes, the modem stayed in DMS mode shutting-down, UIM reported 'GW primary session index unknown' and ModemManager 'sim-missing'. tqftpserv 1.3 from Alpine edge (two packages, no other dependencies) fixed it on the next boot: mode online, Vodafone.de LTE, home registration, signal 71%. Mobile data then failed with 'Multiple PDN connection to same APN not allowed' when the NetworkManager connection named the APN web.vodafone.de: the modem's default profile attaches with an empty APN, which the network fills in. A gsm connection with no APN works: IPv4 and IPv6, 3/3 pings at 32 ms, 500 kB at 1.2 MB/s. The SIM sits in slot 2 (slot 1: no ATR), as pmaports #4441 found.
+
+Sources
+: pmaports-4441-tqftpserv
