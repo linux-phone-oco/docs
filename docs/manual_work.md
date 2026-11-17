@@ -170,7 +170,7 @@ Action
 : ran two fastboot boot tries
 
 Count
-: 1
+: 2
 
 First
 : 2026-11-17
@@ -182,10 +182,10 @@ Status
 : manual
 
 Minutes
-: 1
+: 2
 
 Effort
-: 1
+: 2
 
 Load
 : 5
@@ -325,7 +325,7 @@ Action
 : typed the tries notes by hand
 
 Count
-: 1
+: 2
 
 First
 : 2026-11-17
@@ -337,10 +337,10 @@ Status
 : manual
 
 Minutes
-: 1
+: 2
 
 Effort
-: 1
+: 2
 
 Load
 : 5
