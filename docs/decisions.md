@@ -658,3 +658,28 @@ Why
 
 Rejected
 : Keeping ocoeco note beside tad (two tools writing one database - the overlap this ends); one database per sub-repository (one nature kept in five places); retiring ocoeco everywhere (the author's observatory rests on it, and it was not asked); a new 'ocotad' command line over the database (a second tool over one database: tad's named statements say the same as files beside the data); queries compiled into tad (each new one would need a release of tad, where a file lands with the work that needs it); drawing the face from this database now (its CI works; not before observing is a burden).
+
+
+<a id="2026-11-17-test-kernels-from-branches"></a>
+### 2026-11-17-test-kernels-from-branches
+
+Project
+: linux-phone-oco/surya-lab
+
+Date
+: 2026-11-17
+
+Decision
+: A test kernel that proves a part is built from pushed branches of linux-phone-oco/linux (a test branch merging the fix branches), never from a hand-edited tree. Hand-edited trees stay for one-off experiments (switches, traces), their changes kept as patches in surya-audio/patches; a finding becomes a commit before it is called proven.
+
+Why
+: On 2026-11-17 the WCD device tree on feat/surya-wcd937x-mic-headphone turned out never to have been the tree proven on the phone - wrong SoundWire controller addresses, a vote the DSP rejects, the reset's polarity - because the proven tree in surya-audio/kernel-rc3/src-wcd was edited by hand and never committed. The branch kernel built from PRs 3-5 then booted healthy with the codec.
+
+Rejected
+: Keeping the working tree that proved something as the reference: nothing reads it, it drifts from the branches, and what is sent upstream is not what was tested.
+
+About
+: microphone
+
+Research
+: microphone-codec-drops-off
