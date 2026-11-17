@@ -3668,40 +3668,6 @@ About
 : google-walleye
 
 
-<a id="walleye-first-fastboot-boot"></a>
-### First fastboot boot of the walleye kernel: the phone leaves fastboot and its gadget answers
-
-Project
-: linux-phone-oco/google-walleye-lab
-
-Status
-: open
-
-Note
-: One try through devlab (fastboot boot now BOOT.IMG), nothing written; a person watches the first one. Answers the open questions: does ABL apply the stock dtbo to our dtb, vbmeta, bootloader version, max-download-size. If ABL rejects it, record that and stop: the dtbo stub (id 2704, porthole) needs a write, which is the author's decision.
-
-Opened
-: 2026-11-17
-
-Waits
-: walleye-kernel-dts, walleye-bootimage, walleye-initramfs-usb-gadget; the author's go for the first witnessed try
-
-Needs
-: phone
-
-Device
-: google-walleye
-
-Proof
-: lsusb on the host shows the gadget within 60 s of fastboot boot and ssh/telnet to 172.16.42.1 answers (test: walleye-gadget-up)
-
-Rank
-: 1
-
-About
-: google-walleye
-
-
 <a id="walleye-debug-without-display"></a>
 ### Reach a hung or crashed walleye without a display: warm reset, pstore, UART
 
@@ -4254,3 +4220,34 @@ Rank
 
 About
 : deep-sleep
+
+
+<a id="walleye-first-fastboot-boot"></a>
+### First fastboot boot of the walleye kernel: the phone leaves fastboot and its gadget answers
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: in-progress
+
+Note
+: Images built (lab PR 3). Tries 1-2: the bootloader flipped the slots, our kernel probably never ran (walleye-first-fastboot-boot-tries, walleye-slot-flip-why). Tries now run on b under decision walleye-slot-flags-tries-on-b; header variants follow. A refusal over the dtbo (overlay id 2704) is the author's decision (a write).
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: lsusb on the host shows the gadget within 60 s of fastboot boot and ssh/telnet to 172.16.42.1 answers (test: walleye-gadget-up)
+
+Rank
+: 1
+
+About
+: google-walleye
