@@ -5114,10 +5114,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: ~/Projects/walleye-build/bisect/boot-s1.img (sha in bisect/SHA256SUMS); see walleye-bisect-stock-to-ours. Per try as walleye-own-images-first-state; answer = does the phone leave fastboot, and does 172.16.43.1 answer (s1). No writes.
+: no start, fell back to a; see walleye-try-s1-s2-s3
 
 Opened
 : 2026-11-17
@@ -5142,10 +5142,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: ~/Projects/walleye-build/bisect/boot-s2.img (sha in bisect/SHA256SUMS); see walleye-bisect-stock-to-ours. Per try as walleye-own-images-first-state; answer = does the phone leave fastboot, and does 172.16.43.1 answer (s1). No writes.
+: no start, fell back to a
 
 Opened
 : 2026-11-17
@@ -5170,10 +5170,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: ~/Projects/walleye-build/bisect/boot-s3.img (sha in bisect/SHA256SUMS); see walleye-bisect-stock-to-ours. Per try as walleye-own-images-first-state; answer = does the phone leave fastboot, and does 172.16.43.1 answer (s1). No writes.
+: accepted, not started, stays in fastboot
 
 Opened
 : 2026-11-17
