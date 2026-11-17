@@ -1546,3 +1546,21 @@ Considered
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-1410-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Keeper phone-keeper-20261117-1259: ran the suspend cycle once more with Bluetooth blocked and the serial's wakeup disabled (research/deep-sleep/2026-11-17/suspend-cycle-v2.sh). The phone never came back: no answer at any address 10 minutes after the 60 s RTC wake time, so it hung in the freeze. The kept kernel is 7.1.0-sm7150-calls+; health unknown now, it needs a power-button hold by the author.
+
+Considered
+: next: the author holds the power button (the phone boots the kept kernel); then read why before cycling again - enable pstore/ramoops or a serial trace so a hang leaves a record, and try the cycle with a shorter freeze and the wakeup source list read first. sleep-wake-uart waits on that decision. Never cycle with the ssh pipe open on the phone: run it with systemd-run and read the results after.

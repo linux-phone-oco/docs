@@ -3400,6 +3400,9 @@ Note
 Opened
 : 2026-11-17
 
+Waits
+: a deeper decision: why the phone hangs hard in the freeze with Bluetooth blocked and the serial wake disabled is unknown; it needs the author to hold the power button to recover it, and a way to read the hang (pstore or a serial) before another cycle
+
 Proof
 : soc-sleeps
 
