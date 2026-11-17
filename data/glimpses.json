@@ -35,3 +35,4 @@
 {"id":"g-20261117-015231","at":"2026-11-17T01:52:31Z","by":"devlab","kind":"docs","summary":"1 runs of xiaomi-surya filed by devlab, from the phone's own reports"}
 {"id":"g-20261117-014615","at":"2026-11-17T01:46:15Z","by":"research-deep-sleep","kind":"docs","summary":"Deep sleep researched: measured s2idle to the SoC's floor, its steps and its check"}
 {"id":"g-20261117-015705","at":"2026-11-17T01:57:05Z","by":"devlab","kind":"docs","summary":"1 runs of xiaomi-surya filed by devlab, from the phone's own reports"}
+{"id":"g-20261117-015753","at":"2026-11-17T01:57:53Z","by":"research-deep-sleep","kind":"docs","summary":"Deep sleep's first step names the suspend cycle lab-tools already plans"}
