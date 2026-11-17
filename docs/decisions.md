@@ -1148,3 +1148,31 @@ Rejected
 
 About
 : lpoco-dispatcher
+
+
+<a id="2026-11-17-bringup-image-header-layer"></a>
+### 2026-11-17-bringup-image-header-layer
+
+Brief
+: bringup image: abootimg-oxide is the header layer for read and write; mkbootimg is the oracle in the test, not wrapped by pack
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Decision
+: lpoco-bringup image pack/info/unpack/check use abootimg-oxide for the v0 header (parse and write); our code adds the v0 id (SHA-1 over kernel, ramdisk, second with sizes) and the page padding. mkbootimg stays the oracle: the test bringup-pack-matches-mkbootimg builds the same image with it (plain header and with os words) and compares bytes; it skips as 'not measured: no mkbootimg'. The header facts come from device.toml [boot] (deviceinfo words), read by the bringup library (devlab's reader ignores the table until it needs it). check prints one ok/FAIL/not-measured line per fact and exits 1 on a miss; info and unpack.boot.toml print the header as a [boot] table (offsets from base 0), so unpack then pack round-trips.
+
+Why
+: The research measured the crate's header bytes equal to mkbootimg's; the two gaps are small and proven by test. Native Rust pack means no Python or android-tools needed at run time, and the oracle test guards it.
+
+Rejected
+: Wrapping mkbootimg for pack: only needed if the crate were not byte-exact, and it would put a python tool in every run. Writing the 1632-byte header by hand: the crate already does it and also parses v1-v4 for later items.
+
+About
+: bringup-image-v0
+
+Research
+: bringup-image-v0-oxide-writes-v0

@@ -2806,10 +2806,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: One roof (decision 2026-11-17-bringup-in-lab-tools): the crate and binary are named lpoco-bringup from the first commit, run as 'lpoco bringup ...', born with or after lpoco-dispatcher; wherever this note says bringup for the program, read lpoco-bringup. Decision 2026-11-17-bringup-in-lab-tools. First: create the workspace member lab-tools/bringup (lib + bin, argenv) and the FAILING test lab-tools/bringup/tests/pack_v0.rs: from small committed fixture parts (kernel, ramdisk, one appended dtb) 'bringup image pack' output equals mkbootimg's for walleye's header (base 0, kernel 0x8000, ramdisk 0x1000000, tags 0x100, page 4096, cmdline) byte for byte, and 'bringup image check' fails on a wrong ramdisk offset, passes on the right one (the fields check-bootimg.sh counts: magic, size within partition, v0, offsets, os words, cmdline, appended dtb with qcom,msm-id). The test skips as 'not measured: no mkbootimg' where android-tools is absent. First step settles the biggest unknown: does abootimg-oxide write v0 byte-exact (else wrap mkbootimg for pack and keep Rust for info/unpack/check). Header facts come from device.toml [boot]; add that table to the manifest reader.
+: Landed in lab-tools PR 85 (https://github.com/linux-phone-oco/lab-tools/pull/85): crate lpoco-bringup (lib+bin, argenv, family version 0.1.7, release-plz version_group), image info|unpack|pack|check for header v0, [boot] from device.toml; proof bringup-pack-matches-mkbootimg green (pack equals mkbootimg byte for byte, check fails a wrong ramdisk offset and passes the right one). Decision 2026-11-17-bringup-image-header-layer. Next, own items: swap, initramfs, pin-and-hooks, release; the device template's [boot] table with CHANGE values.
 
 Opened
 : 2026-11-17
