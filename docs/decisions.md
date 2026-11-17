@@ -1015,3 +1015,28 @@ About
 
 Research
 : kb-navigation-summarised
+
+
+<a id="2026-11-17-a-coordinator-per-lane"></a>
+### 2026-11-17-a-coordinator-per-lane
+
+Brief
+: Each phone has a lane coordinator that starts and renews its keepers; a scheduled task only nudges it
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: A lane coordinator per phone (surya-coordinator) is a visible session in the sidebar: it starts the phone keepers itself, continues or replaces each when it reports, archives finished ones, and routes what needs the author's hands to the top coordinator. The scheduled task linux-phone-keeper-waker only sends it 'continue' when the queue has work and no keeper is live.
+
+Why
+: The author wants every running piece visible in the sidebar, and a keeper's parent receives its reports automatically; the top coordinator then coordinates coordinators.
+
+Rejected
+: A hidden scheduled waker that does the keeper's work itself (invisible, no parent to receive reports); the top coordinator starting keepers itself (one session for every lane, its context swamped).
+
+About
+: deep-sleep
