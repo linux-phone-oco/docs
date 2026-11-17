@@ -2515,3 +2515,21 @@ Done
 
 Considered
 : next: sensors-without-crash (make the patched daemon lasting: build, state root, drop-in, unmask, across suspend), sleep-fastrpc-helpers, floor-sh0-owner (turning point)
+
+---
+
+
+<a id="2026-11-17-2030-walleye-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: s0n (no footer) tried from the healthy state: left fastboot, off USB like s0; the phone is OFF USB and needs a hand power hold (Power 10-30 s), then boots Android on a (a active+successful); nothing flashed
+
+Considered
+: next: after the hand reset, the parts bisect (s2 kernel, s3 dtb) one at a time; the footer is ruled out
