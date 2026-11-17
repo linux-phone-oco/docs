@@ -3833,7 +3833,7 @@ Status
 : in-progress
 
 Note
-: Both offset sets built and checked (15 checks each, 0 failed): boot-a.img (taimen: ramdisk 0x1000000, tags 0x100) sha256 fbcf0673..., boot-b.img (Lineage: ramdisk 0x2000000, tags 0x1e00000) sha256 c37693d4...; 16248832 bytes (<32 MiB), header v0, page 4096, dtb appended with msm-id. At ~/Projects/walleye-build/images. Waits on walleye's stock boot.img header to choose the set; try a first, b if it does not leave fastboot.
+: Four images, 17 checks each, 0 failed: a,b as before; c,d = a,b with os_version 8.1.0 / patch level 2020-01 (4 header bytes differ). sha256 in ~/Projects/walleye-build/images/SHA256SUMS. Header v0 fits walleye per public sources (walleye-bootimage-header-public); stock header still unread. Untried: the dtbo overlay id (walleye-dtbo-overlay-id) and an AVB footer.
 
 Opened
 : 2026-11-17
