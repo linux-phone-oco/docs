@@ -134,7 +134,7 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: in-progress
 
 Note
 : With the sensors service off, one boot (2026-11-09) never announced the ADSP audio services, so no sound card until the ADSP was restarted by hand. Not reproduced in two further valid cold boots (audio services about 0.1-0.2 s after the ADSP, card present). Watch for it; if it recurs, check whether the in-kernel pd-mapper was loaded before the ADSP booted.
@@ -142,6 +142,8 @@ Note
 2026-11-17: no longer rare - 3 of 8 boots that night (stock and test kernels alike) came up with the ADSP running but no audio services, so no sound card; restarting remoteproc0 (stop, start) brought the card back each time. The speaker's support is only as good as this; a fix, or at least a recovery at boot, is next after the microphone - or before it if it keeps recurring.
 
 2026-11-17, read from the phone's journal (bring-up): in a bad boot the ADSP comes up but the APR audio services (aprsvc:service:4:3/4/7/8) are never added; in a good boot they appear 0.2 s after 'remote processor adsp is now up'. In the bad boot they appeared only right after the manual ADSP restart. So the protection-domain up notification (PDR, through the in-kernel PD mapper) never arrived. qcom_pd_mapper is a module nothing depends on (lsmod: used by 0), so it can load after the ADSP has booted. Next: load qcom_pd_mapper before the remoteprocs (modules-load.d through the device manifest, or the initramfs), count bad boots over twenty reboots before and after; then the kernel fix (pas depending on the PD mapper) for upstream.
+
+2026-11-17 trial (bring-up): with /etc/modprobe.d/devlab-pd-mapper.conf on the phone (softdep qcom_q6v5_pas pre: qcom_pd_mapper) 13 of 13 boots came up with the sound card, against 8 failing of 42 health runs before. Other distributions do the same (omarchy puts qcom_pd_mapper in the initramfs for Snapdragon laptops). Next: twenty more boots, then carry the file in device.toml's flash overlays with its reason, and the kernel-side fix (the remoteproc driver depending on the PD mapper) for upstream.
 
 Opened
 : 2026-11-09
@@ -202,7 +204,7 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: in-progress
 
 Note
 : Taken up 2026-11-17 by the bring-up session, as the weakest link the data shows: audio-mic and audio-earpiece are both broken and two milestones rest on them (surya-sound, and the calls of surya-phone and lp-calls-and-messages), while the other broken parts (cameras, fingerprint, sensors) rest only on every-part and the modem waits for a SIM card. Where it stands (surya-audio/wcd-boots, 2026-11-11): with the LPI pin-mux fix (pins 19 and 23: swr_tx_data and swr_rx_data at their right function index) the WCD9375 enumerates on both SoundWire buses, binds, and the card POCO X3 is made with the codec's controls. Capture then fails at prepare: the TX SoundWire master (62ed0000) reads nothing back from the codec (swrm_wait_for_rd_fifo_avail read underflow, reading DPN_PortCtrl of port 1, addr 0x102), so Program transport params fails with -5 - also with the bus and codec held awake. Next: a health check that records from the main microphone and fails until it hears a signal (test first), then the read-back on the TX bus: compare the TX data pins and the controller's read settings with the vendor kernel and sibling SoCs (sm6150, sm7125).
@@ -210,6 +212,8 @@ Note
 2026-11-17, night (bring-up): the check mic-records runs after every boot (a known gap until it passes). In one-off test kernels the cause narrowed: about a millisecond after the sound card registers, the WCD9375 drops off both SoundWire buses at once and is never enumerated again, so the capture's port setup gets no answer. Ruled out: the clock-stop resume path, runtime suspend, headset detection, and any traced register write, supply or GPIO in that window. Lead: our device tree's active reset pin state drives the active-low reset low, where the vendor's drives it high. Next: a try with the reset's active state output-high, logging the bus-level SoundWire writes at card registration. Full record: surya-lab research/microphone.md.
 
 2026-11-17, later (bring-up): the drop is explained and fixed - ASoC puts idle components into their sleep pin state, and the codec's sleep state held its reset low (traced to snd_soc_bind_card). Fixed on linux-phone-oco/linux PR #4 (with the SoundWire pin-mux fix as PR #3), both queued in upstream-queue for sm7150-mainline, waiting for the author to send. With it the codec stays attached and capture prepares, but delivers exact zeros. The built-in microphones are digital mics (TX DMIC1-3); this DSP rejects the VA capture port, so they go through the TX macro. Next: why the TX decimators deliver zeros (register sequence against the vendor's tx-macro), then the DMIC route. Tests use no sound louder than the author allows (lab-tools test-sound-level-setting).
+
+2026-11-17, ~04:40 UTC (bring-up): THE MICROPHONE WORKS, on a test kernel built from branches (linux-phone-oco/linux test/surya-mic). The last fault: the capture link used the TX SoundWire controller's playback DAI (swr2 0); capture through DAI 1 (PR #6, found in pulpoff/linux-surya, a mainline surya tree on Mobian whose device tree also confirmed tonight's other fixes). surya's microphones are analog (ADC1 bottom, ADC2 top). Proof decided by the phone: surya's check mic-hears-speaker plays a 1 kHz tone at -6 dBFS and 20% volume (the author heard it: 'nice and soft') and finds it 57 dB above the noise - pass. All four fixes queued in upstream-queue for sm7150-mainline, waiting for the author. Next: the proven kernel as the phone's default (lab-tools kernel-promote, asked of the conveyor) so audio-mic leaves the known gaps and the face keeps works; then the top mic (ADC2), the headset mic, a UCM capture profile, and the earpiece through the WCD EAR PA.
 
 Opened
 : 2026-11-09
