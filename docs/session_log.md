@@ -2475,7 +2475,7 @@ Entry date
 : 2026-11-17
 
 Done
-: Stock-config kept kernel 7.1.0-sm7150-calls+ running, nothing kept from the try; healthy after one traced s2idle cycle (back by RTC alarm, BT unblocked, watchdog stopped). floor-entry-trace done, floor-irq-quiet dropped.
+: Nothing changed on the phone: kept kernel 7.1.0-sm7150-calls+, last suite (18:51) as at the previous hand-over. The only queue item, sleep-standby-current, needs the author to unplug USB for an hour (and Android booted for its number); marked as waiting for him.
 
 Considered
-: next: soc-sleeps still fails with the entry in order; the holder is not the entry - a deeper decision (what the AOP sees on this flush, standby current as arbiter, genpd S2idle column 0); floor-sh0-owner paused; sensors-registry-writes, sleep-fastrpc-helpers
+: next: floor-sh0-owner (turning point), sensors-registry-writes, sleep-fastrpc-helpers; standby current once he can unplug
