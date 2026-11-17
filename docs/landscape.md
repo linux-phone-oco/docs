@@ -117,16 +117,16 @@ Checked
 
 
 <a id="photocraft-fleet"></a>
-### The Craft apps' agent fleet
+### ArtCraft: seventeen apps, one organisation
 
 Project
-: storytold (PhotoCraft and 12 sibling apps)
+: ArtCraft (storytold; getartcraft.com)
 
 What
 : Seven, then thirteen clean-room Rust apps built with about 8 parallel Claude agents, each owning one subsystem directory. House rules kept once (craft-contrib/standards) and stamped into every repository's AGENTS.md with a checksum; CI shared from one actions repository; agents check an issue and claim it before working; a generated scorecard, ranked gaps list and parity checklists say what is left; a test oracle (Photoshop's own renders, a CPU compositor for the GPU one) decides what counts as progress; remaining work estimated in agent-hours.
 
 For us
-: The same shape fits us: our ways are kept once (practices.json, lab-agent guide); our oracle is the phone's own suite, filed by itself; per-part ownership maps to sessions owning places. Worth taking: claim before work, estimates in agent-hours, the scorecard drawn from data - and the lesson that breadth is fast and only an oracle keeps the numbers honest.
+: The same shape fits us, almost one to one: craft-contrib (rules and RFCs, stamped into every AGENTS.md) is creation-guidelines and the practices; craft-common-actions (CI called, not copied) is ocoeco's gather and the package conveyor's workflows; craft-launcher (installs and updates every app) is the package conveyor's Alpine repository to come; craft-repo-status-app and craft-wiki are the face and docs; every app agent-ready (CLI, JSON control, MCP) is devlab mcp and agent access. What they have and we lack: craft-skills - procedures shared as agent skills, discoverable by every agent rather than remembered (our oco-work words, as skills); and *-corpus repositories - reference data an oracle compares against (for a phone: what Android does on the same hardware - sleep current, audio levels, sensor readings - measured once and kept). Worth taking too: claim before work, estimates in agent-hours, a ranked gaps list and scorecard drawn from data, and the lesson that breadth is fast and only an oracle keeps the numbers honest.
 
 Link
 : https://github.com/storytold/photocraft/blob/main/AGENTS.md
