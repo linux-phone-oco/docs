@@ -493,7 +493,7 @@ Proves
 : works
 
 Says
-: a quiet tone from the phone's speaker found by its own microphone, 20 dB above the noise
+: the bottom microphone finds a quiet tone from the phone's speaker, 20 dB above the noise
 
 
 <a id="speaker-stereo"></a>
@@ -507,3 +507,16 @@ Proves
 
 Says
 : the speaker plays in two channels
+
+
+<a id="mic-top-hears-speaker"></a>
+### mic-top-hears-speaker
+
+Component id
+: audio-mic
+
+Proves
+: works
+
+Says
+: the top microphone finds a quiet tone from the phone's speaker, 20 dB above the noise
