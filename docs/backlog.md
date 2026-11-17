@@ -4132,3 +4132,22 @@ Proof
 
 About
 : deep-sleep
+
+
+<a id="fastboot-slots-told"></a>
+### fastboot boot says where the phone went and the slots' flags; set-active gated
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: Done 2026-11-17 (lab-tools PR 80, d510232), asked by walleye-coordinator after research walleye-first-fastboot-boot-tries: boot now reads current-slot and slot-unbootable/successful/retry-count of a and b before, watches up to 3 min (back in fastboot, Android adb 18d1:4ee7, Linux USB network), says what the flags became once back in fastboot; fastboot's own exit is no longer the verdict. state reads the flags (walleye now: current b, a unbootable). devlab fastboot set-active now SLOT, metadata only, refused unless [fastboot] slot_switch = true (by a recorded decision; walleye's stays false). Installed on the lab.
+
+Opened
+: 2026-11-17
+
+About
+: dl-safe
