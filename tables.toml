@@ -440,6 +440,47 @@ name = "updated"
 type = "date"
 required = true
 
+# what a person judged - witnessed, read in a changelog, reasoned - with the notes as its evidence; the
+# status shown is derived from it and the latest results (derive/support-status.sql)
+[[tables.support_status.fields]]
+name = "judged"
+type = "string"
+enum = ["works", "partial", "broken", "unknown", "not-applicable"]
+
+# what the phone's own suite saw of the part on its latest run, and which run
+[[tables.support_status.fields]]
+name = "measured"
+type = "string"
+
+[[tables.support_status.fields]]
+name = "measured_run"
+type = "string"
+
+# Every test the phone's health suite makes, and what its pass proves: that the part is there (present),
+# or that it does its work (works) - a sound card registered is not sound heard
+[tables.tests]
+key = ["id"]
+
+[[tables.tests.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.tests.fields]]
+name = "component_id"
+type = "string"
+required = true
+
+[[tables.tests.fields]]
+name = "proves"
+type = "string"
+required = true
+enum = ["present", "works"]
+
+[[tables.tests.fields]]
+name = "says"
+type = "string"
+
 [tables.test_results]
 key = ["id"]
 
@@ -663,3 +704,7 @@ to = ["devices"]
 [[rules.references]]
 field = "device_sources.source_id"
 to = ["sources"]
+
+[[rules.references]]
+field = "tests.component_id"
+to = ["components"]

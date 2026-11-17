@@ -1,0 +1,35 @@
+{"id":"root-fills-its-partition","component_id":"kernel","proves":"works","says":"the system fills its partition"}
+{"id":"root-has-room","component_id":"kernel","proves":"works","says":"the system partition has room"}
+{"id":"root-writable","component_id":"kernel","proves":"works","says":"a file can be written"}
+{"id":"no-oops","component_id":"kernel","proves":"works","says":"no oops, BUG or panic this boot"}
+{"id":"boot-warnings","component_id":"kernel","proves":"works","says":"no kernel warning but the known ones"}
+{"id":"no-processor-crashes","component_id":"kernel","proves":"works","says":"no signal processor crashed this boot"}
+{"id":"no-failed-units","component_id":"kernel","proves":"works","says":"no service failed but the known ones"}
+{"id":"cdsp-running","component_id":"kernel","proves":"present","says":"the compute DSP runs"}
+{"id":"adsp-running","component_id":"audio-speaker","proves":"present","says":"the audio DSP runs"}
+{"id":"sound-card","component_id":"audio-speaker","proves":"present","says":"the sound card is registered"}
+{"id":"amp-channels","component_id":"audio-speaker","proves":"present","says":"each amplifier is fed its channel"}
+{"id":"amp-volume-0x4c","component_id":"audio-speaker","proves":"present","says":"the left amplifier is not muted at the chip"}
+{"id":"amp-volume-0x4d","component_id":"audio-speaker","proves":"present","says":"the right amplifier is not muted at the chip"}
+{"id":"default-output","component_id":"audio-speaker","proves":"present","says":"the shell plays to a real sound card"}
+{"id":"heard-left","component_id":"audio-speaker","proves":"works","says":"a tone on the left speaker heard by the lab microphone"}
+{"id":"heard-right","component_id":"audio-speaker","proves":"works","says":"a tone on the right speaker heard by the lab microphone"}
+{"id":"modem-running","component_id":"modem-data","proves":"present","says":"the modem processor runs"}
+{"id":"modem-seen","component_id":"modem-data","proves":"present","says":"ModemManager sees the modem"}
+{"id":"modem-registered","component_id":"modem-data","proves":"works","says":"registered on a network, with a SIM"}
+{"id":"wifi-interface","component_id":"wifi","proves":"present","says":"a Wi-Fi interface exists"}
+{"id":"wifi-connected","component_id":"wifi","proves":"works","says":"joined a network, with an address"}
+{"id":"wifi-reaches-gateway","component_id":"wifi","proves":"works","says":"the gateway answers through Wi-Fi"}
+{"id":"bt-controller","component_id":"bluetooth","proves":"present","says":"a Bluetooth controller exists"}
+{"id":"bt-powered","component_id":"bluetooth","proves":"present","says":"the adapter is powered"}
+{"id":"panel-connected","component_id":"display-panel","proves":"present","says":"the panel is connected"}
+{"id":"backlight","component_id":"display-panel","proves":"present","says":"the backlight is lit"}
+{"id":"touch-device","component_id":"touchscreen","proves":"present","says":"a touchscreen input device exists"}
+{"id":"vibrator","component_id":"haptics","proves":"present","says":"a vibration motor exists"}
+{"id":"nfc-device","component_id":"nfc","proves":"present","says":"the NFC controller is seen"}
+{"id":"usb-role","component_id":"usb-otg","proves":"present","says":"the USB role switch exists"}
+{"id":"usb-awake","component_id":"usb-otg","proves":"works","says":"on USB the lab link holds (wake lock held)"}
+{"id":"jack-detector","component_id":"audio-headphone","proves":"present","says":"the headset jack detector exists"}
+{"id":"reader-exposed","component_id":"fingerprint","proves":"present","says":"a fingerprint reader is exposed"}
+{"id":"motion-and-light","component_id":"sensors","proves":"present","says":"motion, light or proximity sensors are exposed"}
+{"id":"image-sensor","component_id":"camera-rear","proves":"present","says":"an image sensor is bound"}
