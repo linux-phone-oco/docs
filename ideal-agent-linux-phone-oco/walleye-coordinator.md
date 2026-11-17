@@ -35,3 +35,12 @@ docs worktree of your own, `tad q about --subject google-walleye --format csv | 
   yourself by `keep-the-start-light`.
 
 Why: decision 2026-11-17-a-coordinator-per-lane; walleye-fastboot-first.
+
+## Starting sessions (since 2026-11-17)
+
+Stored tasks, manual only: `walleye-keeper` (top of `tad q phone-queue` that is walleye's and waits on nothing, within
+the recorded decisions: tries on b, nothing flashed), `walleye-research` (oldest open item with `needs = 'research'`
+about google-walleye), `walleye-builder` (`needs = 'build'`). Record the work in docs first, then `run_scheduled_task`
+with the task id; one at a time each. Decisions that need no hands are mine (a researcher subagent on a lighter model
+when unsure; record research and decision before anyone acts; two lines to the top coordinator); the author is asked only
+for his hands or a write that cannot be undone (ideal-agent keep-a-shared-resource, "When a keeper cannot decide").
