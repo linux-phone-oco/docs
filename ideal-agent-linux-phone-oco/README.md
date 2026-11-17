@@ -6,17 +6,19 @@ records, changes a device, researches, orchestrates, keeps a shared resource - i
 the domain: who works here, on what, with which tools. What is known about the phones is not here but in
 this repository's database (`tad q about --subject X`; see [AGENTS.md](../AGENTS.md)).
 
-Checked against ideal-agent 0.3.22 (overlay-check under 15%).
+Checked against ideal-agent 0.3.27 (overlay-check under 15%). A stored task's prompt is only its head and a `Brief:` line naming one of these files (decision 2026-11-17-a-stored-start-is-a-head-and-a-brief); the brief keys what differs by the `Name:` line.
 
 | Brief | The role | Its method (ideal-agent skill) |
 |---|---|---|
 | [coordinator.md](coordinator.md) | the author's one session: relays his words, keeps the records true, routes work | `keep-the-start-light` (renewing itself) |
 | [surya-coordinator.md](surya-coordinator.md) | surya's lane coordinator: starts and renews the phone keepers, never touches the phone | `keep-a-shared-resource`, `keep-the-start-light` |
 | [orchestration.md](orchestration.md) | tends the conveyor and the sessions on it | `orchestrate-agents` |
-| [phone-keeper.md](phone-keeper.md) | keeps surya: its queue, one change at a time, through devlab (bring-up folded in) | `keep-a-shared-resource`, `bring-up-a-part`, `change-a-device` |
+| [phone-keeper.md](phone-keeper.md) | keeps a lane's phone (surya-keeper, walleye-keeper): its queue, one change at a time, through devlab (bring-up folded in) | `keep-a-shared-resource`, `bring-up-a-part`, `change-a-device` |
 | [walleye-coordinator.md](walleye-coordinator.md) | the Pixel 2's lane coordinator, on surya's pattern | `keep-a-shared-resource` |
-| [feature-research.md](feature-research.md) | finds the way for one hard feature | `research-a-feature` |
+| [feature-research.md](feature-research.md) | finds the way for one hard feature; a lane's research launchers (surya-research, walleye-research) | `research-a-feature` |
 | [bring-up.md](bring-up.md) | prepares a part's work for the keeper | `bring-up-a-part` |
+| [builder.md](builder.md) | builds one item: lab-tools-builder (lab-tools), walleye-builder (the Pixel 2's images) | `land-a-change`, `write-code-by-the-canon` |
+| [patrol.md](patrol.md) | linux-phone-patrol: a read-only round every six hours, signs filed where they belong | `keep-the-start-light` |
 
 Every brief, and the author's words in it, is a starting point: look around first (ideal-agent's look-around-first,
 practice 22) before building on it. A coordinator that sees a method missing researches it on its own

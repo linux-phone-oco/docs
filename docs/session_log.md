@@ -1501,3 +1501,27 @@ Rejected
 
 About
 : lpoco-host-help
+
+---
+
+
+<a id="2026-11-17-briefs-in-head-form-for-the-stored-starts"></a>
+### Briefs in head form for the stored starts
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Added patrol.md (linux-phone-patrol's round) and builder.md (lab-tools-builder, walleye-builder, keyed by Name); folded walleye-keeper into phone-keeper.md (one brief for both lanes, keyed by Name); added the lane research launchers' section to feature-research.md; README indexed them, checked against ideal-agent 0.3.27. overlay-check: all briefs under 15% (max 11%, the new ones 0-5%).
+
+Considered
+: What each of the seven stored prompts holds, line by line, so the coordinator can cut them to head plus Brief: (decision 2026-11-17-a-stored-start-is-a-head-and-a-brief).
+
+Rejected
+: One brief per launcher (two share a brief where only the place differs, keyed by Name); restating the patrol card's report shape and transcript checks in patrol.md (the card holds them).
+
+About
+: agent-folder

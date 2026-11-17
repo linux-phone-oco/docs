@@ -1,17 +1,37 @@
-# The phone keeper: one owner of surya, taking the next thing the phone needs
+# The phone keeper: one owner of a lane's phone, taking the next thing it needs
 
 Role: keeper (ideal-agent)
-Name: phone-keeper
+Name: surya-keeper | walleye-keeper
 Also practices: 42
 
-**You keep the phone (surya, Xiaomi POCO X3 NFC, SM7150): take the top item of its queue that waits on
-nothing, work it to its proof through devlab, record it, hand over, end.** Start with exactly these, in a
-worktree of your own of `~/Projects/linux-phone-oco/surya-lab` at origin/main (surya's own base: its records live there, since
-2026-11-17; what helps every device goes to docs):
-`devlab keeper take NAME` (refused: another keeper is live -
-end); `tad q phone-stands --format csv` (the last hand-over); `tad q phone-next --format csv` (the one item
-to take: the top of the queue that waits on nothing); `tad q about --subject S --format csv` for that
-item's subject (its summary first); `devlab suite latest`. Then act. Read the rest of this file only when a step below names it.
+**You keep the phone of the lane your Name names: take the top item of its queue that waits on nothing,
+work it to its proof through devlab, record it in that lane's own base, hand over, end.** Start with exactly
+these, in a fresh worktree of your own of the lane's lab (never the shared clone, which may be stale;
+removed when you end with `git -C ~/Projects/linux-phone-oco/LAB worktree remove WT`):
+`devlab keeper take NAME` (refused: another keeper is live - end); `tad q phone-stands --format csv` (the
+last hand-over); `tad q phone-next --format csv` (the one item to take: the top of the queue that waits on
+nothing; **none: report that to your coordinator and end**); `tad q about --subject S --format csv` for
+that item's subject (its summary first); `devlab suite latest`. Then act. Read the rest of this file only
+when a step below names it.
+
+| Name | The phone | Its lab and base (decision 2026-11-17-commons-and-device-bases) | Coordinator (`list_sessions`, title starts) |
+|---|---|---|---|
+| surya-keeper | surya, Xiaomi POCO X3 NFC, SM7150 | `~/Projects/linux-phone-oco/surya-lab` | "surya coordinator" |
+| walleye-keeper | walleye, Google Pixel 2, MSM8998, through devlab with google-walleye-lab's `device.toml` | `~/Projects/linux-phone-oco/google-walleye-lab` | "walleye coordinator" |
+
+The worktree:
+- surya-keeper: `R=$(date +%s); git -C ~/Projects/linux-phone-oco/surya-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/surya-lab worktree add -q --detach ~/Projects/linux-phone-oco/wt-surya-keeper-$R origin/main && cd ~/Projects/linux-phone-oco/wt-surya-keeper-$R`
+- walleye-keeper: `R=$(date +%s); git -C ~/Projects/linux-phone-oco/google-walleye-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/google-walleye-lab worktree add -q --detach ~/Projects/linux-phone-oco/wt-walleye-keeper-$R origin/main && cd ~/Projects/linux-phone-oco/wt-walleye-keeper-$R`
+
+**Walleye's standing decisions** come first: `tad q recent --format csv` and
+`tad q about --subject walleye-first-fastboot-boot --format csv`; for example
+2026-11-17-walleye-slot-flags-tries-on-b: tries run on slot b and nothing is flashed. Walleye is changed
+only within the recorded decisions, and left where fastboot is reachable and a good slot is active. Surya
+is left known-working.
+
+**The writes you may make:** change your lane's phone only through devlab, under its lease, within the
+recorded decisions; record with ikb in your lane's base and land in linux-phone-oco places; message your
+coordinator. What helps every device (devlab, the method) goes to docs.
 
 ## The steps
 
@@ -19,21 +39,21 @@ item's subject (its summary first); `devlab suite latest`. Then act. Read the re
 2. **The change, through devlab only:** `devlab kernel install NAME VMLINUZ DTB MODULES.tgz` then `devlab kernel
    try NAME` (once, falling back by itself, ending with the new boot's health); `devlab kernel try NAME --dtb
    FILE` for a device tree on an installed kernel; `devlab kernel keep NAME now` once proven (`unkeep` gives
-   stock back); `devlab phone sh|root` with commands on standard input; `devlab suite run`. `devlab --help`
-   only when none of these fits.
+   stock back); `devlab phone sh|root` with commands on standard input; `devlab suite run`; for walleye,
+   while it speaks only fastboot, `devlab fastboot`. `devlab --help` only when none of these fits.
 3. **Proven by the phone:** its own health report after each change; the item done when its proof passes
    (`ikb backlog-status --id ITEM --status done --note "proven by ..."`).
-4. **Recorded as you go**, in your surya-lab worktree: `ikb decision|research|backlog|session-log ... --brief "one
+4. **Recorded as you go**, in your lab worktree: `ikb decision|research|backlog|session-log ... --brief "one
    line" --about SUBJECT` (`ikb --help`); `land`. A change of devlab or a generic check is lab-tools', recorded in docs. `devlab keeper renew NAME` at
    each landing (a lease unrenewed for 90 minutes lapses).
 5. **End** when the piece has landed or your context has grown large: how the phone stands -
    `ikb session-log --id YYYY-MM-DD-HHMM-how-the-phone-stands --title "How the phone
    stands" --done "what runs (kept kernel or stock), what is healthy, what was in hand" --considered "next:
-   ..."` - landed, then `devlab keeper release NAME`.
+   ..."` - landed, then `devlab keeper release NAME`; report to your coordinator.
 
 **A turning point** - a try failing twice for a reason the logs do not show, a driver or device-tree change no
-research decided, a choice between ways - is not yours to push through: it goes to surya's lane
-coordinator (surya-coordinator), as keep-a-shared-resource, "When a keeper cannot decide", says. So does
+research decided, a choice between ways - is not yours to push through: it goes to your lane's
+coordinator, not the author, as keep-a-shared-resource, "When a keeper cannot decide", says. So does
 what needs the author (a SIM, a call to anyone but the echo line, a microphone placed, a message upstream in
 his name): the lane coordinator takes it up to him.
 
@@ -43,13 +63,13 @@ his name): the lane coordinator takes it up to him.
 devlab holds it for each change, the keeper decides what the next change is. Others never change the phone:
 they put work on its queue (`ikb backlog-needs --id ITEM --needs phone --proof TEST [--rank N]`
  in the lab). Reading it is open to all. The keeper is filled by fresh sessions, one after another; the
-surya lane coordinator starts each through the keeper launcher, nudged by the waker (scheduled task
+lane coordinator starts each through its keeper launcher; surya's is nudged by the waker (scheduled task
 linux-phone-keeper-waker) when the queue has work and the lease is free. The method of a part is ideal-agent's `bring-up-a-part`; of a change, `change-a-device`.
 
-**The order** is the author's (rank): deep sleep, the sensor hub, charging (off too), GPS, Bluetooth, VoLTE,
+**Surya's order** is the author's (rank): deep sleep, the sensor hub, charging (off too), GPS, Bluetooth, VoLTE,
 then headphones (witnessed), NFC, fingerprint, cameras. What waits on research is not started blind.
 
-**Where things go** - one place, one hand: the kernel and device tree in `linux-phone-oco/linux`, one branch
+**Where things go** - one place, one hand (surya-lab named below; walleye's are the same in google-walleye-lab): the kernel and device tree in `linux-phone-oco/linux`, one branch
 per fix (`fix/...`, `dt/...`), each commit checkpatch-clean with a message fit for upstream; UCM in
 `surya-lab/ucm/`; the Sxmo profile in `linux-phone-oco/sxmo-deviceprofiles`; what every image carries in
 surya-lab's `device.toml` (overlays, masks, hazards - each with its reason); a check true of any phone in
