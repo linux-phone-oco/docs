@@ -431,19 +431,6 @@ Says
 : a fingerprint reader is exposed
 
 
-<a id="motion-and-light"></a>
-### motion-and-light
-
-Component id
-: sensors
-
-Proves
-: present
-
-Says
-: motion, light or proximity sensors are exposed
-
-
 <a id="image-sensor"></a>
 ### image-sensor
 
@@ -585,3 +572,29 @@ Proves
 
 Says
 : the VoiceMMode1 PCM, its routing controls and q6voiced are there
+
+
+<a id="motion-and-light"></a>
+### motion-and-light
+
+Component id
+: sensors
+
+Proves
+: present
+
+Says
+: motion, light or proximity sensors are exposed - as IIO devices or through iio-sensor-proxy (a DSP's sensor core)
+
+
+<a id="proximity-reads"></a>
+### proximity-reads
+
+Component id
+: sensors
+
+Proves
+: present
+
+Says
+: the proximity sensor gives a reading through iio-sensor-proxy (near or far when covered is a witnessed test)

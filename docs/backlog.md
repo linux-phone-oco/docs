@@ -147,37 +147,6 @@ About
 : audio-mic
 
 
-<a id="sensors-registry-writes"></a>
-### ADSP sensors: let hexagonrpcd serve a writable sensor registry
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: The sensors firmware on SM7150 (surya) rebuilds its registry from the configs at start and writes temp.json beside it; hexagonrpcd refuses every write by design, and does not serve registry/../sns_reg_version either. Sensors need both: the version marker served (patch drafted against hexagonrpc v0.5.0-20) and writes to a per-device writable copy of the registry (as Android persist is writable). An upstream change to linux-msm/hexagonrpc; until then the sensors service stays off on surya.
-
-Opened
-: 2026-11-09
-
-Waits
-: the decision of a feature research session: the author has hard ones researched first (2026-11-17)
-
-Needs
-: phone
-
-Proof
-: motion-and-light
-
-Rank
-: 12
-
-About
-: sensors
-
-
 <a id="audio-cold-boot-race"></a>
 ### One cold boot came up without audio services
 
@@ -709,11 +678,16 @@ Status
 Note
 : With hexagonrpcd's rootpd helper attached the audio DSP crashed on every suspend attempt (24 of 24), so it and the sensors helper are masked and the sensors are gone (surya-lab: sensors-without-crash). postmarketOS stops the helper before suspend and starts it after on the Pixel 3a for the same crash. Do the same on surya with a systemd sleep hook, then unmask both helpers. Proven by: in one boot after a measured sleep, motion-and-light passes, soc-sleeps passes and no audio DSP crash is counted on resume. Upstream question kept: why an attached FastRPC client makes the DSP assert across suspend.
 
+2026-11-17 (research-sensor-hub, decision 2026-11-17-sensors-registry-kept-current): the sensors come back by sensors-and-the-mask and sensors-without-crash (ranks 10-11), not by unmasking alone - with sensorspd unmasked as it stands, the DSP crash-loops at start, not only at suspend. Here only the suspend side: sensorspd already stops before suspend (its unit Conflicts=suspend.target) and nothing restarts it after (stop-only by design, research sensors-across-suspend). Measure first whether the sensors keep streaming after a resume with the helper stopped (libssc speaks QMI to the DSP; the helper may be needed only at registry time); restart it after resume (a unit WantedBy=suspend.target, After=) only if they do not. rootpd stays masked. Proof (once the sensors are up): after a measured sleep in one boot, motion-and-light and soc-sleeps pass and no-processor-crashes passes.
+
 Opened
 : 2026-11-17
 
 Needs
 : phone
+
+Proof
+: motion-and-light
 
 Rank
 : 4
@@ -1839,68 +1813,6 @@ Needs
 
 About
 : audio-mic
-
-
-<a id="sensors-and-the-mask"></a>
-### Are the sensors broken, or masked by us?
-
-Project
-: linux-phone-oco/surya-lab
-
-Status
-: open
-
-Note
-: The wiki reports the sensors working; our checks say broken. We masked hexagonrpcd-adsp-sensorspd for the suspend crash. One try: unmask it, check the sensors, then suspend once to see whether the crash returns - and record which we keep.
-
-Opened
-: 2026-11-11
-
-Waits
-: the decision of a feature research session: the author has hard ones researched first (2026-11-17)
-
-Needs
-: phone
-
-Proof
-: motion-and-light
-
-Rank
-: 10
-
-About
-: sensors
-
-
-<a id="sensors-without-crash"></a>
-### Sensors, without crashing the audio processor
-
-Project
-: linux-phone-oco/surya-lab
-
-Status
-: open
-
-Note
-: No motion or light sensor is exposed: the sensor hub's service is masked because with it the audio processor crashed at every suspend. Sensors return when that crash is understood.
-
-Opened
-: 2026-11-11
-
-Waits
-: the decision of a feature research session: the author has hard ones researched first (2026-11-17)
-
-Needs
-: phone
-
-Proof
-: motion-and-light
-
-Rank
-: 11
-
-About
-: sensors
 
 
 <a id="telephony-checks"></a>
@@ -3217,3 +3129,137 @@ Proof
 
 Rank
 : 50
+
+
+<a id="sensors-and-the-mask"></a>
+### Sensors probe: the registry kept current, sensorspd alone unmasked
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: Decided 2026-11-17 (research-sensor-hub, decision 2026-11-17-sensors-registry-kept-current). The first step: settles whether the DSP still writes once its configs match the registry. On the kept kernel, one boot: (1) save the mtimes, then touch -d @1230768000 every /usr/share/qcom/sm7150/Xiaomi/surya/sensors/config/*.json; (2) systemctl unmask hexagonrpcd-adsp-sensorspd and start it - rootpd stays masked; (3) watch 150 s as adsp/registry-trial.sh counts: ADSP crashes by timestamp and what hexagonrpcd says ('Tried to open ... for writing' means the DSP still re-parses); (4) ssccli --sensor proximity --timeout 10, then light and accelerometer; restart iio-sensor-proxy; (5) devlab suite run in the same boot. Passes when proximity-reads and motion-and-light pass and no-processor-crashes, mic-hears-speaker and the speaker checks still pass. If the DSP still writes: note which file it asks for (sns_pickup.json is listed but absent; sns_reg_version is unreachable) and try that once; if it still crashes, mask sensorspd again (today's state), record the trace, and the way turns to sensors-registry-writes. Never with a call in progress; nothing kept across the boot until sensors-without-crash.
+
+Opened
+: 2026-11-11
+
+Needs
+: phone
+
+Proof
+: proximity-reads
+
+Rank
+: 10
+
+About
+: sensors
+
+
+<a id="sensors-without-crash"></a>
+### Sensors kept: the probe's state in every flash, three boots without an ADSP crash
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: Decided 2026-11-17 (research-sensor-hub, decision 2026-11-17-sensors-registry-kept-current). After sensors-and-the-mask passes: carry its state in device.toml - the configs at mtime 1230768000 (a flash step or a tmpfiles 'z'/touch at boot, since apk sets the package's mtime on every upgrade) and hexagonrpcd-adsp-sensorspd out of [flash] mask (its reason comment updated; rootpd stays masked); remove 'sensors' from [health] gaps. Proven by three boots in a row with motion-and-light and proximity-reads passing, no-processor-crashes passing and the microphone and call checks unchanged. Then upstream (sensors-upstream).
+
+Opened
+: 2026-11-11
+
+Needs
+: phone
+
+Proof
+: motion-and-light
+
+Rank
+: 11
+
+About
+: sensors
+
+
+<a id="sensors-proximity-in-calls"></a>
+### Proximity blanks the screen at the ear in a call
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decided 2026-11-17 (research-sensor-hub, decision 2026-11-17-sensors-registry-kept-current). After sensors-without-crash. The sensor is surya's stk3a5x infrared one (not ultrasonic: nothing in the microphones or earpiece). Read it through iio-sensor-proxy (monitor-sensor --proximity) near and far; find how the shell on the phone (Sxmo) does its in-call proximity lock and make it read iio-sensor-proxy rather than an IIO sysfs file - a sxmo-deviceprofiles or sxmo-utils change for SSC phones; check the panel's calibration (huaxing 2.0, tianma 1.0 in the configs). Proven by proximity-reads after every boot, and once witnessed: in a call (call-echo), the author's hand over the top of the screen blanks it and lifting it brings it back.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Proof
+: proximity-reads
+
+Rank
+: 12
+
+About
+: proximity
+
+
+<a id="sensors-registry-writes"></a>
+### Fallback: hexagonrpcd serves a writable sensor registry
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decided 2026-11-17 (research-sensor-hub, decision 2026-11-17-sensors-registry-kept-current). Only if sensors-and-the-mask shows the DSP writing even with every config matching. Then: hexagonrpcd with write support limited to a state copy of the registry (hexagonrpc #27's commits at 40e5041, or the -S state directory of #19, or the #29 patch), built for the phone, sns_reg_version served beside the registry, the copy seeded from the package; one probe as in sensors-and-the-mask. A restart loop at start can leave the sensor PD unusable until reboot (#19): one try per boot. Results go to hexagonrpc #19/#29 as SM7150 data. The 2026-11-09 draft that served sns_reg_version was not kept anywhere in the lab.
+
+Opened
+: 2026-11-09
+
+Waits
+: sensors-and-the-mask: the fallback, taken only if the DSP still writes with its registry current
+
+Needs
+: phone
+
+Proof
+: motion-and-light
+
+Rank
+: 13
+
+About
+: sensors
+
+
+<a id="sensors-upstream"></a>
+### Sensors upstream: configs at the vendor mtime, SM7150 data to hexagonrpc
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decided 2026-11-17 (research-sensor-hub, decision 2026-11-17-sensors-registry-kept-current). After sensors-without-crash. Offer: firmware-xiaomi-surya (sm7150-mainline) and pmaports install the sensor configs at mtime 1230768000 (or hexagonrpcd reports a fixed mtime for served configs), which may also end davinci's ADSP loop (#3871, #4674); a comment on hexagonrpc #19/#29 with surya's finding; iio-sensor-proxy !409 confirmed on SM7150. Messages upstream go out in the author's name: his word first.
+
+Opened
+: 2026-11-17
+
+About
+: sensors

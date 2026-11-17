@@ -1212,3 +1212,311 @@ Year
 
 Takes
 : The commons' template for a knowledge base kept as data; last changed 2026-11-04 and still describing the vendored Python engine on a DuckDB schema (bin/adopt-engine.sh, .tad/), which every base left for tad on 2026-11-11.
+
+
+<a id="hexagonrpc-19"></a>
+### hexagonrpc #19: sensor registry writes refused (Milos; SC8280XP, SM8650 and SG6275P reports)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/linux-msm/hexagonrpc/issues/19
+
+Author
+: Luca Weiss and others
+
+Year
+: 2026
+
+By
+: linux-msm
+
+Takes
+: The DSP writes the registry when sns_reg_version is missing; fwrite/fremove stop the crash; a writable state dir (-S) gave streaming sensors that survived a 15 s suspend on SG6275P (2026-11-06).
+
+
+<a id="hexagonrpc-27"></a>
+### hexagonrpc PR #27: write support for the sensor registry (closed unmerged)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/linux-msm/hexagonrpc/pull/27
+
+Author
+: FadyAckad
+
+Year
+: 2026
+
+By
+: linux-msm
+
+Takes
+: fopen in write modes, fwrite, fsync, fremove, ftrunc, frename, methods above 30 by escape, large in-buffers; branch sp11-sensors 40e5041; withdrawn by its author.
+
+
+<a id="hexagonrpc-29"></a>
+### hexagonrpc #29: sns_registry_sensor.c assert takes the ADSP down (X1P42100)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/linux-msm/hexagonrpc/issues/29
+
+Author
+: mich-de
+
+Year
+: 2026
+
+By
+: linux-msm
+
+Takes
+: The same assert as surya's, with hexagonrpcd 0.4.0 -s -R; a local ~700-line patch writing only under /persist/sensors/registry fixes it; on X1E #27 stopped the reboot but found no sensors.
+
+
+<a id="hexagonrpc-source"></a>
+### hexagonrpc source (rpcd_builder.c, apps_std.c, hexagonfs_mapped.c), v0.4.0 to v0.5.0
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/linux-msm/hexagonrpc
+
+Author
+: Richard Acayan and others
+
+Year
+: 2026
+
+By
+: linux-msm
+
+Takes
+: Writes are refused by design (fopen w/a: AEE_EUNSUPPORTED); stat passes the file's real mtime to the DSP; persist/sensors/registry maps only its registry subdirectory, so sns_reg_version beside it is never served; v0.5.0 (2026-08-13) changes none of this; Alpine edge ships 0.4.0-r3.
+
+
+<a id="firmware-xiaomi-surya"></a>
+### firmware-xiaomi-surya (sensors configs and pre-parsed registry)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/sm7150-mainline/firmware-xiaomi-surya
+
+Author
+: Danila Tikhonov and others
+
+Year
+: 2024
+
+By
+: sm7150-mainline
+
+Takes
+: Ships 46 sensor configs and a pre-parsed registry of 193 files (stk3a5x light and proximity included) whose sns_reg_config records every config with data 1230768000, Android's fixed vendor mtime; no sns_reg_version.
+
+
+<a id="wiki-surya-ssc-2024"></a>
+### postmarketOS wiki, POCO X3 NFC: revision 56784 'SSC works'
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_(xiaomi-surya)
+
+Author
+: Danila Tikhonov (JIaxyga)
+
+Year
+: 2024
+
+By
+: postmarketOS community
+
+Takes
+: The one report of surya sensors working on Linux: accel, magnet, light, proximity set Y on 2024-03-11 on mainline 6.7.4 (hexagonrpcd 0.3.x then); setup unwritten, never re-checked.
+
+
+<a id="pmaports-sargo-suspend"></a>
+### pmaports !5400 and !7303: stop sensorspd before suspend (Pixel 3a)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/5400
+
+Author
+: Richard Acayan; pabloyoyoista
+
+Year
+: 2024
+
+By
+: postmarketOS
+
+Takes
+: The helper is needed only while the ADSP asks for its registry; the units Conflicts=suspend.target, stop-only: nothing restarts them after resume, by design.
+
+
+<a id="pmaports-8203"></a>
+### pmaports !8203: mount persist for hexagonrpcd (closed unmerged)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/8203
+
+Author
+: kshestov
+
+Year
+: 2026
+
+By
+: postmarketOS
+
+Takes
+: Aimed at davinci's ADSP crash loop (#3871) by serving the real persist registry; closed the same day, reason not visible.
+
+
+<a id="pmaports-4674"></a>
+### pmaports #4674: davinci sensors rarely work on v26.06
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/4674
+
+Author
+: tonimark
+
+Year
+: 2026
+
+By
+: postmarketOS
+
+Takes
+: SM7150 sibling: sensors rarely work and iio-sensor-proxy spins at 100% CPU (libssc #130).
+
+
+<a id="pmaports-5941-miatoll"></a>
+### pmaports !5941: miatoll (SM7125, ADSP only) sensors
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/5941
+
+Author
+: Vitalii Skorkin
+
+Year
+: 2024
+
+By
+: postmarketOS
+
+Takes
+: An ADSP-only sibling with working proximity through hexagonrpcd, libssc and iio-sensor-proxy; its registry's sns_reg_config records 1720791834, a registry rebuilt on Linux.
+
+
+<a id="iio-sensor-proxy-409"></a>
+### iio-sensor-proxy !409: ssc-accel and ssc-proximity udev tags
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/merge_requests/409
+
+Author
+: ollieparanoid
+
+Year
+: 2026
+
+By
+: freedesktop
+
+Takes
+: libssc support merged in 3.9 (!381); the accel and proximity tags still open upstream; surya's v26.06 carries them in its own rule.
+
+
+<a id="libssc"></a>
+### libssc: Qualcomm Sensor Core sensors for Linux
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://codeberg.org/DylanVanAssche/libssc
+
+Author
+: Dylan Van Assche
+
+Year
+: 2026
+
+By
+: libssc
+
+Takes
+: accelerometer, gyroscope, light, proximity, magnetometer, compass; ssccli reads one; #70: the same SNS_REG_INIT assert on SM8250 from missing configs; #120 ADSP fatal SNS_SEE near screen lock.
+
+
+<a id="lineage-surya-tree"></a>
+### LineageOS device tree and vendor blobs for surya
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/LineageOS/android_device_xiaomi_surya
+
+Author
+: LineageOS
+
+Year
+: 2025
+
+By
+: Xiaomi
+
+Takes
+: Sensors only through sensors.ssc; no ultrasound parts (no elliptic, mius or ro.vendor.audio.us), unlike sibling sweet; stk3a5x I2C instance 5 0x46 polled, ak0991x and adux1050 (SAR) on I2C 1, the motion chip on SPI 3; Android serves the registry as user system with persist writable, and resolves property= lines through an apps-side sns_registry get_property hexagonrpcd lacks.
+
+
+<a id="lkml-ssc-qup-from-apps"></a>
+### LKML: SSC-bound I2C driven from the application processor (X1E)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.iu.edu/hypermail/linux/kernel/2603.2/15546.html
+
+Author
+: Konrad Dybcio and others
+
+Year
+: 2026
+
+By
+: Linux kernel
+
+Takes
+: Bit-banging an SSC QUP's pins from Linux works on X1E, but the DSP may drive the same bus; the DSP route is preferred for power.
