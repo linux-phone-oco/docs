@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/linux-phone-oco/docs/compare/v0.4.0...v0.5.0) (2026-11-17)
+
+
+### Features
+
+* docs follows ideal-knowledge-base 0.4.0: briefs first ([#190](https://github.com/linux-phone-oco/docs/issues/190)) ([62a7b60](https://github.com/linux-phone-oco/docs/commit/62a7b60d591e8c9b62fe8017c8c057af5122149c))
+
 ## [0.4.0](https://github.com/linux-phone-oco/docs/compare/v0.3.0...v0.4.0) (2026-11-17)
 
 
