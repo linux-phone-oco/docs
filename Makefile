@@ -2,6 +2,7 @@
 # tables.toml declares the tables and the rules across them.
 SHELL := /bin/bash
 TAD ?= tad
+IKB ?= ikb
 # The format of the rendered pages: md (the default), rst, or both as md,rst.
 export DOCS_FORMAT ?= md
 
@@ -9,6 +10,7 @@ export DOCS_FORMAT ?= md
 setup:            ## install tad from its pinned release (its checksum checked)
 	./bin/install-tad.sh
 	$(TAD) engine
+	sh bin/install-ikb.sh
 check:            ## every row and every rule across tables (tables.toml)
 	$(TAD) check
 canon:            ## rewrite data/ in canonical form (only when it checks out)
@@ -20,9 +22,10 @@ feeds:            ## refresh the tables the feeds fill (records/feed-*.sql), the
 sql:              ## ask the data in SQL: make sql Q="SELECT ..." (a change is kept only if every rule holds)
 	$(TAD) sql "$(Q)"
 verify: check     ## what CI runs: data is valid and canonical, docs are fresh
-	@before="$$(find data docs -type f -print0 | sort -z | xargs -0 sha256sum)"; \
+	@before="$$(find data docs IKB.md -type f -print0 | sort -z | xargs -0 sha256sum)"; \
 	$(TAD) canon && $(TAD) render; \
-	after="$$(find data docs -type f -print0 | sort -z | xargs -0 sha256sum)"; \
+	! command -v $(IKB) >/dev/null || $(IKB) page --write >/dev/null; \
+	after="$$(find data docs IKB.md -type f -print0 | sort -z | xargs -0 sha256sum)"; \
 	if [ "$$before" != "$$after" ]; then \
 	  echo "data/ or docs/ was not canonical/fresh and has been rewritten. Review and commit:"; \
 	  diff <(echo "$$before") <(echo "$$after") || true; exit 1; \
