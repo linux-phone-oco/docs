@@ -3202,7 +3202,7 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
 : Decided 2026-11-17 (decision 2026-11-17-lpoco-host; research lab-host-prepare-landscape, lpoco-host-how-it-stands). A new workspace member host/ in lab-tools: the crate and binary lpoco-host, run as `lpoco host`, command line declared with argenv, Rust, no Python. It reads two declarations: the lab's own (lab.toml at the root of grenudi/lab-machine, or --lab PATH / LPOCO_LAB: its devices glob, default ~/Projects/linux-phone-oco/*/device.toml, its root prefix, and [tools] with each host tool at its pin) and each device's device.toml [host] (modules, [[host.gadget]] serial + access block|tty, deny_unknown_fields inside [host]; walleye's table from lab PR 54 is the shape). Verbs: `lpoco host plan` (the default: a content diff per file and the exact root commands; changes nothing), `lpoco host prepare now` (writes, reloads, triggers change only where it touched), `lpoco host check` (the lab user can open each declared node present; each tool at its pin; fastboot by the device's serial as the lab user).

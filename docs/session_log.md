@@ -1453,3 +1453,27 @@ Rejected
 
 About
 : lpoco-host
+
+---
+
+
+<a id="2026-11-17-lpoco-host-built"></a>
+### lpoco-host built and landed (lab-tools #91)
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: New crate host/ (lpoco-host, argenv): plan (default, changes nothing), prepare now (the printed root commands only), check. Proof tests host/tests/plan.rs: plan_grants_gadget_serial_and_changes_nothing failed first, then passed with plan_lists_host_tools_at_pins_and_installs_nothing, prepare-now, injection-refused, wide-rule and old-devlab tests. Review by programmer: fixed unvalidated codename/serial/module words (refused unless letters digits . _ -), tty open now O_NONBLOCK|O_NOCTTY, full X.Y.Z lab pin, unknown tools must be 'unknown', stage dir 0700 and removed, tests read the host's files under LPOCO_FS_ROOT, one manifest per codename (clones and worktrees of a device repo found by the glob). 51-android.rules named and kept; old devlab 0.1.0 first on PATH shown off the pin; oco-work listed as not known yet. Read plan on this lab (read-only): walleye rule + modules file new, health and host not installed, devlab 0.1.0 off the pin. Acceptance not run: prepare now belongs to whoever holds the lab with the walleye keeper.
+
+Considered
+: A udev trigger by --attr-match=serial matches only the USB device itself, not its block/tty children: a second trigger by subsystem is printed after it; to be proven by the acceptance run. lpoco-health and lpoco-host are not installed here yet (release tag needed).
+
+Rejected
+: Running prepare now here (host is shared; orchestration's boundary). Removing 51-android.rules (the author: keep it for now). Duplicate devices per worktree (first host-declaring manifest wins, conflicts named).
+
+About
+: lpoco-host
