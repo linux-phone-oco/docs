@@ -2215,3 +2215,21 @@ Rejected
 
 About
 : walleye-loaderror-stock-ids
+
+---
+
+
+<a id="2026-11-17-1900-walleye-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Control, e and f tried on slot b by fastboot boot: all Load Error, flags unchanged. Phone in fastboot, slot b current and good, a untouched reserve, stock Android unchanged, nothing written.
+
+Considered
+: next: the author's word on a dtbo stub (a write) or on slot a flags; nothing more to try from the host side without it
