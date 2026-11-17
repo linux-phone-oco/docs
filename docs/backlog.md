@@ -3480,10 +3480,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: in-progress
 
 Note
-: Read 2026-11-17: the audio DSP never slept once in a boot (qcom_stats adsp 0, against about 200 for the compute DSP and the modem), with no stream open but the VA, TX and RX macros active and soundwire_qcom.stay_awake=1 on the test kernel's command line (from the microphone hunt). A DSP that never sleeps holds CX up, and with it the SoC. First try without stay_awake, then find which LPASS vote stays up with no stream (the macros' clocks through q6prm, as a QCS8550 port found its LPASS votes held the floor). Proven by: soc-sleeps no longer lists adsp among the processors never asleep, and passes; the sound checks still pass. 2026-11-17 (surya-keeper-4): now the first thing between the phone and CX collapse: with the UART wake gone (cycle 15 bt-on) the suspend lasts as asked, yet cxsd 0, aosd 0 and qcom_stats adsp 0 before and after.
+: 2026-11-17 keeper-5: the kept kernel has no stay_awake (baseline adsp 0). Releasing the macros' hw votes at runtime suspend (try kernel 7.1.0-sm7150-calls-idle, sound checks pass) did not change adsp (still 0). Not known yet: what the ADSP firmware waits for (sensors PD, call audio, another subsystem's vote). Next: read the DSP side (pd-mapper/remoteproc state, glink channels, sensors PD) before more LPASS code; do not poll the phone during a cycle.
 
 Opened
 : 2026-11-17

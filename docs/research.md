@@ -1033,3 +1033,28 @@ About
 
 Material
 : research/google-walleye/2026-11-17/
+
+
+<a id="dropping-the-lpass-macros-hw-votes-at-runtime"></a>
+### dropping-the-lpass-macros-hw-votes-at-runtime
+
+Brief
+: Dropping the LPASS macros' hw votes at runtime suspend does not wake the audio DSP's sleep: adsp stays 0, with or without it
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Which LPASS vote keeps the audio DSP from sleeping with no stream open?
+
+Found
+: Not the macros' macro/dcodec votes alone: with them released at runtime suspend (patch kept in the material, upstream-aligned) a quiet cycle 15 bt-on still counts adsp 0, cxsd 0, aosd 0; stopping the voice, sensors and sound-server services changes nothing; the kept kernel has no stay_awake. Linux itself holds CX through the two active UARTs. Not known yet: what the DSP waits for (its own firmware, sensors PD, a vote by another subsystem).
+
+About
+: deep-sleep
+
+Material
+: research/deep-sleep/2026-11-17/

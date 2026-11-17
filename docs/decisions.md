@@ -1199,3 +1199,28 @@ Rejected
 
 About
 : dl-safe
+
+
+<a id="2026-11-17-the-macro-hw-vote-release-stays-out-of-the-kept"></a>
+### 2026-11-17-the-macro-hw-vote-release-stays-out-of-the-kept
+
+Brief
+: The macro hw-vote release stays out of the kept kernel: it did not move adsp, so it is a candidate patch, not a fix
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: Keep the patch as research material only; the kept kernel and the dts stay as they are. Next measure the DSP side (what the ADSP firmware waits for: sensors PD, call audio, a vote from another subsystem) before touching more LPASS code.
+
+Why
+: Measured on the phone: cycle 15 bt-on on the try kernel gave adsp 0, cxsd 0, aosd 0 as on the kept one; sound checks still pass (35/0).
+
+Rejected
+: Landing it into the kept kernel as a fix: no measured effect and not yet explained why clk_summary still shows count 3. Switching rx/tx to the full PM clock framework conversion now: bigger change, same unproven effect.
+
+About
+: deep-sleep
