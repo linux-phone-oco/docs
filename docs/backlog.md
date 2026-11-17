@@ -3018,10 +3018,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-17-bringup-in-lab-tools (one roof). First, before or in the same change as lpoco-bringup (bringup-image-v0). Failing tests first: (1) lpoco-runs-subcommand-by-path: with a fixture program lpoco-fake on PATH, 'lpoco fake x' runs it with x and returns its exit code; a missing NAME stops with one line naming what was searched; (2) lpoco-refuses-mixed-versions: a subcommand reporting a different --version stops the run naming both. Then 'lpoco list' (the programs found with versions), completions and a man page from the argenv declaration, 'lpoco --version'. A new workspace member of lab-tools, argenv, no tokio. Settle the one family tag with release-plz. The phone gets no dispatcher.
+: Landed in lab-tools PR 83 (https://github.com/linux-phone-oco/lab-tools/pull/83): lpoco NAME runs lpoco-NAME, refuses mixed versions, list/--version/completions/man from the argenv declaration, one family version (decision 2026-11-17-lpoco-family-version). Proof: tests lpoco_runs_subcommand_by_path, lpoco_refuses_mixed_versions in lpoco/tests/dispatch.rs. Next: lpoco-rename-lab-tone, bringup-image-v0.
 
 Opened
 : 2026-11-17
