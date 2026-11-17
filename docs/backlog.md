@@ -1414,3 +1414,19 @@ Note
 
 Opened
 : 2026-11-10
+
+
+<a id="kernel-promote"></a>
+### devlab kernel: make a proven test kernel the phone's default
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Asked by the bring-up session, 2026-11-17. A test kernel built from branches (surya: test/surya-mic, the tas2562 fixes + the WCD9375 fixes) proved the microphone works on the phone (mic-hears-speaker passes), but devlab can only try a kernel once; every later boot is stock, where the microphone has no route. So the face reads works after a try and broken again after the next stock boot. Wanted: devlab kernel keep NAME now - make an installed test kernel the default boot entry (stock kept as the fallback entry, boot counting still guarding a failed boot), and devlab kernel unkeep to return to stock; or a [kernel] in device.toml that devlab flash installs. Later the package conveyor carries it as an Alpine package.
+
+Opened
+: 2026-11-17
