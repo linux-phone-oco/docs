@@ -5,10 +5,11 @@ Name: phone-keeper
 Also practices: 42
 
 **You keep the phone (surya, Xiaomi POCO X3 NFC, SM7150): take the top item of its queue that waits on
-nothing, work it to its proof through devlab, record it, hand over, end.** Start with exactly these, in
-`~/Projects/linux-phone-oco/surya-lab` and a docs worktree of your own at origin/main:
+nothing, work it to its proof through devlab, record it, hand over, end.** Start with exactly these, in a
+worktree of your own of `~/Projects/linux-phone-oco/surya-lab` at origin/main (surya's own base: its records live there, since
+2026-11-17; what helps every device goes to docs):
 `devlab keeper take NAME` (refused: another keeper is live -
-end); `tad q phone-stands --format csv` (the last hand-over); `tad q phone-next --device xiaomi-surya --format csv` (the one item
+end); `tad q phone-stands --format csv` (the last hand-over); `tad q phone-next --format csv` (the one item
 to take: the top of the queue that waits on nothing); `tad q about --subject S --format csv` for that
 item's subject (its summary first); `devlab suite latest`. Then act. Read the rest of this file only when a step below names it.
 
@@ -21,12 +22,12 @@ item's subject (its summary first); `devlab suite latest`. Then act. Read the re
    stock back); `devlab phone sh|root` with commands on standard input; `devlab suite run`. `devlab --help`
    only when none of these fits.
 3. **Proven by the phone:** its own health report after each change; the item done when its proof passes
-   (`tad r backlog-status --project PLACE --id ITEM --status done --note "proven by ..."`).
-4. **Recorded as you go**, in your docs worktree: `tad r decision|research|backlog|session-log --project PLACE
-   ... --brief "one line" --about SUBJECT`; `tad canon && tad render`; `land`. `devlab keeper renew NAME` at
+   (`ikb backlog-status --id ITEM --status done --note "proven by ..."`).
+4. **Recorded as you go**, in your surya-lab worktree: `ikb decision|research|backlog|session-log ... --brief "one
+   line" --about SUBJECT` (`ikb --help`); `land`. A change of devlab or a generic check is lab-tools', recorded in docs. `devlab keeper renew NAME` at
    each landing (a lease unrenewed for 90 minutes lapses).
 5. **End** when the piece has landed or your context has grown large: how the phone stands -
-   `tad r session-log --project surya-lab --id YYYY-MM-DD-HHMM-how-the-phone-stands --title "How the phone
+   `ikb session-log --id YYYY-MM-DD-HHMM-how-the-phone-stands --title "How the phone
    stands" --done "what runs (kept kernel or stock), what is healthy, what was in hand" --considered "next:
    ..."` - landed, then `devlab keeper release NAME`.
 
@@ -40,8 +41,8 @@ his name): the lane coordinator takes it up to him.
 
 **The role** (ideal-agent's `keep-a-shared-resource`, practice 44): one session keeps the phone at a time;
 devlab holds it for each change, the keeper decides what the next change is. Others never change the phone:
-they put work on its queue (`tad r backlog-needs --project PLACE --id ITEM --needs phone --proof TEST
-[--rank N]`). Reading it is open to all. The keeper is filled by fresh sessions, one after another; the
+they put work on its queue (`ikb backlog-needs --id ITEM --needs phone --proof TEST [--rank N]`
+ in the lab). Reading it is open to all. The keeper is filled by fresh sessions, one after another; the
 surya lane coordinator starts each through the keeper launcher, nudged by the waker (scheduled task
 linux-phone-keeper-waker) when the queue has work and the lease is free. The method of a part is ideal-agent's `bring-up-a-part`; of a change, `change-a-device`.
 

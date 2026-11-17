@@ -6,9 +6,7 @@ Setup once: `make setup`. Editing the data: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 | linux-phone's own | Ask |
 |---|---|
-| what a phone's keeper does next, in the author's order | `tad q phone-queue --device D` (D: xiaomi-surya, google-walleye) |
-| a lane's next item of one kind | `tad q lane-next --device D --needs phone\|research\|build` |
-| how the phone stands now | `tad q phone-stands` |
+| a phone's queue, its next item, how it stands | in its lab's own base (linux-phone-oco/surya-lab, google-walleye-lab): `tad q phone-queue`, `tad q phone-next`, `tad q lane-next --needs phone\|research\|build`, `tad q phone-stands` |
 | what each device supports | `tad q coverage` |
 | one place's work, decisions, research | `tad q backlog --project lab-tools` (also `decisions`, `research`) |
 | the role briefs, the phone keeper, how records go here | [`ideal-agent-linux-phone-oco/`](ideal-agent-linux-phone-oco/README.md) |
