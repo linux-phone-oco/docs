@@ -658,6 +658,3 @@ Why
 
 Rejected
 : Keeping ocoeco note beside tad (two tools writing one database - the overlap this ends); one database per sub-repository (one nature kept in five places); retiring ocoeco everywhere (the author's observatory rests on it, and it was not asked); a new 'ocotad' command line over the database (a second tool over one database: tad's named statements say the same as files beside the data); queries compiled into tad (each new one would need a release of tad, where a file lands with the work that needs it); drawing the face from this database now (its CI works; not before observing is a burden).
-
-About
-: one-database
