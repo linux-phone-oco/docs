@@ -314,7 +314,7 @@ Form
 : finding
 
 State
-: draft
+: landed
 
 From work
 : walleye-bootstrap-method-how-it-stands
@@ -328,8 +328,14 @@ Tags
 About
 : google-walleye
 
+Forwarded
+: grenudi/ideal-agent PR 56
+
+Applied upstream
+: https://github.com/grenudi/ideal-agent/pull/56 (plugin 0.3.21, bring-up-a-part 'A device from nothing', decision 2026-11-17-a-device-from-nothing)
+
 Note
-: Finding from the Pixel 2 lane (research walleye-bootstrap-method-how-it-stands, decision 2026-11-17-walleye-vendor-kernel-first, docs PR 307): every sibling port (OnePlus 5, Mi 6, Pixel 3 XL, taimen) had a feedback channel or a known-good kernel first; our lane jumped to mainline images that the bootloader accepted but never started, and learned nothing until it repacked the accepted stock image with only the ramdisk swapped. Proposed text for the bring-up-a-part skill: step order = feedback channel (UART, USB gadget, pstore) -> vendor kernel with our initramfs as known-good (read cmdline, ids, reserved memory, rails read-only) -> mainline; and a bisect rule: when a stock image is accepted and ours is not, swap one part at a time from the stock image. Ideal-agent PR 54 already carries the general rule; walleye-specific part stays in docs. Sent to the roles session to decide.
+: Taken in as written for any device: the known-good boot may be the vendor kernel or the accepted stock image itself.
 
 Last update
 : 2026-11-17
