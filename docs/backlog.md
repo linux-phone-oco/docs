@@ -378,7 +378,9 @@ Status
 : open
 
 Note
-: One phone serialises everything that changes it: four sessions now share surya, and devlab holds the phone so that changes queue. A second phone doubles what can be tried at once and proves the device template (device-template dt-second-phone). Best: another SM7150 phone (a second surya, or a sibling such as the Redmi Note 9 Pro / Poco M2 Pro on sm7125) so the bring-up work carries over; it could also carry the Android reference (android-reference). Needs the author: the purchase and its place on the lab's USB.
+: One phone serialises everything that changes it: four sessions now share surya, and devlab holds the phone so that changes queue. A second phone doubles what can be tried at once and proves the device template (device-template dt-second-phone). Best: another SM7150 phone (a second surya, or a sibling such as the Redmi Note 9 Pro / Poco M2 Pro on sm7125) so the bring-up work carries over; it could also carry the Android reference (android-reference). Needs the author: the purchase and its place on the lab's USB. 
+
+2026-11-17: the author - not now. The one phone stays shared, changes queued by devlab's hold; not to be asked again until the author raises it.
 
 Opened
 : 2026-11-17
