@@ -5362,37 +5362,6 @@ About
 : deep-sleep
 
 
-<a id="sleep-standby-current"></a>
-### Standby current measured beside Android's
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: How much the floor saves, in milliamps: the fuel gauge's current over an hour asleep off USB (current_now and the charge counter, since they can disagree), on mainline and, as the number to match, on the phone's own Android or Ubuntu Touch - observed behaviour only. Proven by: a test standby-current entered in tests, passing under a threshold set from Android's measured number. Keeper 2026-11-17: cannot be taken without hands (the hour off USB); soc-sleeps also still fails, so a mainline number now is the not-at-floor one.
-
-Opened
-: 2026-11-17
-
-Waits
-: the author: unplug the phone from USB for an hour (devlab cannot cut USB power; on USB the phone stays awake); Android's number needs the phone booted into its own Android
-
-Needs
-: phone
-
-Device
-: xiaomi-surya
-
-Proof
-: soc-sleeps
-
-About
-: deep-sleep
-
-
 <a id="floor-genpd-rows-and-regulators"></a>
 ### Read all power-domain idle_states rows and regulator_summary users across one way-back cycle 15 bt-on (read-only)
 
@@ -5472,6 +5441,39 @@ Device
 
 Proof
 : standby-current
+
+About
+: deep-sleep
+
+
+<a id="sleep-standby-current"></a>
+### Standby current measured beside Android's
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: How much the floor saves, in milliamps: the fuel gauge's current over an hour asleep off USB (current_now and the charge counter, since they can disagree), on mainline and, as the number to match, on the phone's own Android or Ubuntu Touch - observed behaviour only. Proven by: a test standby-current entered in tests, passing under a threshold set from Android's measured number. Keeper 2026-11-17: cannot be taken without hands (the hour off USB); soc-sleeps also still fails, so a mainline number now is the not-at-floor one.
+
+2026-11-17, the author agreed to unplug USB for about an hour (via the coordinators). Mainline figure only (Android's number skipped for now). How: the keeper prepares ONE run - a loop of short way-back.sh suspend cycles (the watchdog is 30 s at most, so one long sleep cannot be used: it is petted between cycles) with the RTC wake and the fuel gauge (current_now and charge counter) logged to /var/tmp, started by systemd-run so it survives the USB cut and ends by itself after about 60 min. Then the keeper sends the surya coordinator ONE line 'unplug now' (SendMessage to local_0ecf107e-d955-49ff-aefb-b0ecaa3bcbdd), releases the lease and ends. When the coordinator says 'plugged back', a keeper reads the log and records the figure honestly (not at the SoC floor yet).
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: soc-sleeps
+
+Rank
+: 1
 
 About
 : deep-sleep
