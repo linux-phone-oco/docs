@@ -523,3 +523,19 @@ Year
 
 Takes
 : Declares TX DMIC1-3 (bias 1/3) and AMIC2 together with TX SWR_ADC0/ADC2 from ADC1/ADC2: a reference board's routing, not proof of DMICs on surya; every TX/RX path is routed to VA_MCLK
+
+
+<a id="pmaports-4441-tqftpserv"></a>
+### qcom-sm7150 (xiaomi-surya) unable to unlock sim: QMI protocol error (3) - root cause tqftpserv 1.1.1 (pmaports #4441)
+
+Project
+: linux-phone-oco/surya-lab
+
+Url
+: https://gitlab.nura.eco/nura/pmaports/-/work_items/4441
+
+Year
+: 2026
+
+Takes
+: tqftpserv 1.1.1 never writes the modem's short state files, so the modem stays in shutting-down and the SIM reads as missing; fixed in tqftpserv 1.2 (9ef11c0). On surya the SIM works in slot 2.

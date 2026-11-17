@@ -533,3 +533,16 @@ Proves
 
 Says
 : a quiet tone played through the earpiece as a mono stream is found by the top microphone beside it, 20 dB above the noise
+
+
+<a id="mobile-data"></a>
+### mobile-data
+
+Component id
+: modem-data
+
+Proves
+: works
+
+Says
+: over the modem's own interface, three pings are answered and 100 kB is downloaded

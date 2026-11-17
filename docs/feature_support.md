@@ -20,7 +20,7 @@ Rows are features, columns platforms. ✅ works · 🟡 partial · ❌ broken ·
 
 | Features | [Android](platforms.md#android) | [iOS](platforms.md#ios) | [Linux phones (best current)](platforms.md#linux-best) | [postmarketOS](platforms.md#postmarketos) | [Mobian](platforms.md#mobian) | [Ubuntu Touch](platforms.md#ubuntu-touch) | [Sailfish OS](platforms.md#sailfish-os) |
 |---|---|---|---|---|---|---|---|
-| [Mobile data](features.md#mobile-data) | [✅](feature_support.md#mobile-data--android) | [✅](feature_support.md#mobile-data--ios) | ❔ | ❔ | ❔ | ❔ | ❔ |
+| [mobile-data](tests.md#mobile-data) | [✅](feature_support.md#mobile-data--android) | [✅](feature_support.md#mobile-data--ios) | ❔ | ❔ | ❔ | ❔ | ❔ |
 | [Wi-Fi](features.md#wifi) | [✅](feature_support.md#wifi--android) | [✅](feature_support.md#wifi--ios) | ❔ | ❔ | ❔ | ❔ | ❔ |
 | [Bluetooth](features.md#bluetooth) | [✅](feature_support.md#bluetooth--android) | [✅](feature_support.md#bluetooth--ios) | ❔ | ❔ | ❔ | ❔ | ❔ |
 | [Hotspot and tethering](features.md#hotspot) | [✅](feature_support.md#hotspot--android) | [✅](feature_support.md#hotspot--ios) | ❔ | ❔ | ❔ | ❔ | ❔ |
@@ -141,7 +141,7 @@ eSIM × Android
 : works — note: platform standard — source: [android documentation](https://source.android.com) — checked: 2026-11-10
 
 <a id="mobile-data--android"></a>
-Mobile data × Android
+mobile-data × Android
 : works — note: platform standard — source: [android documentation](https://source.android.com) — checked: 2026-11-10
 
 <a id="wifi--android"></a>
@@ -325,7 +325,7 @@ eSIM × iOS
 : works — note: platform standard — source: [ios documentation](https://support.apple.com/guide/iphone/welcome/ios) — checked: 2026-11-10
 
 <a id="mobile-data--ios"></a>
-Mobile data × iOS
+mobile-data × iOS
 : works — note: platform standard — source: [ios documentation](https://support.apple.com/guide/iphone/welcome/ios) — checked: 2026-11-10
 
 <a id="wifi--ios"></a>
