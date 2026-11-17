@@ -2533,3 +2533,27 @@ Done
 
 Considered
 : next: after the hand reset, the parts bisect (s2 kernel, s3 dtb) one at a time; the footer is ruled out
+
+---
+
+
+<a id="2026-11-17-walleye-vendor-gadget3"></a>
+### vendor-gadget3 built
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: vendor-gadget3.img: vendor-gadget2 with only /init changed (early kmsg marker, 240 s self-reboot timer cancelled by /tmp/hold, reboot -f then sysrq b). Checked the stock config: MAGIC_SYSRQ=y, enable mask 0x1, PSTORE_RAM y. 14 checks ok incl. ramdisk equal to gadget2's apart from /init. Landed google-walleye-lab 0f14a92. Try queued.
+
+Considered
+: timer in the telnet shell only (dies with no shell); a watchdog (none known in the vendor config)
+
+Rejected
+: putting the timer after the gadget setup: a failed gadget would then never return
+
+About
+: walleye-first-fastboot-boot
