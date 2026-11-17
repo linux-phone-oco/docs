@@ -4269,25 +4269,6 @@ Opened
 : 2026-11-17
 
 
-<a id="device-template-base"></a>
-### device-template gets a tad base: tables.toml following idealkb, the parts contract (status, evidence, date), next and phone-queue queries, ikb
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: Owner: device-template / orchestration. surya-lab and google-walleye-lab take it as their base. Declare the parts table in the template: that declaration is the contract docs validates what it pulls against. Include a template version in the device's base.
-
-Opened
-: 2026-11-17
-
-About
-: commons-only
-
-
 <a id="feed-device-bases"></a>
 ### docs pulls each registered device base's parts over HTTPS in CI and derives support_status; stale or missing shows as not known yet
 
@@ -4384,6 +4365,25 @@ Status
 
 Note
 : A GitHub template keeps no link back. Take the idealkb pin pattern (a version in the repository, a follow script) or Copier-style answers; decide in device-template. Owner: device-template.
+
+Opened
+: 2026-11-17
+
+About
+: commons-only
+
+
+<a id="device-template-base"></a>
+### device-template gets a tad base: tables.toml following idealkb, the parts contract (status, evidence, date), next and phone-queue queries, ikb
+
+Project
+: linux-phone-oco/docs
+
+Status
+: done
+
+Note
+: Landed 2026-11-17 (linux-phone-oco/device-template #4, read back from main): data/ (12 empty tables), tables.toml (own: backlog + needs/proof/rank, devices, parts, test_runs, test_results), idealkb 0.9.1 pin with machine = test-run, devicebase.toml (template date, parts = 1: the contract docs validates), records backlog/backlog-status/backlog-needs/part/device/test-run, queries phone-queue/phone-next/parts (no --device: the base is the device), CI tad.yml (check + canon/render fresh), Makefile, README/AGENTS. device.toml untouched. surya-lab and google-walleye-lab are not changed: their keepers take it with move-device-rows. Next: feed-device-bases reads data/parts.json of each base against parts = 1.
 
 Opened
 : 2026-11-17
