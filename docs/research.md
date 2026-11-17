@@ -1773,3 +1773,28 @@ Found
 
 About
 : google-walleye
+
+
+<a id="2026-11-17-pr27-registry-try"></a>
+### 2026-11-17-pr27-registry-try
+
+Brief
+: PR #27 hexagonrpcd on surya: DSP writes /../sns_reg_version (outside any mapped dir), PR answers ENOSYS; ADSP dropped, reboot twice
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Does hexagonrpcd of PR #27 (40e5041), run over a writable state copy of the registry, stop the DSP's registry write crash on surya?
+
+Found
+: No, not as built. Built 40e5041 for the phone (static aarch64 by hand: no meson on the lab; sha256 c4557f04...), seeded a state root with sensors/persist/registry as a copy of the package registry (the layout build_persist_dir maps), one try as a transient unit, sensorspd attach. The DSP asked for /vendor/etc/sensors/sns_reg_config (not found; our tree has it under sensors/config) and for /../sns_reg_version, first read then write: the path is outside every mapped directory and the PR answers 'Function not implemented' on the write; then 'Could not fetch next FastRPC message: Broken pipe' within a second - the ADSP dropped and the audio card went. Nothing was written to the state copy. One reboot did not bring the DSP back (no apr services); the second did (35 pass, 0 fail). So a writable registry directory is not enough: sns_reg_version has to be served as a file at the path the DSP uses, and sns_reg_config found. Next try: serve /../sns_reg_version (virtual file at root, writable in the state copy) and map sns_reg_config; one try per boot, expect two reboots to recover after a crash.
+
+Sources
+: hexagonrpc-27,hexagonrpc-19
+
+About
+: sensors
