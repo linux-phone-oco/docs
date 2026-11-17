@@ -160,6 +160,34 @@ Load
 : 5
 
 
+<a id="ran-two-measured-cycles-on-the-phone"></a>
+### ran-two-measured-cycles-on-the-phone
+
+Action
+: ran two measured cycles on the phone
+
+Count
+: 1
+
+First
+: 2026-11-17
+
+Last
+: 2026-11-17
+
+Status
+: manual
+
+Minutes
+: 1
+
+Effort
+: 1
+
+Load
+: 5
+
+
 <a id="read-the-modem-s-state-by-hand"></a>
 ### read-the-modem-s-state-by-hand
 

@@ -15,8 +15,8 @@ The memory of linux-phone-oco, whose goal is Linux phones as good as Android for
 - [Kernel Activity](kernel_activity.md): 4
 - [Landings](landings.md): 102
 - [Landscape](landscape.md): 10
-- [Manual Events](manual_events.md): 6
-- [Manual Work](manual_work.md): 10
+- [Manual Events](manual_events.md): 7
+- [Manual Work](manual_work.md): 11
 - [Milestones](milestones.md): 23
 - [Platforms](platforms.md): 7
 - [Problems](problems.md): 10
