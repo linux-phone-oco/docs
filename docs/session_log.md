@@ -2419,3 +2419,27 @@ Rejected
 
 About
 : walleye-initramfs-usb-gadget
+
+---
+
+
+<a id="2026-11-17-2010-surya-research-validity"></a>
+### floor-research-validity answered
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Read qcom_stats.c, bcm-voter.c, dwc3-qcom.c, the Qualcomm sleep-current guide, the Odin 2 s2idle report; recorded research, decision, 3 backlog items. Nothing on the phone touched.
+
+Considered
+: ranked: read entry (trace, IRQ rate) before more subtraction
+
+Rejected
+: more SH0 owner-hunting, debug kernel first, calling counters broken
+
+About
+: deep-sleep
