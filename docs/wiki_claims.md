@@ -74,9 +74,9 @@ Front camera × Xiaomi POCO X3 NFC
 Rear camera(s) × Xiaomi POCO X3 NFC
 : broken — wiki field: status_camera — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
-<a id="display-panel--google-taimen"></a>
-Display panel × Google Pixel 2 XL
-: broken — wiki field: status_screen — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Google_Pixel_2_XL_%28google-taimen%29)
+<a id="display-panel--xiaomi-surya"></a>
+Display panel × Xiaomi POCO X3 NFC
+: works — wiki field: status_screen — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
 <a id="touchscreen--xiaomi-surya"></a>
 Touchscreen × Xiaomi POCO X3 NFC
@@ -122,14 +122,14 @@ Accelerometer / gyroscope / other sensors × Xiaomi POCO X3 NFC
 USB OTG × Xiaomi POCO X3 NFC
 : works — wiki field: status_otg — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
 
-<a id="fastboot--google-taimen"></a>
-Fastboot / bootloader × Google Pixel 2 XL
-: works — wiki field: status_flashing — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Google_Pixel_2_XL_%28google-taimen%29)
-
-<a id="display-panel--xiaomi-surya"></a>
-Display panel × Xiaomi POCO X3 NFC
-: works — wiki field: status_screen — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
-
 <a id="fastboot--xiaomi-surya"></a>
 Fastboot / bootloader × Xiaomi POCO X3 NFC
 : works — wiki field: status_flashing — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Xiaomi_POCO_X3_NFC_%28xiaomi-surya%29)
+
+<a id="display-panel--google-taimen"></a>
+Display panel × Google Pixel 2 XL
+: broken — wiki field: status_screen — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Google_Pixel_2_XL_%28google-taimen%29)
+
+<a id="fastboot--google-taimen"></a>
+Fastboot / bootloader × Google Pixel 2 XL
+: works — wiki field: status_flashing — source: [postmarketOS wiki](https://wiki.nura.eco/wiki/Google_Pixel_2_XL_%28google-taimen%29)

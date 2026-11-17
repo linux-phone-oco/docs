@@ -226,8 +226,8 @@ USB OTG × Google Pixel 2 XL
 Wi-Fi × Google Pixel 2 XL
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
-<a id="audio-earpiece--google-walleye"></a>
-Earpiece (call speaker) × Google Pixel 2
+<a id="audio-speaker--google-walleye"></a>
+Speaker × Google Pixel 2
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
 <a id="audio-headphone--google-walleye"></a>
@@ -238,12 +238,8 @@ Headphone output (3.5mm) × Google Pixel 2
 Microphone × Google Pixel 2
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
-<a id="audio-speaker--google-walleye"></a>
-Speaker × Google Pixel 2
-: unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
-
-<a id="bluetooth--google-walleye"></a>
-Bluetooth × Google Pixel 2
+<a id="audio-earpiece--google-walleye"></a>
+Earpiece (call speaker) × Google Pixel 2
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
 <a id="camera-front--google-walleye"></a>
@@ -254,58 +250,62 @@ Front camera × Google Pixel 2
 Rear camera(s) × Google Pixel 2
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
-<a id="deep-sleep--google-walleye"></a>
-Deep sleep that wakes for calls and messages × Google Pixel 2
-: unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
-
 <a id="display-panel--google-walleye"></a>
 Display panel × Google Pixel 2
 : unknown — notes: No report for walleye's panel. The fork has a walleye device tree, but no source says its display works (the wiki reports a blank screen on the 2 XL, taimen). No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
-<a id="fastboot--google-walleye"></a>
-Fastboot / bootloader × Google Pixel 2
-: unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
-
-<a id="fingerprint--google-walleye"></a>
-Fingerprint or face unlock × Google Pixel 2
+<a id="touchscreen--google-walleye"></a>
+Touchscreen × Google Pixel 2
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
 <a id="haptics--google-walleye"></a>
 Haptics (vibration motor) × Google Pixel 2
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
-<a id="kernel--google-walleye"></a>
-Kernel (boots without unexpected warnings) × Google Pixel 2
-: unknown — notes: No Nura wiki page and no pmaports package for walleye (checked 2026-11-17). The out-of-tree fork kcxt/linux-wahoo (wahoo/5.17, last push 2022-02-27) carries msm8998-google-walleye.dts and wahoo.dtsi, but no source says it boots; the repository calls itself 'Mainline Linux for the Google Pixel 2XL (And 2?)'. Not in mainline Linux (checked 2026-11-17). Settles with: booting that fork on a Pixel 2. — updated: 2026-11-17 — judged: unknown
+<a id="modem-data--google-walleye"></a>
+Mobile data × Google Pixel 2
+: unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
 <a id="modem-calls--google-walleye"></a>
 Phone calls × Google Pixel 2
-: unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
-
-<a id="modem-data--google-walleye"></a>
-Mobile data × Google Pixel 2
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
 <a id="modem-sms--google-walleye"></a>
 SMS × Google Pixel 2
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
+<a id="wifi--google-walleye"></a>
+Wi-Fi × Google Pixel 2
+: unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
+
+<a id="bluetooth--google-walleye"></a>
+Bluetooth × Google Pixel 2
+: unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
+
 <a id="nfc--google-walleye"></a>
 NFC × Google Pixel 2
+: unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
+
+<a id="fingerprint--google-walleye"></a>
+Fingerprint or face unlock × Google Pixel 2
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
 <a id="sensors--google-walleye"></a>
 Accelerometer / gyroscope / other sensors × Google Pixel 2
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
-<a id="touchscreen--google-walleye"></a>
-Touchscreen × Google Pixel 2
-: unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
-
 <a id="usb-otg--google-walleye"></a>
 USB OTG × Google Pixel 2
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
-<a id="wifi--google-walleye"></a>
-Wi-Fi × Google Pixel 2
+<a id="fastboot--google-walleye"></a>
+Fastboot / bootloader × Google Pixel 2
+: unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
+
+<a id="kernel--google-walleye"></a>
+Kernel (boots without unexpected warnings) × Google Pixel 2
+: unknown — notes: No Nura wiki page and no pmaports package for walleye (checked 2026-11-17). The out-of-tree fork kcxt/linux-wahoo (wahoo/5.17, last push 2022-02-27) carries msm8998-google-walleye.dts and wahoo.dtsi, but no source says it boots; the repository calls itself 'Mainline Linux for the Google Pixel 2XL (And 2?)'. Not in mainline Linux (checked 2026-11-17). Settles with: booting that fork on a Pixel 2. — updated: 2026-11-17 — judged: unknown
+
+<a id="deep-sleep--google-walleye"></a>
+Deep sleep that wakes for calls and messages × Google Pixel 2
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
