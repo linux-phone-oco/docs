@@ -2479,3 +2479,21 @@ Done
 
 Considered
 : next: floor-sh0-owner (turning point), sensors-registry-writes, sleep-fastrpc-helpers; standby current once he can unplug
+
+---
+
+
+<a id="2026-11-17-builder-vendor-gadget2-image"></a>
+### Builder: vendor-gadget2 image
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Found the panic cause in the stock kernel's config, built an xz ramdisk + init for the vendor kernel, vendor-gadget2.img (control with only the ramdisk swapped, AVB footer), 10 checks ok, landed google-walleye-lab PR 12, queued the try.
+
+About
+: walleye-first-fastboot-boot
