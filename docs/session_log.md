@@ -1723,3 +1723,39 @@ Done
 
 Considered
 : next: sleep-adsp-awake (rank 1 now): reboot without soundwire_qcom.stay_awake=1 (a one-shot test kernel cmdline through devlab kernel try), then cycle 15 bt-on and read qcom_stats adsp, cxsd, aosd; then find the LPASS vote that holds the audio DSP up. After that sleep-cluster-params on the prepared dtb (decompile /boot/dtbs-calls/qcom/sm7150-xiaomi-surya-huaxing.dtb, sed 0x41002244 and 0x4100c244, dtc, devlab kernel try calls --dtb) and a cycle 15 bt-on. Cycle method: sh /var/tmp/way-back.sh cycle 15 bt-on as a systemd-run unit with StandardOutput=file:, after devlab phone put sleep/way-back.sh; read the RTC, not date or dmesg; a bt-on cycle also records qcom_stats. Not read yet: cpuidle residency per state across a cycle (add to way-back.sh stats if the cluster question needs it).
+
+---
+
+
+<a id="2026-11-17-1530-lpoco-health-on-the-phone"></a>
+### lpoco-health put on the phone
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Built devlab from lab-tools main (the installed binary predated #75), ran suite put now, run, list and gather now. Found and fixed the old lib.sh path in 8 device checks; moved one empty report aside; gathered 19 reports into tests/results and filed 6 runs. Health reads as before: 35 pass, 6 fail, 4 not measured, SIM checks skip. The installed devlab (/home/mll/.local/bin/devlab, 14:13) is older than main: not replaced here; runs used wt-k4-labtools/target/release/devlab.
+
+About
+: deep-sleep
+
+---
+
+
+<a id="2026-11-17-1540-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Keeper surya-keeper-4, 2026-11-17 (end). Phone on the kept kernel 7.1.0-sm7150-calls+, one boot (up since about 13:45), 7 s2idle suspends this boot, no watchdog bite. The suite is now lpoco-health on the phone (put 14:10, 21 checks, /usr/bin/devlab-health kept as an alias, old reports moved to /var/lib/lpoco-health): 35 pass, 6 fail, 4 not measured - SIM checks skip; the fails are fingerprint, two image sensors, motion-and-light, proximity-reads and soc-sleeps (cxsd 0, aosd 0, adsp never asleep). Deep sleep: the wake is solved (irq 158, the UART RX pin; way-back.sh cycle SLEEP bt-on keeps Bluetooth up with the serial's wakeup off for the cycle; 3 cycles ended by the RTC alarm, hci0 up); the SoC does not yet collapse CX or AOSS. Sensorspd and rootpd stay masked. The installed devlab in /home/mll/.local/bin (14:13) is older than lab-tools main: use a build of main (cargo build --release -p devlab in a lab-tools worktree) for suite put, list, off, on.
+
+Considered
+: next: sleep-adsp-awake (rank 1): reboot without soundwire_qcom.stay_awake=1 (devlab kernel try, one-shot cmdline), then sh /var/tmp/way-back.sh cycle 15 bt-on as a systemd-run unit with StandardOutput=file: (devlab phone put sleep/way-back.sh first; it is on the phone now), read adsp, cxsd, aosd. Then sleep-cluster-params on the prepared dtb. Note: devlab suite put uses the lab as main has it, so a change to the checks must land before put. Open: gather stops on a 0-byte report (one was moved to /var/lib/lpoco-health/empty-reports/).
