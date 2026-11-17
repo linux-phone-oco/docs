@@ -1972,3 +1972,36 @@ Found
 
 About
 : deep-sleep
+
+
+<a id="2026-11-17-floor-research-validity"></a>
+### 2026-11-17-floor-research-validity
+
+Brief
+: Counters look valid; SH0 is not shown to block (awake icc read is not the flush moment); the unread facts are the RSC flush, last-CPU idle state and IRQ rate at entry
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Is SH0 x=1,y=3 the blocker at all - counter validity, clocks/GDSC, late-suspend state?
+
+Found
+: Question 1, counter validity: the counters are very probably valid. qcom_stats creates its files by reading each record's name word out of the message RAM (qcom_stats.c), and surya has aosd, cxsd and ddr: three names read, not assumed. ddr_stats also passed its magic key, and its frequency rows move while the LPM rows stay 0 (research floor-holders), so the block is live and the layout is the one sc7180 uses, where the Acer Aspire 1 counts. adsp 0 and empty apss/display/gpu are SMEM entries this firmware does not fill; they are not the SoC counters. Not found anywhere: an Android reading of these counters on SM7150 (no source, none observed). Only an independent measure can make the last doubt certain: standby current (sleep-standby-current).
+
+Question 2, is SH0 x=1,y=3 the blocker: not shown, and the reading rests on a mix-up that is worth fixing. bcm-voter.c forces keepalive BCMs only in the AMC and WAKE buckets, so a SLEEP-bucket x=1,y=3 means some request with a SLEEP-bearing tag (ALWAYS = 7) had non-zero bandwidth at the flush. The awake icc summary is not that moment: the only large vote there is USB (240000 = USB_MEMORY_AVG_HS_BW in dwc3-qcom.c, tag 7) and dwc3_qcom_suspend sets it to 0 before the last CPU flushes; the peak is cpu0/cpu6 at tag 3 (AMC|WAKE, not SLEEP). So the vote that makes x=1,y=3 is one nobody has seen being made: not USB as a floor holder (UDC unbound: counters 0 -> 0; whether SH0 changed was not read), not uart8, not the cpufreq votes by tag. Two readings remain and they cannot be told apart by subtracting: (a) the flush the log shows is stale or not the last one, i.e. the sleep set is not what the AOP sees at entry; (b) SH0 is harmless and something else blocks. So SH0 is demoted from "the blocker" to "one unexplained entry"; no more owner-hunting by tag until the entry is read.
+
+What is the blocker then: the three observations nobody has taken at the entry itself. (1) Is the RSC flush invoked on the last CPU and what does it write (tracepoints rpmh_send_msg state=sleep; rpmh_rsc_cpu_pm_callback flushes at CPU_PM_ENTER of the last online CPU). (2) What the last CPU's idle state is (power:cpu_idle with the PSCI state, per-CPU cpuidle usage/time deltas): a cycle can "take" the cluster state once and still wake every few ms. (3) Whether anything wakes the CPUs during the 15 s: /proc/interrupts delta. This last one is what the nearest measured sibling found: on the Odin 2 (SM8550) suspend succeeded, counters read 0, and the cause was an SD controller firing ~30 irq/s through the whole suspend plus a USB PHY vote and CPU0 idle disabled (armada#274). The Qualcomm guide's own order for "aosd count zero" is also: display off, USB disconnected, suspend success count, then wake locks. Surya has never had its interrupt rate read across a cycle; devlab-usb is also a wakeup source active the whole time (research floor-holders).
+
+Question 3, what a late-suspend dump should read: per-CPU cpuidle state usage/time before and after; the cluster genpd idle_states usage (taken, rejected) and the time spent; the sleep-set commands written (trace rpmh); /proc/interrupts delta; wakeup_sources; suspend_stats; qcom_stats of all nodes before and after (including each subsystem's last-entered time). All of it is tracefs/procfs/debugfs: no kernel build is needed, so floor-suspend-late-dump (a debug kernel) is not first.
+Also AOP QMP: the AOP does process RSC commands (regulators, rpmhpd and icc work), so it is alive; QMP is a separate channel and, as found, off the path.
+Sources read, not run on the phone; nothing on the phone was touched.
+
+Sources
+: qcom-stats-c,qcom-debug-high-sleep-current,armada-odin2-s2idle-274,rpmh-timeout-debug-v4,dwc3-qcom-c,sh0-bcm-voter-c,floor-travkin-aspire1
+
+About
+: deep-sleep

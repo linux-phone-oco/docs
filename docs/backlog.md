@@ -4974,10 +4974,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: keeper 2026-11-17 (docs PR 311, 295): uart8 is not the SH0 owner (tags no effect, uart8 off: SH0 still x=1,y=3), icc summary shows bw 0 on every QUP/UFS/MMC path, so SH0 looks by-design, a keepalive BCM, not a consumer vote. cxsd/aosd/ddr still 0 after ~20 cycles with: DSPs never started, WLAN off, cluster params, no ignore_unused. Questions: (1) do qcom_stats cxsd/aosd/ddr count what we think on SM7150 (counter validity, which stats nodes exist, does Android's stock kernel show them non-zero on this phone - observed only)? (2) is the sleep-set x=1,y=3 really what blocks AOSS, or is something else (clocks/GDSC/regulators/rpmh-rsc never entering sleep: is the RSC invoked at all - tracepoints) the blocker? (3) what a late-suspend dump should read, and what the PSCI/cpuidle state of the last CPU is at entry. Ends with a decision and phone items, each one change, measured by way-back.sh cycle 15 bt-on with the watchdog armed; BT-blocked cycles reset the phone (use bt-on).
+: Answered by research 2026-11-17-floor-research-validity and decision 2026-11-17-floor-read-the-entry; phone items floor-entry-trace, floor-irq-quiet; build item suspend-irq-quiet-check.
 
 Opened
 : 2026-11-17
@@ -5273,3 +5273,90 @@ Proof
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="floor-entry-trace"></a>
+### Read the suspend entry: RSC sleep flush, last-CPU idle state, IRQ delta (no kernel change)
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-17-floor-read-the-entry. One cycle: way-back.sh cycle 15 bt-on, watchdog armed (BT-blocked cycles reset). Before and after: /proc/interrupts, every cpuN/cpuidle/stateN usage+time, pm_genpd idle_states of the cluster domain, wakeup_sources, suspend_stats, all qcom_stats nodes. During: tracefs events rpmh (rpmh_send_msg), power:cpu_idle, power:suspend_resume. Record a research row with: (1) is rpmh_send_msg state=sleep written after the last CPU_PM_ENTER, and its addr/data list; (2) the last CPU's idle state; (3) interrupts/s by source over the 15 s. Proven by: soc-sleeps stays the failing test; this item is done when the research row holds those three facts (not known yet until then).
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: soc-sleeps
+
+About
+: deep-sleep
+
+
+<a id="floor-irq-quiet"></a>
+### Silence what wakes the CPUs in suspend, one source per cycle
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Only if floor-entry-trace shows interrupts through the cycle (Odin 2 was held by an SD-controller IRQ storm of ~30/s, armada#274). Take the top source from the delta, quiet it by a runtime step (driver unbind with the watchdog armed, or irq mask), one per cycle, judged by way-back.sh cycle 15 bt-on: the interrupt count falls and soc-sleeps is read again. Proven by: suspend-irq-quiet (below 50 interrupts in the suspended 15 s) passing, then soc-sleeps read.
+
+Opened
+: 2026-11-17
+
+Waits
+: floor-entry-trace
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: suspend-irq-quiet
+
+About
+: deep-sleep
+
+
+<a id="suspend-irq-quiet-check"></a>
+### Suite check suspend-irq-quiet: interrupts across one suspended cycle stay under a threshold (lab-tools)
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: A generic check in lab-tools health/suite/checks/ with its row in docs tests (ikb test): reads /proc/interrupts before and after one 15 s s2idle cycle and fails above the threshold, printing the top three sources. Fails today if floor-entry-trace shows a storm; threshold set from that reading, not guessed (not known yet).
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: suspend-irq-quiet
+
+About
+: deep-sleep

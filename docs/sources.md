@@ -2866,3 +2866,92 @@ By
 
 Takes
 : clk_ignore_unused is still the normal first-boot flag, hiding an incomplete platform description
+
+
+<a id="qcom-stats-c"></a>
+### drivers/soc/qcom/qcom_stats.c (rpmh-stats layout: aosd, cxsd, ddr read by name from the AOSS message RAM)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/soc/qcom/qcom_stats.c
+
+By
+: surya-research
+
+Takes
+: stat names are read out of the RAM (type word at 0x48 + n*size), so a file named aosd/cxsd/ddr existing proves the layout; ddr_stats needs its magic key; subsystem entries come from SMEM
+
+
+<a id="qcom-debug-high-sleep-current"></a>
+### Qualcomm Linux Power guide: Debug high sleep current
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.qualcomm.com/doc/80-70020-30/topic/debug.html
+
+By
+: Qualcomm
+
+Takes
+: Vendor's own order when aosd is zero: suspend with the display off and USB disconnected, then check the CPU suspend success count, then wake locks
+
+
+<a id="armada-odin2-s2idle-274"></a>
+### armada-os/armada#274: s2idle never enters AOSD/CXSD on Odin 2 (SM8550), measured
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/armada-os/armada/issues/274
+
+Year
+: 2026
+
+By
+: surya-research
+
+Takes
+: Same symptom on a sibling SoC found by reading: an SD-controller IRQ storm (30/s) during suspend woke CPU0 for the whole cycle, the USB PHY kept a CX vote, CPU0 deep idle disabled; counters read 0 after a suspend that reported success
+
+
+<a id="rpmh-timeout-debug-v4"></a>
+### [PATCH v4 0/3] Output debug information from RSC (Maulik Shah): cmd_db_read_name address-to-name lookup
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://patchew.org/linux/20260913-rpmh-timeout-debug-v1-v4-0-e94d3e416ea1@oss.qualcomm.com/
+
+Author
+: Maulik Shah
+
+Year
+: 2026
+
+By
+: surya-research
+
+Takes
+: Names an RPMh address (0x30000 -> cx.lvl) so a dump of remaining votes can say who; not merged as read - a later tool, not a first step
+
+
+<a id="dwc3-qcom-c"></a>
+### drivers/usb/dwc3/dwc3-qcom.c (interconnect enable/disable around suspend)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/usb/dwc3/dwc3-qcom.c
+
+By
+: surya-research
+
+Takes
+: USB_MEMORY_AVG_HS_BW is 240 MB/s - the 240000 in surya's icc read; dwc3_qcom_suspend sets the path to 0, so USB's tag-7 vote is gone before the last CPU flushes the sleep set

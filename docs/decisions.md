@@ -1682,3 +1682,31 @@ About
 
 Research
 : walleye-bootstrap-method-how-it-stands
+
+
+<a id="2026-11-17-floor-read-the-entry"></a>
+### 2026-11-17-floor-read-the-entry
+
+Brief
+: Floor: read the suspend entry (RSC flush, last-CPU state, interrupt rate) before any more subtraction; SH0 owner-hunt paused
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: Read the entry before subtracting anything more. Two phone items, both read-only on the kernel (tracefs, procfs, debugfs; one 15 s cycle via way-back.sh cycle 15 bt-on with the watchdog armed): (1) floor-entry-trace: the rpmh sleep-set writes of the last CPU, the last CPU's idle state, per-CPU cpuidle and cluster genpd deltas, the interrupt delta, wakeup_sources, and every qcom_stats node before and after; (2) floor-irq-quiet: if the interrupts are not quiet, name the top sources and silence them one at a time (the pattern that fixed the same symptom on the Odin 2). Counters are treated as valid; SH0 is treated as one unexplained entry, not the blocker, and its owner-hunt (floor-sh0-owner, floor-sh0-qup-tags) pauses until the trace says whether the flush is what the AOP sees. A build item makes the interrupt check a suite test. Standby current stays the arbiter of last resort for counter validity.
+
+Why
+: The counter files exist because their names were read from the RAM, ddr_stats passed its key and moves; the awake icc read that pointed at SH0 is not the state at the flush (USB's 240000 is dropped by dwc3_qcom_suspend, the large peaks are tag 3); and every subtraction so far (DSPs, WLAN, USB, uart8) changed nothing while the three facts that decide whether the SoC can sleep at all - flush, last-CPU state, wake rate - were never read. The closest measured sibling (Odin 2) was held by an IRQ storm through a suspend that reported success. Reading is cheaper and safer than another one-shot dtb.
+
+Rejected
+: More owner-hunting for SH0 by tag or by unbinding drivers (three tries, no effect, and a BT-blocked cycle resets the phone); the debug late-suspend kernel first (a build, when tracefs gives the same facts without one); calling the counters broken (their names and ddr rows read fine); porting downstream lpm-levels or smp2p sleepstate (already rejected, no new evidence); the rpmh timeout debug series with cmd_db name lookup (unmerged, useful later to name holders once something is held); dwc3 skip-phy-init quirk (host-mode PHY refcount on the Odin 2; surya is a gadget and the UDC-unbound cycle changed nothing).
+
+About
+: deep-sleep
+
+Research
+: 2026-11-17-floor-research-validity
