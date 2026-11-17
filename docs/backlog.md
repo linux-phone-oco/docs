@@ -3879,3 +3879,28 @@ Rank
 
 About
 : deep-sleep
+
+
+<a id="devlab-fastboot-boot-reads-slots"></a>
+### devlab fastboot boot reads the slot variables before and after a try and says what changed
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Seen 2026-11-17 (research walleye-first-fastboot-boot-tries): a failed try left slot a unbootable and slot b current, and devlab said refused. Say left-fastboot or stayed, and list changed slot variables
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Proof
+: a test that fails when devlab reports a slot change as only refused
+
+About
+: google-walleye

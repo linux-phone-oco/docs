@@ -1,0 +1,28 @@
+# after boot-a (watch every 5 s for 60 s; host USB lines with a Google id):
+t+5s: 1 fb; usb: Bus 003 Device 085: ID 18d1:4ee0 Google Inc. Nexus/Pixel Device (fastboot);Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);
+t+10s: 1 fb; usb: Bus 003 Device 085: ID 18d1:4ee0 Google Inc. Nexus/Pixel Device (fastboot);Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);
+t+15s: 1 fb; usb: Bus 003 Device 085: ID 18d1:4ee0 Google Inc. Nexus/Pixel Device (fastboot);Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);
+t+20s: 1 fb; usb: Bus 003 Device 085: ID 18d1:4ee0 Google Inc. Nexus/Pixel Device (fastboot);Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);
+t+25s: 1 fb; usb: Bus 003 Device 085: ID 18d1:4ee0 Google Inc. Nexus/Pixel Device (fastboot);Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);
+t+30s: 1 fb; usb: Bus 003 Device 085: ID 18d1:4ee0 Google Inc. Nexus/Pixel Device (fastboot);Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);
+t+35s: 1 fb; usb: Bus 003 Device 085: ID 18d1:4ee0 Google Inc. Nexus/Pixel Device (fastboot);Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);
+t+40s: 1 fb; usb: Bus 003 Device 085: ID 18d1:4ee0 Google Inc. Nexus/Pixel Device (fastboot);Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);
+t+45s: 1 fb; usb: Bus 003 Device 085: ID 18d1:4ee0 Google Inc. Nexus/Pixel Device (fastboot);Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);
+t+50s: 1 fb; usb: Bus 003 Device 085: ID 18d1:4ee0 Google Inc. Nexus/Pixel Device (fastboot);Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);
+t+55s: 1 fb; usb: Bus 003 Device 085: ID 18d1:4ee0 Google Inc. Nexus/Pixel Device (fastboot);Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);
+t+60s: 1 fb; usb: Bus 003 Device 085: ID 18d1:4ee0 Google Inc. Nexus/Pixel Device (fastboot);Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);
+
+# after boot-b (host kernel log USB lines, then watch every 10 s):
+Nov 17 17:37:35 grig kernel: usb 3-2: USB disconnect, device number 85
+Nov 17 17:37:55 grig kernel: usb 3-2: new high-speed USB device number 105 using xhci_hcd
+Nov 17 17:37:55 grig kernel: usb 3-2: New USB device found, idVendor=18d1, idProduct=4ee7, bcdDevice= 4.40
+Nov 17 17:37:55 grig kernel: usb 3-2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+Nov 17 17:37:55 grig kernel: usb 3-2: Product: Pixel 2
+Nov 17 17:37:55 grig kernel: usb 3-2: Manufacturer: Google
+Nov 17 17:37:55 grig kernel: usb 3-2: SerialNumber: <serial>
+t+10s: Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);Bus 003 Device 105: ID 18d1:4ee7 Google Inc. Nexus/Pixel Device (charging + debug); |  | lo enp6s0 enp10s0f3u1 
+t+20s: Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);Bus 003 Device 105: ID 18d1:4ee7 Google Inc. Nexus/Pixel Device (charging + debug); |  | lo enp6s0 enp10s0f3u1 
+t+30s: Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);Bus 003 Device 105: ID 18d1:4ee7 Google Inc. Nexus/Pixel Device (charging + debug); |  | lo enp6s0 enp10s0f3u1 
+t+40s: Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);Bus 003 Device 105: ID 18d1:4ee7 Google Inc. Nexus/Pixel Device (charging + debug); |  | lo enp6s0 enp10s0f3u1 
+t+50s: Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);Bus 003 Device 105: ID 18d1:4ee7 Google Inc. Nexus/Pixel Device (charging + debug); |  | lo enp6s0 enp10s0f3u1 
+t+60s: Bus 003 Device 104: ID 18d1:d001 Google Inc. Nexus 4 (fastboot);Bus 003 Device 105: ID 18d1:4ee7 Google Inc. Nexus/Pixel Device (charging + debug); |  | lo enp6s0 enp10s0f3u1 

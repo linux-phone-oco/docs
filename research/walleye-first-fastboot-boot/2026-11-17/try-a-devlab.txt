@@ -1,0 +1,1 @@
+fastboot took /home/mll/Projects/walleye-build/images/boot-a.img but <serial> is still in fastboot after a minute - nothing written; it did not start
