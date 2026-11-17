@@ -559,3 +559,16 @@ Proves
 
 Says
 : over the modem's own interface, three pings are answered and 100 kB is downloaded
+
+
+<a id="sms-loopback"></a>
+### sms-loopback
+
+Component id
+: modem-sms
+
+Proves
+: works
+
+Says
+: an SMS the phone sends to its own number arrives, at most once a day

@@ -2097,10 +2097,12 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
 : Opened 2026-11-17 (bring-up), with mobile data working (Vodafone.de network, a 1&1 SIM). A check sends a short SMS from the phone to its own number with mmcli and waits for it to arrive - proving modem-sms works without messaging anyone else. The number is kept in a private file on the lab machine (~/.config/devlab/xiaomi-surya/own-number, mode 600), never in a repository. Cost: one SMS a run; daily rather than every boot.
+
+Done 2026-11-17 (bring-up): the author gave the number; it lives in ~/.config/devlab/xiaomi-surya/own-number on the lab and /etc/devlab/private/own-number on the phone (root only), in no repository. surya-lab tests/health/base/sms-loopback.sh sends a unique token to the phone's own number and finds it within 90 s - in ModemManager, or in Sxmo's own log, because Sxmo takes each incoming SMS, shows it and deletes it from ModemManager (the first try missed it for that reason; the author saw the SMS pop up). It clears its own pop-up. First pass: received in 3 s. At most one SMS a day; other runs repeat that day's result.
 
 Opened
 : 2026-11-17

@@ -108,7 +108,7 @@ Phone calls × Xiaomi POCO X3 NFC
 
 <a id="modem-sms--xiaomi-surya"></a>
 SMS × Xiaomi POCO X3 NFC
-: unknown — notes: Not known: there is no SIM card in the phone, and without one the modem reports a failed state. Nothing about messages can be shown until a SIM is in. — updated: 2026-11-11 — judged: unknown — measured: modem-seen pass (present) — measured run: 20261110-045059
+: unknown — notes: SMS works both ways on mainline (2026-11-17, Vodafone.de network): the phone texts its own number and receives it in seconds; the author saw it arrive. Proven once a day by sms-loopback (surya-lab tests/health/base). — updated: 2026-11-17 — judged: works — measured: modem-seen pass (present) — measured run: 20261110-045059
 
 <a id="wifi--xiaomi-surya"></a>
 Wi-Fi × Xiaomi POCO X3 NFC
