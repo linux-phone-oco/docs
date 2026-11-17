@@ -4915,7 +4915,7 @@ Status
 : open
 
 Note
-: From the first state the control boot.img is accepted and starts; ours (e, b) are accepted ('Booting OKAY') but never start (stays in fastboot). Bisect, one change per image: s1 = stock kernel + stock dtb + OUR gadget initramfs (172.16.43.1) + stock cmdline (if it runs, the stock 4.4 kernel gives a known-good USB shell with our initramfs: a real result), s2 = OUR kernel (as the same compression/format as the stock kernel: lz4 Image + appended dtb) + stock dtb + stock ramdisk, s3 = stock kernel + OUR dtb + stock ramdisk. Say what differs between stock and ours that ABL could care about (kernel compression lz4 vs gzip, image size, dtb compatible/msm-id, dtb count, cmdline, header fields). Decision walleye-bisect-from-the-control. Host only; do not alter a-h.
+: s1 (stock kernel+dtb, our initramfs) is the same image as walleye-vendor-gadget-image (research walleye-bootstrap-method-how-it-stands, decision 2026-11-17-walleye-vendor-kernel-first): build it there once, the keeper's walleye-vendor-gadget-try is its try. This item is then s2 (our kernel + stock dtb + stock ramdisk) and s3 (stock kernel + our dtb + stock ramdisk), tried only if the vendor-kernel gadget run leaves the question open. Host only; keep a-h byte-identical.
 
 Opened
 : 2026-11-17
