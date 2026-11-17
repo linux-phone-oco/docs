@@ -600,3 +600,28 @@ Failed
 
 Skipped
 : 1
+
+
+<a id="20261117-013738"></a>
+### 20261117-013738
+
+Device id
+: xiaomi-surya
+
+Run at
+: 2026-11-17 01:37:38
+
+Kernel
+: 7.1.0-rc3-sm7150-wcd
+
+Shell
+: swmo
+
+Passed
+: 25
+
+Failed
+: 9
+
+Skipped
+: 1
