@@ -1389,3 +1389,28 @@ About
 
 Research
 : 2026-11-17-floor-research
+
+
+<a id="2026-11-17-the-bootloader-keeps-its-own-flags"></a>
+### 2026-11-17-the-bootloader-keeps-its-own-flags
+
+Brief
+: devlab no longer says a RAM boot leaves the slots as they were: it reads the bootloader's A/B flags before and after and says what changed; switching the active slot is a gated word of its own.
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Decision
+: fastboot boot now and set-active read current-slot and the slot-unbootable/successful/retry-count flags of both slots before and after, and say the difference; the verdict of a boot is where the phone went, not fastboot's exit. set-active (metadata) is refused unless the manifest says [fastboot] slot_switch = true, separate from writes.
+
+Why
+: walleye's try b: devlab wrote nothing, yet the bootloader's A/B logic ended on slot b with slot a unbootable, and devlab, reading fastboot's failing exit, called the try refused.
+
+Rejected
+: keeping 'nothing written, slots as they were' (true of devlab, false of the phone); folding the switch into writes = true (a flag change is not a partition write, and walleye may need one without the other); restoring slot a by devlab on its own after a try (a write that needs the author's word).
+
+About
+: dl-safe
