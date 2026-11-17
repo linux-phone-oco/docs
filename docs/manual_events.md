@@ -75,3 +75,28 @@ Effort
 
 Load
 : 5
+
+
+<a id="2026-11-17T15:37:12Z-merged-conflicting-data-rows-after-rebase"></a>
+### 2026-11-17T15:37:12Z-merged-conflicting-data-rows-after-rebase
+
+Project
+: linux-phone-oco/docs
+
+Record
+: merged-conflicting-data-rows-after-rebase
+
+At
+: 2026-11-17T15:37:12Z
+
+Change
+: walleye-research-vendor
+
+Minutes
+: 1
+
+Effort
+: 1
+
+Load
+: 5

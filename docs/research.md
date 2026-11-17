@@ -1058,3 +1058,96 @@ About
 
 Material
 : research/deep-sleep/2026-11-17/
+
+
+<a id="google-walleye-vendor-kernel-hardware"></a>
+### google-walleye-vendor-kernel-hardware
+
+Brief
+: What the vendor's GPL kernel says walleye's hardware is: Samsung S6E3FA5 panel, Synaptics touch, WCD934x + TAS2557, DRV2624, PMI8998 charger and gauge, NQ NFC, WCN3990, sensors behind the SLPI
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Which chip is each part of the Pixel 2 (walleye) and how is it wired, by Google's GPL wahoo kernel device tree and the mainline port's tree?
+
+Found
+: Read from the LineageOS copy of Google's wahoo kernel (4.4, branch lineage-22.2) and kcxt/linux-wahoo wahoo/5.17; observed facts only, nothing copied; table in research/google-walleye/2026-11-17/vendor-kernel-hardware-inventory.md.
+Walleye is the HTC-built half of the pair: its files are under dts/htc/ and called "muskie"; one base plus one of two overlays by board revision (xa/xb/xc or xd/xe/a; our MP1 maps to one of them - not known yet). SoC MSM8998 v2.1 with PM8998, PMI8998 and PM8005.
+Parts: panel Samsung S6E3FA5 5.0 in 1080x1920 command mode, 4 DSI lanes, reset GPIO94, TE GPIO10, rails PM8998 L14 1.8 V and L22 3.0 V, backlight by DCS (no WLED), always-on modes. Touch Synaptics DSX at I2C 0x20 on the BLSP1 QUP5 bus (GPIO87/88), IRQ GPIO125, reset GPIO89. Audio: WCD934x "Tavil" codec on SLIMbus, TI TAS2557 stereo speaker amp at I2C 0x4d, no jack; NXP TFA98xx amps are in the tree but disabled. Haptics TI DRV2624 (LRA 155 Hz, I2C 0x5a, reset GPIO95). LED: TI LP5562 on early revisions, PMI8998 RGB on later. Charger: PMI8998 SMB2 with Type-C PD, TPS61099 for USB host power, NXP PTN36241G redriver. Fuel gauge: PMI8998 FG gen3 with HTC battery module, 2700 mAh, 4.4 V. NFC: NXP NQ-class at 0x28 plus PN81A secure element on SPI. Fingerprint FPC1020 family (IRQ GPIO86, reset GPIO128). Wi-Fi and Bluetooth: Qualcomm WCN3990 (Bluetooth HCI on BLSP1 UART3). Cameras: two CCI sensors, rear with autofocus, OIS, EEPROM and flash, laser ranger at I2C 0x29; the sensor chips are not named in the tree (public specs: Sony IMX362 rear, IMX179 front). Pixel Visual Core ("Easel") on PCIe 0 with a BCM15602 PMIC and SPI. Storage UFS. Sensors (IMU, magnetometer, barometer, light, Hall) are not in the application processor's tree: the SLPI sensor-hub DSP owns them, firmware proprietary.
+For a phone with no display: stock describes a RAM console (ramoops) at 0xa1100000, 2 MiB, plus an alternate at 0xa3800000; the mainline port uses 0xa1810000 instead and boots with console on ttyMSM1 (BLSP2 UART1) and a USB-gadget serial ttyGS0 - which address survives a reset on this phone is not known yet.
+The mainline port's walleye file is 13 lines and sets no panel (the shared file's panel is taimen's LG one), and enables UFS, USB peripheral, one DSI, GPU, Wi-Fi, SLPI and ADSP, regulators - nothing for touch, audio, haptics, NFC, gauge, charger, cameras, sensors.
+Not known yet: camera and sensor chips on walleye itself, touch controller model, codec exact part, fingerprint wiring, Active Edge sensing, UART test pads, which overlay MP1 uses.
+
+Sources
+: lineageos-kernel-google-wahoo,kcxt-wahoo-5-17-dts,ifixit-pixel-2-xl-teardown,aosp-wahoo-kernel
+
+About
+: google-walleye
+
+Material
+: research/google-walleye/2026-11-17/
+
+
+<a id="google-walleye-android-reference-public"></a>
+### google-walleye-android-reference-public
+
+Brief
+: What 'as good as Android' means on the Pixel 2 by public sources: 2700 mAh, stereo speakers no jack, a 10-sensor set, Doze; no public standby current
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: What does Android on the Pixel 2 give, by public specifications, that a Linux phone is measured against (sensors, sleep, audio, battery)?
+
+Found
+: Public sources only (table in research/google-walleye/2026-11-17/android-reference-public-specs.md). Android reference: 5.0 in AMOLED 1080x1920, 2700 mAh, two front stereo speakers about 89 dB(A), no 3.5 mm jack (USB-C audio, Bluetooth 5 with aptX HD), 12.2 MP rear with OIS and laser focus, 8 MP front, LTE Cat. 15, NFC, eSIM plus nano-SIM, rear fingerprint, Active Edge squeeze. Sensor set to count: accelerometer, gyro, magnetometer, barometer, proximity, light, Hall, squeeze, step counter and detector, behind a sensor hub. Chips (only from the Pixel 2 XL teardown, so likely not stated for walleye): LSM6DSM IMU, AK09915C magnetometer, BMP280 barometer, AK8789 Hall, TMD4903 light, VL53L0X ranger, TAS2557 amp, DRV2624 haptics; the vendor kernel confirms TAS2557, DRV2624 and a ranger for walleye. Android battery runs (Notebookcheck): idle Wi-Fi off 24 h 17 min, web 9 h 35 min, video 9 h 24 min; field 15 to 17 h unplugged a day. Doze (when unplugged, still, screen off): network suspended, wake locks ignored, alarms and jobs deferred, maintenance windows spread out. Last software Android 11, build RP1A.201005.004.A1, support ended October 2020.
+Not known yet: standby current per hour (none published), real sensor list and rates on walleye, charger wattage, speaker level under a test tone. Only Android booted on our phone can give these (backlog google-walleye-lab/android-reference-walleye; needs the author).
+
+Sources
+: wikipedia-pixel-2,notebookcheck-pixel-2,ifixit-pixel-2-xl-teardown,lineageos-wiki-data-walleye,pixel-2-final-update,droidlife-pixel-2-battery,android-doze-standby
+
+About
+: google-walleye
+
+Material
+: research/google-walleye/2026-11-17/
+
+
+<a id="google-walleye-how-others-booted"></a>
+### google-walleye-how-others-booted
+
+Brief
+: Only taimen reached a shell on mainline (USB gadget console, black screen, a special dtbo); walleye has a tree nobody reports booting; a USB-C UART cable is tested on walleye
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: How did others boot Linux on the Pixel 2 family (boot image, A/B, fastboot boot, dtbo), what boots, and how did they reach a phone with no display?
+
+Found
+: Only the Pixel 2 XL (taimen) is reported to have booted mainline, by kcxt (Caleb Connolly) on an out-of-tree 5.10 to 5.17 fork, 2020 to 2022: black screen, USB networking to a shell, flashing works; a March 2021 mainline submission shows no sign of being merged. Walleye has a 13-line tree in the same fork and no report that it boots; neither phone is in pmaports (Pixel 3, 3 XL, 3a are). Ubuntu Touch (Halium 9, Android 4.4 kernel) has only an abandoned 16.04 port for walleye, with boot loops and no USB networking in the forum threads read.
+How the no-display phone was reached: USB peripheral mode only (SuperSpeed dropped), kernel console on a USB serial gadget ttyGS0 plus ttyMSM1 earlycon, clk_ignore_unused; a UART through the USB-C sideband pins ('Android Debug Cable', 115200 baud) which the pmOS wiki lists as tested with walleye - enabled with `fastboot oem uart enable`; pstore only partly worked. What the bootloader wants (XL only, read): a dtbo partition holding an overlay with id 2704 (0xa90) or the bootloader refuses to boot; pmaports' Pixel 3 packages append the dtb to the kernel (4096-byte pages, kernel offset 0x8000, ramdisk 0x1000000), LineageOS uses Image.lz4-dtb with recovery in the boot partition and A/B, 8 MB dtbo. Detail and URLs in research/google-walleye/2026-11-17/how-others-booted-wahoo.md.
+Not known yet: whether this phone's bootloader accepts `fastboot boot` of our image; the dtbo id walleye needs (the README is XL only; changing dtbo writes to the phone); whether `fastboot oem uart enable` only sets a RAM flag or writes something (until known, it is a change to the phone); the boot header version; slot handling for a Linux boot; any report for the small Pixel 2 booting mainline.
+Ways forward: (1) read walleye's dtbo overlay ids without writing (from Android if it boots, or Google's factory image, a proprietary download - decision needed); (2) try a first `fastboot boot` of a kernel with appended dtb and a USB-gadget serial console once devlab's fastboot mode exists; (3) build the USB-C debug cable and enable the UART only after a decision on the oem command.
+
+Sources
+: pixel2xl-pmos-wiki,kcxt-linux-wahoo,kcxt-wahoo-5-17-dts,kcxt-dtbo-wahoo-mainline,lkml-taimen-dts-patch-2021,pmos-wiki-serial-cable,android-debug-cable-howto,pmaports-google-devices,lineageos-walleye-install,ubuntu-touch-walleye,ubports-walleye-forum,halium-usbnet-debug
+
+About
+: google-walleye
+
+Material
+: research/google-walleye/2026-11-17/

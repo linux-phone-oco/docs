@@ -3610,3 +3610,41 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="walleye-dtbo-overlay-id"></a>
+### Find out which dtbo overlay id walleye's bootloader needs before a mainline kernel boots
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: The taimen bootloader refuses a kernel unless dtbo holds an overlay with id 2704 (kcxt-dtbo-wahoo-mainline); walleye's id is not known. Read it without writing: from the stock dtbo (Android booted, or the factory image - decision needed, proprietary download). Research: google-walleye-how-others-booted.
+
+Opened
+: 2026-11-17
+
+About
+: google-walleye
+
+
+<a id="walleye-usb-uart-cable"></a>
+### USB-C debug UART cable for walleye (no display): decide on 'fastboot oem uart enable' first
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: pmOS wiki lists the Android Debug Cable as tested with walleye. The oem command's effect (RAM flag or persistent) is not known, so it counts as a change to the phone: a decision first. Needs the author's hands for the cable. Research: google-walleye-how-others-booted.
+
+Opened
+: 2026-11-17
+
+About
+: google-walleye

@@ -98,6 +98,37 @@ Load
 : 5
 
 
+<a id="merged-conflicting-data-rows-after-rebase"></a>
+### merged-conflicting-data-rows-after-rebase
+
+Project
+: linux-phone-oco/docs
+
+Action
+: Merged conflicting data rows after rebase
+
+Count
+: 1
+
+First
+: 2026-11-17
+
+Last
+: 2026-11-17
+
+Status
+: manual
+
+Minutes
+: 1
+
+Effort
+: 1
+
+Load
+: 5
+
+
 <a id="ran-read-only-fastboot-getvar-on-the"></a>
 ### ran-read-only-fastboot-getvar-on-the
 
