@@ -72,7 +72,7 @@ Headphone output (3.5mm) × Xiaomi POCO X3 NFC
 
 <a id="audio-mic--xiaomi-surya"></a>
 Microphone × Xiaomi POCO X3 NFC
-: works — notes: The microphones go through the WCD9375 codec. In a test kernel (2026-11-11) the codec now comes up and the sound card is made with it, after correcting how two SoundWire pins are muxed. Recording through it is not yet shown. — updated: 2026-11-11 — judged: broken — measured: mic-hears-speaker pass (works), mic-records pass (present), mic-top-hears-speaker pass (works) — measured run: 20261117-052724
+: works — notes: Both microphones work on mainline (2026-11-17): the bottom one on WCD9375 ADC1, the top one on ADC2 at INP3, through the TX SoundWire bus and the DSP's TX_CODEC_DMA_TX_3, with the UCM profile's Mic and TopMic. The phone proves it after every boot: a soft 1 kHz beep through its speaker (-6 dBFS at 20%, which the author heard and approved) is found by each microphone through the sound server, 40-60 dB above the noise. Runs on the kept kernel linux-phone-oco/linux test/surya-mic (four WCD9375 fixes, PRs 3-6, queued for sm7150-mainline). The headset microphone is not yet tried. — updated: 2026-11-17 — judged: works — measured: mic-hears-speaker pass (works), mic-records pass (present), mic-top-hears-speaker pass (works) — measured run: 20261117-052724
 
 <a id="audio-earpiece--xiaomi-surya"></a>
 Earpiece (call speaker) × Xiaomi POCO X3 NFC
