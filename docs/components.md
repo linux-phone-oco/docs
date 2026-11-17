@@ -140,3 +140,10 @@ Category
 
 Category
 : other
+
+
+<a id="deep-sleep"></a>
+### Deep sleep (the SoC at its lowest power state)
+
+Category
+: power

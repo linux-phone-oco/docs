@@ -34,3 +34,4 @@
 {"id":"motion-and-light","component_id":"sensors","proves":"present","says":"motion, light or proximity sensors are exposed"}
 {"id":"image-sensor","component_id":"camera-rear","proves":"present","says":"an image sensor is bound"}
 {"id":"mic-records","component_id":"audio-mic","proves":"present","says":"one second recorded from the main microphone is not digital silence"}
+{"id":"soc-sleeps","component_id":"deep-sleep","proves":"works","says":"the SoC reached its lowest power state this boot (CX collapse or AOSS sleep, counted by the SoC itself)"}
