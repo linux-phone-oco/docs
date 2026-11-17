@@ -4412,3 +4412,31 @@ Waits
 
 About
 : commons-only
+
+
+<a id="walleye-load-error-why"></a>
+### What the Pixel 2's bootloader dislikes in our boot image (Load Error), found from public sources, then the image variants to try
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Four images tried, none started our kernel: a 'Booting OKAY' then stayed in fastboot, b, c, d 'Failed to load/authenticate boot image: Load Error'; the os_version/patch-level word turned a's OKAY into Load Error. Questions: header v0 vs what Pixel 2 ABL expects (page size, base, cmdline length, dtb appended vs header fields), kernel format (Image.gz-dtb vs Image+dtb, gzip vs raw), the appended dtb's qcom,msm-id/board-id/pmic-id matching, vbmeta/AVB on an unlocked unsigned image, dtbo overlay id 2704 (taimen) and whether walleye's differs. Read-only: no writes to the phone. Known: porthole's mkbootimg call for taimen, LineageOS wahoo BoardConfig, kcxt README. A dtbo stub is a write: only name it as an option with its way back.
+
+Opened
+: 2026-11-17
+
+Needs
+: research
+
+Device
+: google-walleye
+
+Proof
+: a recommended image recipe, each step cited, and the next 2-3 variants to build (research row), consistent with the tries recorded in walleye-first-fastboot-boot-tries*
+
+About
+: google-walleye
