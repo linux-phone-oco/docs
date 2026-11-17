@@ -272,3 +272,41 @@ By
 
 Kind
 : unclear
+
+
+<a id="start-over-budget-agents-md-readme-1118"></a>
+### start-over-budget-agents-md-readme-1118
+
+Project
+: linux-phone-oco/docs
+
+What
+: The agent folder's start is over the 3 KB budget of keep-the-start-light: AGENTS.md 3887 B and ideal-agent-linux-phone-oco/README.md 4236 B (start-weight on docs, 2026-11-18); roles themselves are under 32 KB (largest orchestration 27191 B). Item for agent-folder.
+
+Seen
+: 2026-11-17
+
+By
+: patrol
+
+Kind
+: stale
+
+
+<a id="session-read-guide-before-first-act-1118"></a>
+### session-read-guide-before-first-act-1118
+
+Project
+: linux-phone-oco/docs
+
+What
+: Session 7007ce97 (started ~23:07) read 'lab-agent guide' whole (19 KB) and a whole source file (12 KB) before its first act: 77 KB in 16 results; the start already carries the practices. Item for agent-folder naming those reads. Also seen, likely fitting research: sessions 07bf3625 and 992f4370 read 197 KB and 115 KB of paper-search and tad output before first act.
+
+Seen
+: 2026-11-17
+
+By
+: patrol
+
+Kind
+: unclear
