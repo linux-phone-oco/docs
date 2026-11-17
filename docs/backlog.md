@@ -3311,3 +3311,22 @@ Proof
 
 About
 : bringup
+
+
+<a id="lab-devlab-to-pin"></a>
+### The lab's devlab (and tone) move from 0.1.0 in ~/.local/bin to the family pin 0.2.1, between surya keeper runs
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: lpoco host check after prepare now (2026-11-17): devlab 0.1.0 and tone first on PATH, off the pin. devlab-watch@surya-lab runs %h/.local/bin/devlab and the surya keeper calls devlab, so the swap waits for an idle window that the surya lane names. Steps, by orchestration: keep a copy as ~/.local/bin/devlab-0.1.0; cargo install --locked --force --git https://github.com/linux-phone-oco/lab-tools --tag lpoco-v0.2.1 lpoco-lab --root ~/.local (lpoco-lab and devlab together), the same for lpoco-tone; systemctl --user restart devlab-watch@surya-lab; it is done when the unit is active and lpoco host check shows devlab and tone at 0.2.1. Roll back by putting the copy back. Also (the coordinator): cargo warns that devlab/src/main.rs and tone/src/main.rs are each in two bin targets (the second [[bin]] alias). That is harmless, and it goes away with the aliases at the end of lpoco-names-sweep.
+
+Opened
+: 2026-11-17
+
+About
+: bringup
