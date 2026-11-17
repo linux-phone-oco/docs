@@ -3052,10 +3052,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Package and binary renamed, a second [[bin]] keeps devlab (and tone) running the same code. Failing test first: 'lpoco lab phone find --help' and 'devlab phone find --help' print the same, and lpoco list shows lab, health, tone, bringup under one version. The ~450 references (AGENTS.md, READMEs, device.toml comments, scripts) are swept in later, small changes; nothing breaks at once. The MCP door moves to 'lpoco mcp' (backlog lpoco-mcp-one-door) with the old tool names kept.
+: Landed in lab-tools #86: packages lpoco-lab and lpoco-tone, second [[bin]] keeps devlab and tone running the same code; one family version 0.1.7 (release-plz version_group). Proof lpoco-lab-and-devlab-are-one-program: devlab/tests/one_program.rs (identical --help and --version for both names; lpoco list shows lab, health, tone, bringup at one version). Next: sweep the ~450 references in small changes.
 
 Opened
 : 2026-11-17

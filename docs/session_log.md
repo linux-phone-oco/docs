@@ -1315,3 +1315,27 @@ Considered
 
 About
 : bringup-image-v0
+
+---
+
+
+<a id="2026-11-17-rename-lab-tone"></a>
+### devlab becomes lpoco-lab, tone lpoco-tone
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: Renamed the two packages, kept devlab and tone as second binaries of the same source, joined both to the family version and release-plz group, README note, test devlab/tests/one_program.rs. CI first failed on a clean build (the list test saw only some binaries); the test now builds the workspace's binaries first. Read back from main: devlab/Cargo.toml names lpoco-lab.
+
+Considered
+: Tiny alias bin files with include! to avoid cargo's duplicate-target warning.
+
+Rejected
+: Alias bins: more files for a warning that cargo only prints at the manifest; two [[bin]] on one path is the plain form. Rewriting devlab's clap parser to argenv here: out of this item's scope, a separate change.
+
+About
+: lpoco-rename-lab-tone
