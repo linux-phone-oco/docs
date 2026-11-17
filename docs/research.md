@@ -1575,3 +1575,32 @@ Found
 
 About
 : commons-only
+
+
+<a id="walleye-first-fastboot-boot-tries-on-b"></a>
+### walleye-first-fastboot-boot-tries-on-b
+
+Brief
+: Second tries on slot b: boot-a accepted (Booting OKAY) but not started, boot-b refused (Load Error); slot flags did not change; our kernel still not seen
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: What do boot-a.img and boot-b.img do with slot b active, with devlab's before/after slot report?
+
+Found
+: With b active (a unbootable, as left): try a - fastboot "Booting OKAY [0.052s]", the phone stays in fastboot, no USB event, nothing answers. Try b - "Booting FAILED (remote: 'Failed to load/authenticate boot image: Load Error')", stays in fastboot. Slot flags before and after were identical both times (current b; a unbootable yes, successful yes; b unbootable no, successful yes; retry-counts 0), so set-active was not needed and was not used; nothing written.
+The first try b (17:37, slot a active) behaved differently: the phone left USB and Android came up on b with a flagged unbootable. Same image, so what decided is not known yet (the active slot, or something that changed in between). Our kernel has not been seen to start at all. Next: the builder's variant with os_version and patch level set; a dtbo stub stays the author's decision.
+
+About
+: walleye-first-fastboot-boot
+
+Material
+: research/walleye-first-fastboot-boot/2026-11-17-on-b/
+
+Supersedes
+: walleye-first-fastboot-boot-tries
