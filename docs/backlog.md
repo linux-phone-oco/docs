@@ -3433,3 +3433,25 @@ Rank
 
 About
 : deep-sleep
+
+
+<a id="sim-removed-skips"></a>
+### Checks that need the SIM skip, not fail, while it is out
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: The author removed the SIM 2026-11-17. Make call-echo, the SMS self-test, mobile data and modem-registered report 'skip: no SIM card' (detect: ModemManager shows no SIM / sim-missing) instead of failing; support status keeps calls, SMS and data at their last real measurement (the face already looks past skips - verify after the next boot, tad q support-status / the face). Nothing on the queue needs the SIM before deep sleep; if something does it waits (waits: the SIM back). Proof: after a boot, healthy with those four skipping and no part turned broken.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+About
+: surya-tested

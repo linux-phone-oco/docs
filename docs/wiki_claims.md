@@ -6,58 +6,58 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 
 ### Audio
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Speaker](components.md#audio-speaker) | [🟡](wiki_claims.md#audio-speaker--xiaomi-surya) | ❔ | ❔ |
+| [Speaker](components.md#audio-speaker) | ❔ | ❔ | [🟡](wiki_claims.md#audio-speaker--xiaomi-surya) |
 | [Headphone output (3.5mm)](components.md#audio-headphone) | ❔ | ❔ | ❔ |
 | [Microphone](components.md#audio-mic) | ❔ | ❔ | ❔ |
 | [Earpiece (call speaker)](components.md#audio-earpiece) | ❔ | ❔ | ❔ |
 
 ### Camera
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Front camera](components.md#camera-front) | [❌](wiki_claims.md#camera-front--xiaomi-surya) | ❔ | ❔ |
-| [Rear camera(s)](components.md#camera-rear) | [❌](wiki_claims.md#camera-rear--xiaomi-surya) | ❔ | ❔ |
+| [Front camera](components.md#camera-front) | ❔ | ❔ | [❌](wiki_claims.md#camera-front--xiaomi-surya) |
+| [Rear camera(s)](components.md#camera-rear) | ❔ | ❔ | [❌](wiki_claims.md#camera-rear--xiaomi-surya) |
 
 ### Display
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Display panel](components.md#display-panel) | [✅](wiki_claims.md#display-panel--xiaomi-surya) | [❌](wiki_claims.md#display-panel--google-taimen) | ❔ |
+| [Display panel](components.md#display-panel) | [❌](wiki_claims.md#display-panel--google-taimen) | ❔ | [✅](wiki_claims.md#display-panel--xiaomi-surya) |
 
 ### Input
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Touchscreen](components.md#touchscreen) | [✅](wiki_claims.md#touchscreen--xiaomi-surya) | ❔ | ❔ |
-| [Haptics (vibration motor)](components.md#haptics) | [✅](wiki_claims.md#haptics--xiaomi-surya) | ❔ | ❔ |
-| [Fingerprint or face unlock](features.md#fingerprint) | [❌](wiki_claims.md#fingerprint--xiaomi-surya) | ❔ | ❔ |
+| [Touchscreen](components.md#touchscreen) | ❔ | ❔ | [✅](wiki_claims.md#touchscreen--xiaomi-surya) |
+| [Haptics (vibration motor)](components.md#haptics) | ❔ | ❔ | [✅](wiki_claims.md#haptics--xiaomi-surya) |
+| [Fingerprint or face unlock](features.md#fingerprint) | ❔ | ❔ | [❌](wiki_claims.md#fingerprint--xiaomi-surya) |
 
 ### Connectivity
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Mobile data](components.md#modem-data) | [✅](wiki_claims.md#modem-data--xiaomi-surya) | ❔ | ❔ |
-| [Phone calls](components.md#modem-calls) | [✅](wiki_claims.md#modem-calls--xiaomi-surya) | ❔ | ❔ |
-| [SMS](components.md#modem-sms) | [✅](wiki_claims.md#modem-sms--xiaomi-surya) | ❔ | ❔ |
-| [Wi-Fi](features.md#wifi) | [✅](wiki_claims.md#wifi--xiaomi-surya) | ❔ | ❔ |
-| [Bluetooth](features.md#bluetooth) | [✅](wiki_claims.md#bluetooth--xiaomi-surya) | ❔ | ❔ |
-| [NFC](features.md#nfc) | [✅](wiki_claims.md#nfc--xiaomi-surya) | ❔ | ❔ |
+| [Mobile data](components.md#modem-data) | ❔ | ❔ | [✅](wiki_claims.md#modem-data--xiaomi-surya) |
+| [Phone calls](components.md#modem-calls) | ❔ | ❔ | [✅](wiki_claims.md#modem-calls--xiaomi-surya) |
+| [SMS](components.md#modem-sms) | ❔ | ❔ | [✅](wiki_claims.md#modem-sms--xiaomi-surya) |
+| [Wi-Fi](features.md#wifi) | ❔ | ❔ | [✅](wiki_claims.md#wifi--xiaomi-surya) |
+| [Bluetooth](features.md#bluetooth) | ❔ | ❔ | [✅](wiki_claims.md#bluetooth--xiaomi-surya) |
+| [NFC](features.md#nfc) | ❔ | ❔ | [✅](wiki_claims.md#nfc--xiaomi-surya) |
 
 ### Other
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Accelerometer / gyroscope / other sensors](components.md#sensors) | [✅](wiki_claims.md#sensors--xiaomi-surya) | ❔ | ❔ |
+| [Accelerometer / gyroscope / other sensors](components.md#sensors) | ❔ | ❔ | [✅](wiki_claims.md#sensors--xiaomi-surya) |
 | [Kernel (boots without unexpected warnings)](components.md#kernel) | ❔ | ❔ | ❔ |
 
 ### Power
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [USB OTG](components.md#usb-otg) | [✅](wiki_claims.md#usb-otg--xiaomi-surya) | ❔ | ❔ |
-| [Fastboot / bootloader](components.md#fastboot) | [✅](wiki_claims.md#fastboot--xiaomi-surya) | [✅](wiki_claims.md#fastboot--google-taimen) | ❔ |
+| [USB OTG](components.md#usb-otg) | ❔ | ❔ | [✅](wiki_claims.md#usb-otg--xiaomi-surya) |
+| [Fastboot / bootloader](components.md#fastboot) | [✅](wiki_claims.md#fastboot--google-taimen) | ❔ | [✅](wiki_claims.md#fastboot--xiaomi-surya) |
 | [Deep sleep that wakes for calls and messages](features.md#deep-sleep) | ❔ | ❔ | ❔ |
 
 ### Details

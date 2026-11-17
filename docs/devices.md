@@ -2,22 +2,6 @@
 
 # Devices
 
-<a id="xiaomi-surya"></a>
-### Xiaomi POCO X3 NFC
-
-Codename
-: surya
-
-Soc
-: Qualcomm SM7150 (Snapdragon 732G)
-
-Notes
-: Mainline-kernel support tracked by the sm7150-mainline community; Nura (formerly postmarketOS) package status: community. The device name includes NFC; that refers to the stock Android feature, not yet confirmed working under mainline (see the nfc component).
-
-Sources
-: [linux-postmarketos-qcom-sm7150: the sm7150-mainline kernel fork and its changelog across releases](https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/4818), [device-xiaomi-{davinci,surya}: Move from testing to community](https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/6210), [sm7150-mainline: the community org hosting the kernel fork, nightly builds, and firmware repos](https://github.com/orgs/sm7150-mainline/repositories), [lab-agent: the pull-based agent that runs jobs on the real phone and reports back through git](https://github.com/creation-guidelines/lab-agent)
-
-
 <a id="google-taimen"></a>
 ### Google Pixel 2 XL
 
@@ -48,3 +32,19 @@ Notes
 
 Sources
 : [kcxt/linux-wahoo: Mainline Linux for the Google Pixel 2XL (And 2?)](https://github.com/kcxt/linux-wahoo), [Linux mainline: arch/arm64/boot/dts/qcom (MSM8998 device trees)](https://github.com/torvalds/linux/tree/master/arch/arm64/boot/dts/qcom), [Nura pmaports: device packages of Google phones (device/community, device/testing)](https://gitlab.nura.eco/nura/pmaports/-/tree/master/device/testing), [Ubuntu Touch: Google Pixel 2 (walleye), old releases](https://devices.ubuntu-touch.io/device/walleye/), [LineageOS wiki: Google Pixel 2 (walleye)](https://wiki.lineageos.org/devices/walleye/), [AOSP: Build Pixel kernels (legacy branches)](https://source.android.com/docs/setup/build/building-pixel-kernels), [Nura wiki: OnePlus 5 (oneplus-cheeseburger), the MSM8998 phone best supported in mainline](https://wiki.nura.eco/wiki/OnePlus_5_%28oneplus-cheeseburger%29)
+
+
+<a id="xiaomi-surya"></a>
+### Xiaomi POCO X3 NFC
+
+Codename
+: surya
+
+Soc
+: Qualcomm SM7150 (Snapdragon 732G)
+
+Notes
+: Mainline-kernel support tracked by the sm7150-mainline community; Nura (formerly postmarketOS) package status: community. The device name includes NFC; that refers to the stock Android feature, not yet confirmed working under mainline (see the nfc component). SIM card: removed by the author 2026-11-17, for now - checks that need one (call-echo, the SMS self-test, mobile data, modem-registered) skip with 'skip: no SIM card'; calls, SMS and data keep their last real measurement.
+
+Sources
+: [linux-postmarketos-qcom-sm7150: the sm7150-mainline kernel fork and its changelog across releases](https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/4818), [device-xiaomi-{davinci,surya}: Move from testing to community](https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/6210), [sm7150-mainline: the community org hosting the kernel fork, nightly builds, and firmware repos](https://github.com/orgs/sm7150-mainline/repositories), [lab-agent: the pull-based agent that runs jobs on the real phone and reports back through git](https://github.com/creation-guidelines/lab-agent)

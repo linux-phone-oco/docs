@@ -6,59 +6,59 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 
 ### Audio
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Speaker](components.md#audio-speaker) | [✅](support_status.md#audio-speaker--xiaomi-surya) | [❔](support_status.md#audio-speaker--google-taimen) | [❔](support_status.md#audio-speaker--google-walleye) |
-| [Headphone output (3.5mm)](components.md#audio-headphone) | [❔](support_status.md#audio-headphone--xiaomi-surya) | [❔](support_status.md#audio-headphone--google-taimen) | [❔](support_status.md#audio-headphone--google-walleye) |
-| [Microphone](components.md#audio-mic) | [✅](support_status.md#audio-mic--xiaomi-surya) | [❔](support_status.md#audio-mic--google-taimen) | [❔](support_status.md#audio-mic--google-walleye) |
-| [Earpiece (call speaker)](components.md#audio-earpiece) | [✅](support_status.md#audio-earpiece--xiaomi-surya) | [❔](support_status.md#audio-earpiece--google-taimen) | [❔](support_status.md#audio-earpiece--google-walleye) |
+| [Speaker](components.md#audio-speaker) | [❔](support_status.md#audio-speaker--google-taimen) | [❔](support_status.md#audio-speaker--google-walleye) | [✅](support_status.md#audio-speaker--xiaomi-surya) |
+| [Headphone output (3.5mm)](components.md#audio-headphone) | [❔](support_status.md#audio-headphone--google-taimen) | [❔](support_status.md#audio-headphone--google-walleye) | [❔](support_status.md#audio-headphone--xiaomi-surya) |
+| [Microphone](components.md#audio-mic) | [❔](support_status.md#audio-mic--google-taimen) | [❔](support_status.md#audio-mic--google-walleye) | [✅](support_status.md#audio-mic--xiaomi-surya) |
+| [Earpiece (call speaker)](components.md#audio-earpiece) | [❔](support_status.md#audio-earpiece--google-taimen) | [❔](support_status.md#audio-earpiece--google-walleye) | [✅](support_status.md#audio-earpiece--xiaomi-surya) |
 
 ### Camera
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Front camera](components.md#camera-front) | [❌](support_status.md#camera-front--xiaomi-surya) | [❔](support_status.md#camera-front--google-taimen) | [❔](support_status.md#camera-front--google-walleye) |
-| [Rear camera(s)](components.md#camera-rear) | [❌](support_status.md#camera-rear--xiaomi-surya) | [❔](support_status.md#camera-rear--google-taimen) | [❔](support_status.md#camera-rear--google-walleye) |
+| [Front camera](components.md#camera-front) | [❔](support_status.md#camera-front--google-taimen) | [❔](support_status.md#camera-front--google-walleye) | [❌](support_status.md#camera-front--xiaomi-surya) |
+| [Rear camera(s)](components.md#camera-rear) | [❔](support_status.md#camera-rear--google-taimen) | [❔](support_status.md#camera-rear--google-walleye) | [❌](support_status.md#camera-rear--xiaomi-surya) |
 
 ### Display
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Display panel](components.md#display-panel) | [✅](support_status.md#display-panel--xiaomi-surya) | [❔](support_status.md#display-panel--google-taimen) | [❔](support_status.md#display-panel--google-walleye) |
+| [Display panel](components.md#display-panel) | [❔](support_status.md#display-panel--google-taimen) | [❔](support_status.md#display-panel--google-walleye) | [✅](support_status.md#display-panel--xiaomi-surya) |
 
 ### Input
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Touchscreen](components.md#touchscreen) | [✅](support_status.md#touchscreen--xiaomi-surya) | [❔](support_status.md#touchscreen--google-taimen) | [❔](support_status.md#touchscreen--google-walleye) |
-| [Haptics (vibration motor)](components.md#haptics) | [✅](support_status.md#haptics--xiaomi-surya) | [❔](support_status.md#haptics--google-taimen) | [❔](support_status.md#haptics--google-walleye) |
-| [Fingerprint or face unlock](features.md#fingerprint) | [❌](support_status.md#fingerprint--xiaomi-surya) | [❔](support_status.md#fingerprint--google-taimen) | [❔](support_status.md#fingerprint--google-walleye) |
+| [Touchscreen](components.md#touchscreen) | [❔](support_status.md#touchscreen--google-taimen) | [❔](support_status.md#touchscreen--google-walleye) | [✅](support_status.md#touchscreen--xiaomi-surya) |
+| [Haptics (vibration motor)](components.md#haptics) | [❔](support_status.md#haptics--google-taimen) | [❔](support_status.md#haptics--google-walleye) | [✅](support_status.md#haptics--xiaomi-surya) |
+| [Fingerprint or face unlock](features.md#fingerprint) | [❔](support_status.md#fingerprint--google-taimen) | [❔](support_status.md#fingerprint--google-walleye) | [❌](support_status.md#fingerprint--xiaomi-surya) |
 
 ### Connectivity
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Mobile data](components.md#modem-data) | [✅](support_status.md#modem-data--xiaomi-surya) | [❔](support_status.md#modem-data--google-taimen) | [❔](support_status.md#modem-data--google-walleye) |
-| [Phone calls](components.md#modem-calls) | [✅](support_status.md#modem-calls--xiaomi-surya) | [❔](support_status.md#modem-calls--google-taimen) | [❔](support_status.md#modem-calls--google-walleye) |
-| [SMS](components.md#modem-sms) | [✅](support_status.md#modem-sms--xiaomi-surya) | [❔](support_status.md#modem-sms--google-taimen) | [❔](support_status.md#modem-sms--google-walleye) |
-| [Wi-Fi](features.md#wifi) | [✅](support_status.md#wifi--xiaomi-surya) | [❔](support_status.md#wifi--google-taimen) | [❔](support_status.md#wifi--google-walleye) |
-| [Bluetooth](features.md#bluetooth) | [🟡](support_status.md#bluetooth--xiaomi-surya) | [❔](support_status.md#bluetooth--google-taimen) | [❔](support_status.md#bluetooth--google-walleye) |
-| [NFC](features.md#nfc) | [❔](support_status.md#nfc--xiaomi-surya) | [❔](support_status.md#nfc--google-taimen) | [❔](support_status.md#nfc--google-walleye) |
+| [Mobile data](components.md#modem-data) | [❔](support_status.md#modem-data--google-taimen) | [❔](support_status.md#modem-data--google-walleye) | [✅](support_status.md#modem-data--xiaomi-surya) |
+| [Phone calls](components.md#modem-calls) | [❔](support_status.md#modem-calls--google-taimen) | [❔](support_status.md#modem-calls--google-walleye) | [✅](support_status.md#modem-calls--xiaomi-surya) |
+| [SMS](components.md#modem-sms) | [❔](support_status.md#modem-sms--google-taimen) | [❔](support_status.md#modem-sms--google-walleye) | [✅](support_status.md#modem-sms--xiaomi-surya) |
+| [Wi-Fi](features.md#wifi) | [❔](support_status.md#wifi--google-taimen) | [❔](support_status.md#wifi--google-walleye) | [✅](support_status.md#wifi--xiaomi-surya) |
+| [Bluetooth](features.md#bluetooth) | [❔](support_status.md#bluetooth--google-taimen) | [❔](support_status.md#bluetooth--google-walleye) | [🟡](support_status.md#bluetooth--xiaomi-surya) |
+| [NFC](features.md#nfc) | [❔](support_status.md#nfc--google-taimen) | [❔](support_status.md#nfc--google-walleye) | [❔](support_status.md#nfc--xiaomi-surya) |
 
 ### Other
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Accelerometer / gyroscope / other sensors](components.md#sensors) | [❌](support_status.md#sensors--xiaomi-surya) | [❔](support_status.md#sensors--google-taimen) | [❔](support_status.md#sensors--google-walleye) |
-| [Kernel (boots without unexpected warnings)](components.md#kernel) | ❔ | [❔](support_status.md#kernel--google-taimen) | [❔](support_status.md#kernel--google-walleye) |
+| [Accelerometer / gyroscope / other sensors](components.md#sensors) | [❔](support_status.md#sensors--google-taimen) | [❔](support_status.md#sensors--google-walleye) | [❌](support_status.md#sensors--xiaomi-surya) |
+| [Kernel (boots without unexpected warnings)](components.md#kernel) | [❔](support_status.md#kernel--google-taimen) | [❔](support_status.md#kernel--google-walleye) | ❔ |
 
 ### Power
 
-| Components | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) |
+| Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [USB OTG](components.md#usb-otg) | [✅](support_status.md#usb-otg--xiaomi-surya) | [❔](support_status.md#usb-otg--google-taimen) | [❔](support_status.md#usb-otg--google-walleye) |
-| [Fastboot / bootloader](components.md#fastboot) | [✅](support_status.md#fastboot--xiaomi-surya) | [❔](support_status.md#fastboot--google-taimen) | [❔](support_status.md#fastboot--google-walleye) |
-| [Deep sleep that wakes for calls and messages](features.md#deep-sleep) | [❔](support_status.md#deep-sleep--xiaomi-surya) | [❔](support_status.md#deep-sleep--google-taimen) | [❔](support_status.md#deep-sleep--google-walleye) |
+| [USB OTG](components.md#usb-otg) | [❔](support_status.md#usb-otg--google-taimen) | [❔](support_status.md#usb-otg--google-walleye) | [✅](support_status.md#usb-otg--xiaomi-surya) |
+| [Fastboot / bootloader](components.md#fastboot) | [❔](support_status.md#fastboot--google-taimen) | [❔](support_status.md#fastboot--google-walleye) | [✅](support_status.md#fastboot--xiaomi-surya) |
+| [Deep sleep that wakes for calls and messages](features.md#deep-sleep) | [❔](support_status.md#deep-sleep--google-taimen) | [❔](support_status.md#deep-sleep--google-walleye) | [❔](support_status.md#deep-sleep--xiaomi-surya) |
 
 ### Details
 
