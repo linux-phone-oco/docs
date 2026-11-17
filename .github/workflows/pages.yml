@@ -1,7 +1,15 @@
 name: pages
+# linux-phone's face, drawn from its open database. This place keeps the data, in tad; the family's other
+# places are observed as the Linux Phones lens gathers them (linux-phone-oco/*); the observatory's engine
+# draws the face from what was observed - a site of one family's data is that family's face - and tad's
+# page of every table stands beside it, under tables/. Nobody draws it by hand: a landing here (devlab
+# files every phone's health reports here by itself) draws it again, and so does the clock, for what the
+# family's other places land.
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "17 */3 * * *"
   workflow_dispatch:
 permissions:
   contents: read
@@ -18,11 +26,48 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: linux-phone-oco/lens
+          path: .lens
       - uses: actions/configure-pages@v5
-      - uses: actions/jekyll-build-pages@v1
+      - name: tad, from its pinned release - the data checks out before anything is drawn
+        run: |
+          TAD_DEST="$RUNNER_TEMP/bin" ./bin/install-tad.sh
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/bin/tad" check
+      - name: ocoeco, from its release, checked against its sums
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/ocoeco" && cd "$RUNNER_TEMP/ocoeco"
+          gh release download --repo open-commons-observatory/ocoeco --pattern "ocoeco-v*-x86_64-unknown-linux-musl.tar.gz" --pattern "SHA256SUMS-x86_64-unknown-linux-musl"
+          sha256sum -c --ignore-missing SHA256SUMS-x86_64-unknown-linux-musl
+          tar -xzf ocoeco-v*-x86_64-unknown-linux-musl.tar.gz
+          install -m 755 "$(find . -name ocoeco -type f | head -1)" "$RUNNER_TEMP/bin/ocoeco"
+      - name: the engine, at its main (kept between runs while its main stands still)
+        id: engine
+        run: echo "sha=$(git ls-remote https://github.com/open-commons-observatory/ocoeco-engine HEAD | cut -f1)" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@v4
+        id: cache
+        with:
+          path: ~/.cargo/bin/oco
+          key: oco-${{ steps.engine.outputs.sha }}
+      - if: steps.cache.outputs.cache-hit != 'true'
+        uses: dtolnay/rust-toolchain@stable
+      - if: steps.cache.outputs.cache-hit != 'true'
+        run: cargo install --locked --git https://github.com/open-commons-observatory/ocoeco-engine --rev ${{ steps.engine.outputs.sha }} oco
+      - name: the family, observed as its lens gathers it
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: cd .lens && ocoeco observe --hold "$RUNNER_TEMP/held" --out "$RUNNER_TEMP/data"
+      - name: the face
+        run: ~/.cargo/bin/oco site --data "$RUNNER_TEMP/data" --out _site
+      - name: every table, as tad renders it
+        uses: actions/jekyll-build-pages@v1
         with:
           source: ./docs
-          destination: ./_site
+          destination: ./_site/tables
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
