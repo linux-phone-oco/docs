@@ -2216,3 +2216,67 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="kb-about-link"></a>
+### Every record names what it is about, checked: an about field on research, backlog, session_log and concepts (decisions has one, free text in four spellings), one references rule to components, features, milestones and devices, backfilled; and the query about SUBJECT
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: From 2026-11-17-ideal-knowledge-base; it is the ground expert-primer's query stands on. Measure after: the microphone and the modem questions of kb-navigation-measured, each one call.
+
+Opened
+: 2026-11-17
+
+
+<a id="kb-entry"></a>
+### AGENTS.md is the one entry: under 3 KB, an orientation table from typical question to the command that answers it, tad statements for the rest, never read data/ or docs/ to answer; CLAUDE.md is @AGENTS.md; editing recipes move to CONTRIBUTING
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: From 2026-11-17-ideal-knowledge-base, after kb-about-link. The generic queries next, find, row and recent come with it; queries print compactly (tad's box format prints 327 KB where csv is 37 KB - an improvement for tad itself).
+
+Opened
+: 2026-11-17
+
+
+<a id="agent-folder"></a>
+### The agent specifics of linux-phone-oco in their own folder, ideal-agent-linux-phone-oco/: prompts/ moved there with git mv, the domain part of practice 42 beside them, extending ideal-agent
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: From 2026-11-17-ideal-knowledge-base. ideal-agent's skills say the brief is in the project's prompts/ - their owner changes that wording in the same step; three historical rows name prompts/ and stay as they were said.
+
+Opened
+: 2026-11-17
+
+
+<a id="idealkb-from-template"></a>
+### grenudi/ideal-knowledge-base: text-as-data-template renamed and grown, its own tad base, released and pinned by every base like tad - extracted once the about link and the entry hold in docs and ideal-agent
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: From 2026-11-17-ideal-knowledge-base; waits for the author's word on the repository (moving it to grenudi is his).
+
+Opened
+: 2026-11-17

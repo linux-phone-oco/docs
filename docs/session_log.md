@@ -1192,3 +1192,24 @@ Considered
 
 Rejected
 : See decision 2026-11-17-health-analysis-subcommands.
+
+---
+
+
+<a id="2026-11-17-research-idealkb"></a>
+### Research: an ideal knowledge base, and docs on it
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Read the world's practice (17 sources, kb-organisation-world), the commons' (kb-organisation-commons) and measured three typical questions on docs (kb-navigation-measured). Proposed 2026-11-17-ideal-knowledge-base, with backlog kb-about-link, kb-entry, agent-folder and idealkb-from-template. No structure changed.
+
+Considered
+: A new repository beside the template; the playbook or ideal-agent as its home; moving the database into a named subfolder; llms.txt, embeddings, a questions table.
+
+Rejected
+: All but the template grown into idealkb, the root kept as the base and only the agent folder moved - see the decision's rejected.
