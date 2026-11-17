@@ -548,19 +548,6 @@ Says
 : the DSP's voice path is there: the VoiceMMode1 PCM, its Voice Mixer and Capture Mixer controls, and q6voiced
 
 
-<a id="mobile-data"></a>
-### mobile-data
-
-Component id
-: modem-data
-
-Proves
-: works
-
-Says
-: over the modem's own interface, three pings are answered and 100 kB is downloaded
-
-
 <a id="sms-loopback"></a>
 ### sms-loopback
 
@@ -572,3 +559,16 @@ Proves
 
 Says
 : an SMS the phone sends to its own number arrives, at most once a day
+
+
+<a id="mobile-data"></a>
+### mobile-data
+
+Component id
+: modem-data
+
+Proves
+: works
+
+Says
+: over the interface of the modem's data bearer (not Wi-Fi, not the IMS bearer), at least 3 of 5 pings are answered and 100 kB is downloaded (5 MB once a week, for throughput); each run's bytes are kept against the month's budget, and the check skips once that is spent

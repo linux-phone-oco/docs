@@ -2033,10 +2033,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Per 2026-11-17-health-checks-shell-and-rust: devlab-health becomes a multi-call binary with the tone crate's make and find (WAV or raw s16le, JSON out, exit 0 when found), cross-built as now; surya's microphone-hears, earpiece and speaker-stereo call it instead of awk. Proof: those checks give the same verdicts across two boots, and the tone crate's tests run in CI; the awk Goertzel is gone from every check.
+: Done 2026-11-17 (conveyor-health): devlab-health is a multi-call binary. tone make|find links lab-tools' tone crate (its clap command a feature now; one WAV reader shared by tone, devlab hear and the runner), lab-tools #57, released 0.1.2. surya's microphone-hears and earpiece checks call it instead of awk (surya-lab #115); lib.sh's json_field reads its JSON. Static aarch64 runner: 528,656 -> 594,192 bytes (+64 KiB, +12%). On surya, 20261117-092300 and 093527 both healthy, with the same verdicts as the awk runs: earpiece -22.1 dBFS (awk -22.4), mics about 5 dB higher under the Hann window. speaker-stereo has no Goertzel (its awk only parses pactl). Next on it: call echo.
 
 Opened
 : 2026-11-17
@@ -2081,10 +2081,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: surya-lab's tests/health/base/mobile-data.sh (bring-up, surya-lab #112) already does the per-boot part: over the modem's own interface, 3 pings and a 100 kB download. Left, per research mobile-data-check-budget: move it into lab-tools' generic suite (any phone with a modem); state the bytes the run used from /sys/class/net/IFACE/statistics; skip when the month's total passes a budget in the manifest (default 250 MB); a weekly 5 MB throughput run. Proof: the check passes on surya with the bytes used in its detail, and skips once a test budget of 1 MB is set.
+: Done 2026-11-17 (conveyor-health): telephony/10-mobile-data.sh in the generic suite (lab-tools #60, fixed by #62 to measure the data bearer and never IMS), with devlab-health data plan|spent keeping the month's ledger (/var/lib/devlab/health-data) and the manifest's [health] data_budget_mb (250 MB by default; surya says it, surya-lab #116, whose own base/mobile-data.sh retired). On surya with 0.1.4 (run 20261117-093527, healthy): the week's run downloaded 5 MB at 1.2 MB/s, 5.40 MB moved; a plain run downloads 100 kB and moves 118 kB; with a 1 MB budget it skips with 'the month's budget is spent: 5.5 of 1 MB'.
 
 Opened
 : 2026-11-17
