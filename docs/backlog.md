@@ -5077,3 +5077,28 @@ Proof
 
 About
 : google-walleye
+
+
+<a id="floor-research-validity"></a>
+### Research: is SH0 x=1,y=3 the blocker at all - counter validity, clocks/GDSC, late-suspend state
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: keeper 2026-11-17 (docs PR 311, 295): uart8 is not the SH0 owner (tags no effect, uart8 off: SH0 still x=1,y=3), icc summary shows bw 0 on every QUP/UFS/MMC path, so SH0 looks by-design, a keepalive BCM, not a consumer vote. cxsd/aosd/ddr still 0 after ~20 cycles with: DSPs never started, WLAN off, cluster params, no ignore_unused. Questions: (1) do qcom_stats cxsd/aosd/ddr count what we think on SM7150 (counter validity, which stats nodes exist, does Android's stock kernel show them non-zero on this phone - observed only)? (2) is the sleep-set x=1,y=3 really what blocks AOSS, or is something else (clocks/GDSC/regulators/rpmh-rsc never entering sleep: is the RSC invoked at all - tracepoints) the blocker? (3) what a late-suspend dump should read, and what the PSCI/cpuidle state of the last CPU is at entry. Ends with a decision and phone items, each one change, measured by way-back.sh cycle 15 bt-on with the watchdog armed; BT-blocked cycles reset the phone (use bt-on).
+
+Opened
+: 2026-11-17
+
+Needs
+: research
+
+Device
+: xiaomi-surya
+
+About
+: deep-sleep
