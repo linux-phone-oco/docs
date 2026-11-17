@@ -45,8 +45,9 @@ is git itself (docs' decision `2026-11-17-one-database`). So:
   exports none). The commit and its pull request are the record of the work; your name (OCOECO_BY, set before
   `. oco-work`) signs the commit, and the face reads where each hand stands off the commits. One commit per
   branch, with a conventional title: `land` titles a pull request of several commits after its branch.
-- **Nothing of ocoeco by hand** in linux-phone places: no `ocoeco note`, no `ocoeco glimpse`, no oco/ tables.
-  ocoeco stays the observatory's: its lenses (`ocoeco focus ...`) are still how the whole is read.
+- **No ocoeco** in linux-phone: data through tad, landing through land, the whole read through docs' named
+  queries and the face, which is drawn from docs' own data (decision 2026-11-17-the-face-from-docs-own-data).
+  ocoeco is the author's observatory's, not linux-phone's: no `ocoeco` command is a step of linux-phone work.
 
 Why, measured: the turn commit-title limit failed 4 times, link refusals ordered the work 3 times, and two tools
 wrote rows in one place.
@@ -57,7 +58,7 @@ The method is the skill **orchestrate-agents** of the ideal-agent plugin (grenud
 the lab): look at the whole through the lenses, check the ways by measurement, turn rules into mechanisms,
 keep the face fluent, choose and start the work by the weakest link, mind the cost. Here, in linux-phone:
 
-- **The whole**: `ocoeco focus still-showing`, the board, the face (https://linux-phone-oco.github.io/docs/),
+- **The whole**: `tad q next`, `tad q phone-queue`, `tad q coverage` (in docs), the face (https://linux-phone-oco.github.io/docs/),
   and each linked session's latest report.
 - **Hand-work** is counted in docs, through tad; a third time by hand is a tool for lab-tools or a word for
   `oco-work`.

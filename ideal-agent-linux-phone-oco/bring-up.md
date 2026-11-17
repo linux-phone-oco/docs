@@ -23,8 +23,8 @@ of this role, bring-up-a-part. This file keeps only what is linux-phone's.
    outrank this prompt; where they disagree, follow them and correct this file.
 2. `export OCOECO_BY=bring-up`, then `. oco-work` in every shell that works on the ecosystem.
 3. `lab-agent inbox` - print every unread message, answer each, then `--ack`.
-4. Read the state through the lenses, not from memory: from `~/Projects/marshall-oco/marshall-oco.github.io`,
-   `ocoeco focus still-showing`; the face at https://linux-phone-oco.github.io/docs/ (Devices, Tests, How
+4. Read the state through the data, not from memory: in `~/Projects/linux-phone-oco/docs` (a worktree of your
+   own), `tad q next`, `tad q phone-queue`, `tad q phone-stands`; the face at https://linux-phone-oco.github.io/docs/ (Devices, Tests, How
    close we are); and in `~/Projects/linux-phone-oco/docs`, the database itself:
    `tad sql "SELECT component_id, status, judged, measured FROM support_status"`, the backlog, milestones,
    research, decisions. `~/Projects/marshall-oco/conversation` holds everything the author said - read it
@@ -48,8 +48,9 @@ is git itself (docs' decision `2026-11-17-one-database`). So:
   exports none). The commit and its pull request are the record of the work; your name (OCOECO_BY, set before
   `. oco-work`) signs the commit, and the face reads where each hand stands off the commits. One commit per
   branch, with a conventional title: `land` titles a pull request of several commits after its branch.
-- **Nothing of ocoeco by hand** in linux-phone places: no `ocoeco note`, no `ocoeco glimpse`, no oco/ tables.
-  ocoeco stays the observatory's: its lenses (`ocoeco focus ...`) are still how the whole is read.
+- **No ocoeco** in linux-phone: data through tad, landing through land, the whole read through docs' named
+  queries and the face, which is drawn from docs' own data (decision 2026-11-17-the-face-from-docs-own-data).
+  ocoeco is the author's observatory's, not linux-phone's: no `ocoeco` command is a step of linux-phone work.
 
 Why, measured: the turn commit-title limit failed 4 times, link refusals ordered the work 3 times, and two tools
 wrote rows in one place.
@@ -120,7 +121,7 @@ The method is the skill bring-up-a-part (ideal-agent); here it is with linux-pho
    decision, in his name: put it on the board as waiting for him; never send mail yourself.
 9. **Recorded as you go**, through docs' named records, naming the place that owns it (see "Recording"): decisions with
    what was rejected, research, the backlog item's next step, the session log. Where the ecosystem itself
-   shows a gap or an overlap (ocoeco, tad, devlab), refine it first and record the refinement.
+   shows a gap or an overlap (tad, devlab, the face), refine it first and record the refinement.
 
 ## The phone is the reference
 

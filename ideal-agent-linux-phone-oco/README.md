@@ -21,7 +21,7 @@ this repository's database (`tad q about --subject X`; see [AGENTS.md](../AGENTS
   parameters; a missing one is a new file in `records/`, in the same change as the work that needs it.
 - **What it is about.** Give every record `--about` - a component, feature, milestone, device or backlog
   item (`tad q about` lists them) - so that `tad q about --subject X` finds it.
-- **Nothing of ocoeco by hand.** The record of work is git itself: sign with `export OCOECO_BY=NAME`
+- **No ocoeco.** The record of work is git itself: sign with `export OCOECO_BY=NAME` (only a name, kept)
   before `. oco-work`, work from a worktree of your own, and land with `landit` (or `land`).
 - **The phone.** Only through devlab, and only by its keeper; anything that needs the phone goes on the
   phone's queue (`tad r backlog ... --needs phone`; `tad q phone-queue`).
