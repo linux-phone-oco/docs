@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.0](https://github.com/linux-phone-oco/docs/compare/v0.11.0...v0.12.0) (2026-11-17)
+
+
+### Features
+
+* walleye vendor-gadget3 built and landed, try queued ([#345](https://github.com/linux-phone-oco/docs/issues/345)) ([bce989a](https://github.com/linux-phone-oco/docs/commit/bce989a0c95f820eb4d5433c2512c2ce4c1e1a2d))
+
 ## [0.11.0](https://github.com/linux-phone-oco/docs/compare/v0.10.0...v0.11.0) (2026-11-17)
 
 
