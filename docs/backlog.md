@@ -3930,7 +3930,7 @@ Status
 : in-progress
 
 Note
-: walleye moved (google-walleye-lab, decision 2026-11-17-moving-a-lane); surya next, waiting on tad references by key (parts) and gather-into-device-base.
+: walleye moved (google-walleye-lab, decision 2026-11-17-moving-a-lane); surya next, waiting on tad references by key (parts) and gather-into-device-base. Surya's move must also run tad r device-base --device xiaomi-surya --base linux-phone-oco/surya-lab in docs once surya-lab's parts.json is filled (docs 355/356, feed-device-bases: naming a base with empty parts turns its status unknown; staleness 30 days, decision 2026-11-17-parts-staleness-and-unknown). Walleye's base is named and pulled (21 parts, unknown).
 
 Opened
 : 2026-11-17
