@@ -924,3 +924,28 @@ About
 
 Material
 : research/deep-sleep/2026-11-17-way-back/
+
+
+<a id="2026-11-17-way-back-measured"></a>
+### 2026-11-17-way-back-measured
+
+Brief
+: A 30 s watchdog fuse resets an idle or hung surya and it boots by itself; the BT-blocked s2idle hang reproduced at once (no log); pstore does not survive the reset
+
+Project
+: linux-phone-oco/surya-lab
+
+Date
+: 2026-11-17
+
+Question
+: Does the watchdog way back work (idle, through a suspend entry, in the hanging cycle), and what log survives?
+
+Found
+: Yes. Idle: reset in 31 s, phone back in ~1.5 min with no hands. Probe (Bluetooth on, s2idle 3 s): the patched qcom_wdt kept counting through the suspend and bit 31 s after arming. The cycle with Bluetooth blocked and a 15 s sleep hung again right at suspend entry (the journal ends at the cycle marker, no PM: suspend entry line, suspend_stats 0/0) and the watchdog reset the phone 30 s after arming, back in under a minute more, no hands. The qcom watchdog counts 32 s at most (BusyBox -T 50 is EINVAL; the default 30 s holds), so a cycle's sleep is at most 15 s. pstore/ramoops stayed empty after every reset (the reset does not keep it); the persistent journal, synced before the arm, is the log that survives up to the last second before the hang. The PMIC RTC cannot be set.
+
+About
+: deep-sleep
+
+Material
+: research/deep-sleep/2026-11-17-way-back/

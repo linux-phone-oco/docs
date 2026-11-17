@@ -3395,7 +3395,7 @@ Status
 : open
 
 Note
-: Found 2026-11-17 (research 2026-11-17-surya-s2idle-wakes-at-once). Test first: the cycle (research/deep-sleep/2026-11-17/suspend-cycle.sh) lasts 60 s by the RTC, not 2. Try: echo disabled > /sys/devices/platform/soc@0/8c0000.geniqup/88c000.serial/power/wakeup before the cycle (it was set but the cycle then hit the Bluetooth hang), then if it holds, why the UART interrupt storms (200k in 10 minutes: console on a floating RX line? the debug UART's pinctrl or the console= option) and a device tree or kernel fix (the serial node's wakeup, or status disabled). Needs sleep-bt-resume first or Bluetooth stopped for the cycle.
+: Now with a way back (sleep/way-back.sh cycle SLEEP): with Bluetooth unblocked s2idle ends in 2-3 s on IRQ 157; with it blocked the phone hangs at suspend entry (reproduced 13:41, reset by the watchdog after 30 s). Next try, one change: Bluetooth unblocked but the UART's wakeup off (power/wakeup of serial@88c000) or hci_uart unbound before suspend, then cycle 15; the log is the journal, not pstore.
 
 Opened
 : 2026-11-17
@@ -3464,10 +3464,10 @@ Project
 : linux-phone-oco/surya-lab
 
 Status
-: in-progress
+: done
 
 Note
-: Decision 2026-11-17-deep-sleep-way-back. Script and patched module written (sleep/way-back.sh, sleep/build-wdt.sh); next: the dry run (fuse on the idle phone: does it reset, boot and keep the ramoops log), then one measured cycle. A suspend is not tried until the dry run came back by itself.
+: Done 2026-11-17 (surya-lab sleep/way-back.sh, build-wdt.sh, patches/qcom-wdt-keep-armed-in-suspend.patch; patched module in updates/ on the phone, acts as stock until 'enable'): idle fuse, probe through a suspend and the hanging cycle all reset the phone by the watchdog and it came back with no hands. Next: sleep-wake-uart with the cause of the hang: see 2026-11-17-way-back-measured.
 
 Opened
 : 2026-11-17
