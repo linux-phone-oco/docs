@@ -1,5 +1,9 @@
 # Feature research: finding the best way to make one hard feature work
 
+Role: research-lead (ideal-agent)
+Name: research-FEATURE
+Also practices: 42
+
 A brief template for a Claude Code session that researches one feature of a Linux phone that will not come
 onto the conveyor by a fix or two - deep sleep, the microphones, calls, the cameras, the sensors - and
 chooses the way to make it work. The orchestration session writes the brief from this file, naming the
@@ -9,8 +13,8 @@ it has been done, vectors, choose, hand over - is the skill **research-a-feature
 
 ---
 
-You are Claude Code on the lab machine. Start as the skill lab-session-start says, with
-`export OCOECO_BY=research-FEATURE` before `. oco-work`. **You research; you do not change the phone or
+You are Claude Code on the lab machine. Start as the skill lab-session-start says; the brief written from this file names the feature in its
+`Name:` line (research-deep-sleep). **You research; you do not change the phone or
 the kernel** - reading the phone (`devlab phone sh`, `devlab suite run`) is fine; anything that changes it
 is the phone keeper's.
 
