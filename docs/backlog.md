@@ -4443,7 +4443,7 @@ About
 
 
 <a id="floor-aop-qmp-no-ack"></a>
-### Why the AOP's ucore never acks the QMP channel (qcom_aoss_qmp c300000)
+### Why the AOP does not ack QMP sends (qcom_aoss_qmp c300000)
 
 Project
 : linux-phone-oco/docs
@@ -4452,7 +4452,7 @@ Status
 : open
 
 Note
-: Found by floor-aoss-knobs 2026-11-17 (keeper-9): every QMP send times out, 'ucore did not ack channel'; prevent_* knobs cannot be tested. Read only first: the aoss node (reg, mboxes, interrupts) against sm8150/sc7180 and downstream, the AOP message RAM at the channel offset, the mailbox/APCS ipc bit, dmesg at probe. Then one change.
+: Found by floor-aoss-knobs 2026-11-17 (keeper-9): the channel opens at probe, but every knob send times out ('ucore did not ack channel'). Either this AOP firmware ignores those messages or stops acking after open. Read only first: does a send the driver itself makes (the qmp clock/cooling messages) ack? the AOP message RAM at the channel offset, dmesg at probe, the aoss node against sm8150/sc7180. Then one change.
 
 Opened
 : 2026-11-17

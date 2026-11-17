@@ -15,3 +15,13 @@ channel acks, aosd (the AOP's own sleep) is not under the kernel's control and i
 reason. Next (not started): why the ucore does not ack - what the channel's mailbox/ring address and the
 AOP message RAM show on this firmware (read only), compared with sm8150/sc7180; the sleep-set flush of rpmh is a
 different path (apps_rsc) and is not affected by this.
+
+## Correction after a read-only look (same day)
+
+The probe of `c300000.power-management` did not fail (the driver is bound, debugfs files exist, no error at boot):
+the channel *opens*; it is the individual **sends** (the three knob messages, at 145-147 s uptime) that time out
+with "ucore did not ack channel". So "the link is dead" is too strong: either this AOP firmware does not accept the
+knob messages (their `{class: ..., res: ..., val: ...}` text is the driver's, written for other SoCs), or it stops
+acking after the open. Not known yet which; the kept dts node is `qcom,sm7150-aoss-qmp` with `mboxes = <&apss_shared 0>`
+and irq 0x185. A plain send that must work (the driver's own `qmp_send` at suspend: the cooling-device / clock
+`qmp_clk` messages, `{class: clock, res: pxo, val: ...}`) is the control to read first.
