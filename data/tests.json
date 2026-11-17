@@ -38,3 +38,4 @@
 {"id":"mic-hears-speaker","component_id":"audio-mic","proves":"works","says":"the bottom microphone finds a quiet tone from the phone's speaker, 20 dB above the noise"}
 {"id":"speaker-stereo","component_id":"audio-speaker","proves":"present","says":"the speaker plays in two channels"}
 {"id":"mic-top-hears-speaker","component_id":"audio-mic","proves":"works","says":"the top microphone finds a quiet tone from the phone's speaker, 20 dB above the noise"}
+{"id":"earpiece-heard","component_id":"audio-earpiece","proves":"works","says":"a quiet tone played through the earpiece as a mono stream is found by the top microphone beside it, 20 dB above the noise"}

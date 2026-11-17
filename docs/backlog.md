@@ -1878,10 +1878,12 @@ Project
 : linux-phone-oco/docs
 
 Status
-: in-progress
+: done
 
 Note
 : Taken up 2026-11-17 (bring-up), after the microphones work on the kept kernel. The earpiece is driven by the WCD9375's EAR amplifier (pulpoff/linux-surya: MultiMedia3 -> RX_CODEC_DMA_RX_0 -> RX macro RX0 -> INT0 -> codec RX1 -> RDAC3_MUX RX1 -> EAR_RDAC -> EAR PA), not by the two TAS amplifiers. Tried on the phone: the whole path powers on in DAPM (RX INT0_1 MIX1, RX1, RDAC3_MUX, RDAC3, EAR_RDAC, EAR PGA, EAR all On), EAR_PA Volume at its loudest (+6 dB), class-H mode set (CLS_H_LOHIFI), and with pulpoff's qcom,rx-channel-mapping <1 2 1 1 2 1 1 2> too - yet a 1 kHz tone (-6 dBFS, RX digital -20 dB) is not found by the top microphone next to the earpiece. Next: ask the author whether the earpiece is heard at all (a witnessed check), compare the RX SoundWire port programming during playback with pulpoff's (regmap and SoundWire debug), and read pulpoff's earpiece route if published. The rx-channel-mapping change is on local branch dt/surya-wcd-rx-channel-map, not pushed until it proves something. Proof when done: a mic-hears-earpiece check in surya's suite (works).
+
+Done 2026-11-17 (bring-up), with the author's ear: the WCD9375's EAR amplifier makes no sound at all (he heard nothing with his ear on the earpiece, twice) - on surya it is not connected to anything one hears. The earpiece is the top speaker: the TAS2564 at 0x4d (the left channel of the stereo pair), which the author heard from the earpiece slot. surya-lab ucm/Xiaomi/surya/HiFi.conf now has SectionDevice Earpiece (conflicting with Speaker): the top amplifier takes both channels mixed (LeftRightDiv2) at -18 dB, the bottom one silent. Proof decided by the phone: surya's check earpiece-heard plays a soft tone as a mono stream through the Earpiece and the top microphone finds it 50 dB above the noise - pass. pulpoff/linux-surya's note that the earpiece is the WCD EAR PA does not hold on this phone (the Huaxing variant at least).
 
 Opened
 : 2026-11-17

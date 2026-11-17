@@ -520,3 +520,16 @@ Proves
 
 Says
 : the top microphone finds a quiet tone from the phone's speaker, 20 dB above the noise
+
+
+<a id="earpiece-heard"></a>
+### earpiece-heard
+
+Component id
+: audio-earpiece
+
+Proves
+: works
+
+Says
+: a quiet tone played through the earpiece as a mono stream is found by the top microphone beside it, 20 dB above the noise
