@@ -4251,3 +4251,142 @@ Rank
 
 About
 : google-walleye
+
+
+<a id="commons-only"></a>
+### docs holds only what helps every device; each device has its own open base; docs derives progress from them
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: Decided 2026-11-17 (decision 2026-11-17-commons-and-device-bases; research and reasons in grenudi/ideal-knowledge-base: commons-and-unit-bases-world). The parts below are for the owners named; the umbrella closes when the data has moved and docs shows derived status only.
+
+Opened
+: 2026-11-17
+
+
+<a id="device-template-base"></a>
+### device-template gets a tad base: tables.toml following idealkb, the parts contract (status, evidence, date), next and phone-queue queries, ikb
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Owner: device-template / orchestration. surya-lab and google-walleye-lab take it as their base. Declare the parts table in the template: that declaration is the contract docs validates what it pulls against. Include a template version in the device's base.
+
+Opened
+: 2026-11-17
+
+About
+: commons-only
+
+
+<a id="feed-device-bases"></a>
+### docs pulls each registered device base's parts over HTTPS in CI and derives support_status; stale or missing shows as not known yet
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Owner: docs / orchestration. devices gets a base field (the repository), a feed record validates the pulled table against the template's contract, feeds.yml runs it. Never copies a device's queue, tries or measurements. Waits on device-template-base.
+
+Opened
+: 2026-11-17
+
+Waits
+: device-template-base
+
+About
+: commons-only
+
+
+<a id="move-device-rows"></a>
+### Move device rows to the device bases: backlog, research, decisions, log by device and project, test_runs and test_results
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Owner: docs / orchestration, with each device's keeper. Select by the device field (docs 260) and by project surya-lab, google-walleye-lab; replay by record with ids kept, never merge JSONL; a cross-reference to a docs concept is written docs:ID. test_results (1.3 MB of docs' 2.0 MB) goes first. Waits on device-template-base.
+
+Opened
+: 2026-11-17
+
+Waits
+: device-template-base
+
+About
+: commons-only
+
+
+<a id="launchers-per-device"></a>
+### Lane launchers and briefs work in the device repository and ask its own base (tad q next, phone-queue); docs' lane-next stays for the general queue
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Owner: roles session / orchestration. Follows move-device-rows; until then lane-next --device stays.
+
+Opened
+: 2026-11-17
+
+Waits
+: move-device-rows
+
+About
+: commons-only
+
+
+<a id="about-across-bases"></a>
+### How a device row names a docs component or feature: the about rule works within one base
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Open: proposal is docs:ID in text and a local components list in the device base seeded from docs; decide with the first device base. Owner: idealkb (ikb) with docs.
+
+Opened
+: 2026-11-17
+
+About
+: commons-only
+
+
+<a id="device-template-follow"></a>
+### How a device repository takes later changes of device-template beyond idealkb's generic files
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: A GitHub template keeps no link back. Take the idealkb pin pattern (a version in the repository, a follow script) or Copier-style answers; decide in device-template. Owner: device-template.
+
+Opened
+: 2026-11-17
+
+About
+: commons-only
