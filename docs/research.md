@@ -2127,3 +2127,28 @@ Found
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="walleye-vendor-gadget-v1-gzip-cause"></a>
+### walleye-vendor-gadget-v1-gzip-cause
+
+Brief
+: v1 vendor-gadget panicked because the stock kernel has no RD_GZIP: only an xz ramdisk unpacks
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: Why did s1 / vendor-gadget.img panic the stock kernel?
+
+Found
+: IKCFG data in the control's Image.raw (offset 19381680): CONFIG_RD_GZIP not set, RD_XZ=y, DEVTMPFS not set, UNIX98_PTYS y, USB_CONFIGFS_NCM y. Our v1 ramdisk was gzip, so the kernel could not unpack it, found no /init and panicked (kernel_panic bootreason). The stock ramdisk is xz CRC32. Also fixed in v2, as it would have failed next: a tmpfs mounted over /dev hid /dev/console (exec to it ends init), ACM/ECM/RNDIS absent (NCM used), init exiting. Not run on arm64 (no qemu-aarch64 installed): checked by unpack, file, sh -n, applets present.
+
+About
+: walleye-first-fastboot-boot
+
+Supersedes
+: walleye-vendor-kernel-facts-s1-panic

@@ -5505,3 +5505,31 @@ Proof
 
 About
 : walleye-first-fastboot-boot
+
+
+<a id="walleye-try-vendor-gadget2"></a>
+### Try vendor-gadget2.img (the control with an xz gadget ramdisk) by fastboot boot from the first state
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: ~/Projects/walleye-build/images/vendor-gadget2.img sha256 9c0a8946cb65dc46311d6efc87da6393c152e3878d148bc773cc360180806ea4 (images/SHA256SUMS; ramdisk initramfs-vendor.cpio.xz 67c3d779...ff9f91). Built from google-walleye-lab main a41a721 (build/build-vendor-gadget.sh, 10 checks ok). Same try as s1 (fastboot boot from the healthy first state, no writes). Cause of v1's panic: stock kernel has no RD_GZIP (xz only), no devtmpfs, NCM only; v2 is xz, nodes from the cpio, NCM, init never exits. If it still panics: bootreason, and next a ramdisk whose init only writes /dev/kmsg and sleeps, to split ramdisk-unpack from gadget.
+
+Opened
+: 2026-11-17
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: walleye-gadget-up (tests/host/gadget-up.sh, GADGET_WAIT=90): a USB device with our strings enumerates and 172.16.43.1 answers ping and telnet; else record the bootreason
+
+About
+: walleye-first-fastboot-boot
