@@ -20,6 +20,9 @@ Found
 Sources
 : portareos-sleep-votes, pmaports-sargo-hexagonrpcd, pmaports-4783, pmaports-4823
 
+About
+: deep-sleep
+
 
 <a id="qcom-sleep-path"></a>
 ### qcom-sleep-path
@@ -38,6 +41,9 @@ Found
 
 Sources
 : psci-osi-hierarchy, rpmh-rsc-cluster-pd, qcom-stats-binding, qcom-soc-sleep-states, nura-sdm845-wiki
+
+About
+: deep-sleep
 
 
 <a id="qcom-wake-for-calls"></a>
@@ -58,6 +64,9 @@ Found
 Sources
 : nura-sdm845-wiki, nura-enchilada-wiki, pmaports-4194, pmaports-4989, pmaports-4783
 
+About
+: deep-sleep
+
 
 <a id="sleep-other-ways"></a>
 ### sleep-other-ways
@@ -76,6 +85,9 @@ Found
 
 Sources
 : ut-surya, lwn-autosleep, crust-pinephone, uninsane-push, nura-sm7150-wiki
+
+About
+: deep-sleep
 
 
 <a id="sm7150-cluster-params"></a>
@@ -96,6 +108,9 @@ Found
 Sources
 : sm7150-dtsi-v72, surya-downstream-fdt, sm8150-cluster-idle, sm7150-upstream-series
 
+About
+: deep-sleep
+
 
 <a id="surya-sleep-measured"></a>
 ### surya-sleep-measured
@@ -115,6 +130,9 @@ Found
 Sources
 : soc-sleeps-check
 
+About
+: deep-sleep
+
 
 <a id="health-landscape"></a>
 ### health-landscape
@@ -130,6 +148,9 @@ Question
 
 Found
 : postmarketOS (docs.postmarketos.org/pmaports/main/ci/hardware-ci.html): tests ship as small shell files in postmarketos-test-* packages (suspend by an RTC wake alarm; bootrr, which checks per board, keyed by the device tree's compatible, that every expected driver probed) and run in the initramfs CI hook on their hardware CI (CI-tron gateway); surya has no bootrr board file yet. In the commons: the package conveyor (linux-package-distribution-oco/conveyor) already builds static aarch64-musl binaries with signed provenance and plans signed Alpine repositories for postmarketOS (cv-apk) and machines that receive updates, the phone next (cv-machines-refresh); agent access (creation-guidelines/agent-access-oco) plans every tool's structured door offered over MCP, in Rust with rmcp, naming devlab among the first (aa-two-doors). In lab-tools itself: devlab test ran surya's checks from the lab over SSH, health kept a baseline of what ever passed, watch ran health after each boot from the lab - nothing ran on the phone by itself, and the checks were one surya-specific file.
+
+About
+: dl-reaches
 
 
 <a id="checking-calls-automatically"></a>
@@ -150,6 +171,9 @@ Found
 Sources
 : twilio-voice
 
+About
+: modem-calls
+
 
 <a id="microphone-codec-drops-off"></a>
 ### microphone-codec-drops-off
@@ -168,6 +192,9 @@ Found
 
 Sources
 : vendor-sm6150-lpi-dtsi vendor-sm6150-audio-overlay lineage-sm6150-wcd937x
+
+About
+: audio-mic
 
 
 <a id="the-modem-with-a-sim"></a>
@@ -188,6 +215,9 @@ Found
 Sources
 : pmaports-tqftpserv-4747
 
+About
+: modem-data
+
 
 <a id="wiki-against-our-checks"></a>
 ### wiki-against-our-checks
@@ -206,6 +236,9 @@ Found
 
 Sources
 : surya-wiki
+
+About
+: xiaomi-surya
 
 
 <a id="bolero-v1-capture-family"></a>
@@ -226,6 +259,9 @@ Found
 Sources
 : sm7150-mainline-pr60,pulpoff-linux-surya,lineage-sm6150-bolero,sm7125-mainline-ucm-miatoll,qrb4210-rb2-audio-v3,qcs615-talos-evk-audio,pmos-sm7150-wiki
 
+About
+: audio-mic
+
 
 <a id="microphones-are-analog"></a>
 ### microphones-are-analog
@@ -244,6 +280,9 @@ Found
 
 Sources
 : pulpoff-linux-surya,sm7150-mainline-pr60,xiaomi-sdmmagpie-qrd-overlay
+
+About
+: audio-mic
 
 
 <a id="mic-zeros-meant-no-input"></a>
@@ -264,6 +303,9 @@ Found
 Sources
 : pulpoff-linux-surya,sm7150-mainline-pr60,lineage-sm6150-bolero
 
+About
+: audio-mic
+
 
 <a id="echo-call-number"></a>
 ### echo-call-number
@@ -282,6 +324,9 @@ Found
 
 Sources
 : placetel-testrufnummern, ipphone-testrufnummern-2005, ipphone-testanrufe-2013, bitpage-bluesip-2021, prepaid-wiki-sipgate, sip2sip-testing
+
+About
+: modem-calls
 
 
 <a id="call-audio-on-surya"></a>
@@ -302,6 +347,9 @@ Found
 Sources
 : pulpoff-linux-surya
 
+About
+: modem-calls
+
 
 <a id="echo-call-test-design"></a>
 ### echo-call-test-design
@@ -320,6 +368,9 @@ Found
 
 Sources
 : pulpoff-linux-surya, placetel-testrufnummern
+
+About
+: modem-calls
 
 
 <a id="health-suite-organisation"></a>
@@ -340,6 +391,9 @@ Found
 Sources
 : rust-script, cargo-script-goal-2026, ktap-v1
 
+About
+: dl-reaches
+
 
 <a id="mobile-data-check-budget"></a>
 ### mobile-data-check-budget
@@ -355,6 +409,9 @@ Question
 
 Found
 : Per run: the modem registered and its bearer connected (mmcli), the bearer's interface found from ModemManager, then over that interface only (curl --interface, so Wi-Fi cannot pass for it): a DNS lookup, five pings to a fixed address (round trip, loss), and a 100 kB HTTPS download timed (speed.cloudflare.com/__down?bytes=100000 or a file the project hosts), about 150 kB with overheads. Boots run up to ~45 a day in bring-up, so about 7 MB on a heavy day; once a week a 5 MB download measures throughput. That is under 0.3 GB a month even on busy months: the 3 GB lasts most of a year at the worst rate and years at an ordinary one. A check also reads the bearer's own byte counters (the interface's /sys/class/net/IFACE/statistics before and after) so each run states what it used, and skips when the month's total passes a budget set in the manifest. Skips without a SIM, as the modem checks already do.
+
+About
+: modem-data
 
 
 <a id="modem-online-tqftpserv"></a>
@@ -375,6 +432,9 @@ Found
 Sources
 : pmaports-4441-tqftpserv
 
+About
+: modem-data
+
 
 <a id="expert-agents-written-not-standing"></a>
 ### expert-agents-written-not-standing
@@ -393,6 +453,9 @@ Found
 
 Sources
 : anthropic-context-engineering,anthropic-long-running-harness,claude-code-agent-teams,claude-code-subagent-memory,cognition-multi-agents-working,langchain-multi-agent-benchmark,ace-context-collapse,mast-mas-failures,chroma-context-rot,blackboard-llm-mas,letta-sleep-time
+
+About
+: expert-primer
 
 
 <a id="kb-organisation-world"></a>
@@ -413,6 +476,9 @@ Found
 Sources
 : diataxis,llms-txt,agents-md,nygard-adr,madr,frictionless-data-package,docs-as-code,evergreen-notes,johnny-decimal,para-forte,wikidata-statements,wikipedia-infobox,anthropic-context-engineering,anthropic-agent-skills,claude-code-memory,photocraft-agents-md,mintlify-llms-txt
 
+About
+: idealkb-from-template
+
 
 <a id="kb-navigation-measured"></a>
 ### kb-navigation-measured
@@ -432,6 +498,9 @@ Found
 Sources
 : text-as-data-template
 
+About
+: kb-about-link
+
 
 <a id="kb-organisation-commons"></a>
 ### kb-organisation-commons
@@ -450,3 +519,6 @@ Found
 
 Sources
 : text-as-data-template
+
+About
+: idealkb-from-template

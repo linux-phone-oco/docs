@@ -4,7 +4,8 @@
 -- --question  string        what was asked
 -- --found     string        what was found
 -- --sources   string?       the sources' ids, comma-separated
+-- --about    string?       what it is about: a component, feature, milestone, device or backlog item (tad q about lists them)
 -- --date      date = today  when
 DELETE FROM research WHERE project = 'linux-phone-oco/' || $project AND id = $id;
-INSERT INTO research (id, project, date, question, found, sources)
-VALUES ($id, 'linux-phone-oco/' || $project, $date, $question, $found, $sources);
+INSERT INTO research (id, project, date, question, found, sources, about)
+VALUES ($id, 'linux-phone-oco/' || $project, $date, $question, $found, $sources, $about);

@@ -20,6 +20,9 @@ Opened
 Needs
 : phone
 
+About
+: surya-boots
+
 
 <a id="kernel-fork-repo"></a>
 ### Fork sm7150-mainline/linux into linux-phone-oco and wire it into lab-agent's build/boot jobs
@@ -32,6 +35,9 @@ Status
 
 Opened
 : 2026-11-04
+
+About
+: surya-boots
 
 
 <a id="custom-matrix-render"></a>
@@ -68,6 +74,9 @@ Opened
 Needs
 : phone
 
+About
+: audio-mic
+
 
 <a id="off-state-charging"></a>
 ### The phone cannot stay off: shutdown and a charger both boot pmOS
@@ -87,6 +96,9 @@ Opened
 Needs
 : phone
 
+About
+: charging
+
 
 <a id="adsp-sensor-crash-loop"></a>
 ### The ADSP crashes every 13-25 s, restarting audio each time
@@ -103,6 +115,9 @@ Note
 Opened
 : 2026-11-09
 
+About
+: sensors
+
 
 <a id="wcd937x-dt-aoncc"></a>
 ### WCD937x device tree: drop aoncc, clock the VA macro from q6afecc
@@ -118,6 +133,9 @@ Note
 
 Opened
 : 2026-11-09
+
+About
+: audio-mic
 
 
 <a id="sensors-registry-writes"></a>
@@ -140,6 +158,9 @@ Needs
 
 Proof
 : motion-and-light
+
+About
+: sensors
 
 
 <a id="audio-cold-boot-race"></a>
@@ -165,6 +186,9 @@ Done 2026-11-17 (bring-up): 21 of 21 boots with the sound card since the PD mapp
 Opened
 : 2026-11-09
 
+About
+: surya-sound
+
 
 <a id="upstream-tas2562-slot-length"></a>
 ### Upstream: tas2562 sets the I2S slot length from the sample width
@@ -181,6 +205,9 @@ Note
 Opened
 : 2026-11-09
 
+About
+: audio-speaker
+
 
 <a id="upstream-ucm-surya-stereo"></a>
 ### Upstream: stereo speaker UCM profile for surya
@@ -196,6 +223,9 @@ Note
 
 Opened
 : 2026-11-09
+
+About
+: audio-speaker
 
 
 <a id="try-shells"></a>
@@ -245,6 +275,9 @@ Needs
 
 Proof
 : mic-hears-speaker
+
+About
+: audio-mic
 
 
 <a id="org-board"></a>
@@ -297,6 +330,9 @@ Note
 Opened
 : 2026-11-10
 
+About
+: audio-speaker
+
 
 <a id="upstream-tas2562-volume"></a>
 ### Upstream: tas2562 digital volume writes do not reach the chips
@@ -312,6 +348,9 @@ Note
 
 Opened
 : 2026-11-10
+
+About
+: audio-speaker
 
 
 <a id="upstream-sxmo-profile"></a>
@@ -331,6 +370,9 @@ Sent 2026-11-17 04:25 UTC by the author, signed off by him, with git send-email 
 Opened
 : 2026-11-10
 
+About
+: sx-upstream
+
 
 <a id="adsp-suspend-crash"></a>
 ### The audio DSP crashes right after resume from suspend
@@ -346,6 +388,9 @@ Note
 
 Opened
 : 2026-11-10
+
+About
+: deep-sleep
 
 
 <a id="device-template"></a>
@@ -366,6 +411,9 @@ Design. (1) linux-phone-oco/device-template, a GitHub template repository: Use t
 
 Opened
 : 2026-11-10
+
+About
+: dt-any-phone
 
 
 <a id="rust-toolset"></a>
@@ -401,6 +449,9 @@ Note
 Opened
 : 2026-11-10
 
+About
+: deep-sleep
+
 
 <a id="usb-flapping-on-suspend"></a>
 ### The phone kept reconnecting on the host's USB
@@ -416,6 +467,9 @@ Note
 
 Opened
 : 2026-11-10
+
+About
+: deep-sleep
 
 
 <a id="shell-free-base"></a>
@@ -470,6 +524,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: surya-tested
+
 
 <a id="gaps-on-the-face"></a>
 ### Known gaps shown as gaps on the face, not as failures
@@ -485,6 +542,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: surya-tested
 
 
 <a id="android-reference"></a>
@@ -520,6 +580,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: dt-any-phone
+
 
 <a id="sleep-measured-once"></a>
 ### Deep sleep measured once: the SoC's own counters across one suspend
@@ -541,6 +604,9 @@ Needs
 
 Proof
 : soc-sleeps
+
+About
+: deep-sleep
 
 
 <a id="sleep-cluster-params"></a>
@@ -564,6 +630,9 @@ Needs
 Proof
 : soc-sleeps
 
+About
+: deep-sleep
+
 
 <a id="sleep-adsp-awake"></a>
 ### The audio DSP sleeps when nothing plays
@@ -586,6 +655,9 @@ Needs
 Proof
 : soc-sleeps
 
+About
+: deep-sleep
+
 
 <a id="sleep-fastrpc-helpers"></a>
 ### FastRPC helpers stopped across suspend; the sensors back
@@ -604,6 +676,9 @@ Opened
 
 Needs
 : phone
+
+About
+: deep-sleep
 
 
 <a id="sleep-wakes-for-calls"></a>
@@ -627,6 +702,9 @@ Needs
 Proof
 : wakes-for-call
 
+About
+: deep-sleep
+
 
 <a id="sleep-standby-current"></a>
 ### Standby current measured beside Android's
@@ -646,6 +724,9 @@ Opened
 Needs
 : phone
 
+About
+: deep-sleep
+
 
 <a id="devlab-mcp"></a>
 ### devlab mcp: the phone for any agent
@@ -661,6 +742,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: dl-reaches
 
 
 <a id="flash"></a>
@@ -678,6 +762,9 @@ Note
 Opened
 : 2026-11-10
 
+About
+: dl-safe
+
 
 <a id="gaps-counted-apart"></a>
 ### A known gap counted apart from a failure, when a run is filed
@@ -694,6 +781,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: surya-tested
+
 
 <a id="gather-once-quiet"></a>
 ### Gathered once the phone is quiet, landed again if main moved
@@ -709,6 +799,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: dl-reaches
 
 
 <a id="guard-stop-unlanded"></a>
@@ -758,6 +851,9 @@ Note
 Opened
 : 2026-11-10
 
+About
+: dl-reaches
+
 
 <a id="health-after-change"></a>
 ### Every change ends with the health report
@@ -773,6 +869,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: dl-safe
 
 
 <a id="health-apk"></a>
@@ -790,6 +889,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: dl-upstream
+
 
 <a id="health-carry-old-checks"></a>
 ### The checks surya-lab ran from the lab, carried into the suite
@@ -805,6 +907,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: surya-tested
 
 
 <a id="health-gather"></a>
@@ -822,6 +927,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: dl-reaches
+
 
 <a id="health-on-phone"></a>
 ### The phone checks its own health after every boot
@@ -837,6 +945,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: dl-reaches
 
 
 <a id="health-suspend-cycle"></a>
@@ -857,6 +968,9 @@ Opened
 Needs
 : phone
 
+About
+: deep-sleep
+
 
 <a id="hear"></a>
 ### The lab's ear
@@ -872,6 +986,9 @@ Note
 
 Opened
 : 2026-11-10
+
+About
+: dl-manual
 
 
 <a id="hear-asks-first"></a>
@@ -889,6 +1006,9 @@ Note
 Opened
 : 2026-11-10
 
+About
+: dl-manual
+
 
 <a id="hear-fixed-microphone"></a>
 ### The microphone, placed on notice
@@ -904,6 +1024,9 @@ Note
 
 Opened
 : 2026-11-10
+
+About
+: dl-manual
 
 
 <a id="hear-phone-mic"></a>
@@ -921,6 +1044,9 @@ Note
 Opened
 : 2026-11-10
 
+About
+: audio-mic
+
 
 <a id="hear-quiet-hours"></a>
 ### Listening by itself, at decent hours
@@ -936,6 +1062,9 @@ Note
 
 Opened
 : 2026-11-10
+
+About
+: dl-manual
 
 
 <a id="hear-room-silence"></a>
@@ -953,6 +1082,9 @@ Note
 Opened
 : 2026-11-11
 
+About
+: dl-manual
+
 
 <a id="kernel"></a>
 ### Safe test kernels
@@ -968,6 +1100,9 @@ Note
 
 Opened
 : 2026-11-10
+
+About
+: dl-safe
 
 
 <a id="lpi-debugfs-hangs"></a>
@@ -987,6 +1122,9 @@ Done 2026-11-17: devlab refuses any command it carries to the phone (phone sh|ro
 Opened
 : 2026-11-17
 
+About
+: dl-safe
+
 
 <a id="manual-tests"></a>
 ### Half-manual tests
@@ -1002,6 +1140,9 @@ Note
 
 Opened
 : 2026-11-10
+
+About
+: dl-manual
 
 
 <a id="phone"></a>
@@ -1019,6 +1160,9 @@ Note
 Opened
 : 2026-11-10
 
+About
+: dl-reaches
+
 
 <a id="pmos-conventions"></a>
 ### Built on postmarketOS's conventions
@@ -1034,6 +1178,9 @@ Note
 
 Opened
 : 2026-11-10
+
+About
+: dl-upstream
 
 
 <a id="provision"></a>
@@ -1051,6 +1198,9 @@ Note
 Opened
 : 2026-11-10
 
+About
+: dl-safe
+
 
 <a id="rig"></a>
 ### A proper rig
@@ -1067,6 +1217,9 @@ Note
 Opened
 : 2026-11-10
 
+About
+: dl-manual
+
 
 <a id="suite-put-runner-default"></a>
 ### suite put: find the runner by itself
@@ -1082,6 +1235,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: dl-reaches
 
 
 <a id="test-sound-level-setting"></a>
@@ -1101,6 +1257,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: dl-manual
+
 
 <a id="try-kernel-read-as-stock"></a>
 ### kernel try: a try whose release equals the test kernel's is read as stock
@@ -1117,6 +1276,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: dl-safe
+
 
 <a id="try-reports-outcome"></a>
 ### kernel try reports what came back
@@ -1132,6 +1294,9 @@ Note
 
 Opened
 : 2026-11-11
+
+About
+: dl-safe
 
 
 <a id="adsp-handover-loop"></a>
@@ -1174,6 +1339,9 @@ Needs
 Proof
 : image-sensor
 
+About
+: camera-rear
+
 
 <a id="image-sensors"></a>
 ### Image sensors: described, then identified, then seen
@@ -1195,6 +1363,9 @@ Needs
 
 Proof
 : image-sensor
+
+About
+: camera-rear
 
 
 <a id="mic-capture"></a>
@@ -1282,6 +1453,9 @@ Done 2026-11-17 (bring-up): sound is recorded through both microphones on the ke
 Opened
 : 2026-11-11
 
+About
+: audio-mic
+
 
 <a id="mic-codec-init-timeout"></a>
 ### The microphone codec times out at initialisation
@@ -1297,6 +1471,9 @@ Note
 
 Opened
 : 2026-11-11
+
+About
+: audio-mic
 
 
 <a id="modem-shutting-down"></a>
@@ -1317,6 +1494,9 @@ Opened
 Needs
 : phone
 
+About
+: modem-data
+
 
 <a id="needs-a-sim"></a>
 ### A SIM card in the phone
@@ -1335,6 +1515,9 @@ Opened
 
 Waits
 : the author
+
+About
+: modem-data
 
 
 <a id="no-sound-card-boots"></a>
@@ -1358,6 +1541,9 @@ Needs
 Proof
 : sound-card
 
+About
+: surya-sound
+
 
 <a id="port-lpi-fix-to-branch"></a>
 ### Port the pin fix to the microphone kernel branch
@@ -1376,6 +1562,9 @@ Opened
 
 Needs
 : phone
+
+About
+: audio-mic
 
 
 <a id="sensors-and-the-mask"></a>
@@ -1399,6 +1588,9 @@ Needs
 Proof
 : motion-and-light
 
+About
+: sensors
+
 
 <a id="sensors-without-crash"></a>
 ### Sensors, without crashing the audio processor
@@ -1421,6 +1613,9 @@ Needs
 Proof
 : motion-and-light
 
+About
+: sensors
+
 
 <a id="telephony-checks"></a>
 ### Telephony in the test suite
@@ -1440,6 +1635,9 @@ Opened
 Needs
 : phone
 
+About
+: modem-calls
+
 
 <a id="dt-made"></a>
 ### The template, made from what surya proved
@@ -1455,6 +1653,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: dt-any-phone
 
 
 <a id="dt-onboard"></a>
@@ -1472,6 +1673,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: dt-any-phone
+
 
 <a id="dt-second-phone"></a>
 ### A second phone through the template
@@ -1487,6 +1691,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: dt-any-phone
 
 
 <a id="dt-shell-switch"></a>
@@ -1504,6 +1711,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: dt-any-phone
+
 
 <a id="dt-surya-from-template"></a>
 ### surya-lab re-based onto the template
@@ -1519,6 +1729,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: dt-any-phone
 
 
 <a id="dt-usb-awake"></a>
@@ -1536,6 +1749,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: dt-any-phone
+
 
 <a id="more-devices"></a>
 ### More phones
@@ -1551,6 +1767,9 @@ Note
 
 Opened
 : 2026-11-10
+
+About
+: sx-more
 
 
 <a id="surya-hand-check"></a>
@@ -1571,6 +1790,9 @@ Opened
 Needs
 : phone
 
+About
+: sx-surya
+
 
 <a id="surya-profile"></a>
 ### surya's profile
@@ -1586,6 +1808,9 @@ Note
 
 Opened
 : 2026-11-10
+
+About
+: sx-surya
 
 
 <a id="surya-upstream"></a>
@@ -1603,6 +1828,9 @@ Note
 Opened
 : 2026-11-10
 
+About
+: sx-upstream
+
 
 <a id="kernel-promote"></a>
 ### devlab kernel: make a proven test kernel the phone's default
@@ -1618,6 +1846,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: dl-safe
 
 
 <a id="mic-ucm-capture"></a>
@@ -1728,6 +1959,9 @@ Opened
 Needs
 : phone
 
+About
+: audio-mic
+
 
 <a id="mic-upstream"></a>
 ### Upstream: surya's capture joins sm7150-mainline PR 60
@@ -1743,6 +1977,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: audio-mic
 
 
 <a id="mic-dmic-dropped"></a>
@@ -1851,6 +2088,9 @@ Done 2026-11-17 (bring-up): the DMIC experiment (pin table swap, DMIC routes, th
 
 Opened
 : 2026-11-17
+
+About
+: audio-mic
 
 
 <a id="mic-held"></a>
@@ -1962,6 +2202,9 @@ Done 2026-11-17 (bring-up): three reboots in a row on the kept kernel (health 05
 Opened
 : 2026-11-17
 
+About
+: audio-mic
+
 
 <a id="earpiece"></a>
 ### Earpiece: through the WCD9375's EAR amplifier, proven by the top microphone
@@ -1980,6 +2223,9 @@ Done 2026-11-17 (bring-up), with the author's ear: the WCD9375's EAR amplifier m
 Opened
 : 2026-11-17
 
+About
+: audio-earpiece
+
 
 <a id="kernel-remove-keeps-shared"></a>
 ### kernel remove never takes modules another kernel boots with
@@ -1996,6 +2242,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: dl-safe
+
 
 <a id="kernel-try-dtb"></a>
 ### A device-tree change is one boot: kernel try --dtb
@@ -2011,6 +2260,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: dl-safe
 
 
 <a id="upstream-pd-mapper-order"></a>
@@ -2043,6 +2295,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: dl-safe
 
 
 <a id="telegram-at-provisioning"></a>
@@ -2081,6 +2336,9 @@ Done 2026-11-17 (bring-up): pulpoff/linux-surya's c314b3bdf cherry-picked onto t
 Opened
 : 2026-11-17
 
+About
+: modem-calls
+
 
 <a id="calls-voice-ucm-uplink"></a>
 ### Calls 2: UCM Voice Call, TX topology 0x10F70, the 1-channel uplink capture
@@ -2101,6 +2359,9 @@ Opened
 
 Waits
 : calls-q6voice-kernel
+
+About
+: modem-calls
 
 
 <a id="calls-first-call"></a>
@@ -2123,6 +2384,9 @@ Opened
 Waits
 : calls-voice-ucm-uplink; the author's word
 
+About
+: modem-calls
+
 
 <a id="calls-echo-check"></a>
 ### Calls 4: call-echo, the daily automatic echo call
@@ -2144,6 +2408,9 @@ Opened
 Waits
 : calls-first-call
 
+About
+: modem-calls
+
 
 <a id="health-analysis-in-rust"></a>
 ### devlab-health tone make|find on the phone, the awk Goertzels retired
@@ -2159,6 +2426,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: dl-reaches
 
 
 <a id="health-coverage-query"></a>
@@ -2176,6 +2446,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: surya-tested
+
 
 <a id="calls-audio-q6voice"></a>
 ### Call audio both ways: q6voice, with the uplink from the microphone
@@ -2192,6 +2465,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: modem-calls
+
 
 <a id="health-data-check"></a>
 ### The mobile-data check made generic, counting its bytes against a budget
@@ -2207,6 +2483,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: modem-data
 
 
 <a id="sms-loopback"></a>
@@ -2229,6 +2508,9 @@ Opened
 Waits
 : the SIM's own phone number (the SIM does not store it)
 
+About
+: modem-sms
+
 
 <a id="upstream-alpine-tqftpserv"></a>
 ### Upstream: tqftpserv >= 1.2 in Alpine v3.24-stable
@@ -2248,6 +2530,9 @@ Opened
 Waits
 : the author: a request to Alpine is made in his name
 
+About
+: modem-data
+
 
 <a id="expert-primer"></a>
 ### A domain's expert primer: one named query that shows a fresh session everything docs knows of a component - research, decisions, backlog, tests, sources, support status, its how-it-stands row
@@ -2256,10 +2541,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-17-experts-written-not-standing. Next: queries/expert.sql (tad q expert --component audio-mic); try it by starting a fresh audio session from it alone and asking what bring-up learned of the WCD9375.
+: Done 2026-11-17 by kb-about-link: tad q about --subject COMPONENT is the primer - status, research (its how-it-stands row once written with --about), decisions, open work, log, tests and the sources cited.
 
 Opened
 : 2026-11-17
@@ -2296,6 +2581,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: modem-calls
+
 
 <a id="suite-put-from-main"></a>
 ### suite put puts the lab as its main has it
@@ -2311,6 +2599,9 @@ Note
 
 Opened
 : 2026-11-17
+
+About
+: dl-reaches
 
 
 <a id="reports-not-in-clones"></a>
@@ -2328,6 +2619,9 @@ Note
 Opened
 : 2026-11-17
 
+About
+: dl-reaches
+
 
 <a id="kb-about-link"></a>
 ### Every record names what it is about, checked: an about field on research, backlog, session_log and concepts (decisions has one, free text in four spellings), one references rule to components, features, milestones and devices, backfilled; and the query about SUBJECT
@@ -2336,10 +2630,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: From 2026-11-17-ideal-knowledge-base; it is the ground expert-primer's query stands on. Measure after: the microphone and the modem questions of kb-navigation-measured, each one call.
+: Done 2026-11-17: about on research, backlog, session_log and concepts beside decisions, one references rule per table (components, features, milestones, devices, backlog); 11 drifted spellings in decisions caught by the rule and set to plain ids (the face's milestone badges match plain ids; ocoeco's language now lets a decision be about a component, feature or device too); 185 rows backfilled - every research row, 98 of 117 backlog, 48 of 63 log, 31 of 41 decisions; the rest are about the project as a whole. tad q about --subject X: the microphone in 22 KB (pages: 206 KB), the modem in 17 KB, the subjects in 1.3 KB. Next: kb-entry.
 
 Opened
 : 2026-11-17

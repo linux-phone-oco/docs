@@ -4,6 +4,13 @@ This repo is a small versioned "database" kept as plain files. The data lives as
 declared in `tables.toml`; [tad](https://github.com/creation-guidelines/tad-engine), a released Rust tool,
 checks it, keeps it canonical and renders it, and CI enforces that it stays so. **Work on the content.**
 
+## Finding what is known
+Ask a query; do not read `data/` or `docs/` to answer. `tad q about --subject audio-mic` gives everything known of
+one subject - its status, research, decisions, open work, log, tests and sources - in one read (`modem` names
+modem-data, modem-calls and modem-sms together); `tad q about` lists the subjects. Every record names what it is
+about (`--about`, checked against components, features, milestones, devices and backlog). `tad statements` lists
+every query and record with its parameters.
+
 ## Setup (once per session)
 ```
 make setup    # installs tad, the data engine, from its pinned release (its checksum checked)
