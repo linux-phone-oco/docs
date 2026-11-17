@@ -5465,7 +5465,7 @@ Proof
 : walleye-gadget-up (tests/host/gadget-up.sh, GADGET_WAIT=90): a USB device with our strings enumerates and 172.16.43.1 answers ping and telnet; else record the bootreason
 
 Rank
-: 1
+: 2
 
 About
 : walleye-first-fastboot-boot
@@ -5530,3 +5530,31 @@ Rank
 
 About
 : deep-sleep
+
+
+<a id="walleye-vendor-gadget3-selfreboot"></a>
+### vendor-gadget3: vendor-gadget2 plus a self-reboot timer (240 s, cancelled by /tmp/hold) and a way for the shell to reboot (sysrq b)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Decision walleye-try-returns-without-hands. Keep xz, nodes from the cpio, NCM, telnetd on 172.16.43.1. Add: a background timer in init (sleep 240; test -e /tmp/hold || reboot -f) and make sure 'reboot -f' / 'echo b > /proc/sysrq-trigger' works on 4.4 (mount proc; CONFIG_MAGIC_SYSRQ in the stock config.gz? say). Also write init's start marker to /dev/kmsg early if it exists (mknod it in the cpio) so a later pstore/last_kmsg read could show it. Keep a-i, s0-s3 and vendor-gadget/2 byte-identical.
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: vendor-gadget3.img = vendor-gadget2 with only the ramdisk's init changed; check script ok; the init's timer and /tmp/hold shown by sh -n and unpacking the ramdisk; hashes in SHA256SUMS; the keeper's try then returns without hands or answers gadget-up
+
+About
+: walleye-first-fastboot-boot
