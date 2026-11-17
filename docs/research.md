@@ -1151,3 +1151,34 @@ About
 
 Material
 : research/google-walleye/2026-11-17/
+
+
+<a id="orchestration-2026-11-17-evening"></a>
+### orchestration-2026-11-17-evening
+
+Brief
+: Orchestration hand-over, 2026-11-17 evening: try read by initramfs, phone-next, fastboot by serial landed; owed: a role keeper's read-weight, trimming the briefs, kernel-orphan-modules.
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Where does orchestration's work stand, for a fresh orchestration session to take it up without this session's long context?
+
+Found
+: ROLE: orchestrator (ideal-agent card; brief ideal-agent-linux-phone-oco/orchestration.md, which now opens with Role/Name). Owns the conveyor - lab-tools (devlab; lpoco-health's packaging and the Alpine path are the conveyor's, its code is lpoco-health's), device-template, docs' face and its queries - and tends the agents. Notes: side-session-notes/local_325ef65d-55c6-44bd-85b9-53de24869d6e/orchestration-3.md.
+LIVE: surya lane - waker scheduled task linux-phone-keeper-waker (hourly) only nudges the surya coordinator (local_0ecf107e), reading tad q phone-next; the coordinator starts keepers, which take tad q phone-next (one row). Walleye lane - walleye coordinator (local_7fb92f70); google-walleye (FA81N1A00790) sits in fastboot; devlab fastboot state|getvar|boot now|reboot now, by serial. devlab-watch@surya-lab runs ~/.local/bin/devlab built from ~/Projects/linux-phone-oco/lab-tools at main (1b35fc6); suite put --runner builds in that tree, so build devlab only from it. lpoco-health 0.1.7 published by the conveyor (lpoco-health-v tags); #78's provides + old-name links ship with the next release.
+LANDED THIS TURN OF THE ROLE (2026-11-17): lab-tools 71 (kernel try reads the booted entry off cmdline initrd=initramfs-NAME), 72 (suite put --runner builds the runner), 79 (fastboot by serial; flash only with [fastboot] writes = true; guard refuses raw fastboot but devices/getvar/help); device-template 3; docs 202 (queries/phone-next.sql, 603 B vs 14.9 KB), 224 (decision 2026-11-17-fastboot-by-serial-writes-by-manifest).
+OWED: (1) the read-weight of the first keeper the surya coordinator starts with Role: keeper / Name: lines (it was asked to send the session id) -> ideal-agent-roles local_dd7369b2, backlog measure-a-role-start; the 12:33 scheduled keeper read 75,649 tok / 39 KB, not comparable (route, connectors). (2) trim the briefs of what the role cards now say (renew thresholds, the read-only-when shape, recording rules said three times); start-weight after docs 230: phone-keeper 25.6 KB, surya lane 21.1, coordinator 22.4, orchestration 27.5. (3) lab-tools backlog by the weakest link: kernel-orphan-modules next (health-*, hear-* are lpoco-health's).
+WAITS ON OTHERS: surya-lab surya-fastboot-serial (phone queue: devlab flash refuses surya until its manifest says [fastboot] serial, likely dc21014b unread, and writes = true); google-walleye-lab [fastboot] serial line (walleye coordinator's). The author's: dispatcher permission mode/model, gather.yml in five repos, archiving linux-phone-oco/lens, cards for charging, GPS, programs on argenv.
+DO NOT UNDO: suite put takes the Alpine package and reads the lab at main; gather lands only after 15 quiet minutes; a kept kernel sorts 1-kept-* after tries; remove keeps shared modules; every fastboot call names its serial and nothing is written over fastboot without writes = true; kernel try trusts LoaderEntrySelected, then the running initramfs, then the release name.
+SIGNS: land is killed (143) when its wait outlives the caller's timeout - run it in the background; make verify refreshes docs/ and IKB.md, run it twice or render first; a hook from before 0.3.2 re-roles a running session on any quoted Role: line - do not quote Role lines to older sessions.
+
+About
+: agent-folder
+
+Supersedes
+: orchestration-how-it-stands
