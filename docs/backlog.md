@@ -3408,10 +3408,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: Landed 2026-11-17 in lab-tools #75: runner, conditions, switches, devlab suite off|on|list, MCP tools, conveyor names. Next: the phone keeper puts it (devlab suite put now: builds the runner, migrates devlab-health's reports, ledger and marks), then devlab suite run and lpoco-health list; then the Alpine package once cv-apk has its key (devlab suite put now --package).
+: 2026-11-17 (surya-keeper-4): done on the phone. devlab suite put now migrated the suite to lpoco-health (21 checks); suite run: 35 pass, 6 fail, 4 not measured, as before - SIM checks skip 'no SIM card', the 6 fails the known ones (fingerprint, two image sensors, motion-and-light, proximity-reads, soc-sleeps); suite list shows all switches on and the condition no-sim. Found: (1) surya-lab's eight device checks still sourced /usr/lib/devlab/health/lib.sh, so the first run after put failed 14 (exit 2) - fixed in surya-lab, put and run again; (2) devlab gather now stopped on a 0-byte report (20261117-133520, a run that died), moved on the phone to /var/lib/lpoco-health/empty-reports/, then 6 runs filed. Not known yet: why that run wrote nothing; gather should skip an empty report instead of stopping.
 
 Opened
 : 2026-11-17
