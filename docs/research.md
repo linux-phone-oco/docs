@@ -2224,3 +2224,25 @@ Sources
 
 About
 : sensors
+
+
+<a id="walleye-try-s0n-no-footer"></a>
+### walleye-try-s0n-no-footer
+
+Brief
+: s0n (stock parts, no AVB footer) from the healthy state: accepted, left fastboot after 12 s, phone then off USB - same as s0, so the footer is not what matters; needs a hand power hold
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: Does the stock control without its AVB footer (s0n, the shape of our own images) behave as s0?
+
+Found
+: From the healthy state (a active+successful, b unbootable, retry 1) devlab fastboot boot now boot-s0n.img (sha 46b575c7...) was accepted; left fastboot after 12 s; then no adb, no fastboot, nothing on its USB port for 3+ min - exactly as s0 (walleye-try-s0-control-healthy-state). Footer and 32 MiB padding therefore do not decide whether the stock kernel starts and goes quiet on USB; the shape of our images (a-i) is not what Load Error rested on. Remaining differences to ours are the parts (s1 ramdisk panics, s2 kernel and s3 dtb refused or fall back). Phone needs hands: hold Power 10-30 s; slot a is successful so it then boots Android on a. Nothing written; slot flags not readable until it is back in fastboot.
+
+About
+: walleye-first-fastboot-boot
