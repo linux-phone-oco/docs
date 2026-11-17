@@ -1056,3 +1056,25 @@ About
 
 Supersedes
 : orchestration-2026-11-17-night
+
+
+<a id="bringup-image-v0-oxide-writes-v0"></a>
+### bringup-image-v0-oxide-writes-v0
+
+Brief
+: abootimg-oxide 0.5.2 writes the v0 header byte for byte as mkbootimg; the id (SHA-1 of three parts) and trailing padding are the caller's
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Question
+: Does abootimg-oxide write header v0 byte-exact, or must pack wrap mkbootimg?
+
+Found
+: Measured 2026-11-17 with a scratch program against mkbootimg (android-tools, header v0, base 0, kernel 0x8000, ramdisk 0x1000000, tags 0x100, page 4096): the crate's header write gave bytes identical to mkbootimg for the whole length it wrote. Two gaps, both ours to fill: (1) full_write only seeks to boot_image_size, so the image ends before the last page's padding (15288 of 16384 bytes) - pack pads itself; (2) the header id: mkbootimg's v0 id is SHA-1 over kernel, ramdisk and second, each followed by its u32 size (three parts), while the crate's compute_hash_digest hashes five (adds recovery dtbo and dtb) - so for v0 the id is computed in our code. With both, pack equals mkbootimg for the plain header and with os_version/os_patch_level words (tests/pack_v0.rs, two cases). mkbootimg writes second address 0 when there is no second image, whatever second_offset says. Header::parse reads v0..v2 and v3/v4; this tool reads v0 only for now. Cost: binrw and thiserror come with the crate. Not known yet: v1/v2 write parity, vendor_boot.
+
+About
+: bringup-image-v0

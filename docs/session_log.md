@@ -1294,3 +1294,24 @@ Rejected
 
 About
 : lpoco-dispatcher
+
+---
+
+
+<a id="2026-11-17-bringup-image-v0"></a>
+### bringup image v0 built and landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: Failing proof test committed first (fixtures: kernel, ramdisk, appended dtb, walleye [boot]); measured abootimg-oxide against mkbootimg; built lpoco-bringup image info|unpack|pack|check; landed as lab-tools PR 85; main read back.
+
+Considered
+: Wrapping mkbootimg for pack (not needed); adding [boot] to devlab's reader (devlab ignores unknown tables, so the table lives in the bringup library until devlab needs it).
+
+About
+: bringup-image-v0
