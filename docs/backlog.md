@@ -4713,10 +4713,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: in-progress
 
 Note
-: set-active a, fastboot reboot, wait until Android on a is up (sys.boot_completed 1, so it marks a successful), then adb reboot bootloader and one devlab fastboot boot now of the control. Back: set-active b if the phone ends on a failed slot. Nothing is written.
+: control accepted from restored first state (walleye-first-state-control-accepted); phone now off USB, needs the author's hand power-cycle before it is back in fastboot
 
 Opened
 : 2026-11-17
