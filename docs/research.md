@@ -1804,3 +1804,30 @@ About
 
 Material
 : research/bringup/2026-11-17/
+
+
+<a id="bringup-family-names"></a>
+### bringup-family-names
+
+Brief
+: Tool families share a prefix where others install them (git-, cargo-, pm); lab-tools: lpoco- for what is pinned or installed, short names stay for the lab's own devlab and tone.
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Question
+: Should linux-phone-oco's tools share one prefix (lpoco-bringup, lpoco-health; devlab, tone renamed or not), or none?
+
+Found
+: What is: lab-tools has devlab (host command, built from the clone, named in about 450 files of linux-phone-oco and in the MCP door's tool names), tone (a library crate and its command, not installed anywhere) and lpoco-health (a package shipped to phones, renamed from devlab-health when it became one, the old name kept as another name). Collisions checked 2026-11-17: crates.io already has a crate named tone (0.0.1); devlab, bringup and lpoco-bringup are not taken as crates, none is on the lab's PATH or in the Arch repositories.
+How others do it: git-* and cargo-* are discovered by the prefix itself (a subcommand is any git-NAME or cargo-NAME on PATH) and complete at the prompt; pmbootstrap and pmaports carry pm for postmarketOS across the whole family; systemd uses a suffix (*ctl) for the same purpose. In each, the prefix marks the tools others install, and it names whose they are.
+Finding: share the prefix where the tool is installed or pinned by others (lpoco-health, lpoco-bringup); keep the short names of the lab's own commands (devlab, tone) until they are installed elsewhere - renaming them now costs about 450 references, the installed path and the MCP tool names for no reader's gain, and the alias precedent (devlab-health kept as another name) makes the later rename cheap. A mixed family is acceptable when the rule is one sentence. Not known yet: when devlab is first pinned by a device repository (that triggers its rename).
+
+Sources
+: rhizoid-repo
+
+About
+: bringup

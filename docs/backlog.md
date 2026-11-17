@@ -4475,7 +4475,7 @@ Status
 : open
 
 Note
-: Decided 2026-11-17 (decision 2026-11-17-bringup-in-lab-tools): a new workspace member of lab-tools, lib + binary 'bringup', Rust with argenv, wrapping mkbootimg/avbtool as oracles and the crates for cpio, compression and dtb. Replaces walleye's eight build/check scripts; the device's header facts go in device.toml [boot] (pmOS deviceinfo names). Steps are the bringup-* items. Next: bringup-image-v0.
+: Decided 2026-11-17 (decision 2026-11-17-bringup-in-lab-tools): a new workspace member of lab-tools, lib + binary named lpoco-bringup (the family prefix marks what others install or pin), Rust with argenv, wrapping mkbootimg/avbtool as oracles and crates for cpio, compression and dtb. Replaces walleye's eight build/check scripts; device facts go in device.toml [boot] (pmOS deviceinfo names), the tool is followed by a [tools] pin and extended beside it. Steps are the bringup-* items; the crate and package are named lpoco-bringup, the test and item ids keep bringup. Next: bringup-image-v0.
 
 Opened
 : 2026-11-17
@@ -4672,3 +4672,25 @@ Opened
 
 About
 : commons-only
+
+
+<a id="lab-tools-family-names"></a>
+### devlab takes the family name (lpoco-...) when device repositories install it, keeping devlab as another name
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-17-bringup-in-lab-tools (family rule, research bringup-family-names). Not now: ~450 references, the installed path and the MCP tool names. When triggered: choose the word (lpoco-devlab stutters; weigh lpoco-lab), rename the package and binary, keep devlab as another name as lpoco-health did, update the MCP names with a notice. tone stays while its binary is not installed; if it is published or installed, rename (crates.io already has tone).
+
+Opened
+: 2026-11-17
+
+Waits
+: devlab first pinned or installed by a device repository
+
+About
+: bringup
