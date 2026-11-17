@@ -336,10 +336,10 @@ Opened
 ### Support status read off the suite's results
 
 Status
-: open
+: done
 
 Note
-: The Devices matrix on the face reads support_status, written by hand; the phone now measures itself after every boot and devlab files every run here through tad. A part's status should follow from its latest results (works where its tests pass on the latest boot; unknown where nothing measured it; a known gap where the manifest says so), with the witnessed tests - listening, looking - as the evidence a machine cannot give. Next: say the rule as tad SQL over test_results, beside the hand-written notes until both say the same.
+: derive/support-status.sql: broken on a failing latest run, works on a passing test that proves the part works, otherwise judged; tried beside the hand-written status - naive reading disagreed on 8 of 19, the rule with proofs agrees on all 19. devlab runs every derive/*.sql after filing, so a regression turns its part broken on the face by itself. Next: the witnessed tests (heard, seen) filed the same way, so works can be proven for more parts than wifi.
 
 Opened
 : 2026-11-17
