@@ -9,5 +9,5 @@
 -- --countermeasure  string?       how the whole was refined
 -- --handled         date?         when it was
 DELETE FROM problems WHERE project = 'linux-phone-oco/' || $project AND id = $id;
-INSERT INTO problems (id, project, what, seen, by, countermeasure, handled, kind)
+INSERT INTO problems (id, project, what, seen, "by", countermeasure, handled, kind)
 VALUES ($id, 'linux-phone-oco/' || $project, $what, $seen, $by, $countermeasure, $handled, $kind);

@@ -380,3 +380,146 @@ By
 
 Takes
 : The SoundWire pins' functions (TX data1 gpio19 func3, data2 gpio20 func2, RX data gpio22/23 func2) - mainline's corrected table agrees; the WCD937x reset is gpio24, active state driven high, sleep state low.
+
+
+<a id="lineage-sm6150-bolero"></a>
+### LineageOS sm6150 kernel: the vendor bolero codec (tx-macro, va-macro, bolero-cdc) and sm6150 machine driver
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/LineageOS/android_kernel_xiaomi_sm6150/tree/lineage-23.2/techpack/audio/asoc/codecs/bolero
+
+Author
+: Qualcomm
+
+Year
+: 2019
+
+Takes
+: sm6150/sdmmagpie use qcom,va-without-decimation: the VA block gives only MCLK, the fs counter and DMIC clocks, clocked from the TX macro's MCLK through bolero's mclk mux; TX decimators record everything; TX AIF1 is TX_CDC_DMA_TX_3 (AFE 45111 = 0xB037)
+
+
+<a id="sm7125-mainline-ucm-miatoll"></a>
+### sm7125-mainline/alsa-ucm-conf: miatoll HiFi (TX macro, TX_CODEC_DMA_TX_3 mic entries)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/sm7125-mainline/alsa-ucm-conf/blob/059aa77e6ebc78f10f1d160fd9c4f07d50080912/ucm2/Xiaomi/miatoll/HiFi.conf
+
+Year
+: 2025
+
+Takes
+: SM7125 records through the TX macro on TX_CODEC_DMA_TX_3 with q6afe and WCD937x; its TX controller has no dout port, so <&swr2 0> is right there - the template sm7150 copied. Whether miatoll's mic records is unverified
+
+
+<a id="pmos-sm7150-wiki"></a>
+### postmarketOS wiki: Qualcomm Snapdragon 730/730G/732G (SM7150)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.postmarketos.org/wiki/Qualcomm_Snapdragon_730/730G/732G_(SM7150)
+
+Takes
+: Microphones marked not working on SM7150 devices; the shipped alsa-ucm-conf-qcom-sm7150 is speaker-only
+
+
+<a id="qcs615-talos-evk-audio"></a>
+### [PATCH v5 0/2] QCS615 Talos EVK audio support (Le Qi)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lore.kernel.org/all/?q=s%3A%22QCS615+Talos+EVK+audio+support%22
+
+Author
+: Le Qi
+
+Year
+: 2026
+
+Takes
+: Upstream QCS615 audio (merged 2026-05) is AudioReach with an external DA7212 over MI2S, headset mic only: no LPASS macro, WCD or DMIC work for talos yet
+
+
+<a id="qrb4210-rb2-audio-v3"></a>
+### [PATCH v3 00/12] qrb4210-rb2: wsa audio playback and capture (Alexey Klimov, Linaro)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lore.kernel.org/all/?q=s%3A%22qrb4210-rb2%3A+add+wsa+audio+playback+and+capture+support%22
+
+Author
+: Alexey Klimov
+
+Year
+: 2025
+
+Takes
+: SM6115/QRB4210 records its DMIC through the VA macro on VA_CODEC_DMA_TX_0 with the DCODEC vote on q6afe - both refused by surya's ADSP, so not a template for SM7150
+
+
+<a id="pulpoff-linux-surya"></a>
+### pulpoff/linux-surya: mainline 7.2.15 for the POCO X3 NFC on Mobian, both microphones and call audio
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/pulpoff/linux-surya
+
+Author
+: pulpoff
+
+Year
+: 2026
+
+Takes
+: surya's microphones are analog on the WCD9375 (bottom AMIC1 on ADC1, top AMIC3 on ADC2); capture link on <&swr2 1>; qcom,tx-port-mapping <2 3 4 5> gives ADC2 its own master port 3; LPI gpio7-11 NC (no DMIC pins in use); q6voice call uplink needs a running mono capture on TX_CODEC_DMA_TX_3
+
+
+<a id="sm7150-mainline-pr60"></a>
+### sm7150-mainline/linux PR 60: working WCD9375 microphone capture on davinci (open)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/sm7150-mainline/linux/pull/60
+
+Author
+: artemkaVG
+
+Year
+: 2026
+
+Takes
+: The four faults of SM7150 WCD capture: swr_tx_data mux 3, the TX bus wakeup IRQ, port numbering shifted by the TX controller's one dout port, and the capture link's DAI 1; plus MultiMedia2 for capture. The place to contribute surya's fixes upstream, beside it rather than in a parallel series
+
+
+<a id="xiaomi-sdmmagpie-qrd-overlay"></a>
+### Xiaomi's GPL kernel (surya-q-oss): sdmmagpie-qrd-overlay.dts, the sound card routing Xiaomi kept from Qualcomm's QRD board
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/MiCode/Xiaomi_Kernel_OpenSource/blob/surya-q-oss/arch/arm64/boot/dts/qcom/sdmmagpie-qrd-overlay.dts
+
+Author
+: Qualcomm/Xiaomi
+
+Year
+: 2020
+
+Takes
+: Declares TX DMIC1-3 (bias 1/3) and AMIC2 together with TX SWR_ADC0/ADC2 from ADC1/ADC2: a reference board's routing, not proof of DMICs on surya; every TX/RX path is routed to VA_MCLK

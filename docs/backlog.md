@@ -1434,3 +1434,86 @@ Note
 
 Opened
 : 2026-11-17
+
+
+<a id="mic-ucm-capture"></a>
+### Capture through the sound server: a UCM profile for both mics, the headset mic when plugged
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: First step of decision 2026-11-17-microphones-analog-wcd-path. Every check so far sets the mixer with amixer; an application records through PipeWire/PulseAudio, which needs UCM. Step: a capture side for surya's UCM beside its stereo speaker profile (upstream-ucm-surya-stereo): a Mic device (bottom: TX DEC0 MUX=SWR_MIC, TX SMIC MUX0=ADC0, ADC1 switches, TX_AIF1_CAP Mixer DEC0, MultiMedia2 Mixer TX_CODEC_DMA_TX_3), the top mic as a second channel (DEC1 from ADC2, ADC2 MUX=INP3) or its own device, and Headset Mic (ADC2 MUX=INP2, MIC BIAS2) on jack detection; gains from the passing checks (ADC1 Volume 18, TX_DEC0 Volume 104), pulpoff's README for the call side (top mic for the uplink: less speaker echo). Proof: mic-hears-speaker made to record from the sound server's default source with no amixer, passing; the headset mic stays unknown until a person plugs one (verify-headphone-mic-earpiece).
+
+Opened
+: 2026-11-17
+
+
+<a id="mic-held"></a>
+### The microphones held across boots: audio-mic out of the known gaps
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: The mic kernel is now the phone's default (devlab kernel keep, lab-tools kernel-promote done). Step: audio-mic out of surya's [health] gaps once it holds. Proof: mic-hears-speaker and mic-top-hears-speaker pass in three consecutive boots of the kept kernel (the boot race without audio services, audio-cold-boot-race, would show here).
+
+Opened
+: 2026-11-17
+
+
+<a id="mic-upstream"></a>
+### Upstream: surya's capture joins sm7150-mainline PR 60
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: sm7150-mainline/linux PR 60 (davinci, open since 2026-08) already carries the swr_tx_data mux, the TX wakeup IRQ, the port numbering and the capture DAI 1. Step: review and test it on surya, comment with surya's findings (ADC2 needs its own port, <2 3 4 5>, as pulpoff found; the codec node without pin states, linux-phone-oco/linux PR 4; the SoundWire addresses, PR 5), and send surya's device tree on top once it lands, through upstream-queue. Proof: the surya patches merged in sm7150-mainline, and a kernel built from it passes mic-hears-speaker and mic-top-hears-speaker.
+
+Opened
+: 2026-11-17
+
+
+<a id="mic-dmic-dropped"></a>
+### Keep the DMIC experiment out: surya has no digital mics
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Bring-up's experiment commits (DMIC pins at mux 1, TX DMIC routing, VA DMIC clocks on a module switch, clock pins without output-high) answered a question surya does not ask: its mics are analog (research microphones-are-analog). Step: keep them out of every branch that goes to the conveyor or upstream; the pin table's DMIC functions (mux 1 against the table's 2, the 'gpi26' spelling) are still worth fixing upstream as their own patch, for boards that have DMICs. Proof: test/surya-mic and the PRs carry no EXPERIMENT commit, and the mic checks still pass.
+
+Opened
+: 2026-11-17
+
+
+<a id="calls-audio-q6voice"></a>
+### Call audio both ways: q6voice, with the uplink from the microphone
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: What pulpoff/linux-surya found on this phone (research-microphones, 2026-11-17): on a modem call the ADSP mixes the audio itself (MVM, CVS, CVP over APR); the host starts the AFE ports and the voice processor. q6voice from sdm845-mainline with the CVD 2.3 set-up SM7150 needs, a hostless VoiceMMode1 link (q6voiced opens it per call), routing 'TERT_MI2S_RX Voice Mixer VoiceMMode1' and 'VoiceMMode1 Capture Mixer TX_CODEC_DMA_TX_3'. The far end hears nothing unless a 1-channel capture actually runs on TX_CODEC_DMA_TX_3 during the call; the default TX topology 0x10F71 sends silence without Xiaomi's calibration, 0x10F70 (none) works; the top mic picks up less speaker echo. Step, after mic-ucm-capture and with a SIM: bring these in as the calls feature's research. Proof: a call's far end hears a tone played into the phone's microphone.
+
+Opened
+: 2026-11-17
+
+Waits
+: a SIM card
