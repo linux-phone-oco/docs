@@ -3883,10 +3883,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Read only, first (decision 2026-11-17-floor-research-path). On the phone at idle and again from a late-suspend hook if one exists: cat /proc/cmdline (is clk_ignore_unused or pd_ignore_unused set?); debugfs clk_summary (enable_count>0 for dispcc, camcc, videocc, gpucc and the rpmh clocks bi_tcxo/ln_bb_clk/rf_clk, with consumers), regulator_summary (use_count, always-on), icc_summary, pm_genpd_summary, power/wakeup_sources, cpuidle state usage and time per cpu. The floor runs kept clk files empty. Keep in research/deep-sleep/DATE-floor-holders/. Output: the list of what is on, each with its owner.
+: Done 2026-11-17 (keeper-9): read at idle and before way-back.sh cycle 15 bt-on, research/deep-sleep/2026-11-17-floor-holders/README.md; what is held inside late suspend is not known yet (floor-suspend-late-dump).
 
 Opened
 : 2026-11-17
@@ -3933,10 +3933,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Only if floor-read-holders finds either on the command line: one change, remove it (one-shot via devlab kernel try), cycle 15 bt-on, read the counters and the 35-check suite. Unclaimed bootloader clocks and GDSCs (display splash, camcc) held sm8250's floor.
+: Closed 2026-11-17 (keeper-9): the cmdline has no clk_ignore_unused or pd_ignore_unused (floor-read-holders), nothing to drop.
 
 Opened
 : 2026-11-17

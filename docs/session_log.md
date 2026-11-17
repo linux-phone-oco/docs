@@ -2062,3 +2062,24 @@ Considered
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-1730-keeper9-floor-read-holders"></a>
+### floor-read-holders: what is on before a cycle
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Read cmdline, clk, regulator, icc, genpd, cpuidle, wakeup_sources, qcom_stats at idle and before way-back.sh cycle 15 bt-on (baseline: cxsd/aosd/ddr 0, modem moves 2137->2147, cdsp 60 fixed). No clk_ignore_unused/pd_ignore_unused (floor-no-ignore-unused closed). remoteprocs hold bi_tcxo xo; cx/mx at 256 from the two serials; usb, ufs, wcn3998 rails on; rpmh bb/rf, camera, gpu, video not held. Late-suspend contents not known yet.
+
+Considered
+: next: floor-dsps-never-started (module_blacklist=qcom_q6v5_pas, one try, cycle 15 bt-on). Sensors item skipped: helper crash-loops the ADSP.
+
+About
+: deep-sleep
