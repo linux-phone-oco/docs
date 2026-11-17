@@ -4653,3 +4653,22 @@ Proof
 
 About
 : bringup
+
+
+<a id="derive-parts-in-base"></a>
+### A device base derives its parts' measured fields from its own runs (a derive-parts record that devlab gather runs)
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: After the move a device's runs are filed into its own base, while parts.measured/measured_run were derived by docs from docs' test_results (derive-support-status) and only seeded at the move. Without a derive in the base, parts.measured stays as seeded. Needs which test proves what of a part (docs' tests table is general): the base reads it, or carries the proof per test. devlab gather already runs every derive-* record of the place it files into.
+
+Opened
+: 2026-11-17
+
+About
+: commons-only
