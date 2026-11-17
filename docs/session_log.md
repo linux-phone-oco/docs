@@ -1684,3 +1684,42 @@ Rejected
 
 About
 : lpoco-health
+
+---
+
+
+<a id="2026-11-17-1500-sleep-wake-uart"></a>
+### sleep-wake-uart: the wake found (irq 158) and turned off; a cycle of 15 s that lasts, the SoC still not asleep
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Looked first: mainline serial_core/qcom_geni_serial/hci_qca read (research 2026-11-17-qca-uart-wake-across-suspend). Traced one short cycle with Bluetooth up: the wake is irq 158 (GPIO 41, the UART RX wake pin, '88c000.serial:wakeup'), not 157. Added way-back.sh cycle SLEEP bt-on (serial power/wakeup off for the cycle, restored after; qcom_stats before/after, RTC-measured sleep, hci0 check). Tests: cycle 5 bt-on twice and cycle 15 bt-on once, all three woke by the RTC alarm (RTC 7, 7, 17 s), the watchdog defused each time, hci0 scanning after, no bite, no reboot needed. Counters from the SoC after the 15 s cycle: cxsd 0, aosd 0, ddr 0, adsp 0 (as before); soc-sleeps fails: 'suspended, yet the SoC never reached its lowest state: cxsd 0, aosd 0; suspends this boot: 7; processors never asleep: adsp; wake locks: devlab-usb'. Whether the cluster low-power states were entered in these cycles: not known yet (cpuidle residency not read in way-back).
+
+Considered
+: Rejected for the wake: rfkill block, unbinding hci_uart/btqca, a device-tree change, a udev rule now (decision 2026-11-17-serial-wakeup-off).
+
+About
+: deep-sleep
+
+---
+
+
+<a id="2026-11-17-1500-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Keeper surya-keeper-4, 2026-11-17. Phone on the kept kernel 7.1.0-sm7150-calls+, booted once (up since about 13:45), 7 s2idle suspends this boot, no watchdog bite, no reboot after them; Bluetooth up and scanning; the serial's power/wakeup is back to enabled. Suite after: 35 pass, 6 fail, 4 not measured - the fails are the known ones (fingerprint reader, two image sensors, sensors, proximity) and soc-sleeps; SIM checks skip. Deep sleep: the wake is solved (irq 158, the UART RX pin; way-back.sh cycle SLEEP bt-on), the SoC still does not collapse CX or AOSS: qcom_stats cxsd 0 and aosd 0 after a 15 s cycle, adsp 0 against about 200 for the compute DSP and the modem. sleep-wake-uart and sleep-bt-resume are done (bt-resume: not seen in 3 cycles of at most 15 s). Sensorspd and rootpd stay masked.
+
+Considered
+: next: sleep-adsp-awake (rank 1 now): reboot without soundwire_qcom.stay_awake=1 (a one-shot test kernel cmdline through devlab kernel try), then cycle 15 bt-on and read qcom_stats adsp, cxsd, aosd; then find the LPASS vote that holds the audio DSP up. After that sleep-cluster-params on the prepared dtb (decompile /boot/dtbs-calls/qcom/sm7150-xiaomi-surya-huaxing.dtb, sed 0x41002244 and 0x4100c244, dtc, devlab kernel try calls --dtb) and a cycle 15 bt-on. Cycle method: sh /var/tmp/way-back.sh cycle 15 bt-on as a systemd-run unit with StandardOutput=file:, after devlab phone put sleep/way-back.sh; read the RTC, not date or dmesg; a bt-on cycle also records qcom_stats. Not read yet: cpuidle residency per state across a cycle (add to way-back.sh stats if the cluster question needs it).

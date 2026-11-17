@@ -1096,3 +1096,31 @@ About
 
 Research
 : 2026-11-17-lpoco-health-landscape
+
+
+<a id="2026-11-17-serial-wakeup-off"></a>
+### 2026-11-17-serial-wakeup-off
+
+Brief
+: Bluetooth stays up through suspend with the serial's power/wakeup off for the cycle; blocking, unbinding and a device-tree change rejected
+
+Project
+: linux-phone-oco/surya-lab
+
+Date
+: 2026-11-17
+
+Decision
+: way-back.sh cycle SLEEP bt-on: unblock Bluetooth, write 'disabled' to /sys/bus/platform/devices/88c000.serial/power/wakeup before suspend, put the old value back after. Bluetooth cannot wake the phone for now (wanted later only for paired devices, with the sleep-wakes-for-calls work).
+
+Why
+: The wake that ended s2idle was the serial's dedicated RX wake irq 158, armed because that device's wakeup is on; the sysfs switch is the mainline way, reversible, needs no module build or reboot, and keeps hci0 and its firmware loaded (resume needs no re-setup). Result: 3 cycles woke by the RTC alarm, Bluetooth up after.
+
+Rejected
+: rfkill block bluetooth before suspend (the earlier way: the phone hung at suspend entry once, and Bluetooth is wanted up); unbinding hci_uart/btqca before suspend (loses hci0, reloads firmware at every resume, and a failed rebind could leave the UART dead); deleting the second interrupt in the device tree (a dtb rebuild and a reboot for what one sysfs write does, and it removes the paired-device wake for good); persisting the off state in a udev rule now (not until the sleep path is proven)
+
+About
+: deep-sleep
+
+Research
+: 2026-11-17-qca-uart-wake-across-suspend
