@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.11.0](https://github.com/linux-phone-oco/docs/compare/v0.10.0...v0.11.0) (2026-11-17)
+
+
+### Features
+
+* a backlog item names its device; lane-next, and phone-next needs --device ([#260](https://github.com/linux-phone-oco/docs/issues/260)) ([9ec7b72](https://github.com/linux-phone-oco/docs/commit/9ec7b726a33fcfde38ffc227611f7b0ffec33f89))
+* walleye boot image variants c and d recorded, with what public sources say of the v0 header ([#254](https://github.com/linux-phone-oco/docs/issues/254)) ([7c0f6ba](https://github.com/linux-phone-oco/docs/commit/7c0f6bad59e460a680c9927d04785081505dd3db))
+
 ## [0.10.0](https://github.com/linux-phone-oco/docs/compare/v0.9.0...v0.10.0) (2026-11-17)
 
 
