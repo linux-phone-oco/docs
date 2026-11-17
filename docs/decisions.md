@@ -1550,31 +1550,6 @@ About
 : walleye-first-fastboot-boot
 
 
-<a id="walleye-control-image-download"></a>
-### walleye-control-image-download
-
-Brief
-: The walleye lane may download LineageOS's official walleye recovery.img as the boot control
-
-Project
-: linux-phone-oco/google-walleye-lab
-
-Date
-: 2026-11-17
-
-Decision
-: On the author's word of 2026-11-17 ("Yes, download it"): download LineageOS's official walleye recovery.img from download.lineageos.org only, verify its sha256 against the site's published value, keep it in ~/Projects/walleye-build/control/ with its URL, size and checksum recorded (research row), read its boot image header and dtb ids on the host (unpack_bootimg, fdtget), and boot it once from memory as the control (devlab fastboot boot now, tries on b, slot flags read before and after). Nothing is flashed; no other source, no TWRP; the image is data until booted, never run on the host.
-
-Why
-: Research walleye-load-error-how-it-stands: a stock-format image answers whether the Load Error is the image or the phone's state, and gives the true header and dtb ids; the same distribution already runs on the phone.
-
-Rejected
-: TWRP or other recovery builds (another source, worse provenance); building a control ourselves (not a control); reading ids from forum posts (no checksum).
-
-About
-: walleye-first-fastboot-boot
-
-
 <a id="2026-11-17-sh0-owner-by-tag"></a>
 ### 2026-11-17-sh0-owner-by-tag
 
