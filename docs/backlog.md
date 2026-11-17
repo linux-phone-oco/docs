@@ -5567,10 +5567,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: in-progress
 
 Note
-: ~/Projects/walleye-build/images/vendor-gadget3.img sha256 608afa374c53a1e748f54b7d17ccd188e6c3243fff3814fa394b337cda0b2325 (images/SHA256SUMS; ramdisk initramfs-vendor3.cpio.xz a94f3a22...2a687). Built from google-walleye-lab main 0f14a92 (build/build-vendor-gadget3.sh, 14 checks ok). Supersedes walleye-try-vendor-gadget2 (same image plus the timer): try this one instead, the keeper may close gadget2's try as superseded. Init writes 'walleye-init: vendor-gadget3 init start' to /dev/kmsg before any mount; timer reboots after 240 s unless /tmp/hold exists. If the ramdisk does not run at all, the phone still ends in the same place as gadget2 (panic/bootreason): record it.
+: tried twice 2026-11-17: bootreason kernel_panic, back on a; gadget-up not shown (watcher lost); see session log 2026-11-17-2035
 
 Opened
 : 2026-11-17
