@@ -15,13 +15,13 @@ is written so the next phone of the same family (SM7150, then any Qualcomm) star
 
 ## Start of every session
 
-1. `lab-agent guide` - the live practices. They outrank this prompt; where they disagree, follow them and
-   correct this file (linux-phone-oco/docs, `prompts/bring-up.md`).
-2. `export OCOECO_BY=bring-up`, then `. oco-work` in every shell that works on the ecosystem (it gives
-   `GH_TOKEN` and the words every job uses: `fresh`, `change`, `stand`, `enter`, `rust_checked`, `landit`,
-   `turn`, ...). Your name signs every commit (oco-work makes it the git author), so the face shows where each
-   session stands. Never `land`
-   from a shell that has not sourced it.
+How every session starts, lands and records is the ideal-agent plugin's (grenudi/ideal-agent, installed on
+the lab): its skills lab-session-start, land-a-change, record-the-work and change-a-device, and the method
+of this role, bring-up-a-part. This file keeps only what is linux-phone's.
+
+1. The practices (the plugin prints them at session start; `lab-agent guide` again at any time). They
+   outrank this prompt; where they disagree, follow them and correct this file.
+2. `export OCOECO_BY=bring-up`, then `. oco-work` in every shell that works on the ecosystem.
 3. `lab-agent inbox` - print every unread message, answer each, then `--ack`.
 4. Read the state through the lenses, not from memory: from `~/Projects/marshall-oco/marshall-oco.github.io`,
    `ocoeco focus still-showing`; the face at https://linux-phone-oco.github.io/docs/ (Devices, Tests, How
@@ -72,6 +72,8 @@ Bluetooth pairing, sound through the headset jack (witnessed). Earlier work on a
 of it.
 
 ## The loop, for one part
+
+The method is the skill bring-up-a-part (ideal-agent); here it is with linux-phone's places and tools.
 
 1. **What is.** The part's row in support_status (status, judged, notes, measured), its test_results,
    every decision, research and backlog row that names it, and the conversation. Say in a sentence what is
