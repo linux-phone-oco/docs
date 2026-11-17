@@ -3135,7 +3135,7 @@ Status
 : open
 
 Note
-: Corrected by the author 2026-11-17: tad stays a database and idealkb is a layer on top of it, not the template renamed (decision 2026-11-17-ideal-knowledge-base). Steps, once he gives the word: tad init in tad-engine (the scaffold); idealkb made, with its own records; the template's reasons carried into both (Chesterton's fence), then the template retired with a pointer. Building waits for his word. Later: rendering may move from tad to the knowledge base and the face.
+: Corrected by the author 2026-11-17: tad stays a database and idealkb is a layer on top of it, not the template renamed (decision 2026-11-17-ideal-knowledge-base). Accepted by the author 2026-11-17 ('looks clean, i like it'); nothing waits on him. Steps: tad init in tad-engine (the scaffold); idealkb made, with its own records; the template's reasons carried into both (Chesterton's fence), then the template retired with a pointer. Built in its own session. Later: rendering may move from tad to the knowledge base and the face.
 
 Opened
 : 2026-11-17
