@@ -106,10 +106,11 @@ or eyes are needed - a phone that does not come back, a SIM to insert, a microph
 A second session tends the conveyor - lab-tools (devlab, the health suite, gather, MCP), device-template,
 docs' face and its CI - while you work on the phone's parts. So that neither undoes the other:
 
-- **The phone is one.** Anything that changes its state - reboot, kernel install or try, flash, provision,
-  a package, a config file - is done holding the lab's phone lock:
-  `flock ~/.local/state/devlab/xiaomi-surya/phone.lock devlab ...`. Reading (sh, suite run, health) needs no
-  lock. `devlab watch` runs as a user service and only reads and gathers; leave it running.
+- **The phone is one.** devlab holds it for every change it makes - flash, provision, reboot, root
+  commands, put, kernel install, try and remove, suite put - from the command line and the MCP door alike;
+  a second change waits for the first and says so. So change the phone only through devlab, never by a
+  hand-written ssh, and never wrap devlab in a lock of your own (it would wait on itself). Reading needs no
+  hold. `devlab watch` runs as a user service and only reads and gathers; leave it running.
 - **One place, one hand.** You own `linux-phone-oco/linux`, surya-lab's hardware data (device.toml's flash
   and health facts, ucm/, tests/health/, dt/, patches/, research), `upstream-queue`, `sxmo-deviceprofiles`
   and `~/Projects/surya-audio`. Work in a `git worktree` of your own for each task, never in a clone the
