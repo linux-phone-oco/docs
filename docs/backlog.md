@@ -610,36 +610,6 @@ About
 : deep-sleep
 
 
-<a id="sleep-fastrpc-helpers"></a>
-### FastRPC helpers stopped across suspend; the sensors back
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: With hexagonrpcd's rootpd helper attached the audio DSP crashed on every suspend attempt (24 of 24), so it and the sensors helper are masked and the sensors are gone (surya-lab: sensors-without-crash). postmarketOS stops the helper before suspend and starts it after on the Pixel 3a for the same crash. Do the same on surya with a systemd sleep hook, then unmask both helpers. Proven by: in one boot after a measured sleep, motion-and-light passes, soc-sleeps passes and no audio DSP crash is counted on resume. Upstream question kept: why an attached FastRPC client makes the DSP assert across suspend.
-
-2026-11-17 (research-sensor-hub, decision 2026-11-17-sensors-registry-kept-current): the sensors come back by sensors-and-the-mask and sensors-without-crash (ranks 10-11), not by unmasking alone - with sensorspd unmasked as it stands, the DSP crash-loops at start, not only at suspend. Here only the suspend side: sensorspd already stops before suspend (its unit Conflicts=suspend.target) and nothing restarts it after (stop-only by design, research sensors-across-suspend). Measure first whether the sensors keep streaming after a resume with the helper stopped (libssc speaks QMI to the DSP; the helper may be needed only at registry time); restart it after resume (a unit WantedBy=suspend.target, After=) only if they do not. rootpd stays masked. Proof (once the sensors are up): after a measured sleep in one boot, motion-and-light and soc-sleeps pass and no-processor-crashes passes.
-
-Opened
-: 2026-11-17
-
-Needs
-: phone
-
-Proof
-: motion-and-light
-
-Rank
-: 4
-
-About
-: deep-sleep
-
-
 <a id="sleep-wakes-for-calls"></a>
 ### Waking from deep sleep for calls and messages
 
@@ -3050,10 +3020,10 @@ Project
 : linux-phone-oco/surya-lab
 
 Status
-: open
+: done
 
 Note
-: Decided 2026-11-17 (research-sensor-hub, decision 2026-11-17-sensors-registry-kept-current). The first step: settles whether the DSP still writes once its configs match the registry. On the kept kernel, one boot: (1) save the mtimes, then touch -d @1230768000 every /usr/share/qcom/sm7150/Xiaomi/surya/sensors/config/*.json; (2) systemctl unmask hexagonrpcd-adsp-sensorspd and start it - rootpd stays masked; (3) watch 150 s as adsp/registry-trial.sh counts: ADSP crashes by timestamp and what hexagonrpcd says ('Tried to open ... for writing' means the DSP still re-parses); (4) ssccli --sensor proximity --timeout 10, then light and accelerometer; restart iio-sensor-proxy; (5) devlab suite run in the same boot. Passes when proximity-reads and motion-and-light pass and no-processor-crashes, mic-hears-speaker and the speaker checks still pass. If the DSP still writes: note which file it asks for (sns_pickup.json is listed but absent; sns_reg_version is unreachable) and try that once; if it still crashes, mask sensorspd again (today's state), record the trace, and the way turns to sensors-registry-writes. Never with a call in progress; nothing kept across the boot until sensors-without-crash.
+: Probe done 2026-11-17 (keeper-8, research 2026-11-17-sensorspd-probe-still-writes): with the configs at mtime 1230768000 the DSP still writes temp.json and sns_reg_version through hexagonrpcd (refused) and crashed 7 times in 25 s; the audio card needed a reboot. Not kept: sensorspd masked again, mtimes restored. The proof (proximity-reads) did NOT pass; per this item the way turns to sensors-registry-writes, which now carries the work.
 
 Opened
 : 2026-11-11
@@ -3152,7 +3122,7 @@ Proof
 : motion-and-light
 
 Rank
-: 13
+: 3
 
 About
 : sensors
@@ -4151,3 +4121,34 @@ Opened
 
 About
 : dl-safe
+
+
+<a id="sleep-fastrpc-helpers"></a>
+### FastRPC helpers stopped across suspend; the sensors back
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: 2026-11-17 keeper-8: the probe of sensors-and-the-mask (research 2026-11-17-sensorspd-probe-still-writes) shows the DSP still writes the registry with the configs current - crash-loop at start, so there is nothing to measure across a suspend until hexagonrpcd serves writes (sensors-registry-writes). Plan when sensors are up: measure whether they keep streaming after a resume with sensorspd stopped by its Conflicts=suspend.target; restart it after resume (unit WantedBy=suspend.target, After=) only if not; rootpd stays masked; way-back.sh cycle 15 bt-on, one change at a time. Proof: after a measured sleep in one boot, motion-and-light, soc-sleeps and no-processor-crashes pass.
+
+Opened
+: 2026-11-17
+
+Waits
+: sensors-registry-writes: with the helper unmasked the DSP crash-loops at start (probe 2026-11-17), so the sensors cannot be up to measure across a suspend
+
+Needs
+: phone
+
+Proof
+: motion-and-light
+
+Rank
+: 4
+
+About
+: deep-sleep

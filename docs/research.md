@@ -1474,3 +1474,28 @@ About
 
 Material
 : research/deep-sleep/2026-11-17-floor-research/
+
+
+<a id="2026-11-17-sensorspd-probe-still-writes"></a>
+### 2026-11-17-sensorspd-probe-still-writes
+
+Brief
+: Registry probe on the kept kernel: configs at mtime 1230768000, sensorspd alone unmasked - the DSP still writes (temp.json, sns_reg_version) and crashed 7 times in 150 s
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Does the ADSP still write the registry once the 46 sensor configs match its record (sensors-and-the-mask, one boot, kept kernel 7.1.0-sm7150-calls+)?
+
+Found
+: Yes. With touch -d @1230768000 on the configs and sensorspd unmasked and started, hexagonrpcd logged ~70 times each 'Tried to open .../registry/../temp.json for writing' and '.../sns_reg_version for writing' (no such file), 'Could not read from directory: Bad file descriptor'; the DSP asserted SNS_REG_INIT sns_registry_sensor.c:94 (SNS_RC_SUCCESS == rc) and crashed 7 times in about 25 s of the 150 s (remoteproc crash #1-#7), then 'Handover signaled, but it already happened' every second; ssccli: QRTR node was removed from the bus. After stop, the audio card stayed gone: only a reboot restored it (health 35 pass 0 fail after). Mask and mtimes put back; nothing kept. So the rule in the item applies: the way turns to sensors-registry-writes. Note: count crashes by remoteproc 'crash detected in adsp' lines, not by awk on dmesg timestamps (the probe's own count read 0).
+
+Sources
+: hexagonrpc-19,hexagonrpc-27,hexagonrpc-29
+
+About
+: sensors
