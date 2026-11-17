@@ -1576,3 +1576,28 @@ About
 
 Research
 : 2026-11-17-sh0-and-aop-research
+
+
+<a id="walleye-slot-set-active-a-once"></a>
+### walleye-slot-set-active-a-once
+
+Brief
+: One reversible control on slot a: set-active a, control boot.img once, then back to b
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Decision
+: The keeper may run devlab fastboot set-active now a (metadata only), try the LineageOS control boot.img once on slot a (the state of the very first tries), record devlab's before/after report and the full fastboot text, and then set-active b if the phone ends in fastboot on a failed slot, so the phone ends as it is now (b current and successful). No flash, no dtbo or vbmeta write. Extends walleye-slot-flags-tries-on-b.
+
+Why
+: The control (a real stock-format image) also gets Load Error on b with a unbootable: the one change from the first tries is the slot state; set-active is metadata only, a's image is untouched and both slots boot Android, fastboot stays reachable - a recorded way back.
+
+Rejected
+: Flashing a stub dtbo or vbmeta (no known way back); waiting for the author (a two-way door: the lane's call); leaving the slot question open while only researching (a cheap test answers it).
+
+About
+: walleye-first-fastboot-boot
