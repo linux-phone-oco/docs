@@ -1489,3 +1489,21 @@ Rejected
 
 About
 : idealkb-from-template
+
+---
+
+
+<a id="2026-11-17-1145-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Keeper phone-keeper-20261117-1135: ran sensors-and-the-mask on the kept kernel 7.1.0-sm7150-calls+ (stays the kept default). Result: DSP still writes (temp.json, sns_reg_version) and crashes with only sensorspd unmasked; undone, rebooted, healthy 37 pass 0 fail. Sleep items need the devlab suspend verb (lab-tools health-suspend-cycle, not yet built) so they were not taken; no suspend was tried by hand.
+
+Considered
+: next: sleep-measured-once needs the devlab suspend-cycle verb first (lab-tools, soft_connect + wake locks released + rtcwake, counters read before and after); sensors-registry-writes needs a hexagonrpcd build with state-copy writes (a package, then one probe). Must not be undone: sensorspd and rootpd stay masked; configs mtimes restored.
