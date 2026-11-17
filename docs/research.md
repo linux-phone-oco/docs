@@ -1182,3 +1182,33 @@ About
 
 Supersedes
 : orchestration-how-it-stands
+
+
+<a id="android-reference-walleye-measured"></a>
+### android-reference-walleye-measured
+
+Brief
+: Android on the Pixel 2, read only: LineageOS 15 on stock vendor, 37 sensors, 12 s to system ready; sleep current and audio levels not known yet
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Date
+: 2026-11-17
+
+Question
+: What does Android do on the Pixel 2 as the author left it - build, sensors, battery, boot time, audio - measured read-only, with nothing installed or changed?
+
+Found
+: Measured with plain adb reads, then back to fastboot with the slot flags unchanged: LineageOS 15 (Android 15, userdebug, built 2025-12-05, patch 2025-11-01) on a stock Android 11 Pixel 2 vendor image, kernel 4.4.302, MSM8998 (8 cores), 3.7 GB RAM, 51 GB data, 1080x1920. Sensorservice lists 37 sensors (LSM6DSM, AK09915, TMx490x, BMP280, AK8789, Elmyra, camera sync). Battery learned 2709 mAh of 2805 mAh design (96.6 %), 922 cycles. Boot, from the phone's own event log: system server at 8.3 s, package manager ready 10.1 s, ams_ready 12.0 s, boot animation done 17.8 s (kernel start to there; the bootloader stage is not counted). Audio config: stereo speaker output at 48 kHz.
+Not known yet: sleep current (the phone was charging on USB, Wi-Fi was on, no meter; batterystats' long-run counters contradict themselves so no figure is given), audio levels (no tone source, no microphone), boot time from power-on, thermal limits, the real partition table. Needs next: a USB power meter or the battery path to measure standby with radios as stated, and a tone source plus a lab microphone.
+Lesson for the keeper: adb authorization on this phone was lost at reboot until the author tapped Allow again, and the lab's adb server had to be restarted to see it; no reboot should be planned before "Always allow" is confirmed.
+
+Sources
+: google-walleye-bootloader-first-look
+
+About
+: android-reference
+
+Material
+: research/android-reference/2026-11-17/

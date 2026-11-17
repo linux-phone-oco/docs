@@ -1,0 +1,17 @@
+Statistics since last charge:
+  System starts: 8, currently on battery: false
+  Estimated battery capacity: 2668 mAh
+  Last learned battery capacity: 2709 mAh
+  Min learned battery capacity: 2709 mAh
+  Max learned battery capacity: 2709 mAh
+  Time on battery: 12d 1h 0m 57s 319ms (99,9%) realtime, 6h 34m 25s 846ms (2,3%) uptime
+  Time on battery screen off: 11d 21h 44m 29s 154ms (98,9%) realtime, 3h 17m 57s 683ms (1,1%) uptime
+  Time on battery screen doze: 0ms (0,0%)
+  Total run time: 12d 1h 11m 48s 124ms realtime, 6h 45m 16s 651ms uptime
+  Discharge: 7088 mAh
+  Screen off discharge: 5788 mAh
+  Screen doze discharge: 0 mAh
+  Screen on discharge: 1300 mAh
+  Device light doze discharge: 16.1 mAh
+  Device deep doze discharge: 5479 mAh
+  Start clock time: 2026-11-17-12-14-09

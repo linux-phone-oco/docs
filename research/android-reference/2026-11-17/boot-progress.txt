@@ -1,0 +1,12 @@
+11-17 16:37:37.471  1066  1066 I boot_progress_start: 5812
+11-17 16:37:38.341  1066  1066 I boot_progress_preload_start: 6682
+11-17 16:37:39.485  1066  1066 I boot_progress_preload_end: 7826
+11-17 16:37:39.927  1684  1684 I boot_progress_system_run: 8268
+11-17 16:37:40.424  1684  1684 I boot_progress_pms_start: 8765
+11-17 16:37:40.755  1684  1684 I boot_progress_pms_system_scan_start: 9096
+11-17 16:37:41.290  1684  1684 I boot_progress_pms_data_scan_start: 9631
+11-17 16:37:41.476  1684  1684 I boot_progress_pms_scan_end: 9817
+11-17 16:37:41.752  1684  1684 I boot_progress_pms_ready: 10093
+11-17 16:37:43.646  1684  1684 I boot_progress_ams_ready: 11987
+11-17 16:37:44.958  1684  1721 I boot_progress_enable_screen: 13299
+11-17 16:37:49.459   740  2718 I sf_stop_bootanim: 17800
