@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.9.0](https://github.com/linux-phone-oco/docs/compare/v0.8.0...v0.9.0) (2026-11-17)
+
+
+### Features
+
+* docs follows idealkb 0.8.4: an agent starts with ikb --help and ikb help RECORD ([#238](https://github.com/linux-phone-oco/docs/issues/238)) ([e55ac2e](https://github.com/linux-phone-oco/docs/commit/e55ac2efc8b34f2c8195576a8929289a9624f4b0))
+
+
+### Bug Fixes
+
+* docs follows idealkb 0.9.1: no IKB.md, ikb page prints ([#241](https://github.com/linux-phone-oco/docs/issues/241)) ([93b230d](https://github.com/linux-phone-oco/docs/commit/93b230d2f01f03900941ec92659fa06cafcc1ebf))
+* docs: IKB.md is no longer kept; ikb --help and ikb help RECORD are the page ([#240](https://github.com/linux-phone-oco/docs/issues/240)) ([b2ad526](https://github.com/linux-phone-oco/docs/commit/b2ad526f379acaf577a301fc6fa9edc5acab070a))
+
 ## [0.8.0](https://github.com/linux-phone-oco/docs/compare/v0.7.0...v0.8.0) (2026-11-17)
 
 
