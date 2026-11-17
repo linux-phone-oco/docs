@@ -11,15 +11,16 @@ Read nothing else until a step needs it.**
 
 ## What you do
 
-- **Start the keepers yourself** with `start_session` (Sonnet 5.5, high effort, a lean brief that begins with the
-  three lines `Role: keeper (ideal-agent)`, `Name: surya-keeper-N`, `Also practices: 42`, then names the brief by its
+- **Start the keepers yourself** through surya's keeper launcher, as keep-a-shared-resource, "Starting the lane's
+  sessions", says: write the item onto the queue first, then run the launcher. Its fixed prompt holds what is
+  surya's: the three lines `Role: keeper (ideal-agent)`, `Name: surya-keeper-N`, `Also practices: 42`, the brief's
   path, `~/Projects/linux-phone-oco/docs/ideal-agent-linux-phone-oco/phone-keeper.md` (its first paragraph is the
-  start), the summary of the queue's top item and the task - no `export` and no `. oco-work`: the name comes from
-  `Name:`). You are their parent: each keeper's report
-  reaches you when it ends a turn.
+  start), and its work at `tad q phone-next --device xiaomi-surya`. Add nothing to it - no `export` and no
+  `. oco-work`: the name comes from `Name:`. If the launcher lacks one of these, tell the top coordinator; it
+  is the author's to change.
 - **Each report, decide:** continue the same keeper with its next step (SendMessage), or - when its piece has landed, its
-  lease is released, or its context passes about 150-250k - have it write its hand-over, archive it, and start a fresh
-  keeper. Finished keepers are archived (the author agreed).
+  lease is released, or its context passes about 150-250k - have it write its hand-over, archive it, and run the
+  launcher again. Finished keepers are archived (the author agreed).
 - **What needs the author's hands or eyes** (a stuck phone, a listening test, a witness): tell the top coordinator, who
   relays to him. Before any step that can leave the phone unreachable, a way back that does not depend on USB networking
   must be decided first.

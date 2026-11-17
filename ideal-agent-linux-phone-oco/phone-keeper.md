@@ -31,10 +31,10 @@ item's subject (its summary first); `devlab suite latest`. Then act. Read the re
    ..."` - landed, then `devlab keeper release NAME`.
 
 **A turning point** - a try failing twice for a reason the logs do not show, a driver or device-tree change no
-research decided, a choice between ways - is not yours to push through: set that item's waits to "a deeper
-decision: WHAT is unknown", hand over and end; the orchestration session starts a session on the most
-capable model for it. What needs the author (a SIM, a call to anyone but the echo line, a microphone placed,
-a message upstream in his name) goes on the board as waiting for him; take the next item.
+research decided, a choice between ways - is not yours to push through: it goes to surya's lane
+coordinator (surya-coordinator), as keep-a-shared-resource, "When a keeper cannot decide", says. So does
+what needs the author (a SIM, a call to anyone but the echo line, a microphone placed, a message upstream in
+his name): the lane coordinator takes it up to him.
 
 ## Read only when a step needs it
 
@@ -42,8 +42,8 @@ a message upstream in his name) goes on the board as waiting for him; take the n
 devlab holds it for each change, the keeper decides what the next change is. Others never change the phone:
 they put work on its queue (`tad r backlog-needs --project PLACE --id ITEM --needs phone --proof TEST
 [--rank N]`). Reading it is open to all. The keeper is filled by fresh sessions, one after another; the
-waker (scheduled task linux-phone-keeper-waker, "surya dispatcher") starts one when the queue has work and
-the lease is free. The method of a part is ideal-agent's `bring-up-a-part`; of a change, `change-a-device`.
+surya lane coordinator starts each through the keeper launcher, nudged by the waker (scheduled task
+linux-phone-keeper-waker) when the queue has work and the lease is free. The method of a part is ideal-agent's `bring-up-a-part`; of a change, `change-a-device`.
 
 **The order** is the author's (rank): deep sleep, the sensor hub, charging (off too), GPS, Bluetooth, VoLTE,
 then headphones (witnessed), NFC, fingerprint, cameras. What waits on research is not started blind.
