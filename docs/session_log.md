@@ -2233,3 +2233,21 @@ Done
 
 Considered
 : next: the author's word on a dtbo stub (a write) or on slot a flags; nothing more to try from the host side without it
+
+---
+
+
+<a id="2026-11-17-1900-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: surya-keeper: sensors-registry-writes first try. Built hexagonrpcd of hexagonrpc PR #27 (40e5041) for aarch64 by hand, ran it once over a state copy of the registry: the DSP's write of /../sns_reg_version is outside the mapped tree and answered ENOSYS, the ADSP dropped. Phone rebooted twice (audio only came back on the second), healthy 35 pass 0 fail, kept kernel 7.1.0-sm7150-calls+, sensorspd and rootpd masked, nothing kept, state copy and binary removed.
+
+Considered
+: next: sensors-registry-writes stays open - second try needs a patch to PR #27's build: serve /../sns_reg_version as a writable file in the state root and map sns_reg_config (research 2026-11-17-pr27-registry-try); the host build tree is not kept - clone hexagonrpc and fetch pull/27/head. Expect two reboots after a crash. sleep-fastrpc-helpers still waits on it.
