@@ -1670,3 +1670,28 @@ Rejected
 
 About
 : move-device-rows
+
+
+<a id="2026-11-17-parts-staleness-and-unknown"></a>
+### 2026-11-17-parts-staleness-and-unknown
+
+Brief
+: A device's part pulled from its base counts for 30 days; older, unreadable, undeclared or unclaimed is unknown, 'not known yet' with the reason, never broken.
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: records/feed-device-parts.sql (run per device with a base, devices.base = owner/name, by bin/run-feeds.sh) writes the device's support_status from its base's data/parts.json, only when devicebase.toml says parts = 1 (read as the one line 'parts = N' by a regular expression over the file's text in DuckDB, which reads no TOML; checked against walleye's and surya's real files). A part is kept when its status is one of the five and its updated is at most 30 days old. Otherwise the component is unknown, with a note 'Not known yet: ...' saying why: contract not declared, part not claimed, row not valid, or last said X on DATE more than 30 days ago. A component docs knows that the base does not claim is unknown. A base that cannot be read (404, not JSON) makes every component of that device unknown through records/device-parts-unknown.sql, and never stops the other feeds. derive-support-status leaves devices with a base alone. feeds.yml runs daily plus workflow_dispatch; no push trigger (a repository_dispatch from each base needs a token in each lab).
+
+Why
+: A status nobody has re-measured for a month is not known any more; an old 'works' on a moving kernel misleads. 30 days is as long as a phone's mainline state stays trustworthy between lab sessions here, and short enough that a lab left idle shows it. Practice 12: not measured shows as not known yet.
+
+Rejected
+: No staleness window (an abandoned base would show works forever); 7 days (a weekend-less lab would flicker to unknown); unreadable base keeps the last pulled rows (hides that the base is down); unreadable base shown as broken; a TOML parser or Python for parts = N; on: push of the bases (needs cross-repo tokens).
+
+About
+: feed-device-bases

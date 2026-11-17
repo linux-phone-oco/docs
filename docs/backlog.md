@@ -3905,10 +3905,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Owner: docs / orchestration. devices gets a base field (the repository), a feed record validates the pulled table against the template's contract, feeds.yml runs it. Never copies a device's queue, tries or measurements. Waits on device-template-base.
+: Landed. Surya: when its rows have moved to surya-lab (data/parts.json non-empty), run: tad r device-base --device xiaomi-surya --base linux-phone-oco/surya-lab in the same change; until then docs keeps typing/deriving its status.
 
 Opened
 : 2026-11-17

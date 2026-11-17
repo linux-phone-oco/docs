@@ -1,7 +1,7 @@
 name: feeds
 on:
   schedule:
-    - cron: "17 5 * * 1"   # Mondays
+    - cron: "17 4 * * *"   # daily: the face reads the devices' progress (bases are pulled; a push of a base does not trigger it)
   workflow_dispatch:
 permissions:
   contents: write

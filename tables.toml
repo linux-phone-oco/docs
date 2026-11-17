@@ -138,6 +138,13 @@ required = true
 name = "notes"
 type = "string"
 
+# the device's own base: the lab repository (owner/name) whose devicebase.toml and data/parts.json docs pulls
+# (records/feed-device-parts.sql); null when the device has none
+[[tables.devices.fields]]
+name = "base"
+type = "string"
+pattern = "^[A-Za-z0-9._-]+/[A-Za-z0-9._-]+$"
+
 [tables.feature_support]
 key = ["feature_id", "platform_id"]
 
