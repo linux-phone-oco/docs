@@ -1648,3 +1648,107 @@ Takes
 
 Cited by
 : [Google Pixel 2 XL](devices.md#google-taimen), [Google Pixel 2](devices.md#google-walleye)
+
+
+<a id="pmos-ondevice-ci-mr"></a>
+### pmaports MR 4420: initial on-device CI support
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/4420
+
+Takes
+: A test package installing scripts into known directories plus an early-boot hook; seen only through search summaries (page behind a bot wall).
+
+
+<a id="bootrr"></a>
+### bootrr: sanity checks for boards on LAVA (linux-msm)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/linux-msm/bootrr
+
+Takes
+: Board descriptions as data, generic helpers, board detection, an explicit skip: the shape our shell checks already have.
+
+
+<a id="lava-test-definition"></a>
+### LAVA test definitions
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://lava.readthedocs.io/en/latest/user/basic-tutorials/test-definition.html
+
+Takes
+: One line per test case with pass/fail/skip, a fatal abort; set aside the YAML wrapper and server.
+
+
+<a id="ci-tron-components"></a>
+### CI-tron components (freedesktop)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://gfx-ci.pages.freedesktop.org/ci-tron/docs/components.html
+
+Takes
+: A stored record of what a device should look like, and qualifying by repeated boots.
+
+
+<a id="alpine-rust-aarch64"></a>
+### Alpine edge aarch64 package: rust
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://pkgs.alpinelinux.org/package/edge/main/aarch64/rust
+
+Takes
+: 71.7 MiB download, 205.5 MiB installed: the cost of a toolchain on a phone.
+
+
+<a id="nextest-how-it-works"></a>
+### cargo-nextest: how it works
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://nexte.st/docs/design/how-it-works/
+
+Takes
+: List tests per binary, run each in its own process: a runner that depends on the tests, not the tests on it.
+
+
+<a id="alpine-abuild"></a>
+### Alpine wiki: abuild and package signing
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://wiki.alpinelinux.org/wiki/Abump
+
+Takes
+: An apk gives versions, dependencies, uninstall and signatures at the price of a key and a repository.
+
+
+<a id="rust-script-tool"></a>
+### rust-script (fornwall)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/fornwall/rust-script
+
+Takes
+: Compiles on first run and caches the executable; needs a Rust toolchain on the machine that runs it.
