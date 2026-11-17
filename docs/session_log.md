@@ -1339,3 +1339,27 @@ Rejected
 
 About
 : lpoco-rename-lab-tone
+
+---
+
+
+<a id="2026-11-17-lpoco-mcp-one-door"></a>
+### lpoco mcp: one MCP door for the family
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: Wrote the proof test first (failed: no mcp built-in), then lpoco mcp, lab_ aliases, bringup_image_info/check tools; landed as lab-tools#87 and read back from main.
+
+Considered
+: A merging proxy over each program's own mcp; one router with prefixed names.
+
+Rejected
+: The proxy, see decision 2026-11-17-mcp-one-door-by-prefix. health has no phone-side MCP of its own: its tools stay the lab's health_* ones.
+
+About
+: lpoco-mcp-one-door

@@ -3086,10 +3086,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Today devlab serves the MCP door (rmcp, tokio). Test: 'lpoco mcp' lists the tools of lab, health and bringup, and the old names answer too. Agents then look in one place.
+: done: lab-tools#87; proof lpoco-mcp-lists-every-family-tool (lpoco/tests/mcp.rs) green; read back from main
 
 Opened
 : 2026-11-17
