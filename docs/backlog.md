@@ -3130,3 +3130,47 @@ Opened
 
 About
 : commons-only
+
+
+<a id="lpoco-lab-argenv"></a>
+### lpoco-lab's command line declared once with argenv (devlab's clap moves over)
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Left by lpoco-rename-lab-tone (lab-tools #86): lpoco-lab/devlab still declares its CLI with clap; the family's completions, man page and lpoco list read argenv declarations (decision 2026-11-17-bringup-in-lab-tools: argenv for every lpoco tool). Failing test first: lpoco-lab's argenv declaration yields the same --help for every subcommand that clap gives today (one_program.rs keeps devlab and lpoco-lab equal).
+
+Opened
+: 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+About
+: bringup
+
+
+<a id="lpoco-names-sweep"></a>
+### The old names (devlab, tone, devlab-health, the MCP tool names) swept to lpoco ones in small changes, the aliases kept until the sweep ends
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Left by lpoco-rename-lab-tone (lab-tools #86): ~450 references across AGENTS.md, READMEs, briefs, device.toml comments, launchers, devlab-watch@ units and scripts still say devlab or tone. Sweep one repository per change after lpoco-mcp-one-door lands; the second [[bin]] aliases go only when a grep across linux-phone-oco finds no old name in use.
+
+Opened
+: 2026-11-17
+
+About
+: bringup
