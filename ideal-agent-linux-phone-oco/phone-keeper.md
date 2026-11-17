@@ -3,8 +3,8 @@
 The domain part, for linux-phone-oco's phone surya, of ideal-agent's skill `keep-a-shared-resource`
 (plugin name ideal-agent:keep-a-shared-resource; practice 44-one-keeper-per-shared-resource): read it
 first - what a keeper is, how it hands over and ends - and this for what surya supplies. ideal-agent's
-skills `change-a-device` and `bring-up-a-part` are how each change is made; `prompts/bring-up.md`
-(moving here, with the other prompts) is the phone's own detail.
+skills `change-a-device` and `bring-up-a-part` are how each change is made; `bring-up.md` beside this
+is the phone's own detail.
 
 What surya supplies to that pattern: the resource is the phone; its tool is devlab, which holds it for
 each change; the queue is `tad q phone-queue` (docs, on the face as "The phone's queue"); the lease is

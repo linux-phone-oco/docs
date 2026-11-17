@@ -3116,10 +3116,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: From 2026-11-17-ideal-knowledge-base. ideal-agent's skills say the brief is in the project's prompts/ - their owner changes that wording in the same step; three historical rows name prompts/ and stay as they were said.
+: Done 2026-11-17: prompts/ moved with git mv into ideal-agent-linux-phone-oco/ beside phone-keeper.md, with a README holding practice 42's domain part and the table of briefs; pointers fixed in the briefs, the keeper brief, AGENTS.md and the patrol's scheduled task. ideal-agent's own wording (the project's prompts/) is its owner's - told.
 
 Opened
 : 2026-11-17
