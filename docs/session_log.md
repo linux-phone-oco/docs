@@ -1642,3 +1642,21 @@ Rejected
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-1350-how-the-phone-stands"></a>
+### How the phone stands
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Keeper surya-keeper-3, 2026-11-17. Phone on the kept kernel 7.1.0-sm7150-calls+, healthy after a clean reboot (only the 5 known gaps fail; the SIM is out: modem-registered, mobile-data, call-echo, sms-loopback skip 'no SIM card'; calls/SMS/data stay 'works'). Deep sleep's way back is built and proven (decision 2026-11-17-deep-sleep-way-back, research 2026-11-17-way-back-measured): sleep/way-back.sh in surya-lab (verbs check/install/enable/fuse/defuse/collect/cycle) with the patched qcom_wdt in updates/ (acts as stock until enabled; keep_armed_in_suspend, enable per cycle); the watchdog is 30 s at most, so a cycle sleeps at most 15 s. Idle fuse, probe through a suspend entry and the one measured cycle all reset the phone by the watchdog and it came back with no hands. The cycle (Bluetooth rfkill-blocked) hung at suspend entry again: no 'PM: suspend entry' line, suspend_stats 0/0; with Bluetooth on s2idle ends in 2-3 s on IRQ 157. pstore is empty after a bite, the persistent journal (synced before the arm) is the log. The PMIC RTC cannot be set. After a bite the amp 0x4c read silent: reboot once cleanly after a bite.
+
+Considered
+: next: sleep-wake-uart as one change, with way-back.sh cycle SLEEP as the way back: Bluetooth unblocked but the wakeup of serial@88c000 off (or hci_uart/btqca unbound before the suspend) so IRQ 157 cannot end s2idle and the BT UART is not half-powered; then 'cycle 15' (the script blocks Bluetooth itself: add a verb or a flag for the unblocked variant first). Put the script on the phone with devlab phone put and run it with systemd-run (never nohup). After any try that ends in a bite: one clean reboot, read the health. Must not be undone: sensorspd and rootpd stay masked.
