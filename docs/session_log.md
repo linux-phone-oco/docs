@@ -1618,3 +1618,27 @@ Rejected
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-way-back-proven"></a>
+### The way back proven; the Bluetooth-blocked hang reproduced and recovered
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Built and installed the patched qcom_wdt (updates/, stock behaviour until enabled); sleep/way-back.sh verbs check/install/enable/fuse/defuse/collect/cycle. Idle fuse, a probe through a real s2idle entry and the one measured cycle (BT blocked, 15 s) all ended with the watchdog resetting the phone and the phone booting by itself; the cycle hung at suspend entry as before. pstore is empty after a bite; the journal keeps the marker.
+
+Considered
+: A longer fuse (the watchdog counts 32 s at most), setting the RTC (not settable).
+
+Rejected
+: ramoops as the log (does not survive the reset).
+
+About
+: deep-sleep
