@@ -64,15 +64,15 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 
 <a id="audio-speaker--xiaomi-surya"></a>
 Speaker × Xiaomi POCO X3 NFC
-: works — notes: Stereo, both speakers, verified by ear on 2026-11-09 through PipeWire (left-only tone from the top speaker, right-only from the bottom). Needs two fixes not yet upstream: the tas2562 amplifier driver set 32-bit I2S slots on a link clocked for 16-bit, so the right channel fell outside the frame (kernel patch on linux-phone-oco/linux branch fix/tas2562-i2s-slot-length); and the packaged UCM profile is mono with no amplifier channel setup (stereo profile in surya-lab ucm/). Also needs the ADSP sensors service off (adsp-sensor-crash-loop). Both fixes are installed on the test phone, over package files a system update would replace. Measured 2026-11-11 with a microphone placed at the bottom: the right channel is the bottom speaker (7 dB louder there). — updated: 2026-11-11 — judged: works — measured: adsp-running pass (present), amp-channels pass (present), amp-volume-0x4c pass (present), amp-volume-0x4d pass (present), default-output pass (present), sound-card pass (present) — measured run: 20261117-020628
+: works — notes: Stereo, both speakers, verified by ear on 2026-11-09 through PipeWire (left-only tone from the top speaker, right-only from the bottom). Needs two fixes not yet upstream: the tas2562 amplifier driver set 32-bit I2S slots on a link clocked for 16-bit, so the right channel fell outside the frame (kernel patch on linux-phone-oco/linux branch fix/tas2562-i2s-slot-length); and the packaged UCM profile is mono with no amplifier channel setup (stereo profile in surya-lab ucm/). Also needs the ADSP sensors service off (adsp-sensor-crash-loop). Both fixes are installed on the test phone, over package files a system update would replace. Measured 2026-11-11 with a microphone placed at the bottom: the right channel is the bottom speaker (7 dB louder there). — updated: 2026-11-11 — judged: works — measured: adsp-running pass (present), amp-channels pass (present), amp-volume-0x4c pass (present), amp-volume-0x4d pass (present), default-output pass (present), sound-card pass (present) — measured run: 20261117-021008
 
 <a id="audio-headphone--xiaomi-surya"></a>
 Headphone output (3.5mm) × Xiaomi POCO X3 NFC
-: unknown — notes: The headset jack's detector is present. Sound through it needs a person and a pair of headphones: a witnessed test, not done yet. — updated: 2026-11-11 — judged: unknown — measured: jack-detector pass (present) — measured run: 20261117-020628
+: unknown — notes: The headset jack's detector is present. Sound through it needs a person and a pair of headphones: a witnessed test, not done yet. — updated: 2026-11-11 — judged: unknown — measured: jack-detector pass (present) — measured run: 20261117-021008
 
 <a id="audio-mic--xiaomi-surya"></a>
 Microphone × Xiaomi POCO X3 NFC
-: broken — notes: The microphones go through the WCD9375 codec. In a test kernel (2026-11-11) the codec now comes up and the sound card is made with it, after correcting how two SoundWire pins are muxed. Recording through it is not yet shown. — updated: 2026-11-11 — judged: broken — measured: mic-records fail (present) — measured run: 20261117-020628
+: broken — notes: The microphones go through the WCD9375 codec. In a test kernel (2026-11-11) the codec now comes up and the sound card is made with it, after correcting how two SoundWire pins are muxed. Recording through it is not yet shown. — updated: 2026-11-11 — judged: broken — measured: mic-records fail (present) — measured run: 20261117-021008
 
 <a id="audio-earpiece--xiaomi-surya"></a>
 Earpiece (call speaker) × Xiaomi POCO X3 NFC
@@ -80,27 +80,27 @@ Earpiece (call speaker) × Xiaomi POCO X3 NFC
 
 <a id="camera-front--xiaomi-surya"></a>
 Front camera × Xiaomi POCO X3 NFC
-: broken — notes: The camera pipeline and its three control buses work; the phone's description lists no image sensor, which alone is why the cameras are dark. The vendor's kernel gives the wiring of seven sensor slots and names no model. Next: power a slot and ask the chip what it is (surya-lab, research/cameras.md). — updated: 2026-11-11 — judged: broken — measured: image-sensor fail (present) — measured run: 20261117-020628
+: broken — notes: The camera pipeline and its three control buses work; the phone's description lists no image sensor, which alone is why the cameras are dark. The vendor's kernel gives the wiring of seven sensor slots and names no model. Next: power a slot and ask the chip what it is (surya-lab, research/cameras.md). — updated: 2026-11-11 — judged: broken — measured: image-sensor fail (present) — measured run: 20261117-021008
 
 <a id="camera-rear--xiaomi-surya"></a>
 Rear camera(s) × Xiaomi POCO X3 NFC
-: broken — notes: The camera pipeline and its three control buses work; the phone's description lists no image sensor, which alone is why the cameras are dark. The vendor's kernel gives the wiring of seven sensor slots and names no model. Next: power a slot and ask the chip what it is (surya-lab, research/cameras.md). — updated: 2026-11-11 — judged: broken — measured: image-sensor fail (present) — measured run: 20261117-020628
+: broken — notes: The camera pipeline and its three control buses work; the phone's description lists no image sensor, which alone is why the cameras are dark. The vendor's kernel gives the wiring of seven sensor slots and names no model. Next: power a slot and ask the chip what it is (surya-lab, research/cameras.md). — updated: 2026-11-11 — judged: broken — measured: image-sensor fail (present) — measured run: 20261117-021008
 
 <a id="display-panel--xiaomi-surya"></a>
 Display panel × Xiaomi POCO X3 NFC
-: works — notes: Video-mode panel fixes and panel regulator/variant support landed (6.7.4, 6.13.2). — updated: 2026-11-04 — judged: works — measured: backlight pass (present), panel-connected pass (present) — measured run: 20261117-020628
+: works — notes: Video-mode panel fixes and panel regulator/variant support landed (6.7.4, 6.13.2). — updated: 2026-11-04 — judged: works — measured: backlight pass (present), panel-connected pass (present) — measured run: 20261117-021008
 
 <a id="touchscreen--xiaomi-surya"></a>
 Touchscreen × Xiaomi POCO X3 NFC
-: works — notes: nt36xxx touchscreen driver rewrite for xiaomi-surya landed (6.7.4). — updated: 2026-11-04 — judged: works — measured: touch-device pass (present) — measured run: 20261117-020628
+: works — notes: nt36xxx touchscreen driver rewrite for xiaomi-surya landed (6.7.4). — updated: 2026-11-04 — judged: works — measured: touch-device pass (present) — measured run: 20261117-021008
 
 <a id="haptics--xiaomi-surya"></a>
 Haptics (vibration motor) × Xiaomi POCO X3 NFC
-: works — notes: awinic,aw8624 haptics driver added (6.2.0). — updated: 2026-11-04 — judged: works — measured: vibrator pass (present) — measured run: 20261117-020628
+: works — notes: awinic,aw8624 haptics driver added (6.2.0). — updated: 2026-11-04 — judged: works — measured: vibrator pass (present) — measured run: 20261117-021008
 
 <a id="modem-data--xiaomi-surya"></a>
 Mobile data × Xiaomi POCO X3 NFC
-: partial — notes: Mobile data fix landed (6.2.0); calls and SMS not separately confirmed. — updated: 2026-11-04 — judged: partial — measured: modem-registered skip (works), modem-running pass (present), modem-seen pass (present) — measured run: 20261117-020628
+: partial — notes: Mobile data fix landed (6.2.0); calls and SMS not separately confirmed. — updated: 2026-11-04 — judged: partial — measured: modem-registered skip (works), modem-running pass (present), modem-seen pass (present) — measured run: 20261117-021008
 
 <a id="modem-calls--xiaomi-surya"></a>
 Phone calls × Xiaomi POCO X3 NFC
@@ -112,27 +112,27 @@ SMS × Xiaomi POCO X3 NFC
 
 <a id="wifi--xiaomi-surya"></a>
 Wi-Fi × Xiaomi POCO X3 NFC
-: works — notes: Joins a network, holds an address, and its gateway answers - checked after every start. Speed and the 5 GHz band are not measured. — updated: 2026-11-11 — judged: works — measured: wifi-connected pass (works), wifi-interface pass (present), wifi-reaches-gateway pass (works) — measured run: 20261117-020628
+: works — notes: Joins a network, holds an address, and its gateway answers - checked after every start. Speed and the 5 GHz band are not measured. — updated: 2026-11-11 — judged: works — measured: wifi-connected pass (works), wifi-interface pass (present), wifi-reaches-gateway pass (works) — measured run: 20261117-021008
 
 <a id="bluetooth--xiaomi-surya"></a>
 Bluetooth × Xiaomi POCO X3 NFC
-: partial — notes: The adapter is powered and hears nearby devices (five on 2026-11-11) - checked after every start. Pairing, and sound over Bluetooth, have not been tried. — updated: 2026-11-11 — judged: partial — measured: bt-controller pass (present), bt-powered pass (present) — measured run: 20261117-020628
+: partial — notes: The adapter is powered and hears nearby devices (five on 2026-11-11) - checked after every start. Pairing, and sound over Bluetooth, have not been tried. — updated: 2026-11-11 — judged: partial — measured: bt-controller pass (present), bt-powered pass (present) — measured run: 20261117-021008
 
 <a id="nfc--xiaomi-surya"></a>
 NFC × Xiaomi POCO X3 NFC
-: unknown — notes: The controller is seen by the kernel. No tool on the phone reads a tag yet. — updated: 2026-11-11 — judged: unknown — measured: nfc-device pass (present) — measured run: 20261117-020628
+: unknown — notes: The controller is seen by the kernel. No tool on the phone reads a tag yet. — updated: 2026-11-11 — judged: unknown — measured: nfc-device pass (present) — measured run: 20261117-021008
 
 <a id="fingerprint--xiaomi-surya"></a>
 Fingerprint or face unlock × Xiaomi POCO X3 NFC
-: broken — notes: No fingerprint reader is exposed by the kernel. — updated: 2026-11-11 — judged: broken — measured: reader-exposed fail (present) — measured run: 20261117-020628
+: broken — notes: No fingerprint reader is exposed by the kernel. — updated: 2026-11-11 — judged: broken — measured: reader-exposed fail (present) — measured run: 20261117-021008
 
 <a id="sensors--xiaomi-surya"></a>
 Accelerometer / gyroscope / other sensors × Xiaomi POCO X3 NFC
-: broken — notes: No motion, light or proximity sensor is exposed to the system. The sensor hub's service is masked on purpose: with it running, the audio processor crashed at every suspend. — updated: 2026-11-11 — judged: broken — measured: motion-and-light fail (present) — measured run: 20261117-020628
+: broken — notes: No motion, light or proximity sensor is exposed to the system. The sensor hub's service is masked on purpose: with it running, the audio processor crashed at every suspend. — updated: 2026-11-11 — judged: broken — measured: motion-and-light fail (present) — measured run: 20261117-021008
 
 <a id="usb-otg--xiaomi-surya"></a>
 USB OTG × Xiaomi POCO X3 NFC
-: works — notes: OTG support added (6.13.2). — updated: 2026-11-04 — judged: works — measured: usb-awake pass (works), usb-role pass (present) — measured run: 20261117-020628
+: works — notes: OTG support added (6.13.2). — updated: 2026-11-04 — judged: works — measured: usb-awake pass (works), usb-role pass (present) — measured run: 20261117-021008
 
 <a id="fastboot--xiaomi-surya"></a>
 Fastboot / bootloader × Xiaomi POCO X3 NFC
@@ -140,4 +140,4 @@ Fastboot / bootloader × Xiaomi POCO X3 NFC
 
 <a id="deep-sleep--xiaomi-surya"></a>
 Deep sleep that wakes for calls and messages × Xiaomi POCO X3 NFC
-: unknown — notes: Not measured yet: on USB the lab keeps the phone awake, and it has not suspended in a measured boot. Read 2026-11-17 without a suspend: the SoC's sleep counters work (CX collapse 0, AOSS sleep 0), the audio DSP never slept, and the device tree asks for SC7180's cluster parameters, not surya's. The path: decision 2026-11-17-deep-sleep-measured-s2idle; the steps are the sleep-* backlog items. — updated: 2026-11-17 — judged: unknown
+: unknown — notes: Not measured yet: on USB the lab keeps the phone awake, and it has not suspended in a measured boot. Read 2026-11-17 without a suspend: the SoC's sleep counters work (CX collapse 0, AOSS sleep 0), the audio DSP never slept, and the device tree asks for SC7180's cluster parameters, not surya's. The path: decision 2026-11-17-deep-sleep-measured-s2idle; the steps are the sleep-* backlog items. — updated: 2026-11-17 — judged: unknown — measured: soc-sleeps skip (works) — measured run: 20261117-021008
