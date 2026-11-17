@@ -1365,3 +1365,33 @@ About
 
 Material
 : research/cleanroom-agents/2026-11-17/
+
+
+<a id="2026-11-17-adsp-stopped-cx-aosd-ddr-stay-0"></a>
+### 2026-11-17-adsp-stopped-cx-aosd-ddr-stay-0
+
+Brief
+: With the audio DSP stopped - or all three DSPs - a measured cycle still counts cxsd 0, aosd 0, ddr 0: the audio DSP is not what holds the SoC
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Question
+: Which vote or clock keeps the audio DSP awake, and is the audio DSP what stops CX, AOSS and DDR from sleeping?
+
+Found
+: Measured 2026-11-17 on the kept kernel (7.1.0-sm7150-calls+, patched qcom_wdt), cycle 15 bt-on, as systemd-run units, nothing polled during a cycle.
+(1) The DSP side, read awake: adsp, cdsp and modem remoteprocs running; qcom_stats adsp 0 (cdsp 56, modem 1798 counted): the three share one reader, so the layout is right for the subsystems; whether the ADSP firmware fills its own sleep-stats entry at all is not known yet. The only LPASS clocks enabled: LPASS_HW_MACRO (rx, tx macros and codec), TX_CORE_MCLK/NPL (rx, tx macros), fsgen - the macros' own clocks; the previous keeper's vote release did not change adsp.
+(2) Others, read awake: genpd cx on at performance 256 with the two UARTs (88c000 Bluetooth, a88000) as devices; mx on 256; usb30_prim_gdsc on (USB gadget, the lab's link: qns_llcc/ebi avg 240000 peak 700000 are the USB's vote, cut by the cycle's gadget disconnect); ufs_phy_gdsc on; interconnect: only USB and the UARTs vote with bandwidth, the CPUs 8.7 GB/s peak; the PSCI cluster domain has states S0 (6 ms residency), S1 (8.5 ms) and S2 (9.8 ms): S2 entered once during the one cycle of that boot (s2idle count 1), so the cluster reached its deepest state.
+(3) Floor test 1: adsp stopped for the cycle (offline, no LPASS clock left, no APR devices; the teardown logged a clk_unregister warning from tx_macro, harmless): cxsd 0, aosd 0, ddr 0 after. Floor test 2: adsp, cdsp and modem all offline: cxsd 0, aosd 0, ddr 0 after. Started again after: all three running; the sound card needed a clean reboot, then the suite: 35 pass, 0 fail.
+Meaning: the audio DSP is not the (only) thing keeping CX, AOSS and DDR up: with no DSP running at all they still do not count. The cause is on the Apps side or in AOSS/RPMh: the sleep set (rpmh flush at cluster power-off), the cluster's PSCI state parameter (sleep-cluster-params), the remaining CX vote of the two UARTs, or WLAN/UFS. Not known yet: which; this kernel has no RPMh trace points (events: clk, regulator, interconnect, power/psci_domain_idle_enter only).
+Not measured: a cycle with the UARTs closed; the PSCI state taken at the suspend; the live rpmh sleep-set contents.
+
+About
+: deep-sleep
+
+Material
+: research/deep-sleep/2026-11-17-adsp-floor/

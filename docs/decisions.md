@@ -1305,3 +1305,31 @@ Rejected
 
 About
 : google-walleye
+
+
+<a id="2026-11-17-adsp-is-not-the-floor"></a>
+### 2026-11-17-adsp-is-not-the-floor
+
+Brief
+: sleep-adsp-awake is not the blocker of CX/AOSS/DDR sleep: the weakest link moves to the Apps side (sleep-cluster-params first)
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-17
+
+Decision
+: No more LPASS or DSP-vote code for deep sleep now. The audio DSP's own qcom_stats counter stays a separate, smaller question (not known yet whether its firmware counts). The next try is the prepared cluster-parameters dtb (sleep-cluster-params) judged on a cycle, now possible because the wake is solved; after that the sleep set / the UARTs' CX votes.
+
+Why
+: A cycle with the audio DSP stopped, and one with adsp, cdsp and modem all stopped, still counted cxsd 0, aosd 0, ddr 0; the PSCI cluster state S2 was entered in the cycle.
+
+Rejected
+: Stopping the remoteproc for good (sound and calls need it); more macro-clock work (no effect measured twice); treating adsp count 0 as the cause (the counter may simply not be filled by this firmware: not known yet); a third DSP try (the logs show the DSP is not the cause).
+
+About
+: deep-sleep
+
+Research
+: 2026-11-17-adsp-stopped-cx-aosd-ddr-stay-0

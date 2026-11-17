@@ -3473,34 +3473,6 @@ About
 : deep-sleep
 
 
-<a id="sleep-adsp-awake"></a>
-### The audio DSP sleeps when nothing plays
-
-Project
-: linux-phone-oco/docs
-
-Status
-: in-progress
-
-Note
-: 2026-11-17 keeper-5: the kept kernel has no stay_awake (baseline adsp 0). Releasing the macros' hw votes at runtime suspend (try kernel 7.1.0-sm7150-calls-idle, sound checks pass) did not change adsp (still 0). Not known yet: what the ADSP firmware waits for (sensors PD, call audio, another subsystem's vote). Next: read the DSP side (pd-mapper/remoteproc state, glink channels, sensors PD) before more LPASS code; do not poll the phone during a cycle.
-
-Opened
-: 2026-11-17
-
-Needs
-: phone
-
-Proof
-: soc-sleeps
-
-Rank
-: 1
-
-About
-: deep-sleep
-
-
 <a id="lpoco-health"></a>
 ### lpoco-health: the one health suite on the phone, with switches and run-time detection
 
@@ -3876,3 +3848,31 @@ Opened
 
 About
 : google-walleye
+
+
+<a id="sleep-adsp-awake"></a>
+### The audio DSP sleeps when nothing plays
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: 2026-11-17 keeper-6: two floor tests (adsp stopped; adsp+cdsp+modem stopped) still gave cxsd 0, aosd 0, ddr 0 - the DSP is not what holds the SoC (research 2026-11-17-adsp-stopped-cx-aosd-ddr-stay-0). Left here only: does the ADSP firmware fill its own qcom_stats entry (not known yet). The cause of no CX/AOSS sleep is on the Apps/AOSS side: next is sleep-cluster-params.
+
+Opened
+: 2026-11-17
+
+Waits
+: a deeper decision: what on the Apps/AOSS side holds CX and AOSS (sleep set, cluster parameter, the UARTs' CX vote) is unknown
+
+Proof
+: soc-sleeps
+
+Rank
+: 3
+
+About
+: deep-sleep
