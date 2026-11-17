@@ -2083,3 +2083,24 @@ Considered
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-1810-keeper9-dsps-never-started"></a>
+### floor-dsps-never-started: the DSPs are not the holder
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: One-shot dtb with adsp/cdsp/modem remoteprocs disabled on the kept kernel: cycle 15 bt-on cxsd/aosd/ddr 0 -> 0; soc-sleeps fail (wake lock devlab-usb); no-processor-crashes pass. DSP-vote hypothesis retired. Phone falls back to the kept dtb at the next boot.
+
+Considered
+: next: floor-wlan-off, then floor-udc-unbound (devlab-usb wake lock), floor-sh0-owner, floor-aoss-knobs.
+
+About
+: deep-sleep

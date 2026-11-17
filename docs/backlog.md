@@ -3908,10 +3908,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: One change: a one-shot kernel cmdline (devlab kernel try) with module_blacklist=qcom_q6v5_pas, so adsp, cdsp and modem never run and cannot have latched RPMh votes (the floor tests stopped DSPs that had run). Then way-back.sh cycle 15 bt-on and read cxsd, aosd, ddr. Sound, calls and WLAN are off for the test; Bluetooth and the lab link stay. Count > 0 means a DSP's vote was the holder; 0 retires hypothesis 1 for good (and the ADSP question with it).
+: Done 2026-11-17 (keeper-9): DSPs never started (remoteproc nodes disabled in a one-shot dtb), cycle 15 bt-on: cxsd/aosd/ddr 0 -> 0, soc-sleeps fails, processors never asleep: none. No DSP vote is the holder. research/deep-sleep/2026-11-17-floor-dsps-never-started/README.md
 
 Opened
 : 2026-11-17
