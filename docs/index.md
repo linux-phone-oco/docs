@@ -19,9 +19,9 @@ The memory of linux-phone-oco, whose goal is Linux phones as good as Android for
 - [Manual Work](manual_work.md): 11
 - [Milestones](milestones.md): 23
 - [Platforms](platforms.md): 7
-- [Problems](problems.md): 10
+- [Problems](problems.md): 11
 - [Research](research.md): 59
-- [Session Log](session_log.md): 93
+- [Session Log](session_log.md): 94
 - [Shell Releases](shell_releases.md): 2
 - [Sources](sources.md): 140
 - [Summaries](summaries.md): 4

@@ -1993,3 +1993,27 @@ Done
 
 Considered
 : next: sleep-cluster-params waits on a deeper decision (what holds AOSS/CX/DDR is unknown); candidates: owner of the SH0 x=1,y=3 sleep vote, qcom_aoss prevent_* knobs, XO/VRM votes, USB gadget, display RSC. Then sleep-wake items.
+
+---
+
+
+<a id="2026-11-17-the-first-walleye-images-built"></a>
+### The first walleye images built
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Entry date
+: 2026-11-17
+
+Done
+: Built v7.3 + own msm8998-google-walleye.dts (clang, defconfig + fragment), a busybox gadget initramfs with a QEMU x86_64 self-test, and two v0 boot images (taimen and Lineage offset sets) with a counting check; all through oco-agent jobs, nothing touched the phone. Lab PR 3. Images and SHA256SUMS in ~/Projects/walleye-build/images; reproduce with build/build-all.sh.
+
+Considered
+: qemu-system-aarch64 for the initramfs proof (not installed; installing is a change to the lab machine); porthole's cmdline pieces qcom_wdt.arm_on_probe and watchdog.open_timeout (they need porthole's patches, mainline ignores them).
+
+Rejected
+: a new kernel clone (reused surya's shared clone as a worktree, as surya does); python for the boot image check (shell + mkbootimg/unpack_bootimg/fdtget)
+
+About
+: walleye-kernel-dts
