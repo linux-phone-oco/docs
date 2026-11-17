@@ -1254,3 +1254,28 @@ Rejected
 
 About
 : bringup
+
+
+<a id="2026-11-17-bringup-installs-from-tag"></a>
+### 2026-11-17-bringup-installs-from-tag
+
+Brief
+: A lab host installs the lpoco family with cargo install --git --tag, one command per package, from the release tags
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-17
+
+Decision
+: Install lpoco and lpoco-bringup on a lab host with cargo install --locked --git URL --tag lpoco-vX.Y.Z lpoco, and --tag lpoco-bringup-vX.Y.Z lpoco-bringup (README, Install on a lab host). release-plz tags every package of a release on the one release commit, so the tags agree and the versions match.
+
+Why
+: Proof bringup-installs-from-tag (lpoco/tests/install_from_tag.rs): into a clean root, from GitHub's tags, lpoco --version is the tag's version, lpoco list shows bringup, and bringup refuses a wrong pin (exit 2). It passed in CI. Cargo already resolves the tag, the lockfile and the toolchain; nothing new to maintain. Found on the way: tags of 0.1.7 sat on different commits, so only a version released after the pin (0.2.0) installs a family that works; and the release made the old wrong pin 0.2 right, so the wrong-pin tests now use 99.0.
+
+Rejected
+: Host binaries as release assets (x86_64 linux, checksum): a build job, a checksum step and a download script for a lab that already has cargo; revisit when a host without a toolchain needs it. One shared family tag: the conveyor reads lpoco-health-v*, see 2026-11-17-lpoco-family-version.
+
+About
+: bringup-release

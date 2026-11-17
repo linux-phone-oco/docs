@@ -1384,3 +1384,27 @@ Rejected
 
 About
 : bringup-pin-and-hooks
+
+---
+
+
+<a id="2026-11-17-bringup-release"></a>
+### bringup install from tag
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-17
+
+Done
+: Wrote install_from_tag test first (failed: released 0.1.7 tags had no pin, and the tags sat on different commits). Landed release PR 84 by hand (land --release did nothing), which made 0.2.0 tags on one commit and broke bringup_refuses_wrong_pin (pin 0.2 now right). Test and fix landed in lab-tools #90 with README install section; CI green, read back from main.
+
+Considered
+: Release assets vs cargo install --git.
+
+Rejected
+: Release assets: not needed while hosts have cargo. Note: land --release exits silently without merging; merged PR 84 with gh pr merge.
+
+About
+: bringup-release
