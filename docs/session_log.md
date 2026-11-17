@@ -1546,3 +1546,27 @@ Considered
 
 About
 : deep-sleep
+
+---
+
+
+<a id="2026-11-17-orchestration-3-start"></a>
+### Orchestration renewed: keeper start measured, try read by initramfs, phone-next
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-17
+
+Done
+: Took over from orchestration-how-it-stands. Measured the 12:33 scheduled keeper (45833ff5): first turn 75,649 tokens, 39 KB read in 11 results before its first act, 26 min to it; sent to ideal-agent, who notes it is not comparable to surya-keeper-2 (scheduled route, before the connector change). Most of the read was the queue asked five times (~13 KB) plus a 5 KB tad sql: added queries/phone-next.sql (one row, 0.6 KB vs 14.9 KB) and named it in phone-keeper.md's first paragraph. Landed lab-tools PR 71 (try-kernel-read-as-stock).
+
+Considered
+: A --next flag on phone-queue; rebooting to stock at the end of every try.
+
+Rejected
+: --next flag: a named query of its own says what it is and stays one word. Reboot at the end of try: the try's health is read on it and bring-up keeps working on it; saying plainly that it stays is enough.
+
+About
+: agent-folder
