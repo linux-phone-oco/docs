@@ -3586,10 +3586,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Seen 2026-11-18 (orchestration-renewed): after lab-machine #47 pinned the family at 0.4.1, a bare lpoco host plan still showed 0.4.0 - it read ~/Projects/lab-machine/lab.toml's working file, behind main, while device.toml is read from origin/main (lab-tools #108). One rule for every declaration: read from origin/main, name the rev, ignore a working file that differs.
+: Done 2026-11-18: lab-tools #127 (released v0.5.0, #128). lpoco host reads lab.toml through the same declared_text as device.toml: origin/main, rev named, differing working file ignored. Proof: host/tests/plan.rs reads_lab_toml_from_origin_main_and_ignores_a_working_file_that_differs (seen failing on 0.4.0 pins, then passing; 12 plan tests pass).
 
 Opened
 : 2026-11-18
