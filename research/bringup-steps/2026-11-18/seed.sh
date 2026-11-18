@@ -1,10 +1,21 @@
 #!/bin/sh
-# Seeds the generic bring-up steps and their edges through the records (decision
-# 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base). Run in docs once records/bringup-step.sql and
-# records/bringup-edge.sql exist. The steps are walleye's real chain generalised; surya's path checked them.
+# Seeds the stages, the generic bring-up steps and their edges through the records (ikb; decision
+# 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base). Run in docs; the records are bringup-stage,
+# bringup-step and bringup-edge. The steps are walleye's real chain generalised; surya's path checked them.
+# The stage list is the draft's and waits the author's word: stages are rows, changed with ikb bringup-stage.
 set -eu
-st() { tad r bringup-step --checked-on 2026-11-18 "$@" >/dev/null; }
-ed() { tad r bringup-edge "$@" >/dev/null; }
+st() { ikb bringup-step --checked-on 2026-11-18 "$@" >/dev/null; }
+ed() { ikb bringup-edge "$@" >/dev/null; }
+sg() { ikb bringup-stage "$@" >/dev/null; }
+
+sg --id prepare --ord 1 --title "Prepare" --what "Read what the machine is and what it allows before anything is changed: the stock system, the boot facts, the way back."
+sg --id boot --ord 2 --title "Boot" --what "Get an image of ours accepted by the bootloader and run, one part swapped at a time, until it is known what refuses it."
+sg --id console --ord 3 --title "Console" --what "A window onto the running kernel: a banner, a shell, over UART or the USB gadget."
+sg --id kernel --ord 4 --title "Kernel" --what "Our kernel builds, reaches its init and says nothing worse than it should."
+sg --id power --ord 5 --title "Power" --what "The PMIC, the charger and the watchdog: what keeps the machine alive and safe to leave running."
+sg --id storage --ord 6 --title "Storage" --what "Internal storage seen, first read-only."
+sg --id userspace --ord 7 --title "Userspace" --what "A distribution's root boots, the network is up and the health suite runs on every boot."
+sg --id lab --ord 8 --title "Lab" --what "What the lab needs of a machine to work on it without hands: the ways in, a try that cannot brick."
 
 st --id bootloader-unlocked --title "Bootloader unlocked" --stage prepare --ord 1 --applies boot:android \
   --done-when "fastboot getvar all says unlocked: yes" --proof fastboot-unlocked --proof-kind host-check \

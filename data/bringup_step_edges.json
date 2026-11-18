@@ -1,0 +1,37 @@
+{"step":"bootloader-unlocked","requires":"stock-measured","kind":"soft","group":null,"why":"an unlock may wipe the stock system"}
+{"step":"control-image-boots","requires":"bootloader-unlocked","kind":"hard","group":null,"why":"fastboot boot needs an unlocked bootloader"}
+{"step":"control-image-boots","requires":"slot-state-known","kind":"hard","group":null,"why":"walleye: refusals were the slot state (walleye-load-error-first-state)"}
+{"step":"boot-image-packs","requires":"stock-facts-read","kind":"hard","group":null,"why":"the header and offsets are the stock image's"}
+{"step":"kernel-builds","requires":"stock-facts-read","kind":"soft","group":null,"why":"the dtb ids the bootloader matches"}
+{"step":"dtbo-accepted","requires":"kernel-builds","kind":"hard","group":null,"why":"it is our dtb that must merge"}
+{"step":"stock-kernel-runs-our-init","requires":"control-image-boots","kind":"hard","group":null,"why":"the control is the image swapped into"}
+{"step":"stock-kernel-runs-our-init","requires":"boot-image-packs","kind":"hard","group":null,"why":"the swap repacks"}
+{"step":"stock-kernel-runs-our-init","requires":"initramfs-gadget-emulated","kind":"soft","group":null,"why":"an init proven emulated spends no phone time"}
+{"step":"crash-window","requires":"stock-facts-read","kind":"soft","group":null,"why":"the ramoops region is the stock fdt's"}
+{"step":"reference-kernel-boots","requires":"control-image-boots","kind":"hard","group":null,"why":"same bootloader path"}
+{"step":"reference-kernel-boots","requires":"boot-image-packs","kind":"hard","group":null,"why":"packed the device's way"}
+{"step":"kernel-reaches-init","requires":"kernel-builds","kind":"hard","group":null,"why":"it is our kernel"}
+{"step":"kernel-reaches-init","requires":"boot-image-packs","kind":"hard","group":null,"why":"packed the device's way"}
+{"step":"kernel-reaches-init","requires":"control-image-boots","kind":"hard","group":null,"why":"the bootloader accepts images"}
+{"step":"kernel-reaches-init","requires":"dtbo-accepted","kind":"hard","group":null,"why":"walleye: no start without the merge (walleye-dtbo-overlay-merge-why)"}
+{"step":"kernel-reaches-init","requires":"crash-window","kind":"soft","group":null,"why":"without one a dead kernel says nothing"}
+{"step":"kernel-reaches-init","requires":"reference-kernel-boots","kind":"soft","group":null,"why":"the bisect reference"}
+{"step":"uart-console","requires":"kernel-builds","kind":"hard","group":null,"why":"it is our kernel's log"}
+{"step":"gadget-enumerates","requires":"kernel-reaches-init","kind":"hard","group":null,"why":"our kernel's gadget"}
+{"step":"gadget-enumerates","requires":"initramfs-gadget-emulated","kind":"hard","group":null,"why":"the init makes the gadget"}
+{"step":"banner-on-console","requires":"gadget-enumerates","kind":"hard","group":"console","why":"the console over the gadget"}
+{"step":"banner-on-console","requires":"uart-console","kind":"hard","group":"console","why":"or over UART"}
+{"step":"shell-on-console","requires":"banner-on-console","kind":"hard","group":null,"why":"a console that carries text first"}
+{"step":"first-dmesg-mapped","requires":"shell-on-console","kind":"hard","group":null,"why":"dmesg is read through the shell"}
+{"step":"dmesg-clean","requires":"first-dmesg-mapped","kind":"hard","group":null,"why":"the map names what to clean"}
+{"step":"pmic-bound","requires":"shell-on-console","kind":"hard","group":null,"why":"read through the shell"}
+{"step":"pmic-bound","requires":"first-dmesg-mapped","kind":"soft","group":null,"why":"the map names the PMIC's faults"}
+{"step":"charger-online","requires":"pmic-bound","kind":"hard","group":null,"why":"the charger is a PMIC child"}
+{"step":"watchdog-way-back","requires":"kernel-reaches-init","kind":"hard","group":null,"why":"it is our kernel that hangs"}
+{"step":"watchdog-way-back","requires":"pmic-bound","kind":"soft","group":null,"why":"walleye's way is the PMIC watchdog"}
+{"step":"storage-readonly","requires":"shell-on-console","kind":"hard","group":null,"why":"read through the shell"}
+{"step":"storage-readonly","requires":"dmesg-clean","kind":"soft","group":null,"why":"smmu and supplier faults stop DMA devices"}
+{"step":"usb-network","requires":"gadget-enumerates","kind":"hard","group":null,"why":"the network rides the gadget"}
+{"step":"rootfs-boots","requires":"storage-readonly","kind":"hard","group":null,"why":"the root is on the storage"}
+{"step":"rootfs-boots","requires":"usb-network","kind":"hard","group":null,"why":"ssh is the proof"}
+{"step":"health-suite-runs","requires":"rootfs-boots","kind":"hard","group":null,"why":"the suite runs on the root"}

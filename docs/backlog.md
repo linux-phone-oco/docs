@@ -4578,10 +4578,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: sh research/bringup-steps/2026-11-18/seed.sh in docs, through the records
+: Landed: 8 stages, 26 steps and 37 edges recorded through ikb bringup-stage, bringup-step and bringup-edge (research/bringup-steps/2026-11-18/seed.sh, rerunnable). tad q bringup-chain lists 26 steps in order: stock-measured, stock-facts-read, slot-state-known and initramfs-gadget-emulated at depth 0, bootloader-unlocked at 1 (a soft need on stock-measured: an unlock may wipe the stock system), health-suite-runs last at 12; every status unknown until a base claims. Stages are rows of bringup_stages (prepare, boot, console, kernel, power, storage, userspace, lab), the draft awaiting the author's word: change them with ikb bringup-stage, no schema change. tad check passes; make verify twice clean.
 
 Opened
 : 2026-11-18

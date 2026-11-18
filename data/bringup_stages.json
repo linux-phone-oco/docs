@@ -1,0 +1,8 @@
+{"id":"prepare","ord":1,"title":"Prepare","what":"Read what the machine is and what it allows before anything is changed: the stock system, the boot facts, the way back."}
+{"id":"boot","ord":2,"title":"Boot","what":"Get an image of ours accepted by the bootloader and run, one part swapped at a time, until it is known what refuses it."}
+{"id":"console","ord":3,"title":"Console","what":"A window onto the running kernel: a banner, a shell, over UART or the USB gadget."}
+{"id":"kernel","ord":4,"title":"Kernel","what":"Our kernel builds, reaches its init and says nothing worse than it should."}
+{"id":"power","ord":5,"title":"Power","what":"The PMIC, the charger and the watchdog: what keeps the machine alive and safe to leave running."}
+{"id":"storage","ord":6,"title":"Storage","what":"Internal storage seen, first read-only."}
+{"id":"userspace","ord":7,"title":"Userspace","what":"A distribution's root boots, the network is up and the health suite runs on every boot."}
+{"id":"lab","ord":8,"title":"Lab","what":"What the lab needs of a machine to work on it without hands: the ways in, a try that cannot brick."}
