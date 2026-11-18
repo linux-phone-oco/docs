@@ -4335,3 +4335,34 @@ Rank
 
 About
 : phone-pieces-drift-named
+
+
+<a id="host-plan-unreadable-not-new"></a>
+### lpoco host plan says a root-only file it cannot read is unreadable, not new
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Sign (orchestration, 2026-11-18): planning 0.15.0 named /etc/polkit-1/rules.d/50-lpoco.rules '(new)' while the directory is root-only (Permission denied), so plan cannot tell whether the author's earlier prepare already wrote it. The same limit was noted for NetworkManager keyfiles (part 6b). The author is asked for sudo on a guess.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: a host plan test from fixtures: a declared file under a directory the lab user cannot read is planned as 'unreadable, rewritten by prepare now', never '(new)'; a readable missing file is still '(new)'
+
+Rank
+: 7
+
+About
+: lpoco-host-rest
