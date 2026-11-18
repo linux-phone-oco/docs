@@ -221,3 +221,25 @@
 {"step":"complete-phone","requires":"days-without-reboot","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
 {"step":"complete-phone","requires":"cycles-repeat-clean","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
 {"step":"standby-current","requires":"suspend-wakes-quiet","kind":"hard","group":null,"why":"a phone woken by chatter does not stay low (floor-irq-quiet)"}
+{"step":"pon-reason-read","requires":"pmic-bound","kind":"hard","group":null,"why":"the reasons are the PMIC's registers"}
+{"step":"reset-types-right","requires":"pmic-bound","kind":"hard","group":null,"why":"the reset types are the PMIC's"}
+{"step":"reset-types-right","requires":"pon-reason-read","kind":"soft","group":null,"why":"blind without it: the next boot's reason is the proof"}
+{"step":"power-off-stays-off","requires":"reset-types-right","kind":"hard","group":null,"why":"off must end in the PMIC's shutdown, not a reset"}
+{"step":"power-off-stays-off","requires":"pon-reason-read","kind":"soft","group":null,"why":"tells a reboot from a charger or alarm power-on"}
+{"step":"charger-mode-entered","requires":"pon-reason-read","kind":"hard","group":null,"why":"a charger power-on is told by its reason"}
+{"step":"charger-mode-entered","requires":"power-off-stays-off","kind":"hard","group":null,"why":"a charger mode needs an off to start from"}
+{"step":"charger-mode-entered","requires":"panel-lit","kind":"hard","group":null,"why":"it shows the level"}
+{"step":"charger-mode-entered","requires":"battery-gauge-reads","kind":"soft","group":null,"why":"the level is the gauge's"}
+{"step":"off-mode-charging","requires":"charger-mode-entered","kind":"hard","group":null,"why":"the screen and the power key while off"}
+{"step":"reset-state-survives","requires":"pon-reason-read","kind":"hard","group":null,"why":"read after each kind of reset"}
+{"step":"reset-state-survives","requires":"watchdog-way-back","kind":"hard","group":null,"why":"the watchdog state is part of it"}
+{"step":"key-reset-recovers","requires":"pmic-bound","kind":"hard","group":null,"why":"the key reset is the PMIC's"}
+{"step":"key-reset-recovers","requires":"pon-reason-read","kind":"soft","group":null,"why":"the reason proves it was the key"}
+{"step":"rtc-alarm-powers-on","requires":"power-off-stays-off","kind":"hard","group":null,"why":"it must be off to be turned on"}
+{"step":"rtc-alarm-powers-on","requires":"pon-reason-read","kind":"hard","group":null,"why":"the reason reads RTC alarm"}
+{"step":"alarm-wakes-from-sleep","requires":"real-suspend-under-shell","kind":"hard","group":null,"why":"it sleeps as in daily use"}
+{"step":"alarm-wakes-from-sleep","requires":"speaker-heard","kind":"hard","group":null,"why":"it rings"}
+{"step":"daily-usable-phone","requires":"alarm-wakes-from-sleep","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"key-reset-recovers","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"complete-phone","requires":"rtc-alarm-powers-on","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"reset-state-survives","kind":"hard","group":null,"why":"everything the hardware does, lasting"}

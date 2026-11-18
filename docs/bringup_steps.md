@@ -797,34 +797,6 @@ Checked on
 : 2026-11-18
 
 
-<a id="power-off-stays-off"></a>
-### Off stays off
-
-Stage
-: power
-
-Ord
-: 5
-
-Applies
-: any
-
-Done when
-: poweroff leaves the machine off, and plugging a charger in does not boot the full system
-
-Proof
-: stays-off
-
-Proof kind
-: witness
-
-Guide
-: surya fails: poweroff and a plugged charger both boot pmOS (off-state-charging). Read the PMIC's power-on reason to tell the two apart.
-
-Checked on
-: 2026-11-18
-
-
 <a id="off-mode-charging"></a>
 ### Charges while off
 
@@ -3181,6 +3153,254 @@ Guide
 
 Sources
 : systemd-target,android-cdd,halium-scope
+
+Checked on
+: 2026-11-18
+
+
+<a id="pon-reason-read"></a>
+### Why it turned on, and why it last turned off, are read
+
+Stage
+: power
+
+Ord
+: 8
+
+Applies
+: any
+
+Done when
+: each boot logs the power-on reason (key, USB charger, RTC alarm, warm reset, watchdog, key-combo reset) and the last power-off reason, read from the PMIC
+
+Proof
+: pon-reason
+
+Proof kind
+: phone-suite
+
+Guide
+: Test to write. On Qualcomm the PON block keeps PON_REASON, WARM_RESET_REASON and POFF_REASON (gen2 moves POFF_REASON1 to 0xc5; downstream-qpnp-power-on-sm6150 logs them, mainline's qcom-pon does not show them). surya read its PON registers by hand (surya-lab PR 269; upstreams-lane). Every step of the off side is told apart by this reason.
+
+Sources
+: downstream-qpnp-power-on-sm6150
+
+Checked on
+: 2026-11-18
+
+
+<a id="reset-types-right"></a>
+### Power-off, reboot and a bite each reach the right PMIC reset
+
+Stage
+: power
+
+Ord
+: 9
+
+Applies
+: any
+
+Done when
+: power-off ends in the PMIC's shutdown, reboot in a warm or hard reset, and a watchdog bite in a hard reset - each read back from the PMIC and seen in the next boot's reason
+
+Proof
+: reset-types
+
+Proof kind
+: host-check
+
+Guide
+: On Qualcomm, power-off goes by PSCI SYSTEM_OFF to the secure firmware, which sets the PS_HOLD reset type and drops PS_HOLD; reboot sets another type. A wrong type, the firmware's own choice, or a power-on trigger still pending (a plugged cable, an armed PMIC watchdog, an RTC alarm) turns off into a new boot. surya: the firmware leaves S2 at warm reset 0x01; patch 5/5 sets hard reset 0x07 with a read-back (upstreams-lane). walleye: a bite powered off instead of restarting (pmic-wdt-reset-type). Test to write.
+
+Sources
+: downstream-qpnp-power-on-sm6150,lkml-qcom-wdt-suspend-2019
+
+Checked on
+: 2026-11-18
+
+
+<a id="power-off-stays-off"></a>
+### Off stays off
+
+Stage
+: power
+
+Ord
+: 5
+
+Applies
+: any
+
+Done when
+: poweroff leaves the machine off, and plugging a charger in does not boot the full system
+
+Proof
+: stays-off
+
+Proof kind
+: witness
+
+Guide
+: surya fails: poweroff and a plugged charger both boot pmOS (off-state-charging); only the old eOS recovery's power-off held, so the PMIC can stay off and our power-off path is what differs. Read the power-on reason (pon-reason-read) and the reset types (reset-types-right) to tell a reboot from a charger power-on.
+
+Sources
+: downstream-qpnp-power-on-sm6150
+
+Checked on
+: 2026-11-18
+
+
+<a id="charger-mode-entered"></a>
+### A charger power-on starts the charging screen, not the system
+
+Stage
+: power
+
+Ord
+: 10
+
+Applies
+: power:battery
+
+Done when
+: plugged in while off, the phone starts a small charger mode that shows the level and turns the screen off again; the power key starts the full system
+
+Proof
+: charger-mode
+
+Proof kind
+: witness
+
+Component
+: battery
+
+Guide
+: Android: the bootloader reads the power-on reason and passes androidboot.mode=charger; init then runs only the charger - the same kernel, no separate processor (Sailfish's act-dead mode, sailfish-hadk-checklist). World gap: no maintained charger mode in any mainline distribution; charging-sdl is unmaintained and boot-loops at low battery (pmaports-charging-sdl-1064).
+
+Sources
+: sailfish-hadk-checklist,pmaports-charging-sdl-1064
+
+Checked on
+: 2026-11-18
+
+
+<a id="reset-state-survives"></a>
+### What must survive a reset does, and the rest is set again
+
+Stage
+: power
+
+Ord
+: 11
+
+Applies
+: any
+
+Done when
+: across a warm reset the reboot mode (the PMIC's spare register: bootloader, recovery), the RTC and ramoops survive; after any reset the kernel sets again the PMIC state it relies on (S2 reset type, watchdogs) and reads it back
+
+Proof
+: reset-state
+
+Proof kind
+: host-check
+
+Guide
+: The PMIC keeps its registers across a warm reset and the firmware rewrites some at boot (surya's S2 type 0x01 from firmware, upstreams-lane). ramoops survives a warm reset only if its memory is not cleared (ramoops-doc). Test to write.
+
+Sources
+: ramoops-doc,downstream-qpnp-power-on-sm6150
+
+Checked on
+: 2026-11-18
+
+
+<a id="key-reset-recovers"></a>
+### A held key resets a hung phone
+
+Stage
+: power
+
+Ord
+: 12
+
+Applies
+: any
+
+Done when
+: holding power (with volume down where so wired) for the set time hard-resets a hung phone, and the next boot's reason says so
+
+Proof
+: key-reset
+
+Proof kind
+: witness
+
+Component
+: buttons
+
+Guide
+: The PMIC's S1/S2 key reset, set by the firmware or the PON driver; a user's way back that needs no software. Test by hand.
+
+Checked on
+: 2026-11-18
+
+
+<a id="rtc-alarm-powers-on"></a>
+### An alarm turns the phone on from off
+
+Stage
+: power
+
+Ord
+: 13
+
+Applies
+: any
+
+Done when
+: an alarm set before power-off turns the phone on at its time, and the reason reads RTC alarm
+
+Proof
+: rtc-poweron
+
+Proof kind
+: host-check
+
+Guide
+: Android's power-off alarm: the PMIC RTC alarm powers it up and the bootloader boots an alarm mode. PCs have rtcwake -m off. World gap: no mainline phone distribution sets an alarm that survives power-off, and whether rtc-pm8xxx keeps the alarm armed through shutdown is not known yet.
+
+Checked on
+: 2026-11-18
+
+
+<a id="alarm-wakes-from-sleep"></a>
+### An alarm rings from sleep
+
+Stage
+: sleep
+
+Ord
+: 12
+
+Applies
+: any
+
+Done when
+: an alarm set in the clock app rings on time while the phone sleeps under its shell's suspend
+
+Proof
+: alarm-rings
+
+Proof kind
+: phone-suite
+
+Guide
+: The shell or clock must set an RTC wake alarm before suspend (kernel-sysfs-power-wakelock). Not known yet which phone shells do; never tried in our labs.
+
+Sources
+: kernel-sysfs-power-wakelock
 
 Checked on
 : 2026-11-18
