@@ -166,13 +166,13 @@ Notes
 
 
 <a id="fork-sxmo-utils"></a>
-### linux-phone-oco/sxmo-utils (our sxmo-utils, carrying our patches)
+### grenudi/sxmo-utils (our sxmo-utils, carrying our patches)
 
 Kind
 : code-project
 
 Address
-: https://github.com/linux-phone-oco/sxmo-utils
+: https://github.com/grenudi/sxmo-utils
 
 How
 : a topic branch per upstream item off master (master mirrors git.sr.ht/~mil/sxmo-utils, never edited); the lab branch merges the topics and is what the phones run, tagged per build; the series goes out from the topic by git format-patch, in the author's name
@@ -185,13 +185,13 @@ Fork of
 
 
 <a id="fork-linux"></a>
-### linux-phone-oco/linux (our kernel tree, carrying our patches)
+### grenudi/linux (our kernel tree, carrying our patches)
 
 Kind
 : code-project
 
 Address
-: https://github.com/linux-phone-oco/linux
+: https://github.com/grenudi/linux
 
 How
 : topic branches (fix/, dt/, topic/) each off the base its upstream takes (sm7150-mainline v7.x for sm7150 work, a kernel.org tag for mainline drivers); test/ branches merge them for a phone; series go out by b4 in the author's name

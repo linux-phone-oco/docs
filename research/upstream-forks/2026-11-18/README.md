@@ -7,13 +7,13 @@ the author's, from his clone, signed off by him.
 ## What is here
 
 - `patches/sxmo-utils/` - `[PATCH sxmo-utils 1/3..3/3]` with cover letter, from the branch `lab` of
-  `~/Projects/linux-phone-oco/sxmo-utils-topics` (a worktree of the local `linux-phone-oco/sxmo-utils`
+  `~/Projects/linux-phone-oco/sxmo-utils-topics` (a worktree of the local `sxmo-utils` clone (fork: grenudi/sxmo-utils)
   clone), on upstream master 1fd7822. Topics: `topic/sxmo-autosuspend-backoff` (2bb2500),
   `topic/sxmo-suspend-stop-by-profile` (1156bb6), `topic/sxmo-surya-sensors-suspend` (6432ef9).
   Test: `spec/scripts/core/sxmo_autosuspend_spec.sh` in the series (6 examples; all fail on master's
   script, all pass with the series). Run: `nix-shell -p shellspec --run 'shellspec spec/scripts/core/sxmo_autosuspend_spec.sh'`.
 - `patches/linux/` - `[RFC PATCH 1/4..4/4]` with cover letter, from `topic/pmic-wdt-wake-in-suspend`
-  (e123d3bff) of `~/Projects/linux-phone-oco/linux-topics` (a worktree of the local `linux-phone-oco/linux`
+  (e123d3bff) of `~/Projects/linux-phone-oco/linux-topics` (a worktree of the local kernel clone (fork: grenudi/linux)
   clone), on v7.3. Built with LLVM W=1 clean; `checkpatch.pl --strict` clean but the Co-Authored-By
   trailer (the kernel wants `Assisted-by: LLM` and the sender's Signed-off-by instead); the binding passes
   dt-doc-validate and yamllint. Untested on hardware: RFC until the phone proofs pass.
