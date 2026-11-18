@@ -35,3 +35,189 @@
 {"step":"rootfs-boots","requires":"storage-readonly","kind":"hard","group":null,"why":"the root is on the storage"}
 {"step":"rootfs-boots","requires":"usb-network","kind":"hard","group":null,"why":"ssh is the proof"}
 {"step":"health-suite-runs","requires":"rootfs-boots","kind":"hard","group":null,"why":"the suite runs on the root"}
+{"step":"battery-gauge-reads","requires":"pmic-bound","kind":"hard","group":null,"why":"the gauge is a PMIC function"}
+{"step":"power-off-stays-off","requires":"pmic-bound","kind":"hard","group":null,"why":"the power-on reason and power-off are the PMIC's"}
+{"step":"off-mode-charging","requires":"charger-online","kind":"hard","group":null,"why":"it charges"}
+{"step":"off-mode-charging","requires":"power-off-stays-off","kind":"hard","group":null,"why":"off must be off before it can charge while off (surya off-state-charging)"}
+{"step":"off-mode-charging","requires":"battery-gauge-reads","kind":"soft","group":null,"why":"the level shown is the gauge's"}
+{"step":"thermal-zones-sane","requires":"rootfs-boots","kind":"hard","group":null,"why":"the zones are read from userspace under load"}
+{"step":"lab-link-held-awake","requires":"usb-network","kind":"hard","group":null,"why":"the link is the USB network"}
+{"step":"shell-autosleep-tamed","requires":"lab-link-held-awake","kind":"hard","group":null,"why":"the shell's loop cut the lab off (2026-11-18-who-runs-rtcwake-99999999)"}
+{"step":"firmware-reachable","requires":"kernel-reaches-init","kind":"hard","group":null,"why":"the kernel asks for the files"}
+{"step":"pd-mapper-before-remoteproc","requires":"kernel-reaches-init","kind":"hard","group":null,"why":"an order of modules at boot"}
+{"step":"remoteprocs-running","requires":"firmware-reachable","kind":"hard","group":null,"why":"each coprocessor boots a signed blob"}
+{"step":"remoteprocs-running","requires":"pd-mapper-before-remoteproc","kind":"hard","group":null,"why":"the audio domain needs the mapper first (no-sound-card-boots)"}
+{"step":"fastrpc-helpers-stable","requires":"remoteprocs-running","kind":"hard","group":null,"why":"the helpers talk to a running DSP"}
+{"step":"fastrpc-helpers-stable","requires":"rootfs-boots","kind":"hard","group":null,"why":"hexagonrpcd is userspace"}
+{"step":"panel-lit","requires":"kernel-reaches-init","kind":"hard","group":null,"why":"the panel driver is the kernel's"}
+{"step":"touch-input","requires":"kernel-reaches-init","kind":"hard","group":null,"why":"the touch driver is the kernel's"}
+{"step":"touch-input","requires":"firmware-reachable","kind":"soft","group":null,"why":"some touch controllers load firmware"}
+{"step":"buttons-report","requires":"rootfs-boots","kind":"hard","group":null,"why":"events are read in userspace"}
+{"step":"buttons-report","requires":"pmic-bound","kind":"soft","group":null,"why":"the power and volume-down keys are the PMIC's on most phones"}
+{"step":"haptics-buzz","requires":"rootfs-boots","kind":"hard","group":null,"why":"the effect is played from userspace"}
+{"step":"gpu-renders","requires":"panel-lit","kind":"hard","group":null,"why":"renders to the panel"}
+{"step":"gpu-renders","requires":"firmware-reachable","kind":"hard","group":null,"why":"the zap shader and GMU firmware"}
+{"step":"audio-codec-attached","requires":"remoteprocs-running","kind":"hard","group":null,"why":"on DSP-routed audio the codec's bus is the DSP's"}
+{"step":"sound-card-registered","requires":"audio-codec-attached","kind":"hard","group":null,"why":"the card binds its codec"}
+{"step":"sound-card-registered","requires":"pd-mapper-before-remoteproc","kind":"hard","group":null,"why":"8 boots of 42 had no card without it (no-sound-card-boots)"}
+{"step":"speaker-amps-fed","requires":"sound-card-registered","kind":"hard","group":null,"why":"the amplifiers are the card's links"}
+{"step":"ucm-hifi-profile","requires":"speaker-amps-fed","kind":"hard","group":null,"why":"the profile drives the amplifiers"}
+{"step":"ucm-hifi-profile","requires":"rootfs-boots","kind":"hard","group":null,"why":"UCM and the sound server are userspace"}
+{"step":"speaker-heard","requires":"ucm-hifi-profile","kind":"hard","group":null,"why":"the tone plays through the profile"}
+{"step":"mic-captures","requires":"sound-card-registered","kind":"hard","group":null,"why":"capture is the card's"}
+{"step":"mic-hears-speaker","requires":"speaker-heard","kind":"hard","group":null,"why":"the tone it listens for"}
+{"step":"mic-hears-speaker","requires":"mic-captures","kind":"hard","group":null,"why":"it records"}
+{"step":"earpiece-plays","requires":"ucm-hifi-profile","kind":"hard","group":null,"why":"routed by the profile"}
+{"step":"headset-jack","requires":"ucm-hifi-profile","kind":"hard","group":null,"why":"routed by the profile"}
+{"step":"headset-jack","requires":"mic-captures","kind":"soft","group":null,"why":"the headset's microphone is a capture path"}
+{"step":"modem-file-services","requires":"remoteprocs-running","kind":"hard","group":null,"why":"the modem runs"}
+{"step":"modem-file-services","requires":"rootfs-boots","kind":"hard","group":null,"why":"rmtfs and tqftpserv are userspace"}
+{"step":"modem-seen","requires":"modem-file-services","kind":"hard","group":null,"why":"the modem stays offline without them (modem-online-tqftpserv)"}
+{"step":"sim-ready","requires":"modem-seen","kind":"hard","group":null,"why":"read through the modem"}
+{"step":"modem-registered","requires":"sim-ready","kind":"hard","group":null,"why":"no registration without a SIM"}
+{"step":"sms-both-ways","requires":"modem-registered","kind":"hard","group":null,"why":"needs the network"}
+{"step":"mobile-data","requires":"modem-registered","kind":"hard","group":null,"why":"needs the network"}
+{"step":"mms-both-ways","requires":"mobile-data","kind":"hard","group":null,"why":"MMS is fetched over data"}
+{"step":"mms-both-ways","requires":"sms-both-ways","kind":"hard","group":null,"why":"MMS is announced by SMS"}
+{"step":"call-audio-path","requires":"modem-registered","kind":"hard","group":null,"why":"a call needs the network"}
+{"step":"call-audio-path","requires":"sound-card-registered","kind":"hard","group":null,"why":"the voice path is the card's"}
+{"step":"call-audio-path","requires":"mic-captures","kind":"hard","group":null,"why":"the uplink is a capture (call-audio-on-surya)"}
+{"step":"call-audio-path","requires":"earpiece-plays","kind":"soft","group":null,"why":"the downlink's usual way out"}
+{"step":"voice-call-both-ways","requires":"call-audio-path","kind":"hard","group":null,"why":"sound both ways"}
+{"step":"emergency-numbers-known","requires":"modem-seen","kind":"hard","group":null,"why":"the list is the modem's and the SIM's"}
+{"step":"proximity-blanks-in-call","requires":"voice-call-both-ways","kind":"hard","group":null,"why":"in a call"}
+{"step":"proximity-blanks-in-call","requires":"proximity-reads","kind":"hard","group":null,"why":"the sensor it follows"}
+{"step":"proximity-blanks-in-call","requires":"shell-runs-with-hardware","kind":"hard","group":null,"why":"the shell blanks the screen"}
+{"step":"volte-call","requires":"voice-call-both-ways","kind":"hard","group":null,"why":"a call first"}
+{"step":"volte-call","requires":"mobile-data","kind":"hard","group":null,"why":"IMS rides a data bearer the AP serves (voltd-81)"}
+{"step":"wifi-joins","requires":"firmware-reachable","kind":"hard","group":null,"why":"the Wi-Fi core's firmware"}
+{"step":"wifi-joins","requires":"remoteprocs-running","kind":"hard","group":null,"why":"WCN3990: the Wi-Fi firmware runs on the modem's processor"}
+{"step":"bt-controller-up","requires":"firmware-reachable","kind":"hard","group":null,"why":"the controller's firmware"}
+{"step":"bt-pairs-carries-audio","requires":"bt-controller-up","kind":"hard","group":null,"why":"pairs through it"}
+{"step":"bt-pairs-carries-audio","requires":"ucm-hifi-profile","kind":"soft","group":null,"why":"the sound server carries the audio"}
+{"step":"nfc-reads-tag","requires":"rootfs-boots","kind":"hard","group":null,"why":"read in userspace"}
+{"step":"nfc-reads-tag","requires":"firmware-reachable","kind":"soft","group":null,"why":"some controllers load firmware"}
+{"step":"usb-host-works","requires":"rootfs-boots","kind":"hard","group":null,"why":"the device is read in userspace"}
+{"step":"usb-host-works","requires":"lab-link-held-awake","kind":"soft","group":null,"why":"switching the port cuts the lab's USB link: another way in first"}
+{"step":"hotspot-shares-data","requires":"mobile-data","kind":"hard","group":null,"why":"it shares the data"}
+{"step":"hotspot-shares-data","requires":"wifi-joins","kind":"hard","group":null,"why":"over the Wi-Fi core"}
+{"step":"sensor-hub-stable","requires":"fastrpc-helpers-stable","kind":"hard","group":null,"why":"the sensor helper is a FastRPC client"}
+{"step":"sensors-exposed","requires":"sensor-hub-stable","kind":"hard","group":null,"why":"the hub serves them (on Qualcomm's sensor DSP)"}
+{"step":"proximity-reads","requires":"sensors-exposed","kind":"hard","group":null,"why":"through the same service"}
+{"step":"auto-rotate-follows","requires":"sensors-exposed","kind":"hard","group":null,"why":"the accelerometer"}
+{"step":"auto-rotate-follows","requires":"shell-runs-with-hardware","kind":"hard","group":null,"why":"the shell rotates"}
+{"step":"brightness-follows-light","requires":"sensors-exposed","kind":"hard","group":null,"why":"the light sensor"}
+{"step":"brightness-follows-light","requires":"panel-lit","kind":"hard","group":null,"why":"the backlight"}
+{"step":"brightness-follows-light","requires":"shell-runs-with-hardware","kind":"soft","group":null,"why":"the shell's auto-brightness"}
+{"step":"gnss-fix","requires":"modem-seen","kind":"hard","group":null,"why":"on Qualcomm the location engine is the modem's (QMI LOC)"}
+{"step":"gnss-fix","requires":"rootfs-boots","kind":"hard","group":null,"why":"ModemManager, gnss-share and geoclue are userspace"}
+{"step":"fingerprint-unlocks","requires":"rootfs-boots","kind":"hard","group":null,"why":"fprintd is userspace"}
+{"step":"fingerprint-unlocks","requires":"shell-runs-with-hardware","kind":"soft","group":null,"why":"unlocking is the shell's"}
+{"step":"camera-bus-bound","requires":"kernel-reaches-init","kind":"hard","group":null,"why":"the receiver is the kernel's"}
+{"step":"image-sensor-identified","requires":"camera-bus-bound","kind":"hard","group":null,"why":"read over the control bus"}
+{"step":"raw-frame-captured","requires":"image-sensor-identified","kind":"hard","group":null,"why":"a sensor described and probed"}
+{"step":"camera-stream-viewable","requires":"raw-frame-captured","kind":"hard","group":null,"why":"the ISP takes raw frames"}
+{"step":"camera-stream-viewable","requires":"gpu-renders","kind":"soft","group":null,"why":"libcamera's software ISP runs on the GPU (libcamera-softisp-fosdem-2026)"}
+{"step":"photo-taken","requires":"camera-stream-viewable","kind":"hard","group":null,"why":"the app takes the stream"}
+{"step":"photo-taken","requires":"shell-runs-with-hardware","kind":"hard","group":null,"why":"an app on the shell"}
+{"step":"video-recorded","requires":"photo-taken","kind":"hard","group":null,"why":"the camera app"}
+{"step":"video-recorded","requires":"mic-captures","kind":"hard","group":null,"why":"its sound"}
+{"step":"focus-and-flash","requires":"camera-stream-viewable","kind":"hard","group":null,"why":"focus is judged on the stream"}
+{"step":"suspend-way-back","requires":"watchdog-way-back","kind":"hard","group":null,"why":"the watchdog, kept armed through sleep"}
+{"step":"s2idle-cycle-returns","requires":"rootfs-boots","kind":"hard","group":null,"why":"an RTC-timed suspend from userspace"}
+{"step":"s2idle-cycle-returns","requires":"suspend-way-back","kind":"soft","group":null,"why":"blind without it: a hang in sleep leaves no trace"}
+{"step":"suspend-wakes-quiet","requires":"s2idle-cycle-returns","kind":"hard","group":null,"why":"read across a suspend"}
+{"step":"radios-survive-suspend","requires":"s2idle-cycle-returns","kind":"hard","group":null,"why":"across suspends"}
+{"step":"radios-survive-suspend","requires":"wifi-joins","kind":"hard","group":null,"why":"Wi-Fi up first"}
+{"step":"radios-survive-suspend","requires":"bt-controller-up","kind":"hard","group":null,"why":"Bluetooth up first"}
+{"step":"sensors-across-suspend","requires":"s2idle-cycle-returns","kind":"hard","group":null,"why":"across suspends"}
+{"step":"sensors-across-suspend","requires":"sensors-exposed","kind":"hard","group":null,"why":"sensors up first"}
+{"step":"resume-without-stall","requires":"s2idle-cycle-returns","kind":"hard","group":null,"why":"across suspends"}
+{"step":"resume-without-stall","requires":"sensors-across-suspend","kind":"hard","group":null,"why":"an attached helper crashes the DSP at resume (sleep-fastrpc-helpers)"}
+{"step":"resume-without-stall","requires":"suspend-way-back","kind":"hard","group":null,"why":"a stall must come back to be counted"}
+{"step":"real-suspend-under-shell","requires":"shell-runs-with-hardware","kind":"hard","group":null,"why":"the shell's own suspend"}
+{"step":"real-suspend-under-shell","requires":"resume-without-stall","kind":"hard","group":null,"why":"it returns"}
+{"step":"real-suspend-under-shell","requires":"radios-survive-suspend","kind":"hard","group":null,"why":"the radios come back"}
+{"step":"real-suspend-under-shell","requires":"shell-autosleep-tamed","kind":"soft","group":null,"why":"in the lab the loop is gated first"}
+{"step":"soc-floor-reached","requires":"s2idle-cycle-returns","kind":"hard","group":null,"why":"read in suspend"}
+{"step":"soc-floor-reached","requires":"suspend-wakes-quiet","kind":"soft","group":null,"why":"wakes keep it off the floor"}
+{"step":"call-wakes-from-sleep","requires":"real-suspend-under-shell","kind":"hard","group":null,"why":"it sleeps as in daily use"}
+{"step":"call-wakes-from-sleep","requires":"voice-call-both-ways","kind":"hard","group":null,"why":"a call to ring"}
+{"step":"call-wakes-from-sleep","requires":"sms-both-ways","kind":"hard","group":null,"why":"a message to arrive"}
+{"step":"standby-current","requires":"soc-floor-reached","kind":"hard","group":null,"why":"no floor, no low current"}
+{"step":"standby-current","requires":"real-suspend-under-shell","kind":"hard","group":null,"why":"measured asleep as in daily use"}
+{"step":"standby-current","requires":"battery-gauge-reads","kind":"soft","group":null,"why":"a meter can stand in for the gauge"}
+{"step":"all-day-battery","requires":"standby-current","kind":"hard","group":null,"why":"most of a day is standby"}
+{"step":"all-day-battery","requires":"call-wakes-from-sleep","kind":"hard","group":null,"why":"a sleeping phone that misses calls is not a day's use"}
+{"step":"shell-runs-with-hardware","requires":"panel-lit","kind":"hard","group":null,"why":"it shows"}
+{"step":"shell-runs-with-hardware","requires":"touch-input","kind":"hard","group":null,"why":"it is touched"}
+{"step":"shell-runs-with-hardware","requires":"rootfs-boots","kind":"hard","group":null,"why":"a distribution's shell"}
+{"step":"shell-runs-with-hardware","requires":"ucm-hifi-profile","kind":"soft","group":null,"why":"its sound (plasma-silent)"}
+{"step":"shell-runs-with-hardware","requires":"gpu-renders","kind":"soft","group":null,"why":"Phosh and Plasma Mobile need the GPU; sxmo does not"}
+{"step":"on-screen-keyboard","requires":"shell-runs-with-hardware","kind":"hard","group":null,"why":"the shell's keyboard"}
+{"step":"lock-and-unlock","requires":"shell-runs-with-hardware","kind":"hard","group":null,"why":"the shell's lock"}
+{"step":"lock-and-unlock","requires":"buttons-report","kind":"hard","group":null,"why":"the power key"}
+{"step":"notifications-arrive","requires":"shell-runs-with-hardware","kind":"hard","group":null,"why":"the shell's notifications"}
+{"step":"notifications-arrive","requires":"sms-both-ways","kind":"soft","group":null,"why":"a message to announce"}
+{"step":"notifications-arrive","requires":"speaker-heard","kind":"soft","group":null,"why":"it sounds"}
+{"step":"update-applies","requires":"rootfs-boots","kind":"hard","group":null,"why":"the distribution updates"}
+{"step":"update-applies","requires":"health-suite-runs","kind":"soft","group":null,"why":"an update is proven by the same suite"}
+{"step":"update-rolls-back","requires":"update-applies","kind":"hard","group":null,"why":"a bad one to roll back from"}
+{"step":"update-rolls-back","requires":"watchdog-way-back","kind":"hard","group":null,"why":"a hung boot must come back"}
+{"step":"update-rolls-back","requires":"slot-state-known","kind":"soft","group":null,"why":"A/B slots are one way back"}
+{"step":"kernel-upgrade-keeps-steps","requires":"health-suite-runs","kind":"hard","group":null,"why":"the suite says what still passes"}
+{"step":"coprocessor-restart-recovers","requires":"remoteprocs-running","kind":"hard","group":null,"why":"a coprocessor to crash"}
+{"step":"coprocessor-restart-recovers","requires":"mic-hears-speaker","kind":"soft","group":null,"why":"sound to come back"}
+{"step":"coprocessor-restart-recovers","requires":"modem-registered","kind":"soft","group":null,"why":"the modem to come back"}
+{"step":"coprocessor-restart-recovers","requires":"sensors-exposed","kind":"soft","group":null,"why":"sensors to come back"}
+{"step":"days-without-reboot","requires":"real-suspend-under-shell","kind":"hard","group":null,"why":"daily use sleeps"}
+{"step":"days-without-reboot","requires":"call-wakes-from-sleep","kind":"hard","group":null,"why":"and is reachable"}
+{"step":"cycles-repeat-clean","requires":"resume-without-stall","kind":"hard","group":null,"why":"a cycle that returns"}
+{"step":"cycles-repeat-clean","requires":"health-suite-runs","kind":"hard","group":null,"why":"what is lost is read by the suite"}
+{"step":"linux-runs","requires":"health-suite-runs","kind":"hard","group":null,"why":"the close of the generic bring-up"}
+{"step":"linux-runs","requires":"storage-readonly","kind":"hard","group":null,"why":"the close of the generic bring-up"}
+{"step":"linux-runs","requires":"watchdog-way-back","kind":"hard","group":null,"why":"the close of the generic bring-up"}
+{"step":"linux-runs","requires":"dmesg-clean","kind":"hard","group":null,"why":"the close of the generic bring-up"}
+{"step":"linux-runs","requires":"charger-online","kind":"hard","group":null,"why":"the close of the generic bring-up"}
+{"step":"daily-usable-phone","requires":"linux-runs","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"speaker-heard","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"mic-hears-speaker","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"earpiece-plays","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"voice-call-both-ways","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"sms-both-ways","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"mobile-data","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"emergency-numbers-known","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"proximity-blanks-in-call","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"wifi-joins","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"bt-controller-up","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"on-screen-keyboard","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"lock-and-unlock","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"notifications-arrive","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"gnss-fix","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"photo-taken","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"call-wakes-from-sleep","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"all-day-battery","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"off-mode-charging","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"daily-usable-phone","requires":"update-applies","kind":"hard","group":null,"why":"a person needs it every day"}
+{"step":"complete-phone","requires":"daily-usable-phone","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"volte-call","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"mms-both-ways","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"headset-jack","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"bt-pairs-carries-audio","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"nfc-reads-tag","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"usb-host-works","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"hotspot-shares-data","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"haptics-buzz","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"gpu-renders","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"auto-rotate-follows","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"brightness-follows-light","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"fingerprint-unlocks","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"video-recorded","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"focus-and-flash","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"thermal-zones-sane","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"update-rolls-back","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"kernel-upgrade-keeps-steps","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"coprocessor-restart-recovers","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"days-without-reboot","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"complete-phone","requires":"cycles-repeat-clean","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"standby-current","requires":"suspend-wakes-quiet","kind":"hard","group":null,"why":"a phone woken by chatter does not stay low (floor-irq-quiet)"}

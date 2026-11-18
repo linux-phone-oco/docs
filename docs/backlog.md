@@ -5060,3 +5060,138 @@ Proof
 
 About
 : device-template
+
+
+<a id="bringup-chain-goal"></a>
+### bringup-chain --goal STEP: a goal and what it needs, hard edges all the way down (what a daily-usable phone needs)
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Draft in research/bringup-steps/2026-11-18-phone-stages/queries/bringup-chain.sql, tried in a scratch copy: 77 rows for daily-usable-phone, 106 without --goal. Owner's: queries/.
+
+Opened
+: 2026-11-18
+
+Proof
+: tad q bringup-chain --goal daily-usable-phone gives the 77 steps daily-phone.sh counts, and --goal nope errs naming the step
+
+About
+: bringup-steps
+
+
+<a id="bringup-shape-check"></a>
+### make verify checks the steps' shape: every stage has a step, every phone step is needed by complete-phone
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: The shape half of research/bringup-steps/2026-11-18-phone-stages/daily-phone.sh as a check in verify (bin/), so a stage left empty or a step outside every goal is seen at once. Owner's: bin/ and Makefile.
+
+Opened
+: 2026-11-18
+
+Proof
+: in a scratch copy, adding a stage with no step (ikb bringup-stage) makes make verify fail naming it; as landed it passes
+
+About
+: bringup-steps
+
+
+<a id="prior-art-query"></a>
+### tad q prior-art --about S: a subject's prior art - its research, each cited source with what we take from it
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Prior art already lives in sources (with takes) and research; nothing gives it by subject, so it is read again. Owner's: queries/.
+
+Opened
+: 2026-11-18
+
+Proof
+: tad q prior-art --about bringup-steps lists the sources of bringup-steps-landscape, bringup-steps-coverage-map and bringup-steps-phone-stages, each with its takes
+
+About
+: bringup-steps
+
+
+<a id="landscape-record"></a>
+### A landscape record (ikb landscape), so a session can add a project or effort to the landscape
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: landscape has 10 rows and no record: UBports' device data, Halium, Android's CTS could not be added there and went to sources. Owner's: records/.
+
+Opened
+: 2026-11-18
+
+Proof
+: ikb landscape --id ubports-devices ... records a row and tad check passes
+
+About
+: bringup-steps
+
+
+<a id="phone-components"></a>
+### Components for the phone steps that have none: GNSS, GPU, battery and charging, keys, front camera; and a component record
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Then ikb set bringup_steps for gnss-fix, gpu-renders, battery-gauge-reads, off-mode-charging, buttons-report. Owner's: components has no record.
+
+Opened
+: 2026-11-18
+
+Proof
+: tad sql shows gnss-fix, gpu-renders, battery-gauge-reads and buttons-report each naming a component, and tad check passes
+
+About
+: bringup-steps
+
+
+<a id="milestones-name-goals"></a>
+### Milestones name goal steps: a device's daily-phone milestone is step:daily-usable-phone@DEVICE
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: One term instead of a list; the goal's needs carry the rest. Owner's: milestones has no record.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: milestones-step-terms
+
+Proof
+: a milestone surya-daily-phone over step:daily-usable-phone@xiaomi-surya reads not ready while daily-phone.sh xiaomi-surya fails, and ready when it passes
+
+About
+: bringup-steps

@@ -2810,3 +2810,27 @@ Rejected
 
 About
 : manifest-one-schema
+
+---
+
+
+<a id="2026-11-18-phone-stages-research"></a>
+### Bring-up steps, a second look: the phone beyond Linux runs
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: Mapped what research bringup-steps-landscape covered and left out, and where the world's own knowledge is thin. Four read-only researchers did the reading: our labs' phone steps, the Linux mobile projects, Android's CDD, CTS, VTS and HALs, and Qualcomm's mainline stacks. Recorded 33 sources, 2 research rows, decision 2026-11-18-bringup-steps-phone-stages-and-goal-steps, 12 stages, 80 steps, 186 edges, 6 owner backlog items (unranked) and the summary. The test daily-phone.sh caught one step that no goal needed (suspend-wakes-quiet), now fixed with an edge. In a scratch copy it passed with every step claimed and failed with one step open.
+
+Considered
+: Nested stages, a layer column, UBports' weights, CDD- or HAL-shaped stages, a prior-art table.
+
+Rejected
+: Each one adds a second tree or a copy that drifts; a goal step groups through the edges that already exist (see the decision).
+
+About
+: bringup-steps

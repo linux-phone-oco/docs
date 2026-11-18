@@ -561,3 +561,2793 @@ Kind
 
 Why
 : the suite runs on the root
+
+
+### Row 38
+
+Step
+: battery-gauge-reads
+
+Requires
+: pmic-bound
+
+Kind
+: hard
+
+Why
+: the gauge is a PMIC function
+
+
+### Row 39
+
+Step
+: power-off-stays-off
+
+Requires
+: pmic-bound
+
+Kind
+: hard
+
+Why
+: the power-on reason and power-off are the PMIC's
+
+
+### Row 40
+
+Step
+: off-mode-charging
+
+Requires
+: charger-online
+
+Kind
+: hard
+
+Why
+: it charges
+
+
+### Row 41
+
+Step
+: off-mode-charging
+
+Requires
+: power-off-stays-off
+
+Kind
+: hard
+
+Why
+: off must be off before it can charge while off (surya off-state-charging)
+
+
+### Row 42
+
+Step
+: off-mode-charging
+
+Requires
+: battery-gauge-reads
+
+Kind
+: soft
+
+Why
+: the level shown is the gauge's
+
+
+### Row 43
+
+Step
+: thermal-zones-sane
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: the zones are read from userspace under load
+
+
+### Row 44
+
+Step
+: lab-link-held-awake
+
+Requires
+: usb-network
+
+Kind
+: hard
+
+Why
+: the link is the USB network
+
+
+### Row 45
+
+Step
+: shell-autosleep-tamed
+
+Requires
+: lab-link-held-awake
+
+Kind
+: hard
+
+Why
+: the shell's loop cut the lab off (2026-11-18-who-runs-rtcwake-99999999)
+
+
+### Row 46
+
+Step
+: firmware-reachable
+
+Requires
+: kernel-reaches-init
+
+Kind
+: hard
+
+Why
+: the kernel asks for the files
+
+
+### Row 47
+
+Step
+: pd-mapper-before-remoteproc
+
+Requires
+: kernel-reaches-init
+
+Kind
+: hard
+
+Why
+: an order of modules at boot
+
+
+### Row 48
+
+Step
+: remoteprocs-running
+
+Requires
+: firmware-reachable
+
+Kind
+: hard
+
+Why
+: each coprocessor boots a signed blob
+
+
+### Row 49
+
+Step
+: remoteprocs-running
+
+Requires
+: pd-mapper-before-remoteproc
+
+Kind
+: hard
+
+Why
+: the audio domain needs the mapper first (no-sound-card-boots)
+
+
+### Row 50
+
+Step
+: fastrpc-helpers-stable
+
+Requires
+: remoteprocs-running
+
+Kind
+: hard
+
+Why
+: the helpers talk to a running DSP
+
+
+### Row 51
+
+Step
+: fastrpc-helpers-stable
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: hexagonrpcd is userspace
+
+
+### Row 52
+
+Step
+: panel-lit
+
+Requires
+: kernel-reaches-init
+
+Kind
+: hard
+
+Why
+: the panel driver is the kernel's
+
+
+### Row 53
+
+Step
+: touch-input
+
+Requires
+: kernel-reaches-init
+
+Kind
+: hard
+
+Why
+: the touch driver is the kernel's
+
+
+### Row 54
+
+Step
+: touch-input
+
+Requires
+: firmware-reachable
+
+Kind
+: soft
+
+Why
+: some touch controllers load firmware
+
+
+### Row 55
+
+Step
+: buttons-report
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: events are read in userspace
+
+
+### Row 56
+
+Step
+: buttons-report
+
+Requires
+: pmic-bound
+
+Kind
+: soft
+
+Why
+: the power and volume-down keys are the PMIC's on most phones
+
+
+### Row 57
+
+Step
+: haptics-buzz
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: the effect is played from userspace
+
+
+### Row 58
+
+Step
+: gpu-renders
+
+Requires
+: panel-lit
+
+Kind
+: hard
+
+Why
+: renders to the panel
+
+
+### Row 59
+
+Step
+: gpu-renders
+
+Requires
+: firmware-reachable
+
+Kind
+: hard
+
+Why
+: the zap shader and GMU firmware
+
+
+### Row 60
+
+Step
+: audio-codec-attached
+
+Requires
+: remoteprocs-running
+
+Kind
+: hard
+
+Why
+: on DSP-routed audio the codec's bus is the DSP's
+
+
+### Row 61
+
+Step
+: sound-card-registered
+
+Requires
+: audio-codec-attached
+
+Kind
+: hard
+
+Why
+: the card binds its codec
+
+
+### Row 62
+
+Step
+: sound-card-registered
+
+Requires
+: pd-mapper-before-remoteproc
+
+Kind
+: hard
+
+Why
+: 8 boots of 42 had no card without it (no-sound-card-boots)
+
+
+### Row 63
+
+Step
+: speaker-amps-fed
+
+Requires
+: sound-card-registered
+
+Kind
+: hard
+
+Why
+: the amplifiers are the card's links
+
+
+### Row 64
+
+Step
+: ucm-hifi-profile
+
+Requires
+: speaker-amps-fed
+
+Kind
+: hard
+
+Why
+: the profile drives the amplifiers
+
+
+### Row 65
+
+Step
+: ucm-hifi-profile
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: UCM and the sound server are userspace
+
+
+### Row 66
+
+Step
+: speaker-heard
+
+Requires
+: ucm-hifi-profile
+
+Kind
+: hard
+
+Why
+: the tone plays through the profile
+
+
+### Row 67
+
+Step
+: mic-captures
+
+Requires
+: sound-card-registered
+
+Kind
+: hard
+
+Why
+: capture is the card's
+
+
+### Row 68
+
+Step
+: mic-hears-speaker
+
+Requires
+: speaker-heard
+
+Kind
+: hard
+
+Why
+: the tone it listens for
+
+
+### Row 69
+
+Step
+: mic-hears-speaker
+
+Requires
+: mic-captures
+
+Kind
+: hard
+
+Why
+: it records
+
+
+### Row 70
+
+Step
+: earpiece-plays
+
+Requires
+: ucm-hifi-profile
+
+Kind
+: hard
+
+Why
+: routed by the profile
+
+
+### Row 71
+
+Step
+: headset-jack
+
+Requires
+: ucm-hifi-profile
+
+Kind
+: hard
+
+Why
+: routed by the profile
+
+
+### Row 72
+
+Step
+: headset-jack
+
+Requires
+: mic-captures
+
+Kind
+: soft
+
+Why
+: the headset's microphone is a capture path
+
+
+### Row 73
+
+Step
+: modem-file-services
+
+Requires
+: remoteprocs-running
+
+Kind
+: hard
+
+Why
+: the modem runs
+
+
+### Row 74
+
+Step
+: modem-file-services
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: rmtfs and tqftpserv are userspace
+
+
+### Row 75
+
+Step
+: modem-seen
+
+Requires
+: modem-file-services
+
+Kind
+: hard
+
+Why
+: the modem stays offline without them (modem-online-tqftpserv)
+
+
+### Row 76
+
+Step
+: sim-ready
+
+Requires
+: modem-seen
+
+Kind
+: hard
+
+Why
+: read through the modem
+
+
+### Row 77
+
+Step
+: modem-registered
+
+Requires
+: sim-ready
+
+Kind
+: hard
+
+Why
+: no registration without a SIM
+
+
+### Row 78
+
+Step
+: sms-both-ways
+
+Requires
+: modem-registered
+
+Kind
+: hard
+
+Why
+: needs the network
+
+
+### Row 79
+
+Step
+: mobile-data
+
+Requires
+: modem-registered
+
+Kind
+: hard
+
+Why
+: needs the network
+
+
+### Row 80
+
+Step
+: mms-both-ways
+
+Requires
+: mobile-data
+
+Kind
+: hard
+
+Why
+: MMS is fetched over data
+
+
+### Row 81
+
+Step
+: mms-both-ways
+
+Requires
+: sms-both-ways
+
+Kind
+: hard
+
+Why
+: MMS is announced by SMS
+
+
+### Row 82
+
+Step
+: call-audio-path
+
+Requires
+: modem-registered
+
+Kind
+: hard
+
+Why
+: a call needs the network
+
+
+### Row 83
+
+Step
+: call-audio-path
+
+Requires
+: sound-card-registered
+
+Kind
+: hard
+
+Why
+: the voice path is the card's
+
+
+### Row 84
+
+Step
+: call-audio-path
+
+Requires
+: mic-captures
+
+Kind
+: hard
+
+Why
+: the uplink is a capture (call-audio-on-surya)
+
+
+### Row 85
+
+Step
+: call-audio-path
+
+Requires
+: earpiece-plays
+
+Kind
+: soft
+
+Why
+: the downlink's usual way out
+
+
+### Row 86
+
+Step
+: voice-call-both-ways
+
+Requires
+: call-audio-path
+
+Kind
+: hard
+
+Why
+: sound both ways
+
+
+### Row 87
+
+Step
+: emergency-numbers-known
+
+Requires
+: modem-seen
+
+Kind
+: hard
+
+Why
+: the list is the modem's and the SIM's
+
+
+### Row 88
+
+Step
+: proximity-blanks-in-call
+
+Requires
+: voice-call-both-ways
+
+Kind
+: hard
+
+Why
+: in a call
+
+
+### Row 89
+
+Step
+: proximity-blanks-in-call
+
+Requires
+: proximity-reads
+
+Kind
+: hard
+
+Why
+: the sensor it follows
+
+
+### Row 90
+
+Step
+: proximity-blanks-in-call
+
+Requires
+: shell-runs-with-hardware
+
+Kind
+: hard
+
+Why
+: the shell blanks the screen
+
+
+### Row 91
+
+Step
+: volte-call
+
+Requires
+: voice-call-both-ways
+
+Kind
+: hard
+
+Why
+: a call first
+
+
+### Row 92
+
+Step
+: volte-call
+
+Requires
+: mobile-data
+
+Kind
+: hard
+
+Why
+: IMS rides a data bearer the AP serves (voltd-81)
+
+
+### Row 93
+
+Step
+: wifi-joins
+
+Requires
+: firmware-reachable
+
+Kind
+: hard
+
+Why
+: the Wi-Fi core's firmware
+
+
+### Row 94
+
+Step
+: wifi-joins
+
+Requires
+: remoteprocs-running
+
+Kind
+: hard
+
+Why
+: WCN3990: the Wi-Fi firmware runs on the modem's processor
+
+
+### Row 95
+
+Step
+: bt-controller-up
+
+Requires
+: firmware-reachable
+
+Kind
+: hard
+
+Why
+: the controller's firmware
+
+
+### Row 96
+
+Step
+: bt-pairs-carries-audio
+
+Requires
+: bt-controller-up
+
+Kind
+: hard
+
+Why
+: pairs through it
+
+
+### Row 97
+
+Step
+: bt-pairs-carries-audio
+
+Requires
+: ucm-hifi-profile
+
+Kind
+: soft
+
+Why
+: the sound server carries the audio
+
+
+### Row 98
+
+Step
+: nfc-reads-tag
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: read in userspace
+
+
+### Row 99
+
+Step
+: nfc-reads-tag
+
+Requires
+: firmware-reachable
+
+Kind
+: soft
+
+Why
+: some controllers load firmware
+
+
+### Row 100
+
+Step
+: usb-host-works
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: the device is read in userspace
+
+
+### Row 101
+
+Step
+: usb-host-works
+
+Requires
+: lab-link-held-awake
+
+Kind
+: soft
+
+Why
+: switching the port cuts the lab's USB link: another way in first
+
+
+### Row 102
+
+Step
+: hotspot-shares-data
+
+Requires
+: mobile-data
+
+Kind
+: hard
+
+Why
+: it shares the data
+
+
+### Row 103
+
+Step
+: hotspot-shares-data
+
+Requires
+: wifi-joins
+
+Kind
+: hard
+
+Why
+: over the Wi-Fi core
+
+
+### Row 104
+
+Step
+: sensor-hub-stable
+
+Requires
+: fastrpc-helpers-stable
+
+Kind
+: hard
+
+Why
+: the sensor helper is a FastRPC client
+
+
+### Row 105
+
+Step
+: sensors-exposed
+
+Requires
+: sensor-hub-stable
+
+Kind
+: hard
+
+Why
+: the hub serves them (on Qualcomm's sensor DSP)
+
+
+### Row 106
+
+Step
+: proximity-reads
+
+Requires
+: sensors-exposed
+
+Kind
+: hard
+
+Why
+: through the same service
+
+
+### Row 107
+
+Step
+: auto-rotate-follows
+
+Requires
+: sensors-exposed
+
+Kind
+: hard
+
+Why
+: the accelerometer
+
+
+### Row 108
+
+Step
+: auto-rotate-follows
+
+Requires
+: shell-runs-with-hardware
+
+Kind
+: hard
+
+Why
+: the shell rotates
+
+
+### Row 109
+
+Step
+: brightness-follows-light
+
+Requires
+: sensors-exposed
+
+Kind
+: hard
+
+Why
+: the light sensor
+
+
+### Row 110
+
+Step
+: brightness-follows-light
+
+Requires
+: panel-lit
+
+Kind
+: hard
+
+Why
+: the backlight
+
+
+### Row 111
+
+Step
+: brightness-follows-light
+
+Requires
+: shell-runs-with-hardware
+
+Kind
+: soft
+
+Why
+: the shell's auto-brightness
+
+
+### Row 112
+
+Step
+: gnss-fix
+
+Requires
+: modem-seen
+
+Kind
+: hard
+
+Why
+: on Qualcomm the location engine is the modem's (QMI LOC)
+
+
+### Row 113
+
+Step
+: gnss-fix
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: ModemManager, gnss-share and geoclue are userspace
+
+
+### Row 114
+
+Step
+: fingerprint-unlocks
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: fprintd is userspace
+
+
+### Row 115
+
+Step
+: fingerprint-unlocks
+
+Requires
+: shell-runs-with-hardware
+
+Kind
+: soft
+
+Why
+: unlocking is the shell's
+
+
+### Row 116
+
+Step
+: camera-bus-bound
+
+Requires
+: kernel-reaches-init
+
+Kind
+: hard
+
+Why
+: the receiver is the kernel's
+
+
+### Row 117
+
+Step
+: image-sensor-identified
+
+Requires
+: camera-bus-bound
+
+Kind
+: hard
+
+Why
+: read over the control bus
+
+
+### Row 118
+
+Step
+: raw-frame-captured
+
+Requires
+: image-sensor-identified
+
+Kind
+: hard
+
+Why
+: a sensor described and probed
+
+
+### Row 119
+
+Step
+: camera-stream-viewable
+
+Requires
+: raw-frame-captured
+
+Kind
+: hard
+
+Why
+: the ISP takes raw frames
+
+
+### Row 120
+
+Step
+: camera-stream-viewable
+
+Requires
+: gpu-renders
+
+Kind
+: soft
+
+Why
+: libcamera's software ISP runs on the GPU (libcamera-softisp-fosdem-2026)
+
+
+### Row 121
+
+Step
+: photo-taken
+
+Requires
+: camera-stream-viewable
+
+Kind
+: hard
+
+Why
+: the app takes the stream
+
+
+### Row 122
+
+Step
+: photo-taken
+
+Requires
+: shell-runs-with-hardware
+
+Kind
+: hard
+
+Why
+: an app on the shell
+
+
+### Row 123
+
+Step
+: video-recorded
+
+Requires
+: photo-taken
+
+Kind
+: hard
+
+Why
+: the camera app
+
+
+### Row 124
+
+Step
+: video-recorded
+
+Requires
+: mic-captures
+
+Kind
+: hard
+
+Why
+: its sound
+
+
+### Row 125
+
+Step
+: focus-and-flash
+
+Requires
+: camera-stream-viewable
+
+Kind
+: hard
+
+Why
+: focus is judged on the stream
+
+
+### Row 126
+
+Step
+: suspend-way-back
+
+Requires
+: watchdog-way-back
+
+Kind
+: hard
+
+Why
+: the watchdog, kept armed through sleep
+
+
+### Row 127
+
+Step
+: s2idle-cycle-returns
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: an RTC-timed suspend from userspace
+
+
+### Row 128
+
+Step
+: s2idle-cycle-returns
+
+Requires
+: suspend-way-back
+
+Kind
+: soft
+
+Why
+: blind without it: a hang in sleep leaves no trace
+
+
+### Row 129
+
+Step
+: suspend-wakes-quiet
+
+Requires
+: s2idle-cycle-returns
+
+Kind
+: hard
+
+Why
+: read across a suspend
+
+
+### Row 130
+
+Step
+: radios-survive-suspend
+
+Requires
+: s2idle-cycle-returns
+
+Kind
+: hard
+
+Why
+: across suspends
+
+
+### Row 131
+
+Step
+: radios-survive-suspend
+
+Requires
+: wifi-joins
+
+Kind
+: hard
+
+Why
+: Wi-Fi up first
+
+
+### Row 132
+
+Step
+: radios-survive-suspend
+
+Requires
+: bt-controller-up
+
+Kind
+: hard
+
+Why
+: Bluetooth up first
+
+
+### Row 133
+
+Step
+: sensors-across-suspend
+
+Requires
+: s2idle-cycle-returns
+
+Kind
+: hard
+
+Why
+: across suspends
+
+
+### Row 134
+
+Step
+: sensors-across-suspend
+
+Requires
+: sensors-exposed
+
+Kind
+: hard
+
+Why
+: sensors up first
+
+
+### Row 135
+
+Step
+: resume-without-stall
+
+Requires
+: s2idle-cycle-returns
+
+Kind
+: hard
+
+Why
+: across suspends
+
+
+### Row 136
+
+Step
+: resume-without-stall
+
+Requires
+: sensors-across-suspend
+
+Kind
+: hard
+
+Why
+: an attached helper crashes the DSP at resume (sleep-fastrpc-helpers)
+
+
+### Row 137
+
+Step
+: resume-without-stall
+
+Requires
+: suspend-way-back
+
+Kind
+: hard
+
+Why
+: a stall must come back to be counted
+
+
+### Row 138
+
+Step
+: real-suspend-under-shell
+
+Requires
+: shell-runs-with-hardware
+
+Kind
+: hard
+
+Why
+: the shell's own suspend
+
+
+### Row 139
+
+Step
+: real-suspend-under-shell
+
+Requires
+: resume-without-stall
+
+Kind
+: hard
+
+Why
+: it returns
+
+
+### Row 140
+
+Step
+: real-suspend-under-shell
+
+Requires
+: radios-survive-suspend
+
+Kind
+: hard
+
+Why
+: the radios come back
+
+
+### Row 141
+
+Step
+: real-suspend-under-shell
+
+Requires
+: shell-autosleep-tamed
+
+Kind
+: soft
+
+Why
+: in the lab the loop is gated first
+
+
+### Row 142
+
+Step
+: soc-floor-reached
+
+Requires
+: s2idle-cycle-returns
+
+Kind
+: hard
+
+Why
+: read in suspend
+
+
+### Row 143
+
+Step
+: soc-floor-reached
+
+Requires
+: suspend-wakes-quiet
+
+Kind
+: soft
+
+Why
+: wakes keep it off the floor
+
+
+### Row 144
+
+Step
+: call-wakes-from-sleep
+
+Requires
+: real-suspend-under-shell
+
+Kind
+: hard
+
+Why
+: it sleeps as in daily use
+
+
+### Row 145
+
+Step
+: call-wakes-from-sleep
+
+Requires
+: voice-call-both-ways
+
+Kind
+: hard
+
+Why
+: a call to ring
+
+
+### Row 146
+
+Step
+: call-wakes-from-sleep
+
+Requires
+: sms-both-ways
+
+Kind
+: hard
+
+Why
+: a message to arrive
+
+
+### Row 147
+
+Step
+: standby-current
+
+Requires
+: soc-floor-reached
+
+Kind
+: hard
+
+Why
+: no floor, no low current
+
+
+### Row 148
+
+Step
+: standby-current
+
+Requires
+: real-suspend-under-shell
+
+Kind
+: hard
+
+Why
+: measured asleep as in daily use
+
+
+### Row 149
+
+Step
+: standby-current
+
+Requires
+: battery-gauge-reads
+
+Kind
+: soft
+
+Why
+: a meter can stand in for the gauge
+
+
+### Row 150
+
+Step
+: all-day-battery
+
+Requires
+: standby-current
+
+Kind
+: hard
+
+Why
+: most of a day is standby
+
+
+### Row 151
+
+Step
+: all-day-battery
+
+Requires
+: call-wakes-from-sleep
+
+Kind
+: hard
+
+Why
+: a sleeping phone that misses calls is not a day's use
+
+
+### Row 152
+
+Step
+: shell-runs-with-hardware
+
+Requires
+: panel-lit
+
+Kind
+: hard
+
+Why
+: it shows
+
+
+### Row 153
+
+Step
+: shell-runs-with-hardware
+
+Requires
+: touch-input
+
+Kind
+: hard
+
+Why
+: it is touched
+
+
+### Row 154
+
+Step
+: shell-runs-with-hardware
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: a distribution's shell
+
+
+### Row 155
+
+Step
+: shell-runs-with-hardware
+
+Requires
+: ucm-hifi-profile
+
+Kind
+: soft
+
+Why
+: its sound (plasma-silent)
+
+
+### Row 156
+
+Step
+: shell-runs-with-hardware
+
+Requires
+: gpu-renders
+
+Kind
+: soft
+
+Why
+: Phosh and Plasma Mobile need the GPU; sxmo does not
+
+
+### Row 157
+
+Step
+: on-screen-keyboard
+
+Requires
+: shell-runs-with-hardware
+
+Kind
+: hard
+
+Why
+: the shell's keyboard
+
+
+### Row 158
+
+Step
+: lock-and-unlock
+
+Requires
+: shell-runs-with-hardware
+
+Kind
+: hard
+
+Why
+: the shell's lock
+
+
+### Row 159
+
+Step
+: lock-and-unlock
+
+Requires
+: buttons-report
+
+Kind
+: hard
+
+Why
+: the power key
+
+
+### Row 160
+
+Step
+: notifications-arrive
+
+Requires
+: shell-runs-with-hardware
+
+Kind
+: hard
+
+Why
+: the shell's notifications
+
+
+### Row 161
+
+Step
+: notifications-arrive
+
+Requires
+: sms-both-ways
+
+Kind
+: soft
+
+Why
+: a message to announce
+
+
+### Row 162
+
+Step
+: notifications-arrive
+
+Requires
+: speaker-heard
+
+Kind
+: soft
+
+Why
+: it sounds
+
+
+### Row 163
+
+Step
+: update-applies
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: the distribution updates
+
+
+### Row 164
+
+Step
+: update-applies
+
+Requires
+: health-suite-runs
+
+Kind
+: soft
+
+Why
+: an update is proven by the same suite
+
+
+### Row 165
+
+Step
+: update-rolls-back
+
+Requires
+: update-applies
+
+Kind
+: hard
+
+Why
+: a bad one to roll back from
+
+
+### Row 166
+
+Step
+: update-rolls-back
+
+Requires
+: watchdog-way-back
+
+Kind
+: hard
+
+Why
+: a hung boot must come back
+
+
+### Row 167
+
+Step
+: update-rolls-back
+
+Requires
+: slot-state-known
+
+Kind
+: soft
+
+Why
+: A/B slots are one way back
+
+
+### Row 168
+
+Step
+: kernel-upgrade-keeps-steps
+
+Requires
+: health-suite-runs
+
+Kind
+: hard
+
+Why
+: the suite says what still passes
+
+
+### Row 169
+
+Step
+: coprocessor-restart-recovers
+
+Requires
+: remoteprocs-running
+
+Kind
+: hard
+
+Why
+: a coprocessor to crash
+
+
+### Row 170
+
+Step
+: coprocessor-restart-recovers
+
+Requires
+: mic-hears-speaker
+
+Kind
+: soft
+
+Why
+: sound to come back
+
+
+### Row 171
+
+Step
+: coprocessor-restart-recovers
+
+Requires
+: modem-registered
+
+Kind
+: soft
+
+Why
+: the modem to come back
+
+
+### Row 172
+
+Step
+: coprocessor-restart-recovers
+
+Requires
+: sensors-exposed
+
+Kind
+: soft
+
+Why
+: sensors to come back
+
+
+### Row 173
+
+Step
+: days-without-reboot
+
+Requires
+: real-suspend-under-shell
+
+Kind
+: hard
+
+Why
+: daily use sleeps
+
+
+### Row 174
+
+Step
+: days-without-reboot
+
+Requires
+: call-wakes-from-sleep
+
+Kind
+: hard
+
+Why
+: and is reachable
+
+
+### Row 175
+
+Step
+: cycles-repeat-clean
+
+Requires
+: resume-without-stall
+
+Kind
+: hard
+
+Why
+: a cycle that returns
+
+
+### Row 176
+
+Step
+: cycles-repeat-clean
+
+Requires
+: health-suite-runs
+
+Kind
+: hard
+
+Why
+: what is lost is read by the suite
+
+
+### Row 177
+
+Step
+: linux-runs
+
+Requires
+: health-suite-runs
+
+Kind
+: hard
+
+Why
+: the close of the generic bring-up
+
+
+### Row 178
+
+Step
+: linux-runs
+
+Requires
+: storage-readonly
+
+Kind
+: hard
+
+Why
+: the close of the generic bring-up
+
+
+### Row 179
+
+Step
+: linux-runs
+
+Requires
+: watchdog-way-back
+
+Kind
+: hard
+
+Why
+: the close of the generic bring-up
+
+
+### Row 180
+
+Step
+: linux-runs
+
+Requires
+: dmesg-clean
+
+Kind
+: hard
+
+Why
+: the close of the generic bring-up
+
+
+### Row 181
+
+Step
+: linux-runs
+
+Requires
+: charger-online
+
+Kind
+: hard
+
+Why
+: the close of the generic bring-up
+
+
+### Row 182
+
+Step
+: daily-usable-phone
+
+Requires
+: linux-runs
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 183
+
+Step
+: daily-usable-phone
+
+Requires
+: speaker-heard
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 184
+
+Step
+: daily-usable-phone
+
+Requires
+: mic-hears-speaker
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 185
+
+Step
+: daily-usable-phone
+
+Requires
+: earpiece-plays
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 186
+
+Step
+: daily-usable-phone
+
+Requires
+: voice-call-both-ways
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 187
+
+Step
+: daily-usable-phone
+
+Requires
+: sms-both-ways
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 188
+
+Step
+: daily-usable-phone
+
+Requires
+: mobile-data
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 189
+
+Step
+: daily-usable-phone
+
+Requires
+: emergency-numbers-known
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 190
+
+Step
+: daily-usable-phone
+
+Requires
+: proximity-blanks-in-call
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 191
+
+Step
+: daily-usable-phone
+
+Requires
+: wifi-joins
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 192
+
+Step
+: daily-usable-phone
+
+Requires
+: bt-controller-up
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 193
+
+Step
+: daily-usable-phone
+
+Requires
+: on-screen-keyboard
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 194
+
+Step
+: daily-usable-phone
+
+Requires
+: lock-and-unlock
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 195
+
+Step
+: daily-usable-phone
+
+Requires
+: notifications-arrive
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 196
+
+Step
+: daily-usable-phone
+
+Requires
+: gnss-fix
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 197
+
+Step
+: daily-usable-phone
+
+Requires
+: photo-taken
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 198
+
+Step
+: daily-usable-phone
+
+Requires
+: call-wakes-from-sleep
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 199
+
+Step
+: daily-usable-phone
+
+Requires
+: all-day-battery
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 200
+
+Step
+: daily-usable-phone
+
+Requires
+: off-mode-charging
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 201
+
+Step
+: daily-usable-phone
+
+Requires
+: update-applies
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 202
+
+Step
+: complete-phone
+
+Requires
+: daily-usable-phone
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 203
+
+Step
+: complete-phone
+
+Requires
+: volte-call
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 204
+
+Step
+: complete-phone
+
+Requires
+: mms-both-ways
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 205
+
+Step
+: complete-phone
+
+Requires
+: headset-jack
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 206
+
+Step
+: complete-phone
+
+Requires
+: bt-pairs-carries-audio
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 207
+
+Step
+: complete-phone
+
+Requires
+: nfc-reads-tag
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 208
+
+Step
+: complete-phone
+
+Requires
+: usb-host-works
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 209
+
+Step
+: complete-phone
+
+Requires
+: hotspot-shares-data
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 210
+
+Step
+: complete-phone
+
+Requires
+: haptics-buzz
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 211
+
+Step
+: complete-phone
+
+Requires
+: gpu-renders
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 212
+
+Step
+: complete-phone
+
+Requires
+: auto-rotate-follows
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 213
+
+Step
+: complete-phone
+
+Requires
+: brightness-follows-light
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 214
+
+Step
+: complete-phone
+
+Requires
+: fingerprint-unlocks
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 215
+
+Step
+: complete-phone
+
+Requires
+: video-recorded
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 216
+
+Step
+: complete-phone
+
+Requires
+: focus-and-flash
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 217
+
+Step
+: complete-phone
+
+Requires
+: thermal-zones-sane
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 218
+
+Step
+: complete-phone
+
+Requires
+: update-rolls-back
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 219
+
+Step
+: complete-phone
+
+Requires
+: kernel-upgrade-keeps-steps
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 220
+
+Step
+: complete-phone
+
+Requires
+: coprocessor-restart-recovers
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 221
+
+Step
+: complete-phone
+
+Requires
+: days-without-reboot
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 222
+
+Step
+: complete-phone
+
+Requires
+: cycles-repeat-clean
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 223
+
+Step
+: standby-current
+
+Requires
+: suspend-wakes-quiet
+
+Kind
+: hard
+
+Why
+: a phone woken by chatter does not stay low (floor-irq-quiet)

@@ -1658,3 +1658,63 @@ About
 
 Material
 : research/upstream-forks/2026-11-18/
+
+
+<a id="bringup-steps-coverage-map"></a>
+### bringup-steps-coverage-map
+
+Brief
+: The first steps research covered how Linux comes up and how others keep steps; it missed what makes a phone, Android's own list, Qualcomm's stacks and our labs past rootfs
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: What did research bringup-steps-landscape cover, what knowledge did it leave out, and where is the world's own knowledge thin for modern phones (Qualcomm SoCs, remoteprocs, firmware, modem stacks, the camera ISP)?
+
+Found
+: Covered: the road from bootloader to health suite (walleye's 26 steps, surya's other road) and how others keep steps and proofs (pmOS guides and Infobox, bootrr, Collabora's DT kselftest, LAVA, KernelCI, BitBake, openQA, beads, Taskwarrior, Yocto, UBports porting and Sailfish subsystems as prose order). The stages fit any machine; the lab stage was seeded empty (the author's '7 stages of 26 steps').
+Not looked at: everything after the rootfs that makes a phone - coprocessors, display and GPU, sound, modem, calls and call audio, local radios, sensors and GNSS, camera, sleep and battery, shell, updates and endurance; UBports' progress stages (the only stage order kept as data); Sailfish's checklist and CSD; PinePhone, megi, Mobian, Librem 5 status; Android's CDD, CTS/VTS and HAL list and Halium's map of what Linux must replace; Weiss's 'missing 20%' (bring-up proves function, not reliability); and our own surya records past the rootfs (about 50 steps met: audio, calls, microphones, sensors, suspend).
+The world's gaps (no public prior art, or one report): an open IMS across carriers; q6voice upstream and call audio on AudioReach SoCs; the hardware ISP and 3A tuning; waking for a call but not for chatter; s2idle figures per SoC with a modem, the SoC floor on an SM7150/845-class phone; whole-stack recovery after a coprocessor crash; the SSC registry contract; assisted GPS; eSIM; NFC; charging while off; hardware-backed keys; a thermal policy; a conformance suite for Linux phones; reliability as a per-device field. Each now sits as a step whose guide says 'World gap', so it shows not known yet instead of being forgotten.
+
+Sources
+: ubports-device-data,sailfish-hadk-checklist,sailfish-csd,pine64-ppp-software-state,megi-pinephone-status,mobian-devices,nura-devices-table,weiss-fosdem-2025-missing-20,fosdem-2026-foss-on-mobile,lwn-weiss-2026,android-cdd,android-cts,android-vts,aosp-compat-matrix,halium-scope,voltd-81,openimsd-nlnet,ixit-sdm845-upstreaming-0,camss-stats-uapi-rfc,pmi8998-fg-rfc,pmaports-charging-sdl-1064,linmob-weekly-34-2026
+
+About
+: bringup-steps
+
+Material
+: research/bringup-steps/2026-11-18-phone-stages/
+
+
+<a id="bringup-steps-phone-stages"></a>
+### bringup-steps-phone-stages
+
+Brief
+: A phone after Linux runs is 11 more stages and ~74 steps; groups of groups are goal steps (as systemd targets), not nested stages; prior art lives in sources' takes and research
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: Which stages and small steps complete a daily-usable phone after Linux runs, how do others group them, does the steps structure need nesting (groups of groups), and where should prior art live so it is inherited?
+
+Found
+: Stages after lab, met in this order on surya and named by UBports, pmOS, Sailfish, megi, PINE64, the CDD and the HAL list: coprocessors (firmware reachable, pd-mapper before the DSPs, remoteprocs running, FastRPC helpers stable), display and input, sound (codec, card, amplifiers, UCM, heard, captured, earpiece, jack), modem (file services, seen, SIM, registered, SMS, data, MMS), calls (call audio path, echo call, emergency list, dark at the ear, VoLTE), local radios, sensors and location, camera (bus, sensor id, raw frame, viewable stream, photo, video, focus), sleep (way back, timed cycle, quiet wakes, radios and sensors across, no stall, the shell's suspend, SoC floor, wake for calls, standby current, a day), shell, updates and endurance (applies, rolls back, kernel upgrade keeps steps, coprocessor crash survived, days without reboot, repeated cycles - Weiss's reliability). Power gains the gauge, off stays off, charging while off, thermal. Proofs: surya's suite has a test for about 35 of them; the rest are named to write. Apps and services stay features.
+Structure: UBports' stages are gates over feature ticks; CTS's unit is module/case per build; systemd targets, BitBake do_build and phony targets group by dependencies alone. A goal step (needs only) gives groups of groups in the existing edges: linux-runs, daily-usable-phone (77 steps), complete-phone (every phone step). Nested stages, a layer column, or weights would add a second tree the edges already carry.
+Prior art: docs keeps it in three places that exist - sources (one per document, with takes: 307 rows), research (per question, citing sources), landscape (per project, but no record, so agents cannot add to it); tad q find reads sources' takes. Missing: a query that gives a subject's prior art. Tried: seeded through the records, tad check passes; daily-phone.sh fails for every device today (no claims) and, in a scratch copy, passed with every step claimed and failed with one open.
+
+Sources
+: ubports-device-data,sailfish-hadk-checklist,android-cdd,android-cts,android-vts,aosp-compat-matrix,halium-scope,android-emergency-call,systemd-target,weiss-fosdem-2025-missing-20,nura-devices-table,nura-infobox-device,mm-qcom-soc-plugin,inkernel-pd-mapper,gnss-share,iio-sensor-proxy-libssc,libcamera-softisp-fosdem-2026,lmdpdg,msm-firmware-loader-emmc,pmos-firmware-docs,nura-volte-frida,bitbake-task-deps,taskwarrior-virtual-tags
+
+About
+: bringup-steps
+
+Material
+: research/bringup-steps/2026-11-18-phone-stages/
