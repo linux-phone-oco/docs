@@ -24,9 +24,15 @@ jq -c '. + {project: "linux-phone-oco/lens"}' "$here/face/lens-translations.json
 # and the lens's own log, from when it was a place of its own
 jq -c '. + {project: "linux-phone-oco/lens"}' "$here/face/lens-session-log.json" >> "$out/session_log.json"
 
+# 1b. the bring-up view: a row per step, a cell per step and device, and its headline (bin/face-steps)
+"$here/bin/face-steps" "$out"
+
 # 2. the lens: its views, as the engine reads them
+# (the steps view's headline, the goals each device has reached, leads it)
 yq -p toml -o json "$here/face/lens.toml" |
-	jq -c '{id: "linux-phone-oco/lens", project: "linux-phone-oco/lens", lens: .}' > "$out/lenses.json"
+	jq -c --rawfile lead "$out/step_lead.txt" '(if any(.view[]; .id == "steps") then . else error("face/lens.toml has no view steps") end)
+		| (.view[] | select(.id == "steps") | .lead) |= $lead + " " + .
+		| {id: "linux-phone-oco/lens", project: "linux-phone-oco/lens", lens: .}' > "$out/lenses.json"
 
 # 3. the places, each from its own mark (oco.toml); the lens is a place of the face, kept here
 : > "$out/projects.json"

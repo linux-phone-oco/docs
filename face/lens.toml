@@ -62,6 +62,18 @@ row_key = "component_id"
 columns = "devices"
 column_key = "device_id"
 
+[[view]]   # every bring-up step against each phone, grouped by stage; face-steps draws its rows, cells and headline
+id = "steps"
+title = "Bring-up steps"
+kind = "matrix"
+lead = "Every small step from an unlocked bootloader to a complete phone, in the order a bring-up meets them, against each phone: what its own base claims, with the proof and the run on hover. The guidebook says how each is done."
+table = "step_cells"
+rows = "step_rows"
+row_title = "Step"
+row_key = "step_id"
+columns = "devices"
+column_key = "device_id"
+
 [[view]]
 id = "families"
 title = "SoC families"

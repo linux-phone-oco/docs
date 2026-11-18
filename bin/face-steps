@@ -1,0 +1,46 @@
+#!/bin/sh
+# What the face's bring-up view is drawn from (face/lens.toml, view steps: a matrix of the steps against the devices,
+# like the features and the devices): from this place's own rows, with no observatory between.
+#   step_rows.json   a row per step - id, name, category (its stage), why (what done means) - the stages in their order
+#                    and the steps in the order bringup-chain gives, so the face groups them as they stand
+#   step_cells.json  a cell for every step and every device step_status knows (bin/face-cells.jq)
+#   step_lead.txt    the headline under the view's title: for each goal step, how many of the steps it needs each
+#                    device has done (bin/face-count.jq) - "X of N"
+#   bin/face-steps OUT        (tad and jq)
+set -eu
+mkdir -p "${1:?usage: bin/face-steps OUT - writes the bring-up view tables and headline}"
+out=$(cd "$1" && pwd)
+cd "$(dirname "$0")/.."
+tmp=$(mktemp -d "$out/.face-steps.XXXXXX"); trap 'rm -rf "$tmp"' EXIT; trap 'exit 1' INT TERM HUP
+json() { tad sql "$2" --format json > "$tmp/$1.json"; }
+json stages "SELECT * FROM bringup_stages ORDER BY ord"
+json steps "SELECT id, title, done_when FROM bringup_steps ORDER BY id"
+json claims "SELECT device_id, step_id, status, proof, run, notes FROM step_status ORDER BY device_id, step_id"
+json devices "SELECT id, name FROM devices ORDER BY id"
+tad q bringup-chain --format json > "$tmp/chain.json"
+jq -c -n --slurpfile stages "$tmp/stages.json" --slurpfile steps "$tmp/steps.json" --slurpfile chain "$tmp/chain.json" '
+	($stages[0] | map({key: .id, value: .}) | from_entries) as $g
+	| ($steps[0] | map({key: .id, value: .}) | from_entries) as $s
+	| [$chain[0][] | . + {ord: $g[.stage].ord}] | sort_by(.ord, .n) | .[]
+	| {id: .step, name: $s[.step].title, category: "\($g[.stage].ord). \($g[.stage].title)", why: $s[.step].done_when,
+	   project: "linux-phone-oco/docs"}' > "$tmp/step_rows.json"
+jq -c -n --slurpfile steps "$tmp/steps.json" --slurpfile claims "$tmp/claims.json" -f bin/face-cells.jq > "$tmp/step_cells.json"
+# the headline: each goal step, and for each device how many of the steps it needs are done
+devices=$(jq -r '[.[].device_id] | unique | .[]' "$tmp/claims.json")
+[ -n "$devices" ] || { echo "face-steps: step_status knows no device" >&2; exit 1; }
+: > "$tmp/lead"
+for goal in $(jq -r '[.[] | select(.stage == "goals")] | sort_by(.n) | .[].step' "$tmp/chain.json"); do
+	title=$(jq -r --arg g "$goal" '.[] | select(.id == $g) | .title' "$tmp/steps.json")
+	: > "$tmp/part"
+	for d in $devices; do
+		name=$(jq -r --arg d "$d" '.[] | select(.id == $d) | .name' "$tmp/devices.json")
+		tad q bringup-chain --goal "$goal" --device "$d" --format json > "$tmp/goal.json"
+		count=$(jq -r -f bin/face-count.jq "$tmp/goal.json")
+		echo "$name $count" >> "$tmp/part"
+	done
+	jq -R -s -r --arg t "$title" '"\($t): \(split("\n") | map(select(. != "")) | join(", "))"' "$tmp/part" >> "$tmp/lead"
+done
+jq -R -s -r '"Steps done toward each goal, of the steps it needs - \(split("\n") | map(select(. != "")) | join("; "))."' "$tmp/lead" | tr -d '\n' > "$tmp/step_lead.txt"
+mv "$tmp/step_rows.json" "$out/step_rows.json"
+mv "$tmp/step_cells.json" "$out/step_cells.json"
+mv "$tmp/step_lead.txt" "$out/step_lead.txt"
