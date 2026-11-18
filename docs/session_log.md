@@ -2011,3 +2011,27 @@ Rejected
 
 About
 : host-gadget-group
+
+---
+
+
+<a id="orchestration-renewed-2026-11-18-host-060"></a>
+### Orchestration renewed: the lab host at 0.6.0, walleye's gadget group, docs' open PRs settled
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: lab-tools v0.5.0 (#127: lpoco host reads lab.toml from origin/main) and v0.6.0 (#129: gadget_group). lab-machine #48 pinned 0.6.0 with gadget_group users; prepare now ran 09:16 on the author's word with 4 root commands (walleye's rule GROUP users MODE 0660, reload, triggers), devlab-watch@surya-lab restarted; lpoco host check all ok at 0.6.0. docs PRs: #331 and #197 closed (their records live in surya-lab), dependabot #65 #66 #67 landed, release 0.14.0 (#366) landed with land --release. about-across-bases and derive-parts-in-base proposed to one research-lead session (one question: a device base reading a commons table it does not own).
+
+Considered
+: Doing the two design items in the orchestration session
+
+Rejected
+: An orchestrator does not hold a research lead's piece; and a session could only be proposed from a turn another session started
+
+About
+: agent-folder
