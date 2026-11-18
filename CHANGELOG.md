@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.18.0](https://github.com/linux-phone-oco/docs/compare/v0.17.0...v0.18.0) (2026-11-18)
+
+
+### Features
+
+* **device-layer:** the steps contract - a steps table and the record step ([#529](https://github.com/linux-phone-oco/docs/issues/529)) ([6daa886](https://github.com/linux-phone-oco/docs/commit/6daa88693c6902494fa9c4272b7de700571b37c5))
+* feat: sxmo backoff item names the workaround it stands behind ([#518](https://github.com/linux-phone-oco/docs/issues/518)) ([f39db81](https://github.com/linux-phone-oco/docs/commit/f39db8198fb48c3d8245890ed4ecf3daa6fbb899))
+* **feeds:** feed-device-steps pulls each device base's step claims into step_status ([#530](https://github.com/linux-phone-oco/docs/issues/530)) ([a40cd94](https://github.com/linux-phone-oco/docs/commit/a40cd947af80e94a270c761af3ece89febb17ca3))
+
 ## [0.17.0](https://github.com/linux-phone-oco/docs/compare/v0.16.0...v0.17.0) (2026-11-18)
 
 
