@@ -1663,3 +1663,24 @@ Rejected
 
 About
 : lpoco-tone-argenv
+
+---
+
+
+<a id="2026-11-18-lpoco-lab-env-through-argenv"></a>
+### lpoco-lab env through argenv
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Built lpoco-lab-env-through-argenv: DEVLAB_ROOT, LAB_AGENT, PHONE_PASS, DEVLAB_MICROPHONE, HOME read once through cli::env(); two proof tests (source scan, empty DEVLAB_ROOT exits 2); programmer review applied; landed as lab-tools #103.
+
+Considered
+: Passing &EnvIn through every function (pure core) - kept a set-once global as the readers are many.
+
+Rejected
+: Declaring defaults on the String inputs - not checked that argenv supports it; left in env_in. Per-command refusal of empty DEVLAB_ROOT - refused at parse for one rule.

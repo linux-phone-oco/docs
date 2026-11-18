@@ -3415,10 +3415,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Left by lpoco-lab-argenv (lab-tools #98): the declared env vars are still read by std::env::var in flash, provision, watch, phone, hear and device, so a typo or a missing variable is not said by the usage. Failing test first: an env var declared in devlab/src/cli.rs is read only through the parsed contract (grep finds no std::env::var for a declared name) and an invalid value exits 2 with the usage. Programmer subagent's review before landing.
+: Landed in lab-tools #103 (fd1163d): the five declared env vars are read once in cli.rs; proof lpoco-lab-env-read-once seen failing, then green. Known: a non-UTF-8 HOME counts as unset; empty DEVLAB_ROOT exits 2 for every command.
 
 Opened
 : 2026-11-18
