@@ -3303,12 +3303,13 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
 : Seen writing lab.toml (lab-machine #36): plan says land 'found not found' and oco-work 'not installed' though both are in ~/.local/bin, since scripts print no --version and a script pin needs version (0.1.0 set as a label, rev is the real pin), so check fails for both. devices is one glob, so the clones are named [gs]*-lab. The land pin clones the private grenudi/lab-machine over https, which needs credentials. Failing test first: a fixture script tool pinned by rev is found on PATH and judged by its rev (a stamp the install writes, or the content hash), not by --version; devices accepts a list. Or land and agent-env learn --version (owners: lab-machine, ideal-agent).
 Also (2026-11-17, orchestration): plan read the shared google-walleye-lab clone, detached at an old commit without [host], and so planned no udev rule at all. A device declaration read from a working clone drifts with that clone; read it from the repository's origin/main (git show after a fetch), or say which commit was read and how far it is behind.
 Also: the off-the-pin advice for devlab and tone says to put ~/.cargo/bin before ~/.local/bin, but lpoco-host installs the family with --root ~/.local, so the advice should say to reinstall into ~/.local and remove any copy that shadows it.
+Done 2026-11-18 (lab-tools #95, read back): script tools are judged by a rev stamp (~/.local/share/lpoco-host/rev-NAME, written by prepare now), not by --version; devices takes a list of globs; the off-the-pin advice says to reinstall into ~/.local. Proof host/tests/plan.rs. Left over: lpoco-host-reads-origin-main; the land pin clones the private grenudi/lab-machine over https and needs credentials. (Status set by orchestration: docs #393 meant to set done but landed without it.)
 
 Opened
 : 2026-11-17
@@ -3370,4 +3371,7 @@ Device
 : google-walleye
 
 Proof
-: lpoco-host-finds-script-tools
+: lpoco-host-reads-device-from-origin-main
+
+About
+: bringup
