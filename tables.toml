@@ -86,6 +86,16 @@ type = "string"
 name = "rank"
 type = "integer"
 
+# a step the author must see or hear: not ready for an unattended session unless a go is open (ikb backlog-go sets go_until)
+[[tables.backlog.fields]]
+name = "witness"
+type = "string"
+enum = ["person"]
+
+[[tables.backlog.fields]]
+name = "go_until"
+type = "string"
+
 [[tables.backlog.fields]]
 name = "about"
 type = "string"
