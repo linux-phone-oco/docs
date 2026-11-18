@@ -2170,3 +2170,27 @@ Rejected
 
 About
 : lpoco-host-rest
+
+---
+
+
+<a id="2026-11-18-lpoco-host-commands-checked"></a>
+### lpoco host: commands checked
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Built part (4) of lpoco-host-rest: [host] commands in device.toml, named by plan, judged by check, never installed. Test first (seen failing), programmer review fixed: a pure commands_of (once per command, every wanting device), plan/check count from one function, stronger tests. Landed lab-tools #138, read back from main.
+
+Considered
+: Installing a missing command through root pacman: left to the author's grant (lab-agent-6).
+
+Rejected
+: Treating ~/.local/bin as PATH for commands (the host's PATH is what a program sees); a flag-dependent return value (the count is returned always).
+
+About
+: lpoco-host-rest
