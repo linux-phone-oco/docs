@@ -1,0 +1,41 @@
+From 6432ef936a84d3ad218ba689eab34c107cbbe6db Mon Sep 17 00:00:00 2001
+From: orchestration-renewed <agent@creation-guidelines>
+Date: Wed, 18 Nov 2026 13:28:28 +0100
+Subject: [PATCH sxmo-utils 3/3] deviceprofiles: xiaomi,surya: stop the sensors
+ daemon around suspend
+
+The POCO X3 NFC runs hexagonrpcd for its sensors, as the Pixel 3a does,
+and it must not run across a suspend either: name it in
+SXMO_SUSPEND_STOP_SERVICES for both panel variants.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ .../deviceprofiles/sxmo_deviceprofile_xiaomi,surya-huaxing.sh  | 3 +++
+ .../deviceprofiles/sxmo_deviceprofile_xiaomi,surya-tianma.sh   | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-huaxing.sh b/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-huaxing.sh
+index 16f7fe2..a2e50d0 100755
+--- a/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-huaxing.sh
++++ b/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-huaxing.sh
+@@ -8,3 +8,6 @@ export SXMO_POWER_BUTTON="0:0:pm8941_pwrkey"
+ export SXMO_VOLUME_BUTTON="1:1:gpio-keys 0:0:pm8941_resin"
+ export SXMO_SWAY_SCALE="3"
+ export SXMO_VIBRATE_DEV="/dev/input/by-path/platform-884000.i2c-event"
++
++# the sensors daemon must not run across suspend (as on google,b4s4-sdm670)
++export SXMO_SUSPEND_STOP_SERVICES="hexagonrpcd-adsp-sensorspd"
+diff --git a/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-tianma.sh b/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-tianma.sh
+index 92f6bd6..80bdf29 100755
+--- a/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-tianma.sh
++++ b/scripts/deviceprofiles/sxmo_deviceprofile_xiaomi,surya-tianma.sh
+@@ -8,3 +8,6 @@ export SXMO_POWER_BUTTON="0:0:pm8941_pwrkey"
+ export SXMO_VOLUME_BUTTON="1:1:gpio-keys 0:0:pm8941_resin"
+ export SXMO_SWAY_SCALE="3"
+ export SXMO_VIBRATE_DEV="/dev/input/by-path/platform-884000.i2c-event"
++
++# the sensors daemon must not run across suspend (as on google,b4s4-sdm670)
++export SXMO_SUSPEND_STOP_SERVICES="hexagonrpcd-adsp-sensorspd"
+-- 
+2.56.1
+

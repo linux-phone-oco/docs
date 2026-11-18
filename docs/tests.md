@@ -650,3 +650,55 @@ Proves
 
 Says
 : the interrupts counted across one 15 s suspended cycle stay under the manifest's threshold; over it, the top three sources are named
+
+
+<a id="pmic-wdt-bites"></a>
+### pmic-wdt-bites
+
+Component id
+: deep-sleep
+
+Proves
+: works
+
+Says
+: armed and left unpetted with nothing suspended, the PMIC watchdog resets the phone within its timeout and the next boot reports a PMIC watchdog reset (bootstatus CARDRESET)
+
+
+<a id="pmic-wdt-wakes-in-suspend"></a>
+### pmic-wdt-wakes-in-suspend
+
+Component id
+: deep-sleep
+
+Proves
+: works
+
+Says
+: with the PMIC watchdog armed (60 s, pretimeout 30 s, wakeup on) and nothing else to wake it, a suspend is ended by the watchdog's bark within 25 to 45 s and the phone does not reset (same boot id)
+
+
+<a id="sensors-after-suspend"></a>
+### sensors-after-suspend
+
+Component id
+: sensors
+
+Proves
+: works
+
+Says
+: after a suspend under Sxmo the sensors daemon (hexagonrpcd-adsp-sensorspd) was stopped before it and runs again after it, and a sensor gives a reading
+
+
+<a id="suspend-retry-backs-off"></a>
+### suspend-retry-backs-off
+
+Component id
+: deep-sleep
+
+Proves
+: works
+
+Says
+: while suspend keeps failing under Sxmo, the tries are spaced 1, 2, 4 ... 64 s apart (sxmo.log 'next try in'), and the USB link drops at most 8 times in 5 minutes (26 before the fix)

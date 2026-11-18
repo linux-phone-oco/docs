@@ -341,62 +341,6 @@ Last update
 : 2026-11-17
 
 
-<a id="sxmo-autosuspend-backoff"></a>
-### sxmo_autosuspend.sh retries a failed suspend every second with no backoff; would a backoff (or a block reason while the USB gadget is configured) be taken?
-
-Upstream
-: sxmo-devel
-
-Form
-: question
-
-State
-: draft
-
-From work
-: 2026-11-18-phone-side-pieces-under-the-roof
-
-About
-: phone-side-pieces
-
-Waits
-: the author's word: sent in his name
-
-Note
-: sxmo-utils 868b5c9: a failed sxmo_suspend.sh is retried after sleep 1. On a phone whose suspend aborts while its gadget is up, each attempt drops the link (surya: 26 reconnects in 5 minutes). Done when the list answers and the answer is recorded here (upstream-state), and a patch follows if wanted.
-
-Last update
-: 2026-11-18
-
-
-<a id="sxmo-suspend-stop-by-profile"></a>
-### sxmo_suspend.sh stops hexagonrpcd sensorspd for google,b4s4-sdm670 by name; could the device profile name the services to stop around suspend?
-
-Upstream
-: sxmo-devel
-
-Form
-: question
-
-State
-: draft
-
-From work
-: 2026-11-18-phone-side-pieces-under-the-roof
-
-About
-: phone-side-pieces
-
-Waits
-: the author's word: sent in his name
-
-Note
-: surya (sm7150) needs the same stop and a start after resume (surya-lab lab/devlab-sensors-resume); a profile variable would serve both instead of a device name in core. Done when the list answers, recorded here.
-
-Last update
-: 2026-11-18
-
-
 <a id="qcom-wdt-armed-in-suspend"></a>
 ### qcom_wdt: a way to keep the watchdog armed through system suspend, as a test lab's way back from a suspend that does not return
 
@@ -407,7 +351,7 @@ Form
 : question
 
 State
-: draft
+: superseded
 
 From work
 : 2026-11-18-phone-side-pieces-under-the-roof
@@ -416,10 +360,189 @@ About
 : phone-side-pieces
 
 Waits
-: the author's word: sent in his name
+: none
 
 Note
-: surya-lab patches/qcom-wdt-keep-armed-in-suspend.patch (a module parameter); lpoco-health suspend cycle refuses without such a guard on any device. Done when the list answers, recorded here.
+: Not to be asked: keeping a watchdog running through suspend was refused as policy for imx2_wdt (Roeck Dec 2025, Kozlowski Jan 2026), and the APSS counter freezes in the deepest sleep (why try 4 had no bite). Superseded by pmic-wdt-wake-in-suspend (decision 2026-11-18-upstream-forks, research pmic-wdt-way-back); the surya-lab module parameter stays lab-only until that is proven.
+
+Last update
+: 2026-11-18
+
+
+<a id="pmic-wdt-wake-in-suspend"></a>
+### [RFC PATCH 0/4] watchdog: pm8916_wdt: gen2 PON (pm8998, pm6150) and kept running through suspend when its bark may wake
+
+Upstream
+: linux-watchdog
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-18-upstream-forks
+
+About
+: deep-sleep
+
+Local ref
+: linux-phone-oco/linux topic/pmic-wdt-wake-in-suspend e123d3bff on v7.3 (local worktree ~/Projects/linux-phone-oco/linux-topics)
+
+File
+: research/upstream-forks/2026-11-18/patches/linux/
+
+Supersedes
+: qcom-wdt-armed-in-suspend
+
+Carried in
+: fork-linux/topic/pmic-wdt-wake-in-suspend
+
+Waits
+: the phone proofs (tests pmic-wdt-bites, pmic-wdt-wakes-in-suspend on surya, then walleye), then the author's word and sign-off
+
+Note
+: Built (LLVM, W=1), checkpatch --strict clean but the trailer, binding validated. Before sending: b4 prep from the author's clone, Co-Authored-By replaced by 'Assisted-by: LLM', his Signed-off-by; recipients by get_maintainer (Wim Van Sebroeck, Guenter Roeck, linux-watchdog; dt: Rob Herring, Krzysztof Kozlowski, Conor Dooley, devicetree; dts: Bjorn Andersson, Konrad Dybcio, linux-arm-msm). Drop RFC once both phones pass.
+
+Last update
+: 2026-11-18
+
+
+<a id="sxmo-autosuspend-backoff"></a>
+### [PATCH sxmo-utils 1/3] sxmo_autosuspend.sh: back off after a failed suspend (1..64 s, SXMO_SUSPEND_RETRY_MAX)
+
+Upstream
+: sxmo-devel
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-18-upstream-forks
+
+About
+: upstream-forks
+
+Local ref
+: linux-phone-oco/sxmo-utils topic/sxmo-autosuspend-backoff 2bb2500 (local clone ~/Projects/linux-phone-oco/sxmo-utils-topics)
+
+File
+: research/upstream-forks/2026-11-18/patches/sxmo-utils/
+
+Carried in
+: fork-sxmo-utils/topic/sxmo-autosuspend-backoff
+
+Waits
+: the phone proof surya-sxmo-suspend-series, then the author's word: sent in his name
+
+Note
+: Was a question; now a patch with its spec (spec/scripts/core/sxmo_autosuspend_spec.sh, fails on master, passes here). First of a series of three with sxmo-suspend-stop-by-profile and sxmo-surya-sensors-suspend; cover letter 0000 in the same folder. Send: git send-email --to '~mil/sxmo-devel@lists.sr.ht' from the author's clone.
+
+Last update
+: 2026-11-18
+
+
+<a id="sxmo-suspend-stop-by-profile"></a>
+### [PATCH sxmo-utils 2/3] suspend: stop the services a device profile names around suspend (SXMO_SUSPEND_STOP_SERVICES)
+
+Upstream
+: sxmo-devel
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-18-upstream-forks
+
+About
+: upstream-forks
+
+Local ref
+: linux-phone-oco/sxmo-utils topic/sxmo-suspend-stop-by-profile 1156bb6 (on the backoff patch)
+
+File
+: research/upstream-forks/2026-11-18/patches/sxmo-utils/
+
+Carried in
+: fork-sxmo-utils/topic/sxmo-suspend-stop-by-profile
+
+Waits
+: the phone proof surya-sxmo-suspend-series, then the author's word: sent in his name
+
+Note
+: Was a question; now a patch. Answers why proycon's 2024 list was refused (sxmo-devel 55649: the wakeup count goes stale while services stop): the count is read again after the stop. Moves google,b4s4-sdm670 into its profile (it is now started again after suspend - say so in the cover letter).
+
+Last update
+: 2026-11-18
+
+
+<a id="sxmo-surya-sensors-suspend"></a>
+### [PATCH sxmo-utils 3/3] deviceprofiles: xiaomi,surya: stop the sensors daemon around suspend
+
+Upstream
+: sxmo-devel
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-18-upstream-forks
+
+About
+: upstream-forks
+
+Local ref
+: linux-phone-oco/sxmo-utils topic/sxmo-surya-sensors-suspend 6432ef9
+
+File
+: research/upstream-forks/2026-11-18/patches/sxmo-utils/
+
+Carried in
+: fork-sxmo-utils/topic/sxmo-surya-sensors-suspend
+
+Waits
+: the phone proof surya-sxmo-suspend-series, then the author's word
+
+Note
+: Third of the sxmo series; proven by test sensors-after-suspend on surya.
+
+Last update
+: 2026-11-18
+
+
+<a id="rhizoid-carries-mail-forks"></a>
+### What rhizoid needs to carry a mailing-list fork: non-GitHub tracking, a topic series per item, mail send-back, retire on landed, a distro package pin
+
+Upstream
+: git-rhizoid
+
+Form
+: finding
+
+State
+: draft
+
+From work
+: upstream-forks-landscape
+
+About
+: upstream-forks
+
+Waits
+: its owner's look-around (a backlog item in git-rhizoid.github.io, beside send-back-writes-the-upstream-item and cutting-as-cargo-dependency)
+
+Note
+: From linux-phone-oco: sxmo-utils (sr.ht, mailed) and the kernel (b4, mailed). (1) a cutting of a non-GitHub upstream: tracking by git fetch + push, created by gh repo create + push; (2) one topic branch per upstream item off tracking, rebased only before a send, and an integration branch merging the topics, never rebased, that consumers pin - the patch branch cut per item; (3) send-back by mail: format-patch/b4 prep of tracking..topic with cover letter and recipients, never sending, returned for the follower's upstream item; (4) retire a topic when upstream carries it (patch-id against tracking) and say so (landed, carried-in none); (5) a pin where a distro package reads it (APKBUILD source tag + sha512sums), the cargo item generalised. Meanwhile: plain git by decision 2026-11-18-upstream-forks and tad q carried.
 
 Last update
 : 2026-11-18

@@ -90,3 +90,18 @@ Says
 
 Condenses
 : 2026-11-18-device-manifest-schema-from-rust, 2026-11-18-phone-side-pieces-under-the-roof, 2026-11-18-research-phone-side-pieces, device-declaration-typed-landscape, phone-side-pieces-how-it-stands, phone-side-pieces-landscape
+
+
+### Row 7
+
+About
+: upstream-forks
+
+Date
+: 2026-11-18
+
+Says
+: Our forks are the organisation's existing ones - linux-phone-oco/sxmo-utils (fork-sxmo-utils, a mirror of sr.ht) and linux-phone-oco/linux (fork-linux); none is made under grenudi (decision 2026-11-18-upstream-forks, research upstream-forks-landscape). Each upstream item is a topic branch off the untouched tracking branch; a never-rebased lab/test branch is what phones run - sxmo-utils as a tagged lab apk (sxmo-utils-lab-apk), kernels by each lab's route. One upstreams lane coordinates (upstreams-lane, waiting on orchestration). Written, unsent, each waiting on its phone proof then the author's word: the sxmo series of three (sxmo-autosuspend-backoff, sxmo-suspend-stop-by-profile, sxmo-surya-sensors-suspend; research sxmo-suspend-fixes; spec in the series) and the RFC kernel series pmic-wdt-wake-in-suspend, which supersedes qcom-wdt-armed-in-suspend (research pmic-wdt-way-back; proofs surya-pmic-wdt-proof, walleye-pmic-wdt-proof in the device bases). rhizoid is not used yet; what it needs went to it as rhizoid-carries-mail-forks.
+
+Condenses
+: 2026-11-18-upstream-forks, sxmo-suspend-fixes, upstream-forks-landscape
