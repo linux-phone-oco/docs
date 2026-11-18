@@ -20,7 +20,9 @@ jobs:
         run: make render verify
       - name: Commit the change to main, if there is one
         run: |
-          git diff --quiet && { echo "nothing changed"; exit 0; }
+          # A feed can fill a table for the first time (data/step_status.json): stage new files too, not only tracked ones.
+          git add -A data docs
+          git diff --cached --quiet && { echo "nothing changed"; exit 0; }
           git config user.name "feeds"; git config user.email "feeds@linux-phone-oco"
-          git commit -qam "chore(feed): data from the scheduled feeds"
+          git commit -qm "chore(feed): data from the scheduled feeds"
           git push -q origin HEAD:main
