@@ -339,3 +339,87 @@ Note
 
 Last update
 : 2026-11-17
+
+
+<a id="sxmo-autosuspend-backoff"></a>
+### sxmo_autosuspend.sh retries a failed suspend every second with no backoff; would a backoff (or a block reason while the USB gadget is configured) be taken?
+
+Upstream
+: sxmo-devel
+
+Form
+: question
+
+State
+: draft
+
+From work
+: 2026-11-18-phone-side-pieces-under-the-roof
+
+About
+: phone-side-pieces
+
+Waits
+: the author's word: sent in his name
+
+Note
+: sxmo-utils 868b5c9: a failed sxmo_suspend.sh is retried after sleep 1. On a phone whose suspend aborts while its gadget is up, each attempt drops the link (surya: 26 reconnects in 5 minutes). Done when the list answers and the answer is recorded here (upstream-state), and a patch follows if wanted.
+
+Last update
+: 2026-11-18
+
+
+<a id="sxmo-suspend-stop-by-profile"></a>
+### sxmo_suspend.sh stops hexagonrpcd sensorspd for google,b4s4-sdm670 by name; could the device profile name the services to stop around suspend?
+
+Upstream
+: sxmo-devel
+
+Form
+: question
+
+State
+: draft
+
+From work
+: 2026-11-18-phone-side-pieces-under-the-roof
+
+About
+: phone-side-pieces
+
+Waits
+: the author's word: sent in his name
+
+Note
+: surya (sm7150) needs the same stop and a start after resume (surya-lab lab/devlab-sensors-resume); a profile variable would serve both instead of a device name in core. Done when the list answers, recorded here.
+
+Last update
+: 2026-11-18
+
+
+<a id="qcom-wdt-armed-in-suspend"></a>
+### qcom_wdt: a way to keep the watchdog armed through system suspend, as a test lab's way back from a suspend that does not return
+
+Upstream
+: linux-arm-msm
+
+Form
+: question
+
+State
+: draft
+
+From work
+: 2026-11-18-phone-side-pieces-under-the-roof
+
+About
+: phone-side-pieces
+
+Waits
+: the author's word: sent in his name
+
+Note
+: surya-lab patches/qcom-wdt-keep-armed-in-suspend.patch (a module parameter); lpoco-health suspend cycle refuses without such a guard on any device. Done when the list answers, recorded here.
+
+Last update
+: 2026-11-18

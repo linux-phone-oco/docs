@@ -2266,3 +2266,27 @@ Rejected
 
 About
 : agent-folder
+
+---
+
+
+<a id="2026-11-18-research-phone-side-pieces"></a>
+### Research: phone-side pieces under one roof, their drift, and typed device declarations
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: Inventoried the phone-side pieces of surya-lab and google-walleye-lab; looked at sxmo, postmarketOS, Mobian and the kernel's wake locks; answered the author's question on typed declarations; recorded two decisions, three research rows, 14 sources, 11 backlog items unranked and three upstream questions. No phone touched; no lab-tools code changed.
+
+Considered
+: Landing the failing test as ignored: lab-tools has no such convention and the test cannot compile before its function, so its text is in the research material and the backlog proof.
+
+Rejected
+: See the two decisions' rejected.
+
+About
+: phone-side-pieces

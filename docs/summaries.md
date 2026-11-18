@@ -75,3 +75,18 @@ Says
 
 Condenses
 : 2026-11-17-bringup-in-lab-tools, 2026-11-17-research-bringup-follow, 2026-11-17-research-bringup-tools, bringup-family-names, bringup-home-follow-and-rhizoid, bringup-one-roof, bringup-tools-landscape
+
+
+### Row 6
+
+About
+: phone-side-pieces
+
+Date
+: 2026-11-18
+
+Says
+: Phone-side pieces (what lpoco puts on a phone) are decided, not built. Every lab phone's pieces ride the lab-tools package - the keep-awake first, as lpoco-health awake (lpoco-awake) - and walleye's gadget init and ACM console go under lpoco bringup (bringup-generic-init); a device names roof pieces by token and keeps only its own files (decision 2026-11-18-phone-side-pieces-under-the-roof). Drift is named, not trusted: the phone reports each package version and each declared file's git blob id every boot (health-reports-pieces), and lpoco host check names a stale one from the last gathered report (phone-pieces-drift-named, its failing test written first; text in research/phone-side-pieces/2026-11-18/). device.toml stays data, declared once in Rust with a schema projected per release (decision 2026-11-18-device-manifest-schema-from-rust, manifest-one-schema and one row per device repository). Upstream: three questions (sxmo autosuspend backoff, sxmo suspend stops by profile, qcom_wdt armed in suspend) wait on the author's word. Hand-over: phone-side-pieces-how-it-stands.
+
+Condenses
+: 2026-11-18-device-manifest-schema-from-rust, 2026-11-18-phone-side-pieces-under-the-roof, 2026-11-18-research-phone-side-pieces, device-declaration-typed-landscape, phone-side-pieces-how-it-stands, phone-side-pieces-landscape
