@@ -2362,3 +2362,27 @@ Rejected
 
 About
 : lpoco-host-rest
+
+---
+
+
+<a id="2026-11-18-lpoco-awake-built-and-landed"></a>
+### lpoco-awake built and landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Failing test first (health/tests/awake.rs), then lpoco-health awake in Rust with argenv (--once declared), awake_gates in device.toml [health] -> AWAKE_GATES in health.env, unit and generic check in the package, README. Reviewed by the programmer subagent; fixed: EINVAL on unlocking a never-held lock is 'already released', an unknown gate never drops the safe default (refused only where allow-autosleep makes gates decide), a missing health.env is no gates but an unreadable one is an error, unit ExecStopPost with - and RestartSec=1, usb-awake check in 85-parts accepts either lock name. Landed as PR 148, read back from main.
+
+Considered
+: Reading bluetooth state from sysfs instead of hciconfig: no sysfs file says UP RUNNING, so hciconfig stays (as the script did), faked through PATH in the test. Enabling the unit from suite put: left to surya-awake-from-package.
+
+Rejected
+: Keeping the lock name devlab-usb and the allow file /etc/devlab-allow-autosleep: the roof names things lpoco-*; moving phones drop the old by hand (said in README). Refusing on an unknown gate always: it would drop the phone's keep-awake and bring back the USB hang.
+
+About
+: lpoco-awake

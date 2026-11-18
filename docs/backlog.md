@@ -3800,10 +3800,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Carries surya-lab lab/devlab-usb-awake (PR 195, 208) into lab-tools: lpoco-health awake holds the kernel wake lock lpoco-awake always; with /etc/lpoco/allow-autosleep only while the UDC is configured or a named gate says unsafe (bluetooth-not-up: hci0 not UP or an rfkill in D state - surya's r4 wedge). Unit lpoco-awake.service in the package; device.toml [health] awake_gates = [tokens]. Its check replaces surya's autosleep-off.sh, and reads the package, not a grep of an installed script. Deliberate suspends (lpoco-health suspend cycle) write /sys/power/state and are not held back. Answers device-template's dt-usb-awake (left as its owner keeps it).
+: Landed lab-tools PR 148 (3ac4c46): lpoco-health awake [--once], unit lpoco-awake.service and check 93-awake.sh in the package, [health] awake_gates in devlab. Proof health/tests/awake.rs (4 tests, seen failing first). Not yet on a phone: surya-awake-from-package enables the unit, retires the hand copy and moves /etc/devlab-allow-autosleep to /etc/lpoco/allow-autosleep; suite put does not enable the unit. Release PR from release-plz not seen yet.
 
 Opened
 : 2026-11-18
