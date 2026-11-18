@@ -32,6 +32,8 @@ jobs:
           TAD_DEST="$RUNNER_TEMP/bin" ./bin/install-tad.sh
           echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
           "$RUNNER_TEMP/bin/tad" check
+      - name: DuckDB, tad's pinned binary, for the tad queries the face's steps are asked with
+        run: tad engine
       - name: the engine, at its main (kept between runs while its main stands still)
         id: engine
         run: echo "sha=$(git ls-remote https://github.com/open-commons-observatory/ocoeco-engine HEAD | cut -f1)" >> "$GITHUB_OUTPUT"
