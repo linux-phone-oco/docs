@@ -30,6 +30,10 @@ Judge only after measuring; what is not measured is "not known yet".
 2. **The conveyor and the host:**
    - `systemctl --user is-active devlab-watch@surya-lab` and its log since 6 hours ago: a report filed after
      each boot, no repeating error;
+   - the job route: `systemctl --user is-active lab-agent` and, in `journalctl --user -u lab-agent` since
+     your last round, the count of "poll error" or "status code 401" lines (on 2026-11-18 a token kept from
+     before a rotation failed every poll for 15 hours, unseen); a sign for your report only, its owner is
+     lab-machine/lab-agent;
    - the face's last pages build: `gh run list -R linux-phone-oco/docs --workflow pages.yml -L 3`;
    - `lpoco host check`: a FAIL already on a lab-tools backlog item (e.g. lpoco-host-script-tools) is known,
      not new; a device line saying "not measured" is not a FAIL.
