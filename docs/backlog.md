@@ -3139,11 +3139,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Left by lpoco-rename-lab-tone (lab-tools #86): lpoco-lab/devlab still declares its CLI with clap; the family's completions, man page and lpoco list read argenv declarations (decision 2026-11-17-bringup-in-lab-tools: argenv for every lpoco tool). Failing test first: lpoco-lab's argenv declaration yields the same --help for every subcommand that clap gives today (one_program.rs keeps devlab and lpoco-lab equal).
-Built with the programmer subagent's review (ideal-agent:programmer) before landing; nothing that needs the author's hands or a root rule change (the coordinator, 2026-11-18).
+: landed lab-tools #98 (a365eb2), read back from main; proof devlab/tests/help.rs. Left: declared env still read by std::env::var in flash/provision/watch/phone/hear/device (route through the contract); 'lpoco-lab help X' gone; tone still on clap.
 
 Opened
 : 2026-11-17

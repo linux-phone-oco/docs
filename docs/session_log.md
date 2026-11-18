@@ -1549,3 +1549,24 @@ Rejected
 
 About
 : lpoco-host-script-tools
+
+---
+
+
+<a id="2026-11-18-lpoco-lab-on-argenv"></a>
+### lpoco-lab on argenv
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Failing test first (devlab/tests/help.rs), cli.rs declaration + TREE, parse() in main.rs, programmer review answered (per-action flags, exit 2, help wins, README), landed lab-tools #98.
+
+Rejected
+: see decision
+
+About
+: lpoco-lab-argenv
