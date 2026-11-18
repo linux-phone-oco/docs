@@ -2868,10 +2868,11 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
 : Replaces build-initramfs.sh. Test: from the walleye spec (busybox, /init, udhcpd.conf, device nodes) the archive is byte for byte what the kernel's gen_init_cpio -t 0 makes, then compressed with the codec the device names (xz for the 4.4 kernel, gzip otherwise; fixed settings, same bytes twice). The NET=43 rewrite becomes a variable in the template (172.16.{net}.1, the ECM MAC byte) and a build that leaves the old address behind fails. Crates: cpio, flate2, xz2. The QEMU self-test stays shell until a second device needs it.
+Done 2026-11-18: lab-tools #114 (lpoco-bringup initramfs build), byte-identical to gen_init_cpio -t 0 against the real oracle, 6+ tests, programmer-reviewed; built by lab-tools-builder, landed by orchestration once main was green again (release #113 added host's missing 0.3.5 changelog).
 
 Opened
 : 2026-11-17
@@ -3516,10 +3517,11 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: done
+: open
 
 Note
 : landed lab-tools #112; v0.3.5 (#111) tags #110. proof: release-tags-every-change
+Reopened 2026-11-18 (orchestration): #112's check failed on main right after release #111. lpoco-host had no changes, so its 0.3.5 changelog entry was missing, and release-plz put it in a second release PR (#113) that changes only a changelog. That is the shape #112 forbids, and #113 got no checks. So a family release can come in two PRs under one version. Make the check and release-plz's two steps fit: one release PR that writes every member's changelog (see release-plz's changelog settings for unchanged packages in a version_group), or a test that accepts the follow-up PR that completes the same version.
 
 Opened
 : 2026-11-18
@@ -3534,7 +3536,7 @@ Proof
 : release-tags-every-change
 
 Rank
-: 8
+: 1
 
 About
 : bringup
