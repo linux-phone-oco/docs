@@ -297,3 +297,41 @@ Handled
 
 Kind
 : unclear
+
+
+<a id="names-bringup-blocked-by-done"></a>
+### names-bringup-blocked-by-done
+
+Project
+: linux-phone-oco/device-template
+
+What
+: backlog device-template-names-bringup still shows blocked_by bringup-image-v0, which is done (lab-tools PR 85); the item is clear to start and the block is only shown
+
+Seen
+: 2026-11-18
+
+By
+: patrol
+
+Kind
+: stale
+
+
+<a id="host-rest-blocked-by-done"></a>
+### host-rest-blocked-by-done
+
+Project
+: linux-phone-oco/lab-tools
+
+What
+: backlog lpoco-host-rest still shows blocked_by lpoco-host, which is done 2026-11-18 (both acceptance halves passed); parts 2 and watch-declared have since landed (lab-tools #133, #135), so the item is either done or clear to continue, not blocked
+
+Seen
+: 2026-11-18
+
+By
+: patrol
+
+Kind
+: stale
