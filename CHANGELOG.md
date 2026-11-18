@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.15.0](https://github.com/linux-phone-oco/docs/compare/v0.14.0...v0.15.0) (2026-11-18)
+
+
+### Features
+
+* feat: decisions say what they supersede, amend, bind and are tracked by ([#462](https://github.com/linux-phone-oco/docs/issues/462)) ([fae3b3d](https://github.com/linux-phone-oco/docs/commit/fae3b3d7e6f903ef777835cbd8ecf08157899dc8))
+* feat: upstreams name their fork; items name where carried and who reviewed ([#458](https://github.com/linux-phone-oco/docs/issues/458)) ([9ad9b57](https://github.com/linux-phone-oco/docs/commit/9ad9b57d4caf0322e2e5f09c8e70adc22c10b236))
+
 ## [0.14.0](https://github.com/linux-phone-oco/docs/compare/v0.13.0...v0.14.0) (2026-11-18)
 
 
