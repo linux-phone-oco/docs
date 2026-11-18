@@ -3143,6 +3143,7 @@ Status
 
 Note
 : Left by lpoco-rename-lab-tone (lab-tools #86): lpoco-lab/devlab still declares its CLI with clap; the family's completions, man page and lpoco list read argenv declarations (decision 2026-11-17-bringup-in-lab-tools: argenv for every lpoco tool). Failing test first: lpoco-lab's argenv declaration yields the same --help for every subcommand that clap gives today (one_program.rs keeps devlab and lpoco-lab equal).
+Built with the programmer subagent's review (ideal-agent:programmer) before landing; nothing that needs the author's hands or a root rule change (the coordinator, 2026-11-18).
 
 Opened
 : 2026-11-17
@@ -3152,6 +3153,9 @@ Needs
 
 Device
 : google-walleye
+
+Rank
+: 2
 
 About
 : bringup
@@ -3168,9 +3172,19 @@ Status
 
 Note
 : Left by lpoco-rename-lab-tone (lab-tools #86): ~450 references across AGENTS.md, READMEs, briefs, device.toml comments, launchers, devlab-watch@ units and scripts still say devlab or tone. Sweep one repository per change after lpoco-mcp-one-door lands; the second [[bin]] aliases go only when a grep across linux-phone-oco finds no old name in use.
+Built with the programmer subagent's review (ideal-agent:programmer) before landing; nothing that needs the author's hands or a root rule change (the coordinator, 2026-11-18).
 
 Opened
 : 2026-11-17
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Rank
+: 3
 
 About
 : bringup
@@ -3212,17 +3226,14 @@ TESTS, in order. First, failing now: host/tests/plan.rs plan_grants_gadget_seria
 Opened
 : 2026-11-17
 
-Needs
-: build
+Waits
+: the walleye keeper's acceptance read of /dev/sda and /dev/ttyACM0 as the lab user, with the gadget attached (prepare now ran 2026-11-17)
 
 Device
 : google-walleye
 
 Proof
 : host/tests/plan.rs plan_grants_gadget_serial_and_changes_nothing (first, failing); then plan_lists_host_tools_at_pins_and_installs_nothing; acceptance: lpoco host prepare now on the lab, then the walleye keeper reads /dev/sda and /dev/ttyACM0 as the lab user
-
-Rank
-: 1
 
 About
 : lpoco-host
@@ -3309,6 +3320,9 @@ Device
 
 Proof
 : lpoco-host-finds-script-tools
+
+Rank
+: 1
 
 About
 : bringup
