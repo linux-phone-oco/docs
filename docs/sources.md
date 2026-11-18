@@ -3904,3 +3904,147 @@ By
 
 Takes
 : Accepted shape: a watchdog bark (pretimeout) declared wakeup-source, set as the device's wake IRQ, so a running watchdog wakes the system instead of being stopped
+
+
+<a id="cruft"></a>
+### cruft: keep cookiecutter projects in step (update, check, diff)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://cruft.github.io/cruft/
+
+By
+: orchestration-renewed
+
+Takes
+: A pin of the template commit in a state file and a check that exits 1 when the child is behind; diff --exit-code when the child changed a template file
+
+
+<a id="copier-updating"></a>
+### copier: updating a project (answers file, three-way update, check-update)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://copier.readthedocs.io/en/stable/updating/
+
+By
+: orchestration-renewed
+
+Takes
+: Behind and edited are two checks; files made once (_skip_if_exists) apart from files kept in step
+
+
+<a id="github-template-repos"></a>
+### GitHub: creating a repository from a template
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
+
+By
+: orchestration-renewed
+
+Takes
+: A one-shot squashed copy: no link back, no update
+
+
+<a id="actions-template-sync"></a>
+### actions-template-sync: sync a repository with its template
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/AndreasAugustin/actions-template-sync
+
+By
+: orchestration-renewed
+
+Takes
+: Merges the template with -X theirs onto a branch and opens a PR; .templatesyncignore; no failing check - it would overwrite a lab's data
+
+
+<a id="yeoman-file-system"></a>
+### Yeoman: the file system and its conflicter
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://yeoman.io/authoring/file-system.html
+
+By
+: orchestration-renewed
+
+Takes
+: A re-run asks per file; no pin and no drift check
+
+
+<a id="nix-flake-init"></a>
+### nix flake init: create a flake from a template
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://nix.dev/manual/nix/stable/command-ref/new-cli/nix3-flake-init.html
+
+By
+: orchestration-renewed
+
+Takes
+: A template is copied once and never overwrites; shared logic belongs in a pinned input instead
+
+
+<a id="update-flake-lock"></a>
+### update-flake-lock: a PR per flake input update
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/DeterminateSystems/update-flake-lock
+
+By
+: orchestration-renewed
+
+Takes
+: A pinned input cannot drift; a scheduled job opens the bump as a PR
+
+
+<a id="projen"></a>
+### projen: project files synthesized and kept read-only
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/projen/projen
+
+By
+: orchestration-renewed
+
+Takes
+: The template names the files it owns and an anti-tamper check fails the build when one is edited by hand
+
+
+<a id="renovate-regex-manager"></a>
+### Renovate: custom regex managers
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.renovatebot.com/modules/manager/regex/
+
+By
+: orchestration-renewed
+
+Takes
+: A pin in any file can be bumped by PR; it bumps numbers, it does not lay files

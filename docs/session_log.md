@@ -2600,3 +2600,27 @@ Rejected
 
 About
 : phone-pieces-drift-named
+
+---
+
+
+<a id="2026-11-18-template-research"></a>
+### Research: device-template, its children and drift
+
+Project
+: linux-phone-oco/device-template
+
+Entry date
+: 2026-11-18
+
+Done
+: Asked by the author through orchestration. Read the template's, labs' and idealkb's history and PRs (no phone, no lab changed); measured drift by blob id and manifest keys; a researcher read cruft, copier, GitHub templates, actions-template-sync, Yeoman, Nix, projen, Renovate at source. Recorded research device-template-drift-measured and device-template-follow-world, decision 2026-11-18-device-template-follows-by-release, six backlog items unranked, the hand-over device-template-how-it-stands, the subject's summary, and the failing test template-drift.sh (exit 1 today) in research/device-template/2026-11-18/.
+
+Considered
+: Landing the test in device-template or a lab: neither has a failing-test convention and the labs are not this session's, so it lives in the research material and each item's proof names it. Checking device.toml's shape in the test: left to the schema decision (optional tables would give false failures).
+
+Rejected
+: Re-recording device-template-follow (orchestration's, in progress): its rank would drop; the decision is tracked by it instead.
+
+About
+: device-template

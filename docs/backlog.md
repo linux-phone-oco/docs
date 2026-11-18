@@ -4366,3 +4366,165 @@ Rank
 
 About
 : lpoco-host-rest
+
+
+<a id="template-classifies-its-files"></a>
+### device-template names every file it has: generic (followed) or made-once (laid at creation); the skeleton followed, the hardware files left to idealkb
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: Decision 2026-11-18-device-template-follows-by-release, step 1. Add a made-once list (device.toml, oco.toml, README.md, devicebase.toml, idealkb.toml, provision/packages.txt, .oco/uncommitted, data/); move Makefile, bin/install-tad.sh, tad.yml, gather.yml, .gitignore, tests/health/README.md and the .gitkeep files into generic; split the script check into a workflow a lab does not extend; a template:begin/end part in AGENTS.md for the general conventions; drop records/hardware.sql, records/hardware-status.sql, queries/hardware.sql from generic (idealkb 0.15.0 gives them). Owner: orchestration (device-template).
+
+Opened
+: 2026-11-18
+
+Proof
+: docs research/device-template/2026-11-18/template-drift.sh device-template ideal-knowledge-base: its classified and one-source lines say ok (today 18 unclassified files, 3 with two sources)
+
+About
+: device-template
+
+
+<a id="template-releases"></a>
+### device-template releases by release-please from v0.1.0, and a lab's devicebase.toml names the release it follows
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: Step 2. release-please as in idealkb; devicebase.toml template = "X.Y.Z" with own = [...] for template files a lab keeps; the template's own devicebase.toml comment says how a new lab sets it. The date pin (2026-11-17) is retired.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: template-classifies-its-files
+
+Proof
+: gh release list -R linux-phone-oco/device-template shows v0.1.0, and template-drift's pin line reads it for a lab pinned to it
+
+About
+: device-template
+
+
+<a id="template-drift-in-ci"></a>
+### template-drift runs in CI: the template's (classified, one-source) and each lab's (pin, equal, no-copy), from a generic bin/template-drift.sh
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: Step 4. The failing test in docs research/device-template/2026-11-18/ becomes a generic file of the template; a lab's workflow clones the template at its pinned tag and idealkb at its pin, read-only. Like cruft check plus cruft diff --exit-code.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: template-releases
+
+Proof
+: a test PR to a lab that edits a template-generic file fails CI with a line naming the file; main of the template and both labs pass
+
+About
+: device-template
+
+
+<a id="template-followed-by-update-pins"></a>
+### The hourly update-pins moves a lab's template pin as it moves idealkb's: the template lists its consumers, each bump lands through the lab's CI
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: Step 3. A change to the device layer then lands in the template only; no more parallel hand PRs. idealkb first, then the template, in one run.
+
+Opened
+: 2026-11-18
+
+Waits
+: grenudi/ideal-knowledge-base item follow-source-from-pin (follow.sh and update-pins read their source from the pin file)
+
+Blocked by
+: template-releases
+
+Proof
+: the first template release after v0.1.0 reaches surya-lab and google-walleye-lab as one bot PR each, landed by their CI, with template-drift exit 0 after
+
+About
+: device-template
+
+
+<a id="surya-follows-template"></a>
+### surya-lab follows device-template's release: its copy of the list gone, check.yml and tests/health/README.md taken, the pin a release
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: Migration for decision 2026-11-18-device-template-follows-by-release; no phone. Measured drift today: generic copy 5 entries behind, check.yml without xargs -r, tests/health/README.md missing, devicebase.toml template = 2026-11-17. AGENTS.md outside the idealkb part stays its own until the template:begin part exists, then the general conventions come from the template.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: template-releases
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: docs research/device-template/2026-11-18/template-drift.sh device-template ideal-knowledge-base surya-lab: every surya-lab line says ok
+
+About
+: device-template
+
+
+<a id="walleye-follows-template"></a>
+### google-walleye-lab follows device-template's release: its copy of the list gone, its rust job in its own workflow, the pin a release, stale PR 208 closed
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Migration for decision 2026-11-18-device-template-follows-by-release; no phone. Measured drift today: generic copy 5 entries behind, ffs-acm-rs job inside the template's check.yml, devicebase.toml template = 2026-11-17, PR #208 (the template's #15 by hand) open though main has it.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: template-releases
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: docs research/device-template/2026-11-18/template-drift.sh device-template ideal-knowledge-base google-walleye-lab: every google-walleye-lab line says ok
+
+About
+: device-template
