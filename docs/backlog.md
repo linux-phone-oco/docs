@@ -4039,3 +4039,78 @@ Proof
 
 About
 : phone-side-pieces
+
+
+<a id="device-template-idealkb-0-14"></a>
+### device-template follows idealkb 0.14.0 (pinned at 0.9.1)
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: Pinned at 0.9.1 while docs is on 0.14.0; not in idealkb's consumers list, so the weekly pin job never moves it. Bump the pin, take whatever 0.10-0.14 changed (run the base's verify, fix what it names), land. No phone. The root fix (update-pins on each release, followers from each base's idealkb.toml) is the ikb session's.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: idealkb.toml pins 0.14.0 and the base's verify (tad check, make verify) passes on main
+
+
+<a id="surya-lab-idealkb-0-14"></a>
+### surya-lab follows idealkb 0.14.0 (pinned at 0.9.1)
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: Pinned at 0.9.1 while docs is on 0.14.0; not in idealkb's consumers list, so the weekly pin job never moves it. Bump the pin, take whatever 0.10-0.14 changed (run the base's verify, fix what it names), land. No phone. The root fix (update-pins on each release, followers from each base's idealkb.toml) is the ikb session's.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: idealkb.toml pins 0.14.0 and the base's verify (tad check, make verify) passes on main
+
+
+<a id="google-walleye-lab-idealkb-0-14"></a>
+### google-walleye-lab follows idealkb 0.14.0 (pinned at 0.9.1)
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Pinned at 0.9.1 while docs is on 0.14.0; not in idealkb's consumers list, so the weekly pin job never moves it. Bump the pin, take whatever 0.10-0.14 changed (run the base's verify, fix what it names), land. No phone. The root fix (update-pins on each release, followers from each base's idealkb.toml) is the ikb session's.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: idealkb.toml pins 0.14.0 and the base's verify (tad check, make verify) passes on main
