@@ -1939,3 +1939,27 @@ Rejected
 
 About
 : agent-folder
+
+---
+
+
+<a id="2026-11-18-health-suspend-cycle-built"></a>
+### health suspend cycle built
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Built lpoco-health suspend plan|cycle in Rust (argenv-declared): refuses without a declared way back (suspend_guard) or when it is not armed or --seconds under 5; quiets the declared wake sources (suspend_quiet) and puts them back, reads qcom_stats, suspend count, cpu idle states, wakeup sources before and after, keeps the boot's report; soc-sleeps reads that boot's cycle. Failing fixture tests first, a programmer review, its findings fixed, landed as lab-tools PR 125, released v0.4.1.
+
+Considered
+: A shell verb beside 92-suspend-irq.sh (rejected: counting and quoting belong in tested Rust); soc-sleeps reading the cycle through json_field.
+
+Rejected
+: Arming the watchdog from the verb: the device's own way back stays the device's (suspend_guard only checks it); a cycle inside the scheduled run: a keeper asks for it.
+
+About
+: health-suspend-cycle

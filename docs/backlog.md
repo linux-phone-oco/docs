@@ -705,10 +705,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-18, orchestration: the build part goes to the lab-tools builder. surya has run this cycle by hand through surya-lab sleep/way-back.sh (cycle SLEEP bt-on [stop-sensors]: watchdog fuse as the way back, rtcwake -m freeze, Bluetooth's serial wakeup off, qcom_stats before/after) fifteen times and more - hand-work past the third time. Carry it into lpoco health as a suspend cycle: the device declares its way back (surya: the kept-armed watchdog) and its wake sources to quiet in device.toml; the cycle refuses without one; it reads qcom_stats, suspend_stats, cluster idle states and wakeup sources before and after; soc-sleeps then reads that boot's cycle. The phone proof is surya's (surya-lab queue).
+: 2026-11-18: built and released in lab-tools v0.4.1 (PR 125): lpoco-health suspend plan|cycle, manifest [health] suspend_guard (way back) + suspend_quiet, soc-sleeps reads the boot's cycle; 10 fixture tests of the verb + 3 of soc-sleeps. The phone cycle on surya (soc-sleeps skip to pass/fail) is surya-lab's queue: set suspend_quiet in surya's device.toml to the serial wakeup file, put the suite with lpoco lab suite put now, run lpoco-health suspend cycle --seconds 15.
 
 Opened
 : 2026-11-17
