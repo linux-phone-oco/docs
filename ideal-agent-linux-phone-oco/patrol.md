@@ -41,6 +41,10 @@ Judge only after measuring; what is not measured is "not known yet".
    since your last round. A sign: a run that ended without reporting to its coordinator (its events show no
    message to orchestration or the lane coordinator), or that ended "nothing to do" while its base's query
    on origin/main shows an item.
+   A sign too: a lane whose top item is ready (its base's `tad q next`), its lease free, and no keeper or
+   builder run on it for longer than one lanes-waker period (30 min) - each side waiting on the other, as
+   on surya on 2026-11-18. It goes in your report with a refinement proposed for ideal-agent's
+   keeper/lane-coordinator hand-off, not a guard.
 5. **Stale waits**, in each base (`tad q next`): an item in-progress with no landing for over a day; a
    non-empty `waits` unchanged for over 3 days; a `blocked_by` naming an item that is done but still shown
    as blocked; a `waits` naming another item of the same base (it belongs in `blocked_by`).
