@@ -4126,7 +4126,7 @@ Status
 : in-progress
 
 Note
-: Decision 2026-11-18-upstream-forks. Forks exist (linux-phone-oco/sxmo-utils, linux-phone-oco/linux); three fixes written on topic branches (sxmo series of 3, kernel RFC series of 4), each waiting on its phone proof; the author's word on where the forks live and on each mail.
+: Decision 2026-11-18-upstream-forks. Forks live under grenudi (grenudi/sxmo-utils, grenudi/linux; transferred from the org); three fixes written on topic branches (sxmo series of 3, kernel RFC series of 4), each waiting on its phone proof; the author's word on each mail.
 
 Opened
 : 2026-11-18
@@ -4139,16 +4139,13 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: in-progress
 
 Note
-: Its queue at start: push the topic and lab branches to linux-phone-oco/sxmo-utils and linux-phone-oco/linux (local now: ~/Projects/linux-phone-oco/sxmo-utils-topics, ~/Projects/linux-phone-oco/linux-topics); retire sxmo-utils deviceprofile/xiaomi-surya (upstream as 1fd7822); see the proofs through; prepare each send for the author.
+: Its queue at start: push the topic and lab branches to grenudi/sxmo-utils and grenudi/linux (local now: ~/Projects/grenudi/sxmo-utils-topics, ~/Projects/grenudi/linux-topics); retire sxmo-utils deviceprofile/xiaomi-surya (upstream as 1fd7822); see the proofs through; prepare each send for the author. 2026-11-18 orchestration: forks transferred to grenudi; pushed there: sxmo-utils topic/sxmo-autosuspend-backoff 2bb2500, topic/sxmo-suspend-stop-by-profile 1156bb6, topic/sxmo-surya-sensors-suspend and lab 6432ef9; linux topic/pmic-wdt-wake-in-suspend e123d3bff. Local clones: sxmo-utils remote 'mirror' now names grenudi; the kernel clone (surya-audio/linux) still names linux-phone-oco/linux, which redirects.
 
 Opened
 : 2026-11-18
-
-Waits
-: orchestration starts it (decision 2026-11-18-upstream-forks)
 
 About
 : upstream-forks
@@ -4168,9 +4165,6 @@ Note
 
 Opened
 : 2026-11-18
-
-Blocked by
-: upstreams-lane
 
 Needs
 : build
