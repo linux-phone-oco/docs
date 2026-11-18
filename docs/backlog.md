@@ -3438,3 +3438,34 @@ Rank
 
 About
 : bringup
+
+
+<a id="suspend-irq-quiet-check"></a>
+### Suite check suspend-irq-quiet: interrupts across one suspended cycle stay under a threshold
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: From surya-lab's backlog (floor research; the surya coordinator asked orchestration's builder, 2026-11-18). A generic check in lab-tools health/suite/checks/ with its row in docs tests (ikb test): reads /proc/interrupts before and after one 15 s s2idle cycle and fails above the threshold, printing the top three sources. The threshold comes from the manifest's [health] (set from floor-entry-trace's reading); unset, the check says not measured, never a guessed number. It suspends only with an RTC wake alarm set and the watchdog armed (phone-keeper.md's rule, surya-lab log 2026-11-18-sign-defused-watchdog); if either cannot be had, it skips saying why. The builder writes and tests it off the phone; putting it on the phone is the keeper's.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: suspend-irq-quiet
+
+Rank
+: 5
+
+About
+: deep-sleep
