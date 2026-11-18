@@ -4823,5 +4823,8 @@ Device
 Proof
 : host plan test from fixtures: with no record and an unreadable rules folder, a passing share check records the staged hash and the next plan lists 0 root commands for it; a failing check records nothing
 
+Rank
+: 5
+
 About
 : lpoco-host-rest
