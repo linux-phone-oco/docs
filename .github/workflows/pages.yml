@@ -37,7 +37,7 @@ jobs:
       - name: the engine, at its main (kept between runs while its main stands still)
         id: engine
         run: echo "sha=$(git ls-remote https://github.com/open-commons-observatory/ocoeco-engine HEAD | cut -f1)" >> "$GITHUB_OUTPUT"
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         id: cache
         with:
           path: ~/.cargo/bin/oco
