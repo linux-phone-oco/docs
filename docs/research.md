@@ -1718,3 +1718,61 @@ About
 
 Material
 : research/bringup-steps/2026-11-18-phone-stages/
+
+
+<a id="oneoffs-and-workarounds-measured"></a>
+### oneoffs-and-workarounds-measured
+
+Brief
+: 97 tracked one-offs, 735 scratch; none shared by two devices; 2 live workarounds, 0 marked where they stand; the reader counts records and calls a backlog item not known
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: Would one tracked place for makeshift scripts and workaround rules help - each with purpose, state, item and way out - and in which language?
+
+Found
+: Measured at origin/main, 2026-11-18 (material: measure.txt). Tracked one-offs: 97 scripts outside lab-tools and docs bin/ - surya-lab 29 (sleep 4, lab 2, dt 4 of which 3 Python from 11-09, adsp 1, ui 1, research 4, tests/health 11, bin 2), google-walleye-lab 54 (tests/host 52, bin 2), docs research/ 14 - plus walleye build/ 65 try recipes; lab-tools' health suite is product, not one-offs. Of the 97: 38 changed more than once, 24 called by a Makefile, CI or another script, 66 named by a base row, 0 carry an item in their header. Keepers' scratch: 735 loose .sh/.rs in 60 session scratchpads (77 .rs, a handful rust-script); the most-copied names are drafts that later landed as research material (suspend-cycle.sh x12). Shared across repos: only install-tad.sh/install-ikb.sh (followed from idealkb) and 4 deep-sleep research copies (surya-lab = docs, moved with the lane's rows); no lab script is shared by two devices.
+Fates. Still used: walleye tests/host/mainline-shell-read.sh (8 commits, 4 callers), surya sleep/standby-run.sh (7). Stale: surya dt/*.py (11-09, no caller, Python the guard refuses), walleye build/build-c3.sh (fw_devlink=permissive, ended by c4). Became a patch: the keep-armed qcom_wdt module (sleep/build-wdt.sh) -> the PMIC watchdog series in grenudi/linux topic/pmic-wdt-wake-in-suspend; the autosuspend loop -> sxmo-autosuspend-backoff carried in fork-sxmo-utils. Absorbed: way-back.sh cycle -> lpoco-health suspend (health/src/suspend.rs), in part - 'way-back.sh check' stays its guard.
+Workarounds, scripts and rules: 2 live (surya's lane rule 'after any PMIC bite boot a kernel carrying pm8916_wdt', item kept-kernel-with-pmic-wdt, a backlog item; lab-tools' keep-awake standing in for sxmo-autosuspend-backoff) and 0 markers where they stand: every WORKAROUND( in the labs and docs is in a record's note (data/, rendered docs/) or AGENTS.md's example. The rule lives as 'LANE RULE' in backlog notes and in heads, not in a brief or the lane's AGENTS.md. ideal-agent's scripts/workarounds over each lab lists those records as sites, the example 'item-id' as due, a marker naming a backlog item as 'not known', and gives a state but no way out.
+World: kernel scripts/ - an owner per script or a fallback, removal when the last caller goes; git contrib/ - graduate or be removed, yet swept in 2025; Homebrew - the header is the help, taps graduate into core; Scripts to Rule Them All - CI runs what people run; SRE - a script run by hand is still toil. What keeps a helper alive is an owner, a caller and an exit condition, never the folder.
+Language: 227 of 230 tracked scripts are shell; rust-script 0.33 s first run without deps, 3 ms cached, last release 0.36.0 (2025-08); cargo -Zscript not stable (cargo 1.99.1 refuses it).
+One scripts repo with a rhizcut per base (the author's addition): nothing device-specific is shared to carry; rhizoid v0.1.0 has status only (follow by conformance next, cuttings later); idealkb follow.sh (#! from = DIR/) and send-up.sh carry files today, but the docs -> base device layer they would ride is not built (graph-drift 36 FAIL).
+
+Sources
+: linux-maintainers-scripts,lkml-remove-export-report,git-contrib-readme,git-contrib-sweep-2025,postgres-contrib,homebrew-external-commands,homebrew-4-5-0,scripts-to-rule-them-all,sre-eliminating-toil,cargo-script-tracking,rust-script-tool,ideal-agent-workarounds,rhizoid-repo,idealkb-chain-follow
+
+About
+: workarounds
+
+Material
+: research/workarounds/2026-11-18/
+
+
+<a id="workarounds-how-it-stands"></a>
+### workarounds-how-it-stands
+
+Brief
+: Decided: no scripts place; workarounds marked where they stand and read by one reader. Stands: 2 live, 0 marked, the reader 7 FAIL; first step the reader in ideal-agent
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: How do the project's workarounds - scripts and lane rules - stand, and what is next?
+
+Found
+: Decided 2026-11-18-workarounds-read-as-one (research oneoffs-and-workarounds-measured): no scripts folder, repo (rhizcut included) or table; one-offs keep their homes and records; a workaround, script line or lane rule, is marked WORKAROUND(ITEM) where it stands, ITEM an upstream or backlog item, and ideal-agent's scripts/workarounds reads its site, item, state and way out. Stands: 2 live workarounds (surya's PMIC-bite rule, kept-kernel-with-pmic-wdt; lab-tools' keep-awake, sxmo-autosuspend-backoff), 0 marked at a site; research/workarounds/2026-11-18/workarounds-read.sh exits 1 with 7 FAIL. Next: workarounds-reader-items-and-sites (upstream item to ideal-agent, its owner builds), workarounds-marked-where-they-stand (surya lane and lab-tools, text only), then patrol-reads-workarounds. Done when workarounds-read.sh exits 0 (backlog workarounds). Reconsider a common scripts home when a second device needs the same lab script - lab-tools first.
+
+Sources
+: ideal-agent-workarounds
+
+About
+: workarounds

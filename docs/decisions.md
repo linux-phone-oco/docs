@@ -1871,3 +1871,36 @@ About
 
 Research
 : bringup-steps-phone-stages
+
+
+<a id="2026-11-18-workarounds-read-as-one"></a>
+### 2026-11-18-workarounds-read-as-one
+
+Brief
+: No scripts folder or repo: a workaround - script line or lane rule - is marked WORKAROUND(ITEM) where it stands, and one reader gives its item, state and way out
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Decision
+: No scripts folder, no scripts repo, no table of scripts; nothing moves. What needs a state and a way out is the workaround - a script's line or a lane's rule that stands in for a fix - and it gets one marker and one reader, the same for both.
+1. The marker: `WORKAROUND(ITEM): what it stands in for`, on the line where the workaround stands - a script, the lane's AGENTS.md (where a lane rule is written once; briefs and items point at it, they do not restate it), a kernel command line, a recipe - never only in a record's note. ITEM is an upstream item (the fix goes to our fork, then upstream) or a backlog item (the fix is our own work: a kept kernel, an lpoco verb), in any base.
+2. The reader: ideal-agent's scripts/workarounds (decision our-fork-ships-the-fix), extended upstream in ideal-agent: it reads ITEM in backlog as well as upstream_items, across the bases given (--base repeatable); it reads sites only (not data/, rendered docs/, research material, nor AGENTS.md's example); and it prints for each marker its site, item, state and way out: 'way out: patch to UPSTREAM' (or 'carried in FORK: due once the device runs it'), 'way out: our work, backlog ITEM in BASE', or 'due: retire' (item done, landed, applied, or not known). A rule and a script read the same line.
+3. Who reads it: the patrol runs it over each lab at origin/main and files what is due as a sign to the lane; a builder or keeper that lands the fix removes the marker in the same change.
+4. Every other one-off keeps the home it has and the record that already names it: research material stays frozen beside its row; a test script beside its test row; a lab script that is kept and rerun goes under the lpoco roof by decisions 2026-11-17-health-checks-shell-and-rust and 2026-11-18-phone-side-pieces-under-the-roof; scratch stays scratch, and what is worth keeping lands as research material. Device-specific scripts stay in their base: walleye's tests/host (its images' checks) and build/ (its try recipes), surya's sleep/, lab/, dt/, adsp/, ui/ and tests/health.
+5. Language: shell for one-offs that run commands and read their lines, rust-script for one-off analysis with numbers, timing or states - the 2026-11-17 decision stands; no Python (surya's dt/*.py are stale, not ported).
+
+Why
+: Research oneoffs-and-workarounds-measured. The one-offs that matter already have a record and a home (66 of 97 named by a row; the reused ones called by a Makefile or another script); no lab script is shared by two devices, so a common place would hold nothing in common. The workaround is the class that rots unseen: 2 live, 0 marked where they stand, and the reader today counts records as sites and calls a backlog item 'not known' - so surya's bite rule, which the author named a workaround kept in heads and briefs, has no line anyone can find or retire. Others keep helpers alive by an owner, a caller and an exit condition (kernel scripts/, git contrib/ and its 2025 sweep, Homebrew taps, Scripts to Rule Them All), not by a folder. The marker and reader exist (ideal-agent 0.3.47); extending them costs hours, a table or repo costs a schema, a migration and a second place to keep. The author asked to weigh, not to build: 'not to take my words'.
+
+Rejected
+: Nothing changes: the bite rule stays in heads and notes, the reader stays wrong on every lab (7 FAIL in workarounds-read.sh). A scripts folder in docs, or a contrib/ in lab-tools: moves research material away from the row that names it and lab scripts away from their device, holds nothing shared (0 lab scripts in two bases), and a folder alone rots (git swept contrib/ in 2025). One scripts repo, each phone base carrying a git-rhizoid rhizcut and sending generic scripts up (the author's addition, the idealkb -> docs -> base chain of decision 2026-11-18-device-layer-from-docs): nothing generic to carry today - the generic ones have homes (install-*.sh from idealkb, phone and lab tools under lpoco in lab-tools, agent scripts in ideal-agent); rhizoid v0.1.0 has status only, follow by conformance and cuttings are later steps, and the docs -> base chain it would ride is not built (graph-drift 36 FAIL); idealkb's follow.sh (#! from = DIR/) and send-up.sh could carry files now, so reconsider when a second device needs the same lab script - and try lab-tools first. A table of scripts (purpose, state, item, way out) per base or in docs: about 230 hand-kept rows that rot like the scripts, a schema change, and the state is already in the item. A header on every script: costs every script a line, most never rerun; only workarounds need the item. rust-script by default for one-offs: 227 of 230 are command-and-read plumbing, where shell is shorter and needs no build; cargo -Zscript is not stable to build on.
+
+About
+: workarounds
+
+Research
+: oneoffs-and-workarounds-measured

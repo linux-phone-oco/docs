@@ -683,3 +683,34 @@ Note
 
 Last update
 : 2026-11-18
+
+
+<a id="workarounds-reader-items-and-sites"></a>
+### scripts/workarounds: read backlog items across bases, sites only, and say each workaround's way out - so a lane rule and a script read the same
+
+Upstream
+: ideal-agent
+
+Form
+: finding
+
+State
+: draft
+
+From work
+: workarounds-reader-items-and-sites
+
+Domain
+: agents
+
+Tags
+: workarounds,scripts,rules
+
+About
+: workarounds
+
+Note
+: From decision 2026-11-18-workarounds-read-as-one (linux-phone-oco/docs). Measured on 2026-11-18 over surya-lab, google-walleye-lab and docs at origin/main: every marker found is a record's note or AGENTS.md's 'WORKAROUND(item-id)' example, so the reader reports 'due: item-id' on two bases; a marker naming a backlog item (our own work, here a kept kernel) reads 'not known' and so 'due'; the lines give a state but not the way out. Asked: --base repeatable; ITEM looked up in upstream_items then backlog; skip data/, rendered docs/, research/ and the example; print SITE: ITEM - STATE - way out (patch to UPSTREAM | carried in FORK, due once the device runs it | our work, backlog ITEM in BASE | due: retire). The check that shows it: research/workarounds/2026-11-18/workarounds-read.sh in linux-phone-oco/docs (B, C, D). The skill text (look-around-first, after a fix) may say a lane rule is a workaround too, marked where the lane reads it.
+
+Last update
+: 2026-11-18
