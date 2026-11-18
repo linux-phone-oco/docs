@@ -2528,3 +2528,27 @@ Rejected
 
 About
 : sxmo-utils-lab-apk-deliver
+
+---
+
+
+<a id="2026-11-18-lab-tools-builder-host-install-atomic"></a>
+### lpoco host: atomic install
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Test first (old script run by bash while prepare replaces it; failed on the in-place copy), then replace_file: temp beside, fsync, rename, fsync dir; used for Copy, Stamp and the unit. Programmer review found a flaky test (text file busy on exec, shell-dependent, no deadline): fixed by running it via /bin/bash with a deadline and a release guard.
+
+Considered
+: Cargo install: left to cargo's own rename.
+
+Rejected
+: Writing in place with a lock: a reader of a shell script holds no lock. Test via exec of the fresh file: races with parallel tests (text file busy).
+
+About
+: host-install-atomic
