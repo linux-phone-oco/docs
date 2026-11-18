@@ -5347,3 +5347,34 @@ Rank
 
 About
 : phone-side-pieces
+
+
+<a id="reference-capture-diff"></a>
+### lpoco-bringup reference capture and diff: what the stock OS does for a part, against our mainline boot
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The author, through the coordinator (2026-11-19): 'why cant we use comparison with what android does for everything like we did for storage ? is it too prici on time and effort ? cant be automated with small makeshift tools for analysis ?'. One lpoco-bringup helper. 'reference capture' takes a stock OS with root (adb, or ssh for a booted distro) and saves a normalised snapshot: /proc/device-tree (dtc -I fs), debugfs gpio, pinctrl, regulator_summary, clk_summary, interrupts, loaded drivers and their bound devices, per-part sysfs. 'reference diff PART' compares it with the same capture from our mainline boot, filtered to one part. It is the helper of bring-up step stock-measured (android-reference) and can be each part's first helper in the steps table. Seed: walleye's by-hand UFS comparison (google-walleye-lab research/walleye-first-fastboot-boot/2026-11-18-ufs-android-way) and its touch comparison now in work. Look around first (what pmOS porters use: adb shell cat /proc/device-tree, dtc -I fs, debugfs dumps, dtdiff and similar tools); keep it small - shell for the capture over adb/ssh, Rust for normalise and diff.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: bringup/tests/reference.rs from fixtures: capture normalises a device-tree, gpio, pinctrl, regulator, clk, interrupts and driver-binding snapshot taken over adb or ssh (fixture dirs); diff PART filters both snapshots to one part's nodes, supplies, pins and clocks and names each difference; walleye's UFS case (research walleye-first-fastboot-boot/2026-11-18-ufs-android-way: live-ufs-props vs ours-ufs-props) is reproduced as a fixture and its known difference is named
+
+Rank
+: 7
+
+About
+: bringup-steps
