@@ -1635,8 +1635,8 @@ name = "why"
 type = "string"
 required = true
 
-# Each device's steps as its own base claims them: filled by a feed (feed-device-steps, to come), never typed here.
-# The feed will give every step x every registered device a row; what a base does not claim is unknown, "not known yet".
+# Each device's steps as its own base claims them: filled by the feed (feed-device-steps), never typed here.
+# The feed gives every step x every device that has a base a row; what a base does not claim is unknown, "not known yet".
 [tables.step_status]
 key = ["device_id", "step_id"]
 

@@ -4631,10 +4631,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: As feed-device-parts: read devicebase.toml (steps = 1) and data/steps.json from the base on main; a step not claimed is unknown, not known yet; a claim of a step docs does not know is dropped and named.
+: Landed: records/feed-device-steps.sql, device-steps-unknown.sql, run-feeds.sh runs both per device, bin/test-feed-device-steps.sh in make verify (fake base of the device layer alone: claim read, unclaimed unknown, invalid unknown with why, claimed twice counts once, unknown step's claim dropped and named, no steps = 1 and unreadable base unknown with why). Against the real bases today (no data/steps.json, no steps = 1) every step reads unknown, 'could not be read (HTTP 404 on data/steps.json)'. Run against a fake walleye base with its 26 claims (claims-walleye.sh through tad r step): bringup-chain-walleye.sh passes its order, count and six proven-step checks and fails at the last, 'walleye steps not known yet' - the 80 steps of the phone stages (plus linux-runs) that walleye's base does not claim. daily-phone.sh passes its shape half and fails for every device, 77 of 77 steps not done, until the base claims.
 
 Opened
 : 2026-11-18

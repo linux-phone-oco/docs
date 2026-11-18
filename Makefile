@@ -31,3 +31,4 @@ verify: check     ## what CI runs: data is valid and canonical, docs are fresh
 	@./bin/check-principles.sh
 	@./bin/check-device-layer.sh
 	@./bin/test-steps-contract.sh
+	@./bin/test-feed-device-steps.sh
