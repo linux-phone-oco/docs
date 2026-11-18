@@ -2996,3 +2996,24 @@ Considered
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-18-docs-builder-milestones-name-steps"></a>
+### docs-builder: milestones name steps
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: queries/milestone-steps.sql and records/milestone.sql, tested in a scratch copy through a fake base and the feed (bin/test-milestone-steps.sh, in make verify; mutation-checked: counting only done fails the not-needed case, counting partial fails the partial case).
+
+Considered
+: Writing the result into milestones.readiness: the rung 1 to 9 is a person's judgement of the whole milestone, a step term is one of its criteria, so the query reports the terms and leaves the rung. A milestone of the labs in docs' data: the lanes' places, not landed here.
+
+About
+: bringup-steps
