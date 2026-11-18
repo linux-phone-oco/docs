@@ -2552,3 +2552,27 @@ Rejected
 
 About
 : host-install-atomic
+
+---
+
+
+<a id="2026-11-18-lpoco-host-check-names-stale-phone-side-pieces"></a>
+### lpoco host check names stale phone-side pieces
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Wrote host/tests/phone_pieces.rs first (failing), built blob_id, stale_pieces, Stale and check's print_stale_pieces in lpoco-host; landed as lab-tools PR 165, read back from main.
+
+Considered
+: Making a stale piece fail the check: it only names it, as the item asks. Naming a missing piece as its own finding.
+
+Rejected
+: My first report format (test piece / blob word): invented; review found health's 94-lab-pieces.sh writes piece-file:PATH and piece-package-NAME rows, so the parser follows those. Silent skips of unreadable lines: now an error and 'not measured'.
+
+About
+: phone-pieces-drift-named
