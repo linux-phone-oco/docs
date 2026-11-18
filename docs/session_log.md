@@ -2918,3 +2918,21 @@ Done
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-18-docs-builder-bringup-shape-check"></a>
+### docs-builder: bringup shape check
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: bin/check-bringup-steps.sh, the shape half of daily-phone.sh, runs in make verify: stages with no step, a missing goal step, a phone step no goal needs. Tried in a scratch copy with an empty stage and a loose step: both named.
+
+About
+: bringup-steps
