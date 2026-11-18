@@ -5128,10 +5128,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Prior art already lives in sources (with takes) and research; nothing gives it by subject, so it is read again. Owner's: queries/.
+: Landed: tad q prior-art --about S (queries/prior-art.sql): each research about the subject and each source it cites with its title, url and takes; superseded research leaves the answer. bin/test-prior-art.sh in make verify: for bringup-steps 68 cited sources of its researches (landscape, coverage-map, phone-stages among them).
 
 Opened
 : 2026-11-18
