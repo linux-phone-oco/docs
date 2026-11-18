@@ -575,3 +575,28 @@ Criteria
 
 Why
 : Where every Sxmo user gets them.
+
+
+<a id="surya-daily-phone"></a>
+### A daily-usable phone
+
+Project
+: linux-phone-oco/docs
+
+Subject
+: xiaomi-surya
+
+Ord
+: 7
+
+Horizon
+: perfection
+
+Readiness
+: 5
+
+Criteria
+: step:daily-usable-phone@xiaomi-surya
+
+Why
+: The whole of what a person needs every day as one goal step: it is met when every step of the road to a phone is done or not-needed in surya's own base.

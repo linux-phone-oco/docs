@@ -3041,3 +3041,24 @@ Rejected
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-18-docs-builder-milestones-name-goal-steps"></a>
+### docs-builder: milestones name goal steps
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: milestone-steps derives a goal step's status from its hard needs on the device, the way daily-phone.sh reads it; the milestone surya-daily-phone names step:daily-usable-phone@xiaomi-surya. Test extended: a fake base claims every leaf done with the UART open (ready), one open (partial, not ready), one done (partial), none (unknown).
+
+Considered
+: Storing a goal's status in step_status: a feed would then write what it computes and a base never claims; derived on read it cannot drift.
+
+About
+: bringup-steps

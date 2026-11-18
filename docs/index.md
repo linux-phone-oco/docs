@@ -21,11 +21,11 @@ The memory of linux-phone-oco, whose goal is Linux phones as good as Android for
 - [Landscape](landscape.md): 13
 - [Manual Events](manual_events.md): 13
 - [Manual Work](manual_work.md): 14
-- [Milestones](milestones.md): 23
+- [Milestones](milestones.md): 24
 - [Platforms](platforms.md): 7
 - [Problems](problems.md): 17
 - [Research](research.md): 65
-- [Session Log](session_log.md): 137
+- [Session Log](session_log.md): 138
 - [Shell Releases](shell_releases.md): 2
 - [Sources](sources.md): 307
 - [Step Status](step_status.md): 0

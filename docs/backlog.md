@@ -5206,10 +5206,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: One term instead of a list; the goal's needs carry the rest. Owner's: milestones has no record.
+: Landed: milestone-steps reads a goal step (stage goals, never claimed) by what it needs: hard edges all the way down, done when every leaf is done or not-needed on the device, an alternative not taken (console over UART when the gadget's is done) not counted, partial when some are, unknown when none, its proof saying 'derived: N of M needs met'. Milestone surya-daily-phone (docs, subject xiaomi-surya, ord 7, rung 5 left for its keeper) over step:daily-usable-phone@xiaomi-surya reads unknown, not ready - 0 of 76 leaves; daily-phone.sh xiaomi-surya fails with 77 of 77 (it counts linux-runs too). bin/test-milestone-steps.sh in make verify tries the goal through the feed: ready only when every leaf is done (the console alternative untaken), mutation-checked.
 
 Opened
 : 2026-11-18
