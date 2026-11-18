@@ -3648,10 +3648,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Seen 2026-11-18 (orchestration-renewed, from walleye lab PR 175): the banner image's /dev/ttyACM0 stayed root:uucp 0660 under lpoco 0.6.0's gadget rule. The kernel log at 10:06:55 says why: SerialNumber walleye-banner, while every other walleye image (init-ml, init-pk5g, init-pk5l, vendor inits) and device.toml say walleye-first-boot - only build/initramfs-mainline/init-banner:39 differs. The rule was right; the image was off its declaration, and nothing said so: the lane read a host fault. check (and plan) should read the kernel log since boot (journalctl -k) for gadgets of the declared devices' vendor ids, or any 1d6b, and name a serial that no [[host.gadget]] declares.
+: Done in lpoco-host 0.6.1 (lab-tools PR 131/132): proof tests check_names_a_gadget_that_enumerated_with_a_serial_no_device_declares and check_does_not_report_a_gadget_whose_serial_a_device_declares. Not yet run on the lab against a live log; pin the lab to 0.6.1 by prepare now.
 
 Opened
 : 2026-11-18

@@ -2035,3 +2035,24 @@ Rejected
 
 About
 : agent-folder
+
+---
+
+
+<a id="2026-11-18-lpoco-host-check-names-undeclared-gadget-serials"></a>
+### lpoco-host check names undeclared gadget serials
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Tests first (seen failing), then gadgets_seen/undeclared_gadgets and the check line; programmer review fixed root-hub and stale-line false positives; landed as lab-tools PR 131, released 0.6.1 (PR 132), read back from main.
+
+Rejected
+: see decision 2026-11-18-host-check-reads-kernel-log-for-gadgets
+
+About
+: host-undeclared-gadget-serial

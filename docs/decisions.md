@@ -1553,3 +1553,28 @@ About
 
 Research
 : bringup-tools-landscape
+
+
+<a id="2026-11-18-host-check-reads-kernel-log-for-gadgets"></a>
+### 2026-11-18-host-check-reads-kernel-log-for-gadgets
+
+Brief
+: lpoco host check reads journalctl -k -b and fails on a 1d6b gadget enumerated now with a serial no device declares
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-18
+
+Decision
+: check judges the latest serial of each usb B-P device with vendor 1d6b, dropped at USB disconnect or re-enumeration; root hubs (usb usbN) are not gadgets; it names device, serial seen, serials declared, time. Unreadable log or no declared gadget prints 'not measured'. Tests read kernel.log under LPOCO_FS_ROOT.
+
+Why
+: walleye PR 175: init-banner enumerated as walleye-banner against the declared walleye-first-boot and the lane read a host fault; the programmer review found root hubs and stale lines would give false FAILs.
+
+Rejected
+: judging every 1d6b line since boot (a fixed or unplugged serial would fail check until reboot; root hubs always fail); a new env var for the log (LPOCO_FS_ROOT already stands for test files)
+
+About
+: host-undeclared-gadget-serial
