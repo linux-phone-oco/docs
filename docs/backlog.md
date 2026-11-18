@@ -4721,7 +4721,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
+
+Note
+: Landed 2026-11-18 (PRs 548, 551, 554): docs/guidebook.md rendered by make render from the steps (bin/render-pages.sh, bin/guidebook.jq), 113 steps in 20 chapters with needs and enables off the edges and world gaps marked; the devices side by side is the face's steps view (bin/face-steps, lens view steps), the front page's Bring-up steps and Bring-up guide tabs lead to both and the tables; tests bin/test-bringup-pages.sh, test-face-steps.sh, test-face-guide.sh in make verify. A column per device stays in the face view, not in the guidebook.
 
 Opened
 : 2026-11-18
