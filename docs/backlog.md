@@ -3,7 +3,7 @@
 # Backlog
 
 <a id="kernel-fork-repo"></a>
-### Fork sm7150-mainline/linux into linux-phone-oco and wire it into lab-agent's build/boot jobs
+### Fork sm7150-mainline/linux into linux-phone-oco and wire it into the lab's build and boot route (devlab)
 
 Project
 : linux-phone-oco/docs
@@ -194,7 +194,7 @@ Status
 : open
 
 Note
-: The user's idea: a shared board for the org, like lab-agent's. Later.
+: The user's idea: a shared board for the org, like the one the retired lab-agent kept. Later.
 
 Opened
 : 2026-11-09

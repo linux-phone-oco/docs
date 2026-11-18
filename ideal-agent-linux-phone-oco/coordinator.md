@@ -17,7 +17,7 @@ Start with exactly these, in `~/Projects/linux-phone-oco/docs` at origin/main:
 - **a subject whole** - when the author asks about it: `tad q about --subject S --format csv`;
 - **a role's brief** - when you start or brief that role (orchestration.md, phone-keeper.md,
   feature-research.md), its first paragraph first;
-- **the practices whole** - when a choice turns on one: `lab-agent guide`.
+- **the practices whole** - when a choice turns on one: ideal-agent's `scripts/ideal-agent practices`.
 
 ## Keep the session short
 
