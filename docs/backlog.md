@@ -5153,10 +5153,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: landscape has 10 rows and no record: UBports' device data, Halium, Android's CTS could not be added there and went to sources. Owner's: records/.
+: Landed: records/landscape.sql (ikb landscape --id --name --effort --what --for-us --link [--checked]; effort is the landscape's project column, --project being the place), bin/test-landscape-record.sh in make verify (adds a row, replaces by id, refuses a link not https, in a scratch copy). First rows: ubports-devices, halium, android-cts (the three the item named).
 
 Opened
 : 2026-11-18

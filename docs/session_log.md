@@ -2954,3 +2954,24 @@ Done
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-18-docs-builder-the-landscape-record"></a>
+### docs-builder: the landscape record
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: records/landscape.sql and its test; the landscape gets ubports-devices, halium and android-cts, which had gone to sources.
+
+Considered
+: Naming the flag --project as the column is: ikb uses --project for the place, so --effort.
+
+About
+: bringup-steps
