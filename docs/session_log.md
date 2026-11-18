@@ -2834,3 +2834,21 @@ Rejected
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-18-author-yes-bringup-steps"></a>
+### The author's yes on the bring-up steps
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: The author's word, verbatim (through the Top Coordinator, 2026-11-18), after the second research (docs #526): 'yes, now it sounds about right'. It closes questions (a)-(c) at their defaults: (a) a step is one done-when with one proof, and stages are data (8 grew to 20 rows with no schema change); (b) milestones are sets of steps named by a goal step (linux-runs, daily-usable-phone, complete-phone); (c) claims never lapse by age - reliability has its own steps (days-without-reboot, kernel-upgrade-keeps-steps, cycles-repeat-clean) and proven_on records what a claim was proven on. Following: steps-contract ships in docs' device layer (the template release it waited on was replaced by decision 2026-11-18-device-layer-from-docs), then feed-device-steps, then the lanes' claim items over 106 steps.
+
+About
+: bringup-steps
