@@ -2056,3 +2056,21 @@ Rejected
 
 About
 : host-undeclared-gadget-serial
+
+---
+
+
+<a id="orchestration-renewed-2026-11-18-lpoco-host-done"></a>
+### lpoco host accepted: the tty half passed on walleye
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: Recorded lpoco-host done from walleye lab PR 182 (tty, 29 banner lines as the lab user) beside PR 70 (block). Before it: lab-tools v0.6.1 (#131: host check names an undeclared gadget serial), lab-machine #49, host prepared at 0.6.1 with 0 root commands at 10:25 CET.
+
+About
+: lpoco-host
