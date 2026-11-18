@@ -4175,9 +4175,6 @@ Device
 Proof
 : suspend-retry-backs-off
 
-Rank
-: 4
-
 About
 : upstream-forks
 
@@ -4287,9 +4284,6 @@ Note
 Opened
 : 2026-11-18
 
-Blocked by
-: sxmo-utils-lab-apk
-
 Needs
 : build
 
@@ -4298,6 +4292,9 @@ Device
 
 Proof
 : suspend-retry-backs-off
+
+Rank
+: 4
 
 About
 : sxmo-utils-lab-apk
