@@ -784,6 +784,9 @@ Proof
 Proof kind
 : host-check
 
+Component
+: battery
+
 Guide
 : Test to write. surya read gauge averages in its standby run (2026-11-17-r3-partial-and-the-reset-after); walleye open (walleye-fuel-gauge). PMI8998-class gauges are still RFCs (pmi8998-fg-rfc).
 
@@ -842,6 +845,9 @@ Proof
 
 Proof kind
 : witness
+
+Component
+: battery
 
 Guide
 : Sailfish names it act-dead mode (sailfish-hadk-checklist). World gap: the usual tool, charging-sdl, is unmaintained and boot-loops at low battery (pmaports-charging-sdl-1064).
@@ -1144,6 +1150,9 @@ Proof
 Proof kind
 : witness
 
+Component
+: buttons
+
 Guide
 : surya: the volume-down key on the PMIC chatters (2026-11-18-screen-off-while-typing-key-events, surya-key-chatter-resin).
 
@@ -1202,6 +1211,9 @@ Proof
 
 Proof kind
 : phone-suite
+
+Component
+: gpu
 
 Guide
 : Test to write; never measured in our labs. Adreno needs its zap shader and GMU firmware from the device.
@@ -2201,6 +2213,9 @@ Proof
 
 Proof kind
 : phone-suite
+
+Component
+: gnss
 
 Guide
 : On Qualcomm the location engine is the modem's (QMI LOC), through ModemManager and gnss-share. surya open (gps-measurable). World gap: no assisted GPS (XTRA) anywhere.

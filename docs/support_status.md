@@ -25,6 +25,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
 | [Display panel](components.md#display-panel) | [❔](support_status.md#display-panel--google-taimen) | [❔](support_status.md#display-panel--google-walleye) | [✅](support_status.md#display-panel--xiaomi-surya) |
+| [Graphics (GPU)](components.md#gpu) | ❔ | ❔ | ❔ |
 
 ### Input
 
@@ -33,6 +34,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | [Touchscreen](components.md#touchscreen) | [❔](support_status.md#touchscreen--google-taimen) | [❔](support_status.md#touchscreen--google-walleye) | [✅](support_status.md#touchscreen--xiaomi-surya) |
 | [Haptics (vibration motor)](components.md#haptics) | [❔](support_status.md#haptics--google-taimen) | [❔](support_status.md#haptics--google-walleye) | [✅](support_status.md#haptics--xiaomi-surya) |
 | [Fingerprint or face unlock](features.md#fingerprint) | [❔](support_status.md#fingerprint--google-taimen) | [❔](support_status.md#fingerprint--google-walleye) | [❌](support_status.md#fingerprint--xiaomi-surya) |
+| [Buttons (power, volume)](components.md#buttons) | ❔ | ❔ | ❔ |
 
 ### Connectivity
 
@@ -44,6 +46,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | [Wi-Fi](features.md#wifi) | [❔](support_status.md#wifi--google-taimen) | [❔](support_status.md#wifi--google-walleye) | [✅](support_status.md#wifi--xiaomi-surya) |
 | [Bluetooth](features.md#bluetooth) | [❔](support_status.md#bluetooth--google-taimen) | [❔](support_status.md#bluetooth--google-walleye) | [🟡](support_status.md#bluetooth--xiaomi-surya) |
 | [NFC](features.md#nfc) | [❔](support_status.md#nfc--google-taimen) | [❔](support_status.md#nfc--google-walleye) | [❔](support_status.md#nfc--xiaomi-surya) |
+| [Location (GNSS)](components.md#gnss) | ❔ | ❔ | ❔ |
 
 ### Other
 
@@ -59,6 +62,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | [USB OTG](components.md#usb-otg) | [❔](support_status.md#usb-otg--google-taimen) | [❔](support_status.md#usb-otg--google-walleye) | [✅](support_status.md#usb-otg--xiaomi-surya) |
 | [Fastboot / bootloader](components.md#fastboot) | [❔](support_status.md#fastboot--google-taimen) | [❔](support_status.md#fastboot--google-walleye) | [✅](support_status.md#fastboot--xiaomi-surya) |
 | [Deep sleep that wakes for calls and messages](features.md#deep-sleep) | [❔](support_status.md#deep-sleep--google-taimen) | [❔](support_status.md#deep-sleep--google-walleye) | [❌](support_status.md#deep-sleep--xiaomi-surya) |
+| [Battery and charging](components.md#battery) | ❔ | ❔ | ❔ |
 
 ### Details
 

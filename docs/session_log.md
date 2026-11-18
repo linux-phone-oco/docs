@@ -2975,3 +2975,24 @@ Considered
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-18-docs-builder-components-for-the-phone-steps"></a>
+### docs-builder: components for the phone steps
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: The component record, four components (gnss, gpu, battery, buttons) and five steps naming them, with a test (make verify) for the record and for those steps.
+
+Considered
+: A front-camera component: camera-front exists already, and no step is its first light.
+
+About
+: bringup-steps
