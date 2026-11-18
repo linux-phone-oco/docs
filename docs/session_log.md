@@ -2672,3 +2672,27 @@ Rejected
 
 About
 : host-plan-unreadable-not-new
+
+---
+
+
+<a id="2026-11-18-host-record-from-check"></a>
+### host: record from the share check
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Built host-record-from-check (lab-tools #175): a passing share check records the hash of the unreadable polkit rule, unit and helper, so the next plan asks no sudo for them.
+
+Considered
+: Recording for any unreadable file with a record; gating on ok>0 only.
+
+Rejected
+: Recording over a recorded hash of other content: the probe shows some rule works, not that it is this one (reviewer finding, fixed). Recording when one of several devices failed.
+
+About
+: host-record-from-check
