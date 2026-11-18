@@ -3384,10 +3384,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Left by lpoco-lab-argenv (lab-tools #98): tone still declares its command line with clap. Failing test first: lpoco-tone --help and tone --help print the argenv usage, and a usage mistake exits 2 with the usage, as lpoco-lab does (devlab/tests/help.rs). Programmer subagent's review before landing.
+: Landed in lab-tools #101, released in v0.3.1 (#97). Proof lpoco-tone-help-from-argenv: lab-tools tone/tests/help.rs, red first, 5 tests pass; programmer review fixed (out-of-range/zero rate and channels).
 
 Opened
 : 2026-11-18
