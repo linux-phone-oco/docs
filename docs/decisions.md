@@ -1578,3 +1578,28 @@ Rejected
 
 About
 : host-undeclared-gadget-serial
+
+
+<a id="2026-11-18-host-watchers-by-lab-folder"></a>
+### 2026-11-18-host-watchers-by-lab-folder
+
+Brief
+: lpoco host watches the devices in NAME-lab folders under ~/Projects/linux-phone-oco, as user units devlab-watch@NAME
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-18
+
+Decision
+: Watcher instances are the folder names of device.toml manifests lying at HOME/Projects/linux-phone-oco/NAME-lab, taken before one-per-codename; the template keeps devlab's existing unit text; prepare enables new instances and restarts enabled ones when the lpoco-lab binary or the unit changed.
+
+Why
+: The unit template names the path by %i, so the instance must be the folder; the one-per-codename pick can choose a throwaway worktree; surya has no [host] table yet is the live watcher. Programmer review found each.
+
+Rejected
+: Watching every device found (would enable device-template and -wt worktrees); watching only devices with a [host] table (drops surya); a per-device path in the unit (template stays one file); root units (a user unit needs none).
+
+About
+: lpoco-host-rest

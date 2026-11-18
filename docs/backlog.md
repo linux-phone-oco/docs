@@ -3261,7 +3261,7 @@ Status
 : open
 
 Note
-: 2026-11-18, orchestration-renewed: lpoco-host is accepted (PR 70 block, PR 182 tty). Part (1) is half done by gadget_group (lab-tools #129: GROUP users MODE 0660 from lab.toml); a sysusers.d own group stays. One part per builder run, no root in the build; next part (2): watcher units, devlab-watch@ for every device found, user-level, replacing lab-machine setup/devlab-watch.sh (today surya's unit is restarted by hand after each prepare - prepare should restart the units whose binary it replaced). Then (5) foreign rules named, (4) host commands checked, (3) cross targets, (6) NCM.
+: 2026-11-18, lab-tools-builder: part (2) done (lab-tools #133): plan lists the devlab-watch@ user unit and each systemctl --user command per device at ~/Projects/linux-phone-oco/NAME-lab; prepare now writes it, enables new ones, restarts enabled ones when lpoco-lab or the unit changed; names setup/devlab-watch.sh as replaced; worktrees and templates not watched. Proof: 4 plan tests in host/tests/plan.rs. Open: a linked but stopped unit is not restarted (consider is-active); lab-machine script to remove once prepare now ran on the lab. Next: (5) foreign rules named, (4) host commands checked, (3) cross targets, (6) NCM.
 
 Opened
 : 2026-11-17

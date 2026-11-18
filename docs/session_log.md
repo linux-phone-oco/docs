@@ -2074,3 +2074,27 @@ Done
 
 About
 : lpoco-host
+
+---
+
+
+<a id="2026-11-18-lab-tools-builder-host-watchers"></a>
+### lpoco host: watcher units
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Built part (2) of lpoco-host-rest: devlab-watch@ user units planned, enabled and restarted by prepare; landed as lab-tools #133, read back from main.
+
+Considered
+: is-active check for linked but stopped units; writing the unit before tool steps
+
+Rejected
+: see decision 2026-11-18-host-watchers-by-lab-folder
+
+About
+: lpoco-host-rest
