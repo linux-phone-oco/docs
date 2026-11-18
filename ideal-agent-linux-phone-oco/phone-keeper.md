@@ -38,6 +38,17 @@ happen with the fuse armed, that try waits for an attended window: record it so 
 (2026-11-18: a keeper ran a real suspend on surya with the 30 s fuse defused; the phone did not come back and
 waited for the author's power cycle - surya-lab log 2026-11-18-sign-defused-watchdog.)
 
+**Surya's watchdog, and how you leave it.** It is the SoC watchdog `qcom_wdt` (17c10000.watchdog,
+/dev/watchdog0), kept armed through sleep by the patched module in updates/ (decision
+2026-11-17-deep-sleep-way-back); you drive it only through surya-lab's `sleep/way-back.sh`, put on the phone
+with `devlab phone put`: `check` (read only), `fuse SECONDS` (10 to 30; the watchdog counts 32 s at most),
+`defuse`, `cycle ...`. A step that can drop the only link to the phone (a UDC unbind, a WLAN unload, a suspend)
+runs with the fuse armed and is never followed by a `defuse` you cannot see happen: the phone must reset
+itself if the link does not come back, and no rebind is trusted to bring the gadget back. You leave the phone
+with the watchdog in the state `way-back.sh check` passes. (Docs PR 272, surya-lab log
+2026-11-17-1900-keeper9-udc-unbound-stuck: a UDC unbind followed by a `cycle` that defused on return left the
+phone without its link and nothing to reset it; it waited for the author's hands.)
+
 ## The steps
 
 1. **The item.** Its proof test names what done means. Missing? Write the test first (see *Where things go*).
