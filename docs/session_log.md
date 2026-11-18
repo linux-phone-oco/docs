@@ -3179,3 +3179,27 @@ Rejected
 
 About
 : bringup-generic-init
+
+---
+
+
+<a id="2026-11-19-patrol-0010"></a>
+### Patrol round 2026-11-19 00:10 UTC
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: Read-only round. Landings (6h) in docs, lab-tools, device-template, surya-lab, walleye-lab all by PR, device rows in their own bases. devlab-watch@surya-lab active, a report filed at 23:07 (UNHEALTHY 2 of 85, known); 87 'Journal file ... truncated' lines in 6h from the host journal, owner lab-machine (report only). lab-agent active, 0 poll error/401 lines. Pages build: 2 success, 1 failure (#559 at 22:51), the next two green - not a sign. lpoco host check: no FAIL; surya phone pieces STALE against the last suite run, walleye not measured (phone off USB). /home 94% full, 61G free: report only. Workarounds: every due line is a backlog item the reader counts as not known (decision 2026-11-18-workarounds-read-as-one, known) or a doc placeholder. Stale waits: in-progress items all carry landings in the last day. Clones: 10 of 14 shared clones off main, read by lpoco host check (known). surya-keeper has a run since 23:03 still running; other launcher runs, per-run reports to the coordinator and read-weight on 82 transcripts: not known yet. start-weight: patrol 31608, phone-keeper 33398 the heaviest. No sign filed this round.
+
+Considered
+: a sign on the pages failure: one failure, the next run green
+
+Rejected
+: a sign on the due workarounds: already recorded by the workarounds research row
+
+About
+: patrol-measures-the-start
