@@ -4073,10 +4073,10 @@ Project
 : linux-phone-oco/surya-lab
 
 Status
-: open
+: done
 
 Note
-: Pinned at 0.9.1 while docs is on 0.14.0; not in idealkb's consumers list, so the weekly pin job never moves it. Bump the pin, take whatever 0.10-0.14 changed (run the base's verify, fix what it names), land. No phone. The root fix (update-pins on each release, followers from each base's idealkb.toml) is the ikb session's.
+: Done by idealkb's update-pins: surya-lab PR 221 (build: ideal-knowledge-base 0.14.0) merged; 220 closed as superseded.
 
 Opened
 : 2026-11-18
@@ -4098,10 +4098,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: Pinned at 0.9.1 while docs is on 0.14.0; not in idealkb's consumers list, so the weekly pin job never moves it. Bump the pin, take whatever 0.10-0.14 changed (run the base's verify, fix what it names), land. No phone. The root fix (update-pins on each release, followers from each base's idealkb.toml) is the ikb session's.
+: Done by idealkb's update-pins: google-walleye-lab PR 213 (build: ideal-knowledge-base 0.14.0) merged; 212 closed as superseded.
 
 Opened
 : 2026-11-18
