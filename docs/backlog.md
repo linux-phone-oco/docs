@@ -3549,10 +3549,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Seen 2026-11-18 on v0.3.5, v0.3.6 and v0.3.7: release-plz's first release PR bumps every version in the version_group but writes CHANGELOG.md only for packages with changes. A follow-up PR (#113, #117, #120) then completes the rest, and between the two main's release_family test fails (left 0.3.6, right 0.3.7). Look at release-plz's changelog settings for packages that change only by the group bump, or write the missing entries in a release-pr hook, before any test change. Failing test first: a fixture workspace where only one member changed gets one release PR whose diff holds every member's CHANGELOG at the new version. Programmer subagent's review.
+: landed lab-tools#121; proof test a_release_where_one_member_changed_writes_every_changelog. Next release PR is the real read-back.
 
 Opened
 : 2026-11-18

@@ -1500,3 +1500,28 @@ Rejected
 
 About
 : release-plz-one-version
+
+
+<a id="2026-11-18-every-lpoco-family-member-lists-the-others-in"></a>
+### 2026-11-18-every-lpoco-family-member-lists-the-others-in
+
+Brief
+: Every lpoco family member lists the others in changelog_include, so one release PR writes every changelog
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-18
+
+Decision
+: release-plz.toml gives each package changelog_include = every other member; a fixture-workspace test runs release-plz update and requires every member's CHANGELOG at the new version; CI installs release-plz@0.4.3.
+
+Why
+: Seen on v0.3.5-v0.3.7: a package changed only by the version_group bump got no entry, so main was red until a follow-up PR (#113, #117, #120). Reproduced with release-plz 0.4.3: without the key fam-b has no entry, with it all three do.
+
+Rejected
+: Writing missing entries in a release hook: more code than one config key. Loosening the release_family test: hides the red instead of removing it. A fixture with no prior changelogs: passes without the fix, so proves nothing.
+
+About
+: release-plz-one-pr

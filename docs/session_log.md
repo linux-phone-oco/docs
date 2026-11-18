@@ -1870,3 +1870,24 @@ Rejected
 
 About
 : patrol-measures-the-start
+
+---
+
+
+<a id="2026-11-18-release-plz-one-pr-changelog-include"></a>
+### release-plz one PR: changelog_include
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Reproduced the missing changelogs with release-plz 0.4.3 on a fixture; test red before, green after; programmer review applied (faithful fixture, target tmpdir, isolated git config, pin). Landed as lab-tools#121, read back from main.
+
+Rejected
+: see decision
+
+About
+: release-plz-one-pr
