@@ -558,7 +558,7 @@ Form
 : patch
 
 State
-: draft
+: landed
 
 From work
 : 2026-11-18-device-layer-from-docs
@@ -566,8 +566,11 @@ From work
 About
 : base-graph
 
+Applied upstream
+: idealkb v0.17.0 (decision 2026-11-18-slice-from-a-folder)
+
 Note
-: So docs can give the device layer from device-layer/ without carrying phone queries at its own root (device-layer-in-docs waits on it). josh's ::dest=src, one prefix rather than a map. A test in bin/test-follow.sh: a source with from = layer/ lays layer/q.sql as q.sql.
+: Released; docs v0.17.0 serves device-layer/ with it.
 
 Last update
 : 2026-11-18
@@ -583,13 +586,16 @@ Form
 : patch
 
 State
-: draft
+: landed
 
 From work
 : 2026-11-18-device-layer-from-docs
 
 About
 : base-graph
+
+Applied upstream
+: idealkb v0.18.0 (decision 2026-11-18-pin-moves-only-with-its-slice)
 
 Note
 : docs releases several times a day; most releases do not touch the device layer and should open nothing in four bases. git diff --quiet vOLD vNEW -- the listed files (and the marked parts).
@@ -608,13 +614,16 @@ Form
 : patch
 
 State
-: draft
+: landed
 
 From work
 : 2026-11-18-device-layer-from-docs
 
 About
 : base-graph
+
+Applied upstream
+: idealkb v0.19.0 (decision 2026-11-18-own-says-why; [why] in the pin file, bin/check-own.sh)
 
 Note
 : Measured: docs' 6 own statements differ, decision.sql lacks --supersedes/--amends/--scope/--tracked-by since 0.14.0, no item names them; each device base's own tables.toml lacks 101 lines of 0.16.0's part (the known gap tables-own-drift). Yocto Upstream-Status and DEP-3 Forwarded, failing rather than warning (9.4% forwarded where it only warns). graph-drift.sh own-behind and own-part are the test.
@@ -633,7 +642,7 @@ Form
 : patch
 
 State
-: draft
+: landed
 
 From work
 : 2026-11-18-device-layer-from-docs
@@ -641,8 +650,11 @@ From work
 About
 : base-graph
 
+Applied upstream
+: idealkb v0.19.0 (decision 2026-11-18-exit3-sends-up; bin/send-up.sh)
+
 Note
-: Today exit 3 leaves a PR in the base for a person and nothing reaches the source; copybara's CHANGE_REQUEST is the model. The base's PR still lands the source's version; the change travels up as its own PR.
+: Not run live yet: no base differs (idealkb backlog exit3-sends-up-live).
 
 Last update
 : 2026-11-18
