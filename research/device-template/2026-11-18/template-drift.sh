@@ -1,76 +1,57 @@
 #!/bin/sh
-# template-drift: does each lab carry device-template's generic parts as the template gives them, and does the
-# template say which of its files are followed and which are made once? Written failing, 2026-11-18 (research
-# device-template-drift-measured, decision 2026-11-18-device-template-follows-by-release). Reads only git refs.
-#   template-drift.sh TEMPLATE IDEALKB LAB...     clones; each read at $REF (default origin/main)
+# template-drift: does the template say, of each file it has, whether it is followed or made once? Written failing,
+# 2026-11-18 (research device-template-drift-measured); reshaped the same day to decision
+# 2026-11-18-device-layer-from-docs: the template follows docs' device layer like any base, so a followed file is one
+# a `generic` list names - idealkb's, at the release its idealkb.toml pins, or docs', at the release its
+# devicebase.toml pins (read from the folder #! from = names) - and the rest is named in its `made-once` list.
+# Reads only git refs. The lab checks (pin, equal, no-copy) are graph-drift.sh's.
+#   template-drift.sh TEMPLATE IDEALKB DOCS      clones; the template read at $REF (default origin/main)
 # Prints one line per finding, FAIL or ok; ends 1 when any FAIL, 2 on a wrong call. Changes nothing.
 #
 # Checks, each named in its FAIL line:
-#   classified    every template file (outside data/ and docs/) is idealkb's generic, the template's generic, or
-#                 named in the template's made-once list (laid at creation, then the lab's own)
-#   one-source    no file is claimed both by idealkb's generic (at the template's idealkb pin) and the template's
-#   pin           the lab's devicebase.toml names a template release (template = "X.Y.Z"), not a date
-#   equal         each file of the template's generic, at the lab's pinned release, is the lab's byte for byte
-#                 (a file the lab names in own = [...] of devicebase.toml is its own and skipped)
-#   no-copy       the lab carries no stale copy of the template's generic list
+#   classified    every template file (outside data/ and docs/) is in idealkb's generic, docs' generic, or the template's
+#                 made-once list (laid at creation, then the base's own)
+#   one-source    no file has two sources: none is both made once and followed, none in both generics (a file both
+#                 hold a marked part of - AGENTS.md, tables.toml - is shared part by part, ideal-knowledge-base's
+#                 bin/check-one-owner.sh)
 set -eu
-[ $# -ge 3 ] || { echo "usage: template-drift.sh TEMPLATE IDEALKB LAB..." >&2; exit 2; }
+[ $# -eq 3 ] || { echo "usage: template-drift.sh TEMPLATE IDEALKB DOCS" >&2; exit 2; }
 ref=${REF:-origin/main}
-tpl=$1; kb=$2; shift 2
+tpl=$1; kb=$2; docs=$3
 fail=0
 say() { echo "$*"; case $1 in FAIL) fail=1 ;; esac; }
 show() { git -C "$1" show "$2:$3" 2>/dev/null; }
 list() { grep -vE '^[[:space:]]*(#|$)' | sed 's/[[:space:]]*#.*$//'; }
-blob() { git -C "$1" rev-parse -q --verify "$2:$3" 2>/dev/null || true; }
 tname=$(basename "$tpl")
 
 kbpin=$(show "$tpl" "$ref" idealkb.toml | sed -n 's/^version = "\(.*\)"$/\1/p')
-kbgen=$(show "$kb" "v$kbpin" generic | list) || { echo "no idealkb release v$kbpin in $kb" >&2; exit 2; }
-tgen=$(show "$tpl" "$ref" generic | list)
-tonce=$(show "$tpl" "$ref" made-once | list || true)
+docspin=$(show "$tpl" "$ref" devicebase.toml | sed -n 's/^version = "\(.*\)"$/\1/p')
+[ -n "$kbpin" ] && [ -n "$docspin" ] || { echo "the template pins no idealkb.toml / devicebase.toml version at $ref" >&2; exit 2; }
+git -C "$kb" rev-parse -q --verify "v$kbpin^{commit}" >/dev/null || { echo "no idealkb release v$kbpin in $kb" >&2; exit 2; }
+git -C "$docs" rev-parse -q --verify "v$docspin^{commit}" >/dev/null || { echo "no docs release v$docspin in $docs" >&2; exit 2; }
+kbgen=$(show "$kb" "v$kbpin" generic | list)
+docsgen=$(show "$docs" "v$docspin" generic | list)
+[ -n "$docsgen" ] || { echo "docs v$docspin has no generic list: no device layer" >&2; exit 2; }
+tonce=$(show "$tpl" "$ref" made-once | list)
 
 # classified
 n=0
 for f in $(git -C "$tpl" ls-tree -r --name-only "$ref" | grep -vE '^(data|docs)/'); do
-	if printf '%s\n%s\n%s\n' "$kbgen" "$tgen" "$tonce" | grep -qxF "$f"; then continue; fi
-	say FAIL "$tname classified: $f is neither generic (idealkb's, the template's) nor made once"; n=$((n + 1))
+	if printf '%s\n%s\n%s\n' "$kbgen" "$docsgen" "$tonce" | grep -qxF "$f"; then continue; fi
+	say FAIL "$tname classified: $f is neither followed (idealkb $kbpin's, docs $docspin's) nor made once"; n=$((n + 1))
 done
 [ "$n" -gt 0 ] || say ok "$tname classified: every file is followed or made once"
 
 # one-source
 n=0
-for f in $tgen; do
-	if printf '%s\n' "$kbgen" | grep -qxF "$f"; then
-		say FAIL "$tname one-source: $f is in both idealkb $kbpin's generic and the template's"; n=$((n + 1))
+for f in $tonce; do
+	if printf '%s\n%s\n' "$kbgen" "$docsgen" | grep -qxF "$f"; then
+		say FAIL "$tname one-source: $f is made once and followed"; n=$((n + 1))
 	fi
+done
+for f in $docsgen; do
+	case $f in AGENTS.md | tables.toml) continue ;; esac
+	if printf '%s\n' "$kbgen" | grep -qxF "$f"; then say FAIL "$tname one-source: $f is in both idealkb $kbpin's generic and docs $docspin's"; n=$((n + 1)); fi
 done
 [ "$n" -gt 0 ] || say ok "$tname one-source: no file has two sources"
-
-for lab in "$@"; do
-	name=$(basename "$lab")
-	pin=$(show "$lab" "$ref" devicebase.toml | sed -n 's/^template = "\([^"]*\)".*$/\1/p')
-	at=$ref
-	if printf '%s' "$pin" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$' && git -C "$tpl" rev-parse -q --verify "v$pin^{commit}" >/dev/null; then
-		at="v$pin"; say ok "$name pin: template $pin"
-	else
-		say FAIL "$name pin: devicebase.toml names template = \"$pin\", not a release of the template (compared with its $ref)"
-	fi
-	own=$(show "$lab" "$ref" devicebase.toml | sed -n 's/^own = \[\(.*\)\]$/\1/p' | tr -d '" ' | tr ',' ' ')
-	n=0; m=0
-	for f in $(show "$tpl" "$at" generic | list); do
-		case " $own " in *" $f "*) continue ;; esac
-		m=$((m + 1))
-		want=$(blob "$tpl" "$at" "$f"); have=$(blob "$lab" "$ref" "$f")
-		if [ -z "$have" ]; then say FAIL "$name equal: $f is missing"; n=$((n + 1))
-		elif [ "$want" != "$have" ]; then say FAIL "$name equal: $f differs from the template's"; n=$((n + 1))
-		fi
-	done
-	[ "$n" -gt 0 ] || say ok "$name equal: $m generic files as the template gives them"
-	have=$(blob "$lab" "$ref" generic)
-	if [ -n "$have" ] && [ "$have" != "$(blob "$tpl" "$at" generic)" ]; then
-		say FAIL "$name no-copy: it carries a copy of the template's generic list that differs from the template's"
-	else
-		say ok "$name no-copy: no stale copy of the list"
-	fi
-done
 exit $fail

@@ -4369,10 +4369,10 @@ Project
 : linux-phone-oco/device-template
 
 Status
-: open
+: done
 
 Note
-: Reshaped by decision 2026-11-18-device-layer-from-docs: the template names every file it has - what docs' device layer gives (the statements, the device tables' part, the skeleton: Makefile, bin/install-tad.sh, tad.yml, gather.yml, .gitignore, check.yml, tests/health/README.md - these move to docs' device-layer/ by device-layer-in-docs) and a made-once list (device.toml, oco.toml, README.md, devicebase.toml, idealkb.toml, provision/packages.txt, .oco/uncommitted, data/). Its own generic list goes (template-follows-docs).
+: Landed in device-template #26: made-once names the 18 seed files; every other file is followed from idealkb (its generic at the pin) or docs (device-layer/, v0.17.0); its own generic list is gone. The skeleton (Makefile, bin/install-tad.sh, the workflows, .gitignore, tests/health/README.md) stays made-once for now: moving it into docs' device-layer/ needs tad's pin job (tad-engine consumers) to keep a second copy of bin/install-tad.sh current. Proof: research/device-template/2026-11-18/template-drift.sh TEMPLATE IDEALKB DOCS says ok for classified and one-source.
 
 Opened
 : 2026-11-18
@@ -4419,7 +4419,7 @@ Status
 : open
 
 Note
-: Reshaped by decision 2026-11-18-device-layer-from-docs: pin, equal and no-copy move to graph-drift.sh (graph-drift-daily); the template keeps classified.
+: Reshaped again: template-drift.sh now reads the template, idealkb and docs (TEMPLATE IDEALKB DOCS) and keeps classified and one-source; the lab checks are graph-drift's. To run in the template's CI it needs clones or tags of idealkb and docs at the template's two pins (git fetch of the two repositories' tags); the check itself can be the same script, seeded as a made-once file or kept in docs and run from there.
 
 Opened
 : 2026-11-18
@@ -4890,7 +4890,7 @@ Status
 : in-progress
 
 Note
-: device-layer/ (10 statements, the device part of tables.toml, device:begin/end), generic and consumers are in docs (this change); bin/check-device-layer.sh runs in make verify. Decision 2026-11-18-device-layer-from-docs (1). Next: the docs release (release-please), then the ikb session swaps device-template for docs in idealkb's ./sources; done when graph-drift's layer-owner and layer-follow are ok for every device base (the labs' own items).
+: Landed in docs #514 and released as v0.17.0: device-layer/, generic, consumers, bin/check-device-layer.sh in make verify. The template follows it (device-template #26). Left: idealkb's ./sources names docs in place of device-template (the ikb session; one line), then the two labs take the layer (their items surya-follows-template, walleye-follows-template: devicebase.toml source/version/own and the device tables between device:begin/device:end). Done when graph-drift.sh layer-owner and layer-follow are ok for every device base.
 
 Opened
 : 2026-11-18
@@ -5044,10 +5044,10 @@ Project
 : linux-phone-oco/device-template
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-18-device-layer-from-docs (2). The template builder's work, reshaped: the classification and made-once list stand; no template release.
+: Landed in device-template #26: devicebase.toml pins linux-phone-oco/docs 0.17.0 (source, version, own = []); the device tables sit between device:begin and device:end; follow.sh of idealkb laid onto it changes nothing. graph-drift.sh: layer-pin, layer-owner, layer-follow, layer-equal ok for device-template.
 
 Opened
 : 2026-11-18
