@@ -4828,3 +4828,34 @@ Rank
 
 About
 : lpoco-host-rest
+
+
+<a id="restore-share-per-device"></a>
+### Restore the per-device phone share (#164) and the 0.14.2 changelogs that #165 reverted
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Found by orchestration, 2026-11-18, planning the lab at 0.17.0: the plan would replace the installed helper (from 0.14.2, with #164) with the older shape. lab-tools #165 (7b4a36a, Landed-by lab-tools-builder.5af81a), squashed from a branch based before #164 and release 0.14.2, removed #164's 133 lines from host/src/share.rs and the [0.14.2] sections of every CHANGELOG. #175 has since touched share.rs, so re-apply e764ffd's change on top of main by hand; do not revert #165, whose stale-piece check stays. The lab's 0.17.0 prepare is held until this is released. Same class as PR 170, which put back files PR 168 had added.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: host/src/share.rs on main carries #164's per-share nft table and shared forwarding state again, with #175's recorded-rule change kept; a share test (two shares, stopping one leaves the other's table and forwarding) passes, and fails on today's main; lpoco host plan with the next release shows /usr/local/libexec/lpoco-share unchanged against the installed helper
+
+Rank
+: 1
+
+About
+: lpoco-host-rest
