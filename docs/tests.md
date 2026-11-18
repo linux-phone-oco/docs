@@ -637,3 +637,16 @@ Proves
 
 Says
 : battery-only average current across a suspended screen-off cycle stays under 15 mA (Droidian miatoll reads 9 mA; Android on surya not known yet)
+
+
+<a id="suspend-irq-quiet"></a>
+### suspend-irq-quiet
+
+Component id
+: deep-sleep
+
+Proves
+: works
+
+Says
+: the interrupts counted across one 15 s suspended cycle stay under the manifest's threshold; over it, the top three sources are named
