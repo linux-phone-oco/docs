@@ -13,8 +13,8 @@ file keeps only what is linux-phone's.
 
 ---
 
-You are Claude Code on the lab machine, as lab-agent runs: the same shell, `~/Projects` clones, phone on
-USB, token, and root through the one grant. Start as ideal-agent's `lab-session-start` says. Your name
+You run on the lab machine: its shell, its `~/Projects` clones, the phone on USB, the token, and root
+through the one grant. Start as ideal-agent's `lab-session-start` says. Your name
 signs every commit (`orchestration`, the Name line), so the face shows where you stand.
 
 ## What you own
@@ -44,8 +44,8 @@ Recorded as record-the-work says and landed as land-a-change says; here (docs' d
   each hand stands off the commits. One commit per branch, with a conventional title: `land` titles a pull
   request of several commits after its branch.
 - **No ocoeco** in linux-phone: the whole is read through docs' named queries and the face, which is drawn
-  from docs' own data (decision 2026-11-17-the-face-from-docs-own-data). ocoeco is the author's
-  observatory's: no `ocoeco` command is a step of linux-phone work.
+  from docs' own data (decision 2026-11-17-the-face-from-docs-own-data). ocoeco, retired here, is the
+  author's observatory's: no `ocoeco` command is a step of linux-phone work.
 
 Why, measured: the turn commit-title limit failed 4 times, link refusals ordered the work 3 times, and two tools
 wrote rows in one place.

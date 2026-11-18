@@ -2432,3 +2432,27 @@ Rejected
 
 About
 : upstream-forks
+
+---
+
+
+<a id="2026-11-18-briefs-name-intents"></a>
+### The briefs and items name intents, not retired routes
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: By ideal-agent decision 2026-11-18-instructions-name-intents (#72): route-check over the agent folder and open items flagged five lines and two items; orchestration.md no longer frames the work 'as lab-agent runs'; coordinator.md points to scripts/ideal-agent practices; patrol.md names the job route as retired where it checks it is gone; kernel-fork-repo and org-board name the route by intent. route-check and overlay-check pass.
+
+Considered
+: Removing the patrol's job-route check (it watches the retirement; kept, said as retired).
+
+Rejected
+: Leaving the lines to drift (walleye lost two tries to a route named in an item).
+
+About
+: agent-folder
