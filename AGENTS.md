@@ -1,5 +1,7 @@
 # AGENTS.md - linux-phone-oco/docs
 
+**Owner**: the session named `orchestration-renewed` (linux-phone-oco orchestration; after a renewal, its successor named in docs `orchestration-how-it-stands`) keeps this repository. Every session records here through the named records (`tad r ...`) and lands its own rows; a change to the schema (`tables.toml`), `records/`, `queries/` or the role briefs in `ideal-agent-linux-phone-oco/` is sent to the owner - a message, or a backlog row with `--project docs` - and not landed by another session.
+
 Linux Phones: what works on phones running mainline Linux, and how close each is to Android - one tad database
 holding every record of every linux-phone-oco place (each row names its place in `project`).
 Setup once: `make setup`. Editing the data: [`CONTRIBUTING.md`](CONTRIBUTING.md).
