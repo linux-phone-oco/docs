@@ -1987,3 +1987,27 @@ Rejected
 
 About
 : host-lab-toml-from-main
+
+---
+
+
+<a id="2026-11-18-host-gadget-group-built-and-landed"></a>
+### host-gadget-group built and landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: gadget_group in lab.toml: rule lines carry GROUP and MODE 0660 beside uaccess; check reports group and membership. Tests first (failing), review by programmer subagent found empty USER passing as member and primary gid not counted; both fixed with tests. PR 129 read back from main.
+
+Considered
+: user from USER env, membership by /etc/group list plus passwd primary gid
+
+Rejected
+: a new own group (needs the author's re-login; stays in lpoco-host-rest); reading the running session's groups (check reads the files)
+
+About
+: host-gadget-group
