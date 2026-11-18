@@ -3516,10 +3516,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Seen 2026-11-18: release PRs #94 (v0.2.2 after #92) and #109 (v0.3.4 after #107) changed only CHANGELOG.md files and kept the version, so the code that landed between them (#110 bringup image swap) sits under no tag; the lab's pin 0.3.4 lacks it. release-plz.toml still names packages devlab and tone (release = false) that were renamed lpoco-lab and lpoco-tone, and the comment says they are not released. Failing test first: a CI check that a release PR either bumps every family version or is refused, and that release-plz.toml names only workspace packages. Look at version_group and changelog settings before changing anything. Programmer subagent's review.
+: landed lab-tools #112; v0.3.5 (#111) tags #110. proof: release-tags-every-change
 
 Opened
 : 2026-11-18

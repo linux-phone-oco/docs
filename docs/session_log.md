@@ -1777,3 +1777,27 @@ Rejected
 
 About
 : bringup-image-swap
+
+---
+
+
+<a id="2026-11-18-release-one-version"></a>
+### release check: kinds and changelog
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Built commit-kind workflow and release_family tests, landed in lab-tools #112, review by programmer applied; v0.3.5 release #111 landed and carries #110.
+
+Considered
+: release-plz.toml already named the workspace packages, so only the lack of a kind check remained.
+
+Rejected
+: tag-vs-changelog test (tag precedes changelog)
+
+About
+: release-plz-one-version
