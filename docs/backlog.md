@@ -3363,10 +3363,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Left over from lpoco-host-script-tools: plan read a stale detached google-walleye-lab clone without [host] and planned no udev rule. Failing test first: a clone behind origin/main with [host] is read from origin/main after a fetch. Also: the version field of [tools.NAME] scripts is now a label only; drop or document it.
+: Landed lab-tools #108 (15c7a7c), released v0.3.4. Proof: host test reads_each_device_from_origin_main_and_names_how_far_behind (seen failing first). version of script tools documented as label only.
 
 Opened
 : 2026-11-18
