@@ -1,0 +1,179 @@
+# The device layer's tables, as linux-phone-oco/docs gives them to every device base: the marked part of a base's
+# tables.toml, laid at the release its devicebase.toml names (bin/follow.sh of ideal-knowledge-base), beside idealkb's
+# own part. It declares what docs reads from a device base - the device, its parts (the contract: parts = 1 in
+# devicebase.toml), the runs of its health suite - so a change of the contract is one change in one repository. Only
+# the marked part is laid; the rest of a base's tables.toml is the base's.
+
+# device:begin - the device layer's tables, kept by linux-phone-oco/docs at the release devicebase.toml names (change them there).
+# The device: one row. The same fields as docs' devices table, so the row is the registry's row.
+[tables.devices]
+key = ["id"]
+
+[[tables.devices.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.devices.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.devices.fields]]
+name = "codename"
+type = "string"
+required = true
+
+[[tables.devices.fields]]
+name = "soc"
+type = "string"
+required = true
+
+[[tables.devices.fields]]
+name = "notes"
+type = "string"
+
+# THE PARTS CONTRACT (parts = 1, named in devicebase.toml). One row per part of the device: what is claimed
+# of it, the evidence for the claim, and when. docs pulls this table (data/parts.json) and derives the
+# support status of the device from it; it types nothing of its own. A part nobody has declared is not
+# known yet, never broken. A claim without evidence is a claim: say judged, not works, until a run shows it.
+[tables.parts]
+key = ["component"]
+
+[[tables.parts.fields]]
+name = "component"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.parts.fields]]
+name = "status"
+type = "string"
+required = true
+enum = ["works", "partial", "broken", "unknown", "not-applicable"]
+
+[[tables.parts.fields]]
+name = "evidence"
+type = "string"
+
+[[tables.parts.fields]]
+name = "notes"
+type = "string"
+
+[[tables.parts.fields]]
+name = "updated"
+type = "date"
+required = true
+
+[[tables.parts.fields]]
+name = "judged"
+type = "string"
+enum = ["works", "partial", "broken", "unknown", "not-applicable"]
+
+[[tables.parts.fields]]
+name = "measured"
+type = "string"
+
+[[tables.parts.fields]]
+name = "measured_run"
+type = "string"
+
+# One run of the phone's own health suite, filed by lpoco lab (the test-run record), and each line of its report.
+[tables.test_runs]
+key = ["id"]
+
+[[tables.test_runs.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.test_runs.fields]]
+name = "device_id"
+type = "string"
+required = true
+
+[[tables.test_runs.fields]]
+name = "run_at"
+type = "datetime"
+required = true
+
+[[tables.test_runs.fields]]
+name = "kernel"
+type = "string"
+
+[[tables.test_runs.fields]]
+name = "shell"
+type = "string"
+
+[[tables.test_runs.fields]]
+name = "passed"
+type = "integer"
+required = true
+
+[[tables.test_runs.fields]]
+name = "failed"
+type = "integer"
+required = true
+
+[[tables.test_runs.fields]]
+name = "gaps"
+type = "integer"
+required = true
+
+[[tables.test_runs.fields]]
+name = "skipped"
+type = "integer"
+required = true
+
+[tables.test_results]
+key = ["id"]
+
+[[tables.test_results.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.test_results.fields]]
+name = "run"
+type = "string"
+required = true
+
+[[tables.test_results.fields]]
+name = "device_id"
+type = "string"
+required = true
+
+[[tables.test_results.fields]]
+name = "component_id"
+type = "string"
+required = true
+
+[[tables.test_results.fields]]
+name = "test"
+type = "string"
+required = true
+
+[[tables.test_results.fields]]
+name = "outcome"
+type = "string"
+required = true
+enum = ["pass", "fail", "skip"]
+
+[[tables.test_results.fields]]
+name = "detail"
+type = "string"
+
+[[tables.test_results.fields]]
+name = "run_at"
+type = "datetime"
+required = true
+
+[[tables.test_results.fields]]
+name = "kernel"
+type = "string"
+
+[[tables.test_results.fields]]
+name = "shell"
+type = "string"
+# device:end

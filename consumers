@@ -1,0 +1,6 @@
+# The device bases that follow docs' device layer (generic, device-layer/), each pinning a release in its
+# devicebase.toml; ideal-knowledge-base's bin/update-pins.sh (docs is one of its ./sources) keeps them current,
+# and each base's own CI decides.
+linux-phone-oco/device-template
+linux-phone-oco/surya-lab
+linux-phone-oco/google-walleye-lab
