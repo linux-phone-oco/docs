@@ -2876,3 +2876,27 @@ Rejected
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-18-docs-builder-feed-device-steps"></a>
+### docs-builder: feed-device-steps
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: records/feed-device-steps.sql pulls each base's data/steps.json (steps = 1 in devicebase.toml) into step_status for every step docs knows; device-steps-unknown is the fallback; run-feeds.sh runs both feeds per device. bin/test-feed-device-steps.sh runs in make verify against a fake base. The programmer subagent reviewed it; its findings (a step claimed twice, the feeds' success output kept, stdin guarded, comments) are in. Tried the two research tests against a scratch copy: with the real bases both fail (every step unknown); with walleye's 26 claims in a fake base the walleye test fails only at 'not known yet' for the 80 phone-stage steps.
+
+Considered
+: Reading a missing steps.json as empty: no, a base that declares steps = 1 and has no file is not known yet, as a base that cannot be read; the first claim creates the file. A step_status row for a device with no base: not made, bringup-chain reads a missing row as unknown.
+
+Rejected
+: Carrying the dropped claims into step_status notes: they have no step row to sit on.
+
+About
+: bringup-steps
