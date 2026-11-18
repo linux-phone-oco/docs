@@ -1642,3 +1642,24 @@ Rejected
 
 About
 : lpoco-names-sweep
+
+---
+
+
+<a id="2026-11-18-lpoco-tone-on-argenv"></a>
+### lpoco-tone on argenv
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Proof test first (red), cli.rs and main.rs on argenv, clap removed; programmer review found silent defaulting of out-of-range rate/channels, fixed with tests; landed lab-tools #101, release v0.3.1 landed (#97), read back from main.
+
+Rejected
+: Fixing zero-value panics only by recording them: refused at the edge instead (cheap).
+
+About
+: lpoco-tone-argenv
