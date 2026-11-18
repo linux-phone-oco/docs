@@ -3577,3 +3577,34 @@ Rank
 
 About
 : bringup
+
+
+<a id="host-lab-toml-from-main"></a>
+### lpoco host reads lab.toml from lab-machine's origin/main, as it reads each device.toml
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Seen 2026-11-18 (orchestration-renewed): after lab-machine #47 pinned the family at 0.4.1, a bare lpoco host plan still showed 0.4.0 - it read ~/Projects/lab-machine/lab.toml's working file, behind main, while device.toml is read from origin/main (lab-tools #108). One rule for every declaration: read from origin/main, name the rev, ignore a working file that differs.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: a plan test from a fixture clone whose working lab.toml is behind origin/main: the plan reads origin/main's pins and says which rev it read, the working file ignored
+
+Rank
+: 1
+
+About
+: lpoco-host
