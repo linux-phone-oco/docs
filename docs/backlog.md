@@ -5313,3 +5313,34 @@ Proof
 
 About
 : workarounds
+
+
+<a id="user-config-drift-named"></a>
+### lpoco host check names a phone user config file that differs from its package default or the base's declared copy
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The author, through the coordinator, 2026-11-18: 'how could we lost that intelligance about what we have touched edited, isnt its all in gits ?' - the phone's ~/.config/sxmo files live outside any git, so a hand diff had to tell whether we edited them (surya-lab PR 302: identical). Extend phone-pieces drift (lab-tools #165, #170, health 94-lab-pieces): device.toml (the lpoco-manifest crate) declares user config files the lab cares about (sxmo hooks, profile), each either expect = the package default (the path the package ships, e.g. /usr/share/sxmo/...) or a copy kept in the base. lpoco-health's lab-pieces reports their blob ids at boot, the package default's blob beside it; host check and lpoco lab name any that differ, with no manual diff. A deliberate change then lives in the base or in the fork's package, never only on the phone. Size: one manifest field, a few report rows and a compare in stale_lines - about one builder run.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: host/tests/phone_pieces.rs from fixtures: a declared user config (expect = package default at /usr/share/...) whose reported blob differs is named with both blobs; one declared as a base copy that differs is named; a matching one passes; an undeclared file is not read
+
+Rank
+: 8
+
+About
+: phone-side-pieces
