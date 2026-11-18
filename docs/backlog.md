@@ -4603,10 +4603,10 @@ Project
 : linux-phone-oco/device-template
 
 Status
-: in-progress
+: done
 
 Note
-: In docs' device layer (docs-builder): the steps table of the marked part, records/step.sql (tad r step: done needs proof and run, not-needed needs notes), generic names it, bin/test-steps-contract.sh in make verify. Next: docs' release; the hourly follow then carries it to device-template, surya-lab, google-walleye-lab (checked in a scratch template with a tagged copy of docs: tad check passes with the empty table, tad r step writes one row, a status outside the six is refused). Each base adds steps = 1 to its own devicebase.toml (the pin file is never laid) with its first claim; then docs' feed reads it. Done when a base has claimed one step and docs' feed reads it.
+: Done: docs 0.18.0 carries the contract (device-layer/ steps table, records/step.sql, generic); the hourly follow landed it at 21:01-21:02 CET in device-template, surya-lab and google-walleye-lab (each at docs 0.18.0, tad check passes, tad r step writes one row, a status outside the six is refused; verified on main in a fresh clone). docs' feed reads data/steps.json from a base that says steps = 1. Each base still needs that one line in its own devicebase.toml (the pin file is never laid) with its first claim: the lanes' items walleye-steps-claimed and surya-steps-claimed.
 
 Opened
 : 2026-11-18
@@ -4662,7 +4662,7 @@ Status
 : open
 
 Note
-: The 26 claims are written out in research/bringup-steps/2026-11-18/claims-walleye.sh, each run a record of google-walleye-lab. Data only; no phone.
+: The 26 claims are written out in research/bringup-steps/2026-11-18/claims-walleye.sh, each run a record of google-walleye-lab (its tad r step-claim lines are tad r step here, without --device and --updated). Data only; no phone. The contract is in the base (docs 0.18.0): add steps = 1 to devicebase.toml, claim with tad r step (done needs --proof and --run; not-needed needs --notes). The test research/bringup-steps/2026-11-18/bringup-chain-walleye.sh passes its order, count and six-proof checks with those 26 claims and still fails at 'steps not known yet': the base must claim every step of the chain (80 more, the phone stages and linux-runs), even as open or not-needed.
 
 Opened
 : 2026-11-18
@@ -4693,7 +4693,7 @@ Status
 : open
 
 Note
-: The claims are listed in research/bringup-steps/2026-11-18/README.md (Surya's path); PMIC and charger stay unknown until measured.
+: The claims are listed in research/bringup-steps/2026-11-18/README.md (Surya's path); PMIC and charger stay unknown until measured. The contract is in the base (docs 0.18.0, records/step.sql): add steps = 1 to devicebase.toml, claim with tad r step (a done claim needs --proof and --run; not-needed needs --notes), then docs' feed reads data/steps.json at the next daily run (make feeds). Check: sh research/bringup-steps/2026-11-18-phone-stages/daily-phone.sh xiaomi-surya in docs.
 
 Opened
 : 2026-11-18
