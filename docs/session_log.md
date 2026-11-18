@@ -1684,3 +1684,27 @@ Considered
 
 Rejected
 : Declaring defaults on the String inputs - not checked that argenv supports it; left in env_in. Per-command refusal of empty DEVLAB_ROOT - refused at parse for one rule.
+
+---
+
+
+<a id="2026-11-18-names-sweep-messages"></a>
+### Names sweep: lab-tools messages
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: About 20 messages and the gather --land help said devlab; now lpoco-lab. New test names_in_messages.rs failed first, then passed; programmer review found nothing parsing the strings. Landed as lab-tools #104 (cargo fmt fixed after a failed check), read back from main.
+
+Considered
+: Next slice: guard.rs and hold.rs messages, then source comments.
+
+Rejected
+: Renaming env vars, the state dir and the 'by' default: they are interfaces and recorded values, they stay until the aliases go.
+
+About
+: lpoco-names-sweep
