@@ -4806,10 +4806,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: From host-plan-unreadable-not-new (#173). Also: plan words 'up to date' only while the file's check passes (share check for 50-lpoco.rules).
+: 2026-11-18, lab-tools-builder: done (lab-tools #175, main 9458bfa). A passing share check (every measured device passed, at least one measured) records the staged hash of the polkit rule, share unit and helper that plan could not read and has no record for; check and prepare both do it. A file recorded with other content stays a root install; a failing check records nothing. Proof: host/tests/plan.rs a_passing_share_check_records_the_rule_it_proved_and_a_failing_one_records_nothing (seen failing first) and a_passing_share_check_does_not_vouch_for_a_rule_recorded_with_other_content. share::probe takes the fake root so /run state is testable. Not done: plan wording 'up to date' tied to the file's check passing. Limit: check now writes the install record.
 
 Opened
 : 2026-11-18
