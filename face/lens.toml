@@ -74,6 +74,16 @@ row_key = "step_id"
 columns = "devices"
 column_key = "device_id"
 
+[[view]]   # where the bring-up is told and shown: the guidebook, the steps against each phone, the tables; the cards are face/guide-pages.json
+id = "guide"
+title = "Bring-up guide"
+kind = "cards"
+lead = "How a phone is brought up, step by step, and where each phone stands."
+table = "guide_pages"
+title_field = "title"
+text_field = "what"
+link_field = "link"
+
 [[view]]
 id = "families"
 title = "SoC families"

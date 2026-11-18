@@ -23,6 +23,8 @@ done
 jq -c '. + {project: "linux-phone-oco/lens"}' "$here/face/lens-translations.json" >> "$out/translations.json"
 # and the lens's own log, from when it was a place of its own
 jq -c '. + {project: "linux-phone-oco/lens"}' "$here/face/lens-session-log.json" >> "$out/session_log.json"
+# the pages of the guide view (face/guide-pages.json): cards that lead to the guidebook and the tables
+jq -c '. + {project: "linux-phone-oco/docs"}' "$here/face/guide-pages.json" > "$out/guide_pages.json"
 
 # 1b. the bring-up view: a row per step, a cell per step and device, and its headline (bin/face-steps)
 "$here/bin/face-steps" "$out"
