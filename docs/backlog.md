@@ -3862,10 +3862,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: walleye carries ~20 init variants in build/initramfs*/ and ffs-acm-rs; lpoco bringup already makes the cpio (bringup/src/initramfs.rs) with the gadget address a variable. The generic init and console come into lab-tools; the device names its serial, address and functions in device.toml [boot].
+: 2026-11-18, lab-tools-builder: first slice landed (lab-tools #183, main da435eb, released 0.18.1): lpoco-bringup initramfs init --device device.toml [--out] [--net] makes the /init from [boot.gadget] (serial, product, manufacturer, label, rndis); the gadget names are data, the address a variable, a word that would break its quotes refused. Proof: bringup/tests/init.rs (seen failing first); and walleye's build/selftest-initramfs.sh (QEMU, dummy_hcd) PASS with the generated init in place of build/initramfs/init (run in a scratch copy, walleye's repo unchanged). Open: selftest.sh, udhcpd.conf, udhcpc.script are still walleye's own (generate or ship them with the init); the FunctionFS ACM console (ffs-acm-rs) and the mass-storage window are not in the init yet; walleye's device.toml has no [boot.gadget] yet and its build does not call the generator; shellcheck on the template; ShellWord newtype in the manifest so BootGadget cannot hold a bad word (reviewer).
 
 Opened
 : 2026-11-18

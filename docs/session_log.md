@@ -3086,3 +3086,27 @@ Rejected
 
 About
 : workarounds
+
+---
+
+
+<a id="2026-11-18-bringup-generic-init-slice-one"></a>
+### Generic bring-up init, slice one
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: lpoco-bringup initramfs init made from a new [boot.gadget] table; landed as lab-tools #183 and released 0.18.1; walleye selftest passes with the generated init in a scratch copy
+
+Considered
+: A template with @WORD@ marks filled from the manifest; the address rewritten in the template before the device's words so a serial that looks like an address is kept
+
+Rejected
+: Rewriting the finished text (first version: it changed a serial like 172.16.42.9 under --net, found in review); copying walleye's init as is (it names walleye and carries three RNDIS/ACM variants)
+
+About
+: bringup-generic-init
