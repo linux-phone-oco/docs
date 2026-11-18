@@ -1708,3 +1708,27 @@ Rejected
 
 About
 : lpoco-names-sweep
+
+---
+
+
+<a id="2026-11-18-suspend-irq-quiet-check"></a>
+### Suite check suspend-irq-quiet
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Built suspend-irq-quiet-check: 92-suspend-irq.sh, manifest fields suspend_irq_max and suspend_guard, test row. Proof test failed first, then 8 pass. Programmer review found: alarm not read back, no alarm clear on signals, fail-open when suspend counter or interrupts unreadable, garbled guard message, racy and hang-prone tests; all fixed. Landed as lab-tools #106, released v0.3.3, read back from main.
+
+Considered
+: A measured duration check (woke early skips).
+
+Rejected
+: A guessed default threshold: unset says not measured. Reading the watchdog directly: the guard is a manifest command, as the device owns how it is armed.
+
+About
+: suspend-irq-quiet-check
