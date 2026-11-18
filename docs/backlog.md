@@ -4284,6 +4284,9 @@ Note
 Opened
 : 2026-11-18
 
+Waits
+: a conveyor tag (linux-package-distribution-oco/conveyor alpine.yml) that copies the APKBUILD folder whole and deploys a second package without replacing the first, with verify per package
+
 Needs
 : build
 
