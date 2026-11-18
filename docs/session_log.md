@@ -2696,3 +2696,27 @@ Rejected
 
 About
 : host-record-from-check
+
+---
+
+
+<a id="2026-11-18-rhizoid-graph-research"></a>
+### Research: the repository graph, how changes travel both ways, and git-rhizoid's scope
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: Measured every edge (12; 3 by a job, 6 by hand, 5 behind); two read-only researchers surveyed subtree, submodules, josh, copybara, Android repo, Nix inputs, copier/cruft, multi-repo bots, gbp-pq/quilt/DEP-3, stgit, topgit, Yocto, Gentoo, Arch, the kernel's trees, ACK; wrote graph-drift.sh (failing, 36 FAIL); decided 2026-11-18-device-layer-from-docs superseding the template follow decision (supersedes, scope and tracked-by set with ikb set: docs' decision record lacks them - itself an instance of the own drift); reshaped the template and lab items; filed idealkb's side and rhizoid's scope as upstream items.
+
+Considered
+: Keeping the template as the layer's source; josh monorepo; copybara; porting follow.sh to rhizoid now.
+
+Rejected
+: See the decision's rejected.
+
+About
+: base-graph

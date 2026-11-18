@@ -110,21 +110,6 @@ Condenses
 ### Row 8
 
 About
-: device-template
-
-Date
-: 2026-11-18
-
-Says
-: device-template (asked for 2026-11-10, made 2026-11-17 as a GitHub template from what surya proved; a lab holds data, tools are lpoco's) has two children: surya-lab, re-based by hand, and google-walleye-lab, made by Use this template. idealkb's generic files reach all three by update-pins; the template's own 13 statements reach the labs only by hand, landed three times per change, and 8 drifts nothing catches are named in research device-template-drift-measured (stale list copies, three files with two sources and false-alarm bump PRs each idealkb release, surya's check.yml and tests/health/README.md, a date as pin, walleye's stale PR 208, the manifest's shape). Decision 2026-11-18-device-template-follows-by-release (research device-template-follow-world: cruft, copier, projen, Nix): the template is followed like idealkb - each file generic or made-once, a release pinned in devicebase.toml, laid by update-pins, template-drift failing CI. Queue, unranked: template-classifies-its-files first, then template-releases, template-drift-in-ci, template-followed-by-update-pins (waits on idealkb follow-source-from-pin), surya-follows-template, walleye-follows-template. The failing test: research/device-template/2026-11-18/template-drift.sh. Hand-over: device-template-how-it-stands; umbrella device-template-follow; device.toml's shape is template-manifest-schema's.
-
-Condenses
-: 2026-11-18-device-template-follows-by-release, device-template-drift-measured, device-template-follow-world, device-template-how-it-stands
-
-
-### Row 9
-
-About
 : bringup-steps
 
 Date
@@ -135,3 +120,33 @@ Says
 
 Condenses
 : 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base, 2026-11-18-research-bringup-steps, bringup-steps-how-it-stands, bringup-steps-landscape
+
+
+### Row 9
+
+About
+: base-graph
+
+Date
+: 2026-11-18
+
+Says
+: The repository graph (idealkb, docs, device-template, the device bases, lab-tools' pins, the forks) was measured on 2026-11-18 (research base-graph-measured): 12 edges, 3 moved by a job, 6 by hand, 5 behind; nothing carries a change up - own is a one-way exit, an edited followed file stops at a person - and the parts contract is declared by the template and read by docs. The world (base-graph-world) offers no Rust or shell tool for root-level files both ways (copybara only, JVM) and four rules: one owner per file, named overrides with a status, pins per ancestor, a scheduled integrator report. Decided 2026-11-18-device-layer-from-docs: idealkb -> docs -> every device base, docs giving the device layer from device-layer/, the template a follower keeping its seed files; own needs an item; edits go up as PRs; graph-drift.sh daily; forks tracked daily; git-rhizoid after, by conformance. Nothing built yet: graph-drift.sh 36 FAIL; next idealkb's from-prefix (upstream item), then device-layer-in-docs (backlog base-graph). How it stands: base-graph-how-it-stands.
+
+Condenses
+: 2026-11-18-rhizoid-graph-research, base-graph-how-it-stands, base-graph-measured, base-graph-world
+
+
+### Row 10
+
+About
+: device-template
+
+Date
+: 2026-11-18
+
+Says
+: device-template (made 2026-11-17 as a GitHub template from what surya proved; a lab holds data, tools are lpoco's) has two children, surya-lab (re-based by hand) and google-walleye-lab (Use this template). Its 10 statements and 4 device tables reach them only by hand; the pin is a date (research device-template-drift-measured, template-drift.sh). Decision 2026-11-18-device-template-follows-by-release (the template releases and is followed) is superseded by 2026-11-18-device-layer-from-docs: the device layer comes from docs (device-layer-in-docs), so a contract such as parts or steps has one home beside the feed that reads it; the template becomes a device base like the others, pinning idealkb and docs and keeping its made-once seed files (template-classifies-its-files, template-follows-docs); the labs follow docs (surya-follows-template, walleye-follows-template); template-releases and template-followed-by-update-pins are closed, not done. The manifest's shape is the schema's (template-manifest-schema). The whole graph: summary base-graph.
+
+Condenses
+: 2026-11-18-device-layer-from-docs, 2026-11-18-device-template-follows-by-release, 2026-11-18-template-research, device-template-drift-measured, device-template-follow-world, device-template-how-it-stands

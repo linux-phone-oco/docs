@@ -1791,3 +1791,48 @@ Research
 
 Tracked by
 : bringup-steps
+
+
+<a id="2026-11-18-device-layer-from-docs"></a>
+### 2026-11-18-device-layer-from-docs
+
+Brief
+: The device layer comes from docs: idealkb, then docs, then every device base, the template one of them; own needs an item, edits go up as PRs, one drift check; rhizoid later, by conformance
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Decision
+: Supersedes 2026-11-18-device-template-follows-by-release (its classification, made-once list, failing check and hourly job stay; the source of the device layer moves). The author's picture, taken with one correction: the template is a device base, but it is also the seed new bases are copied from, so it keeps its made-once files.
+1. Three layers of files, each file one owner at the layer that owns its meaning: idealkb (domain-free) -> docs (the commons) -> every device base. docs gives the device layer: the statements a device base runs (phone-queue, phone-next, parts, part, device, backlog-status, backlog-needs, test-run, lane-next, phone-stands) and a marked part (marker device) of tables.toml declaring devices, parts, test_runs, test_results and, when it lands, steps - kept in docs under device-layer/, beside the catalogues and the feeds that read the claims, so a contract change (parts, steps) is one change in one repository. docs' generic list says #! pin = devicebase.toml, #! marker = device, #! from = device-layer/ (read from that folder in docs, laid at the base's root: idealkb's follow.sh, item idealkb-slice-from-prefix). docs takes device-template's place in idealkb's ./sources; docs already releases; the job moves a base's device-layer pin only when a file of the list changed (idealkb-skip-unchanged-slice), so a docs release that does not touch the layer opens nothing. Each base pins each source it takes files from, by name (Gentoo's masters): idealkb.toml and devicebase.toml (source = "linux-phone-oco/docs", version, own).
+2. device-template is a device base like the others: it pins idealkb and docs, its CI runs the checks a lab runs, and docs' release gate asks it first (followers-answer). It gives nothing by a list; it keeps the made-once files (device.toml example, README, devicebase.toml, idealkb.toml, oco.toml, provision/packages.txt, data/ empty) that Use this template copies, so a new base is born pinned. Its generic list goes; template-drift.sh keeps its classified check.
+3. Files come down, rows go up, changes go up as change requests. Claims (parts, steps) stay pulled by docs' feeds at main. A change to a followed file is made at its owner, upstream first (the kernel's rule): a base that needs one opens it in docs or idealkb and the pin brings it back within the hour. When a base edits a followed file anyway, the job, besides its PR in the base, opens the same change as a PR on the source at the pinned release and records an upstream item in the base (copybara's change request; idealkb-exit3-sends-up).
+4. own is a named override with a status (Yocto's Upstream-Status, DEP-3): a file a base keeps as its own may differ from its source only while an upstream item of the base names it (on its way up) or the pin file says why it stays (own_why); a base whose tables.toml is its own keeps the source's marked part as the pin gives it. Otherwise the follow fails (idealkb-own-needs-item). docs' six own statements go first: each goes up to idealkb as an item or is dropped for idealkb's (docs-own-statements-up).
+5. One drift check over every edge, run on a schedule, each FAIL an item for the edge's owner (linux-next's way): graph-drift.sh (research material) in docs' CI daily - slices, own, the device layer, tad pins and their consumers, the lpoco pin in lab.toml, fork tracking.
+6. Forks: a daily lab job fetches each fork's upstream into its tracking branch (sxmo master from sr.ht) and test-merges each topic onto it, a conflict reported as an item; a topic upstream carries is found by git cherry (patch-id) and retired. Decision 2026-11-18-upstream-forks otherwise unchanged.
+7. git-rhizoid exists, scoped as the follow tool for every edge a repository has - a slice, a tool pin, a cutting - with one status over them all and both directions; never a template engine, a merge of data or rows (feeds stay docs'). Built after 1-6 work, in order, each replacing shell only once it passes the shell's tests: status (read-only; passes graph-drift.sh), follow (passes idealkb's bin/test-follow.sh fixtures byte for byte and keeps the three things idealkb names: the pin names its source, one owner per file, the followers' gate before a release - then update-pins calls it), send-back (the change request and the item), cuttings (tracking from any git URL, topic and integration branches, retire by patch-id, a distro package pin). Until then the shell is the tool.
+Migration, about two agent-days, no phone: idealkb from-prefix and skip-unchanged (~2 h), own-needs-item (~2 h), exit3-sends-up (~3 h) - idealkb's owner; docs device-layer/ with its list and the sources switch (~3 h), its own statements up (~2 h), its tables' idealkb part (~1 h), graph-drift daily (~1 h) - docs' owner; the template turned into a follower (~1 h); each lab: devicebase.toml names docs, drops its list copy, takes the device part at the first follow (~1 h each); tad consumers +3 and docs' tad (minutes, tad-engine's owner); lpoco pin moved by a job or says why it holds (~1 h); the fork tracking job (~2 h). rhizoid after: status ~1.5 days, follow by conformance ~2, send-back ~1, cuttings ~2-3.
+
+Why
+: The author (2026-11-18): develop git-rhizoid without reimplementing a wheel; the device-template's graph got mixed up - docs' shared parts should be inherited by every device base, the template being one more device, with changes pulled and pushed upstream with the least resistance and drift. Measured (research base-graph-measured): 12 edges, 3 moved by a job, 6 by hand, 5 behind today (graph-drift.sh: 36 FAIL); nothing carries a change up - own is a one-way exit (docs' six own statements differ from idealkb's and no item names them; docs cannot record --supersedes through its record, missing since idealkb 0.14.0), an edited followed file stops at a person; the parts contract is declared by the template and read by docs, and bring-up steps would repeat that split. The world (research base-graph-world): every mature layered project gives a file one owner at the layer that owns its meaning, names its overrides with an upstream status that fails when missing (Yocto, DEP-3), pins each ancestor by name (Gentoo), works upstream first (the kernel) and reports drift on a schedule to each owner (linux-next); no Rust or shell tool carries root-level files down and changes up but copybara (JVM), and idealkb's follow.sh already lays slices in ~250 tested lines. So the gaps are rules and one owner, not a new mechanism: moving the device layer to docs puts each contract in one repository and removes a release train and a third owner of 14 files at about one agent-day more than the superseded route; rhizoid is worth building because the gap is real, but only behind the shell's own tests.
+
+Rejected
+: The superseded route as it was (the template a middle source with its own releases): the parts and steps contracts stay split between the template (declared) and docs (read), a third release train and owner for 14 files, and docs' catalogue ids still reach no base; about one agent-day, but it keeps the mix-up the author named. The device layer at docs' root: docs would carry phone queries over tables it does not have. Device bases following all of docs: docs' statements are the commons', not a device's. The layer into idealkb: idealkb is domain-free; what proves general moves there one file at a time, as hardware did. A chain of four (idealkb, docs, template, labs): every contract change two hops. The template only a GitHub template with no pin: the next base is born unpinned. git subtree, subrepo, submodules: a prefix, and tad reads its statements at the root. josh: one monorepo as the truth, a base cannot keep its own variant, a proxy to run, push back between separate repositories unknown. copybara: a JVM 21 and Starlark for 7 followers in 2 directions; its change request is taken, not its runtime. Android repo, copier, cruft, gbp-pq, b4: Python, refused; copier/cruft also have no way up. Nix inputs: the store, not files, and no patching in place. stgit: fine on a topic branch by hand, not needed by the graph; topgit: dormant. Labels that only warn (DEP-3: 9.4% forwarded): own without an item fails. git-rhizoid now, replacing follow.sh: the shell works and is tested; a port without conformance risks every base, and the gaps are rules, not tooling. git-rhizoid never: the author asks for it, and both directions for root-level slices and the cutting case have no tool in the house's languages.
+
+About
+: device-template
+
+Research
+: base-graph-measured
+
+Supersedes
+: 2026-11-18-device-template-follows-by-release
+
+Scope
+: docs (owner orchestration), idealkb (its owner), device-template, surya-lab, google-walleye-lab, lab-machine, tad-engine, the upstreams lane, git-rhizoid; the template builder
+
+Tracked by
+: base-graph

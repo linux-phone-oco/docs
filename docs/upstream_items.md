@@ -546,3 +546,128 @@ Note
 
 Last update
 : 2026-11-18
+
+
+<a id="idealkb-slice-from-prefix"></a>
+### A source's generic list may say #! from = DIR/: its files are read from DIR in the source and laid at the base's root; check-one-owner compares the laid paths
+
+Upstream
+: idealkb
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-18-device-layer-from-docs
+
+About
+: base-graph
+
+Note
+: So docs can give the device layer from device-layer/ without carrying phone queries at its own root (device-layer-in-docs waits on it). josh's ::dest=src, one prefix rather than a map. A test in bin/test-follow.sh: a source with from = layer/ lays layer/q.sql as q.sql.
+
+Last update
+: 2026-11-18
+
+
+<a id="idealkb-skip-unchanged-slice"></a>
+### update-pins moves a base's pin only when a file of the source's list changed between the pin and the latest release
+
+Upstream
+: idealkb
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-18-device-layer-from-docs
+
+About
+: base-graph
+
+Note
+: docs releases several times a day; most releases do not touch the device layer and should open nothing in four bases. git diff --quiet vOLD vNEW -- the listed files (and the marked parts).
+
+Last update
+: 2026-11-18
+
+
+<a id="idealkb-own-needs-item"></a>
+### own is a named override with a status: an own file that differs from the source at the pin passes only while an upstream item of the base names it or the pin says own_why; an own tables.toml keeps the marked part
+
+Upstream
+: idealkb
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-18-device-layer-from-docs
+
+About
+: base-graph
+
+Note
+: Measured: docs' 6 own statements differ, decision.sql lacks --supersedes/--amends/--scope/--tracked-by since 0.14.0, no item names them; each device base's own tables.toml lacks 101 lines of 0.16.0's part (the known gap tables-own-drift). Yocto Upstream-Status and DEP-3 Forwarded, failing rather than warning (9.4% forwarded where it only warns). graph-drift.sh own-behind and own-part are the test.
+
+Last update
+: 2026-11-18
+
+
+<a id="idealkb-exit3-sends-up"></a>
+### When a base changed a followed file, update-pins also opens that change as a PR on the source at the pinned release and records an upstream item in the base
+
+Upstream
+: idealkb
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-18-device-layer-from-docs
+
+About
+: base-graph
+
+Note
+: Today exit 3 leaves a PR in the base for a person and nothing reaches the source; copybara's CHANGE_REQUEST is the model. The base's PR still lands the source's version; the change travels up as its own PR.
+
+Last update
+: 2026-11-18
+
+
+<a id="rhizoid-scope-every-edge"></a>
+### rhizoid's scope: the follow tool for every edge a repository has (slice, tool pin, cutting), one status over all, both ways; status first, then follow by conformance with idealkb's follow.sh, send-back, cuttings
+
+Upstream
+: git-rhizoid
+
+Form
+: finding
+
+State
+: draft
+
+From work
+: 2026-11-18-device-layer-from-docs
+
+About
+: base-graph
+
+Note
+: From research base-graph-measured and base-graph-world: no Rust or shell tool carries root-level files down and changes up (only copybara, JVM); the cutting case has no tool here. Build order, each replacing shell only once it passes the shell's tests: status (passes graph-drift.sh), follow (passes idealkb bin/test-follow.sh fixtures byte for byte; keeps the pin naming its source, one owner per file, the followers' gate), send-back (idealkb-exit3-sends-up's shape), cuttings (rhizoid-carries-mail-forks). Never a template engine, a merge of data or rows. Its base's items slice-consumption, followers-one-pin-bump, send-back-writes-the-upstream-item and implement-cli are reshaped to it.
+
+Last update
+: 2026-11-18
