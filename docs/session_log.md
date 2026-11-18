@@ -1570,3 +1570,27 @@ Rejected
 
 About
 : lpoco-lab-argenv
+
+---
+
+
+<a id="2026-11-18-names-sweep-readme"></a>
+### Names sweep: lab-tools README
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: lab-tools README commands now say lpoco lab / lpoco tone (24 commands); lpoco/tests/readme_names.rs fails on an old name starting a command; landed as lab-tools #99, read back from main; programmer review applied (cargo fmt).
+
+Considered
+: Next slices by orchestration's order: docs briefs and AGENTS.md, device-template; surya-lab and google-walleye-lab via their lane coordinators.
+
+Rejected
+: Changing real paths (~/.config/devlab, hook path, mcp add line): aliases and state dirs stay until the alias grep finds no caller.
+
+About
+: lpoco-names-sweep
