@@ -1214,3 +1214,91 @@ About
 
 Supersedes
 : orchestration-2026-11-17-late
+
+
+<a id="phone-side-pieces-landscape"></a>
+### phone-side-pieces-landscape
+
+Brief
+: Phone-side pieces reach phones by five routes, one versioned and none compared: the keep-awake and walleye's gadget init belong under lpoco; drift is seen by package pin and file blob id
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: What phone-side pieces exist across surya-lab and google-walleye-lab, which belong under lpoco's roof, how is an installed copy kept in line with main, and what goes upstream (sxmo, postmarketOS)?
+
+Found
+: What is (origin/main of surya-lab, google-walleye-lab, lab-tools, device-template, 2026-11-18; neither phone touched). Phone-side pieces reach a phone by five routes, only one versioned: [[flash.overlay]] into the image at flash, [[provision.install]] over ssh, [health] checks copied by suite put, lpoco lab phone put or by hand, and the lpoco-health apk from the signed lab-tools repository (the only one with a version - and nothing compares that version to a pin). walleye's pieces live in its boot image (fastboot boot, nothing written), so they cannot drift on the phone. Inventory, 20 pieces, in the material: roof-worthy are surya's keep-awake (lab/devlab-usb-awake + unit), its autosleep-off check, the way back (already lpoco-health suspend), walleye's bring-up init (configfs gadget ECM/ACM/mass storage, udhcpd, telnetd) and its FunctionFS ACM console (ffs-acm-rs), and the gadget host checks; per device stay the call uplink, PD mapper softdep, UCM and q6voiced files, tas2562 module, edge repository line, mobile connection, sensors helper, masks, and the phone's own checks. Today's case: surya ran the 11-10 flashed copy (PR 40, lock only while configured) after PR 195 made it held always; a USB blip let sxmo_autosuspend.sh suspend the idle phone; PR 205 put the fix by hand; PR 208 changed it again, and autosleep-off.sh's only drift check is grep bt_unsafe on the installed file.
+Others: sxmo blocks suspend by any kernel wake lock (the wakeup_count handshake) and by sxmo_hook_block_suspend.sh (ssh on port 22, calls, hotspot, a nosuspend file; no USB-gadget reason); a failed suspend is retried every 1 s with no backoff - the loop that drops the link; sxmo_suspend.sh stops hexagonrpcd sensorspd for one device by name; sxmo stamps each installed hook with a configversion hash and compares at migrate. postmarketOS: device packages carry device config, not lab tools; pmbootstrap sideload is its route for an unrepositoried package; apk audit sees edits only to packaged files. Mobian: logind inhibitors for the session's life. Kernel: wake_lock NAME [timeout] blocks autosleep and sxmo alike; a dwc3 gadget registers no wakeup source, so a cable alone does not keep a phone awake.
+Finding: what makes an installed piece checkable is that it has an identity the host can compare - a package version against a pin, or the git blob id of the file against origin/main's; a stamp written beside a piece says what was written, not what is there. The keep-awake must be held by the phone itself (the link is what fails), so a host-renewed timed lock cannot replace it.
+
+Sources
+: sxmo-autosuspend,sxmo-block-suspend-hook,sxmo-configversion,kernel-sysfs-power-wakelock,apk-audit,pmbootstrap-sideload,mobian-tweaks-inhibit,surya-lab-pr-195,surya-lab-pr-205
+
+About
+: phone-side-pieces
+
+Material
+: research/phone-side-pieces/2026-11-18/
+
+
+<a id="device-declaration-typed-landscape"></a>
+### device-declaration-typed-landscape
+
+Brief
+: device.toml has three parsers and no one schema; a schema projected from one set of Rust types gives editor and CI checks at a day's cost; device crates would reverse the-phone-is-data
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: How should a device declare what it needs (its pieces, [host]) so the compiler and rust-analyzer check it: typed Rust per device, TOML with a generated schema, or serde as now?
+
+Found
+: The author's question (2026-11-18, via the coordinator): no config files if possible - declarations rust and LSP-workable, relatable by machine, not in someone's head or a drifting manual. What is: device.toml is read by three crates in three shapes - devlab/src/device.rs (no deny_unknown_fields at the top or in flash, overlay, provision, install, connection: a misspelled [[flash.overlays]] is silently ignored, though the template's header says unknown fields are refused), host/src/lib.rs ([device] codename, [host] strictly, [tools] lpoco and [fastboot] serial loosely from a toml::Value) and bringup/src/boot.rs ([boot] only); no one declaration says what the file may hold. argenv (rust-with-argenv) declares an input once in code as the accessor and projects it to a published contract; its README names a hand-written sidecar schema as what drifts. Research bringup-home-follow-and-rhizoid: a tool is followed by a pin, device parts live beside it as data, hooks, or a rust-script on the pinned library; decision 2026-11-17-the-phone-is-data keeps device labs data only.
+Options. (A) A typed Rust declaration per device (a crate of consts the tool links, or a rust-script on the pinned lpoco library): rename and go-to-definition across devices, errors at build - but every device change becomes a build of the device's code at the lab, the device crate pins a 0.x library, the lab would run code from each device repository, and the-phone-is-data is reversed. (B) TOML whose schema is projected from one set of Rust types (schemars, draft-07; deny_unknown_fields becomes additionalProperties false, doc comments become hover text), published per lpoco release, named on the file's first line (#:schema, taplo / Even Better TOML: completion, validation, hover), checked in CI of lab-tools (the committed schema equals the types) and of each device repository (its device.toml against the pinned schema) - the argenv way for a file: declared in code, projected, never written twice. No jump from a TOML key to its Rust field (JSON Schema carries no source location); x-taplo links can point at the field's docs. confique adds a template generated from the types (the device-template file cannot drift) but no schema, and would rewrite the types. Kconfig is the same split (typed schema, plain values, a checker); Nix modules check at evaluation. (C) Today: caught at load time, on the lane, after merge - or not at all where no deny_unknown_fields stands.
+Finding: B gives the machine-checked part of the author's ask at a day's cost and keeps device repositories data; A gives rename at the price of a build and foreign code per device change. What is a piece (its files, path, version) belongs in Rust in the roof; a device only names roof pieces by token, as argenv's allowed TOKENS.
+
+Sources
+: schemars,taplo-schema-directive,kconfig-language,confique,argenv-readme
+
+About
+: phone-side-pieces
+
+Material
+: research/phone-side-pieces/2026-11-18/
+
+
+<a id="phone-side-pieces-how-it-stands"></a>
+### phone-side-pieces-how-it-stands
+
+Brief
+: Phone-side pieces: decided (roof package, drift named by host check, manifest schema from Rust), not built; queue of 11 items unranked, first the failing drift test
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: Where do phone-side pieces stand, and what is next?
+
+Found
+: How it stands, 2026-11-18. Decided, not built: decision 2026-11-18-phone-side-pieces-under-the-roof (research phone-side-pieces-landscape) and decision 2026-11-18-device-manifest-schema-from-rust (research device-declaration-typed-landscape, the author's question of declarations a machine relates). Inventory of 20 pieces and the failing test's full text: research/phone-side-pieces/2026-11-18/inventory.md. Queue, unranked, for the author: lab-tools phone-side-pieces (umbrella), phone-pieces-drift-named (its test host/tests/phone_pieces.rs written first - not landed, lab-tools has no ignored-test convention and it cannot compile before the function), health-reports-pieces, lpoco-awake, manifest-one-schema, bringup-generic-init; surya-lab surya-awake-from-package (phone, after lpoco-awake), surya-manifest-schema; google-walleye-lab walleye-manifest-schema, walleye-init-from-roof; device-template template-manifest-schema; upstream items sxmo-autosuspend-backoff, sxmo-suspend-stop-by-profile, qcom-wdt-armed-in-suspend (each waits on the author's word). device-template's own dt-usb-awake is answered by lpoco-awake and left to its owner. Today surya still runs the hand-put copy of PR 205/208; nothing names it stale until phone-pieces-drift-named and health-reports-pieces land. Not known: whether walleye's kernel has CONFIG_PM_WAKELOCKS (the awake piece needs it when walleye runs a rootfs); whether taplo takes schemars' draft-07 output for [[array]] tables unchanged (a ten-minute try in manifest-one-schema).
+
+Sources
+: surya-lab-pr-195,surya-lab-pr-205
+
+About
+: phone-side-pieces
+
+Material
+: research/phone-side-pieces/2026-11-18/

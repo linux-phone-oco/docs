@@ -3460,3 +3460,227 @@ By
 
 Takes
 : SBU1 = TX, SBU2 = RX, DIP 1.8/3.3 V (a wrong setting can damage the target), orientation-specific, archived 2023-01-10, not an official Google product
+
+
+<a id="sxmo-autosuspend"></a>
+### sxmo-utils scripts/core/sxmo_autosuspend.sh, sxmo_suspend.sh, sxmo_wakelock.sh (868b5c9)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git.sr.ht/~mil/sxmo-utils/tree/master/item/scripts/core/sxmo_autosuspend.sh
+
+By
+: orchestration-renewed
+
+Takes
+: wakeup_count handshake blocks on any wake lock; a failed suspend is retried after sleep 1 with no backoff; sxmo_suspend.sh stops hexagonrpcd-adsp-sensorspd for google,b4s4-sdm670 by name
+
+
+<a id="sxmo-block-suspend-hook"></a>
+### sxmo-utils configs/default_hooks/sxmo_hook_block_suspend.sh and the hooks PATH (sxmo_init.sh, sxmo.7)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git.sr.ht/~mil/sxmo-utils/tree/master/item/configs/default_hooks/sxmo_hook_block_suspend.sh
+
+By
+: orchestration-renewed
+
+Takes
+: suspend blocked by ssh on port 22, calls, hotspot, sxmo.nosuspend; no USB-gadget reason; hooks overridden per device by ~/.config/sxmo/hooks/DEVICE
+
+
+<a id="sxmo-configversion"></a>
+### sxmo-utils setup_config_version.sh and sxmo_migrate.sh: configversion stamp
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git.sr.ht/~mil/sxmo-utils/tree/master/item/setup_config_version.sh
+
+By
+: orchestration-renewed
+
+Takes
+: a hash stamped on line 2 of each installed hook, compared at migrate: sxmo's own drift check of installed copies
+
+
+<a id="kernel-sysfs-power-wakelock"></a>
+### Linux ABI: sysfs-power wake_lock, wake_unlock, autosleep
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-power
+
+By
+: orchestration-renewed
+
+Takes
+: wake_lock NAME [TIMEOUT_NS], needs CONFIG_PM_WAKELOCKS and CAP_BLOCK_SUSPEND; autosleep and the wakeup_count handshake both refuse to suspend while one is held
+
+
+<a id="apk-audit"></a>
+### apk-audit(8)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://man.archlinux.org/man/apk-audit.8.en
+
+By
+: orchestration-renewed
+
+Takes
+: installed files compared with the package database (U changed, X deleted); an unpackaged file in /usr/local cannot be audited
+
+
+<a id="pmbootstrap-sideload"></a>
+### pmbootstrap usage: sideload
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.postmarketos.org/pmbootstrap/main/usage.html
+
+By
+: orchestration-renewed
+
+Takes
+: build a package and apk add it on a phone over ssh: pmOS's route for a package not in a repository; no test-provisioning package exists in pmaports
+
+
+<a id="mobian-tweaks-inhibit"></a>
+### Mobian wiki: Tweaks (gnome-session-inhibit for ssh)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.debian.org/Mobian/Tweaks
+
+By
+: orchestration-renewed
+
+Takes
+: Mobian keeps a phone awake for ssh with a logind inhibitor that lives as long as the session: no kernel wake lock
+
+
+<a id="surya-lab-pr-195"></a>
+### surya-lab PR 195: hold the devlab-usb wake lock always; autosleep-off check
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/linux-phone-oco/surya-lab/pull/195
+
+By
+: orchestration-renewed
+
+Takes
+: the keep-awake changed on main while the phone ran the 2026-11-10 flashed copy
+
+
+<a id="surya-lab-pr-205"></a>
+### surya-lab PR 205: devlab-usb-awake provisioned on surya, hand-over
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/linux-phone-oco/surya-lab/pull/205
+
+By
+: orchestration-renewed
+
+Takes
+: the fix reached the phone by hand, with nothing to tell the next change it stays current
+
+
+<a id="schemars"></a>
+### schemars: JSON Schema from Rust types
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.rs/schemars/latest/schemars/
+
+By
+: orchestration-renewed
+
+Takes
+: deny_unknown_fields becomes additionalProperties false, doc comments become descriptions; draft07 setting; already in lab-tools' Cargo.lock through rmcp
+
+
+<a id="taplo-schema-directive"></a>
+### taplo: #:schema directive and schema association
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://taplo.tamasfe.dev/configuration/directives.html
+
+By
+: orchestration-renewed
+
+Takes
+: a TOML file names its JSON Schema on its first line; editors complete and validate it; x-taplo links on keys
+
+
+<a id="kconfig-language"></a>
+### Kconfig language
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.kernel.org/kbuild/kconfig-language.html
+
+By
+: orchestration-renewed
+
+Takes
+: a typed schema in one place, values in defconfig, checked by the tool: schema and values apart, checked together
+
+
+<a id="confique"></a>
+### confique: typed config with a generated template
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/LukasKalbertodt/confique
+
+By
+: orchestration-renewed
+
+Takes
+: a commented template TOML generated from the Rust type: the template cannot drift; no JSON Schema
+
+
+<a id="argenv-readme"></a>
+### argenv README: the approaches, and why this one
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/argenv-opencommons/argenv
+
+By
+: orchestration-renewed
+
+Takes
+: declare in code as the accessor, project to a published contract; a sidecar schema written by hand drifts

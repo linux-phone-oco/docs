@@ -3701,3 +3701,326 @@ Rank
 
 About
 : lpoco-host
+
+
+<a id="phone-side-pieces"></a>
+### Phone-side pieces under the roof: carried by the lab-tools package, named by token in device.toml, a stale copy named by lpoco host check
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-18-phone-side-pieces-under-the-roof. Steps: phone-pieces-drift-named (its failing test first), health-reports-pieces, lpoco-awake; then surya-awake-from-package on the phone. The manifest's one schema is manifest-one-schema (decision 2026-11-18-device-manifest-schema-from-rust).
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: host/tests/phone_pieces.rs check_names_a_stale_phone_piece and check_names_a_package_off_its_pin_and_passes_a_current_phone pass; acceptance: on the lab, lpoco host check names no stale piece of surya while surya holds the wake lock from the package, with no /usr/local/bin/devlab-usb-awake
+
+About
+: dt-any-phone
+
+
+<a id="phone-pieces-drift-named"></a>
+### lpoco host check names a stale phone-side piece, from the phone's last gathered report
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Write the failing test first: the full text is in docs research/phone-side-pieces/2026-11-18/inventory.md (not landed - lab-tools has no ignored/expected-fail convention and it does not compile until the function exists). lpoco_host gains blob_id (git's blob id), stale_pieces(device, report, main) -> Vec<Stale> (File {path, found, main} for each declared overlay/install/device check whose reported blob differs from origin/main's; Package {name, found, pin} for a lab-tools package off the [tools] lpoco pin). check reads each device's newest tests/results/*.jsonl at origin/main, names the commit the installed copy came from (git log --find-object) and the report's age. Then lpoco lab names the same at every change's end from the report it reads back.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: host/tests/phone_pieces.rs check_names_a_stale_phone_piece, check_names_a_package_off_its_pin_and_passes_a_current_phone (to write, failing first)
+
+About
+: phone-side-pieces
+
+
+<a id="health-reports-pieces"></a>
+### lpoco-health reports what lab pieces the phone holds: each package's version and each declared file's git blob id
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: suite put writes the declared targets (flash overlays, provision installs, the phone's own checks) into /etc/lpoco-health/health.env; a generic check (base, component lab-pieces) prints one row per file (path blob ID, or missing) and one per lab-tools package (apk list --installed), every boot. Reads only. Busybox computes the blob id: { printf 'blob %s\0' "$(wc -c < F)"; cat F; } | sha1sum.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: health/tests/pieces_report.rs under LPOCO_HEALTH_ROOT: a made-up phone with one declared file and one package reports both rows with the blob id git hash-object gives for that file (to write)
+
+About
+: phone-side-pieces
+
+
+<a id="lpoco-awake"></a>
+### The lab phone's keep-awake as lpoco-health awake: a unit in the package, gates named by device.toml, its generic check
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Carries surya-lab lab/devlab-usb-awake (PR 195, 208) into lab-tools: lpoco-health awake holds the kernel wake lock lpoco-awake always; with /etc/lpoco/allow-autosleep only while the UDC is configured or a named gate says unsafe (bluetooth-not-up: hci0 not UP or an rfkill in D state - surya's r4 wedge). Unit lpoco-awake.service in the package; device.toml [health] awake_gates = [tokens]. Its check replaces surya's autosleep-off.sh, and reads the package, not a grep of an installed script. Deliberate suspends (lpoco-health suspend cycle) write /sys/power/state and are not held back. Answers device-template's dt-usb-awake (left as its owner keeps it).
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: health/tests/awake.rs under LPOCO_HEALTH_ROOT: the lock written always; with allow-autosleep, released when the UDC state is not configured and held again when the gate reports unsafe (to write); acceptance: surya-awake-from-package
+
+About
+: phone-side-pieces
+
+
+<a id="manifest-one-schema"></a>
+### device.toml declared once in Rust: one manifest crate all lpoco programs read, unknown fields refused everywhere, its JSON Schema projected per release
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-18-device-manifest-schema-from-rust. Today devlab, host and bringup each parse device.toml in their own shape and devlab ignores a misspelled table. One crate (lpoco-manifest) holds the serde types with doc comments; devlab, host and bringup read it; schemars (draft-07, already in Cargo.lock via rmcp) projects device.schema.json, committed and published with each release; roof pieces are an enum with tokens. A generated device.toml template with every field's doc beside it is the device-template file.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: manifest/tests/schema.rs a_misspelled_table_is_refused ([[flash.overlays]] refused - fails against today's devlab Device), schema_is_current (the committed schema equals the projection), every_lab_manifest_validates (surya, walleye and template fixtures) (to write, the first failing first)
+
+About
+: phone-side-pieces
+
+
+<a id="bringup-generic-init"></a>
+### The bring-up init under lpoco bringup: configfs gadget (ECM, ACM, mass storage window), DHCP, shell and the FunctionFS ACM console, from the device's data
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: walleye carries ~20 init variants in build/initramfs*/ and ffs-acm-rs; lpoco bringup already makes the cpio (bringup/src/initramfs.rs) with the gadget address a variable. The generic init and console come into lab-tools; the device names its serial, address and functions in device.toml [boot].
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: google-walleye-lab build/selftest-initramfs.sh (QEMU, dummy_hcd) passes with the init lpoco bringup makes from walleye's device.toml and none of walleye's own init files (to adapt)
+
+About
+: phone-side-pieces
+
+
+<a id="surya-awake-from-package"></a>
+### surya keeps awake by the package's lpoco-awake: the hand copy and its overlay gone
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: By the keeper: suite put brings the package with the awake unit; disable devlab-usb-awake.service, remove /usr/local/bin/devlab-usb-awake and its unit; surya-lab drops the two [[flash.overlay]] entries, the enable entry and tests/health/base/autosleep-off.sh in the same change.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: lpoco-awake
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: the generic awake check passes across a reboot, lpoco host check names no stale piece of surya, and no suspend loop for an hour on USB (dmesg PM: suspend entry count 0)
+
+About
+: phone-side-pieces
+
+
+<a id="surya-manifest-schema"></a>
+### surya's device.toml names the pinned schema and its CI checks it
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: One #:schema line at the top, pinned to the lpoco release surya follows; a CI step validates (lpoco lab manifest check or taplo lint).
+
+Opened
+: 2026-11-18
+
+Blocked by
+: manifest-one-schema
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: surya-lab CI fails a branch whose device.toml misspells a table, and passes main
+
+About
+: phone-side-pieces
+
+
+<a id="walleye-manifest-schema"></a>
+### walleye's device.toml names the pinned schema and its CI checks it
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: As surya-manifest-schema.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: manifest-one-schema
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: google-walleye-lab CI fails a branch whose device.toml misspells a table, and passes main
+
+About
+: phone-side-pieces
+
+
+<a id="walleye-init-from-roof"></a>
+### walleye's boot images take the init lpoco bringup makes; its own init variants retire
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Its gadget serial, address and functions move to device.toml [boot]; build/initramfs*/ and build/ffs-acm* stay in history.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: bringup-generic-init
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: build/selftest-initramfs.sh passes with the roof's init; the next keeper boot shows the gadget serial walleye-first-boot
+
+About
+: phone-side-pieces
+
+
+<a id="template-manifest-schema"></a>
+### The template's device.toml is the generated one, naming the pinned schema, and its CI checks it
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: A new phone's lab then gets completion, hover and the check from its first commit; the header's claim that unknown fields are refused becomes true.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: manifest-one-schema
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: device-template CI validates device.toml against the schema of the pinned release
+
+About
+: phone-side-pieces
