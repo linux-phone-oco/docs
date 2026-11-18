@@ -1375,3 +1375,28 @@ About
 
 Research
 : hardware-world
+
+
+<a id="2026-11-18-lpoco-lab-declares-its-command-line-once-with"></a>
+### 2026-11-18-lpoco-lab-declares-its-command-line-once-with
+
+Brief
+: lpoco-lab declares its command line once with argenv: command then action, the tree in cli.rs; clap gone
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-18
+
+Decision
+: devlab/src/cli.rs holds contract! inputs (positionals scoped to the command, flags, the env it reads) and a TREE of commands and actions with their arguments and flags; --help, argument counts and per-action flag checks read it. suite put's --runner [FILE] becomes --runner FILE or --built-runner. Usage mistakes exit 2 with the usage; help wins over a mistake.
+
+Why
+: argenv scopes inputs to the first word only and has no optional-value flag; the tree restores per-action scoping. Programmer review found sibling-action flags silently accepted and exit codes split 1/2: both fixed.
+
+Rejected
+: Generic ARG0..ARG4 inputs (help says nothing); keeping clap beside argenv (two declarations of one surface); a hand parser for the optional-value flag (practice 43)
+
+About
+: lpoco-lab-argenv
