@@ -2407,3 +2407,24 @@ Rejected
 
 About
 : patrol-measures-the-start
+
+---
+
+
+<a id="2026-11-18-health-reports-pieces-built"></a>
+### health-reports-pieces built and landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: lab-tools PR 150: lab-pieces check, PIECE_FILES in health.env from devlab suite put, lib.sh reads health.env under LPOCO_HEALTH_ROOT; proof test seen failing first; review fixed three defects (quote injection, id collision, package prefix match), skipped if_exists overlays, skip when apk fails.
+
+Considered
+: Component id lab-pieces is not in docs components, so no test row was recorded; the check says lab-pieces as the backlog note named it.
+
+About
+: health-reports-pieces

@@ -1684,3 +1684,28 @@ About
 
 Research
 : device-declaration-typed-landscape
+
+
+<a id="2026-11-18-pieces-rows-report-not-judge"></a>
+### 2026-11-18-pieces-rows-report-not-judge
+
+Brief
+: lab-pieces rows are facts: a missing file or package is a pass saying missing; the lab judges drift from the pin
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-18
+
+Decision
+: The check base/94-lab-pieces.sh passes every row. A declared file or package the phone lacks reads 'PATH missing' in the detail. Rows are keyed piece-file:PATH and piece-package-NAME. A quote in a manifest path is refused by devlab suite put. Overlays with if_exists are not declared.
+
+Why
+: The phone cannot know the pin; failing on a missing file would turn phones red for overlays never meant to be there. The review showed that mapping / to - collides ids and that quotes in PIECE_FILES would run as root when health.env is sourced.
+
+Rejected
+: Fail on missing (noise, and a judgement without the pin); skip on missing (skip means could not be measured, and this was measured); ids with / mapped to - (collide).
+
+About
+: health-reports-pieces

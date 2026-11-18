@@ -3769,10 +3769,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: suite put writes the declared targets (flash overlays, provision installs, the phone's own checks) into /etc/lpoco-health/health.env; a generic check (base, component lab-pieces) prints one row per file (path blob ID, or missing) and one per lab-tools package (apk list --installed), every boot. Reads only. Busybox computes the blob id: { printf 'blob %s\0' "$(wc -c < F)"; cat F; } | sha1sum.
+: Landed in lab-tools PR 150 (read back from main): base/94-lab-pieces.sh, devlab suite put writes PIECE_FILES; proof health/tests/pieces_report.rs (seen failing first). Next: phone-pieces-drift-named reads these rows; the phone proof (a boot reporting them) is surya's.
 
 Opened
 : 2026-11-18
