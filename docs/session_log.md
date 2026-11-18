@@ -2762,3 +2762,27 @@ Done
 
 About
 : base-graph
+
+---
+
+
+<a id="2026-11-18-device-layer-builder"></a>
+### The device layer served from docs; the template follows it
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: docs: device-layer/ (10 statements, the device part of tables.toml), generic, consumers, bin/check-device-layer.sh in make verify (#514), released as v0.17.0. device-template: devicebase.toml pins docs 0.17.0, device tables between device:begin/end, made-once list, own generic removed (#26). graph-drift.sh now reads the base's marked part (layer-follow) and compares it with docs' at the pin (layer-equal); template-drift.sh reads template, idealkb and docs. FAIL lines of graph-drift 36 -> 30; the remaining layer ones are the two labs' (no source/version in devicebase.toml, device tables not between markers: follow.sh lays nothing and ends 'the pin did not move' until they do).
+
+Considered
+: Moving the skeleton (Makefile, install-tad.sh, workflows) into device-layer/ now; one change for the template's two items instead of two.
+
+Rejected
+: The skeleton into device-layer/ this round: tad's pin job edits bin/install-tad.sh in each consumer, so a second copy in docs would be stale at the next release and revert the labs' tad pin. Making template-drift.sh follow the template's list: the list is gone, the sources' generic lists decide.
+
+About
+: device-layer-in-docs
