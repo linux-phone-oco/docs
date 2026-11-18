@@ -312,4 +312,4 @@ Deep sleep that wakes for calls and messages × Xiaomi POCO X3 NFC
 
 <a id="kernel--xiaomi-surya"></a>
 Kernel (boots without unexpected warnings) × Xiaomi POCO X3 NFC
-: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-17 — judged: unknown
+: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-18 — judged: unknown
