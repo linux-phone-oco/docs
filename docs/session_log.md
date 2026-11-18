@@ -2720,3 +2720,27 @@ Rejected
 
 About
 : base-graph
+
+---
+
+
+<a id="2026-11-18-lab-tools-builder-restore-share"></a>
+### Restore the per-device share
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Cherry-picked e764ffd onto main by hand, kept #175 fs_root, fixed the plan.rs systemctl stub to follow state; landed #177, release 0.17.1.
+
+Considered
+: Reverting #165 (no: its stale-piece check stays).
+
+Rejected
+: Putting back the [0.14.2] changelog sections: the changelog check refuses a changelog changed with no version bump (they are release-plz's).
+
+About
+: restore-share-per-device
