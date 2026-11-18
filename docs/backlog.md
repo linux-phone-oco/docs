@@ -3172,15 +3172,19 @@ Status
 Note
 : Left by lpoco-rename-lab-tone (lab-tools #86): ~450 references across AGENTS.md, READMEs, briefs, device.toml comments, launchers, devlab-watch@ units and scripts still say devlab or tone. Sweep one repository per change after lpoco-mcp-one-door lands; the second [[bin]] aliases go only when a grep across linux-phone-oco finds no old name in use.
 Built with the programmer subagent's review (ideal-agent:programmer) before landing; nothing that needs the author's hands or a root rule change (the coordinator, 2026-11-18).
+2026-11-18: slices landed and read back: lab-tools #99, #100; docs #400; device-template #12; surya-lab #166 (9 files, the lane's yes); google-walleye-lab #100 (10 files, the lane's yes). Left, staying as they are on purpose: history rows and research; the keeper-run and try/build scripts in both labs (the lanes said no); lab host files and devlab-watch@ (the lab's, through lpoco-host). Left to build: lab-tools' own source strings and comments (~340 refs) and lpoco lab mcp --help ('devlab's door'). The devlab and tone aliases stay while the scripts call them.
 
 Opened
 : 2026-11-17
 
-Waits
-: the surya and walleye lane coordinators' answers to their line lists (sent 2026-11-18; ~40 lines each), then a builder lands what each agreed
+Needs
+: build
 
 Device
 : google-walleye
+
+Rank
+: 6
 
 About
 : bringup
