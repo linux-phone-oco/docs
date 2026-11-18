@@ -3017,3 +3017,27 @@ Considered
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-18-bringup-steps-off-side"></a>
+### Bring-up steps: the off side of a phone
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: Added the off side after the author's word that surya cannot stay off (only eOS recovery's power-off held). Seven new steps, in power unless noted: pon-reason-read, reset-types-right (PS_HOLD and the reset type vs the reboot path), charger-mode-entered, reset-state-survives, key-reset-recovers, rtc-alarm-powers-on, and alarm-wakes-from-sleep in sleep. power-off-stays-off was re-recorded with its new needs, and 22 edges were added. daily-usable-phone now also needs alarm-wakes-from-sleep and key-reset-recovers, and reaches charger-mode-entered through off-mode-charging; complete-phone needs rtc-alarm-powers-on and reset-state-survives. World gaps: a maintained charger mode, and an alarm that survives power-off. daily-phone.sh: the shape passes (daily-usable-phone needs 82 steps; tad q bringup-chain --goal daily-usable-phone agrees); every device still fails. Script: research/bringup-steps/2026-11-18-phone-stages/off-side.sh.
+
+Considered
+: The author's guess, a separate small OS or processor that shows charging while off. On Android it is the always-on PMIC, which charges, keeps the RTC and records why it powered on, plus the same kernel booted with androidboot.mode=charger, where init runs only the charger (Sailfish's act-dead mode). Linux has the pieces (the PON block, rtc-pm8xxx, PSCI SYSTEM_OFF). What is missing is the user space and the boot chain acting on the power-on reason.
+
+Rejected
+: An amendment to decision 2026-11-18-bringup-steps-phone-stages-and-goal-steps: these are more steps of the same kind, with no change of rule. New sources and research rows: the guides cite existing sources (downstream-qpnp-power-on-sm6150, ramoops-doc, sailfish-hadk-checklist, pmaports-charging-sdl-1064), and this change touches only bringup_* rows and this log while docs-builder works in docs.
+
+About
+: bringup-steps

@@ -3351,3 +3351,333 @@ Kind
 
 Why
 : a phone woken by chatter does not stay low (floor-irq-quiet)
+
+
+### Row 224
+
+Step
+: pon-reason-read
+
+Requires
+: pmic-bound
+
+Kind
+: hard
+
+Why
+: the reasons are the PMIC's registers
+
+
+### Row 225
+
+Step
+: reset-types-right
+
+Requires
+: pmic-bound
+
+Kind
+: hard
+
+Why
+: the reset types are the PMIC's
+
+
+### Row 226
+
+Step
+: reset-types-right
+
+Requires
+: pon-reason-read
+
+Kind
+: soft
+
+Why
+: blind without it: the next boot's reason is the proof
+
+
+### Row 227
+
+Step
+: power-off-stays-off
+
+Requires
+: reset-types-right
+
+Kind
+: hard
+
+Why
+: off must end in the PMIC's shutdown, not a reset
+
+
+### Row 228
+
+Step
+: power-off-stays-off
+
+Requires
+: pon-reason-read
+
+Kind
+: soft
+
+Why
+: tells a reboot from a charger or alarm power-on
+
+
+### Row 229
+
+Step
+: charger-mode-entered
+
+Requires
+: pon-reason-read
+
+Kind
+: hard
+
+Why
+: a charger power-on is told by its reason
+
+
+### Row 230
+
+Step
+: charger-mode-entered
+
+Requires
+: power-off-stays-off
+
+Kind
+: hard
+
+Why
+: a charger mode needs an off to start from
+
+
+### Row 231
+
+Step
+: charger-mode-entered
+
+Requires
+: panel-lit
+
+Kind
+: hard
+
+Why
+: it shows the level
+
+
+### Row 232
+
+Step
+: charger-mode-entered
+
+Requires
+: battery-gauge-reads
+
+Kind
+: soft
+
+Why
+: the level is the gauge's
+
+
+### Row 233
+
+Step
+: off-mode-charging
+
+Requires
+: charger-mode-entered
+
+Kind
+: hard
+
+Why
+: the screen and the power key while off
+
+
+### Row 234
+
+Step
+: reset-state-survives
+
+Requires
+: pon-reason-read
+
+Kind
+: hard
+
+Why
+: read after each kind of reset
+
+
+### Row 235
+
+Step
+: reset-state-survives
+
+Requires
+: watchdog-way-back
+
+Kind
+: hard
+
+Why
+: the watchdog state is part of it
+
+
+### Row 236
+
+Step
+: key-reset-recovers
+
+Requires
+: pmic-bound
+
+Kind
+: hard
+
+Why
+: the key reset is the PMIC's
+
+
+### Row 237
+
+Step
+: key-reset-recovers
+
+Requires
+: pon-reason-read
+
+Kind
+: soft
+
+Why
+: the reason proves it was the key
+
+
+### Row 238
+
+Step
+: rtc-alarm-powers-on
+
+Requires
+: power-off-stays-off
+
+Kind
+: hard
+
+Why
+: it must be off to be turned on
+
+
+### Row 239
+
+Step
+: rtc-alarm-powers-on
+
+Requires
+: pon-reason-read
+
+Kind
+: hard
+
+Why
+: the reason reads RTC alarm
+
+
+### Row 240
+
+Step
+: alarm-wakes-from-sleep
+
+Requires
+: real-suspend-under-shell
+
+Kind
+: hard
+
+Why
+: it sleeps as in daily use
+
+
+### Row 241
+
+Step
+: alarm-wakes-from-sleep
+
+Requires
+: speaker-heard
+
+Kind
+: hard
+
+Why
+: it rings
+
+
+### Row 242
+
+Step
+: daily-usable-phone
+
+Requires
+: alarm-wakes-from-sleep
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 243
+
+Step
+: daily-usable-phone
+
+Requires
+: key-reset-recovers
+
+Kind
+: hard
+
+Why
+: a person needs it every day
+
+
+### Row 244
+
+Step
+: complete-phone
+
+Requires
+: rtc-alarm-powers-on
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
+
+
+### Row 245
+
+Step
+: complete-phone
+
+Requires
+: reset-state-survives
+
+Kind
+: hard
+
+Why
+: everything the hardware does, lasting
