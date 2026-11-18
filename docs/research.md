@@ -1540,3 +1540,96 @@ Sources
 
 About
 : bringup-steps
+
+
+<a id="base-graph-measured"></a>
+### base-graph-measured
+
+Brief
+: The graph measured: 12 edges, 3 moved by a job, 6 by hand, 5 behind today; own files are a one-way exit and nothing carries a change up; the parts contract has two homes
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: What is the real dependency graph of idealkb, docs, device-template, the device bases, lab-tools and the forks: who pulls what, which way, by which tool, and how does drift show (the author, 2026-11-18)?
+
+Found
+: Measured at origin/main of each (idealkb v0.16.0, docs 608b61f, device-template d6eae9e, surya-lab 42da677, google-walleye-lab f0e0fc2, lab-machine fb75285), read only.
+Files go down: idealkb's slice reaches docs, ideal-agent, device-template and both labs by follow.sh/update-pins (hourly, every pin 0.16.0, current; since 0.16.0 a source names its pin and marker, ./sources lists device-template, skipped until it releases; check-one-owner stops two owners). device-template's 10 statements and the 4 device tables (devices, parts, test_runs, test_results - outside any marker) reach the labs by hand; the pin is a date. tad reaches every base by a weekly job whose consumers list lacks the three device bases; docs' CI runs tad 0.6.0, the rest 0.7.1. lab.toml pins lpoco 0.15.0 by hand; 0.17.0 was tagged the same day. sxmo-utils master on grenudi is 4 commits behind sr.ht, nothing fetches it; grenudi/linux is a GitHub fork, current.
+Rows go up: docs pulls each lab's parts.json at main by DuckDB (contract parts = 1); component ids agree today by hand (none unknown) and nothing carries docs' catalogue or step ids down.
+Changes go up: nowhere by a tool. A followed file edited below ends follow.sh with 3 and a PR in the follower for a person; nothing reaches the source. own is a one-way exit: docs keeps 7 own files, 6 statements differ from idealkb's (decision.sql lacks --supersedes/--amends/--scope/--tracked-by since 0.14.0, so docs cannot record a superseding decision through its record; 0 decisions carry either), docs' tables.toml has no idealkb part, each device base's own tables.toml lacks 101 lines of idealkb 0.16.0's part; no upstream item names any of it (docs: 0 items to idealkb or the template; labs: 0).
+The parts contract has two homes: declared by device-template, read by docs; bring-up steps will repeat it (catalogue in docs, claim table in the template). Every contract change is two PRs in two repositories and two release trains.
+In all: 12 edges, 3 moved by a job (idealkb slice, tad, docs feeds), 6 by hand, 5 behind today. Failing test graph-drift.sh in the material: exit 1, 36 FAIL, 9 ok.
+
+Sources
+: idealkb-chain-follow,rhizoid-repo,rhizoid-design-log
+
+About
+: base-graph
+
+Material
+: research/base-graph/2026-11-18/
+
+
+<a id="base-graph-world"></a>
+### base-graph-world
+
+Brief
+: Only copybara (JVM) carries root-level files down and changes up; layered projects share four rules: one owner per file, named overrides with a status, fatal pins, a scheduled integrator report
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: What exists in the world for a chain of repositories that share files and must let changes travel both ways - subtree, submodules, josh, copybara, gbp-pq/quilt, stgit, topgit, Nix inputs, Yocto layers, Android repo, Gentoo/Arch overlays, copier/cruft, the kernel's maintainer trees - and what does each cost here (Python refused, Rust with argenv the house way)?
+
+Found
+: Down and up, root-level files: subtree and subrepo carry a whole directory both ways (split/push) but need a prefix, and tad reads its statements at the root; submodules pin a repository at a path, no files at the root. Android repo copies files outside any project's history (Python). Nix inputs live in the store and cannot be patched in place (nix#3920); update-flake-lock bumps only. copier/cruft: pin + "behind" and "edited" checks, down only, Python. Renovate, multi-gitter, turbolift, microplane: a pin bump or a script per repo with a PR, down only. copybara alone does both: a follower's PR becomes a change request on the source, GitOrigin-RevId records the import, check_last_rev_state fails when the destination changed, merge_import keeps a destination's own lines - at the cost of a JVM 21 and Starlark per workflow. josh (Rust) selects single files at the root (::f, ::dest=src) and pushes back through a view, but its truth is one monorepo and a follower cannot keep its own variant; push back from separate repositories is unknown. No Rust or shell tool does root-level slices both ways: idealkb's follow.sh is the house's answer and the gap is real.
+Layering: Yocto (oe-core, distro, BSP): one owner per recipe, overrides as named .bbappend files, a dangling append an error, LAYERSERIES_COMPAT fatal, Upstream-Status required on every patch and an error by default, yocto-check-layer forbids a BSP changing others' signatures - the middle layer owns the contract the lowest is checked against. Gentoo: masters non-transitive (each overlay names every ancestor, as each base here pins each source), MasterPackageClobbered an error (check-one-owner). DEP-3: Forwarded/Applied-Upstream on each patch, yet 9.4% forwarded in trixie - a status that only warns moves nothing. Kernel: upstream first, a copy says "commit X upstream", linux-next merges every tree on a schedule and mails each conflict to its owners; ACK tags every carried commit UPSTREAM/BACKPORT/FROMGIT/FROMLIST/ANDROID. stgit (Rust 2.7.0) rebases a topic and empties what upstream took; topgit merges along .topdeps, dormant; git cherry finds a landed patch by patch-id with nothing installed. b4, gbp, copier, repo are Python.
+Take: a file has one owner, at the layer that owns its meaning (the contract's reader); an override is named and carries an upstream status, and a missing one fails; upstream first - a change is made at the owner and comes down by the pin; a follower's edit becomes a change request on the source (copybara); a scheduled integrator report names each drift to its owner (linux-next); landed patches retire by patch-id. Set aside every tool as a runtime: the house mechanism already lays slices, the gaps are the rules.
+
+Sources
+: git-subtree-doc,gitsubmodules,josh-filters,josh-repo,copybara-reference,android-repo-manifest,nix-flake-patch-issue,cruft,copier-updating,dep3,yocto-layers,yocto-patch-status,gentoo-layout-conf,kernel-process,ack-readme,stgit-releases,git-cherry
+
+About
+: base-graph
+
+Material
+: research/base-graph/2026-11-18/
+
+
+<a id="base-graph-how-it-stands"></a>
+### base-graph-how-it-stands
+
+Brief
+: How the repository graph stands: decided 2026-11-18-device-layer-from-docs, nothing of it built; graph-drift.sh 36 FAIL; first step idealkb's from-prefix, then the layer moves into docs
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: Hand-over: where does the repository graph stand, what is decided, what is the next step and what proves it?
+
+Found
+: Decided (2026-11-18-device-layer-from-docs, superseding 2026-11-18-device-template-follows-by-release): idealkb -> docs -> every device base; docs gives the device layer from device-layer/ (statements, the device tables' marked part, the skeleton), the template is a follower that keeps its made-once seed files; own needs an upstream item or a reason; a base's edit of a followed file goes up as a PR on the source; graph-drift.sh daily reports every edge; forks tracked by a daily fetch-and-test-merge job; git-rhizoid built after, by conformance (status, follow, send-back, cuttings).
+Stands: nothing built. graph-drift.sh (research/base-graph/2026-11-18/) exits 1 with 36 FAIL: docs own-behind x6 and own-part, each device base's own-part and own backlog.sql, layer-pin/owner/follow in the template and both labs, lpoco pin, tad pins and consumers, sxmo tracking.
+Next, in order: idealkb's from-prefix and skip-unchanged (upstream items, idealkb's owner) -> device-layer-in-docs (docs' owner) -> template-follows-docs, surya-follows-template, walleye-follows-template; in parallel docs-own-statements-up, docs-tables-idealkb-part, graph-drift-daily, tad-pins-every-base, lpoco-pin-follows, fork-tracking-job. Done when graph-drift.sh exits 0 (backlog base-graph). Waits on the author: the device layer moving into docs, and git-rhizoid unparked with this scope.
+
+Sources
+: idealkb-chain-follow,rhizoid-repo
+
+About
+: base-graph
+
+Material
+: research/base-graph/2026-11-18/

@@ -2758,7 +2758,7 @@ Status
 : in-progress
 
 Note
-: Decided 2026-11-17 (idealkb decision 2026-11-17-chain-follow-by-slice): the same pin-and-follow slice as idealkb, not a fork, subtree or Copier. Done: device-template lists what it gives (generic) and ships idealkb and itself as upstreams in its base. Next: device-template releases (release-please) and idealkb's follow-source-from-pin (update-pins reading its source from the pin file); then surya-lab and google-walleye-lab follow it with move-device-rows. Improvements go back as upstream items (PRs). rhizoid's missing slice mode is on git-rhizoid's backlog (slice-consumption).
+: Route changed by decision 2026-11-18-device-layer-from-docs: device bases follow the device layer from docs (device-layer-in-docs), the template is a follower (template-follows-docs), the labs follow docs (surya-follows-template, walleye-follows-template). Proof: graph-drift.sh layer lines ok.
 
 Opened
 : 2026-11-17
@@ -4372,7 +4372,7 @@ Status
 : open
 
 Note
-: Decision 2026-11-18-device-template-follows-by-release, step 1. Add a made-once list (device.toml, oco.toml, README.md, devicebase.toml, idealkb.toml, provision/packages.txt, .oco/uncommitted, data/); move Makefile, bin/install-tad.sh, tad.yml, gather.yml, .gitignore, tests/health/README.md and the .gitkeep files into generic; split the script check into a workflow a lab does not extend; a template:begin/end part in AGENTS.md for the general conventions; drop records/hardware.sql, records/hardware-status.sql, queries/hardware.sql from generic (idealkb 0.15.0 gives them). Owner: orchestration (device-template).
+: Reshaped by decision 2026-11-18-device-layer-from-docs: the template names every file it has - what docs' device layer gives (the statements, the device tables' part, the skeleton: Makefile, bin/install-tad.sh, tad.yml, gather.yml, .gitignore, check.yml, tests/health/README.md - these move to docs' device-layer/ by device-layer-in-docs) and a made-once list (device.toml, oco.toml, README.md, devicebase.toml, idealkb.toml, provision/packages.txt, .oco/uncommitted, data/). Its own generic list goes (template-follows-docs).
 
 Opened
 : 2026-11-18
@@ -4391,10 +4391,10 @@ Project
 : linux-phone-oco/device-template
 
 Status
-: open
+: done
 
 Note
-: Step 2. release-please as in idealkb; devicebase.toml template = "X.Y.Z" with own = [...] for template files a lab keeps; the template's own devicebase.toml comment says how a new lab sets it. The date pin (2026-11-17) is retired.
+: Closed, not done: decision 2026-11-18-device-layer-from-docs supersedes the route - the template releases nothing and is followed by nothing; docs' release carries the device layer and update-pins follows docs (device-layer-in-docs, template-follows-docs).
 
 Opened
 : 2026-11-18
@@ -4410,7 +4410,7 @@ About
 
 
 <a id="template-drift-in-ci"></a>
-### template-drift runs in CI: the template's (classified, one-source) and each lab's (pin, equal, no-copy), from a generic bin/template-drift.sh
+### template-drift's classified check runs in the template's CI; the labs' checks are graph-drift's (docs, daily)
 
 Project
 : linux-phone-oco/device-template
@@ -4419,16 +4419,16 @@ Status
 : open
 
 Note
-: Step 4. The failing test in docs research/device-template/2026-11-18/ becomes a generic file of the template; a lab's workflow clones the template at its pinned tag and idealkb at its pin, read-only. Like cruft check plus cruft diff --exit-code.
+: Reshaped by decision 2026-11-18-device-layer-from-docs: pin, equal and no-copy move to graph-drift.sh (graph-drift-daily); the template keeps classified.
 
 Opened
 : 2026-11-18
 
 Blocked by
-: template-releases
+: template-classifies-its-files
 
 Proof
-: a test PR to a lab that edits a template-generic file fails CI with a line naming the file; main of the template and both labs pass
+: a test PR to the template adding an unclassified file fails its CI with a line naming it
 
 About
 : device-template
@@ -4441,10 +4441,10 @@ Project
 : linux-phone-oco/device-template
 
 Status
-: open
+: done
 
 Note
-: Step 3. A change to the device layer then lands in the template only; no more parallel hand PRs. idealkb first, then the template, in one run.
+: Closed, not done: decision 2026-11-18-device-layer-from-docs supersedes the route - the template releases nothing and is followed by nothing; docs' release carries the device layer and update-pins follows docs (device-layer-in-docs, template-follows-docs).
 
 Opened
 : 2026-11-18
@@ -4463,7 +4463,7 @@ About
 
 
 <a id="surya-follows-template"></a>
-### surya-lab follows device-template's release: its copy of the list gone, check.yml and tests/health/README.md taken, the pin a release
+### surya-lab follows docs' device layer and device-template's skeleton files: devicebase.toml names source = linux-phone-oco/docs and a version, its list copy gone, check.yml and tests/health/README.md taken
 
 Project
 : linux-phone-oco/surya-lab
@@ -4472,13 +4472,13 @@ Status
 : open
 
 Note
-: Migration for decision 2026-11-18-device-template-follows-by-release; no phone. Measured drift today: generic copy 5 entries behind, check.yml without xargs -r, tests/health/README.md missing, devicebase.toml template = 2026-11-17. AGENTS.md outside the idealkb part stays its own until the template:begin part exists, then the general conventions come from the template.
+: Reshaped by decision 2026-11-18-device-layer-from-docs (it supersedes 2026-11-18-device-template-follows-by-release): the layer's source is docs, not a template release. About an hour, no phone; surya-lab's owner lands it in its base.
 
 Opened
 : 2026-11-18
 
 Blocked by
-: template-releases
+: device-layer-in-docs
 
 Needs
 : build
@@ -4487,14 +4487,14 @@ Device
 : xiaomi-surya
 
 Proof
-: docs research/device-template/2026-11-18/template-drift.sh device-template ideal-knowledge-base surya-lab: every surya-lab line says ok
+: research/base-graph/2026-11-18/graph-drift.sh: layer-pin, layer-owner, layer-follow ok for surya-lab
 
 About
 : device-template
 
 
 <a id="walleye-follows-template"></a>
-### google-walleye-lab follows device-template's release: its copy of the list gone, its rust job in its own workflow, the pin a release, stale PR 208 closed
+### google-walleye-lab follows docs' device layer: devicebase.toml names source = linux-phone-oco/docs and a version, its list copy gone, its rust job in its own workflow, stale PR 208 closed
 
 Project
 : linux-phone-oco/google-walleye-lab
@@ -4503,13 +4503,13 @@ Status
 : open
 
 Note
-: Migration for decision 2026-11-18-device-template-follows-by-release; no phone. Measured drift today: generic copy 5 entries behind, ffs-acm-rs job inside the template's check.yml, devicebase.toml template = 2026-11-17, PR #208 (the template's #15 by hand) open though main has it.
+: Reshaped by decision 2026-11-18-device-layer-from-docs: the layer's source is docs, not a template release. About an hour, no phone; walleye's owner lands it in its base.
 
 Opened
 : 2026-11-18
 
 Blocked by
-: template-releases
+: device-layer-in-docs
 
 Needs
 : build
@@ -4518,7 +4518,7 @@ Device
 : google-walleye
 
 Proof
-: docs research/device-template/2026-11-18/template-drift.sh device-template ideal-knowledge-base google-walleye-lab: every google-walleye-lab line says ok
+: research/base-graph/2026-11-18/graph-drift.sh: layer-pin, layer-owner, layer-follow ok for google-walleye-lab
 
 About
 : device-template
@@ -4859,3 +4859,204 @@ Rank
 
 About
 : lpoco-host-rest
+
+
+<a id="base-graph"></a>
+### Every edge of the repository graph moved by a tool and checked, both ways: files down from one owner, changes up as items, rows up by feeds
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: Decided 2026-11-18-device-layer-from-docs (research base-graph-measured, base-graph-world). graph-drift.sh: 36 FAIL today. Steps: device-layer-in-docs, docs-own-statements-up, docs-tables-idealkb-part, graph-drift-daily, tad-pins-every-base, lpoco-pin-follows (lab-tools), fork-tracking-job, template-follows-docs and template-classifies-its-files (device-template), surya-follows-template, walleye-follows-template; idealkb's side as upstream items idealkb-slice-from-prefix, idealkb-skip-unchanged-slice, idealkb-own-needs-item, idealkb-exit3-sends-up; git-rhizoid's scope as rhizoid-scope-every-edge.
+
+Opened
+: 2026-11-18
+
+Proof
+: research/base-graph/2026-11-18/graph-drift.sh exits 0
+
+
+<a id="device-layer-in-docs"></a>
+### docs gives the device layer: device-layer/ holds the 10 statements and the marked device part of tables.toml (devices, parts, test_runs, test_results; steps when it lands), a generic list (#! pin = devicebase.toml, #! marker = device, #! from = device-layer/), and takes device-template's place in idealkb's ./sources
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-18-device-layer-from-docs (1). docs' owner (orchestration) lands it. Waits on idealkb's from-prefix (upstream item idealkb-slice-from-prefix). The files move as device-template has them at d6eae9e; the template's list goes in the same week (template-follows-docs).
+
+Opened
+: 2026-11-18
+
+Waits
+: idealkb: upstream item idealkb-slice-from-prefix
+
+Proof
+: research/base-graph/2026-11-18/graph-drift.sh: layer-owner and layer-follow ok for every device base
+
+About
+: base-graph
+
+
+<a id="docs-own-statements-up"></a>
+### docs' six own statements (about, decision, research, backlog, session-log, source) each go up to idealkb as an item or are dropped for idealkb's
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-18-device-layer-from-docs (4). decision.sql lacks --supersedes/--amends/--scope/--tracked-by since idealkb 0.14.0 (this decision set them with ikb set). What docs adds (--project, a place per row) is the likely item: a base holding several places' records.
+
+Opened
+: 2026-11-18
+
+Proof
+: research/base-graph/2026-11-18/graph-drift.sh: own-behind ok for docs; ikb decision --supersedes accepted in docs
+
+About
+: base-graph
+
+
+<a id="docs-tables-idealkb-part"></a>
+### docs' tables.toml carries idealkb's marked part, so new generic fields and rules reach it at the follow
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-18-device-layer-from-docs (4); idealkb's gap tables-own-drift. docs' tables.toml has no idealkb:begin today.
+
+Opened
+: 2026-11-18
+
+Proof
+: research/base-graph/2026-11-18/graph-drift.sh: own-part ok for docs
+
+About
+: base-graph
+
+
+<a id="graph-drift-daily"></a>
+### graph-drift.sh runs daily in docs' CI and each FAIL line becomes an item for the edge's owner
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-18-device-layer-from-docs (5). Read-only, needs gh and the clones it reads (or fetches).
+
+Opened
+: 2026-11-18
+
+Proof
+: a scheduled run of the workflow, red today with the 36 FAIL lines, green when every edge holds
+
+About
+: base-graph
+
+
+<a id="tad-pins-every-base"></a>
+### Every base that installs tad is on tad-engine's consumers list and at its latest release (docs' CI is on 0.6.0)
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: tad-engine's owner adds device-template, surya-lab, google-walleye-lab to consumers; the weekly job then moves docs too.
+
+Opened
+: 2026-11-18
+
+Proof
+: research/base-graph/2026-11-18/graph-drift.sh: tad-pin ok for every base
+
+About
+: base-graph
+
+
+<a id="lpoco-pin-follows"></a>
+### lab.toml's lpoco pin is moved by a job when lpoco releases, or says why it holds
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-18-device-layer-from-docs (5). lab.toml (grenudi/lab-machine) pins 0.15.0, lpoco-v0.17.0 tagged the same day. The pin is the lab machine's; the job is the later rhizoid tool-pin edge.
+
+Opened
+: 2026-11-18
+
+Proof
+: research/base-graph/2026-11-18/graph-drift.sh: tool-pin ok
+
+About
+: base-graph
+
+
+<a id="fork-tracking-job"></a>
+### A daily lab job fetches each fork's upstream into its tracking branch, test-merges every topic onto it and retires topics upstream carries (git cherry)
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-18-device-layer-from-docs (6); the upstreams lane's. grenudi/sxmo-utils master is 4 behind sr.ht today.
+
+Opened
+: 2026-11-18
+
+Proof
+: research/base-graph/2026-11-18/graph-drift.sh: fork-track ok for grenudi/sxmo-utils and grenudi/linux
+
+About
+: upstream-forks
+
+
+<a id="template-follows-docs"></a>
+### device-template becomes a device base like the others: it pins idealkb and docs (devicebase.toml source/version), drops its generic list, keeps its made-once files
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: Decision 2026-11-18-device-layer-from-docs (2). The template builder's work, reshaped: the classification and made-once list stand; no template release.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: device-layer-in-docs,template-classifies-its-files
+
+Proof
+: research/base-graph/2026-11-18/graph-drift.sh: layer-pin, layer-owner ok for device-template; template-drift.sh classified ok
+
+About
+: device-template

@@ -4363,3 +4363,243 @@ By
 
 Takes
 : concrete proof commands for phone subsystems (test_gps, list-modems)
+
+
+<a id="git-subtree-doc"></a>
+### git-subtree(1), git contrib
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/git/git/blob/master/contrib/subtree/git-subtree.adoc
+
+By
+: orchestration-renewed
+
+Takes
+: Every command needs --prefix; split/push carries a subtree's history up. One directory, never files at the root among a base's own.
+
+
+<a id="gitsubmodules"></a>
+### gitsubmodules(7)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/git/git/blob/master/Documentation/gitsubmodules.adoc
+
+By
+: orchestration-renewed
+
+Takes
+: A gitlink pins a whole repository at a path; files at the root are not possible.
+
+
+<a id="josh-filters"></a>
+### josh filter reference
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://josh-project.dev/docs/reference/filters.html
+
+By
+: orchestration-renewed
+
+Takes
+: ::file and ::dest=src select single files at the root; filters reverse, so a push through a view lands at the source - in one monorepo.
+
+
+<a id="josh-repo"></a>
+### josh-project/josh
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/josh-project/josh
+
+By
+: orchestration-renewed
+
+Takes
+: Rust, date-tagged releases (r26.08.28); josh-proxy; changes publish opens a PR per commit; experimental parts unstated as stable.
+
+
+<a id="copybara-reference"></a>
+### copybara reference
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/google/copybara/blob/master/docs/reference.md
+
+By
+: orchestration-renewed
+
+Takes
+: CHANGE_REQUEST workflows carry a follower's PR to the source; GitOrigin-RevId, check_last_rev_state, merge_import. JVM 21, Starlark.
+
+
+<a id="android-repo-manifest"></a>
+### repo manifest format
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gerrit.googlesource.com/git-repo/+/HEAD/docs/manifest-format.md
+
+By
+: orchestration-renewed
+
+Takes
+: copyfile/linkfile lay files outside any project's history; up via repo upload to Gerrit; Python.
+
+
+<a id="nix-flake-patch-issue"></a>
+### NixOS/nix #3920: flake references to patches
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/NixOS/nix/issues/3920
+
+By
+: orchestration-renewed
+
+Takes
+: An input cannot be patched in place (open since 2020); inputs live in the store, not the follower's tree.
+
+
+<a id="dep3"></a>
+### DEP-3: patch tagging guidelines
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://dep-team.pages.debian.net/deps/dep3/
+
+By
+: orchestration-renewed
+
+Takes
+: Forwarded and Applied-Upstream on every carried patch; UDD counts them: 9.4% of trixie's forwarded - a warning alone moves nothing.
+
+
+<a id="yocto-layers"></a>
+### Yocto dev manual: layers
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.yoctoproject.org/dev-manual/layers.html
+
+By
+: orchestration-renewed
+
+Takes
+: One owner per recipe, named .bbappend overrides, a dangling append an error, yocto-check-layer forbids a BSP changing others' signatures.
+
+
+<a id="yocto-patch-status"></a>
+### Yocto recipe style guide: Upstream-Status
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.yoctoproject.org/contributor-guide/recipe-style-guide.html
+
+By
+: orchestration-renewed
+
+Takes
+: Every patch says Pending, Submitted, Backport, Denied, Inactive-Upstream or Inappropriate [reason]; patch-status is an error in ERROR_QA.
+
+
+<a id="gentoo-layout-conf"></a>
+### Gentoo layout.conf masters
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.gentoo.org/wiki/Repository_format/metadata/layout.conf
+
+By
+: orchestration-renewed
+
+Takes
+: masters are not inherited: each overlay names every ancestor; pkgcheck MasterPackageClobbered is an error.
+
+
+<a id="kernel-process"></a>
+### The Linux kernel development process
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.kernel.org/doc/html/latest/process/2.Process.html
+
+By
+: orchestration-renewed
+
+Takes
+: Subsystem trees, a chain of trust two or three links long; linux-next merges every tree and mails each conflict to both owners.
+
+
+<a id="ack-readme"></a>
+### Android Common Kernel README
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://android.googlesource.com/kernel/common/+/refs/heads/android-mainline/README.md
+
+By
+: orchestration-renewed
+
+Takes
+: Every carried commit is UPSTREAM, BACKPORT, FROMGIT, FROMLIST or ANDROID; a rejected patch is ANDROID, never FROMLIST.
+
+
+<a id="stgit-releases"></a>
+### stacked-git/stgit releases
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/stacked-git/stgit/releases
+
+By
+: orchestration-renewed
+
+Takes
+: Rust since 2.0 (2.7.0, 2026-10); rebase --merged leaves a patch upstream took empty.
+
+
+<a id="git-cherry"></a>
+### git-cherry(1)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git-scm.com/docs/git-cherry
+
+By
+: orchestration-renewed
+
+Takes
+: Finds by patch-id which commits of a topic upstream already has: retiring a carried patch needs no tool.
