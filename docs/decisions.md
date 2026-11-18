@@ -1425,3 +1425,28 @@ Rejected
 
 About
 : lpoco-tone-argenv
+
+
+<a id="2026-11-18-host-reads-device-from-origin-main"></a>
+### 2026-11-18-host-reads-device-from-origin-main
+
+Brief
+: lpoco host reads device.toml from a clone's fetched origin/main and prints which commit and how far behind
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-18
+
+Decision
+: In a git clone, plan/prepare/check fetch origin (no prompts, low-speed bound) and read device.toml from origin/main; a read: line names the commit, the checkout's lag, a differing working file, or why the file as it lies was read.
+
+Why
+: A stale detached google-walleye-lab clone without [host] planned no udev rule; a stale checkout must not hide the declaration.
+
+Rejected
+: Reading the working file only (the bug). Following origin/HEAD: main is the lab's only truth, so origin/main is fixed. Fetching only in plan: prepare would then act on a different commit than plan showed.
+
+About
+: lpoco-host-reads-origin-main
