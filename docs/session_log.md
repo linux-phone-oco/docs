@@ -3269,3 +3269,27 @@ Done
 
 About
 : bringup-generic-init
+
+---
+
+
+<a id="2026-11-18-bringup-init-ffs-console-switch"></a>
+### bringup init: ffs console switch
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: lab-tools #195: [boot.gadget] console = ffs starts the FunctionFS ACM helper from the init (tests first, programmer review: UDC wait kept, mount failure not followed by the helper, console name a placeholder).
+
+Considered
+: wait loop inside the ffs helper (it reads udc once; fixed in the init instead)
+
+Rejected
+: text replace of acm.usb0 after splicing: fragile, made a placeholder
+
+About
+: bringup-generic-init
