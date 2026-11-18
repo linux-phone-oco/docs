@@ -4186,10 +4186,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Sign (coordinator, 2026-11-18): prepare replaced land while a land was running and that land died with a syntax error - a shell script read in place while it is rewritten. Write to a temp file in the same directory, fsync, rename over the old one; a running reader keeps the old inode.
+: Landed in lab-tools #162 (read back from main): prepare writes each tool, rev stamp and watcher unit beside the old file, fsyncs, renames over it (replace_file in host/src/main.rs). Proof: host test a_script_running_while_prepare_replaces_it_finishes_with_its_old_text, seen failing first. Cargo installs land by cargo's own temp-and-rename, not covered by a test.
 
 Opened
 : 2026-11-18
