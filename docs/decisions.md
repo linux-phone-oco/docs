@@ -1714,3 +1714,41 @@ About
 
 Research
 : upstream-forks-landscape
+
+
+<a id="2026-11-18-device-template-follows-by-release"></a>
+### 2026-11-18-device-template-follows-by-release
+
+Brief
+: device-template is followed like idealkb: it names every file followed or made once, releases, labs pin it and update-pins lays it; template-drift fails CI on drift; no more hand fan-out
+
+Project
+: linux-phone-oco/device-template
+
+Date
+: 2026-11-18
+
+Decision
+: device-template becomes a second source in the pin-and-follow slice that idealkb already runs (carrying out idealkb decision 2026-11-17-chain-follow-by-slice for the template, and docs item device-template-follow):
+1. It names every file it has: `generic` (followed - laid at the pinned release, never edited in a lab unless the lab names it in own) and a new `made-once` list (laid at creation, then the lab's own: device.toml, oco.toml, README.md, devicebase.toml, idealkb.toml, provision/packages.txt, .oco/uncommitted, data/). The skeleton moves into generic: Makefile, bin/install-tad.sh, tad.yml, gather.yml, .gitignore, tests/health/README.md and the template's script check, in a workflow file a lab does not extend (a lab's own jobs go in its own file). AGENTS.md's general conventions get a template:begin/end part laid like idealkb's. The three hardware files leave the template's list: idealkb gives them; a file has one source.
+2. It releases (release-please, from v0.1.0); devicebase.toml names the release (template = "0.1.0") and own = [...] for template files a lab keeps as its own; a lab carries no copy of the list.
+3. idealkb's follow.sh and update-pins take their source from the pin (idealkb item follow-source-from-pin), and the template lists its consumers: one hourly job moves both pins, each through the lab's CI, idealkb first.
+4. template-drift (research material, failing today) runs in the template's CI (classified, one-source) and in each lab's (pin, equal, no-copy), so a hand edit or a stale lab fails at the PR, not at the next bump.
+5. A change to the device layer lands in the template only; labs get it by the release bump. What proves general for every base goes on to idealkb, as hardware did, and leaves the template's list in the same release.
+Logic never enters the template (decision 2026-11-17-the-phone-is-data): it reaches labs as lpoco by pin. device.toml's shape is the schema's (decision 2026-11-18-device-manifest-schema-from-rust, template-manifest-schema), not this list's. When git-rhizoid's slice-consumption works, the job moves there; follow.sh is its prototype.
+Migration: surya-lab - drop the list copy, take check.yml and tests/health/README.md, pin the release (about an hour, through its first bump); google-walleye-lab - drop the copy, move its rust job to its own workflow, close stale #208, pin (about an hour). Template: classify and release (2-3 h), the check in CI (2 h); idealkb's follow-source-from-pin (about 3 h, idealkb's owner). About one agent-day in all, no phone.
+
+Why
+: The author asked how drift is prevented (2026-11-18). Measured (research device-template-drift-measured): it is not - 13 statements were carried to each lab by hand in parallel PRs (9 PRs, one still open and stale), each lab carries a stale copy of the list, three files have two sources and every idealkb release since 0.14.0 opened a false-alarm PR in all three bases, closed by hand; devicebase.toml's pin is a date true of no lab. The mechanism to fix it exists and was already chosen for the template (chain-follow-by-slice); what is missing is small and named: the template's release, its classification, a check that fails, and follow.sh reading its source from the pin. Others agree (research device-template-follow-world): cruft and copier carry a template by a pin and a failing check; projen and copier name which files are kept in step and which are made once.
+
+Rejected
+: Keep carrying changes by hand into each lab: it does not scale past two labs; it already left a stale PR, stale list copies and a date for a pin; nothing names drift. Copier or cruft: Python (refused here), a second state file beside the pin, a template engine and three-way merge for repositories that are data. GitHub template plus actions-template-sync: -X theirs overwrites a lab's data and surya-lab has no template history. git subtree or submodule: tad reads queries/, records/ and tables.toml at the root; a prefix breaks it. git-rhizoid now: its slice-consumption is open and its CLI stubbed - the later home, not today's (its items stay on its backlog). The device layer moved wholesale into idealkb: idealkb is domain-free; only what proves general moves, one file at a time. The device layer shipped by lpoco as a 'base follow' command: a third follow mechanism beside follow.sh. Generating every lab file from device.toml (no template files at all): tad needs its statements in the tree, and the schema decision already removes the one file worth generating.
+
+About
+: device-template
+
+Research
+: device-template-drift-measured
+
+Tracked by
+: device-template-follow

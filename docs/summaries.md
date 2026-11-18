@@ -105,3 +105,18 @@ Says
 
 Condenses
 : 2026-11-18-upstream-forks, sxmo-suspend-fixes, upstream-forks-landscape
+
+
+### Row 8
+
+About
+: device-template
+
+Date
+: 2026-11-18
+
+Says
+: device-template (asked for 2026-11-10, made 2026-11-17 as a GitHub template from what surya proved; a lab holds data, tools are lpoco's) has two children: surya-lab, re-based by hand, and google-walleye-lab, made by Use this template. idealkb's generic files reach all three by update-pins; the template's own 13 statements reach the labs only by hand, landed three times per change, and 8 drifts nothing catches are named in research device-template-drift-measured (stale list copies, three files with two sources and false-alarm bump PRs each idealkb release, surya's check.yml and tests/health/README.md, a date as pin, walleye's stale PR 208, the manifest's shape). Decision 2026-11-18-device-template-follows-by-release (research device-template-follow-world: cruft, copier, projen, Nix): the template is followed like idealkb - each file generic or made-once, a release pinned in devicebase.toml, laid by update-pins, template-drift failing CI. Queue, unranked: template-classifies-its-files first, then template-releases, template-drift-in-ci, template-followed-by-update-pins (waits on idealkb follow-source-from-pin), surya-follows-template, walleye-follows-template. The failing test: research/device-template/2026-11-18/template-drift.sh. Hand-over: device-template-how-it-stands; umbrella device-template-follow; device.toml's shape is template-manifest-schema's.
+
+Condenses
+: 2026-11-18-device-template-follows-by-release, device-template-drift-measured, device-template-follow-world, device-template-how-it-stands

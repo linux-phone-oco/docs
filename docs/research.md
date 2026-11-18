@@ -1398,3 +1398,90 @@ About
 
 Material
 : research/upstream-forks/2026-11-18/
+
+
+<a id="device-template-drift-measured"></a>
+### device-template-drift-measured
+
+Brief
+: Two labs inherit device-template, carried by hand: the 13 generic files equal, but 8 drifts named and none caught; the template has no release, so nothing follows it
+
+Project
+: linux-phone-oco/device-template
+
+Date
+: 2026-11-18
+
+Question
+: Where does device-template come from, which repositories use it and how, and how is drift between it and each lab prevented? (the author, 2026-11-18)
+
+Found
+: Origin: asked for 2026-11-10 (backlog device-template: the conveyor as its own repo, surya the first instance not the mould); made 2026-11-17 from what surya proved (dt-made, a GitHub template repository; decision 2026-11-17-the-phone-is-data: a lab holds data, every tool is lpoco's). Its device-base layer (#4-#15: parts, phone queries, lane-next, phone-stands, blocked_by, hardware, decision fields) grew on 11-17/18.
+Use: two children and no others (gh repo list linux-phone-oco, grenudi). surya-lab is older (2026-11-09) and was re-based by hand (dt-surya-from-template, surya-lab #81, #134); google-walleye-lab was made by Use this template (decision walleye-lab-repo: a one-shot squashed copy, no link back). Neither is a fork or subtree. Two slices reach them: idealkb's generic files by update-pins (consumers lists all three; idealkb.toml pins 0.15.0 everywhere) - and the template's own generic list (13 statements), which nothing follows: the template has no release, and every template change was landed again by hand in each lab within minutes (surya-lab #134 #136 #139 #155 #218, walleye #15 #20 #29 #80; walleye #208 still open and stale). devicebase.toml says template = "2026-11-17" in all three - true of no lab.
+Drift, measured by blob id (template 78fb062 vs surya-lab 972cebf, google-walleye-lab 87c4f4e): equal - every idealkb file, the 13 template statements, Makefile, install scripts, tad.yml, gather.yml, .gitignore, tables.toml. Named: (1) both labs carry a copy of the template's generic list, 5 entries behind; (2) records/hardware.sql, records/hardware-status.sql, queries/hardware.sql have two sources - born in the template, taken into idealkb 0.15.0, still listed by the template - so the 0.15.0 bump opened 'this base changed a generic file' PRs in all three (#21, #241, #233), each closed by hand; 0.14.0 did the same for the own records/backlog.sql (#16, #220, #212); (3) surya-lab's check.yml lacks the template's xargs -r, walleye extends the same file with a rust job; (4) surya-lab lacks tests/health/README.md; (5) AGENTS.md outside idealkb's part is per lab, unclassified; (6) device.toml shape: surya lacks [fastboot], the labs use keys the template does not show ([[flash.overlay]], [[hazard]], [hear], [[provision.install]], [host]) - the schema decision's; (7) the date pin; (8) walleye #208.
+How drift is prevented today: it is not. No CI in a lab compares it to the template; idealkb's exit 3 sees only idealkb's files and fires false alarms when a file moves between sources. The template does not say which of its files are followed and which are made once. Failing test: template-drift.sh in the material (exit 1 today, 21 FAIL lines on the template, 2 per lab).
+
+Sources
+: rhizoid-repo,idealkb-chain-follow
+
+About
+: device-template
+
+Material
+: research/device-template/2026-11-18/
+
+
+<a id="device-template-follow-world"></a>
+### device-template-follow-world
+
+Brief
+: Others carry a template forward by a pin and a failing check (cruft, copier), or not at all (GitHub templates, Yeoman); logic belongs in a pinned input (Nix), only files in the child
+
+Project
+: linux-phone-oco/device-template
+
+Date
+: 2026-11-18
+
+Question
+: How do others carry a template's later changes into its children and catch drift, and where do git-rhizoid and the manifest schema fit?
+
+Found
+: cruft pins the template commit in .cruft.json; cruft check exits 1 when the child is behind, cruft diff --exit-code when it changed a template file; a weekly action opens the update as a PR. copier keeps _commit in an answers file, updates three-way (re-render the old version, diff, apply the new), marks conflicts inline or .rej, separates files made once (_skip_if_exists) and excluded ones, and check-update exits 2 when behind - behind and edited are two checks. GitHub template repositories copy once with no link and no update; actions-template-sync merges the template with -X theirs onto a branch (it would overwrite a lab's data; no failing check). Yeoman re-runs with an interactive conflicter, no pin. Nix: flake init -t copies once and never overwrites; logic consumed as a flake input is pinned in flake.lock and cannot drift (update-flake-lock opens the bump). projen names the files it synthesizes and fails the build when one is edited by hand. Renovate bumps a pin in any file but lays no files.
+Inside the commons: idealkb's follow.sh/update-pins already is cruft's pair for a slice - a pin, the generic list, own files, exit 3 when the base changed a generic file, an hourly job landing through each base's CI (decision 2026-11-17-chain-follow-by-slice, which chose it for the template too; idealkb item follow-source-from-pin makes it source-agnostic). git-rhizoid is for whole forks (cuttings); its slice-consumption, followers-one-pin-bump and send-back-writes-the-upstream-item are open, CLI stubbed - the later home of the slice job, not today's. Decision 2026-11-18-device-manifest-schema-from-rust takes device.toml's shape out of the template's hands: the schema is projected from lpoco's types per release and each device.toml names its pin, so the example in the template stops being a manual (template-manifest-schema).
+Take: a release pin per source, the template naming which files it owns and which are made once (projen, copier's _skip_if_exists), two checks - behind and edited - failing in CI (cruft), the bump as a bot PR (update-pins). Set aside: template engines and three-way merges (labs are data; Python is refused here), -X theirs syncs, interactive conflicters, a third follow mechanism.
+
+Sources
+: cruft,copier-updating,github-template-repos,actions-template-sync,yeoman-file-system,nix-flake-init,update-flake-lock,projen,renovate-regex-manager,rhizoid-repo,rhizoid-design-log
+
+About
+: device-template
+
+Material
+: research/device-template/2026-11-18/
+
+
+<a id="device-template-how-it-stands"></a>
+### device-template-how-it-stands
+
+Brief
+: device-template's children follow it by hand and drift unseen; decided: followed by release like idealkb, template-drift failing in CI; 6 items queued, first the classification
+
+Project
+: linux-phone-oco/device-template
+
+Date
+: 2026-11-18
+
+Question
+: Where does device-template's inheritance stand, and what is next?
+
+Found
+: How it stands, 2026-11-18. device-template (a GitHub template, made 2026-11-17 from what surya proved) has two children: surya-lab (re-based by hand) and google-walleye-lab (Use this template). idealkb's slice reaches all three by update-pins; the template's own slice reaches the labs only by hand - its 13 statements are equal today because each change was landed three times, and 8 drifts are named that nothing catches (research device-template-drift-measured: stale list copies, three files with two sources and false-alarm bump PRs each idealkb release, surya's check.yml and tests/health/README.md, a date for a pin, walleye's stale PR 208, the manifest's shape).
+Decided (2026-11-18-device-template-follows-by-release, research device-template-follow-world): the template is followed like idealkb - every file named generic or made-once, a release pinned in devicebase.toml, laid by the same hourly update-pins once idealkb's follow-source-from-pin lands, and template-drift failing CI on drift. Queue, unranked: device-template template-classifies-its-files, template-releases, template-drift-in-ci, template-followed-by-update-pins; surya-lab surya-follows-template; google-walleye-lab walleye-follows-template. The failing test: research/device-template/2026-11-18/template-drift.sh (exit 1 today). device.toml's shape is template-manifest-schema's. The umbrella is docs item device-template-follow (orchestration's), which this carries out.
+
+Sources
+: rhizoid-repo,idealkb-chain-follow
+
+About
+: device-template
