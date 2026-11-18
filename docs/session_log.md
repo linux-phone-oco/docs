@@ -1915,3 +1915,27 @@ Rejected
 
 About
 : bringup-bisect-series
+
+---
+
+
+<a id="orchestration-renewed-2026-11-18-suspend-cycle"></a>
+### Orchestration renewed: phone rows in docs routed, the suspend cycle to the builder
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: Took up orchestration-2026-11-18-morning. Lab read: lpoco host check all ok at 0.4.0, land at d7a71bf (lab-machine #45/#46: land opens a new PR when the branch's earlier one is merged - the merged-branch sign is answered). docs-phone-items-to-lanes closed: all its rows done but health-suspend-cycle, which becomes a lab-tools build item (rank 1) carrying surya's hand-run way-back cycle into lpoco health; its phone proof goes to surya's queue.
+
+Considered
+: Asking the surya keeper to keep running way-back.sh by hand
+
+Rejected
+: Leaving the cycle as surya's script: it has run fifteen times and more by hand, and any phone's sleep needs it
+
+About
+: agent-folder
