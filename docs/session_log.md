@@ -1732,3 +1732,24 @@ Rejected
 
 About
 : suspend-irq-quiet-check
+
+---
+
+
+<a id="2026-11-18-lab-tools-builder-host-origin-main"></a>
+### lpoco host reads origin/main
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Failing test first, then device_text in lpoco-host; programmer review fixes (bounded non-prompting fetch, reasons on every fallback, differing-file note, read: line in every verb, exact git subcommand filter in tests); landed #108, released v0.3.4.
+
+Considered
+: Fetching only in plan.
+
+About
+: lpoco-host-reads-origin-main
