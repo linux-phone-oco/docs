@@ -3755,6 +3755,9 @@ Device
 Proof
 : host/tests/phone_pieces.rs check_names_a_stale_phone_piece, check_names_a_package_off_its_pin_and_passes_a_current_phone (to write, failing first)
 
+Rank
+: 6
+
 About
 : phone-side-pieces
 
@@ -3782,6 +3785,9 @@ Device
 
 Proof
 : health/tests/pieces_report.rs under LPOCO_HEALTH_ROOT: a made-up phone with one declared file and one package reports both rows with the blob id git hash-object gives for that file (to write)
+
+Rank
+: 5
 
 About
 : phone-side-pieces
@@ -3811,6 +3817,9 @@ Device
 Proof
 : health/tests/awake.rs under LPOCO_HEALTH_ROOT: the lock written always; with allow-autosleep, released when the UDC state is not configured and held again when the gate reports unsafe (to write); acceptance: surya-awake-from-package
 
+Rank
+: 4
+
 About
 : phone-side-pieces
 
@@ -3839,6 +3848,9 @@ Device
 Proof
 : manifest/tests/schema.rs a_misspelled_table_is_refused ([[flash.overlays]] refused - fails against today's devlab Device), schema_is_current (the committed schema equals the projection), every_lab_manifest_validates (surya, walleye and template fixtures) (to write, the first failing first)
 
+Rank
+: 7
+
 About
 : phone-side-pieces
 
@@ -3866,6 +3878,9 @@ Device
 
 Proof
 : google-walleye-lab build/selftest-initramfs.sh (QEMU, dummy_hcd) passes with the init lpoco bringup makes from walleye's device.toml and none of walleye's own init files (to adapt)
+
+Rank
+: 8
 
 About
 : phone-side-pieces
