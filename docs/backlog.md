@@ -3685,10 +3685,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Seen 2026-11-18 (orchestration-renewed) reading the plan of lab-tools #133 (lpoco-host-rest part 2) before its release: prepare would enable devlab-watch@google-walleye-lab, a watcher no one asked for, on a phone whose keeper is mid-bring-up (stock Android and one-shot images; a watcher's health after every boot would race the keeper and file board tasks). Watching is the device's own choice, like its gadgets: device.toml [host] watch (deny_unknown_fields already in [host]). Release v0.6.2 (#134) and the lab's prepare wait for this; surya-lab must add watch = true (its lane) before the prepare that adopts its unit.
+: Landed lab-tools #135, released v0.7.0 (#134), read back from main. Open for others: surya-lab device.toml needs [host] watch = true before the lab's prepare.
 
 Opened
 : 2026-11-18

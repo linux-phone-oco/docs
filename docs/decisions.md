@@ -1603,3 +1603,28 @@ Rejected
 
 About
 : lpoco-host-rest
+
+
+<a id="2026-11-18-watch-is-the-devices-choice"></a>
+### 2026-11-18-watch-is-the-devices-choice
+
+Brief
+: A device asks to be watched with [host] watch = true; prepare enables devlab-watch@ only for those
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-18
+
+Decision
+: HostTable gains watch (default false). watch_instances keeps only devices that ask. An enabled instance no asking device maps to is named in the plan and never stopped by prepare.
+
+Why
+: Plan of #133 would have enabled a watcher on google-walleye-lab, mid-bring-up, whose per-boot health would race its keeper and file board tasks.
+
+Rejected
+: Watch every NAME-lab folder (the earlier rule): races a keeper mid-bring-up. Stopping or disabling unasked instances: silent change of something someone may have started.
+
+About
+: host-watch-declared

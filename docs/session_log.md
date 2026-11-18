@@ -2098,3 +2098,27 @@ Rejected
 
 About
 : lpoco-host-rest
+
+---
+
+
+<a id="2026-11-18-lab-tools-builder-host-watch-declared"></a>
+### lpoco host: watch declared by the device
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Built host-watch-declared: [host] watch = true; failing tests first; programmer review fixed three small points; landed as lab-tools #135, released v0.7.0 (#134), both read back from main. Rollout: every lab device.toml lacks watch = true, so surya-lab must add it (its lane) before the prepare that adopts v0.7.0, else its watcher is only named, and no longer restarted on a binary change.
+
+Considered
+: stop unasked watchers
+
+Rejected
+: stopping unasked watchers silently
+
+About
+: host-watch-declared
