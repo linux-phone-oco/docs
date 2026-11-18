@@ -8,3 +8,13 @@ own = ["queries/about.sql", "records/decision.sql", "records/research.sql", "rec
 # Records kept for machines - feeds, derivations, a run filed, a filing from a script: ikb runs them like any
 # other but leaves them out of ikb --help and ikb help.
 machine = ["feed-kernel-activity", "feed-shell-releases", "feed-wiki-claims", "derive-support-status", "test-run", "support-unknown", "device-source", "milestone-readiness"]
+
+# Why each own file is kept (bin/check-own.sh in ideal-knowledge-base reads it): a reason, or upstream:ITEM.
+[why]
+"queries/about.sql" = "docs' about also reads the support matrix and the tests"
+"records/decision.sql" = "docs' records take --project"
+"records/research.sql" = "docs' records take --project"
+"records/backlog.sql" = "docs' records take --project, and name needs, device, proof and rank"
+"records/session-log.sql" = "docs' records take --project"
+"records/source.sql" = "docs' records take --project"
+"tables.toml" = "docs' standing tables carry project, needs and proof, and docs holds the support, test and device tables"
