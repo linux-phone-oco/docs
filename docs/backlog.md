@@ -5253,10 +5253,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Upstream item workarounds-reader-items-and-sites to ideal-agent (its owner builds and releases it). Today on every lab it lists data/ and rendered docs/ lines and AGENTS.md's 'item-id' example, reads a backlog item (kept-kernel-with-pmic-wdt) as 'not known' and gives no way out. Wanted: --base repeatable, ITEM looked up in upstream_items then backlog; data/, docs/*.md rendered, research/ and the example skipped; each line SITE: ITEM - STATE - way out: patch to UPSTREAM | carried in FORK (due once the device runs it) | our work, backlog ITEM in BASE | due: retire. Then the plugin is bumped and docs reads it back.
+: Done: ideal-agent 0.3.51 (grenudi/ideal-agent#95, decision 2026-11-18-workarounds-reads-sites-items-and-way-out): sites only, items from upstream_items then backlog, a way out on every line. research/workarounds/2026-11-18/workarounds-read.sh passes all checks against main's reader (orchestration ran it with WORKAROUNDS= set; sessions get it with the 0.3.51 plugin).
 
 Opened
 : 2026-11-18
@@ -5275,10 +5275,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: For orchestration to route: (1) surya lane: the lane rule 'after any PMIC bite boot a kernel carrying pm8916_wdt' written once in surya-lab AGENTS.md as 'WORKAROUND(kept-kernel-with-pmic-wdt): ...', the brief and the backlog notes pointing at it rather than restating it (way-back.sh's marker is already asked by way-back-pick-watchdog-by-identity); it goes when kept-kernel-with-pmic-wdt is done. (2) lab-tools: lpoco-health's keep-awake marked 'WORKAROUND(sxmo-autosuspend-backoff): ...' where it holds the phone up, as that item's note says it should be; it goes once our sxmo fork's fix runs on the phone. No phone needed: text only.
+: Done: surya-lab AGENTS.md marks WORKAROUND(kept-kernel-with-pmic-wdt) (the post-bite boot rule) and lab-tools health/src/awake.rs marks WORKAROUND(sxmo-autosuspend-backoff); check A of workarounds-read.sh passes.
 
 Opened
 : 2026-11-18
@@ -5297,10 +5297,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: After workarounds-reader-items-and-sites. A line in the patrol brief (ideal-agent-linux-phone-oco/patrol.md, orchestration's): run the reader with --base the lab and docs over surya-lab, google-walleye-lab, lab-tools and docs; a 'due: retire' or 'not known' is a sign to the lane that owns the site. Orchestration's file; not landed by this research.
+: Done: patrol.md item 5 runs scripts/workarounds over docs, lab-tools and each lab; a due line, or a rule spoken of in a note but not marked, is a sign.
 
 Opened
 : 2026-11-18
