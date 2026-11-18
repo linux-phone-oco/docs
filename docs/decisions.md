@@ -1450,3 +1450,28 @@ Rejected
 
 About
 : lpoco-host-reads-origin-main
+
+
+<a id="2026-11-18-commit-kind-every-change"></a>
+### 2026-11-18-commit-kind-every-change
+
+Brief
+: Every commit of a lab-tools pull request names its kind (feat, fix, ...) and a changelog never changes without a version: a CI check refuses both
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-18
+
+Decision
+: pr-title.yml checks the PR title and every commit title against .github/commit-kind.regex, and refuses a changed CHANGELOG.md with no changed Cargo.toml version; lpoco/tests/release_family.rs keeps release-plz.toml, versions and changelog headings whole.
+
+Why
+: #110 landed titled 'bringup: ...', so release-plz saw nothing to bump and #109 was a changelog-only release under v0.3.4; the code sat under no tag. land squash-merges a one-commit branch under its commit title, so commits are checked, not only the PR title (review).
+
+Rejected
+: Checking only the PR title: the commit title is what lands. Comparing the changelog with the version's tag in a Rust test: release-plz tags the commit before the changelog is written, so it always differs. release_commits regex in release-plz.toml: does not make an untyped commit bump.
+
+About
+: release-plz-one-version
