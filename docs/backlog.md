@@ -4603,10 +4603,10 @@ Project
 : linux-phone-oco/device-template
 
 Status
-: open
+: in-progress
 
 Note
-: Reshaped 2026-11-18 by orchestration: under decision 2026-11-18-device-layer-from-docs the steps contract (the device bases' step_status table and its claim record) ships in docs' device-layer/ and reaches device-template, surya-lab and google-walleye-lab through idealkb's hourly follow at docs' next release - not through a template release (template-releases was replaced). Proof unchanged: a device base can claim a step and docs' feed reads it.
+: In docs' device layer (docs-builder): the steps table of the marked part, records/step.sql (tad r step: done needs proof and run, not-needed needs notes), generic names it, bin/test-steps-contract.sh in make verify. Next: docs' release; the hourly follow then carries it to device-template, surya-lab, google-walleye-lab (checked in a scratch template with a tagged copy of docs: tad check passes with the empty table, tad r step writes one row, a status outside the six is refused). Each base adds steps = 1 to its own devicebase.toml (the pin file is never laid) with its first claim; then docs' feed reads it. Done when a base has claimed one step and docs' feed reads it.
 
 Opened
 : 2026-11-18

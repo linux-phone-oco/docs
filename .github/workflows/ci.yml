@@ -12,5 +12,7 @@ jobs:
       - uses: actions/checkout@v7
       - name: tad, from its pinned release
         run: TAD_DEST="$HOME/.local/bin" ./bin/install-tad.sh && echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: DuckDB, its pinned binary (tad engine), for the test that runs records
+        run: tad engine
       - name: Data valid, canonical, docs fresh
         run: make verify

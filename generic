@@ -17,4 +17,5 @@ records/device.sql
 records/backlog-status.sql
 records/backlog-needs.sql
 records/test-run.sql
+records/step.sql
 tables.toml

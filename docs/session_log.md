@@ -2852,3 +2852,27 @@ Done
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-18-docs-builder-the-steps-contract-in-docs-device"></a>
+### docs-builder: the steps contract in docs' device layer
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: Added the steps table to the device layer's marked tables part, the record step (tad r step: status of the six, a done claim carries proof and run, a not-needed claim its reason; empty strings count as absent; a refusal leaves the standing claim), the generic entry, check-device-layer.sh for five tables and bin/test-steps-contract.sh in make verify. Followed in a scratch device-template with a tagged copy of docs: tad check passes, a claim writes one row. The programmer subagent reviewed it; its findings (empty strings, refusal reasons pinned, standing claim kept, steps = 1 named in the README) are in.
+
+Considered
+: A table named step_status in the base (the item's words) against steps (the decision's): steps, so data/steps.json and the feed's name agree and step_status stays docs' pulled table. A device column in the base's table: a base is one device, as parts has none. A check in the record that the step exists: the base has no bringup_steps; the feed drops and names a claim of an unknown step.
+
+Rejected
+: A 30-day expiry of a claim (decided against); the steps = 1 line laid by the follow (the pin file is the base's own).
+
+About
+: bringup-steps
