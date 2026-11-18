@@ -30,6 +30,7 @@ verify: check     ## what CI runs: data is valid and canonical, docs are fresh
 	fi; echo "verify: data canonical, docs fresh"
 	@./bin/check-principles.sh
 	@./bin/check-device-layer.sh
+	@./bin/check-bringup-steps.sh
 	@./bin/test-steps-contract.sh
 	@./bin/test-feed-device-steps.sh
 	@./bin/test-bringup-chain-goal.sh

@@ -5103,10 +5103,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: The shape half of research/bringup-steps/2026-11-18-phone-stages/daily-phone.sh as a check in verify (bin/), so a stage left empty or a step outside every goal is seen at once. Owner's: bin/ and Makefile.
+: Landed: bin/check-bringup-steps.sh in make verify (every stage has a step, the three goals exist, every phone step is needed by complete-phone; it names what is wrong). Proof in a scratch copy: an empty stage (ikb bringup-stage) and a loose step in camera failed it naming 'zz' and 'loose-step'; as landed it passes (20 stages, 106 steps).
 
 Opened
 : 2026-11-18
