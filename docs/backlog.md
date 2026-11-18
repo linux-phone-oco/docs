@@ -3521,6 +3521,7 @@ Status
 
 Note
 : landed lab-tools #116 and #119; proof: release-tags-every-change, release_plz_ignores_its_own_release_commits (lpoco/tests/release_family.rs). release-plz.toml release_commits lists feat|fix|perf|refactor|docs|test|build|ci, so its own 'chore: release' commit opens no next release PR. Main's changelog test was green again after #117. Not yet seen live: release PR #118 (v0.3.7, opened before the fix) is still open and unmerged; after it merges no further release PR should open - the orchestration reads that back.
+Live read-back 2026-11-18 (orchestration): landed release #118 (v0.3.7), then its follow-up #120. Main CI green after #120, and no release PR open 3 minutes later. The loop is gone (#119). The split is not: #118 again left bringup and host changelogs to a follow-up, and main was red between the two. Queued as release-plz-one-pr.
 
 Opened
 : 2026-11-18
@@ -3533,6 +3534,37 @@ Device
 
 Proof
 : release-tags-every-change
+
+Rank
+: 1
+
+About
+: bringup
+
+
+<a id="release-plz-one-pr"></a>
+### A family release is one release PR that writes every member's changelog; main never red between two
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Seen 2026-11-18 on v0.3.5, v0.3.6 and v0.3.7: release-plz's first release PR bumps every version in the version_group but writes CHANGELOG.md only for packages with changes. A follow-up PR (#113, #117, #120) then completes the rest, and between the two main's release_family test fails (left 0.3.6, right 0.3.7). Look at release-plz's changelog settings for packages that change only by the group bump, or write the missing entries in a release-pr hook, before any test change. Failing test first: a fixture workspace where only one member changed gets one release PR whose diff holds every member's CHANGELOG at the new version. Programmer subagent's review.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: release-pr-writes-every-changelog
 
 Rank
 : 1
