@@ -3227,3 +3227,27 @@ Rejected
 
 About
 : bringup-generic-init
+
+---
+
+
+<a id="2026-11-18-ffs-acm-joins-lab-tools"></a>
+### ffs-acm joins lab-tools
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: lpoco-ffs-acm landed (lab-tools #192, fc2a76a): walleye's FunctionFS ACM helper as a family crate, blob test seen failing first, three review fixes (SIGPIPE inherited by the shell, stop reaping, zero write).
+
+Considered
+: wiring the init to it now: needs the single-interface gadget switch and a phone to prove it
+
+Rejected
+: wiring the init without a proof on QEMU or a phone; keeping the helper only in walleye's repo (every phone would copy it)
+
+About
+: bringup-generic-init
