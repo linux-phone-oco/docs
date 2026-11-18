@@ -4048,10 +4048,10 @@ Project
 : linux-phone-oco/device-template
 
 Status
-: open
+: done
 
 Note
-: Pinned at 0.9.1 while docs is on 0.14.0; not in idealkb's consumers list, so the weekly pin job never moves it. Bump the pin, take whatever 0.10-0.14 changed (run the base's verify, fix what it names), land. No phone. The root fix (update-pins on each release, followers from each base's idealkb.toml) is the ikb session's.
+: Done 2026-11-18: device-template main pins idealkb 0.14.0 (PR #17, build: ideal-knowledge-base 0.14.0, landed by the idealkb update-pins run while this item was in work; read back: idealkb.toml version 0.14.0, installer pins ikb 0.6.1, tad and check workflows green on 7a49c83, make verify passes twice with nothing rewritten). tables.toml already had the 0.14 fields; only its generic-part comments differ from 0.14.0's, left as the base's own. PR #16 (the same bump, left open by update-pins as 'base changed a generic file') is superseded and still open.
 
 Opened
 : 2026-11-18
