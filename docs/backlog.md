@@ -2854,6 +2854,9 @@ Device
 Proof
 : bringup-swap-s0-reproduces-control
 
+Rank
+: 8
+
 About
 : bringup
 
@@ -2881,6 +2884,9 @@ Device
 
 Proof
 : bringup-cpio-matches-gen-init-cpio
+
+Rank
+: 9
 
 About
 : bringup
@@ -3373,6 +3379,9 @@ Device
 
 Proof
 : lpoco-host-reads-device-from-origin-main
+
+Rank
+: 7
 
 About
 : bringup
