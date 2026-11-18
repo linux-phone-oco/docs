@@ -3374,3 +3374,65 @@ Proof
 
 About
 : bringup
+
+
+<a id="lpoco-tone-argenv"></a>
+### lpoco-tone's command line declared once with argenv (the last clap in the family)
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Left by lpoco-lab-argenv (lab-tools #98): tone still declares its command line with clap. Failing test first: lpoco-tone --help and tone --help print the argenv usage, and a usage mistake exits 2 with the usage, as lpoco-lab does (devlab/tests/help.rs). Programmer subagent's review before landing.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lpoco-tone-help-from-argenv
+
+Rank
+: 4
+
+About
+: bringup
+
+
+<a id="lpoco-lab-env-through-argenv"></a>
+### lpoco-lab reads its declared environment through the argenv contract, not std::env::var
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Left by lpoco-lab-argenv (lab-tools #98): the declared env vars are still read by std::env::var in flash, provision, watch, phone, hear and device, so a typo or a missing variable is not said by the usage. Failing test first: an env var declared in devlab/src/cli.rs is read only through the parsed contract (grep finds no std::env::var for a declared name) and an invalid value exits 2 with the usage. Programmer subagent's review before landing.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lpoco-lab-env-read-once
+
+Rank
+: 5
+
+About
+: bringup
