@@ -4837,10 +4837,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Found by orchestration, 2026-11-18, planning the lab at 0.17.0: the plan would replace the installed helper (from 0.14.2, with #164) with the older shape. lab-tools #165 (7b4a36a, Landed-by lab-tools-builder.5af81a), squashed from a branch based before #164 and release 0.14.2, removed #164's 133 lines from host/src/share.rs and the [0.14.2] sections of every CHANGELOG. #175 has since touched share.rs, so re-apply e764ffd's change on top of main by hand; do not revert #165, whose stale-piece check stays. The lab's 0.17.0 prepare is held until this is released. Same class as PR 170, which put back files PR 168 had added.
+: Landed lab-tools #177 (main 570fcc7), released v0.17.1 (#178). share.rs carries #164 again with #175's fs_root; its two-shares test passes (it did not exist on main, #165 removed it with the code). Reviewer's fix applied: a share in use is NotMeasured, not Ok. Not done: lpoco host plan on the lab against the installed helper; the [0.14.2] changelog sections stay lost, since check-changelog.sh refuses a changelog changed without a version.
 
 Opened
 : 2026-11-18
