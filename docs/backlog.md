@@ -3261,7 +3261,7 @@ Status
 : open
 
 Note
-: After lpoco-host's first build (its acceptance on walleye passed), the rest of the host from declarations, each its own small change with its plan test first: (1) a lab group (sysusers.d, MODE 0660 on the gadget rules, the lab user a member) for a host with no seat session and for services - uaccess alone covers only the active seat; (2) watcher units: devlab-watch@ for every device found, user-level, replacing lab-machine setup/devlab-watch.sh; (3) cross targets: a device's [host] targets (aarch64-unknown-linux-musl) made ready the way health/build.sh uses ~/.local/share/devlab-cross, user-level; (4) host commands a device needs (fastboot, adb, mkbootimg, avbtool; git send-email's perl modules for upstreaming) checked on PATH, installed by the host's package manager through the root prefix only with the verb; (5) the plan names foreign rules touching declared devices (51-android.rules from lab-agent's connect.sh) for the author to retire; (6) net access (CDC NCM has no node: a NetworkManager or networkd file). Proof for each: a plan test from fixtures that lists it and changes nothing without the verb.
+: 2026-11-18, orchestration-renewed: lpoco-host is accepted (PR 70 block, PR 182 tty). Part (1) is half done by gadget_group (lab-tools #129: GROUP users MODE 0660 from lab.toml); a sysusers.d own group stays. One part per builder run, no root in the build; next part (2): watcher units, devlab-watch@ for every device found, user-level, replacing lab-machine setup/devlab-watch.sh (today surya's unit is restarted by hand after each prepare - prepare should restart the units whose binary it replaced). Then (5) foreign rules named, (4) host commands checked, (3) cross targets, (6) NCM.
 
 Opened
 : 2026-11-17
@@ -3269,8 +3269,17 @@ Opened
 Blocked by
 : lpoco-host
 
+Needs
+: build
+
+Device
+: xiaomi-surya
+
 Proof
-: a plan test per part from fixtures: listed, nothing changed without the verb
+: per part, a plan test from fixtures that lists it and changes nothing without the verb; this run: part (2), devlab-watch@ user units planned for every device found, lab-machine setup/devlab-watch.sh named as replaced
+
+Rank
+: 1
 
 About
 : lpoco-host
