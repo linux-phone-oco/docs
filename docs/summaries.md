@@ -120,3 +120,18 @@ Says
 
 Condenses
 : 2026-11-18-device-template-follows-by-release, device-template-drift-measured, device-template-follow-world, device-template-how-it-stands
+
+
+### Row 9
+
+About
+: bringup-steps
+
+Date
+: 2026-11-18
+
+Says
+: Bring-up steps as data are decided, not built (decision 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base, research bringup-steps-landscape). The generic steps and their hard/soft edges (with alternatives) live in docs, the commons; each device base claims its own status per step - proof, run, proven_on - by a steps contract that device-template ships and labs follow by release; docs pulls the claims into step_status as it pulls parts, and a step no base claimed is not known yet, so a new device starts all unknown. tad q bringup-chain orders the steps and says which are ready; a guidebook is rendered from the same rows; each step names its lpoco helper or the gap, and a runner later walks the ready steps. Walleye's real road is 26 steps: 17 done with checks and records, the charger failing on its tps61099 supplier. Drafts and the failing test: research/bringup-steps/2026-11-18/. Queue unranked under bringup-steps: first bringup-steps-schema, the owner's to land (bringup-steps-how-it-stands).
+
+Condenses
+: 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base, 2026-11-18-research-bringup-steps, bringup-steps-how-it-stands, bringup-steps-landscape

@@ -4528,3 +4528,278 @@ Proof
 
 About
 : device-template
+
+
+<a id="bringup-steps"></a>
+### Bring-up steps as data: every step that makes Linux run on a machine, generic in docs, each device's status claimed in its own base, a guidebook and helpers made from it
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decided 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base (research bringup-steps-landscape). The pieces are the items about bringup-steps, unranked for the author.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: bringup-steps-schema,bringup-steps-seed,feed-device-steps,walleye-steps-claimed
+
+Proof
+: research/bringup-steps/2026-11-18/bringup-chain-walleye.sh passes in docs: tad q bringup-chain --device google-walleye lists walleye's steps in order, each proven one with its proof and run, none unknown (fails today: no query bringup-chain)
+
+About
+: commons-only
+
+
+<a id="bringup-steps-schema"></a>
+### The bring-up step tables in docs: bringup_steps, bringup_step_edges, step_status, the records bringup-step and bringup-edge, and the query bringup-chain
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Ready to land as drafted in research/bringup-steps/2026-11-18 (schema.toml, records/, queries/): tried in a scratch clone at 3596bb3. The owner's to land (AGENTS.md: schema, records, queries).
+
+Opened
+: 2026-11-18
+
+Proof
+: tad check passes with the three tables; tad r bringup-edge refuses an edge that closes a cycle; tad q bringup-chain answers with no device (every status unknown)
+
+About
+: bringup-steps
+
+
+<a id="bringup-steps-seed"></a>
+### Seed the generic steps: 26 steps and 37 edges from walleye's real chain, surya's road checked against it
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: sh research/bringup-steps/2026-11-18/seed.sh in docs, through the records
+
+Opened
+: 2026-11-18
+
+Blocked by
+: bringup-steps-schema
+
+Proof
+: tad q bringup-chain lists 26 steps, bootloader and stock steps at depth 0, health-suite-runs last; tad check passes
+
+About
+: bringup-steps
+
+
+<a id="steps-contract"></a>
+### The steps contract in the template: a steps table, the record step, contract steps = 1 in devicebase.toml, data/steps.json empty, in the template's followed files
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: Reaches labs by the template release (decision 2026-11-18-device-template-follows-by-release), never by hand. A new device starts with no claim: every step not known yet.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: bringup-steps-schema,template-releases
+
+Proof
+: in the template, tad check passes with an empty steps table; tad r step --step shell-on-console --status done --proof X --run Y writes one row and refuses a status outside the six
+
+About
+: bringup-steps
+
+
+<a id="feed-device-steps"></a>
+### Pull each device base's steps into step_status: records/feed-device-steps.sql and a device-steps-unknown fallback in bin/run-feeds.sh
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: As feed-device-parts: read devicebase.toml (steps = 1) and data/steps.json from the base on main; a step not claimed is unknown, not known yet; a claim of a step docs does not know is dropped and named.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: bringup-steps-schema,steps-contract
+
+Proof
+: run against a base without steps = 1, every step of that device is unknown with the reason; against google-walleye-lab after its claims, research/bringup-steps/2026-11-18/bringup-chain-walleye.sh passes
+
+About
+: bringup-steps
+
+
+<a id="walleye-steps-claimed"></a>
+### walleye claims its bring-up steps in its own base, from its records
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: The 26 claims are written out in research/bringup-steps/2026-11-18/claims-walleye.sh, each run a record of google-walleye-lab. Data only; no phone.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: steps-contract,walleye-follows-template
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: research/bringup-steps/2026-11-18/bringup-chain-walleye.sh passes in docs after make feeds
+
+About
+: bringup-steps
+
+
+<a id="surya-steps-claimed"></a>
+### surya claims its bring-up steps in its own base, from its records (its road: a booting distribution, the image steps not-needed)
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: The claims are listed in research/bringup-steps/2026-11-18/README.md (Surya's path); PMIC and charger stay unknown until measured.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: steps-contract,surya-follows-template
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: tad q bringup-chain --device xiaomi-surya in docs shows health-suite-runs done with run 2026-11-17-1550-lpoco-health-v017, and no step unknown but pmic-bound and charger-online
+
+About
+: bringup-steps
+
+
+<a id="bringup-guidebook"></a>
+### The guidebook rendered from the steps: docs/guidebook.md by make render, a chapter per stage, each step's done-when, needs, proof, helper or gap, guide, and a column per device
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Opened
+: 2026-11-18
+
+Blocked by
+: bringup-steps-seed
+
+Proof
+: make verify fails when docs/guidebook.md is stale against the rows, and the page lists the 26 steps in bringup-chain's order with every hard need before its step
+
+About
+: bringup-steps
+
+
+<a id="bringup-steps-helpers"></a>
+### The helper map: lpoco bringup steps reads docs' chain and names, per step, its lpoco command or the gap
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Today: image pack/check/swap/bisect, initramfs build, lab fastboot, flash, provision, suite. Gaps: UART, banner, shell, dmesg map, PMIC, charger, storage. Each gap filled becomes its own item.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: bringup-steps-seed
+
+Proof
+: a test in lab-tools: every helper named in docs' bringup_steps is a subcommand lpoco --help lists at the pinned release, and lpoco bringup steps --device google-walleye prints the gaps
+
+About
+: bringup-steps
+
+
+<a id="bringup-step-runner"></a>
+### Research: a runner that walks a device's ready steps - helper, then proof, then the claim in its base; a step that changes the phone queued to its keeper
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Opened
+: 2026-11-18
+
+Blocked by
+: bringup-steps-helpers,feed-device-steps
+
+Proof
+: a research row and a decision with what was rejected, and its failing test: the runner on a made-up device with two ready steps runs each helper and proof and writes two claims
+
+About
+: bringup-steps
+
+
+<a id="milestones-step-terms"></a>
+### Milestones name steps: step:ID@device in criteria, read from step_status by milestone-readiness
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Opened
+: 2026-11-18
+
+Blocked by
+: feed-device-steps
+
+Proof
+: milestone-readiness counts a step term done only when step_status says done for that device; a walleye milestone 'reaches a shell' over step:shell-on-console@google-walleye reads ready
+
+About
+: bringup-steps

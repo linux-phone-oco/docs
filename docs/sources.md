@@ -4048,3 +4048,318 @@ By
 
 Takes
 : A pin in any file can be bumped by PR; it bumps numbers, it does not lay files
+
+
+<a id="nura-porting-guide"></a>
+### Porting to a new device
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.nura.eco/wiki/Porting_to_a_new_device
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: the first steps' order (device package, kernel package, flash, USB networking); no proof per step
+
+
+<a id="nura-infobox-device"></a>
+### Template:Infobox device
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.nura.eco/wiki/Template:Infobox_device
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: per-device status fields (Y/P/N) stored as a Cargo table and queried: the instance side, without proofs
+
+
+<a id="nura-device-categorization"></a>
+### Device categorization
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.nura.eco/pmaports/main/packaging/device-categorization.html
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: levels as gate sets over checks: our milestones over step proofs
+
+
+<a id="nura-hardware-ci"></a>
+### Hardware CI
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.nura.eco/pmaports/main/ci/hardware-ci.html
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: generic test packages a device opts into; boot and system test layers not built yet
+
+
+<a id="nura-mainlining-guide"></a>
+### Mainlining Guide
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.nura.eco/wiki/Mainlining_Guide
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: minimal boot = RAM + serial, then one feature after another; dtbs_check
+
+
+<a id="asahi-feature-support"></a>
+### Asahi Linux feature support (M3)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://asahilinux.org/docs/platform/feature-support/m3/
+
+Year
+: 2026
+
+By
+: Asahi Linux
+
+Takes
+: SoC blocks apart from device integration; a state that says where the code lives
+
+
+<a id="collabora-dt-probe-kselftest"></a>
+### A new kselftest for verifying driver probe of devicetree-based platforms
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.collabora.com/news-and-blog/blog/2023/12/11/a-new-kselftest-for-verifying-driver-probe-of-devicetree-based-platforms
+
+Year
+: 2023
+
+By
+: Collabora
+
+Takes
+: derive probed-or-not from the live devicetree instead of a hand list
+
+
+<a id="yocto-bsp-guide"></a>
+### Yocto Project Board Support Package Developer's Guide
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.yoctoproject.org/5.0.13/bsp-guide/bsp.html
+
+By
+: Yocto Project
+
+Takes
+: a checklist of artefacts, not of bring-up steps
+
+
+<a id="yocto-compatible"></a>
+### Yocto Project Compatible
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.yoctoproject.org/test-manual/yocto-project-compatible.html
+
+By
+: Yocto Project
+
+Takes
+: a declared answer kept apart from a checked one
+
+
+<a id="bitbake-task-deps"></a>
+### BitBake user manual: syntax and operators, task dependencies
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.yoctoproject.org/bitbake/bitbake-user-manual/bitbake-user-manual-metadata.html
+
+By
+: Yocto Project
+
+Takes
+: typed task edges (after/before, deptask, rdeptask); stamps keyed on inputs, so a changed input makes a task stale
+
+
+<a id="lava-boot-action"></a>
+### LAVA boot action: common
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.lavasoftware.org/lava/technical-references/job-definition/actions/boot/common.html
+
+By
+: Linaro
+
+Takes
+: boot stages proven by console matchers: bootloader message, kernel-start-message, prompts
+
+
+<a id="kernelci-pipeline-config"></a>
+### KernelCI pipeline configuration
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.kernelci.org/components/maestro/pipeline/config-reference/
+
+By
+: KernelCI
+
+Takes
+: generic jobs x platforms; a job waits on another's result
+
+
+<a id="openqa-docs"></a>
+### openQA documentation
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://open.qa/docs/
+
+By
+: openSUSE
+
+Takes
+: fatal vs ignore_failure (hard vs soft), START_AFTER_TEST, screenshot needles as proof
+
+
+<a id="beads-issue-graph"></a>
+### beads
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/steveyegge/beads
+
+Author
+: Steve Yegge
+
+Year
+: 2025
+
+By
+: orchestration-renewed
+
+Takes
+: blocks edges and bd ready: ready computed from open blockers
+
+
+<a id="github-issue-dependencies"></a>
+### Creating issue dependencies
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies
+
+By
+: GitHub
+
+Takes
+: blocked-by edges as data; no proof
+
+
+<a id="taskwarrior-virtual-tags"></a>
+### Taskwarrior tags and virtual tags
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://taskwarrior.org/docs/tags/
+
+By
+: Taskwarrior
+
+Takes
+: READY and BLOCKED computed at query time, never stored
+
+
+<a id="ubports-porting"></a>
+### Ubuntu Touch porting introduction
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.ubports.com/en/latest/porting/introduction/index.html
+
+By
+: UBports
+
+Takes
+: porting stages without a proof per stage
+
+
+<a id="sailfish-hadk-subsystems"></a>
+### Sailfish HADK: subsystems
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://hadk.sailfishos.org/subsystems/
+
+By
+: Jolla
+
+Takes
+: concrete proof commands for phone subsystems (test_gps, list-modems)
