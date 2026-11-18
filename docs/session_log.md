@@ -2194,3 +2194,27 @@ Rejected
 
 About
 : lpoco-host-rest
+
+---
+
+
+<a id="2026-11-18-patrol-measures-the-keeper-hand-off-gap"></a>
+### patrol measures the keeper hand-off gap
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: patrol's brief gains a sign: a lane's ready top item with a free lease and no keeper or builder run for over one lanes-waker period, seen on surya 2026-11-18 when a finished keeper and its coordinator each waited on the other
+
+Considered
+: keeping it in patrol's memory
+
+Rejected
+: a new health-keeper role (patrol and the lanes waker already cover it); a guard in the keeper (a sign to refine the hand-off instead)
+
+About
+: patrol-measures-the-start
