@@ -1633,3 +1633,28 @@ About
 
 Material
 : research/base-graph/2026-11-18/
+
+
+<a id="pmic-wdt-reset-type"></a>
+### pmic-wdt-reset-type
+
+Brief
+: The PMIC wdt probe wrote the S2 reset type while S2 may run, with no disable, wait or read-back; the likely cause of walleye's power-off bite. Fixed as patch 5/5 (f5bb57d27).
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: Why did the pm8916_wdt bite power off a PM8998 (walleye) instead of hard-resetting it, and how should a driver set the S2 reset type on gen2 PON?
+
+Found
+: Same register (+0x56/+0x57) and the same type encoding on both generations; no SEC_ACCESS needed. Every Qualcomm S2 path disables S2, waits about 10 sleep-clock cycles, writes the type, then re-enables; the probe did not, and the msm8998 firmware arms the PMIC watchdog, so the firmware's type (maybe SHUTDOWN) could stay. Other candidates: the boot chain powering off on a PMIC_WD power-on, or the platform wanting DVDD_HARD_RESET 0x08. Unread on the phone: the firmware's S2_CTL value.
+
+About
+: upstream-forks
+
+Material
+: research/upstream-forks/2026-11-18/
