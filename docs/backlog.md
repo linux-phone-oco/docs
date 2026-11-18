@@ -3489,10 +3489,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Follows bringup-image-swap (landed). Also untested: a control with a second image. Replaces build-bisect.sh and check-bisect.sh.
+: Built and landed (lab-tools#123, 0bb6fdf on main): lpoco-bringup image bisect SERIES --out DIR; a TOML series (control, [[image]] name/kernel/dtb/ramdisk/cmdline/lz4/footer), each image counted against the control; proof bringup_bisect_runs_declared_series passes. Not done: walleye's own series file and retiring build-bisect.sh/check-bisect.sh in google-walleye-lab (walleye side); a real stock control not yet run through it; the family release follows release-plz.
 
 Opened
 : 2026-11-18
