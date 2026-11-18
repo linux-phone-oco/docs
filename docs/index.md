@@ -29,7 +29,7 @@ The memory of linux-phone-oco, whose goal is Linux phones as good as Android for
 - [Support Status](support_status.md): 63
 - [Test Results](test_results.md): 0
 - [Test Runs](test_runs.md): 0
-- [Tests](tests.md): 49
+- [Tests](tests.md): 50
 - [Translations](translations.md): 204
 - [Upstream Items](upstream_items.md): 9
 - [Upstreams](upstreams.md): 9
