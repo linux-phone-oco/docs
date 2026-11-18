@@ -845,6 +845,22 @@ type = "string"
 name = "research"
 type = "string"
 
+[[tables.decisions.fields]]
+name = "supersedes"
+type = "string"
+
+[[tables.decisions.fields]]
+name = "amends"
+type = "string"
+
+[[tables.decisions.fields]]
+name = "scope"
+type = "string"
+
+[[tables.decisions.fields]]
+name = "tracked_by"
+type = "string"
+
 [tables.research]
 key = ["project", "id"]
 
@@ -1165,6 +1181,18 @@ to = ["sources"]
 [[rules.references]]
 field = "tests.component_id"
 to = ["components"]
+
+[[rules.references]]
+field = "decisions.supersedes"
+to = ["decisions"]
+
+[[rules.references]]
+field = "decisions.amends"
+to = ["decisions"]
+
+[[rules.references]]
+field = "decisions.tracked_by"
+to = ["backlog"]
 
 [[rules.references]]
 field = "decisions.about"
