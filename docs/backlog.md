@@ -5078,10 +5078,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Draft in research/bringup-steps/2026-11-18-phone-stages/queries/bringup-chain.sql, tried in a scratch copy: 77 rows for daily-usable-phone, 106 without --goal. Owner's: queries/.
+: Landed: queries/bringup-chain.sql takes --goal STEP (the draft of research/bringup-steps/2026-11-18-phone-stages/queries, unchanged); bin/test-bringup-chain-goal.sh in make verify: the rows are the goal and its hard-edge closure (78 for daily-usable-phone: the 77 steps daily-phone.sh counts and the goal itself; 23 for linux-runs), the goal last, --goal of a no step errs naming it.
 
 Opened
 : 2026-11-18
