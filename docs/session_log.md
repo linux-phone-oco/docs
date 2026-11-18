@@ -3251,3 +3251,21 @@ Rejected
 
 About
 : bringup-generic-init
+
+---
+
+
+<a id="2026-11-19-ffs-acm-relicensed-by-the-author"></a>
+### lpoco-ffs-acm relicensed MIT OR Apache-2.0 on the author's word
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: The author's word, verbatim (through the Top Coordinator, 2026-11-19): 'Yes, match lpoco'. He holds the copyright of the FunctionFS ACM helper: it was written here for him (google-walleye-lab #52, as GPL-2.0-only) and came into lab-tools as lpoco-ffs-acm in #192. Its license field is now 'MIT OR Apache-2.0' like every lpoco crate; the crate had no SPDX headers and lab-tools no LICENSE files, so the field is the whole change. The walleye lane is asked to match its own copy or retire it for the shared crate.
+
+About
+: bringup-generic-init
