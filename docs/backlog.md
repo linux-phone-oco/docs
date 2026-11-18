@@ -4330,5 +4330,8 @@ Device
 Proof
 : a test in lab-tools lpoco/tests (to write, failing first): after a change the lab output names a piece off main
 
+Rank
+: 6
+
 About
 : phone-pieces-drift-named
