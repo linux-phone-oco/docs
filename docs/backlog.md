@@ -4469,10 +4469,10 @@ Project
 : linux-phone-oco/surya-lab
 
 Status
-: open
+: done
 
 Note
-: Reshaped by decision 2026-11-18-device-layer-from-docs (it supersedes 2026-11-18-device-template-follows-by-release): the layer's source is docs, not a template release. About an hour, no phone; surya-lab's owner lands it in its base.
+: Done: surya-lab PR 258 - devicebase.toml pins linux-phone-oco/docs 0.17.0, device markers in tables.toml; read back from main. Left for the lane: surya-lab still carries the template's old root 'generic' file (walleye removed its copy in PR 267).
 
 Opened
 : 2026-11-18
@@ -4500,10 +4500,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: done
 
 Note
-: Reshaped by decision 2026-11-18-device-layer-from-docs: the layer's source is docs, not a template release. About an hour, no phone; walleye's owner lands it in its base.
+: Done: google-walleye-lab PR 267 - devicebase.toml pins linux-phone-oco/docs 0.17.0, device tables between the device markers, the old generic list gone, checks passing; read back from main.
 
 Opened
 : 2026-11-18
@@ -4887,10 +4887,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: in-progress
+: done
 
 Note
-: Landed in docs #514 and released as v0.17.0: device-layer/, generic, consumers, bin/check-device-layer.sh in make verify. The template follows it (device-template #26). Left: idealkb's ./sources names docs in place of device-template (the ikb session; one line), then the two labs take the layer (their items surya-follows-template, walleye-follows-template: devicebase.toml source/version/own and the device tables between device:begin/device:end). Done when graph-drift.sh layer-owner and layer-follow are ok for every device base.
+: Done: docs serves device-layer/ (docs #514, #515, release v0.17.0); idealkb ./sources names linux-phone-oco/docs in place of device-template; device-template (#26), surya-lab (PR 258) and google-walleye-lab (PR 267) pin docs 0.17.0, so idealkb's hourly job keeps them current.
 
 Opened
 : 2026-11-18
