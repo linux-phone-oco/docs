@@ -2624,3 +2624,27 @@ Rejected
 
 About
 : device-template
+
+---
+
+
+<a id="2026-11-18-research-bringup-steps"></a>
+### Research: bring-up steps as data
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: bringup-steps-research.r1 (research lead, from orchestration). Mined google-walleye-lab (161 backlog items, 120 session logs, the bring-up order plan), surya-lab and docs' surya records, lab-tools' lpoco-bringup and lpoco-health tests (a researcher subagent), and docs' tables (components, features, feature_support, support_status, milestones, tests, the parts feed). Looked around at 22 outside sources (a researcher subagent). Drafted the tables, records, query, seed and failing test and ran them in a scratch clone of docs. Recorded 18 sources, the research, the decision, 11 backlog items unranked, the hand-over row; landed data and the material only.
+
+Considered
+: Landing the schema myself; steps as components; status typed in docs; edges as a list field; an issue tracker; per-driver probe steps; a 30-day expiry
+
+Rejected
+: Landing tables.toml, records and queries here: AGENTS.md sends them to the owner, orchestration. The rest: see the decision's rejected.
+
+About
+: bringup-steps

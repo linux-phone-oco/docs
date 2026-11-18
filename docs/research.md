@@ -1485,3 +1485,58 @@ Sources
 
 About
 : device-template
+
+
+<a id="bringup-steps-landscape"></a>
+### bringup-steps-landscape
+
+Brief
+: No one keeps bring-up steps as data with edges and proofs; walleye's real chain is 26 steps (17 done with proofs), surya's another road; docs' parts join carries step status as is
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: How should linux-phone keep every small step of bringing Linux up on a machine - what it needs, what it enables, its proof - generic for any machine, with each device base recording where it stands, so a guidebook, helpers and later a step runner can be made from it; and how do others do it?
+
+Found
+: What is: the step-level truth of a bring-up lives only in each lab's backlog, session logs and research, folded on the face into "boots" or "kernel". Walleye's chain, rebuilt from google-walleye-lab: 26 steps from the bootloader read to the health suite, 17 done (each with a host check and a record: y1 alive by gpio-reserved-ranges and no earlycon, y2's gadget, banner2, z6's shell, z7's dmesg-clean and PMIC), 2 partial (stock measure, crash window: pstore yes, UART no), 1 failing (charger: c2 defers on tps61099), 6 open (UART, watchdog, UFS, USB network, rootfs, suite). Surya's chain (27 steps from surya-lab and docs) took another road: a distribution that already booted through U-Boot, systemd-boot and EFI, so its image, dtbo and stock-kernel steps are not-needed and PMIC and charger are not known. lab-tools has helpers for the image (lpoco bringup image pack/check/swap/bisect, initramfs build), fastboot, flash, provision, suite and suspend; none for UART, devicetree, banner, shell, PMIC, charger. The health suite's checks prove only the steps after a rootfs. docs already has the join this needs: components in docs, parts claimed in each device base (contract parts = 1), pulled by feed-device-parts into support_status, unclaimed = not known yet (decision 2026-11-17-commons-and-device-bases).
+Others: nobody keeps bring-up steps as data with edges and a proof per step. Order is prose (Nura's porting and mainlining guides, UBports, Sailfish HADK, Qualcomm cover letters: boot to shell first); per-device status is a person's tick (Nura's Infobox Cargo table, Asahi's feature pages); proofs are flat lists (bootrr, dropped for unstable names and per-board lists; Collabora's DT probe kselftest; LAVA boot stages and test-case ids); dependencies are data only where machines run them (BitBake typed edges and input-keyed stamps, KernelCI, openQA fatal/ignore_failure, beads and Taskwarrior's computed READY). Nura's categories are levels as sets of checks.
+Tried: the three tables, two records and the chain query in a scratch clone of docs: tad check passes, the edge record refuses a cycle, the generic chain orders 26 steps in 13 depths, walleye's claims give the queue walleye's keeper already has as ready (charger, watchdog, UFS, USB network), and the failing test passes with them and fails when one is removed.
+
+Sources
+: nura-porting-guide,nura-infobox-device,nura-device-categorization,nura-hardware-ci,nura-mainlining-guide,asahi-feature-support,bootrr,collabora-dt-probe-kselftest,yocto-bsp-guide,yocto-compatible,bitbake-task-deps,lava-boot-action,lava-test-definition,kernelci-pipeline-config,openqa-docs,beads-issue-graph,github-issue-dependencies,taskwarrior-virtual-tags,ubports-porting,sailfish-hadk-subsystems
+
+About
+: bringup-steps
+
+Material
+: research/bringup-steps/2026-11-18/
+
+
+<a id="bringup-steps-how-it-stands"></a>
+### bringup-steps-how-it-stands
+
+Brief
+: Bring-up steps: decided (generic in docs, claimed per device base, pulled like parts), not built; 10 items unranked, first the schema the owner lands; the failing test is in the material
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: Where do bring-up steps as data stand, and what comes first?
+
+Found
+: How it stands, 2026-11-18. Decided, not built: decision 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base (research bringup-steps-landscape). Drafted and tried in a scratch clone, in research/bringup-steps/2026-11-18/: the three tables (schema.toml), the records bringup-step and bringup-edge, the query bringup-chain, a seed of 26 steps and 37 edges, walleye's 26 claims (17 done, 2 partial, 1 failing, 6 open), and the failing test bringup-chain-walleye.sh (fails on main: no query). Queue, unranked, for the author: docs bringup-steps-schema (the owner's to land), bringup-steps-seed, feed-device-steps, bringup-guidebook, milestones-step-terms; device-template steps-contract (after template-releases); google-walleye-lab walleye-steps-claimed and surya-lab surya-steps-claimed (after their template follow); lab-tools bringup-steps-helpers, then the research bringup-step-runner. Umbrella: bringup-steps. Open for the author: the stage list and the size of a step (26 for walleye's road so far); whether milestones should be rewritten as step sets; whether a claim should ever lapse by age (decided no: proven_on instead).
+
+Sources
+: bitbake-task-deps,lava-test-definition,nura-infobox-device
+
+About
+: bringup-steps

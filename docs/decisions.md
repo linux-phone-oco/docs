@@ -1752,3 +1752,42 @@ Research
 
 Tracked by
 : device-template-follow
+
+
+<a id="2026-11-18-bringup-steps-generic-in-docs-status-in-each-base"></a>
+### 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base
+
+Brief
+: Bring-up steps: generic steps and their hard/soft edges in docs; each device base claims its status per step with proof and run; docs pulls it, unclaimed = not known yet
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Decision
+: Bring-up steps become data, in two halves joined the way parts already are (decision 2026-11-17-commons-and-device-bases).
+1. docs, the commons, keeps the generic steps: bringup_steps (id, title, stage of prepare/boot/console/kernel/power/storage/userspace/lab, ord, applies: any or a class such as boot:android, usb:gadget, power:battery, done_when, proof: a stable check name, proof_kind of host-check/phone-suite/build-check/witness/research, helper: the lpoco command or none, component: the catalogue part whose first light it is, guide: how it is done and the traps met with the records that met them, sources, checked_on) and bringup_step_edges (step, requires, kind hard or soft, group: edges sharing one are alternatives, why). Recorded by tad r bringup-step and bringup-edge; the edge record refuses a cycle. A step first met on one device goes in the catalogue scoped by applies, so there is one graph.
+2. Each device base claims its own status per step: a steps table (step, status of done/partial/failing/open/not-needed/unknown, proof: the check it ran, run: the record or test run, proven_on: the image or kernel hash, notes, updated), contract steps = 1 in devicebase.toml, recorded by tad r step. It ships in device-template only and reaches the labs by the template's release (decision 2026-11-18-device-template-follows-by-release); never copied by hand.
+3. docs pulls the claims into step_status (device x step) by records/feed-device-steps.sql, as feed-device-parts does. A step a base never claimed is unknown, "not known yet"; a base unreadable or without steps = 1 gives every step unknown and why. A new device made from the template starts with data/steps.json empty, so every step is not known yet until its base claims it - measured-not-claimed. A claim does not expire by age (a passed step stays passed for what it was proven on); proven_on lets a later kernel be told from it, and the runner re-proves.
+4. tad q bringup-chain [--device D] reads them: each step in order (depth over all edges, then stage, then ord), its status, proof, run, needs, and ready (every hard need done or not-needed, one per group) or waits - readiness computed, never stored.
+5. The guidebook is rendered from the same rows by make render into docs/guidebook.md: a chapter per stage, each step's done-when, needs, proof, helper or the gap, guide, and a column per device; verify keeps it fresh.
+6. The helpers map by the helper field: today lpoco bringup image pack/check/swap/bisect, initramfs build, lpoco lab fastboot, flash, provision, suite; a step with none is a helper to write. Later one runner walks ready steps: runs the helper, then the proof, and claims the result in the device's base; a step that changes the phone goes to its keeper's queue (half automated).
+7. Milestones may name step:ID@device as they name component: and feature:, so "boots" becomes a set of steps.
+Schema, records, query, seed (26 steps, 37 edges) and the failing test: research/bringup-steps/2026-11-18/. The tables, records and queries are docs' owner's to land (AGENTS.md); they are queued, not landed here.
+
+Why
+: The author: the precise work of a bring-up is folded under "boots"; he wants every step, how it relates to the ones before and after, a guidebook made from the data, small helpers per step and later a runner; and the general table used by each device base for where it stands (2026-11-18). Measured (research bringup-steps-landscape): walleye's 26 steps are real and each done one has a check and a record; surya's road shows why steps need applies and not-needed; nobody outside keeps steps with edges and proofs, but each piece exists (Nura's per-device Cargo table, LAVA ids and expected lists, BitBake typed edges and stale stamps, Taskwarrior's computed READY, openQA hard/soft). The parts join already works between docs and two bases, so the step status needs no new mechanism. The draft ran in a scratch clone: checks pass, the chain orders, walleye's ready steps are its keeper's real queue.
+
+Rejected
+: Steps as more components or more feature_support rows (a step is not a part: it has order and edges, and parts would mix "the kernel reaches init" with "the speaker plays"); steps per device only, in each lab (no shared graph, no guidebook, the next device starts from nothing); status typed in docs (decided against for parts on 2026-11-17: copies drift); edges as a comma list in the step row (no kind, no alternatives, no cycle check); the backlog as the step graph (backlog is one device's work and its tries; a step is generic and outlives the items that did it - items stay linked by run); an issue tracker DAG (beads, GitHub blocked-by: edges without proofs, outside the base); per-driver probe assertions as steps (bootrr's lesson: unstable names, per-board lists; a probe check can be a step's proof, derived from the devicetree as Collabora's kselftest does); a 30-day expiry as for parts (a step proven on an image stays proven for it; proven_on and the runner's re-proof answer regressions); a generated guidebook from prose pages (Nura's guide is hand-written and being rewritten).
+
+About
+: bringup-steps
+
+Research
+: bringup-steps-landscape
+
+Tracked by
+: bringup-steps
