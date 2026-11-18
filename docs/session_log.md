@@ -2218,3 +2218,27 @@ Rejected
 
 About
 : patrol-measures-the-start
+
+---
+
+
+<a id="2026-11-18-host-cross-targets"></a>
+### lpoco host: cross targets
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: [host] targets in device.toml: plan names, check fails a missing standard library, nothing installed (lab-tools #140). Review by the programmer found five defects before landing, all fixed with tests: early return skipped the devlab-cross fallback, target '.' always found, an empty libdir counted, rustup could auto-install from the cwd, and test gaps.
+
+Considered
+: found = rustc target-libdir with a libstd file, or the lab's devlab-cross toolchain (what health/build.sh falls back to)
+
+Rejected
+: running rustup target add from prepare (installs outside the declared plan, and the lab's separate rustup home needs nix-shell); found by directory existence alone (a leftover empty directory passes)
+
+About
+: lpoco-host-rest
