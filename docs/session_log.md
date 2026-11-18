@@ -2744,3 +2744,21 @@ Rejected
 
 About
 : restore-share-per-device
+
+---
+
+
+<a id="2026-11-18-author-yes-device-layer-and-rhizoid"></a>
+### The author's yes: the device layer from docs, git-rhizoid unparked
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: The author's word, verbatim (through the Top Coordinator, 2026-11-18): 'yes, if its the best we came up with, grounded in our extensive research and consideration, which it seems it did, so yes'. It answers two questions from research base-graph: (1) decision 2026-11-18-device-layer-from-docs - the device layer moves into docs, served from device-layer/, and the template becomes an ordinary follower that keeps its made-once seed files; (2) git-rhizoid is unparked with the research's scope and order - status (passes graph-drift.sh), follow (passes idealkb's test-follow.sh exactly, keeping its three rules), send-back, forks; each replaces shell only once it passes. Following: device-layer-in-docs (idealkb v0.17.0 slice-from-prefix is out), the template builder on template-classifies-its-files then template-follows-docs, ikb items 2-4 (2 released as idealkb v0.18.0), a builder owning git-rhizoid.
+
+About
+: base-graph
