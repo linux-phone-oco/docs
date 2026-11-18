@@ -4606,16 +4606,19 @@ Status
 : open
 
 Note
-: Reaches labs by the template release (decision 2026-11-18-device-template-follows-by-release), never by hand. A new device starts with no claim: every step not known yet.
+: Reshaped 2026-11-18 by orchestration: under decision 2026-11-18-device-layer-from-docs the steps contract (the device bases' step_status table and its claim record) ships in docs' device-layer/ and reaches device-template, surya-lab and google-walleye-lab through idealkb's hourly follow at docs' next release - not through a template release (template-releases was replaced). Proof unchanged: a device base can claim a step and docs' feed reads it.
 
 Opened
 : 2026-11-18
 
 Blocked by
-: bringup-steps-schema,template-releases
+: bringup-steps-schema
 
 Proof
 : in the template, tad check passes with an empty steps table; tad r step --step shell-on-console --status done --proof X --run Y writes one row and refuses a status outside the six
+
+Rank
+: 1
 
 About
 : bringup-steps
@@ -4641,6 +4644,9 @@ Blocked by
 
 Proof
 : run against a base without steps = 1, every step of that device is unknown with the reason; against google-walleye-lab after its claims, research/bringup-steps/2026-11-18/bringup-chain-walleye.sh passes
+
+Rank
+: 2
 
 About
 : bringup-steps
@@ -4794,6 +4800,9 @@ Blocked by
 
 Proof
 : milestone-readiness counts a step term done only when step_status says done for that device; a walleye milestone 'reaches a shell' over step:shell-on-console@google-walleye reads ready
+
+Rank
+: 8
 
 About
 : bringup-steps
@@ -5080,6 +5089,9 @@ Opened
 Proof
 : tad q bringup-chain --goal daily-usable-phone gives the 77 steps daily-phone.sh counts, and --goal nope errs naming the step
 
+Rank
+: 3
+
 About
 : bringup-steps
 
@@ -5101,6 +5113,9 @@ Opened
 
 Proof
 : in a scratch copy, adding a stage with no step (ikb bringup-stage) makes make verify fail naming it; as landed it passes
+
+Rank
+: 4
 
 About
 : bringup-steps
@@ -5124,6 +5139,9 @@ Opened
 Proof
 : tad q prior-art --about bringup-steps lists the sources of bringup-steps-landscape, bringup-steps-coverage-map and bringup-steps-phone-stages, each with its takes
 
+Rank
+: 5
+
 About
 : bringup-steps
 
@@ -5146,6 +5164,9 @@ Opened
 Proof
 : ikb landscape --id ubports-devices ... records a row and tad check passes
 
+Rank
+: 6
+
 About
 : bringup-steps
 
@@ -5167,6 +5188,9 @@ Opened
 
 Proof
 : tad sql shows gnss-fix, gpu-renders, battery-gauge-reads and buttons-report each naming a component, and tad check passes
+
+Rank
+: 7
 
 About
 : bringup-steps
@@ -5192,6 +5216,9 @@ Blocked by
 
 Proof
 : a milestone surya-daily-phone over step:daily-usable-phone@xiaomi-surya reads not ready while daily-phone.sh xiaomi-surya fails, and ready when it passes
+
+Rank
+: 9
 
 About
 : bringup-steps
