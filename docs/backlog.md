@@ -3279,7 +3279,7 @@ Proof
 : per part, a plan test from fixtures that lists it and changes nothing without the verb; this run: part (2), devlab-watch@ user units planned for every device found, lab-machine setup/devlab-watch.sh named as replaced
 
 Rank
-: 1
+: 2
 
 About
 : lpoco-host
@@ -3670,6 +3670,37 @@ Device
 
 Proof
 : a check test from a fixture kernel log: a 1d6b gadget with SerialNumber walleye-banner while device.toml declares walleye-first-boot is reported (device, serial seen, serial declared, when); a declared one is not
+
+Rank
+: 1
+
+About
+: lpoco-host
+
+
+<a id="host-watch-declared"></a>
+### lpoco host watches only the devices whose device.toml asks to be watched
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Seen 2026-11-18 (orchestration-renewed) reading the plan of lab-tools #133 (lpoco-host-rest part 2) before its release: prepare would enable devlab-watch@google-walleye-lab, a watcher no one asked for, on a phone whose keeper is mid-bring-up (stock Android and one-shot images; a watcher's health after every boot would race the keeper and file board tasks). Watching is the device's own choice, like its gadgets: device.toml [host] watch (deny_unknown_fields already in [host]). Release v0.6.2 (#134) and the lab's prepare wait for this; surya-lab must add watch = true (its lane) before the prepare that adopts its unit.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: a plan test from fixtures: a device with [host] watch = true gets its devlab-watch@ instance enabled; one without it gets none, and an enabled instance of a device that no longer asks is named in the plan (never stopped silently); surya-lab's device.toml declaring watch = true is the lane's change, read from origin/main
 
 Rank
 : 1
