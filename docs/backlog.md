@@ -2834,10 +2834,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Replaces build-bisect.sh and check-bisect.sh. Test: swapping nothing (s0) reproduces the control except the header id and the footer digest (53 bytes in walleye's case; a small synthetic control with an avbtool-made footer is the fixture); swapping the ramdisk changes exactly the ramdisk, the header sizes and the footer. Parts: ramdisk, kernel (lz4 frame as the stock one, independent 4 MiB blocks, content checksum), dtb (found by magic at the end of the kernel blob), cmdline, header fields. Footer through avbtool add_hash_footer (algorithm NONE, the control's partition size, salt and properties) - wrapped, no crate exists. 'bringup bisect FILE' runs a declared series (the s0, s0n, s1, s2, s3 of walleye).
+: Built and landed (lab-tools#110): lpoco-bringup image swap CONTROL --out IMG [--ramdisk|--kernel|--dtb|--cmdline]; proof bringup_swap_s0_reproduces_control passes. Bisect series and lz4 kernel are bringup-bisect-series.
 
 Opened
 : 2026-11-17
@@ -3479,3 +3479,31 @@ Rank
 
 About
 : deep-sleep
+
+
+<a id="bringup-bisect-series"></a>
+### bringup bisect FILE: a declared series of swaps (walleye's s0, s0n, s1, s2, s3), and the lz4 frame kernel part
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Follows bringup-image-swap (landed). Also untested: a control with a second image. Replaces build-bisect.sh and check-bisect.sh.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: bringup-bisect-runs-declared-series
+
+About
+: bringup
