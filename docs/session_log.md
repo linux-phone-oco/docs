@@ -1846,3 +1846,27 @@ Rejected
 
 About
 : release-plz-one-version
+
+---
+
+
+<a id="2026-11-18-patrol-0508"></a>
+### Patrol round 2026-11-18 05:08 UTC
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: Read-only round: nothing changed, no sign filed. Landings (6h): docs 20+, lab-tools, device-template, surya-lab, walleye-lab all by PR, device rows in their own bases. devlab-watch@surya-lab active; its log shows the phone not reachable (parked, expected: author power cycle, backlog surya-unreachable-after-suspend); pages build green x3; lpoco host check tool FAILs known (lpoco-host-script-tools). Walleye phone off USB, parked on author (walleye-phone-needs-hands), expected. Launcher runs of walleye-keeper and lab-tools-builder all succeeded and reported. Start weight: patrol 26339, phone-keeper 30319 highest, no budget named here so none called over. Read-weight of transcripts, other launchers' runs: not known yet.
+
+Considered
+: filing the truncated-journal lines in the watch log: they stopped at 00:58, not repeating
+
+Rejected
+: a sign on the host tool FAILs: already on a backlog item
+
+About
+: patrol-measures-the-start
