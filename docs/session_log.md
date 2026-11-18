@@ -1891,3 +1891,27 @@ Rejected
 
 About
 : release-plz-one-pr
+
+---
+
+
+<a id="2026-11-18-bisect-series-built"></a>
+### bringup image bisect built
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Proof test first, seen failing; image bisect SERIES with lz4 kernel and footerless entries; programmer review found a panic on a footer running past the image, a mangled doc line and untested miss paths: fixed and tested; landed lab-tools#123, read back from main.
+
+Considered
+: lz4_flex crate
+
+Rejected
+: deleting failed images from DIR: kept, the report line says FAIL
+
+About
+: bringup-bisect-series

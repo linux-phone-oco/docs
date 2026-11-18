@@ -1525,3 +1525,31 @@ Rejected
 
 About
 : release-plz-one-pr
+
+
+<a id="2026-11-18-bisect-wraps-lz4"></a>
+### 2026-11-18-bisect-wraps-lz4
+
+Brief
+: bisect puts the kernel in an lz4 frame by wrapping the lz4 program, as swap wraps avbtool
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-18
+
+Decision
+: image bisect frames a swapped-in kernel with the lz4 program (level 9, independent 4 MiB blocks, content checksum, the stock kernel's frame flags); an entry may also leave the AVB footer off. The count compares ramdisk, kernel, dtb and command line to the control and verifies the footer; it does not compare the second stage or other header fields.
+
+Why
+: walleye's build-bisect.sh used lz4 -9 -BI -B7, whose frame the stock bootloader path reads; the oracle is the lz4 program, as avbtool is for the footer (research bringup-tools-landscape).
+
+Rejected
+: a Rust lz4 crate (lz4_flex): no level-9 high compression and the frame flags would differ from the stock frame, so the bisect would change two things at once; comparing every header field: not needed for the walleye series, narrowed the claim instead
+
+About
+: bringup-bisect-series
+
+Research
+: bringup-tools-landscape
