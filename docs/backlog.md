@@ -4556,10 +4556,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Ready to land as drafted in research/bringup-steps/2026-11-18 (schema.toml, records/, queries/): tried in a scratch clone at 3596bb3. The owner's to land (AGENTS.md: schema, records, queries).
+: Landed: tables bringup_stages (the stage list as rows, so it changes with ikb bringup-stage and no schema change), bringup_steps, bringup_step_edges, step_status (declared only; a feed fills it); records bringup-step, bringup-edge (refuses a cycle, a self-edge, a group mixing hard and soft), bringup-stage; query bringup-chain [--device] with a computed ready/waits. Reviewed by the programmer subagent (group-name collision, UNION for the depth walk, stage tie, device guard fixed). tad check: 37 tables; make verify twice clean. Test research/bringup-steps/2026-11-18/bringup-chain-walleye.sh: was 'no query bringup-chain'; with the schema and seed it gets 26 steps in order and fails only for lack of claims (walleye kernel-reaches-init is unknown, not done): walleye-steps-claimed and feed-device-steps make it pass.
 
 Opened
 : 2026-11-18

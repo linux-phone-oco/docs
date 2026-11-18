@@ -1485,3 +1485,221 @@ required = true
 [[rules.references]]
 field = "hardware.about"
 to = ["components", "features", "milestones", "devices", "backlog", "concepts"]
+
+# The phases of a bring-up, in the order one meets them: the guidebook's chapters. Held as rows, not as an enum
+# of bringup_steps.stage, so the list can change (a stage added, split, renamed or moved) with
+# `ikb bringup-stage`, never with a schema change; a step names its stage (a reference), and a stage a step
+# still names cannot be removed.
+[tables.bringup_stages]
+key = ["id"]
+
+[[tables.bringup_stages.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+# its place among the stages: the order of the chapters
+[[tables.bringup_stages.fields]]
+name = "ord"
+type = "integer"
+required = true
+minimum = 1.0
+
+[[tables.bringup_stages.fields]]
+name = "title"
+type = "string"
+required = true
+
+# what the stage is for, in a line or two: the chapter's opening
+[[tables.bringup_stages.fields]]
+name = "what"
+type = "string"
+required = true
+
+
+# Bring-up steps (decision 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base): every small step that
+# makes Linux run on a machine, once for all machines, in the commons. A device never writes here: its own base
+# claims each step (the steps table, contract steps = 1 in devicebase.toml) and docs pulls the claims into
+# step_status, as it pulls parts into support_status. A step a base never claimed is not known yet.
+[tables.bringup_steps]
+key = ["id"]
+
+[[tables.bringup_steps.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+# what the step is, in a few words
+[[tables.bringup_steps.fields]]
+name = "title"
+type = "string"
+required = true
+
+# the phase it belongs to: a row of bringup_stages, which orders the guidebook's chapters
+[[tables.bringup_steps.fields]]
+name = "stage"
+type = "string"
+required = true
+
+# its place within the stage when the edges leave two steps unordered (the guidebook's tie-break)
+[[tables.bringup_steps.fields]]
+name = "ord"
+type = "integer"
+required = true
+minimum = 1.0
+
+# which machines it holds for: any, or a class - boot:android (an Android bootloader), boot:uefi, usb:gadget,
+# soc:qcom, power:battery ... A device whose class does not match records not-needed, with why.
+[[tables.bringup_steps.fields]]
+name = "applies"
+type = "string"
+required = true
+pattern = "^(any|[a-z]+:[a-z0-9-]+)$"
+
+# what done means, checkably: the sentence the proof tests
+[[tables.bringup_steps.fields]]
+name = "done_when"
+type = "string"
+required = true
+
+# the generic proof: a tests id, or the check a device's own test must make (named, to write)
+[[tables.bringup_steps.fields]]
+name = "proof"
+type = "string"
+required = true
+
+# how the proof is had: a host-side check on what the phone printed, the phone's own suite, a build check,
+# a person's witness, or a research row (a reading that is not a test)
+[[tables.bringup_steps.fields]]
+name = "proof_kind"
+type = "string"
+required = true
+enum = ["host-check", "phone-suite", "build-check", "witness", "research"]
+
+# the lpoco command that does the step or most of it; none yet = the gap a helper fills
+[[tables.bringup_steps.fields]]
+name = "helper"
+type = "string"
+
+# the part of docs' catalogue whose first light this step is, when it is one
+[[tables.bringup_steps.fields]]
+name = "component"
+type = "string"
+
+# the guidebook's paragraph: how it is done, and the traps met so far with the records that met them
+[[tables.bringup_steps.fields]]
+name = "guide"
+type = "string"
+required = true
+
+# the sources, comma-separated ids
+[[tables.bringup_steps.fields]]
+name = "sources"
+type = "string"
+
+[[tables.bringup_steps.fields]]
+name = "checked_on"
+type = "date"
+required = true
+
+# What a step needs before it. hard: it cannot be done before the other is done; soft: it can, but blind or
+# at much greater cost (a crash window before the first kernel). Edges sharing a group are alternatives: one
+# done is enough (a console over UART or over the USB gadget).
+[tables.bringup_step_edges]
+key = ["step", "requires"]
+
+[[tables.bringup_step_edges.fields]]
+name = "step"
+type = "string"
+required = true
+
+[[tables.bringup_step_edges.fields]]
+name = "requires"
+type = "string"
+required = true
+
+[[tables.bringup_step_edges.fields]]
+name = "kind"
+type = "string"
+required = true
+enum = ["hard", "soft"]
+
+[[tables.bringup_step_edges.fields]]
+name = "group"
+type = "string"
+
+[[tables.bringup_step_edges.fields]]
+name = "why"
+type = "string"
+required = true
+
+# Each device's steps as its own base claims them: filled by a feed (feed-device-steps, to come), never typed here.
+# The feed will give every step x every registered device a row; what a base does not claim is unknown, "not known yet".
+[tables.step_status]
+key = ["device_id", "step_id"]
+
+[[tables.step_status.fields]]
+name = "device_id"
+type = "string"
+required = true
+
+[[tables.step_status.fields]]
+name = "step_id"
+type = "string"
+required = true
+
+[[tables.step_status.fields]]
+name = "status"
+type = "string"
+required = true
+enum = ["done", "partial", "failing", "open", "not-needed", "unknown"]
+
+# the test or check that proved it on this device (a tests id, or the base's own script)
+[[tables.step_status.fields]]
+name = "proof"
+type = "string"
+
+# where the proof ran: a test_runs id, a research row, a pull request
+[[tables.step_status.fields]]
+name = "run"
+type = "string"
+
+# what it was proven on: the image, kernel or dtb (its hash), so a later change can be told from it
+[[tables.step_status.fields]]
+name = "proven_on"
+type = "string"
+
+[[tables.step_status.fields]]
+name = "notes"
+type = "string"
+
+[[tables.step_status.fields]]
+name = "updated"
+type = "date"
+required = true
+
+[[rules.references]]
+field = "bringup_step_edges.step"
+to = ["bringup_steps"]
+
+[[rules.references]]
+field = "bringup_step_edges.requires"
+to = ["bringup_steps"]
+
+[[rules.references]]
+field = "bringup_steps.component"
+to = ["components"]
+
+[[rules.references]]
+field = "step_status.device_id"
+to = ["devices"]
+
+[[rules.references]]
+field = "step_status.step_id"
+to = ["bringup_steps"]
+
+[[rules.references]]
+field = "bringup_steps.stage"
+to = ["bringup_stages"]
