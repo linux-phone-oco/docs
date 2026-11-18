@@ -3203,3 +3203,27 @@ Rejected
 
 About
 : patrol-measures-the-start
+
+---
+
+
+<a id="2026-11-19-shellword-newtype-for-the-gadget-words"></a>
+### ShellWord newtype for the gadget words
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lab-tools #190 (d06cef4): the [boot.gadget] words are a ShellWord; the re-check in make and BootGadget::check are gone; schema unchanged. Reviewed by the programmer subagent; its notes: default words now tested, Serialize kept for schemars' defaults.
+
+Considered
+: Keeping the field-naming message: left to toml's snippet.
+
+Rejected
+: A newtype with schemars's own definition (lost the defaults in the schema); a per-field check kept beside the type (two gates).
+
+About
+: bringup-generic-init
