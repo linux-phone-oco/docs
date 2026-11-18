@@ -3255,10 +3255,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: 2026-11-18, lab-tools-builder: parts (2), (4) and (5) done. (4) host commands (lab-tools #138): device.toml [host] commands = [...] (safe words); plan and check list each once with every device that wants it, found on PATH (where) or missing; check FAILs a missing one; nothing is installed for it (a root pacman is the author's grant to give). Proof: host/tests/plan.rs a_missing_host_command_is_named_by_plan_and_fails_check_and_nothing_is_installed (seen failing first), check_passes_with_only_found_commands..., lib unit test commands_are_listed_once_with_every_device_that_wants_them. (5) foreign rules named (#136): plan and check name any /etc/udev/rules.d file that is not 70-lpoco-* and not the kept 51-android.rules and that names a declared gadget serial or assigns MODE 0666; never edited or removed. (2) devlab-watch@ units (#133); open: a linked but stopped unit is not restarted (consider is-active); lab-machine setup/devlab-watch.sh to remove once prepare now ran on the lab. Next: (3) cross targets, (6) NCM.
+: 2026-11-18, lab-tools-builder: part (3) cross targets done (lab-tools #140, main 85975d9). device.toml [host] targets = [...] (safe words); plan and check list each once with every device that wants it; found = a libstd-* in the PATH rustc's target-libdir (asked from / with RUSTUP_AUTO_INSTALL=0) or in ~/.local/share/devlab-cross/rustup/toolchains; check FAILs a missing one; nothing installed. Proof: host/tests/plan.rs a_missing_cross_target_is_named_by_plan_and_fails_check_and_nothing_is_installed (seen failing first) and a_target_is_found_once_for_two_devices_and_dot_or_an_empty_libdir_or_a_broken_rustc_is_not_a_library. Earlier: parts (2), (4), (5) done (#133, #138, #136); open: a linked but stopped devlab-watch@ unit is not restarted; lab-machine setup/devlab-watch.sh to remove once prepare ran on the lab; health/build.sh could read targets from the declaration. Next: (6) NCM.
 
 Opened
 : 2026-11-17
