@@ -4603,10 +4603,10 @@ Project
 : linux-phone-oco/device-template
 
 Status
-: in-progress
+: done
 
 Note
-: In docs' device layer (docs-builder): the steps table of the marked part, records/step.sql (tad r step: done needs proof and run, not-needed needs notes), generic names it, bin/test-steps-contract.sh in make verify. Next: docs' release; the hourly follow then carries it to device-template, surya-lab, google-walleye-lab (checked in a scratch template with a tagged copy of docs: tad check passes with the empty table, tad r step writes one row, a status outside the six is refused). Each base adds steps = 1 to its own devicebase.toml (the pin file is never laid) with its first claim; then docs' feed reads it. Done when a base has claimed one step and docs' feed reads it.
+: Done: the 21:00 idealkb update-pins run (2026-11-18) landed docs 0.17.0 -> 0.18.0 in device-template, surya-lab and google-walleye-lab; each holds step_status between the device markers and records/step.sql (claim a step: --step --status --proof --run --proven-on), read back on main by orchestration.
 
 Opened
 : 2026-11-18
