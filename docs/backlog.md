@@ -5225,3 +5225,91 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="workarounds"></a>
+### Workarounds - a script's line or a lane's rule - read one way: where each stands, its item, the item's state, its way out
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-18-workarounds-read-as-one. Steps: workarounds-reader-items-and-sites (ideal-agent's reader), workarounds-marked-where-they-stand (the two live ones), patrol-reads-workarounds. No scripts move; no table is added. Done when research/workarounds/2026-11-18/workarounds-read.sh exits 0.
+
+Opened
+: 2026-11-18
+
+Proof
+: research/workarounds/2026-11-18/workarounds-read.sh exits 0
+
+
+<a id="workarounds-reader-items-and-sites"></a>
+### ideal-agent's scripts/workarounds reads backlog items across bases, sites only, and prints each workaround's way out
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Upstream item workarounds-reader-items-and-sites to ideal-agent (its owner builds and releases it). Today on every lab it lists data/ and rendered docs/ lines and AGENTS.md's 'item-id' example, reads a backlog item (kept-kernel-with-pmic-wdt) as 'not known' and gives no way out. Wanted: --base repeatable, ITEM looked up in upstream_items then backlog; data/, docs/*.md rendered, research/ and the example skipped; each line SITE: ITEM - STATE - way out: patch to UPSTREAM | carried in FORK (due once the device runs it) | our work, backlog ITEM in BASE | due: retire. Then the plugin is bumped and docs reads it back.
+
+Opened
+: 2026-11-18
+
+Proof
+: research/workarounds/2026-11-18/workarounds-read.sh checks B, C and D pass
+
+About
+: workarounds
+
+
+<a id="workarounds-marked-where-they-stand"></a>
+### The two live workarounds marked where they stand: surya's bite rule in surya-lab AGENTS.md, the keep-awake in lab-tools
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: For orchestration to route: (1) surya lane: the lane rule 'after any PMIC bite boot a kernel carrying pm8916_wdt' written once in surya-lab AGENTS.md as 'WORKAROUND(kept-kernel-with-pmic-wdt): ...', the brief and the backlog notes pointing at it rather than restating it (way-back.sh's marker is already asked by way-back-pick-watchdog-by-identity); it goes when kept-kernel-with-pmic-wdt is done. (2) lab-tools: lpoco-health's keep-awake marked 'WORKAROUND(sxmo-autosuspend-backoff): ...' where it holds the phone up, as that item's note says it should be; it goes once our sxmo fork's fix runs on the phone. No phone needed: text only.
+
+Opened
+: 2026-11-18
+
+Proof
+: research/workarounds/2026-11-18/workarounds-read.sh check A passes
+
+About
+: workarounds
+
+
+<a id="patrol-reads-workarounds"></a>
+### The patrol runs scripts/workarounds over each lab at origin/main and files what is due as a sign to its lane
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: After workarounds-reader-items-and-sites. A line in the patrol brief (ideal-agent-linux-phone-oco/patrol.md, orchestration's): run the reader with --base the lab and docs over surya-lab, google-walleye-lab, lab-tools and docs; a 'due: retire' or 'not known' is a sign to the lane that owns the site. Orchestration's file; not landed by this research.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: workarounds-reader-items-and-sites
+
+Proof
+: a patrol round's report names the reader's due list, or says none is due
+
+About
+: workarounds

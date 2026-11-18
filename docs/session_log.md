@@ -3062,3 +3062,27 @@ Considered
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-18-oneoffs-research"></a>
+### Research: one-off scripts and workaround rules
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: Measured 97 tracked one-offs, 65 try recipes, 735 scratch scripts and their fates; read the world's scripts/ and contrib/ practice; weighed a scripts folder, a scripts repo with rhizcuts, a table, nothing; decided 2026-11-18-workarounds-read-as-one; wrote the failing check research/workarounds/2026-11-18/workarounds-read.sh (7 FAIL); backlog workarounds and three steps; upstream item to ideal-agent. Signed oneoffs-research.
+
+Considered
+: One tracked place for scripts with purpose, state, item; rust-script for one-offs; one scripts repo followed by each base as a rhizcut (the author's addition); workaround rules beside scripts (the coordinator's addition).
+
+Rejected
+: A folder, a repo or a table: nothing shared to hold, records already name the scripts, and a folder alone rots; rust-script by default: the one-offs are plumbing; see the decision.
+
+About
+: workarounds

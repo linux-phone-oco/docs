@@ -5188,3 +5188,209 @@ By
 
 Takes
 : Generates a mainline DSI panel driver from the downstream device tree: the usual road to 'panel lit' on Qualcomm phones.
+
+
+<a id="linux-maintainers-scripts"></a>
+### Linux MAINTAINERS: entries for scripts/
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://raw.githubusercontent.com/torvalds/linux/master/MAINTAINERS
+
+By
+: Linux kernel
+
+Takes
+: Every script has an owner: checkpatch and get_maintainer their own, the rest the build maintainers' fallback (Odd Fixes)
+
+
+<a id="lkml-remove-export-report"></a>
+### scripts: Remove export_report.pl
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.rescloud.iu.edu/2410.3/08527.html
+
+Author
+: M. Maurer
+
+Year
+: 2024
+
+By
+: Linux kernel
+
+Takes
+: A script goes when it has been broken for years with no complaint, or when its last caller goes (bin2c, 2023)
+
+
+<a id="git-contrib-readme"></a>
+### git contrib/README
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://raw.githubusercontent.com/git/git/master/contrib/README
+
+Author
+: Junio C Hamano
+
+By
+: git
+
+Takes
+: contrib/ is owned by its authors; things graduate out of it once mature, and disused ones are proposed for removal from time to time
+
+
+<a id="git-contrib-sweep-2025"></a>
+### Spring cleanup of contrib/ (ps/contrib-sweep)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lore.kernel.ime.usp.br/git/aBhZHA7av8bWH9Ac@pks.im/
+
+Author
+: Patrick Steinhardt
+
+Year
+: 2025
+
+By
+: git
+
+Takes
+: A folder of helpers rots even with a stated policy; it was swept in one series, each removal giving what replaced it (git-new-workdir by git worktree)
+
+
+<a id="postgres-contrib"></a>
+### PostgreSQL Appendix F: additional supplied modules
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.postgresql.org/docs/current/contrib.html
+
+By
+: PostgreSQL
+
+Takes
+: contrib holds what serves a limited audience or is experimental, built only on request; no graduation rule written
+
+
+<a id="homebrew-external-commands"></a>
+### Homebrew: External Commands
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.brew.sh/External-Commands
+
+By
+: Homebrew
+
+Takes
+: Any brew-foo on PATH or a tap's cmd/ is a command, its #: lines its help: a header doubles as the record
+
+
+<a id="homebrew-4-5-0"></a>
+### Homebrew 4.5.0
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://brew.sh/2025/04/29/homebrew-4.5.0/
+
+Year
+: 2025
+
+By
+: Homebrew
+
+Takes
+: brew services and brew bundle moved from official taps into Homebrew/brew and the taps were archived: graduation from incubator to core, criteria unwritten
+
+
+<a id="scripts-to-rule-them-all"></a>
+### Scripts to Rule Them All
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.blog/engineering/scripts-to-rule-them-all/
+
+Author
+: Jon Maddox
+
+Year
+: 2015
+
+By
+: GitHub
+
+Takes
+: Fixed entry names that CI runs too: a script in use cannot rot quietly
+
+
+<a id="sre-eliminating-toil"></a>
+### Site Reliability Engineering, ch. 5: Eliminating Toil
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://sre.google/sre-book/eliminating-toil/
+
+Author
+: Vivek Rau
+
+Year
+: 2017
+
+By
+: Google SRE
+
+Takes
+: Running a script by hand is still toil; it ends when nobody has to remember the script
+
+
+<a id="cargo-script-tracking"></a>
+### cargo#12207: tracking issue for cargo script (-Zscript)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/rust-lang/cargo/issues/12207
+
+By
+: rust-lang/cargo
+
+Takes
+: Not stable: cargo 1.99.1 (2026-08-27) refuses a .rs script without -Zscript; its frontmatter differs from rust-script's //! header
+
+
+<a id="ideal-agent-workarounds"></a>
+### ideal-agent scripts/workarounds and decision our-fork-ships-the-fix (plugin 0.3.47)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/grenudi/ideal-agent/blob/main/scripts/workarounds
+
+By
+: grenudi/ideal-agent
+
+Takes
+: WORKAROUND(ITEM) markers read against upstream_items: due once our fork carries the fix, upstream has it, or the item is not known
