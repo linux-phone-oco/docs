@@ -5178,10 +5178,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Then ikb set bringup_steps for gnss-fix, gpu-renders, battery-gauge-reads, off-mode-charging, buttons-report. Owner's: components has no record.
+: Landed: records/component.sql (ikb component --id --name --category), bin/test-component-record.sh in make verify; components gnss (connectivity), gpu (display), battery (power), buttons (input); gnss-fix, gpu-renders, battery-gauge-reads, off-mode-charging and buttons-report name them. The front camera needed no new part: camera-front is in the catalogue and no step is its first light. The new parts have no support_status row until the daily parts feed makes them unknown for each device with a base.
 
 Opened
 : 2026-11-18

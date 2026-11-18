@@ -19,3 +19,7 @@
 {"id":"fastboot","name":"Fastboot / bootloader","category":"power"}
 {"id":"kernel","name":"Kernel (boots without unexpected warnings)","category":"other"}
 {"id":"deep-sleep","name":"Deep sleep (the SoC at its lowest power state)","category":"power"}
+{"id":"gnss","name":"Location (GNSS)","category":"connectivity"}
+{"id":"gpu","name":"Graphics (GPU)","category":"display"}
+{"id":"battery","name":"Battery and charging","category":"power"}
+{"id":"buttons","name":"Buttons (power, volume)","category":"input"}

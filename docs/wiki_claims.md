@@ -25,6 +25,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
 | [Display panel](components.md#display-panel) | [❌](wiki_claims.md#display-panel--google-taimen) | ❔ | [✅](wiki_claims.md#display-panel--xiaomi-surya) |
+| [Graphics (GPU)](components.md#gpu) | ❔ | ❔ | ❔ |
 
 ### Input
 
@@ -33,6 +34,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | [Touchscreen](components.md#touchscreen) | ❔ | ❔ | [✅](wiki_claims.md#touchscreen--xiaomi-surya) |
 | [Haptics (vibration motor)](components.md#haptics) | ❔ | ❔ | [✅](wiki_claims.md#haptics--xiaomi-surya) |
 | [Fingerprint or face unlock](features.md#fingerprint) | ❔ | ❔ | [❌](wiki_claims.md#fingerprint--xiaomi-surya) |
+| [Buttons (power, volume)](components.md#buttons) | ❔ | ❔ | ❔ |
 
 ### Connectivity
 
@@ -44,6 +46,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | [Wi-Fi](features.md#wifi) | ❔ | ❔ | [✅](wiki_claims.md#wifi--xiaomi-surya) |
 | [Bluetooth](features.md#bluetooth) | ❔ | ❔ | [✅](wiki_claims.md#bluetooth--xiaomi-surya) |
 | [NFC](features.md#nfc) | ❔ | ❔ | [✅](wiki_claims.md#nfc--xiaomi-surya) |
+| [Location (GNSS)](components.md#gnss) | ❔ | ❔ | ❔ |
 
 ### Other
 
@@ -59,6 +62,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | [USB OTG](components.md#usb-otg) | ❔ | ❔ | [✅](wiki_claims.md#usb-otg--xiaomi-surya) |
 | [Fastboot / bootloader](components.md#fastboot) | [✅](wiki_claims.md#fastboot--google-taimen) | ❔ | [✅](wiki_claims.md#fastboot--xiaomi-surya) |
 | [Deep sleep that wakes for calls and messages](features.md#deep-sleep) | ❔ | ❔ | ❔ |
+| [Battery and charging](components.md#battery) | ❔ | ❔ | ❔ |
 
 ### Details
 

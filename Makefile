@@ -36,3 +36,4 @@ verify: check     ## what CI runs: data is valid and canonical, docs are fresh
 	@./bin/test-bringup-chain-goal.sh
 	@./bin/test-prior-art.sh
 	@./bin/test-landscape-record.sh
+	@./bin/test-component-record.sh

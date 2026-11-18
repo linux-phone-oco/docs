@@ -147,3 +147,31 @@ Category
 
 Category
 : power
+
+
+<a id="gnss"></a>
+### Location (GNSS)
+
+Category
+: connectivity
+
+
+<a id="gpu"></a>
+### Graphics (GPU)
+
+Category
+: display
+
+
+<a id="battery"></a>
+### Battery and charging
+
+Category
+: power
+
+
+<a id="buttons"></a>
+### Buttons (power, volume)
+
+Category
+: input
