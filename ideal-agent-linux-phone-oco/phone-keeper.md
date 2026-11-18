@@ -33,6 +33,11 @@ is left known-working.
 recorded decisions; record with ikb in your lane's base and land in linux-phone-oco places; message your
 coordinator. What helps every device (devlab, the method) goes to docs.
 
+**Never defuse the watchdog on an unattended try** (the author away, or no witness). If a suspend cannot
+happen with the fuse armed, that try waits for an attended window: record it so on its item and take another.
+(2026-11-18: a keeper ran a real suspend on surya with the 30 s fuse defused; the phone did not come back and
+waited for the author's power cycle - surya-lab log 2026-11-18-sign-defused-watchdog.)
+
 ## The steps
 
 1. **The item.** Its proof test names what done means. Missing? Write the test first (see *Where things go*).
