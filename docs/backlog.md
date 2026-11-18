@@ -4158,10 +4158,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: pmbootstrap aportgen --fork-alpine sxmo-utils as the start; pkgver 1.18.1_pYYYYMMDD; the tagged lab repository so apk upgrade keeps it (decision 2026-11-18-upstream-forks). Pin (upstreams-coordinator, 2026-11-18): https://github.com/grenudi/sxmo-utils tag lab-20261118.1 (annotated, 6432ef936a84 = branch lab = upstream 1fd7822 + backoff 2bb2500, stop-by-profile 1156bb6, surya sensors 6432ef9); pkgver 1.18.1_p20261118. When it is out, surya-lab surya-sxmo-suspend-series is unblocked.
+: Declaration landed (lab-tools PR 157): packaging/sxmo-utils/APKBUILD, 1.18.1_p20261118, source tag lab-20261118.1, every subpackage; proof check .github/check-sxmo-utils-apk.sh in CI. Not yet built or signed (no pmbootstrap/abuild on the lab machine) nor published as sxmo-utils@lab: see sxmo-utils-lab-apk-deliver. Phone proof suspend-retry-backs-off waits on that.
 
 Opened
 : 2026-11-18
@@ -4270,3 +4270,34 @@ Proof
 
 Rank
 : 10
+
+
+<a id="sxmo-utils-lab-apk-deliver"></a>
+### Build, sign and publish the sxmo-utils lab apk as the sxmo-utils@lab repository
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: packaging/conveyor.toml declares one package (lpoco-health, tag-prefix lpoco-health-v); the lab apk's source is the grenudi/sxmo-utils tag, not a lab-tools tag. Needs the conveyor to take a second declaration (or a tag input), the lab key signing it, and an abuild run proving all subpackages build on aarch64. Then surya-sxmo-suspend-series is unblocked.
+
+Opened
+: 2026-11-18
+
+Blocked by
+: sxmo-utils-lab-apk
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: suspend-retry-backs-off
+
+About
+: sxmo-utils-lab-apk

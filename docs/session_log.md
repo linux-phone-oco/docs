@@ -2480,3 +2480,27 @@ Rejected
 
 About
 : upstreams-lane
+
+---
+
+
+<a id="2026-11-18-sxmo-utils-lab-apk-declaration"></a>
+### sxmo-utils lab apk declaration
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Built the lab apk declaration from Alpine's community/sxmo-utils (1.18.1-r5) in lab-tools packaging/sxmo-utils, source grenudi tag lab-20261118.1, pkgver 1.18.1_p20261118, every subpackage kept; the proof check (shell, in CI) was seen failing first, then reviewed by the programmer subagent, which found it could not fail on builddir or river - fixed - and landed as PR 157, read back from main.
+
+Considered
+: Putting the APKBUILD in the fork repository; a Rust checker (a shell check of one declaration needs no program).
+
+Rejected
+: Marking the item done: the apk is not built, signed or published, and its phone proof is not run. Copied from Alpine and left: typos in the river post-install (srmo.desktop) - for the upstreams lane.
+
+About
+: sxmo-utils-lab-apk
