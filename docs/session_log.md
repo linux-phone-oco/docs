@@ -2504,3 +2504,27 @@ Rejected
 
 About
 : sxmo-utils-lab-apk
+
+---
+
+
+<a id="2026-11-18-sxmo-apk-deliver-blocked"></a>
+### sxmo-utils lab apk delivery: blocked on the conveyor
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Read the conveyor's alpine.yml against packaging/sxmo-utils and lab-tools' packages.yml; found two gaps (sibling source files not copied; one Pages site per repository, replaced by each run). Recorded them on the row; changed nothing in the conveyor or lab-tools.
+
+Considered
+: A second declaration plus a second job in lab-tools alone (fixes neither gap); a workflow of our own that builds and signs (copies the conveyor, against its idea: called, not copied).
+
+Rejected
+: Landing the declaration and job now: the first run would replace the lpoco-health repository on the live page and fail on the missing sources.
+
+About
+: sxmo-utils-lab-apk-deliver

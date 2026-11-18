@@ -4279,7 +4279,7 @@ Status
 : open
 
 Note
-: packaging/conveyor.toml declares one package (lpoco-health, tag-prefix lpoco-health-v); the lab apk's source is the grenudi/sxmo-utils tag, not a lab-tools tag. Needs the conveyor to take a second declaration (or a tag input), the lab key signing it, and an abuild run proving all subpackages build on aarch64. Then surya-sxmo-suspend-series is unblocked.
+: Blocked on the conveyor (linux-package-distribution-oco/conveyor, alpine.yml v1), not on lab-tools. Read 2026-11-18: it takes a declaration input and a tag, but (1) it copies only the APKBUILD into the build folder, while sxmo-utils has 7 local source files beside it (rootfs-*, *.post-install), so abuild fetch/verify fails; (2) it builds one Pages site per repository from this run's artifacts alone, so a second package in lab-tools would replace lpoco-health's repository (and the verify step reads the page for one NAME). Needs of the conveyor: copy the APKBUILD's whole folder; merge into the existing site (or one site per package), verify per package. Then lab-tools adds packaging/sxmo-utils/conveyor.toml (tag-prefix sxmo-utils-v, tag sxmo-utils-v1.18.1_p20261118) and a second packages job with declaration:. Nothing landed in lab-tools: a trigger now would clobber the live lpoco-health page.
 
 Opened
 : 2026-11-18
