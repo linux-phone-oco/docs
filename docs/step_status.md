@@ -1895,7 +1895,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -1913,7 +1913,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -1931,7 +1931,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -1949,7 +1949,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -1967,7 +1967,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -1985,7 +1985,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2003,7 +2003,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2021,7 +2021,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2039,7 +2039,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2057,7 +2057,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2075,7 +2075,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2093,7 +2093,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2111,7 +2111,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2129,7 +2129,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2147,7 +2147,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2165,7 +2165,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2183,7 +2183,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2201,7 +2201,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2219,7 +2219,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2237,7 +2237,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2255,7 +2255,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2273,7 +2273,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2291,7 +2291,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2309,7 +2309,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2327,7 +2327,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2345,7 +2345,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2363,7 +2363,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2381,7 +2381,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2399,7 +2399,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2414,10 +2414,19 @@ Step id
 : lab-link-held-awake
 
 Status
-: unknown
+: done
+
+Proof
+: usb-awake
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: usb-awake=pass
 
 Updated
 : 2026-11-18
@@ -2435,7 +2444,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2453,7 +2462,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2468,10 +2477,19 @@ Step id
 : pd-mapper-before-remoteproc
 
 Status
-: unknown
+: failing
+
+Proof
+: sound-card
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: sound-card=fail
 
 Updated
 : 2026-11-18
@@ -2486,10 +2504,19 @@ Step id
 : remoteprocs-running
 
 Status
-: unknown
+: done
+
+Proof
+: adsp-running,cdsp-running,modem-running,no-processor-crashes
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: adsp-running=pass cdsp-running=pass modem-running=pass no-processor-crashes=pass
 
 Updated
 : 2026-11-18
@@ -2504,10 +2531,19 @@ Step id
 : fastrpc-helpers-stable
 
 Status
-: unknown
+: done
+
+Proof
+: no-processor-crashes
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: no-processor-crashes=pass
 
 Updated
 : 2026-11-18
@@ -2522,10 +2558,19 @@ Step id
 : panel-lit
 
 Status
-: unknown
+: done
+
+Proof
+: panel-connected,backlight
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: panel-connected=pass backlight=pass
 
 Updated
 : 2026-11-18
@@ -2540,10 +2585,19 @@ Step id
 : touch-input
 
 Status
-: unknown
+: done
+
+Proof
+: touch-device
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: touch-device=pass
 
 Updated
 : 2026-11-18
@@ -2561,7 +2615,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2576,10 +2630,19 @@ Step id
 : haptics-buzz
 
 Status
-: unknown
+: done
+
+Proof
+: vibrator
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: vibrator=pass
 
 Updated
 : 2026-11-18
@@ -2597,7 +2660,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2612,10 +2675,19 @@ Step id
 : audio-codec-attached
 
 Status
-: unknown
+: failing
+
+Proof
+: sound-card,mic-records
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: sound-card=fail mic-records=fail
 
 Updated
 : 2026-11-18
@@ -2630,10 +2702,19 @@ Step id
 : sound-card-registered
 
 Status
-: unknown
+: failing
+
+Proof
+: sound-card
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: sound-card=fail
 
 Updated
 : 2026-11-18
@@ -2648,10 +2729,19 @@ Step id
 : speaker-amps-fed
 
 Status
-: unknown
+: partial
+
+Proof
+: amp-channels,amp-volume-0x4c,amp-volume-0x4d
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: amp-channels=fail amp-volume-0x4c=pass amp-volume-0x4d=pass
 
 Updated
 : 2026-11-18
@@ -2666,10 +2756,19 @@ Step id
 : ucm-hifi-profile
 
 Status
-: unknown
+: failing
+
+Proof
+: default-output,speaker-stereo
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: default-output=fail speaker-stereo=fail
 
 Updated
 : 2026-11-18
@@ -2687,7 +2786,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2702,10 +2801,19 @@ Step id
 : mic-captures
 
 Status
-: unknown
+: failing
+
+Proof
+: mic-records
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: mic-records=fail
 
 Updated
 : 2026-11-18
@@ -2720,10 +2828,19 @@ Step id
 : mic-hears-speaker
 
 Status
-: unknown
+: failing
+
+Proof
+: mic-hears-speaker,mic-top-hears-speaker
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: mic-top-hears-speaker=- mic-hears-speaker=fail
 
 Updated
 : 2026-11-18
@@ -2738,10 +2855,19 @@ Step id
 : earpiece-plays
 
 Status
-: unknown
+: failing
+
+Proof
+: earpiece-heard
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: earpiece-heard=fail
 
 Updated
 : 2026-11-18
@@ -2756,10 +2882,19 @@ Step id
 : headset-jack
 
 Status
-: unknown
+: failing
+
+Proof
+: jack-detector,headset-loop
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: headset-loop=- jack-detector=fail
 
 Updated
 : 2026-11-18
@@ -2774,10 +2909,19 @@ Step id
 : modem-file-services
 
 Status
-: unknown
+: done
+
+Proof
+: modem-running
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: modem-running=pass
 
 Updated
 : 2026-11-18
@@ -2792,10 +2936,19 @@ Step id
 : modem-seen
 
 Status
-: unknown
+: done
+
+Proof
+: modem-seen
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: modem-seen=pass
 
 Updated
 : 2026-11-18
@@ -2813,7 +2966,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2828,10 +2981,19 @@ Step id
 : modem-registered
 
 Status
-: unknown
+: open
+
+Proof
+: modem-registered
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: modem-registered=skip
 
 Updated
 : 2026-11-18
@@ -2846,10 +3008,19 @@ Step id
 : sms-both-ways
 
 Status
-: unknown
+: open
+
+Proof
+: sms-loopback
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: sms-loopback=skip
 
 Updated
 : 2026-11-18
@@ -2864,10 +3035,19 @@ Step id
 : mobile-data
 
 Status
-: unknown
+: open
+
+Proof
+: mobile-data
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: mobile-data=skip
 
 Updated
 : 2026-11-18
@@ -2885,7 +3065,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2900,10 +3080,19 @@ Step id
 : call-audio-path
 
 Status
-: unknown
+: failing
+
+Proof
+: call-audio-path
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: call-audio-path=fail
 
 Updated
 : 2026-11-18
@@ -2918,10 +3107,19 @@ Step id
 : voice-call-both-ways
 
 Status
-: unknown
+: open
+
+Proof
+: call-echo
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: call-echo=skip
 
 Updated
 : 2026-11-18
@@ -2939,7 +3137,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2957,7 +3155,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2975,7 +3173,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -2990,10 +3188,19 @@ Step id
 : wifi-joins
 
 Status
-: unknown
+: done
+
+Proof
+: wifi-interface,wifi-connected,wifi-reaches-gateway
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: wifi-interface=pass wifi-connected=pass wifi-reaches-gateway=pass
 
 Updated
 : 2026-11-18
@@ -3008,10 +3215,19 @@ Step id
 : bt-controller-up
 
 Status
-: unknown
+: done
+
+Proof
+: bt-controller,bt-powered
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: bt-controller=pass bt-powered=pass
 
 Updated
 : 2026-11-18
@@ -3029,7 +3245,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3047,7 +3263,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3062,10 +3278,19 @@ Step id
 : usb-host-works
 
 Status
-: unknown
+: partial
+
+Proof
+: usb-role,usb-host-device
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: usb-host-device=- usb-role=pass
 
 Updated
 : 2026-11-18
@@ -3083,7 +3308,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3098,10 +3323,19 @@ Step id
 : sensor-hub-stable
 
 Status
-: unknown
+: done
+
+Proof
+: no-processor-crashes
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: no-processor-crashes=pass
 
 Updated
 : 2026-11-18
@@ -3116,10 +3350,19 @@ Step id
 : sensors-exposed
 
 Status
-: unknown
+: failing
+
+Proof
+: motion-and-light
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: motion-and-light=fail
 
 Updated
 : 2026-11-18
@@ -3134,10 +3377,19 @@ Step id
 : proximity-reads
 
 Status
-: unknown
+: failing
+
+Proof
+: proximity-reads
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: proximity-reads=fail
 
 Updated
 : 2026-11-18
@@ -3155,7 +3407,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3173,7 +3425,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3191,7 +3443,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3209,7 +3461,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3227,7 +3479,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3242,10 +3494,19 @@ Step id
 : image-sensor-identified
 
 Status
-: unknown
+: failing
+
+Proof
+: image-sensor
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: image-sensor=fail
 
 Updated
 : 2026-11-18
@@ -3263,7 +3524,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3281,7 +3542,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3299,7 +3560,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3317,7 +3578,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3335,7 +3596,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3353,7 +3614,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3371,7 +3632,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3386,10 +3647,19 @@ Step id
 : suspend-wakes-quiet
 
 Status
-: unknown
+: open
+
+Proof
+: suspend-irq-quiet
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: suspend-irq-quiet=skip
 
 Updated
 : 2026-11-18
@@ -3407,7 +3677,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3425,7 +3695,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3443,7 +3713,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3461,7 +3731,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3476,10 +3746,19 @@ Step id
 : soc-floor-reached
 
 Status
-: unknown
+: open
+
+Proof
+: soc-sleeps
+
+Run
+: 20261118-191339
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: suite run 20261118-191339: soc-sleeps=skip
 
 Updated
 : 2026-11-18
@@ -3497,7 +3776,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3515,7 +3794,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3533,7 +3812,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3551,7 +3830,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3569,7 +3848,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3587,7 +3866,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3605,7 +3884,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3623,7 +3902,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3641,7 +3920,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3659,7 +3938,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3677,7 +3956,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3695,7 +3974,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3713,7 +3992,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3731,7 +4010,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3749,7 +4028,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3767,7 +4046,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3785,7 +4064,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3803,7 +4082,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3821,7 +4100,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3839,7 +4118,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3857,7 +4136,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3875,7 +4154,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3893,7 +4172,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3911,7 +4190,7 @@ Status
 : unknown
 
 Notes
-: Not known yet: the base could not be read (linux-phone-oco/surya-lab: tad: record feed-device-steps: HTTP Error: HTTP GET error on  https://raw.githubusercontent.com/linux-phone-oco/surya-lab/main/data/steps.json  (HTTP 404 Not Found)).
+: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
