@@ -1400,3 +1400,28 @@ Rejected
 
 About
 : lpoco-lab-argenv
+
+
+<a id="2026-11-18-lpoco-tone-declares-its-command-line-once-with-argenv"></a>
+### 2026-11-18-lpoco-tone-declares-its-command-line-once-with-argenv
+
+Brief
+: lpoco-tone declares its command line once with argenv (make, find); clap gone; usage mistakes exit 2, find's 1 stays 'not found'
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-18
+
+Decision
+: tone/src/cli.rs holds the contract; main.rs scopes flags per command from TREE, refuses extra positionals and out-of-range or zero rate and channels with the usage (exit 2). Rate and channels are read as u64 and narrowed at the edge; defaults come from the declaration.
+
+Why
+: The last clap in the family (backlog lpoco-tone-argenv); the practice that every program declares its invocation surface once with argenv; same shape as lpoco-lab so one reader knows both.
+
+Rejected
+: Reading rate/channels as u32/u16 in the contract: a value that does not fit becomes None and fell back to the default silently (programmer review). Keeping clap beside argenv: two parsers for one program.
+
+About
+: lpoco-tone-argenv
