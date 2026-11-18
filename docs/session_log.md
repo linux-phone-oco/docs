@@ -2146,3 +2146,27 @@ Rejected
 
 About
 : patrol-measures-the-start
+
+---
+
+
+<a id="2026-11-18-lpoco-host-foreign-rules-named"></a>
+### lpoco host: foreign rules named
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Built part (5): lpoco host plan/check name foreign udev rules by quoted gadget serial or MODE 0666 on live lines; landed as lab-tools #136, read back from main (223e2c3). Programmer review applied: line-based matching, comments skipped, kept and own files tested, unreadable files named.
+
+Considered
+: Scanning /usr/lib/udev/rules.d too: the vendors' own, not the admin's to judge.
+
+Rejected
+: Bare substring match over whole files: flags comments and prefixes of longer serials, misses MODE=666.
+
+About
+: lpoco-host-rest

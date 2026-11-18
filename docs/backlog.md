@@ -3261,7 +3261,7 @@ Status
 : open
 
 Note
-: 2026-11-18, lab-tools-builder: part (2) done (lab-tools #133): plan lists the devlab-watch@ user unit and each systemctl --user command per device at ~/Projects/linux-phone-oco/NAME-lab; prepare now writes it, enables new ones, restarts enabled ones when lpoco-lab or the unit changed; names setup/devlab-watch.sh as replaced; worktrees and templates not watched. Proof: 4 plan tests in host/tests/plan.rs. Open: a linked but stopped unit is not restarted (consider is-active); lab-machine script to remove once prepare now ran on the lab. Next: (5) foreign rules named, (4) host commands checked, (3) cross targets, (6) NCM.
+: 2026-11-18, lab-tools-builder: parts (2) and (5) done. (5) foreign rules named (lab-tools #136): plan and check name any /etc/udev/rules.d file that is not 70-lpoco-* and not the kept 51-android.rules and that names a declared gadget serial (quoted, live lines) or assigns MODE 0666; unreadable files named as unknown; never edited or removed. Proof: host/tests/plan.rs a_foreign_rule_on_our_serial_or_wide_is_named_and_never_touched (seen failing first). Earlier: part (2) devlab-watch@ units (#133); open: a linked but stopped unit is not restarted (consider is-active); lab-machine setup/devlab-watch.sh to remove once prepare now ran on the lab. Next: (4) host commands checked, (3) cross targets, (6) NCM.
 
 Opened
 : 2026-11-17
