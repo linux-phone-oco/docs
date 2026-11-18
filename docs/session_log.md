@@ -3110,3 +3110,24 @@ Rejected
 
 About
 : bringup-generic-init
+
+---
+
+
+<a id="2026-11-18-gadget-words-refused-at-manifest-read"></a>
+### Gadget words refused at manifest read
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: bringup-generic-init second slice: shell-word check moved from lpoco-bringup into lpoco-manifest, so device.toml refuses a bad [boot.gadget] word on read (lab-tools #185). Programmer review: tests widened to every field and character; make keeps its re-check with a unit test.
+
+Considered
+: ShellWord newtype in the manifest (stronger, but a serde type plus schema change; left open)
+
+Rejected
+: dropping the re-check in make: a BootGadget can be built without parse
