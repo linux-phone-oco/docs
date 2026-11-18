@@ -28,9 +28,10 @@ At the end remove each: `git -C ~/Projects/linux-phone-oco/REPO worktree remove 
 
 Your coordinator placed it before starting you. **If the query returns nothing, report that and end.**
 
-- lab-tools-builder, in the docs worktree - the open lab-tools build row whose `blocked_by` are all done,
-  lowest rank, then oldest:
-  `tad sql "select b.id, b.title, b.proof, b.note from backlog b where b.project='linux-phone-oco/lab-tools' and b.status<>'done' and b.needs='build' and b.waits is null and not exists (select 1 from backlog o where o.status<>'done' and list_contains(string_split(coalesce(b.blocked_by,''), ','), o.id)) order by b.rank nulls last, b.opened limit 1"`
+- lab-tools-builder, in the docs worktree - the first ready build item of lab-tools, from the one picking
+  query (it skips an item that waits outside the base or whose blockers are not all done, and says why):
+  `tad q ready --for builder --show ready --format csv`, then take the first row whose place is lab-tools
+  (`tad q row --id ID` names it in `project`; the query has no place filter yet).
   Read its decision and research first (`tad q about --subject ...`, `tad q find --text ...`); for the
   lpoco roof, decision 2026-11-17-bringup-in-lab-tools.
 - walleye-builder, in the walleye worktree: `tad q lane-next --needs build --format csv`. Read walleye's
