@@ -2648,3 +2648,27 @@ Rejected
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-18-host-records-the-root-files-it-installs"></a>
+### host records the root files it installs
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Built host-plan-unreadable-not-new (lab-tools #173): Seen {Absent, Text, Unreadable} in FileChange, install record, plan wording. Programmer review: two findings fixed (only PermissionDenied counts as unreadable; no diff printed for an unreadable file).
+
+Considered
+: Recording at check time (kept as host-record-from-check); a record keyed per file vs one file (one file, lines HASH DST).
+
+Rejected
+: Treating every read error as unreadable: a non-UTF-8 readable file would be called up to date unread.
+
+About
+: host-plan-unreadable-not-new

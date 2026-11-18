@@ -4338,10 +4338,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Coordinator, 2026-11-18: when lpoco-host installs a root file, it records the staged content's hash in user state (~/.local/state/lpoco-host, or ~/.cache/lpoco-host). Plan then treats a root file it cannot read as up to date when the staged hash matches the recorded one and its check passes (for 50-lpoco.rules: the share check), and as changed only when the staged content differs. Sign: planning 0.15.0 named /etc/polkit-1/rules.d/50-lpoco.rules '(new)' though the author's 0.14.2 prepare installed it at about 15:00 and the share check passed - the directory is root-only. The same limit applies to NetworkManager keyfiles (part 6b). Bootstrap: the lab has no record yet. Consider recording without root once a check proves the file in place (e.g. lpoco host check passing the share check writes the record for the staged hash), so no sudo is asked for an unchanged file. Then orchestration runs the 0.15.0 prepare itself, with 0 root commands.
+: 2026-11-18, lab-tools-builder: done (lab-tools #173, main a4d4a3e). prepare records the git blob id of each root file it installs in ~/.local/state/lpoco-host/installed (lines 'HASH DST'), after every root command succeeded; plan reads a file under a folder the lab user may not enter (PermissionDenied) by that record: up to date when it matches, else planned as an install and worded 'unreadable, not known yet', never '(new)'. Proof: host/tests/plan.rs a_root_file_the_lab_user_cannot_read_is_judged_by_the_hash_recorded_at_its_last_install (seen failing first). Not done, now host-record-from-check: the lab has no record until the next prepare, so the first plan on it still names 50-lpoco.rules 'not known yet' and the first prepare reinstalls it (one sudo); a passing lpoco host check does not write the record; plan does not tie 'up to date' to the share check passing. The test assumes the suite does not run as root (mode 000 does not stop root).
 
 Opened
 : 2026-11-18
@@ -4797,3 +4797,31 @@ Proof
 
 About
 : bringup-steps
+
+
+<a id="host-record-from-check"></a>
+### lpoco host check writes the install record for a root file it proves in place, so the first plan after 0.15 asks no sudo
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: From host-plan-unreadable-not-new (#173). Also: plan words 'up to date' only while the file's check passes (share check for 50-lpoco.rules).
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: host plan test from fixtures: with no record and an unreadable rules folder, a passing share check records the staged hash and the next plan lists 0 root commands for it; a failing check records nothing
+
+About
+: lpoco-host-rest
