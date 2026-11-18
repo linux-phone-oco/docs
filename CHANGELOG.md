@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.16.0](https://github.com/linux-phone-oco/docs/compare/v0.15.0...v0.16.0) (2026-11-18)
+
+
+### Features
+
+* feat: docs backlog can name the hardware an item needs ([#483](https://github.com/linux-phone-oco/docs/issues/483)) ([8c12ba0](https://github.com/linux-phone-oco/docs/commit/8c12ba0614801ad37469eb009eeae290ed294da3))
+
+
+### Bug Fixes
+
+* **briefs:** keeper, research and walleye builder pick with tad q ready ([#489](https://github.com/linux-phone-oco/docs/issues/489)) ([1a67e92](https://github.com/linux-phone-oco/docs/commit/1a67e9239fdb5fd76074be324c87df5ec6a0b3e0))
+* **briefs:** the lab-tools builder picks with tad q ready ([#487](https://github.com/linux-phone-oco/docs/issues/487)) ([b544f71](https://github.com/linux-phone-oco/docs/commit/b544f71beadb23ea91040e9b29b0c3b379059e79))
+* **briefs:** the lab-tools builder skips an item that waits outside the base ([#481](https://github.com/linux-phone-oco/docs/issues/481)) ([ee340fe](https://github.com/linux-phone-oco/docs/commit/ee340fe9190d27402411a08603ee13d6c2db76a9))
+
 ## [0.15.0](https://github.com/linux-phone-oco/docs/compare/v0.14.0...v0.15.0) (2026-11-18)
 
 
