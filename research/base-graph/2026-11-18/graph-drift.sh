@@ -15,7 +15,8 @@
 #   layer-pin     a device base pins its device layer by a release, not a date
 #   layer-owner   the tables a docs feed reads from the device bases (parts) are given to them by docs itself, so a
 #                 change of the contract is one change in one repository
-#   layer-follow  every table a device base declares is its own or in a marked part a source gives
+#   layer-follow  every table a device base declares that docs' device layer gives sits between the base's device markers, not by hand
+#   layer-equal   the base's marked part is the one docs gives at the release the base pins
 #   tool-pin      lab.toml pins the lpoco family at its latest release, or names why it holds
 #   tad-pin       a base that installs tad pins its latest release, and tad's pin job lists the base
 #   fork-track    a fork's tracking branch is its upstream's head
@@ -34,6 +35,7 @@ for d in "$KB" "$LP/docs" "$LP/device-template" "$LP/surya-lab" "$LP/google-wall
 done
 latest_kb=$(git -C "$KB" tag -l 'v*' --sort=-v:refname | head -1 | sed 's/^v//')
 part() { awk -v m="$1" '$0 ~ (m ":begin") { on = 1 } on && !/^[[:space:]]*#/ { print } $0 ~ (m ":end") { on = 0 }'; }
+rpart() { awk -v m="$1" '$0 ~ (m ":begin") { on = 1 } on { print } $0 ~ (m ":end") { on = 0 }'; }
 items() { show "$1" data/upstream_items.json | jq -r '[.id, .title, (.note // ""), (.local_ref // ""), (.file // "")] | join(" ")' 2>/dev/null; }
 
 # idealkb -> each base: the slice, and what each base keeps as its own
@@ -62,8 +64,9 @@ done
 
 # the device layer: who gives it, by what pin, and whether its contract has one home
 docs_tables=$(show "$LP/docs" tables.toml | grep -oE '^\[tables\.[a-z_]+\]' | tr -d '[]' | sed 's/^tables\.//')
-tpl_part=$(show "$LP/device-template" tables.toml | part template | grep -oE '^\[tables\.[a-z_]+\]' | tr -d '[]' | sed 's/^tables\.//' || true)
-kb_tables=$(show "$KB" tables.toml "v$latest_kb" | part idealkb | grep -oE '^\[tables\.[a-z_]+\]' | tr -d '[]' | sed 's/^tables\.//')
+# the marked part docs gives (device-layer/tables.toml, decision 2026-11-18-device-layer-from-docs)
+dev_part=$(show "$LP/docs" device-layer/tables.toml | part device | grep -oE '^\[tables\.[a-z_]+\]' | tr -d '[]' | sed 's/^tables\.//' || true)
+[ -n "$dev_part" ] || say FAIL "docs layer-owner: docs gives no device layer (device-layer/tables.toml at origin/main)"
 for b in surya-lab google-walleye-lab device-template; do
 	r=$LP/$b
 	src=$(show "$r" devicebase.toml | sed -n 's/^source = "\(.*\)"$/\1/p'); src=${src:-linux-phone-oco/device-template}
@@ -72,12 +75,19 @@ for b in surya-lab google-walleye-lab device-template; do
 	else say FAIL "$b layer-pin: the device layer is pinned as \"$ver\" - a date, no release of $src; nothing follows it"; fi
 	if [ "$src" = linux-phone-oco/docs ]; then say ok "$b layer-owner: the parts contract comes from docs, which reads it"
 	else say FAIL "$b layer-owner: parts is declared by $src and read by docs (records/feed-device-parts.sql): one contract, two repositories"; fi
+	have=$(show "$r" tables.toml | part device)
+	have_tables=$(printf '%s\n' "$have" | grep -oE '^\[tables\.[a-z_]+\]' | tr -d '[]' | sed 's/^tables\.//' || true)
+	n=0
 	for t in $(show "$r" tables.toml | grep -oE '^\[tables\.[a-z_]+\]' | tr -d '[]' | sed 's/^tables\.//'); do
-		printf '%s\n%s\n' "$kb_tables" "$tpl_part" | grep -qxF "$t" && continue
-		case $t in devices | parts | test_runs | test_results | steps)
-			say FAIL "$b layer-follow: table $t is the device layer's, in no marked part any source gives - carried by hand" ;;
-		esac
+		printf '%s\n' "$dev_part" | grep -qxF "$t" || continue
+		printf '%s\n' "$have_tables" | grep -qxF "$t" && continue
+		say FAIL "$b layer-follow: table $t is the device layer's, declared outside the device markers - carried by hand"; n=$((n + 1))
 	done
+	[ "$n" -gt 0 ] || [ -z "$dev_part" ] || say ok "$b layer-follow: the device layer's tables sit in the marked part"
+	if [ "$src" = linux-phone-oco/docs ] && git -C "$LP/docs" rev-parse -q --verify "v$ver^{commit}" > /dev/null 2>&1; then
+		if [ "$(show "$LP/docs" device-layer/tables.toml "v$ver" | rpart device)" = "$(show "$r" tables.toml | rpart device)" ]; then say ok "$b layer-equal: the marked part is docs $ver's"
+		else say FAIL "$b layer-equal: the marked part of tables.toml differs from docs $ver's"; fi
+	fi
 done
 : "$docs_tables"
 

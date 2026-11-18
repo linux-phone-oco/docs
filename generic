@@ -1,0 +1,20 @@
+#! pin = devicebase.toml
+#! marker = device
+#! from = device-layer/
+# What a device base takes from docs: the device layer, the statements a device base runs and the marked part of
+# its tables.toml that declares the tables docs reads from it (the parts contract among them). The files are kept in
+# device-layer/ and laid at a base's root by bin/follow.sh of ideal-knowledge-base, from a clone of this repository at
+# the release tag the base's devicebase.toml names; the job (bin/update-pins.sh there) moves that pin when a file of
+# this list changed. A base keeps a file as its own by naming it in own in devicebase.toml, with the reason.
+# One owner per file: nothing here is in ideal-knowledge-base's generic (bin/check-one-owner.sh).
+queries/phone-queue.sql
+queries/phone-next.sql
+queries/parts.sql
+queries/lane-next.sql
+queries/phone-stands.sql
+records/part.sql
+records/device.sql
+records/backlog-status.sql
+records/backlog-needs.sql
+records/test-run.sql
+tables.toml

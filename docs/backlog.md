@@ -4887,16 +4887,16 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: in-progress
 
 Note
-: Decision 2026-11-18-device-layer-from-docs (1). docs' owner (orchestration) lands it. Waits on idealkb's from-prefix (upstream item idealkb-slice-from-prefix). The files move as device-template has them at d6eae9e; the template's list goes in the same week (template-follows-docs).
+: device-layer/ (10 statements, the device part of tables.toml, device:begin/end), generic and consumers are in docs (this change); bin/check-device-layer.sh runs in make verify. Decision 2026-11-18-device-layer-from-docs (1). Next: the docs release (release-please), then the ikb session swaps device-template for docs in idealkb's ./sources; done when graph-drift's layer-owner and layer-follow are ok for every device base (the labs' own items).
 
 Opened
 : 2026-11-18
 
 Waits
-: idealkb: upstream item idealkb-slice-from-prefix
+: idealkb: ./sources names docs in place of device-template (the ikb session)
 
 Proof
 : research/base-graph/2026-11-18/graph-drift.sh: layer-owner and layer-follow ok for every device base
