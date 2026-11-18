@@ -1594,3 +1594,27 @@ Rejected
 
 About
 : lpoco-names-sweep
+
+---
+
+
+<a id="2026-11-18-names-sweep-slices-2-3"></a>
+### Names sweep: marks, docs briefs, device-template
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: lab-tools #100 (oco.toml name/title, lpoco-health service Description; test lpoco/tests/marks_names.rs, seen failing first); docs #400 (six briefs in ideal-agent-linux-phone-oco/ say lpoco lab; overlay-check passes, builder.md and devlab-watch@ left); device-template #12 (docs, comments, command lines). Each programmer-reviewed before land. surya-lab and google-walleye-lab: line lists sent to their lane coordinators, landing only what each agrees to.
+
+Considered
+: The state dirs and /usr/lib/devlab path are real paths: kept. linux-phone-keeper-waker is the coordinator's: named, not touched. Docs history rows in data/ stay.
+
+Rejected
+: A test in device-template for the sweep: it has no Rust crate, and lab-tools' tests already keep the generated names; a grep-only check there would be one that only prints.
+
+About
+: lpoco-names-sweep
