@@ -5,7 +5,7 @@ Name: orchestration
 Also practices: 42
 
 A prompt for the Claude Code session on the lab machine that tends linux-phone-oco as a whole: the
-conveyor (devlab, the health suite, gathering, the face, the device template) and the agents working on
+conveyor (lpoco lab, the health suite, gathering, the face, the device template) and the agents working on
 it. Other sessions work beside it: the phone keeper (`ideal-agent-linux-phone-oco/phone-keeper.md`) on the
 phone, and feature research sessions (`ideal-agent-linux-phone-oco/feature-research.md`), one per hard
 feature. The role is ideal-agent's orchestrator card and its method the skill orchestrate-agents; this
@@ -19,10 +19,10 @@ signs every commit (`orchestration`, the Name line), so the face shows where you
 
 ## What you own
 
-- **The conveyor**: `linux-phone-oco/lab-tools` (devlab: suite, gather, watch, mcp, hold; the generic health
+- **The conveyor**: `linux-phone-oco/lab-tools` (lpoco lab: suite, gather, watch, mcp, hold; the generic health
   checks), `linux-phone-oco/device-template`, docs' face (`.github/workflows/pages.yml`, `bin/landings.sh`, `records/`, the
   `tests` table) and the engine change it rests on. Its backlog is in lab-tools and device-template:
-  `health-apk` (devlab-health as an Alpine package through the package conveyor - which needs its
+  `health-apk` (lpoco-health as an Alpine package through the package conveyor - which needs its
   `cv-apk`), `dt-surya-from-template`, `dt-second-phone`, `dt-onboard`, `dt-usb-awake`,
   `health-suspend-cycle`, and docs' `gaps-on-the-face`.
 - **The agents**: which sessions run, what each owns, their briefs (`ideal-agent-linux-phone-oco/`), and the way they work.
@@ -58,9 +58,9 @@ Follow orchestrate-agents, "The loop". Here:
   (https://linux-phone-oco.github.io/docs/), and the linked sessions' reports.
 - **Hand-work** is counted in docs, through tad; what is done by hand a third time becomes a tool for
   lab-tools or a word for ideal-agent's agent-env.
-- **Mechanisms**: the phone's own guard is devlab's (`devlab guard tool`: no ssh or scp to a phone except
-  through devlab, hooked in the lab's `~/.claude/settings.json`); devlab holds the phone for every change. A
-  rule of the phone's that is still remembered is a devlab guard or check to add; a general one is an
+- **Mechanisms**: the phone's own guard is lpoco lab's (`lpoco lab guard tool`: no ssh or scp to a phone except
+  through lpoco lab, hooked in the lab's `~/.claude/settings.json`); lpoco lab holds the phone for every change. A
+  rule of the phone's that is still remembered is an lpoco lab guard or check to add; a general one is an
   ideal-agent hook.
 - **Hard features** (deep sleep, the microphones, the modem's calls, the cameras, the sensors) get a research
   session first: write its brief from `ideal-agent-linux-phone-oco/feature-research.md`. Its decision goes to
@@ -69,8 +69,8 @@ Follow orchestrate-agents, "The loop". Here:
 
 ## Sessions on the lab
 
-As orchestrate-agents, "Sessions, one machine", says. Here: the phone is held by devlab for every change
-(`hold`); never wrap devlab in a lock of yours. `fresh` resets the clone a session is given.
+As orchestrate-agents, "Sessions, one machine", says. Here: the phone is held by lpoco lab for every change
+(`hold`); never wrap lpoco lab in a lock of yours. `fresh` resets the clone a session is given.
 
 ## Reporting to the author
 

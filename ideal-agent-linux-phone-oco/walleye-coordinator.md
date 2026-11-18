@@ -23,9 +23,9 @@ worktree of your own of `~/Projects/linux-phone-oco/google-walleye-lab` at origi
 
 ## What you do
 
-- **Lab:** devlab needs fastboot-mode support; it is orchestration's (local_7d95b264-ad32-49ad-932a-7f19e9f9806d):
+- **Lab:** lpoco lab needs fastboot-mode support; it is orchestration's (local_7d95b264-ad32-49ad-932a-7f19e9f9806d):
   ask, do not build.
-- **Sessions:** a walleye keeper (Sonnet 5.5 high; lease `devlab --device ... keeper take`), and research or
+- **Sessions:** a walleye keeper (Sonnet 5.5 high; lease `lpoco lab --device ... keeper take`), and research or
   reverse-engineering sessions (kcxt fork, MSM8998 boards in mainline, the vendor's GPL kernel, postmarketOS), each a lean
   brief; filed in the sidebar group linux-phone-oco. Each report reaches you: continue by message, or have it hand
   over, archive, start fresh (about 150-250k context).
