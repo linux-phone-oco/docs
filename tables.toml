@@ -56,6 +56,12 @@ name = "blocked_by"
 type = "string"
 pattern = "^[a-z0-9]+(-[a-z0-9]+)*(, ?[a-z0-9]+(-[a-z0-9]+)*)*$"
 
+# the hardware (ids of this base's hardware table) the item cannot be done without: it waits until each is owned and none refuted
+[[tables.backlog.fields]]
+name = "hardware"
+type = "string"
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*(, ?[a-z0-9]+(-[a-z0-9]+)*)*$"
+
 # the shared resource the item cannot be done without: phone - its keeper takes it up, one change at a
 # time, in that device's own base (tad q phone-queue there; docs serves no lane since 2026-11-17)
 [[tables.backlog.fields]]
