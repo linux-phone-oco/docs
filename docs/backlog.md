@@ -4790,7 +4790,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
+
+Note
+: Landed: tad q milestone-steps [--milestone ID] reads every step:ID@DEVICE term of a milestone's criteria from step_status (a term is met when the base claims done or not-needed, else not; ready when all of a milestone's step terms are met; a step or device that is none errs naming it), and records/milestone.sql (ikb milestone) which milestones had none. bin/test-milestone-steps.sh in make verify, in a scratch copy through a fake base and the feed: a walleye milestone over step:kernel-reaches-init@google-walleye and step:shell-on-console@google-walleye reads unmet, partial still unmet, ready when both are done. The readiness rung stays a person's word; goal steps (never claimed) are milestones-name-goals.
 
 Opened
 : 2026-11-18
