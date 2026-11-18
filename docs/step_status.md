@@ -2252,10 +2252,19 @@ Step id
 : charger-online
 
 Status
-: unknown
+: done
+
+Proof
+: charger-online
+
+Run
+: 20261118-204845
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: suite run 20261118-204845 charger-online pass
 
 Updated
 : 2026-11-18
@@ -2360,10 +2369,19 @@ Step id
 : battery-gauge-reads
 
 Status
-: unknown
+: done
+
+Proof
+: battery-gauge
+
+Run
+: 20261118-204845
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: suite run 20261118-204845 battery-gauge pass
 
 Updated
 : 2026-11-18
@@ -2396,10 +2414,19 @@ Step id
 : thermal-zones-sane
 
 Status
-: unknown
+: done
+
+Proof
+: thermal-zones
+
+Run
+: 20261118-204845
+
+Proven on
+: 7.1.0-sm7150-calls+
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: suite run 20261118-204845 thermal-zones pass
 
 Updated
 : 2026-11-18
