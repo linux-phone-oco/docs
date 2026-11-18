@@ -4338,7 +4338,7 @@ About
 
 
 <a id="host-plan-unreadable-not-new"></a>
-### lpoco host plan says a root-only file it cannot read is unreadable, not new
+### lpoco host records each root file it installs, so plan reads an unreadable one as up to date
 
 Project
 : linux-phone-oco/lab-tools
@@ -4347,7 +4347,7 @@ Status
 : open
 
 Note
-: Sign (orchestration, 2026-11-18): planning 0.15.0 named /etc/polkit-1/rules.d/50-lpoco.rules '(new)' while the directory is root-only (Permission denied), so plan cannot tell whether the author's earlier prepare already wrote it. The same limit was noted for NetworkManager keyfiles (part 6b). The author is asked for sudo on a guess.
+: Coordinator, 2026-11-18: when lpoco-host installs a root file, it records the staged content's hash in user state (~/.local/state/lpoco-host, or ~/.cache/lpoco-host). Plan then treats a root file it cannot read as up to date when the staged hash matches the recorded one and its check passes (for 50-lpoco.rules: the share check), and as changed only when the staged content differs. Sign: planning 0.15.0 named /etc/polkit-1/rules.d/50-lpoco.rules '(new)' though the author's 0.14.2 prepare installed it at about 15:00 and the share check passed - the directory is root-only. The same limit applies to NetworkManager keyfiles (part 6b). Bootstrap: the lab has no record yet. Consider recording without root once a check proves the file in place (e.g. lpoco host check passing the share check writes the record for the staged hash), so no sudo is asked for an unchanged file. Then orchestration runs the 0.15.0 prepare itself, with 0 root commands.
 
 Opened
 : 2026-11-18
@@ -4359,10 +4359,10 @@ Device
 : xiaomi-surya
 
 Proof
-: a host plan test from fixtures: a declared file under a directory the lab user cannot read is planned as 'unreadable, rewritten by prepare now', never '(new)'; a readable missing file is still '(new)'
+: host plan tests from fixtures: (1) a root file under an unreadable directory, whose staged content hashes to the hash recorded at its last install, is planned up to date with 0 root commands; (2) changed staged content is planned as a root install; (3) with no record, it is named as unreadable and not known, never '(new)'; (4) prepare now records the hash after each root install it runs
 
 Rank
-: 7
+: 5
 
 About
 : lpoco-host-rest
