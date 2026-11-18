@@ -3517,11 +3517,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: landed lab-tools #112; v0.3.5 (#111) tags #110. proof: release-tags-every-change
-Reopened 2026-11-18 (orchestration): #112's check failed on main right after release #111. lpoco-host had no changes, so its 0.3.5 changelog entry was missing, and release-plz put it in a second release PR (#113) that changes only a changelog. That is the shape #112 forbids, and #113 got no checks. So a family release can come in two PRs under one version. Make the check and release-plz's two steps fit: one release PR that writes every member's changelog (see release-plz's changelog settings for unchanged packages in a version_group), or a test that accepts the follow-up PR that completes the same version.
+: landed lab-tools #116; proof: release-tags-every-change (lpoco/tests/changelog_check.rs). The follow-up release PR for a late changelog entry is accepted; a lone changelog edit is refused.
 
 Opened
 : 2026-11-18
