@@ -3131,3 +3131,27 @@ Considered
 
 Rejected
 : dropping the re-check in make: a BootGadget can be built without parse
+
+---
+
+
+<a id="2026-11-18-bringup-init-files-shipped-with-it"></a>
+### bringup init: files shipped with it
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: lpoco-bringup initramfs files (lab-tools #186): the init's udhcpd.conf, udhcpc.script and selftest.sh made by the tool, test first, reviewed by programmer, landed and read back from main.
+
+Considered
+: One verb for the three files beside the init, versus folding them into init's output.
+
+Rejected
+: Escaping dots in the selftest grep: it would break the address rewrite, which matches the text 172.16.42.; a trailing slash fixes the prefix match instead.
+
+About
+: bringup-generic-init
