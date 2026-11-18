@@ -1618,3 +1618,27 @@ Rejected
 
 About
 : lpoco-names-sweep
+
+---
+
+
+<a id="2026-11-18-names-sweep-lanes"></a>
+### Names sweep: surya-lab and google-walleye-lab
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: surya-lab #166 (8 files: AGENTS, README, comments in device.toml/idealkb/tables/phone-queue.sql/test-run.sql, research/microphone.md) and google-walleye-lab #100 (10 files) landed after each lane coordinator said yes to the exact list; phone-queue and phone-next rows identical before and after, tad check green, programmer-reviewed, read back from main.
+
+Considered
+: Remaining old names: history rows, research/**, keeper-run scripts (surya way-back.sh, sensors-install.sh, switch.sh, call-echo.sh, health shell tests; walleye tests/host, build/*.sh, init scripts), lab host files, devlab-watch@, linux-phone-keeper-waker, the tools' own help text (lpoco lab mcp --help says devlab's door).
+
+Rejected
+: Sweeping scripts the keepers run and the history: the coordinators said no, and they call the aliases which stay until a grep finds no caller.
+
+About
+: lpoco-names-sweep
