@@ -2576,3 +2576,27 @@ Rejected
 
 About
 : phone-pieces-drift-named
+
+---
+
+
+<a id="2026-11-18-lab-names-stale-phone-pieces"></a>
+### lab names stale phone pieces
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: lpoco-lab test/health print which phone-side piece the run's report holds off origin/main; logic moved to lpoco_host::stale_lines and shared with lpoco host check (#170).
+
+Considered
+: Printing from run_checks; judging only the report's JSON rows since phone stdout can carry noise; naming the oldest commit holding the blob.
+
+Rejected
+: Reading device.toml from the manifest dir (a --device file of another name would be misjudged): the given file path is used. Printing before the pass/fail table: now printed after.
+
+About
+: phone-pieces-drift-named

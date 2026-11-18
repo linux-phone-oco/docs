@@ -4313,10 +4313,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Rest of phone-pieces-drift-named: reuse lpoco_host::stale_pieces. Also from review: picking the newest report by file name assumes names sort by time (check that).
+: 2026-11-18, lab-tools-builder: done (lab-tools #170, main 27bd466). lpoco-lab test and health name a stale phone piece after the run, from the report just read back, judged by lpoco_host::stale_lines (shared with lpoco host check). Proof: host/tests/phone_pieces.rs the_lab_names_a_piece_off_main_from_the_report_it_reads_back (seen failing first) and the_lines_name_a_package_off_its_pin. Not tested end to end against a phone: devlab's wiring (health.rs name_stale_pieces) has no test of its own. Note: the commit named is now the oldest holding the stale blob (changes host check output). Report-name ordering checked: names are YYYYMMDD-HHMMSS, so the greatest sorts newest.
 
 Opened
 : 2026-11-18
