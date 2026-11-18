@@ -440,7 +440,7 @@ Waits
 : the phone proof surya-sxmo-suspend-series, then the author's word: sent in his name
 
 Note
-: Was a question; now a patch with its spec (spec/scripts/core/sxmo_autosuspend_spec.sh, fails on master, passes here). First of a series of three with sxmo-suspend-stop-by-profile and sxmo-surya-sensors-suspend; cover letter 0000 in the same folder. Send: git send-email --to '~mil/sxmo-devel@lists.sr.ht' from the author's clone.
+: Was a question; now a patch with its spec (spec/scripts/core/sxmo_autosuspend_spec.sh, fails on master, passes here). First of a series of three with sxmo-suspend-stop-by-profile and sxmo-surya-sensors-suspend; cover letter 0000 in the same folder. Send: git send-email --to '~mil/sxmo-devel@lists.sr.ht' from the author's clone. Worked around until the fix is on the phone: WORKAROUND(sxmo-autosuspend-backoff) is to stand in lpoco-health's keep-awake and the try scripts (lab-tools health), against the autosuspend loop and the 3-year rtcwake; it retires once our fork's fix is shipped to the phone, not only when it lands upstream (ideal-agent's rule). Markers in those scripts: lab-tools to place.
 
 Last update
 : 2026-11-18
