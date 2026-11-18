@@ -3738,10 +3738,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Write the failing test first: the full text is in docs research/phone-side-pieces/2026-11-18/inventory.md (not landed - lab-tools has no ignored/expected-fail convention and it does not compile until the function exists). lpoco_host gains blob_id (git's blob id), stale_pieces(device, report, main) -> Vec<Stale> (File {path, found, main} for each declared overlay/install/device check whose reported blob differs from origin/main's; Package {name, found, pin} for a lab-tools package off the [tools] lpoco pin). check reads each device's newest tests/results/*.jsonl at origin/main, names the commit the installed copy came from (git log --find-object) and the report's age. Then lpoco lab names the same at every change's end from the report it reads back.
+: Landed in lab-tools PR 165 (7b4a36a): lpoco host check names a stale or missing phone-side piece and a package off the pin, from the device's newest tests/results/*.jsonl at origin/main. Proof: host/tests/phone_pieces.rs (3 tests, seen failing first, now pass). Not built: lpoco lab naming the same at every change's end - see phone-pieces-drift-in-lab.
 
 Opened
 : 2026-11-18
@@ -4304,3 +4304,31 @@ Rank
 
 About
 : sxmo-utils-lab-apk
+
+
+<a id="phone-pieces-drift-in-lab"></a>
+### lpoco lab names a stale phone-side piece at every change's end, from the report it reads back
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Rest of phone-pieces-drift-named: reuse lpoco_host::stale_pieces. Also from review: picking the newest report by file name assumes names sort by time (check that).
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: a test in lab-tools lpoco/tests (to write, failing first): after a change the lab output names a piece off main
+
+About
+: phone-pieces-drift-named
