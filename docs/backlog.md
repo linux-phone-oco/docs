@@ -4180,3 +4180,93 @@ Rank
 
 About
 : upstream-forks
+
+
+<a id="host-install-atomic"></a>
+### lpoco host prepare installs each tool by writing a new file and renaming it into place
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Sign (coordinator, 2026-11-18): prepare replaced land while a land was running and that land died with a syntax error - a shell script read in place while it is rewritten. Write to a temp file in the same directory, fsync, rename over the old one; a running reader keeps the old inode.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: a host test: a script tool being run while prepare replaces it finishes with its old text (the new file is renamed over, never written in place); cargo installs likewise land by rename
+
+Rank
+: 5
+
+About
+: lpoco-host-rest
+
+
+<a id="test-bisect-parallel-flake"></a>
+### bringup_bisect_runs_declared_series fails in a parallel workspace run, passes alone
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Sign (coordinator, 2026-11-18): failed once in a parallel workspace run, passes alone. Likely shared state between tests (a fixed temp path, cwd, or env var); give each test its own dir/env.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: cargo test --workspace passes 20 runs in a row with default parallelism
+
+Rank
+: 10
+
+About
+: bringup
+
+
+<a id="test-hold-parallel-flake"></a>
+### hold::tests::the_phone_is_held_by_one_change_at_a_time fails in a parallel workspace run, passes alone
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Sign (coordinator, 2026-11-18): failed once in a parallel workspace run, passes alone. Likely a shared lease file or lock path across tests; give each test its own.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: cargo test --workspace passes 20 runs in a row with default parallelism
+
+Rank
+: 10
