@@ -2477,19 +2477,19 @@ Step id
 : pd-mapper-before-remoteproc
 
 Status
-: failing
+: done
 
 Proof
 : sound-card
 
 Run
-: 20261118-191339
+: 20261118-202945
 
 Proven on
 : 7.1.0-sm7150-calls+
 
 Notes
-: suite run 20261118-191339: sound-card=fail
+: suite run 20261118-202945: sound-card=pass (the 19:13 run failed on a boot whose ADSP came up without its audio services; see log 2026-11-18-2035-adsp-audio-restart)
 
 Updated
 : 2026-11-18
@@ -2675,19 +2675,19 @@ Step id
 : audio-codec-attached
 
 Status
-: failing
+: done
 
 Proof
 : sound-card,mic-records
 
 Run
-: 20261118-191339
+: 20261118-202945
 
 Proven on
 : 7.1.0-sm7150-calls+
 
 Notes
-: suite run 20261118-191339: sound-card=fail mic-records=fail
+: suite run 20261118-202945: sound-card=pass mic-records=pass
 
 Updated
 : 2026-11-18
@@ -2702,19 +2702,19 @@ Step id
 : sound-card-registered
 
 Status
-: failing
+: done
 
 Proof
 : sound-card
 
 Run
-: 20261118-191339
+: 20261118-202945
 
 Proven on
 : 7.1.0-sm7150-calls+
 
 Notes
-: suite run 20261118-191339: sound-card=fail
+: suite run 20261118-202945: sound-card=pass, 2 cards
 
 Updated
 : 2026-11-18
@@ -2756,19 +2756,19 @@ Step id
 : ucm-hifi-profile
 
 Status
-: failing
+: done
 
 Proof
 : default-output,speaker-stereo
 
 Run
-: 20261118-191339
+: 20261118-202945
 
 Proven on
 : 7.1.0-sm7150-calls+
 
 Notes
-: suite run 20261118-191339: default-output=fail speaker-stereo=fail
+: suite run 20261118-202945: default-output=pass speaker-stereo=pass
 
 Updated
 : 2026-11-18
@@ -2801,19 +2801,19 @@ Step id
 : mic-captures
 
 Status
-: failing
+: done
 
 Proof
 : mic-records
 
 Run
-: 20261118-191339
+: 20261118-202945
 
 Proven on
 : 7.1.0-sm7150-calls+
 
 Notes
-: suite run 20261118-191339: mic-records=fail
+: suite run 20261118-202945: mic-records=pass
 
 Updated
 : 2026-11-18
@@ -2828,19 +2828,19 @@ Step id
 : mic-hears-speaker
 
 Status
-: failing
+: done
 
 Proof
 : mic-hears-speaker,mic-top-hears-speaker
 
 Run
-: 20261118-191339
+: 20261118-202945
 
 Proven on
 : 7.1.0-sm7150-calls+
 
 Notes
-: suite run 20261118-191339: mic-top-hears-speaker=- mic-hears-speaker=fail
+: suite run 20261118-202945: both pass
 
 Updated
 : 2026-11-18
@@ -2855,19 +2855,19 @@ Step id
 : earpiece-plays
 
 Status
-: failing
+: partial
 
 Proof
 : earpiece-heard
 
 Run
-: 20261118-191339
+: 20261118-202945
 
 Proven on
 : 7.1.0-sm7150-calls+
 
 Notes
-: suite run 20261118-191339: earpiece-heard=fail
+: suite run 20261118-202945: earpiece-heard=pass (played: yes); heard by a person is a witnessed test, not claimed
 
 Updated
 : 2026-11-18
@@ -2882,19 +2882,19 @@ Step id
 : headset-jack
 
 Status
-: failing
+: partial
 
 Proof
-: jack-detector,headset-loop
+: jack-detector
 
 Run
-: 20261118-191339
+: 20261118-202945
 
 Proven on
 : 7.1.0-sm7150-calls+
 
 Notes
-: suite run 20261118-191339: headset-loop=- jack-detector=fail
+: suite run 20261118-202945: jack-detector=pass; headset-loop not measured (witnessed)
 
 Updated
 : 2026-11-18
@@ -3080,19 +3080,19 @@ Step id
 : call-audio-path
 
 Status
-: failing
+: done
 
 Proof
 : call-audio-path
 
 Run
-: 20261118-191339
+: 20261118-202945
 
 Proven on
 : 7.1.0-sm7150-calls+
 
 Notes
-: suite run 20261118-191339: call-audio-path=fail
+: suite run 20261118-202945: call-audio-path=pass
 
 Updated
 : 2026-11-18
@@ -3350,19 +3350,19 @@ Step id
 : sensors-exposed
 
 Status
-: failing
+: done
 
 Proof
 : motion-and-light
 
 Run
-: 20261118-191339
+: 20261118-202945
 
 Proven on
 : 7.1.0-sm7150-calls+
 
 Notes
-: suite run 20261118-191339: motion-and-light=fail
+: suite run 20261118-202945: motion-and-light=pass
 
 Updated
 : 2026-11-18
@@ -3377,19 +3377,19 @@ Step id
 : proximity-reads
 
 Status
-: failing
+: done
 
 Proof
 : proximity-reads
 
 Run
-: 20261118-191339
+: 20261118-202945
 
 Proven on
 : 7.1.0-sm7150-calls+
 
 Notes
-: suite run 20261118-191339: proximity-reads=fail
+: suite run 20261118-202945: proximity-reads=pass
 
 Updated
 : 2026-11-18
@@ -3500,13 +3500,13 @@ Proof
 : image-sensor
 
 Run
-: 20261118-191339
+: 20261118-202945
 
 Proven on
 : 7.1.0-sm7150-calls+
 
 Notes
-: suite run 20261118-191339: image-sensor=fail
+: suite run 20261118-202945: image-sensor=fail (0 sensors bound): a real gap on this kernel, not a stale run
 
 Updated
 : 2026-11-18
