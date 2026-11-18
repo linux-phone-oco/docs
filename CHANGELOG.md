@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.17.0](https://github.com/linux-phone-oco/docs/compare/v0.16.0...v0.17.0) (2026-11-18)
+
+
+### Features
+
+* **data:** seed the generic bring-up steps, edges and stages through the records ([#505](https://github.com/linux-phone-oco/docs/issues/505)) ([b25f066](https://github.com/linux-phone-oco/docs/commit/b25f066502e474aedd2885ab94d3d55836821648))
+* feat: the pin says why each own file is kept ([#513](https://github.com/linux-phone-oco/docs/issues/513)) ([a97dca4](https://github.com/linux-phone-oco/docs/commit/a97dca4c36e1c67706965be531854332b40027b7))
+* **schema:** bring-up step tables, stage rows, records and query bringup-chain ([#503](https://github.com/linux-phone-oco/docs/issues/503)) ([57d4630](https://github.com/linux-phone-oco/docs/commit/57d4630123df6d02378c6ad9c076329bc1d28e2b))
+* the device layer in device-layer/, served to the device bases by docs ([#514](https://github.com/linux-phone-oco/docs/issues/514)) ([a1c60a5](https://github.com/linux-phone-oco/docs/commit/a1c60a53c44590688b6f6fa3485c019701de314f))
+
 ## [0.16.0](https://github.com/linux-phone-oco/docs/compare/v0.15.0...v0.16.0) (2026-11-18)
 
 
