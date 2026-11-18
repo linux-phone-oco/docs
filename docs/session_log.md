@@ -1963,3 +1963,27 @@ Rejected
 
 About
 : health-suspend-cycle
+
+---
+
+
+<a id="2026-11-18-lpoco-host-reads-lab-toml-from-origin-main"></a>
+### lpoco host reads lab.toml from origin/main
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Failing test first (clone behind origin/main, pin 0.4.0 vs 0.4.1), then declared_text (renamed from device_text) used for lab.toml; read_lab replaced by parse_lab; programmer review: dropped dead read_lab, fixed help text. Landed #127, released v0.5.0 #128, read back from main.
+
+Considered
+: A second function for lab.toml beside device_text
+
+Rejected
+: A second function for lab.toml: two copies of the fetch/show/differs logic would drift; one rule for every declaration.
+
+About
+: host-lab-toml-from-main
