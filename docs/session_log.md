@@ -2386,3 +2386,24 @@ Rejected
 
 About
 : lpoco-awake
+
+---
+
+
+<a id="2026-11-18-patrol-measures-the-lab-agent-job-route"></a>
+### patrol measures the lab-agent job route
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: patrol's brief gains the job route: lab-agent active and its 401/poll-error count per round, after a token kept from before a rotation failed every poll for 15 hours unseen (restarted 13:30)
+
+Rejected
+: keeping it in patrol's memory: a launcher run does not keep it
+
+About
+: patrol-measures-the-start
