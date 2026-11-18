@@ -5234,10 +5234,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-18-workarounds-read-as-one. Steps: workarounds-reader-items-and-sites (ideal-agent's reader), workarounds-marked-where-they-stand (the two live ones), patrol-reads-workarounds. No scripts move; no table is added. Done when research/workarounds/2026-11-18/workarounds-read.sh exits 0.
+: Done: all three parts landed - the reader (ideal-agent 0.3.51), the markers on surya's post-bite rule and lab-tools' keep-awake, and patrol reading them; research/workarounds/2026-11-18/workarounds-read.sh passes against main's reader.
 
 Opened
 : 2026-11-18
