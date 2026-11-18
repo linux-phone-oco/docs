@@ -44,7 +44,7 @@ title starts "surya coordinator"); walleye-research works the Google Pixel 2 (wa
   when you end (`git -C ~/Projects/linux-phone-oco/LAB worktree remove WT`):
   - surya-research: `R=$(date +%s); git -C ~/Projects/linux-phone-oco/surya-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/surya-lab worktree add -q --detach ~/Projects/linux-phone-oco/wt-surya-research-$R origin/main && cd ~/Projects/linux-phone-oco/wt-surya-research-$R`
   - walleye-research: `R=$(date +%s); git -C ~/Projects/linux-phone-oco/google-walleye-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/google-walleye-lab worktree add -q --detach ~/Projects/linux-phone-oco/wt-walleye-research-$R origin/main && cd ~/Projects/linux-phone-oco/wt-walleye-research-$R`
-- **Your question**: `tad q lane-next --needs research --format csv` in that worktree. The coordinator
+- **Your question**: `tad q ready --for research --show ready --format csv` (its first row) in that worktree. The coordinator
   placed it there before starting you; **none: report that and end.**
 - **Where it is recorded**: the lane's records live in its lab's own base, not in docs (decision
   2026-11-17-commons-and-device-bases): `ikb research` with its sources, `ikb decision` with what was

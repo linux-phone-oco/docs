@@ -38,8 +38,8 @@ Why: decision 2026-11-17-a-coordinator-per-lane; walleye-fastboot-first.
 
 ## Starting sessions (since 2026-11-17)
 
-Stored tasks, manual only: `walleye-keeper` (`tad q phone-next` in google-walleye-lab, within the recorded
-decisions: tries on b, nothing flashed), `walleye-research` (`tad q lane-next --needs research`), `walleye-builder`
+Stored tasks, manual only: `walleye-keeper` (`tad q ready --for keeper` in google-walleye-lab, within the recorded
+decisions: tries on b, nothing flashed), `walleye-research` (`tad q ready --for research`), `walleye-builder`
 (`--needs build`); an item is put there with `ikb backlog-needs --id ... --needs N`. Walleye's records (backlog, research,
 decisions, log, parts, test runs) are in google-walleye-lab's own base, through `ikb`; what helps every device goes to docs
 (decision 2026-11-17-commons-and-device-bases). Record the work in the lab first, then `run_scheduled_task`

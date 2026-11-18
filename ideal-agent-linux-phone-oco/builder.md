@@ -34,7 +34,7 @@ Your coordinator placed it before starting you. **If the query returns nothing, 
   (`tad q row --id ID` names it in `project`; the query has no place filter yet).
   Read its decision and research first (`tad q about --subject ...`, `tad q find --text ...`); for the
   lpoco roof, decision 2026-11-17-bringup-in-lab-tools.
-- walleye-builder, in the walleye worktree: `tad q lane-next --needs build --format csv`. Read walleye's
+- walleye-builder, in the walleye worktree: `tad q ready --for builder --show ready --format csv` (its first row). Read walleye's
   standing decisions first: `tad q recent --format csv` and
   `tad q about --subject walleye-first-fastboot-boot --format csv`.
 

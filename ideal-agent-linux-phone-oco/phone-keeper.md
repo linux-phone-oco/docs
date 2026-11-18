@@ -9,8 +9,8 @@ work it to its proof through lpoco lab, record it in that lane's own base, hand 
 these, in a fresh worktree of your own of the lane's lab (never the shared clone, which may be stale;
 removed when you end with `git -C ~/Projects/linux-phone-oco/LAB worktree remove WT`):
 `lpoco lab keeper take NAME` (refused: another keeper is live - end); `tad q phone-stands --format csv` (the
-last hand-over); `tad q phone-next --format csv` (the one item to take: the top of the queue that waits on
-nothing; **none: report that to your coordinator and end**); `tad q about --subject S --format csv` for
+last hand-over); `tad q ready --for keeper --show ready --format csv` (its first row is the one item to take: nothing
+outside to wait on, every blocker done - `--show skipped` says why the rest wait; **none: report that to your coordinator and end**); `tad q about --subject S --format csv` for
 that item's subject (its summary first); `lpoco lab suite latest`. Then act. Read the rest of this file only
 when a step below names it.
 
