@@ -2456,3 +2456,27 @@ Rejected
 
 About
 : agent-folder
+
+---
+
+
+<a id="2026-11-18-upstreams-lane-start"></a>
+### The upstreams lane starts: lab tag, apk asked, proofs queued
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: Tagged grenudi/sxmo-utils lab as lab-20261118.1 (6432ef9) and asked orchestration to build sxmo-utils-lab-apk from it; confirmed grenudi/linux topic/pmic-wdt-wake-in-suspend at e123d3bff; asked surya-coordinator to queue surya-kernel-pmic-wdt, surya-pmic-wdt-proof and (after the apk) surya-sxmo-suspend-series, and walleye-coordinator walleye-kernel-pmic-wdt and walleye-pmic-wdt-proof; deleted deviceprofile/xiaomi-surya on the fork after checking its two profile files equal upstream 1fd7822.
+
+Considered
+: Fast-forwarding the fork's master (303c755) to upstream 1fd7822.
+
+Rejected
+: Pushing master from this lane: the guard refuses pushes to master, and a mirror refresh is not in this lane's brief; left to orchestration.
+
+About
+: upstreams-lane
