@@ -2914,9 +2914,6 @@ Note
 Opened
 : 2026-11-17
 
-Blocked by
-: bringup-image-v0
-
 About
 : bringup
 
@@ -3265,9 +3262,6 @@ Note
 
 Opened
 : 2026-11-17
-
-Blocked by
-: lpoco-host
 
 Needs
 : build
