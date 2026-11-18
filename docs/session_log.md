@@ -1525,3 +1525,27 @@ Rejected
 
 About
 : agent-folder
+
+---
+
+
+<a id="2026-11-18-lpoco-host-script-tools"></a>
+### lpoco host: script tools by rev stamp
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Landed lab-tools #95: stamp per script tool judged by rev, devices list, advice text; programmer review fixed three points (stamp only counts with the script present, rev refuses whitespace, README).
+
+Considered
+: Judging a script by content hash of the file against the clone at rev
+
+Rejected
+: Content hash: needs the clone present just to plan; teaching land and agent-env --version: owned by other repos. Dropping the version field: breaks existing lab.toml.
+
+About
+: lpoco-host-script-tools

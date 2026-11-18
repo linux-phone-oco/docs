@@ -3346,3 +3346,28 @@ Opened
 
 About
 : bringup
+
+
+<a id="lpoco-host-reads-origin-main"></a>
+### lpoco host reads each device declaration from origin/main, or names the commit read and how far behind it is
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Left over from lpoco-host-script-tools: plan read a stale detached google-walleye-lab clone without [host] and planned no udev rule. Failing test first: a clone behind origin/main with [host] is read from origin/main after a fetch. Also: the version field of [tools.NAME] scripts is now a label only; drop or document it.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lpoco-host-finds-script-tools
