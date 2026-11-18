@@ -52,6 +52,9 @@ Judge only after measuring; what is not measured is "not known yet".
 5. **Stale waits**, in each base (`tad q next`): an item in-progress with no landing for over a day; a
    non-empty `waits` unchanged for over 3 days; a `blocked_by` naming an item that is done but still shown
    as blocked; a `waits` naming another item of the same base (it belongs in `blocked_by`).
+   **Workarounds:** the newest ideal-agent's `scripts/workarounds` over docs, lab-tools and each lab
+   (decision 2026-11-18-workarounds-read-as-one). A sign is each line it ends 1 on (`due: retire`), and any
+   `WORKAROUND(` rule spoken of in a backlog note but not marked where it stands.
 6. **Role health:** the newest ideal-agent's `scripts/start-weight`
    (`ls -d ~/.claude/plugins/cache/ideal-agent/ideal-agent/*/scripts/start-weight | sort -V | tail -1`) on
    docs' briefs; `scripts/read-weight` on each transcript started since your last round
