@@ -25,7 +25,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
 | [Display panel](components.md#display-panel) | [❔](support_status.md#display-panel--google-taimen) | [❔](support_status.md#display-panel--google-walleye) | [✅](support_status.md#display-panel--xiaomi-surya) |
-| [Graphics (GPU)](components.md#gpu) | ❔ | ❔ | ❔ |
+| [Graphics (GPU)](components.md#gpu) | ❔ | [❔](support_status.md#gpu--google-walleye) | [❔](support_status.md#gpu--xiaomi-surya) |
 
 ### Input
 
@@ -34,7 +34,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | [Touchscreen](components.md#touchscreen) | [❔](support_status.md#touchscreen--google-taimen) | [❔](support_status.md#touchscreen--google-walleye) | [✅](support_status.md#touchscreen--xiaomi-surya) |
 | [Haptics (vibration motor)](components.md#haptics) | [❔](support_status.md#haptics--google-taimen) | [❔](support_status.md#haptics--google-walleye) | [✅](support_status.md#haptics--xiaomi-surya) |
 | [Fingerprint or face unlock](features.md#fingerprint) | [❔](support_status.md#fingerprint--google-taimen) | [❔](support_status.md#fingerprint--google-walleye) | [❌](support_status.md#fingerprint--xiaomi-surya) |
-| [Buttons (power, volume)](components.md#buttons) | ❔ | ❔ | ❔ |
+| [Buttons (power, volume)](components.md#buttons) | ❔ | [❔](support_status.md#buttons--google-walleye) | [❔](support_status.md#buttons--xiaomi-surya) |
 
 ### Connectivity
 
@@ -46,7 +46,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | [Wi-Fi](features.md#wifi) | [❔](support_status.md#wifi--google-taimen) | [❔](support_status.md#wifi--google-walleye) | [✅](support_status.md#wifi--xiaomi-surya) |
 | [Bluetooth](features.md#bluetooth) | [❔](support_status.md#bluetooth--google-taimen) | [❔](support_status.md#bluetooth--google-walleye) | [🟡](support_status.md#bluetooth--xiaomi-surya) |
 | [NFC](features.md#nfc) | [❔](support_status.md#nfc--google-taimen) | [❔](support_status.md#nfc--google-walleye) | [❔](support_status.md#nfc--xiaomi-surya) |
-| [Location (GNSS)](components.md#gnss) | ❔ | ❔ | ❔ |
+| [Location (GNSS)](components.md#gnss) | ❔ | [❔](support_status.md#gnss--google-walleye) | [❔](support_status.md#gnss--xiaomi-surya) |
 
 ### Other
 
@@ -62,7 +62,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | [USB OTG](components.md#usb-otg) | [❔](support_status.md#usb-otg--google-taimen) | [❔](support_status.md#usb-otg--google-walleye) | [✅](support_status.md#usb-otg--xiaomi-surya) |
 | [Fastboot / bootloader](components.md#fastboot) | [❔](support_status.md#fastboot--google-taimen) | [❔](support_status.md#fastboot--google-walleye) | [✅](support_status.md#fastboot--xiaomi-surya) |
 | [Deep sleep that wakes for calls and messages](features.md#deep-sleep) | [❔](support_status.md#deep-sleep--google-taimen) | [❔](support_status.md#deep-sleep--google-walleye) | [❌](support_status.md#deep-sleep--xiaomi-surya) |
-| [Battery and charging](components.md#battery) | ❔ | ❔ | ❔ |
+| [Battery and charging](components.md#battery) | ❔ | [❔](support_status.md#battery--google-walleye) | [❔](support_status.md#battery--xiaomi-surya) |
 
 ### Details
 
@@ -234,6 +234,22 @@ Kernel (boots without unexpected warnings) × Google Pixel 2
 Deep sleep that wakes for calls and messages × Google Pixel 2
 : unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
 
+<a id="gnss--google-walleye"></a>
+Location (GNSS) × Google Pixel 2
+: unknown — notes: Not known yet: linux-phone-oco/google-walleye-lab does not claim this part. — updated: 2026-11-18 — judged: unknown
+
+<a id="gpu--google-walleye"></a>
+Graphics (GPU) × Google Pixel 2
+: unknown — notes: Not known yet: linux-phone-oco/google-walleye-lab does not claim this part. — updated: 2026-11-18 — judged: unknown
+
+<a id="battery--google-walleye"></a>
+Battery and charging × Google Pixel 2
+: unknown — notes: Not known yet: linux-phone-oco/google-walleye-lab does not claim this part. — updated: 2026-11-18 — judged: unknown
+
+<a id="buttons--google-walleye"></a>
+Buttons (power, volume) × Google Pixel 2
+: unknown — notes: Not known yet: linux-phone-oco/google-walleye-lab does not claim this part. — updated: 2026-11-18 — judged: unknown
+
 <a id="audio-speaker--xiaomi-surya"></a>
 Speaker × Xiaomi POCO X3 NFC
 : works — notes: Stereo, both speakers, verified by ear on 2026-11-09 through PipeWire (left-only tone from the top speaker, right-only from the bottom). Needs two fixes not yet upstream: the tas2562 amplifier driver set 32-bit I2S slots on a link clocked for 16-bit, so the right channel fell outside the frame (kernel patch on linux-phone-oco/linux branch fix/tas2562-i2s-slot-length); and the packaged UCM profile is mono with no amplifier channel setup (stereo profile in surya-lab ucm/). Also needs the ADSP sensors service off (adsp-sensor-crash-loop). Both fixes are installed on the test phone, over package files a system update would replace. Measured 2026-11-11 with a microphone placed at the bottom: the right channel is the bottom speaker (7 dB louder there). — updated: 2026-11-11 — judged: works — measured: adsp-running pass (present) 20261117-185149, amp-channels pass (present) 20261117-185149, amp-volume-0x4c pass (present) 20261117-185149, amp-volume-0x4d pass (present) 20261117-185149, default-output pass (present) 20261117-185149, sound-card pass (present) 20261117-185149, speaker-stereo pass (present) 20261117-185149 — measured run: 20261117-185149
@@ -316,4 +332,20 @@ Deep sleep that wakes for calls and messages × Xiaomi POCO X3 NFC
 
 <a id="kernel--xiaomi-surya"></a>
 Kernel (boots without unexpected warnings) × Xiaomi POCO X3 NFC
+: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-18 — judged: unknown
+
+<a id="gnss--xiaomi-surya"></a>
+Location (GNSS) × Xiaomi POCO X3 NFC
+: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-18 — judged: unknown
+
+<a id="gpu--xiaomi-surya"></a>
+Graphics (GPU) × Xiaomi POCO X3 NFC
+: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-18 — judged: unknown
+
+<a id="battery--xiaomi-surya"></a>
+Battery and charging × Xiaomi POCO X3 NFC
+: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-18 — judged: unknown
+
+<a id="buttons--xiaomi-surya"></a>
+Buttons (power, volume) × Xiaomi POCO X3 NFC
 : unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-18 — judged: unknown
