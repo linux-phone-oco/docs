@@ -1475,3 +1475,28 @@ Rejected
 
 About
 : release-plz-one-version
+
+
+<a id="2026-11-18-changelog-completes-version"></a>
+### 2026-11-18-changelog-completes-version
+
+Brief
+: A changelog may change without a version bump only when it adds the heading for the version its package already carries
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-18
+
+Decision
+: check-changelog.sh (run by the commit-kind workflow): per package, a changed CHANGELOG.md passes if the [package] version changed since the merge-base, or if it adds the heading for the current version that the merge-base lacked. A lone edit or a repeated version is refused.
+
+Why
+: Release #111 left lpoco-host without an entry; release-plz put it in a follow-up PR #113 that only changes a changelog, which the first check (#112) would refuse. That PR completes the version, tags host-v0.3.5, and so tags something.
+
+Rejected
+: Reconfiguring release-plz so unchanged version_group members get an entry in the first PR: no setting for it confirmed. Accepting any changelog-only PR: reopens the changelog-only release #112 forbids.
+
+About
+: release-plz-one-version

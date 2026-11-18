@@ -1801,3 +1801,24 @@ Rejected
 
 About
 : release-plz-one-version
+
+---
+
+
+<a id="2026-11-18-changelog-completes-version"></a>
+### release check accepts a completing changelog
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Landed lab-tools #116: check-changelog.sh with tests (failing first), merge-base, per-package [package] version, quoted/spaced names; programmer review's four bugs fixed.
+
+Rejected
+: Global version-bump test (old check): a bump elsewhere excused any changelog.
+
+About
+: release-plz-one-version
