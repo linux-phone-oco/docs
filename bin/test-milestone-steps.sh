@@ -43,4 +43,31 @@ tad r milestone --project google-walleye-lab --id typo --subject walleye --ord 2
 	--criteria "step:kernel-reaches-init@no-such-phone" --why x > /dev/null
 err=$(tad q milestone-steps 2>&1) && fail "a term naming no device was accepted"
 case "$err" in *no-such-phone*) : ;; *) fail "the refusal does not name the device: $err" ;; esac
-echo "PASS: milestone-steps reads step terms from the base's claims: done or not-needed is met, anything else is not, ready when all are; a step or device that is none is refused by name"
+# a goal step is never claimed: it is met when every step it needs, hard edges all the way down, is done or
+# not-needed on the device (a console alternative not taken does not count against it), as daily-phone.sh reads it
+tad r milestone --project google-walleye-lab --id typo --subject walleye --ord 2 --title Typo --horizon working --readiness 1 \
+	--criteria "step:kernel-reaches-init@google-walleye" --why x > /dev/null
+tad r milestone --project google-walleye-lab --id daily --subject walleye --ord 3 --title Daily --horizon working --readiness 1 \
+	--criteria "step:daily-usable-phone@google-walleye" --why x > /dev/null
+leaves=$(tad sql "WITH RECURSIVE need(id) AS (SELECT 'daily-usable-phone' UNION SELECT e.requires FROM bringup_step_edges e JOIN need ON e.step = need.id WHERE e.kind = 'hard')
+                  SELECT n.id FROM need n JOIN bringup_steps s ON s.id = n.id WHERE s.stage <> 'goals' ORDER BY 1" --format csv | tail -n +2)
+total=$(printf '%s\n' "$leaves" | wc -l)
+claims() { # STATUS-FOR-GNSS-FIX
+	printf '%s\n' "$leaves" | awk -v g="$1" '{ s = "done"; if ($0 == "uart-console") s = "open"; if ($0 == "gnss-fix") s = g;
+		printf "{\"step\":\"%s\",\"status\":\"%s\",\"proof\":\"p\",\"run\":\"r\",\"proven_on\":null,\"notes\":\"n\",\"updated\":\"2026-11-18\"}\n", $0, s }' > "$tmp/remote/o/base/main/data/steps.json"
+	tad r feed-device-steps --device google-walleye --base o/base --root "file://$tmp/remote" > /dev/null
+}
+goal() { tad q milestone-steps --milestone daily --format csv | tail -n +2; }
+printf 'steps = 1\n' > "$tmp/remote/o/base/main/devicebase.toml"
+claims open
+case "$(goal)" in google-walleye-lab,daily,daily-usable-phone,google-walleye,partial,*,false,false) : ;; *) fail "a goal with a step open is not partial and unmet: $(goal)" ;; esac
+claims done
+case "$(goal)" in *,done,*,true,true) : ;; *) fail "a goal whose needs are done is not met (the console alternative not taken must not count): $(goal)" ;; esac
+case "$(goal)" in *"$total of $total"*) : ;; *) fail "the goal does not say how many of its $total needs are met: $(goal)" ;; esac
+printf '{"step":"kernel-reaches-init","status":"done","proof":"p","run":"r","proven_on":null,"notes":null,"updated":"2026-11-18"}\n' > "$tmp/remote/o/base/main/data/steps.json"
+tad r feed-device-steps --device google-walleye --base o/base --root "file://$tmp/remote" > /dev/null
+case "$(goal)" in *,partial,*,false,false) : ;; *) fail "one need met of $total is not partial: $(goal)" ;; esac
+printf '\n' > "$tmp/remote/o/base/main/data/steps.json"
+tad r feed-device-steps --device google-walleye --base o/base --root "file://$tmp/remote" > /dev/null
+case "$(goal)" in *,unknown,*,false,false) : ;; *) fail "a goal no claim touches is not unknown: $(goal)" ;; esac
+echo "PASS: milestone-steps reads step terms from the base's claims: done or not-needed is met, anything else is not, ready when all are, a goal step by what it needs; a step or device that is none is refused by name"
