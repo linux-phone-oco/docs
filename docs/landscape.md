@@ -190,3 +190,60 @@ Link
 
 Checked
 : 2026-11-17
+
+
+<a id="ubports-devices"></a>
+### UBports device data
+
+Project
+: UBports / Ubuntu Touch
+
+What
+: devices.ubuntu-touch.io keeps, per device, feature ticks in nine categories, each category gating a progress stage (booting, core connectivity, essential, fully optimised, never caps).
+
+For us
+: The only stage order the world keeps as data. We take its gating as goal steps (daily-usable-phone), not its weights or percent, and keep its ticks apart from proofs.
+
+Link
+: https://devices.ubuntu-touch.io
+
+Checked
+: 2026-11-18
+
+
+<a id="halium"></a>
+### Halium
+
+Project
+: Halium / UBports / Sailfish
+
+What
+: Reuses the Android vendor HALs (radio, audio, camera, media, sensors, GNSS, Wi-Fi, vibrator, fingerprint) through libhybris so a phone runs a Linux userspace.
+
+For us
+: Its scope is the list a native mainline phone must replace, the hardest first: our phone stages follow the same areas.
+
+Link
+: https://docs.halium.org/en/latest/project/Scope.html
+
+Checked
+: 2026-11-18
+
+
+<a id="android-cts"></a>
+### Android Compatibility Test Suite
+
+Project
+: Android / AOSP
+
+What
+: The compatibility tests a phone passes to count as Android: module, case, method, run per device and build, pass, fail or not executed.
+
+For us
+: Android's own measure of a phone; our proofs are named checks of the same smallness, and we keep not-needed and not known yet apart where it counts an ignored case as a pass.
+
+Link
+: https://source.android.com/docs/compatibility/cts
+
+Checked
+: 2026-11-18

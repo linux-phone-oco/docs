@@ -18,14 +18,14 @@ The memory of linux-phone-oco, whose goal is Linux phones as good as Android for
 - [Idea](idea.md): 19
 - [Kernel Activity](kernel_activity.md): 4
 - [Landings](landings.md): 102
-- [Landscape](landscape.md): 10
+- [Landscape](landscape.md): 13
 - [Manual Events](manual_events.md): 13
 - [Manual Work](manual_work.md): 14
 - [Milestones](milestones.md): 23
 - [Platforms](platforms.md): 7
 - [Problems](problems.md): 17
 - [Research](research.md): 65
-- [Session Log](session_log.md): 133
+- [Session Log](session_log.md): 134
 - [Shell Releases](shell_releases.md): 2
 - [Sources](sources.md): 307
 - [Step Status](step_status.md): 0
