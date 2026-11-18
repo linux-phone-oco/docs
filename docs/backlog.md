@@ -4158,16 +4158,13 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: Declaration landed (lab-tools PR 157): packaging/sxmo-utils/APKBUILD, 1.18.1_p20261118, source tag lab-20261118.1, every subpackage; proof check .github/check-sxmo-utils-apk.sh in CI. Not yet built or signed (no pmbootstrap/abuild on the lab machine) nor published as sxmo-utils@lab: see sxmo-utils-lab-apk-deliver. Phone proof suspend-retry-backs-off waits on that.
+: Declaration landed (lab-tools PR 157); built, signed and published by the package conveyor 2026-11-18 (see sxmo-utils-lab-apk-deliver): sxmo-utils 1.18.1_p20261118-r0 and every subpackage at https://linux-phone-oco.github.io/lab-tools/, installed in a clean Alpine 3.24 aarch64. Not done here: installing it on surya as sxmo-utils@lab (nothing on a phone from this session); the phone proof suspend-retry-backs-off waits on that install.
 
 Opened
 : 2026-11-18
-
-Blocked by
-: sxmo-utils-lab-apk-deliver
 
 Needs
 : build
@@ -4279,16 +4276,13 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Blocked on the conveyor (linux-package-distribution-oco/conveyor, alpine.yml v1), not on lab-tools. Read 2026-11-18: it takes a declaration input and a tag, but (1) it copies only the APKBUILD into the build folder, while sxmo-utils has 7 local source files beside it (rootfs-*, *.post-install), so abuild fetch/verify fails; (2) it builds one Pages site per repository from this run's artifacts alone, so a second package in lab-tools would replace lpoco-health's repository (and the verify step reads the page for one NAME). Needs of the conveyor: copy the APKBUILD's whole folder; merge into the existing site (or one site per package), verify per package. Then lab-tools adds packaging/sxmo-utils/conveyor.toml (tag-prefix sxmo-utils-v, tag sxmo-utils-v1.18.1_p20261118) and a second packages job with declaration:. Nothing landed in lab-tools: a trigger now would clobber the live lpoco-health page.
+: Delivered 2026-11-18. Conveyor v1.2.1 (v1 moved; PRs conveyor 19, 20): alpine.yml copies the APKBUILD's whole folder, keeps the live repository's other packages in the one signed APKINDEX, derives the front page and verify from it, installs the APKBUILD's makedepends in the signing container before the key, and refuses a deploy that would lose a live package; its own test (tests/alpine/run.sh, CI job alpine) runs the steps on two fixture packages. lab-tools PRs 168 (packaging/sxmo-utils/conveyor.toml, second packages job, tag sxmo-utils-v1.18.1_p20261118 pushed by hand), 169 (APKBUILD build()), 172 (restored 168/169 after #170 put the files back). Proof: lab-tools Packages run 44322521483: 19 packages verified against the committed key, https://linux-phone-oco.github.io/lab-tools/ offers lpoco-health 0.15.1 and sxmo-utils 1.18.1_p20261118-r0 (every subpackage listed), both installed in a clean Alpine 3.24 aarch64 from the page's own lines. Next: the phone takes it (apk add sxmo-utils from that repository tagged @lab) - the phone proof suspend-retry-backs-off.
 
 Opened
 : 2026-11-18
-
-Waits
-: a conveyor tag (linux-package-distribution-oco/conveyor alpine.yml) that copies the APKBUILD folder whole and deploys a second package without replacing the first, with verify per package
 
 Needs
 : build
