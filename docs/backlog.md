@@ -708,16 +708,22 @@ Status
 : open
 
 Note
-: An RTC wake alarm suspend, as postmarketos-test-suspend does, with the processor crash count before and after. Wait: the phone holds a wake lock on USB (devlab-usb-awake) and a phone that does not wake needs hands - prove one cycle by hand on surya first.  2026-11-17, from the deep-sleep research (docs decision 2026-11-17-deep-sleep-measured-s2idle; docs backlog sleep-measured-once is its first use): the cycle also reads the SoC's own counters before and after - /sys/kernel/debug/qcom_stats (cxsd, aosd, ddr, and adsp, cdsp, modem), suspend_stats, the cluster domain's idle states (pm_genpd power-domain-cluster) and every wakeup source's count - so one cycle says whether the SoC reached its floor and, if not, which processor stayed up and what woke it. On USB it can only work with the gadget let go for the length of the sleep (soft_connect) and the lab's and the shell's wake locks released; reach and read back over USB after the RTC wake. Once a cycle has run in a boot, the check soc-sleeps (base/90-sleep.sh) turns from skip to pass or fail in that boot's report.
+: 2026-11-18, orchestration: the build part goes to the lab-tools builder. surya has run this cycle by hand through surya-lab sleep/way-back.sh (cycle SLEEP bt-on [stop-sensors]: watchdog fuse as the way back, rtcwake -m freeze, Bluetooth's serial wakeup off, qcom_stats before/after) fifteen times and more - hand-work past the third time. Carry it into lpoco health as a suspend cycle: the device declares its way back (surya: the kept-armed watchdog) and its wake sources to quiet in device.toml; the cycle refuses without one; it reads qcom_stats, suspend_stats, cluster idle states and wakeup sources before and after; soc-sleeps then reads that boot's cycle. The phone proof is surya's (surya-lab queue).
 
 Opened
 : 2026-11-17
 
 Needs
-: phone
+: build
 
 Device
 : xiaomi-surya
+
+Proof
+: fixture tests of the verb (plan with no phone, counters parsed before/after, refuses without a declared way back); then one cycle on surya through surya-lab's queue, the report's soc-sleeps turning from skip to pass or fail
+
+Rank
+: 1
 
 About
 : deep-sleep
@@ -3127,10 +3133,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Since 2026-11-17-docs-serves-no-lane no keeper reads docs' needs=phone rows: health-suspend-cycle (xiaomi-surya), devlab-fastboot-boot-reads-slots (google-walleye), and floor-dsps-never-started, floor-read-holders, floor-no-ignore-unused, mic-ucm-capture, microphone, sleep-measured-once (no device named). Each goes to its lane coordinator as a phone item in that lab's base (the lane records it there, citing the docs row), or is closed if the lab already holds it; then docs' row keeps the build part only.
+: Done 2026-11-18 (orchestration-renewed): devlab-fastboot-boot-reads-slots, floor-dsps-never-started, floor-read-holders, floor-no-ignore-unused, mic-ucm-capture, microphone and sleep-measured-once are done; health-suspend-cycle keeps its build part (needs=build, rank 1) and its phone proof goes to surya-lab's queue through the surya coordinator.
 
 Opened
 : 2026-11-17
