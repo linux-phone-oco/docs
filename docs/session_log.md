@@ -1822,3 +1822,27 @@ Rejected
 
 About
 : release-plz-one-version
+
+---
+
+
+<a id="2026-11-18-release-plz-no-loop"></a>
+### release-plz stops releasing its own release commits
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Test first (red: no release_commits), then release_commits in release-plz.toml; programmer review found no blocker; landed as lab-tools #119, read back from main.
+
+Considered
+: One release PR writing every changelog (no follow-up)
+
+Rejected
+: One release PR for all changelogs: needs release-plz to change its own PR shape, not in its config. Listing chore among released kinds: that is the loop. A chore! breaking change no longer releases (accepted; the commit-kind lists must stay in step).
+
+About
+: release-plz-one-version
