@@ -2786,3 +2786,27 @@ Rejected
 
 About
 : device-layer-in-docs
+
+---
+
+
+<a id="2026-11-18-manifest-one-schema-built-and-landed"></a>
+### manifest-one-schema built and landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: New lpoco-manifest crate: device.toml's tables and fields declared once, unknown ones refused by devlab, host and bringup alike, JSON Schema projected and committed; lab-tools #179. host test fixture gained the user field the schema requires.
+
+Considered
+: Optional device/connection in the shared type with each program checking what it needs; a bin with argenv to print the schema
+
+Rejected
+: Per-program structs kept beside a shared one: that is today's drift. Making connection.user optional for host: a real manifest always has it.
+
+About
+: manifest-one-schema

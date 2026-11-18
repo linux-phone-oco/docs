@@ -3831,10 +3831,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-18-device-manifest-schema-from-rust. Today devlab, host and bringup each parse device.toml in their own shape and devlab ignores a misspelled table. One crate (lpoco-manifest) holds the serde types with doc comments; devlab, host and bringup read it; schemars (draft-07, already in Cargo.lock via rmcp) projects device.schema.json, committed and published with each release; roof pieces are an enum with tokens. A generated device.toml template with every field's doc beside it is the device-template file.
+: 2026-11-18, lab-tools-builder: done (lab-tools #179, main 20e99da). lpoco-manifest crate holds device.toml's types once, deny_unknown_fields everywhere; devlab Device::parse, host parse_device and Boot::parse read it; draft-07 schema projected to manifest/device.schema.json (lpoco-manifest schema). Proof: manifest/tests/schema.rs a_misspelled_table_is_refused (seen failing first against devlab's Device), schema_is_current, every_lab_manifest_validates (surya, walleye, template fixtures). Review follow-ups, open: validate fixtures against the schema with a draft-07 validator; schema marks device/connection optional but devlab requires them; fixtures are copies that drift from the lab repos (read the real ones in CI); host::parse_device still re-reads values by hand and bringup/src/pin.rs reads [tools] loosely; manifest/CHANGELOG.md is hand-written; device-template file with every field's doc beside it not made.
 
 Opened
 : 2026-11-18
