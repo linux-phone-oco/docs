@@ -3167,12 +3167,13 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
 : Left by lpoco-rename-lab-tone (lab-tools #86): ~450 references across AGENTS.md, READMEs, briefs, device.toml comments, launchers, devlab-watch@ units and scripts still say devlab or tone. Sweep one repository per change after lpoco-mcp-one-door lands; the second [[bin]] aliases go only when a grep across linux-phone-oco finds no old name in use.
 Built with the programmer subagent's review (ideal-agent:programmer) before landing; nothing that needs the author's hands or a root rule change (the coordinator, 2026-11-18).
 2026-11-18: slices landed and read back: lab-tools #99, #100; docs #400; device-template #12; surya-lab #166 (9 files, the lane's yes); google-walleye-lab #100 (10 files, the lane's yes). Left, staying as they are on purpose: history rows and research; the keeper-run and try/build scripts in both labs (the lanes said no); lab host files and devlab-watch@ (the lab's, through lpoco-host). Left to build: lab-tools' own source strings and comments (~340 refs) and lpoco lab mcp --help ('devlab's door'). The devlab and tone aliases stay while the scripts call them.
+Done 2026-11-18 (orchestration): lab-tools #104 made the messages tell the reader to type lpoco-lab (kept so by a test). What still says devlab in lab-tools stays on purpose: internal names - temp dirs, the 10-devlab.preset file written onto phones (renaming it changes phone state), the ~/.config/devlab and state paths, DEVLAB_* variables; 78 source comments; the README line 'devlab's door'. Count on main at 44a3948: 44 strings, 78 comments, none of them a command a reader types. The devlab and tone aliases stay while the lanes' scripts call them. Removing the aliases is its own item, when a grep finds no caller.
 
 Opened
 : 2026-11-17
