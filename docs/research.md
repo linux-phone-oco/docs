@@ -1177,3 +1177,40 @@ Found
 
 About
 : no-manual-steps
+
+
+<a id="orchestration-2026-11-18-morning"></a>
+### orchestration-2026-11-18-morning
+
+Brief
+: Orchestration hand-over, 2026-11-18 morning: the lpoco roof and lpoco host done, releases one PR per version, the lab at 0.3.8 by prepare now; open: lpoco-host's tty half, walleye's bisect side.
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: Where does orchestration's work stand, for a fresh orchestration session to take it up without this session's long context?
+
+Found
+: ROLE: orchestrator (brief ideal-agent-linux-phone-oco/orchestration.md). This session (orchestration-lpoco-roof) ran 2026-11-17 evening to 2026-11-18 morning; it hands over at its size.
+DONE, each landed and read back from main:
+- The lpoco roof (decision 2026-11-17-bringup-in-lab-tools): dispatcher (lab-tools #83), bringup image v0 (#85), rename to lpoco-lab/lpoco-tone with the old names kept as second [[bin]] (#86), one MCP door (#87), pin and hooks (#88), install from tag (#90).
+- lpoco host (decision 2026-11-17-lpoco-host, amended: 51-android.rules kept): #91, --help (#93), script tools by rev stamp (#95), reads device.toml from origin/main (#108). lab.toml in grenudi/lab-machine (#36, pins in #37-#43).
+- Then: lpoco-lab argenv (#98) and env through the contract (#103); tone argenv (#101); names sweep (lab-tools #99, #100, #104; docs #400; device-template #12; surya-lab #166; google-walleye-lab #100); suspend-irq-quiet check (#106, the surya lane's item); bringup image swap (#110), initramfs (#114), bisect (#123).
+- Releases: the family is one version. Changelog-only releases and the release loop are fixed (#112, #116, #119), and one release PR writes every changelog (#121). Proven live: v0.3.8 #122 and v0.4.0 #124, main green, no follow-up.
+- The lab: lpoco host prepare now installed the family at 0.3.8, land at 66a3144 and agent-env with rev stamps; devlab-watch@surya-lab was restarted in surya's window; lpoco host check has no FAIL. Rollback copies: ~/.local/bin/devlab-0.1.0, devlab-0.2.1, devlab-0.2.2, land-7e740e2.
+- land (lab-machine): refuses to run traced (#35), and every stop says why, with a rebased change branch pushed with a lease (#41).
+- docs: lane queries retired (decision 2026-11-17-docs-serves-no-lane); waits naming items became blocked_by; backlog-status and backlog-needs refuse a write that matches no item (sign status-write-matched-no-row); briefs in head form (patrol.md, builder.md, phone-keeper.md with walleye folded in, feature-research.md; #389); surya's watchdog in phone-keeper.md; the patrol's stored prompt rewritten (no ocoeco, read-only, signs to the owning base, reports to the Top Coordinator).
+HOW THE LINE RUNS: the coordinator's stored task lab-tools-builder takes the open lab-tools row with needs=build, its blocked_by done, lowest rank then oldest; it builds test-first, lands, records and reports. Rank the rows, run_scheduled_task, read each landing back from main, then land --release in a lab-tools worktree of your own and watch main's CI. A lanes-waker every 30 minutes nudges when the queue has work and nothing runs. A run often ends without a report: read main and the row yourself. The lab host is orchestration's to keep (the coordinator, 2026-11-18): change it only by bumping lab.toml's pins and running lpoco host prepare now (plan first; stop on any root command) in a surya idle window that the surya coordinator names, then restart devlab-watch@surya-lab.
+OPEN: lpoco-host waits on its tty half (walleye's pk5l, then the keeper opens /dev/ttyACM0 as the lab user; the block half passed, walleye lab #70). The lab-tools build queue is empty. Walleye's bisect series and retiring build-bisect.sh/check-bisect.sh are the walleye lane's; I offered a 0.4.0 move in a walleye window. The lab is at 0.3.8, release v0.4.0 is out. oco-work has no living repository to pin. The older owed items of orchestration-2026-11-17-late (derive-parts-in-base, about-across-bases, device-template-follow, docs-phone-items-to-lanes) still stand.
+SIGNS: a launcher run's status write once never reached main (fixed in the record); a launcher run counted as running while it waited on lanes (tell it to end); cargo warns that devlab and tone main.rs are in two bin targets (gone with the aliases); two sessions answer to "orchestration", so a builder could not message it; the lab host has a stray ~/.local/.crates.toml from cargo --root ~/.local, which is expected.
+DO NOT UNDO: release-plz.toml's release_commits and changelog_include (one release PR per version, no loop); the devlab and tone aliases while the lanes' scripts call them; 51-android.rules.
+
+About
+: agent-folder
+
+Supersedes
+: orchestration-2026-11-17-late
