@@ -24,6 +24,11 @@ Every brief, and the author's words in it, is a starting point: look around firs
 practice 22) before building on it. A coordinator that sees a method missing researches it on its own
 (look-around-first, 'When a method is missing').
 
+After a fix that met a trigger (look-around-first, 'After a fix'), "where else" here means: the other devices
+(`tad sql "SELECT id FROM devices"`, each device repository's own base), the shared places - lab-tools (devlab,
+lpoco), device-template, the host's units - and upstream (`tad q upstreams`, `tad q upstream`); a fix in one
+device repository to a part another device carries is the first case to look up.
+
 Each brief names its role under its title - `Role: keeper (ideal-agent)`, a card in ideal-agent's `agents/` -
 with `Name:` (who signs the work) and `Also practices: 42`. The prompt that starts a session begins with
 those lines; the session then reads the card and only its practices, and the brief keeps only what

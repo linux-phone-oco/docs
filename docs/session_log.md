@@ -2242,3 +2242,27 @@ Rejected
 
 About
 : lpoco-host-rest
+
+---
+
+
+<a id="2026-11-18-class-question-places"></a>
+### Where else, in linux-phone
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: The agent folder's README names linux-phone's 'where else' for ideal-agent's class question after a fix (ideal-agent decision 2026-11-18-after-a-fix-the-class-question, #66): the other devices and their bases, lab-tools, device-template, the host's units, upstream. One line for every brief; the method stays in ideal-agent.
+
+Considered
+: A line in each brief (repeats; the README is read by every role here).
+
+Rejected
+: Restating the triggers and the three questions (overlay-check).
+
+About
+: agent-folder
