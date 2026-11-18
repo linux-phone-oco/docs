@@ -2900,3 +2900,21 @@ Rejected
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-18-docs-builder-bringup-chain-goal"></a>
+### docs-builder: bringup-chain --goal
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: queries/bringup-chain.sql now takes --goal STEP, from the draft in research/bringup-steps/2026-11-18-phone-stages/queries; bin/test-bringup-chain-goal.sh (make verify) pins it against the hard-edge closure of bringup_step_edges for each goal.
+
+About
+: bringup-steps

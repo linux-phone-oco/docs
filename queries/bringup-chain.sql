@@ -4,13 +4,21 @@
 -- Without --device: the generic chain, every status unknown - the guidebook's order. A step the device's base
 -- never claimed is unknown. In needs, ~ marks a soft need and |G the alternatives group it is one of. Within a
 -- depth the steps go by stage (bringup_stages.ord), then their own ord.
+-- With --goal: only that goal step and what it needs, hard edges followed all the way down - "what a
+-- daily-usable phone needs" is --goal daily-usable-phone (decision 2026-11-18-bringup-steps-phone-stages-and-goal-steps).
 -- --device  string?  the device (devices id); omitted: the generic chain
+-- --goal    string?  a step, usually of stage goals (linux-runs, daily-usable-phone, complete-phone); omitted: every step
 WITH RECURSIVE depth(id, d) AS (
     SELECT id, 0 FROM bringup_steps WHERE id NOT IN (SELECT step FROM bringup_step_edges)
     UNION
     SELECT e.step, depth.d + 1 FROM bringup_step_edges e JOIN depth ON e.requires = depth.id
 ),
 lvl AS (SELECT id, max(d) AS depth FROM depth GROUP BY id),
+goal(id) AS (
+    SELECT id FROM bringup_steps WHERE id = $goal
+    UNION
+    SELECT e.requires FROM bringup_step_edges e JOIN goal ON e.step = goal.id WHERE e.kind = 'hard'
+),
 st AS (
     SELECT s.id, coalesce(ss.status, 'unknown') AS status, ss.proof, ss.run, ss.proven_on, ss.updated
     FROM bringup_steps s LEFT JOIN step_status ss ON ss.step_id = s.id AND ss.device_id = $device
@@ -29,4 +37,6 @@ SELECT row_number() OVER (ORDER BY l.depth, sg.ord, sg.id, s.ord, s.id) AS n,
     CASE WHEN st.status IN ('done', 'not-needed') THEN '' WHEN coalesce(r.ok, true) THEN 'ready' ELSE 'waits' END AS next
 FROM bringup_steps s JOIN bringup_stages sg ON sg.id = s.stage JOIN lvl l ON l.id = s.id JOIN st ON st.id = s.id LEFT JOIN ready r ON r.step = s.id
 WHERE CASE WHEN $device IS NOT NULL AND $device NOT IN (SELECT id FROM devices) THEN error('no device ' || $device || ' (tad q coverage names them)') ELSE true END
+  AND CASE WHEN $goal IS NOT NULL AND $goal NOT IN (SELECT id FROM bringup_steps) THEN error('no step ' || $goal || ' (tad q bringup-chain lists them)') ELSE true END
+  AND ($goal IS NULL OR s.id IN (SELECT id FROM goal))
 ORDER BY n;
