@@ -3176,14 +3176,11 @@ Built with the programmer subagent's review (ideal-agent:programmer) before land
 Opened
 : 2026-11-17
 
-Needs
-: build
+Waits
+: the surya and walleye lane coordinators' answers to their line lists (sent 2026-11-18; ~40 lines each), then a builder lands what each agreed
 
 Device
 : google-walleye
-
-Rank
-: 3
 
 About
 : bringup
