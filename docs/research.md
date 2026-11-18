@@ -1776,3 +1776,28 @@ Sources
 
 About
 : workarounds
+
+
+<a id="upstream-readiness-inventory"></a>
+### upstream-readiness-inventory
+
+Brief
+: Nothing we carry is sendable today: no commit has the author's SoB; tas2562 slot length, sxmo suspend series and PMIC-wdt gen2 are nearest; surya dts waits on sm7150.dtsi
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Question
+: Of everything we carry against upstreams, what is single-concern, proven and clean enough to send, what is close, what is local only, what is already upstream?
+
+Found
+: 13 close (b) items, 0 ready (a): every kernel commit lacks a human Signed-off-by. Nearest: tas2562 RX slot length (v7.3 run + SoB), sxmo suspend series (surya attended proofs), PMIC wdt gen2 (clk warning cleared; binding split, pm6150 compatible+fallback). Walleye dts can go on mainline msm8998.dtsi after trimming lab overlay hacks and dtbs_check; surya dts waits on sm7150.dtsi (not in v7.3/next). tas2562 volume mostly already in v7.3. dtschema not installed: dt_binding_check/dtbs_check unmeasured. next drops Assisted-by (1e035297ffda); Nura pmaports forbids generative AI.
+
+About
+: upstreams-lane
+
+Material
+: research/upstream-forks/2026-11-19/
