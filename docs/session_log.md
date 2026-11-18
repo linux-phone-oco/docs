@@ -2314,3 +2314,27 @@ Rejected
 
 About
 : lpoco-host-rest
+
+---
+
+
+<a id="2026-11-18-lpoco-host-link-config"></a>
+### lpoco host: link config for the gadget's USB network
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Part (6b): net_address in [[host.gadget]], link file for NetworkManager or systemd-networkd chosen by what runs, plan/prepare with the verb; test first, reviewed by the programmer subagent, landed as lab-tools #144 and read back from main.
+
+Considered
+: Detecting the manager from /run markers; a per-file mode (0600 for NM keyfiles); a net_name declared twice refused.
+
+Rejected
+: A manager choice in device.toml (the host knows what runs, the device should not); a nmcli connection add call (imperative, not a file the plan can diff); carrying mode/reload on FileChange now (kept the prefix inference, small; noted as a tidy-up).
+
+About
+: lpoco-host-rest
