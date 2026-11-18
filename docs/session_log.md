@@ -1753,3 +1753,27 @@ Considered
 
 About
 : lpoco-host-reads-origin-main
+
+---
+
+
+<a id="2026-11-18-bringup-image-swap"></a>
+### bringup image swap built and landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: image swap in lpoco-bringup: parts replaced in a control image, AVB hash footer rebuilt through avbtool (NONE; partition, salt, props, rollback index, hash algorithm, flags carried), what differs said. Proof test seen failing, then passing; programmer review fixed four defects (dropped footer facts, footerless size, wrong footer size, dead code). Landed lab-tools#110, read back from main; release PR 109 landed.
+
+Considered
+: a pure-Rust footer writer (no crate exists)
+
+Rejected
+: Rebuilding a signed vbmeta or multi-descriptor footer on a guess: refused with a message instead. avbtool verify_image as the test's check: it crashes looking for boot.img, so info_image is used.
+
+About
+: bringup-image-swap
