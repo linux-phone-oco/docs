@@ -1,0 +1,249 @@
+From 1156bb6c79ef9391952decf325bb069d894439f7 Mon Sep 17 00:00:00 2001
+From: orchestration-renewed <agent@creation-guidelines>
+Date: Wed, 18 Nov 2026 13:28:20 +0100
+Subject: [PATCH sxmo-utils 2/3] suspend: stop the services a device profile
+ names around suspend
+
+sxmo_suspend.sh stopped hexagonrpcd-adsp-sensorspd for one device by its
+name (google,b4s4-sdm670). Other Qualcomm phones running hexagonrpcd need
+the same: the POCO X3 NFC (xiaomi,surya, SM7150) has its sensors daemon
+stopped across suspend by systemd (the unit conflicts with suspend.target)
+but Sxmo suspends with rtcwake, past systemd, so nothing stops it there.
+
+Let the device profile name them instead: SXMO_SUSPEND_STOP_SERVICES is a
+list of services that sxmo_autosuspend.sh stops before each suspend and
+starts again after it, whether the suspend succeeded or not. The
+google,b4s4-sdm670 profile now names hexagonrpcd-adsp-sensorspd, and the
+device check leaves sxmo_suspend.sh.
+
+The stop happens after the wakeup count was read, and stopping a service
+takes a while: any wakeup event meanwhile (an LED blink takes a wakelock)
+would make that count stale and every suspend abort - the reason a list
+stopped inside sxmo_suspend.sh was turned down in 2024. So the count is
+read again once the services are stopped, and the one written is current.
+Without services nothing changes: the count is read once, as before.
+
+Change for google,b4s4-sdm670: hexagonrpcd-adsp-sensorspd is started
+again after the suspend (it stayed stopped until the next boot before).
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ configs/doas/50-sxmo.conf                     |  2 +
+ docs/sxmo.7.scd                               |  5 +++
+ scripts/core/sxmo_autosuspend.sh              | 24 +++++++++++
+ scripts/core/sxmo_suspend.sh                  | 16 --------
+ .../sxmo_deviceprofile_google,b4s4-sdm670.sh  |  6 +++
+ spec/scripts/core/sxmo_autosuspend_spec.sh    | 40 ++++++++++++++++++-
+ 6 files changed, 75 insertions(+), 18 deletions(-)
+
+diff --git a/configs/doas/50-sxmo.conf b/configs/doas/50-sxmo.conf
+index c4f8e1f..58d0978 100644
+--- a/configs/doas/50-sxmo.conf
++++ b/configs/doas/50-sxmo.conf
+@@ -22,3 +22,5 @@ permit nopass :wheel as root cmd tee args -a /sys/power/wake_unlock
+ permit nopass :wheel as root cmd tee args /sys/power/wakeup_count
+ permit nopass :wheel as root cmd rc-service args hexagonrpcd-adsp-sensorspd stop
+ permit nopass :wheel as root cmd systemctl args stop hexagonrpcd-adsp-sensorspd
++permit nopass :wheel as root cmd rc-service args hexagonrpcd-adsp-sensorspd start
++permit nopass :wheel as root cmd systemctl args start hexagonrpcd-adsp-sensorspd
+diff --git a/docs/sxmo.7.scd b/docs/sxmo.7.scd
+index 51e5003..142e8d9 100644
+--- a/docs/sxmo.7.scd
++++ b/docs/sxmo.7.scd
+@@ -1111,6 +1111,11 @@ The following variables are used in device profiles, see DEVICES.
+ 	ID (from xinput) for the stylus device [DWM-ONLY] [default: 10]
+ *SXMO_SUSPENDABLE_STATES* (states)
+ 	The list of suspendable states, with their timeout duration [default: "screenoff 3"]
++*SXMO_SUSPEND_STOP_SERVICES* (states)
++	Space separated list of system services that must not run across a
++	suspend: they are stopped before each suspend and started again after
++	it. Each needs a doas rule to stop and start it (see
++	configs/doas/50-sxmo.conf).
+ *SXMO_TOUCHSCREEN_ID* (input)
+ 	ID (from xinput) for the touchscreen device [DWM-ONLY] [default: 10]
+ *SXMO_VIBRATE_DEV* (misc)
+diff --git a/scripts/core/sxmo_autosuspend.sh b/scripts/core/sxmo_autosuspend.sh
+index 036addb..482a2a2 100755
+--- a/scripts/core/sxmo_autosuspend.sh
++++ b/scripts/core/sxmo_autosuspend.sh
+@@ -38,16 +38,38 @@ wait_can_suspend() {
+ 	last_check="$(date +%s)"
+ }
+ 
++# Services the device profile names in SXMO_SUSPEND_STOP_SERVICES are stopped
++# before each suspend and started again after it, whether it succeeded or not
++# (each needs a doas rule, see configs/doas/50-sxmo.conf).
++suspend_services() {
++	for service in $SXMO_SUSPEND_STOP_SERVICES; do
++		if [ -d /run/systemd/system ]; then
++			doas -n systemctl "$1" "$service"
++		else
++			doas -n rc-service "$service" "$1"
++		fi || sxmo_log "could not $1 $service"
++	done
++}
++
+ while true; do
+ 	# Reading from wakeup_count blocks until there are no wakelocks
+ 	wakeup_count=$(cat /sys/power/wakeup_count)
+ 
+ 	wait_can_suspend
+ 
++	if [ -n "$SXMO_SUSPEND_STOP_SERVICES" ]; then
++		suspend_services stop
++		# Stopping services takes a while, and any wakeup event meanwhile
++		# (an LED blink takes a wakelock) makes the count read above stale
++		# and the suspend abort: read it again, now that they are stopped.
++		wakeup_count=$(cat /sys/power/wakeup_count)
++	fi
++
+ 	# If the wakeup count has changed since we read it, this will fail so we
+ 	# know to try again. If something takes a wake_lock after we do this, it
+ 	# will cause the kernel to abort suspend.
+ 	if ! echo "$wakeup_count" | doas tee /sys/power/wakeup_count > /dev/null; then
++		suspend_services start
+ 		continue
+ 	fi
+ 
+@@ -55,9 +77,11 @@ while true; do
+ 	# retry. The delay grows while it keeps failing, so we don't eat up the
+ 	# system's resources (or bounce its devices) if the kernel can't suspend.
+ 	if ! sxmo_suspend.sh; then
++		suspend_services start
+ 		failed_suspend
+ 		continue
+ 	fi
++	suspend_services start
+ 	retry_delay=1
+ 
+ 	sleep 10
+diff --git a/scripts/core/sxmo_suspend.sh b/scripts/core/sxmo_suspend.sh
+index 99cfa1e..f7bf1a4 100755
+--- a/scripts/core/sxmo_suspend.sh
++++ b/scripts/core/sxmo_suspend.sh
+@@ -22,22 +22,6 @@ if [ -n "$mnc" ] && [ "$mnc" -gt 0 ] && [ "$mnc" -lt "$YEARS8_TO_SEC" ]; then
+ fi
+ 
+ 
+-if [ "$SXMO_DEVICE_NAME" = "google,b4s4-sdm670" ]; then #(google pixel 3a)
+-	# Quoting Richard Acayan from: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/5400/ :
+-	#
+-	# There is a bug in FastRPC when waking from suspend. Since HexagonRPCD is
+-	# currently only useful for a few moments when the ADSP is requesting the
+-	# sensor registry, it can just be stopped without affecting sensor
+-	# support. Add a pre-suspend hook to stop HexagonRPCD so it doesn't crash
+-	# the ADSP when the device wakes up.
+-	#
+-	if [ -d /run/systemd/system ]; then
+-		doas -n systemctl stop hexagonrpcd-adsp-sensorspd
+-	else
+-		doas -n rc-service hexagonrpcd-adsp-sensorspd stop
+-	fi
+-fi
+-
+ sxmo_log "calling suspend with suspend_time <$suspend_time>"
+ 
+ start="$(date "+%s")"
+diff --git a/scripts/deviceprofiles/sxmo_deviceprofile_google,b4s4-sdm670.sh b/scripts/deviceprofiles/sxmo_deviceprofile_google,b4s4-sdm670.sh
+index 8855fd4..20669ce 100755
+--- a/scripts/deviceprofiles/sxmo_deviceprofile_google,b4s4-sdm670.sh
++++ b/scripts/deviceprofiles/sxmo_deviceprofile_google,b4s4-sdm670.sh
+@@ -7,3 +7,9 @@ export SXMO_POWER_BUTTON="0:0:pm8941_pwrkey"
+ export SXMO_VIBRATE_DEV="/dev/input/event2"
+ export SXMO_VIBRATE_STRENGTH="50000"
+ export SXMO_SWAY_SCALE="3"
++
++# hexagonrpcd crashes the ADSP when the device wakes up (a FastRPC bug when
++# waking from suspend); it is only needed for a few moments when the ADSP asks
++# for the sensor registry, so it is stopped across suspend. See
++# https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/5400
++export SXMO_SUSPEND_STOP_SERVICES="hexagonrpcd-adsp-sensorspd"
+diff --git a/spec/scripts/core/sxmo_autosuspend_spec.sh b/spec/scripts/core/sxmo_autosuspend_spec.sh
+index f99b05f..ca13a69 100644
+--- a/spec/scripts/core/sxmo_autosuspend_spec.sh
++++ b/spec/scripts/core/sxmo_autosuspend_spec.sh
+@@ -18,7 +18,7 @@ Describe "sxmo_autosuspend.sh"
+ 		SPEC_TMP="$(mktemp -d)"
+ 		XDG_STATE_HOME="$SPEC_TMP"
+ 		export SPEC_TMP XDG_STATE_HOME
+-		unset SXMO_SUSPEND_RETRY_MAX
++		unset SXMO_SUSPEND_RETRY_MAX SXMO_SUSPEND_STOP_SERVICES
+ 	}
+ 	cleanup() {
+ 		rm -rf "$SPEC_TMP"
+@@ -26,8 +26,10 @@ Describe "sxmo_autosuspend.sh"
+ 	BeforeEach setup
+ 	AfterEach cleanup
+ 
++	# Every mock below writes what was done to $SPEC_TMP/events, one line each
+ 	Mock cat
+ 		if [ "$1" = /sys/power/wakeup_count ]; then
++			echo read >> "$SPEC_TMP/events"
+ 			echo 7
+ 		else
+ 			/bin/cat "$@"
+@@ -35,7 +37,12 @@ Describe "sxmo_autosuspend.sh"
+ 	End
+ 
+ 	Mock doas
+-		/bin/cat > /dev/null
++		[ "$1" = -n ] && shift
++		case "$1" in
++			tee) /bin/cat > /dev/null; echo write >> "$SPEC_TMP/events" ;;
++			systemctl) echo "$2 $3" >> "$SPEC_TMP/events" ;;
++			rc-service) echo "$3 $2" >> "$SPEC_TMP/events" ;;
++		esac
+ 	End
+ 
+ 	Mock sxmo_hook_block_suspend.sh
+@@ -47,6 +54,7 @@ Describe "sxmo_autosuspend.sh"
+ 		echo x >> "$SPEC_TMP/suspends"
+ 		n="$(wc -l < "$SPEC_TMP/suspends")"
+ 		outcome="$(echo "$SPEC_OUTCOMES" | cut -d' ' -f"$n")"
++		echo "suspend ${outcome:-fail}" >> "$SPEC_TMP/events"
+ 		[ "$outcome" = ok ]
+ 	End
+ 
+@@ -55,6 +63,10 @@ Describe "sxmo_autosuspend.sh"
+ 		[ "$(wc -l < "$SPEC_TMP/waits")" -lt "$SPEC_WAITS" ]
+ 	End
+ 
++	events() {
++		tr '\n' ';' < "$SPEC_TMP/events"
++	}
++
+ 	waits() {
+ 		tr '\n' ' ' < "$SPEC_TMP/waits"
+ 	}
+@@ -83,4 +95,28 @@ Describe "sxmo_autosuspend.sh"
+ 		The stderr should include "next try in 2s"
+ 		The result of function waits should equal "1 2 10 1 "
+ 	End
++
++	It "stops the profile's services before suspend, then reads the count again"
++		export SPEC_OUTCOMES="ok" SPEC_WAITS=1
++		export SXMO_SUSPEND_STOP_SERVICES="svc-a svc-b"
++		When run script scripts/core/sxmo_autosuspend.sh
++		The status should be failure
++		The result of function events should equal "read;stop svc-a;stop svc-b;read;write;suspend ok;start svc-a;start svc-b;"
++	End
++
++	It "starts the profile's services again when suspend fails"
++		export SPEC_OUTCOMES="fail" SPEC_WAITS=1
++		export SXMO_SUSPEND_STOP_SERVICES="svc-a"
++		When run script scripts/core/sxmo_autosuspend.sh
++		The status should be failure
++		The stderr should include "suspend failed"
++		The result of function events should equal "read;stop svc-a;read;write;suspend fail;start svc-a;"
++	End
++
++	It "reads the count once and touches no service when the profile names none"
++		export SPEC_OUTCOMES="ok" SPEC_WAITS=1
++		When run script scripts/core/sxmo_autosuspend.sh
++		The status should be failure
++		The result of function events should equal "read;write;suspend ok;"
++	End
+ End
+-- 
+2.56.1
+

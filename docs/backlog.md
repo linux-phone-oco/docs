@@ -4114,3 +4114,72 @@ Device
 
 Proof
 : idealkb.toml pins 0.14.0 and the base's verify (tad check, make verify) passes on main
+
+
+<a id="upstream-forks"></a>
+### Our own forks of each upstream we patch: fixes worked and proven there, carried until upstream takes them, mailed as working patches by the author
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: Decision 2026-11-18-upstream-forks. Forks exist (linux-phone-oco/sxmo-utils, linux-phone-oco/linux); three fixes written on topic branches (sxmo series of 3, kernel RFC series of 4), each waiting on its phone proof; the author's word on where the forks live and on each mail.
+
+Opened
+: 2026-11-18
+
+
+<a id="upstreams-lane"></a>
+### Start the upstreams lane: one lane coordinator for the forks and every outgoing series
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Its queue at start: push the topic and lab branches to linux-phone-oco/sxmo-utils and linux-phone-oco/linux (local now: ~/Projects/linux-phone-oco/sxmo-utils-topics, ~/Projects/linux-phone-oco/linux-topics); retire sxmo-utils deviceprofile/xiaomi-surya (upstream as 1fd7822); see the proofs through; prepare each send for the author.
+
+Opened
+: 2026-11-18
+
+Waits
+: orchestration starts it (decision 2026-11-18-upstream-forks)
+
+About
+: upstream-forks
+
+
+<a id="sxmo-utils-lab-apk"></a>
+### sxmo-utils from our fork as a lab apk: an APKBUILD forked from Alpine's, all subpackages, source the fork's lab tag, signed, installed as sxmo-utils@lab
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: pmbootstrap aportgen --fork-alpine sxmo-utils as the start; pkgver 1.18.1_pYYYYMMDD; the tagged lab repository so apk upgrade keeps it (decision 2026-11-18-upstream-forks).
+
+Opened
+: 2026-11-18
+
+Blocked by
+: upstreams-lane
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: suspend-retry-backs-off
+
+About
+: upstream-forks

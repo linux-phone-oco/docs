@@ -2407,3 +2407,28 @@ Rejected
 
 About
 : patrol-measures-the-start
+
+---
+
+
+<a id="2026-11-18-upstream-forks-research"></a>
+### Upstream forks: decided, three fixes written in our forks, proofs queued
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: Research lead upstream-forks-research (started by orchestration-renewed): looked around (grenudi and the org's repositories, git-rhizoid's code and design log, pmOS packaging, both lists' rules) with two read-only researchers (sxmo/pmOS, kernel watchdog), decided (2026-11-18-upstream-forks), and wrote the three fixes in the existing forks: sxmo series of 3 on topic branches with a 6-example shellspec (fails on master, passes on the series), and an RFC kernel series of 4 for the PMIC watchdog (built, checkpatch, binding validated) with its phone test script. Recorded 13 sources, 4 upstreams (linux-watchdog, fork-sxmo-utils, fork-linux, git-rhizoid), 3 research rows, 4 test rows, the upstream items (two updated to patches, qcom-wdt-armed-in-suspend superseded, three new), backlog in docs (upstream-forks, upstreams-lane, sxmo-utils-lab-apk) and the phone and build rows in the device bases (surya-lab, google-walleye-lab). Nothing pushed, nothing mailed, no phone touched.
+The class (a fallback proven on one path trusted on another, surya try 4): its root here was a watchdog that cannot count where it was trusted (the APSS counter freezes in the deepest sleep) - the PMIC watchdog removes that class for the way back, once proven.
+
+Considered
+: Forks under the user grenudi; a lane per upstream project; rhizoid as the tool now; suspending through logind for the service stops; qcom-wdt kept armed upstream
+
+Rejected
+: Each with its reason in decision 2026-11-18-upstream-forks
+
+About
+: upstream-forks

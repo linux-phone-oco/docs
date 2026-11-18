@@ -3684,3 +3684,223 @@ By
 
 Takes
 : declare in code as the accessor, project to a published contract; a sidecar schema written by hand drifts
+
+
+<a id="sxmo-devel-55649-suspend-services"></a>
+### sxmo-devel 2024: allow stopping system services prior to suspend (proycon), turned down by Aren Moynihan
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lists.sr.ht/~mil/sxmo-devel/patches/55649
+
+Year
+: 2024
+
+By
+: upstream-forks-research
+
+Takes
+: A service list stopped inside sxmo_suspend.sh was refused: after the wakeup count is read any wakelock (an LED blink every 2 s) aborts the suspend, so slow stops make it never suspend; device code in sxmo_suspend.sh is a last resort citing its bug
+
+
+<a id="sxmo-contribute"></a>
+### Sxmo: contributing
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://sxmo.org/contribute/
+
+By
+: upstream-forks-research
+
+Takes
+: git send-email to ~mil/sxmo-devel@lists.sr.ht, rebased on master, prefix PATCH sxmo-utils, vN for resends; CI runs make test (shellcheck, shellspec, editorconfig) on each mailed patch
+
+
+<a id="alpine-sxmo-utils-apkbuild"></a>
+### Alpine aports community/sxmo-utils APKBUILD
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/community/sxmo-utils/APKBUILD
+
+By
+: upstream-forks-research
+
+Takes
+: sxmo-utils reaches postmarketOS from Alpine (1.18.1-r5), source the sr.ht tag tarball; -common depends on the exact pkgver-pkgrel, so a fork ships every subpackage from one build
+
+
+<a id="alpine-tagged-repository"></a>
+### Alpine wiki: Repositories, tagged repository
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.alpinelinux.org/wiki/Repositories
+
+By
+: upstream-forks-research
+
+Takes
+: Tagged (@tag) repositories: apk add pkg@tag prefers the tagged repository for that package even when a later version is elsewhere - the route that survives upgrades
+
+
+<a id="pmaports-linux-qcom-sm7150"></a>
+### pmaports linux-postmarketos-qcom-sm7150
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/tree/master/device/community/linux-postmarketos-qcom-sm7150
+
+By
+: upstream-forks-research
+
+Takes
+: surya's pmOS kernel: the sm7150-mainline/linux tag tarball (7.1_rc3) and its config; pmbootstrap build --src or --envkernel builds it from a local tree
+
+
+<a id="lkml-qcom-wdt-suspend-2019"></a>
+### watchdog: qcom: Add suspend/resume support (Sai Prakash Ranjan, 2019)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.iu.edu/1901.2/01680.html
+
+Year
+: 2019
+
+By
+: upstream-forks-research
+
+Takes
+: Why qcom-wdt stops in late suspend: unwanted resets when resume comes after a long time
+
+
+<a id="lkml-roeck-imx2-continue-2025"></a>
+### Guenter Roeck on imx2_wdt fsl,wdt-continue-in-low-power (Dec 2025)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.iu.edu/2512.3/03656.html
+
+Year
+: 2025
+
+By
+: upstream-forks-research
+
+Takes
+: A watchdog reset of a suspended system makes no sense to the watchdog maintainer; a system that must not suspend must not be let suspend
+
+
+<a id="lkml-kozlowski-imx2-dt-2026"></a>
+### Krzysztof Kozlowski on the same series (Jan 2026)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.iu.edu/2601.1/11254.html
+
+Year
+: 2026
+
+By
+: upstream-forks-research
+
+Takes
+: Keeping a watchdog running in suspend is OS policy, not for DT: refused as a DT property
+
+
+<a id="downstream-watchdog-v2-sm6150"></a>
+### Vendor GPL watchdog_v2.c, LineageOS sm6150 tree
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://raw.githubusercontent.com/LineageOS/android_kernel_xiaomi_sm6150/lineage-20/drivers/soc/qcom/watchdog_v2.c
+
+By
+: upstream-forks-research
+
+Takes
+: Observed behaviour: qcom,wakeup-enable leaves the APSS watchdog enabled in suspend, petted once; its commit says the counter freezes when all cores are in suspend
+
+
+<a id="sony-qcom-wdt-core"></a>
+### Vendor GPL qcom_wdt_core.c, Sony K.P.4.0
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/sonyxperiadev/kernel/blob/aosp/K.P.4.0.r1/drivers/soc/qcom/qcom_wdt_core.c
+
+By
+: upstream-forks-research
+
+Takes
+: The APSS watchdog counter freezes when the deepest low power mode is entered - why it cannot catch a suspend that never wakes
+
+
+<a id="downstream-qpnp-power-on-sm6150"></a>
+### Vendor GPL qpnp-power-on.c, LineageOS sm6150 tree
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://raw.githubusercontent.com/LineageOS/android_kernel_xiaomi_sm6150/lineage-20/drivers/input/misc/qpnp-power-on.c
+
+By
+: upstream-forks-research
+
+Takes
+: Gen2 PON keeps the PMIC watchdog at 0x54-0x58 (S2_CTL2 BIT(7) enable) and moves POFF_REASON1 to 0xc5; its bark is the pmic-wd-bark interrupt
+
+
+<a id="kernel-coding-assistants"></a>
+### Linux Documentation/process/coding-assistants.rst
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.kernel.org/process/coding-assistants.html
+
+By
+: upstream-forks-research
+
+Takes
+: An AI agent adds no Signed-off-by; the human adds his and an Assisted-by: LLM tag; say what could not be built or tested
+
+
+<a id="stm32-ma35d1-wake-watchdogs"></a>
+### Linux drivers/watchdog stm32_iwdg.c and ma35d1_wdt.c: the early interrupt as a wake IRQ (wakeup-source)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/watchdog/stm32_iwdg.c
+
+By
+: upstream-forks-research
+
+Takes
+: Accepted shape: a watchdog bark (pretimeout) declared wakeup-source, set as the device's wake IRQ, so a running watchdog wakes the system instead of being stopped

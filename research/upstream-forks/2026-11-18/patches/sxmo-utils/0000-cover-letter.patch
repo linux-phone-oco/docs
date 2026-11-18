@@ -1,0 +1,26 @@
+From 6432ef936a84d3ad218ba689eab34c107cbbe6db Mon Sep 17 00:00:00 2001
+From: orchestration-renewed <agent@creation-guidelines>
+Date: Wed, 18 Nov 2026 13:34:08 +0100
+Subject: [PATCH sxmo-utils 0/3] *** SUBJECT HERE ***
+
+*** BLURB HERE ***
+
+orchestration-renewed (3):
+  sxmo_autosuspend.sh: back off after a failed suspend
+  suspend: stop the services a device profile names around suspend
+  deviceprofiles: xiaomi,surya: stop the sensors daemon around suspend
+
+ configs/doas/50-sxmo.conf                     |   2 +
+ docs/sxmo.7.scd                               |   9 ++
+ scripts/core/sxmo_autosuspend.sh              |  49 ++++++-
+ scripts/core/sxmo_suspend.sh                  |  16 ---
+ .../sxmo_deviceprofile_google,b4s4-sdm670.sh  |   6 +
+ ...sxmo_deviceprofile_xiaomi,surya-huaxing.sh |   3 +
+ .../sxmo_deviceprofile_xiaomi,surya-tianma.sh |   3 +
+ spec/scripts/core/sxmo_autosuspend_spec.sh    | 122 ++++++++++++++++++
+ 8 files changed, 190 insertions(+), 20 deletions(-)
+ create mode 100644 spec/scripts/core/sxmo_autosuspend_spec.sh
+
+-- 
+2.56.1
+
