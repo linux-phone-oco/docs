@@ -5,7 +5,7 @@
 #   bin/render-pages.sh
 set -eu
 cd "$(dirname "$0")/.."
-tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+tmp=$(mktemp -d docs/.render.XXXXXX); trap 'rm -rf "$tmp"' EXIT; trap 'exit 1' INT TERM HUP
 rows() { tad sql "$2" --format json > "$tmp/$1.json"; }
 rows stages "SELECT * FROM bringup_stages ORDER BY ord"
 rows steps "SELECT * FROM bringup_steps ORDER BY id"

@@ -2,7 +2,7 @@
 
 # Bring-up guidebook
 
-Every small step that makes Linux run on a phone, in the order a bring-up meets them: 113 steps in 20 stages, one chapter each. A step shows what done means, what it needs and what it enables, the proof that tests it, the helper that does it or the gap, and how it is done with the traps met so far. A **World gap** marks a step the world has no open answer to yet. The rows themselves are in the [steps table](bringup_steps.md).
+Every small step that makes Linux run on a phone, in the order a bring-up meets them: 113 steps in 20 stages, one chapter each. A step shows what done means, what it needs and what it enables, the proof that tests it, the helper that does it or the gap, and how it is done with the traps met so far. A **World gap** marks a step the world has no open answer to yet. Where each phone stands on each step is the [bring-up steps view of the face](../en/linux-phones/steps.html); the rows themselves are in the [steps table](bringup_steps.md).
 
 ## The chapters
 

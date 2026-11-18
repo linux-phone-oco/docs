@@ -40,3 +40,4 @@ verify: check     ## what CI runs: data is valid and canonical, docs are fresh
 	@./bin/test-component-record.sh
 	@./bin/test-milestone-steps.sh
 	@./bin/test-bringup-pages.sh
+	@./bin/test-face-steps.sh
