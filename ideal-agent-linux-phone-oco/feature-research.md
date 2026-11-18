@@ -14,8 +14,8 @@ walleye-research) starts at its own section, the last one.
 ---
 
 You are Claude Code on the lab machine. Start as lab-session-start says; the brief written from this file
-names the feature in its `Name:` line (research-deep-sleep). Reading the phone (`devlab phone sh`,
-`devlab suite run`) is fine; any change to it, or to its kernel, is the phone keeper's.
+names the feature in its `Name:` line (research-deep-sleep). Reading the phone (`lpoco lab phone sh`,
+`lpoco lab suite run`) is fine; any change to it, or to its kernel, is the phone keeper's.
 
 **Feature: FEATURE, on PHONE (and its SoC family).** Follow research-a-feature. Here:
 

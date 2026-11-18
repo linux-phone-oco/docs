@@ -13,7 +13,7 @@ Checked against ideal-agent 0.3.27 (overlay-check under 15%). A stored task's pr
 | [coordinator.md](coordinator.md) | the author's one session: relays his words, keeps the records true, routes work | `keep-the-start-light` (renewing itself) |
 | [surya-coordinator.md](surya-coordinator.md) | surya's lane coordinator: starts and renews the phone keepers, never touches the phone | `keep-a-shared-resource`, `keep-the-start-light` |
 | [orchestration.md](orchestration.md) | tends the conveyor and the sessions on it | `orchestrate-agents` |
-| [phone-keeper.md](phone-keeper.md) | keeps a lane's phone (surya-keeper, walleye-keeper): its queue, one change at a time, through devlab (bring-up folded in) | `keep-a-shared-resource`, `bring-up-a-part`, `change-a-device` |
+| [phone-keeper.md](phone-keeper.md) | keeps a lane's phone (surya-keeper, walleye-keeper): its queue, one change at a time, through lpoco lab (bring-up folded in) | `keep-a-shared-resource`, `bring-up-a-part`, `change-a-device` |
 | [walleye-coordinator.md](walleye-coordinator.md) | the Pixel 2's lane coordinator, on surya's pattern | `keep-a-shared-resource` |
 | [feature-research.md](feature-research.md) | finds the way for one hard feature; a lane's research launchers (surya-research, walleye-research) | `research-a-feature` |
 | [bring-up.md](bring-up.md) | prepares a part's work for the keeper | `bring-up-a-part` |
@@ -49,7 +49,7 @@ Recorded as ideal-agent's record-the-work says; linux-phone's part:
   item (`tad q about` lists them) - so `tad q about --subject X` finds it.
 - **No ocoeco.** Git itself records the work: the session's shell is ready by ideal-agent's agent-env
   (signed as the brief's `Name:`), work from a worktree of your own, commit, and `land --no-manual`.
-- **The phone.** Only through devlab, and only by its keeper; anything that needs the phone goes on the
+- **The phone.** Only through lpoco lab, and only by its keeper; anything that needs the phone goes on the
   phone's queue in that phone's own base (surya-lab, google-walleye-lab: `tad q phone-queue`; what a lane's
   launchers read: `tad q lane-next --needs phone|research|build` there; docs has no lane queries).
 

@@ -11,7 +11,7 @@ Read every repository from a worktree of your own at origin/main, removed at the
 
 ## Read-only, always
 
-Never touch a phone (no `devlab phone|kernel|flash|reboot`), a lease, a keeper's queue, a stored task, a
+Never touch a phone (no `lpoco lab phone|kernel|flash|reboot`), a lease, a keeper's queue, a stored task, a
 systemd unit (never restart `devlab-watch@` or any service), or a shared clone (never fetch-and-checkout,
 pull or `fresh` one another session may use). No ocoeco: no `OCOECO_BY`, no `oco-work`, no `ocoeco`
 command; you record through ikb in each base, and the commit and its PR are the record. Never fix another
