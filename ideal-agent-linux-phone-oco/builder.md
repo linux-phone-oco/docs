@@ -30,7 +30,7 @@ Your coordinator placed it before starting you. **If the query returns nothing, 
 
 - lab-tools-builder, in the docs worktree - the open lab-tools build row whose `blocked_by` are all done,
   lowest rank, then oldest:
-  `tad sql "select b.id, b.title, b.proof, b.note from backlog b where b.project='linux-phone-oco/lab-tools' and b.status<>'done' and b.needs='build' and not exists (select 1 from backlog o where o.status<>'done' and list_contains(string_split(coalesce(b.blocked_by,''), ','), o.id)) order by b.rank nulls last, b.opened limit 1"`
+  `tad sql "select b.id, b.title, b.proof, b.note from backlog b where b.project='linux-phone-oco/lab-tools' and b.status<>'done' and b.needs='build' and b.waits is null and not exists (select 1 from backlog o where o.status<>'done' and list_contains(string_split(coalesce(b.blocked_by,''), ','), o.id)) order by b.rank nulls last, b.opened limit 1"`
   Read its decision and research first (`tad q about --subject ...`, `tad q find --text ...`); for the
   lpoco roof, decision 2026-11-17-bringup-in-lab-tools.
 - walleye-builder, in the walleye worktree: `tad q lane-next --needs build --format csv`. Read walleye's
