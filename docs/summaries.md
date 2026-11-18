@@ -110,21 +110,6 @@ Condenses
 ### Row 8
 
 About
-: bringup-steps
-
-Date
-: 2026-11-18
-
-Says
-: Bring-up steps as data are in docs (decision 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base, research bringup-steps-landscape): tables bringup_stages (the stage list as rows, changed with ikb bringup-stage, no schema change), bringup_steps, bringup_step_edges (hard/soft, with alternatives groups) and step_status (declared, empty), the records bringup-stage, bringup-step and bringup-edge (refuses a cycle), seeded with 8 stages, 26 steps and 37 edges. tad q bringup-chain [--device] orders them by depth and says ready or waits; with no device every status is unknown. Each device base will claim its own status per step - proof, run, proven_on - by a steps contract device-template ships; docs pulls the claims into step_status as it pulls parts (feed-device-steps), and a step no base claimed is not known yet. Walleye's real road is 26 steps: 17 done with checks and records, the charger failing on its tps61099 supplier; its test (research/bringup-steps/2026-11-18/bringup-chain-walleye.sh) fails only for lack of claims. Waiting: the steps contract, the lanes' claims, the feed, the guidebook, the helper map, milestone step terms; the stage list and step size wait the author's word.
-
-Condenses
-: 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base, 2026-11-18-research-bringup-steps, bringup-steps-how-it-stands, bringup-steps-landscape
-
-
-### Row 9
-
-About
 : base-graph
 
 Date
@@ -137,7 +122,7 @@ Condenses
 : 2026-11-18-rhizoid-graph-research, base-graph-how-it-stands, base-graph-measured, base-graph-world
 
 
-### Row 10
+### Row 9
 
 About
 : device-template
@@ -150,3 +135,18 @@ Says
 
 Condenses
 : 2026-11-18-device-layer-from-docs, 2026-11-18-device-template-follows-by-release, 2026-11-18-template-research, device-template-drift-measured, device-template-follow-world, device-template-how-it-stands
+
+
+### Row 10
+
+About
+: bringup-steps
+
+Date
+: 2026-11-18
+
+Says
+: Bring-up steps are data in docs: bringup_stages, bringup_steps, bringup_step_edges, step_status (empty: no base claims yet). 20 stages, 106 steps, 223 edges. The first 8 stages (26 steps from walleye's chain) bring Linux up on any machine (decision 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base). Decision 2026-11-18-bringup-steps-phone-stages-and-goal-steps carries it past that, with no schema change. It adds 11 phone stages: coprocessors, display, audio, modem, calls, radios, sensors, camera, sleep, shell and upkeep. Steps nobody has done carry 'World gap'. It also adds goal steps as groups of groups: linux-runs, daily-usable-phone (77 steps) and complete-phone. Research: bringup-steps-landscape, bringup-steps-coverage-map, bringup-steps-phone-stages. tad q bringup-chain [--device] orders the steps. The test research/bringup-steps/2026-11-18-phone-stages/daily-phone.sh fails for every device until its base claims the steps. Waiting: the steps contract, the lanes' claims (surya-steps-claimed, walleye-steps-claimed) and feed-device-steps. Also the guidebook and the helper map. Owner items: bringup-chain-goal, bringup-shape-check, prior-art-query, landscape-record, phone-components, milestones-name-goals.
+
+Condenses
+: 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base, 2026-11-18-bringup-steps-phone-stages-and-goal-steps, 2026-11-18-research-bringup-steps, bringup-steps-coverage-map, bringup-steps-how-it-stands, bringup-steps-landscape, bringup-steps-phone-stages

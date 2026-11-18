@@ -4603,3 +4603,588 @@ By
 
 Takes
 : Finds by patch-id which commits of a topic upstream already has: retiring a carried patch needs no tool.
+
+
+<a id="ubports-device-data"></a>
+### devices.ubuntu-touch.io data: portStatus, progressStages, supportStatus
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.com/ubports/infrastructure/devices.ubuntu-touch.io
+
+By
+: UBports
+
+Takes
+: The only stage order kept as data: nine categories of feature ids (Actors, Camera, Cellular, Endurance, GPU, Misc, Network, Sensors, Sound, USB), each with a weight and the progress stage it gates (2 booting: uiBoot, touchscreen; 3 core connectivity: calls, sms, data, voiceCall; 4 essential: photo, wifi, speaker, mic; 5 fully optimised: bluetooth, gps, proximity, audioRoutings, offlineCharging, endurance tests; 6 never caps: VoLTE, NFC, fingerprint). A feature not + caps the device a stage lower. Status is the porter's tick; we take the gating as goal steps, not the weights.
+
+
+<a id="sailfish-hadk-checklist"></a>
+### Sailfish OS HADK: hardware adaptation checklist
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://hadk.sailfishos.org/ha-checklist/
+
+By
+: Jolla
+
+Takes
+: Names as gates what feature tables miss: suspend and resume (iphb), act-dead mode (charging while off), thermal for dsme, the watchdog, proximity blanking in a call and while suspended, power and volume keys, LED.
+
+
+<a id="sailfish-csd"></a>
+### Sailfish OS CSD hardware test tool
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.sailfishos.org/Support/Help_Articles/Test_Tool_CSD
+
+By
+: Jolla
+
+Takes
+: On-device factory, hardware and run-in tests per subsystem - the nearest to a proof per step - but with no reporting: results never leave the phone.
+
+
+<a id="pine64-ppp-software-state"></a>
+### PinePhone Pro software state
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://pine64.org/documentation/PinePhone_Pro/Software/Software_state/
+
+By
+: PINE64
+
+Takes
+: Keeps stability, suspend, updates and push notifications as rows beside the parts; status words edited by the community.
+
+
+<a id="megi-pinephone-status"></a>
+### PinePhone mainline status (megi)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://xnux.eu/devices/pine64-pinephone.html
+
+Author
+: Ondrej Jirman
+
+By
+: orchestration-renewed
+
+Takes
+: Driver-grained mainline status per block (UI in and out, wireless with voice apart from data, power and thermal, SoC blocks), one author's tree; a mainline column per row.
+
+
+<a id="mobian-devices"></a>
+### Mobian supported devices
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.debian.org/Mobian/Devices
+
+By
+: Mobian
+
+Takes
+: Tiers by support and testing, device pages in prose with dated 'image tested' lines: a weak but real proof by date.
+
+
+<a id="nura-devices-table"></a>
+### Nura (postmarketOS) wiki: Devices
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.nura.eco/wiki/Devices
+
+By
+: orchestration-renewed
+
+Takes
+: Cargo queries over the Infobox fields (main, multimedia, connectivity, modem, misc, sensors); no field for suspend, charging while off, call audio or updates; SoC status kept apart from device status (suspend and thermal only at SoC level).
+
+
+<a id="weiss-fosdem-2025-missing-20"></a>
+### Kernel support for Mobile Linux: the missing 20%
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://fosdem.org/2025/schedule/event/fosdem-2025-4836-kernel-support-for-mobile-linux-the-missing-20-/
+
+Author
+: Luca Weiss
+
+Year
+: 2025
+
+By
+: orchestration-renewed
+
+Takes
+: What is missing on mainline phones: cameras, fuel gauges and calls (hardest: they join many parts and suspend); bring-up proves function, not reliability - 'does audio still work after two hours asleep' - so reliability needs steps of its own.
+
+
+<a id="fosdem-2026-foss-on-mobile"></a>
+### FOSDEM 2026: FOSS on Mobile devroom
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://archive.fosdem.org/2026/schedule/track/foss-on-mobile/
+
+Year
+: 2026
+
+By
+: orchestration-renewed
+
+Takes
+: postmarketOS reliability in 2026, photos and video on phones, the Fairphone mainline update: reliability and cameras are the open fronts.
+
+
+<a id="lwn-weiss-2026"></a>
+### LWN: mainline Linux on phones (Weiss, OSS Japan 2025)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lwn.net/Articles/1055391/
+
+Year
+: 2026
+
+By
+: orchestration-renewed
+
+Takes
+: Modem and coprocessor firmware, camera quality and app services (Play Services, banking) as what stands between a mainline phone and daily use.
+
+
+<a id="android-cdd"></a>
+### Android 17 Compatibility Definition Document
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://source.android.com/docs/compatibility/17/android-17-cdd
+
+Year
+: 2026
+
+By
+: Google
+
+Takes
+: What a phone must do, as areas (7.1 display ... 7.4 connectivity, 7.5 cameras, 7.8 audio, 8 power, 9 security) and one MUST per id (section/device type/condition/number, H for handheld): about 150 H- ids in 7-9. A cross-check list for our stages, not a template: many rules are Android's own.
+
+
+<a id="android-cts"></a>
+### Android Compatibility Test Suite
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://source.android.com/docs/compatibility/cts
+
+By
+: Google
+
+Takes
+: Smallest unit: module, case, method, run per device and build, pass/fail/not executed; ignored and assumption failure count as pass - we keep not-needed and not known yet apart.
+
+
+<a id="android-vts"></a>
+### Android Vendor Test Suite
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://source.android.com/docs/core/tests/vts
+
+By
+: Google
+
+Takes
+: Tests each HAL per instance (each SIM slot): a step may need a per-instance proof (each camera, each SIM).
+
+
+<a id="aosp-compat-matrix"></a>
+### AOSP framework compatibility matrix 202604
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/main/compatibility_matrices/compatibility_matrix.202604.xml
+
+By
+: Google
+
+Takes
+: The HAL list: radio (config, modem, sim, network, data, messaging, voice, ims), audio, camera provider, sensors, gnss, health, power and power.stats, thermal, vibrator, light, usb, wifi, bluetooth, nfc, biometrics, keymint, boot control - the areas a phone platform must answer; each maps to a Linux counterpart.
+
+
+<a id="android-emergency-call"></a>
+### Android emergency calls
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://source.android.com/docs/core/connect/emergency-call
+
+By
+: Google
+
+Takes
+: 112 and 911 always dial; the emergency list comes from the network, the SIM, the modem or defaults - a step provable without dialling.
+
+
+<a id="halium-scope"></a>
+### Halium: scope
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.halium.org/en/latest/project/Scope.html
+
+By
+: Halium
+
+Takes
+: Which Android HALs Ubuntu Touch and Sailfish reuse through libhybris (radio, audio, camera, media, sensors, GNSS, Wi-Fi, vibrator, fingerprint): the list a native mainline phone must replace, the hardest first.
+
+
+<a id="inkernel-pd-mapper"></a>
+### In-kernel protection-domain mapper, v9
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.iu.edu/2406.2/09265.html
+
+Author
+: Dmitry Baryshkov
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: pd-mapper moves into the kernel; the order against qcom_q6v5_pas still decides whether the ADSP audio PD comes up.
+
+
+<a id="msm-firmware-loader-emmc"></a>
+### msm-firmware-loader: eMMC assumption
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.com/postmarketOS/msm-firmware-loader/-/issues/3
+
+By
+: postmarketOS
+
+Takes
+: Firmware from the stock partitions, mounted read-only at boot; it assumes eMMC, so UFS phones need another way.
+
+
+<a id="pmos-firmware-docs"></a>
+### postmarketOS: firmware packaging
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.postmarketos.org/pmaports/main/firmware.html
+
+By
+: postmarketOS
+
+Takes
+: How signed per-device blobs are packaged and where they go: the step 'firmware reachable' has two roads, a package or the stock partitions.
+
+
+<a id="mm-qcom-soc-plugin"></a>
+### ModemManager qcom-soc plugin
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/merge_requests/374
+
+Author
+: Aleksander Morgado
+
+By
+: orchestration-renewed
+
+Takes
+: ModemManager claims a QRTR plus IPA (or BAM-DMUX) modem on Qualcomm SoCs: the step 'modem seen' rests on it.
+
+
+<a id="voltd-81"></a>
+### 81voltd README
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://sources.debian.org/src/81voltd/1.1.0-1/README.md
+
+Author
+: Richard Acayan
+
+By
+: orchestration-renewed
+
+Takes
+: Serves the IMS data service the modem asks the AP for; VoLTE works on some sdm845 phones and some carriers only.
+
+
+<a id="openimsd-nlnet"></a>
+### NLnet: VoLTE on Qualcomm (OpenIMSd)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://nlnet.nl/project/VoLTE-Qualcom/
+
+By
+: orchestration-renewed
+
+Takes
+: Funded reverse engineering of the IMS QMI services; an open IMS across carriers is still the world's gap.
+
+
+<a id="nura-volte-frida"></a>
+### VoLTE project: QMI sniffing with Frida
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://nura.eco/blog/2025/06/17/volte-project-qmi-sniffing-with-frida/
+
+Year
+: 2025
+
+By
+: orchestration-renewed
+
+Takes
+: How the IMS QMI messages are traced on the stock system, as observed behaviour.
+
+
+<a id="ixit-sdm845-upstreaming-0"></a>
+### sdm845 upstreaming, month 0
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://ixit.cz/blog/2025-12-21-upstreaming-0
+
+Author
+: David Heidelberg
+
+Year
+: 2025
+
+By
+: orchestration-renewed
+
+Takes
+: OnePlus 6 'mostly working, calls pending'; q6voice lives out of tree in diverging copies, and the qdsp6 set is judged to need a 2-3 month rewrite nobody has funded.
+
+
+<a id="pmi8998-fg-rfc"></a>
+### PMI8998 Gen3 fuel gauge RFC
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.iu.edu/2511.3/01492.html
+
+Year
+: 2025
+
+By
+: orchestration-renewed
+
+Takes
+: Fuel gauges on these PMICs are still RFCs: 'battery gauge reads' is open across the family.
+
+
+<a id="camss-stats-uapi-rfc"></a>
+### qcom-camss stats and params uAPI RFC
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.iu.edu/2604.3/02474.html
+
+Author
+: Bryan O'Donoghue
+
+Year
+: 2026
+
+By
+: orchestration-renewed
+
+Takes
+: The first step toward using the hardware ISP; until then cameras are raw capture plus libcamera's software ISP.
+
+
+<a id="libcamera-softisp-fosdem-2026"></a>
+### libcamera SoftISP status update
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://fosdem.org/2026/schedule/event/libcamera-softisp
+
+Year
+: 2026
+
+By
+: orchestration-renewed
+
+Takes
+: A software ISP (on the GPU since 0.7) gives a viewable stream on phones: the camera stage's road on mainline today.
+
+
+<a id="iio-sensor-proxy-libssc"></a>
+### iio-sensor-proxy: libssc support
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/merge_requests/381
+
+By
+: orchestration-renewed
+
+Takes
+: Sensors behind Qualcomm's sensor DSP reach the desktop through libssc in iio-sensor-proxy.
+
+
+<a id="gnss-share"></a>
+### gnss-share
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/gnss-share
+
+By
+: postmarketOS
+
+Takes
+: Feeds the modem's location engine (through ModemManager) to geoclue; no assisted GPS (XTRA) anywhere yet.
+
+
+<a id="pmaports-charging-sdl-1064"></a>
+### pmaports issue 1064: charging-sdl
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/1064
+
+By
+: postmarketOS
+
+Takes
+: Charging while off rests on an unmaintained tool that boot-loops at low battery: a gap, not a solved step.
+
+
+<a id="linmob-weekly-34-2026"></a>
+### Weekly Linux phone update 34/2026
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://linmob.net/weekly-update-34-2026/
+
+Author
+: linmob
+
+Year
+: 2026
+
+By
+: orchestration-renewed
+
+Takes
+: Fairphone 6: cameras, audio and an emergency VoLTE call on mainline in 2026 - one report, the furthest any Qualcomm phone got.
+
+
+<a id="systemd-target"></a>
+### systemd.target
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.freedesktop.org/software/systemd/man/latest/systemd.target.html
+
+By
+: systemd
+
+Takes
+: A unit that does nothing but group others by its dependencies, and targets want targets: the shape of a goal step - a group of groups with no new table.
+
+
+<a id="lmdpdg"></a>
+### linux-mdss-dsi-panel-driver-generator
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/msm8916-mainline/linux-mdss-dsi-panel-driver-generator
+
+By
+: msm8916-mainline
+
+Takes
+: Generates a mainline DSI panel driver from the downstream device tree: the usual road to 'panel lit' on Qualcomm phones.

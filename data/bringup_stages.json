@@ -6,3 +6,15 @@
 {"id":"storage","ord":6,"title":"Storage","what":"Internal storage seen, first read-only."}
 {"id":"userspace","ord":7,"title":"Userspace","what":"A distribution's root boots, the network is up and the health suite runs on every boot."}
 {"id":"lab","ord":8,"title":"Lab","what":"What the lab needs of a machine to work on it without hands: the ways in, a try that cannot brick."}
+{"id":"coprocessors","ord":9,"title":"Coprocessors","what":"The processors a phone leans on - the modem's, the audio and sensor DSPs, the Wi-Fi core - get their firmware, run, and stay up."}
+{"id":"display","ord":10,"title":"Display and input","what":"The panel lights, touch and keys answer, the GPU renders."}
+{"id":"audio","ord":11,"title":"Sound","what":"The card, the codec and the amplifiers, a profile for the shell, sound heard and recorded."}
+{"id":"modem","ord":12,"title":"Modem, SMS and data","what":"The modem seen, the SIM read, the network joined; messages and data both ways."}
+{"id":"calls","ord":13,"title":"Calls","what":"A call with sound both ways, the screen dark at the ear, emergency numbers known, calls over LTE."}
+{"id":"radios","ord":14,"title":"Local radios","what":"Wi-Fi, Bluetooth, NFC, USB host and sharing the connection."}
+{"id":"sensors","ord":15,"title":"Sensors and location","what":"Motion, light and proximity read and used; a position fix; the fingerprint reader."}
+{"id":"camera","ord":16,"title":"Camera","what":"From the camera bus to a photo and a video: sensor, raw frame, a viewable stream, focus and flash."}
+{"id":"sleep","ord":17,"title":"Sleep and battery life","what":"Suspend that returns, wakes only for what matters and reaches the SoC's floor; a day on one charge."}
+{"id":"shell","ord":18,"title":"Shell","what":"A phone shell on the hardware: keyboard, lock, notifications."}
+{"id":"upkeep","ord":19,"title":"Updates and endurance","what":"Updates that apply and roll back, and the phone still working after days, upgrades and crashes of its parts."}
+{"id":"goals","ord":20,"title":"Goals","what":"The steps that only name a whole: Linux runs, a daily-usable phone, a complete phone - each done when all it needs is."}

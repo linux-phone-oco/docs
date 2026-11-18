@@ -1836,3 +1836,38 @@ Scope
 
 Tracked by
 : base-graph
+
+
+<a id="2026-11-18-bringup-steps-phone-stages-and-goal-steps"></a>
+### 2026-11-18-bringup-steps-phone-stages-and-goal-steps
+
+Brief
+: The phone after Linux runs is 11 more stages of generic steps in docs; groups of groups are goal steps (linux-runs, daily-usable-phone, complete-phone); prior art stays in sources and research
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-18
+
+Decision
+: Amends 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base; the rest of it stands.
+1. The bring-up goes on past 'Linux runs' as data in the same three tables, no schema change: 11 stages after lab (coprocessors, display, audio, modem, calls, radios, sensors, camera, sleep, shell, upkeep) and a goals stage, 80 steps (4 into power, 2 into the empty lab stage) and 186 edges, recorded by ikb from research/bringup-steps/2026-11-18-phone-stages/seed-phone.sh. Generic stays generic: applies scopes a step to soc:qcom, radio:cellular, form:phone or power:battery; each device claims its status in its own base, as decided.
+2. Steps nobody has done are in the graph too, with their proof named to write and 'World gap' in the guide (VoLTE, the hardware ISP, waking for calls, the SoC floor, whole-stack recovery, charging while off): they show not known yet, never absent.
+3. Groups of groups are goal steps: a step that does nothing but need others, done when all its hard needs are done or not-needed (as a systemd target). linux-runs closes the generic bring-up; daily-usable-phone needs linux-runs and 19 more; complete-phone needs daily-usable-phone and every other phone step. Stages stay one level, a chapter each. A milestone names a goal on a device (milestones-name-goals).
+4. The boundary: steps end where the hardware works and lasts; apps and services (Android apps, banking, sync, backup, push for apps) stay features.
+5. Prior art lives where it is: sources (one per document, with what we take), research (per question) and landscape (per project); a query gives a subject's prior art (prior-art-query) and landscape gets a record (landscape-record). No new table.
+6. The test: research/bringup-steps/2026-11-18-phone-stages/daily-phone.sh - the shape (no empty stage; every phone step under a goal) passes; for each device it fails until every step daily-usable-phone needs is claimed done or not-needed.
+On the first decision's open questions, kept at their defaults: (a) the stage list grew from 8 to 20 rows with no schema change, which bears out stages as rows; the step size holds - one done-when, one proof, the size of a UBports feature id or a CTS case. (b) Milestones stay sets of steps; a goal makes the set one term. (c) Claims still never lapse by age; reliability is answered by steps of its own (kernel-upgrade-keeps-steps, days-without-reboot, cycles-repeat-clean) and by proven_on, not by expiry.
+
+Why
+: The author (2026-11-18): the 7 stages of 26 steps bring Linux up on any hardware; what completes a modern smartphone, and can steps be detailed, grouped and grouped again, without over-engineering? Measured (bringup-steps-coverage-map, bringup-steps-phone-stages): the first research stopped at the rootfs; surya's records hold about 50 real phone steps with proofs; UBports gates by stages over feature ticks, Sailfish names suspend and act-dead charging, the CDD and the HAL list name the areas, Weiss names reliability; nobody keeps phone steps with edges and a proof per device. The goal step needs nothing new: the edges already carry groups, and the test found a step no goal needed (suspend-wakes-quiet) on its first run.
+
+Rejected
+: Nested stages (a parent_stage column, groups of stages): a second tree the edges already carry, kept in step by hand. A layer column on stages (Linux / phone): a goal step says it without a schema change. UBports' weights and percent: a percent hides what is missing. CDD-shaped stages (about 150 handheld MUST ids, many Android's own) and one stage per HAL family (about 20, too fine for chapters): kept as cross-checks in the material. Phone steps per device in each lab: no shared graph, the next phone starts from nothing. Steps as features or components: an outcome has no order. A prior-art table or a prior-art folder in docs: a third copy of sources and research that drifts. Expiring claims for reliability: a passed step stays passed for what it was proven on; reliability is its own steps. Leaving world gaps out until someone does them: they would be forgotten, not shown unknown.
+
+About
+: bringup-steps
+
+Research
+: bringup-steps-phone-stages
