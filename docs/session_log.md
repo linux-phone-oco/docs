@@ -2936,3 +2936,21 @@ Done
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-18-docs-builder-tad-q-prior-art"></a>
+### docs-builder: tad q prior-art
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: queries/prior-art.sql reads prior art by subject from research and sources (no new table, as decided); bin/test-prior-art.sh pins the row count to the sources the subject's researches cite.
+
+About
+: bringup-steps
