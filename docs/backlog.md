@@ -3456,10 +3456,11 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
 : From surya-lab's backlog (floor research; the surya coordinator asked orchestration's builder, 2026-11-18). A generic check in lab-tools health/suite/checks/ with its row in docs tests (ikb test): reads /proc/interrupts before and after one 15 s s2idle cycle and fails above the threshold, printing the top three sources. The threshold comes from the manifest's [health] (set from floor-entry-trace's reading); unset, the check says not measured, never a guessed number. It suspends only with an RTC wake alarm set and the watchdog armed (phone-keeper.md's rule, surya-lab log 2026-11-18-sign-defused-watchdog); if either cannot be had, it skips saying why. The builder writes and tests it off the phone; putting it on the phone is the keeper's.
+Built 2026-11-18: lab-tools #106 (v0.3.3), proof health/tests/suspend_irq_quiet.rs, made-up files only, not run on a phone. Left for the surya keeper: set suspend_irq_max (from floor-entry-trace) and suspend_guard (the way-back.sh check command) in surya's [health] and put the check on the phone; until both are set it skips. (Status set by orchestration: #412 meant to set done, but ikb backlog-status with --project linux-phone-oco/lab-tools matched no row and said nothing; the record now refuses that.)
 
 Opened
 : 2026-11-18

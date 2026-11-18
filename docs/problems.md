@@ -272,3 +272,28 @@ By
 
 Kind
 : unclear
+
+
+<a id="status-write-matched-no-row"></a>
+### status-write-matched-no-row
+
+Project
+: linux-phone-oco/docs
+
+What
+: ikb backlog-status (and backlog-needs) with --project linux-phone-oco/lab-tools matched no row - the record prepends linux-phone-oco/ - and still said recorded: docs #393 and #412 meant to set an item done and main kept it open.
+
+Seen
+: 2026-11-18
+
+By
+: orchestration
+
+Countermeasure
+: records/backlog-status.sql and backlog-needs.sql refuse a write that names no item of this base, saying --project is the place without linux-phone-oco/ (2026-11-18). Device bases built from device-template may carry the same UPDATE shape.
+
+Handled
+: 2026-11-18
+
+Kind
+: unclear

@@ -7,6 +7,8 @@
 -- --device   string?  the device it is for, a devices id (xiaomi-surya, google-walleye); required with phone
 -- --proof    string?  the test whose pass proves it done (kept as it was when not given)
 -- --rank     integer? where it stands in the queue, by the author's order: 1 first (kept as it was when not given)
+SELECT CASE WHEN NOT EXISTS (SELECT 1 FROM backlog WHERE project = 'linux-phone-oco/' || $project AND id = $id)
+    THEN error('no backlog item ' || $id || ' in linux-phone-oco/' || $project || ': --project is the place without linux-phone-oco/ (lab-tools, docs, ...)') END;
 SELECT CASE WHEN $needs IS NOT NULL AND $device IS NULL
     AND (SELECT device FROM backlog WHERE project = 'linux-phone-oco/' || $project AND id = $id) IS NULL
     THEN error('an item that needs ' || $needs || ' names its device: --device xiaomi-surya or google-walleye') END;
