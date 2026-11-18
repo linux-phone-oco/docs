@@ -3639,3 +3639,34 @@ Rank
 
 About
 : lpoco-host
+
+
+<a id="host-undeclared-gadget-serial"></a>
+### lpoco host check names a gadget that enumerated with a serial no device declares
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Seen 2026-11-18 (orchestration-renewed, from walleye lab PR 175): the banner image's /dev/ttyACM0 stayed root:uucp 0660 under lpoco 0.6.0's gadget rule. The kernel log at 10:06:55 says why: SerialNumber walleye-banner, while every other walleye image (init-ml, init-pk5g, init-pk5l, vendor inits) and device.toml say walleye-first-boot - only build/initramfs-mainline/init-banner:39 differs. The rule was right; the image was off its declaration, and nothing said so: the lane read a host fault. check (and plan) should read the kernel log since boot (journalctl -k) for gadgets of the declared devices' vendor ids, or any 1d6b, and name a serial that no [[host.gadget]] declares.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: a check test from a fixture kernel log: a 1d6b gadget with SerialNumber walleye-banner while device.toml declares walleye-first-boot is reported (device, serial seen, serial declared, when); a declared one is not
+
+Rank
+: 1
+
+About
+: lpoco-host
