@@ -3155,3 +3155,27 @@ Rejected
 
 About
 : bringup-generic-init
+
+---
+
+
+<a id="2026-11-19-bring-up-init-the-log-window"></a>
+### Bring-up init: the log window
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: [boot.gadget] window: a read-only mass-storage LUN the init keeps written with the kernel log (lab-tools #188), after a programmer review that found a stale-tail, a silent-failure and a weak-test defect, all fixed.
+
+Considered
+: Taking user-config-drift-named instead (the author's ask); the picking query's first lab-tools row was bringup-generic-init.
+
+Rejected
+: A window on the second (RNDIS) configuration: not needed for the lab host.
+
+About
+: bringup-generic-init
