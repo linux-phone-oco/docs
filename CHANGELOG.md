@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.14.0](https://github.com/linux-phone-oco/docs/compare/v0.13.0...v0.14.0) (2026-11-18)
+
+
+### Features
+
+* docs: backlog takes blocked_by (a wait that clears itself); waits not empty ([#365](https://github.com/linux-phone-oco/docs/issues/365)) ([2742783](https://github.com/linux-phone-oco/docs/commit/2742783c12ba6df11722e7595bc80d50a29c21c4))
+* docs: linux-phone-oco's five principles, cited by id and never restated ([#374](https://github.com/linux-phone-oco/docs/issues/374)) ([f7b0d1c](https://github.com/linux-phone-oco/docs/commit/f7b0d1c44221f518c47119ce2a2719b6d9cfa3a5))
+* docs: the hardware catalogue (one shape for every base), the cable's general rows ([#388](https://github.com/linux-phone-oco/docs/issues/388)) ([18354c9](https://github.com/linux-phone-oco/docs/commit/18354c9623760d8a6c4d9606b8b4d822c8bb7b83))
+
+
+### Bug Fixes
+
+* backlog-status and backlog-needs refuse a write that matches no item ([#414](https://github.com/linux-phone-oco/docs/issues/414)) ([84b573e](https://github.com/linux-phone-oco/docs/commit/84b573e5d03b9c2c6c48712e7005a9e87aac52fd))
+
 ## [0.13.0](https://github.com/linux-phone-oco/docs/compare/v0.12.0...v0.13.0) (2026-11-17)
 
 
