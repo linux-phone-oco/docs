@@ -3769,10 +3769,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: suite put writes the declared targets (flash overlays, provision installs, the phone's own checks) into /etc/lpoco-health/health.env; a generic check (base, component lab-pieces) prints one row per file (path blob ID, or missing) and one per lab-tools package (apk list --installed), every boot. Reads only. Busybox computes the blob id: { printf 'blob %s\0' "$(wc -c < F)"; cat F; } | sha1sum.
+: Done: lab-tools PR 150 (feat(health): lab-pieces check reports each declared file's blob id and package version), read back from main; released with the family after 0.12.1. The phone's report is proven once surya-awake-from-package puts the suite on surya. Next: phone-pieces-drift-named reads it.
 
 Opened
 : 2026-11-18
@@ -4161,7 +4161,7 @@ Status
 : open
 
 Note
-: pmbootstrap aportgen --fork-alpine sxmo-utils as the start; pkgver 1.18.1_pYYYYMMDD; the tagged lab repository so apk upgrade keeps it (decision 2026-11-18-upstream-forks).
+: pmbootstrap aportgen --fork-alpine sxmo-utils as the start; pkgver 1.18.1_pYYYYMMDD; the tagged lab repository so apk upgrade keeps it (decision 2026-11-18-upstream-forks). Pin (upstreams-coordinator, 2026-11-18): https://github.com/grenudi/sxmo-utils tag lab-20261118.1 (annotated, 6432ef936a84 = branch lab = upstream 1fd7822 + backoff 2bb2500, stop-by-profile 1156bb6, surya sensors 6432ef9); pkgver 1.18.1_p20261118. When it is out, surya-lab surya-sxmo-suspend-series is unblocked.
 
 Opened
 : 2026-11-18
@@ -4174,6 +4174,9 @@ Device
 
 Proof
 : suspend-retry-backs-off
+
+Rank
+: 4
 
 About
 : upstream-forks
