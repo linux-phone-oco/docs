@@ -2338,3 +2338,27 @@ Rejected
 
 About
 : lpoco-host-rest
+
+---
+
+
+<a id="2026-11-18-lpoco-host-start-a-stopped-watcher"></a>
+### lpoco host: start a stopped watcher
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: lab-tools #146: prepare starts an enabled but stopped devlab-watch@ unit; proof test seen failing first; programmer review applied (fix commit title, only exit 3 = stopped).
+
+Considered
+: is-active probe in the shell, plan core stays pure with an active closure
+
+Rejected
+: treating every non-zero is-active exit as stopped: a bus failure would plan a start that fails
+
+About
+: lpoco-host-rest
