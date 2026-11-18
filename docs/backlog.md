@@ -3517,10 +3517,14 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: done
+: open
 
 Note
 : landed lab-tools #116; proof: release-tags-every-change (lpoco/tests/changelog_check.rs). The follow-up release PR for a late changelog entry is accepted; a lone changelog edit is refused.
+Reopened again 2026-11-18 04:50 (orchestration): #116 fixed the PR check, but two signs remain on main.
+(1) lpoco/tests/release_family.rs a_changelog_names_each_version_once_and_starts_at_the_package_version fails on main between release-plz's first release PR and its follow-up. CI run 44238836865 after #115: left 0.3.5, right 0.3.6. Main stays red until the follow-up (#117) lands.
+(2) A release loop: the follow-up's own squash commit 'chore: release v0.3.6 (#117)' counts as a change to devlab, health and tone, so release-plz at once opened #118 (v0.3.7) with nothing but release commits in it, and every follow-up will do the same.
+#118 is left open and unmerged on purpose. Fix both together: one release PR that writes every family member's changelog (no follow-up), or release-plz told to ignore its own release commits (release_commits / commit_parsers skip '^chore: release'). Test first: a release PR merged on a fixture repository leaves no new release PR, and main's release_family test passes after each merge.
 
 Opened
 : 2026-11-18
