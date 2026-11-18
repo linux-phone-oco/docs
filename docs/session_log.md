@@ -2290,3 +2290,27 @@ Rejected
 
 About
 : phone-side-pieces
+
+---
+
+
+<a id="2026-11-18-lpoco-host-gadget-net-name-part-6-ncm"></a>
+### lpoco host: gadget net_name (part 6, NCM)
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-18
+
+Done
+: Built [[host.gadget]] net_name: udev names the gadget's USB network interface by serial; test seen failing first; programmer review fixed '.' and README; landed as lab-tools #142, read back from main 80c21b5.
+
+Considered
+: An NM keyfile with a static host address (needs 0600 install, NM only); NM_UNMANAGED (would break surya's host address 172.16.42.2); a systemd-networkd file.
+
+Rejected
+: NM keyfile and unmanaged: the address is the lab's own business and NCM was undefined in the row; a name by serial is the smallest thing every network manager can match.
+
+About
+: lpoco-host-rest
