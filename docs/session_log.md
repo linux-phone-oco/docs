@@ -2122,3 +2122,27 @@ Rejected
 
 About
 : host-watch-declared
+
+---
+
+
+<a id="2026-11-18-patrol-1108"></a>
+### Patrol round 2026-11-18 11:08 UTC
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-18
+
+Done
+: Read-only round. Landings (6h) in docs, lab-tools, device-template, surya-lab, walleye-lab all by PR, device rows in their own bases. devlab-watch@surya-lab active, restarted 10:25 by the new watcher units, no repeating error; phone not reachable (parked, surya-lab how-the-phone-stands: autosleep, repo part landed). Pages build green x3. lpoco host check: no FAIL, walleye lines not measured (phone off USB, expected). Launcher runs of walleye-keeper, walleye-builder, lab-tools-builder, surya-keeper all succeeded since 05:08; whether each reported to its coordinator: not known yet. Signs filed: docs problems names-bringup-blocked-by-done, host-rest-blocked-by-done (stale blocked_by on done items); walleye-lab backlog walleye-stale-waits-on-done. Start weight and read-weight: not measured this round.
+
+Considered
+: waits of surya-lab naming floor-read-holders (no such item, an outside note)
+
+Rejected
+: a sign on the phone silence: expected, parked
+
+About
+: patrol-measures-the-start
