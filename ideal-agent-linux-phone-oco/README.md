@@ -56,7 +56,7 @@ Recorded as ideal-agent's record-the-work says; linux-phone's part:
   (signed as the brief's `Name:`), work from a worktree of your own, commit, and `land --no-manual`.
 - **The phone.** Only through lpoco lab, and only by its keeper; anything that needs the phone goes on the
   phone's queue in that phone's own base (surya-lab, google-walleye-lab: `tad q phone-queue`; what a lane's
-  launchers read: `tad q lane-next --needs phone|research|build` there; docs has no lane queries).
+  launchers read: `tad q ready --for keeper|research|builder` there, the one picking query every base shares).
 
 Why: the author, 2026-11-17 - linux-phone keeps everything in tad, in one database (decision
 2026-11-17-one-database), and an agent's domain is kept beside the knowledge, not in the general agent
