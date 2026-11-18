@@ -3608,3 +3608,34 @@ Rank
 
 About
 : lpoco-host
+
+
+<a id="host-gadget-group"></a>
+### lpoco host gives each declared gadget node a group the lab user already holds, so access does not wait on the seat's uaccess ACL
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: From walleye lab PR 160 (research walleye-z1-tried-reader-denied), 2026-11-18, orchestration-renewed: z1's ttyACM0 came up and the reader got Permission denied, while y2's worked with the same rule. Host facts: the node appears root:uucp 0660, the lab user mll is not in uucp; uaccess is applied by 73-seat-late.rules' RUN builtin after the node exists, for the active seat session only (session 4 tty2 was active); ModemManager is not running. So a reader that opens at once races the ACL, and a session off the seat never gets it. Two halves: the reader waits and retries (walleye's walleye-reader-eacces-retry, PR 161), and the host stops depending on timing and seat: lab.toml declares the lab group (a group the lab user already holds, e.g. users, so no re-login is needed - a new group would need the author's re-login), and the gadget rules add GROUP and MODE 0660. This pulls part (1) of lpoco-host-rest forward; the sysusers.d own group stays there.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: a plan test from fixtures: the rule line carries GROUP and MODE 0660 from lab.toml beside TAG+=uaccess; check says which group and that the lab user is in it; then walleye's next z try reads /dev/ttyACM0 as the lab user (walleye lab's queue)
+
+Rank
+: 2
+
+About
+: lpoco-host
