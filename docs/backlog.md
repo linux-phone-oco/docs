@@ -5325,10 +5325,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: The author, through the coordinator, 2026-11-18: 'how could we lost that intelligance about what we have touched edited, isnt its all in gits ?' - the phone's ~/.config/sxmo files live outside any git, so a hand diff had to tell whether we edited them (surya-lab PR 302: identical). Extend phone-pieces drift (lab-tools #165, #170, health 94-lab-pieces): device.toml (the lpoco-manifest crate) declares user config files the lab cares about (sxmo hooks, profile), each either expect = the package default (the path the package ships, e.g. /usr/share/sxmo/...) or a copy kept in the base. lpoco-health's lab-pieces reports their blob ids at boot, the package default's blob beside it; host check and lpoco lab name any that differ, with no manual diff. A deliberate change then lives in the base or in the fork's package, never only on the phone. Size: one manifest field, a few report rows and a compare in stale_lines - about one builder run.
+: 2026-11-19, lab-tools-builder: done (lab-tools #201, released v0.22.0 #202). device.toml [[user_config]] path + expect (package default on the phone) | from (copy in the base), exactly one; lab-pieces reports config-file:PATH rows 'PATH BLOB DEFAULTBLOB'; stale_pieces names Stale::Config (DRIFTED, both blobs); a missing default or base copy is named; duplicates, expect==path, from outside the base refused. Proof: host/tests/phone_pieces.rs a_user_config_off_its_package_default_or_its_base_copy_is_named_and_a_matching_one_passes (seen failing first: no variant Config), health/tests/pieces_report.rs, devlab device.rs unit test. Open: no device declares user_config yet - surya should declare the sxmo hooks/profile; a copy edited deliberately against expect shows DRIFTED until it moves to from; the line does not name the commit the phone's copy came from.
 
 Opened
 : 2026-11-18

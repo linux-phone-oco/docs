@@ -3362,3 +3362,27 @@ Rejected
 
 About
 : nura-relation
+
+---
+
+
+<a id="2026-11-19-user-config-drift-named-built-and-released"></a>
+### user-config-drift-named built and released
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Built [[user_config]] drift naming across manifest, devlab pieces_env, health 94-lab-pieces.sh, host stale_pieces; landed #201, released v0.22.0 (#202); programmer review applied (missing default/copy named, duplicates refused, from kept in the base).
+
+Considered
+: An enum Against{Expect,From} for the manifest instead of two Options (reviewer): kept the runtime check, schema is the same shape either way; one row type for both kinds with '-' marking no default.
+
+Rejected
+: Treating a missing user file as drift against expect: an untouched config is simply absent, the package default applies. Passing silently when the base copy is not at origin/main: a typo would hide drift forever.
+
+About
+: user-config-drift-named
