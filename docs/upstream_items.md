@@ -741,10 +741,10 @@ File
 : research/upstream-forks/2026-11-19/pmic-wdt-gen2-v1
 
 Waits
-: walleye's attended Pixel 2 bite at v7.3 + 8b2283da3 showing a restart (the author's 'Yes, test first'), then the cover letter's testing paragraph updated, a rebase and re-check on the day, and the author's sign-off; sent by him
+: the author: read the patches (the cover letter says 'reviewed by me'), re-author and sign off, his go; sent by him from his clone
 
 Note
-: Prepared and checked on next-20261118 (build, checkpatch, lpoco-bringup dt-check with nodes enabled); SEND-NOTES.md says the steps before sending and what is not proven. Walleye 2026-11-19: images A and B built and booted, S2 reset type 7 read; the reboot test and the bite are not run yet. Not sent.
+: Tested on the Pixel 2 2026-11-20 with the author at the phone (google-walleye-lab PR 624, walleye-try-pmic-wdt-v1, image A on next-20261118): reboot PASS (S2 off after), bite PASS (reset 20 s after arming). With USB in, the bootloader then stopped at its off-mode charging screen and needed a power press; bootstatus was not read. Both are in the cover letter. Rebased onto next-20261119 and re-checked clean (build W=1, checkpatch apart from the SoB, dt-check binding and dtbs with nodes enabled). Not sent.
 
 Last update
 : 2026-11-19

@@ -1,6 +1,6 @@
-From 2bb45656b4e340855591477783d8e61edf15dcbe Mon Sep 17 00:00:00 2001
+From 4644d4880e0a92d3bf5f3b2106d7ec60bade10f0 Mon Sep 17 00:00:00 2001
 From: lane-coordinator <agent@creation-guidelines>
-Date: Thu, 19 Nov 2026 05:30:43 +0100
+Date: Fri, 20 Nov 2026 00:39:00 +0100
 Subject: [PATCH 0/6] watchdog: pm8916_wdt: Second generation PON (PM8998, PM6150)
 
 The PMIC watchdog of the PON block is also found in the second
@@ -22,18 +22,22 @@ support, and the nodes in pm8998.dtsi and pm6150.dtsi, left disabled.
 
 Testing, on hardware:
 
+- Pixel 2 (MSM8998, PM8998), this series on next-20261118: the driver
+  probes; the bootloader had left the S2 type at 0x01, patch 1 set it to
+  0x07 and the read-back passed. Armed and never pinged, the PMIC reset
+  the phone 20 s after arming. With USB connected the bootloader then
+  stopped in its off-mode charging screen, and Android started after a
+  press of the power button. Armed and then rebooted normally, the phone
+  booted Android and stayed up with no further reset, and S2 read as
+  disabled on the next boot (patch 2).
 - POCO X3 NFC (SM7150, PM6150), on the sm7150-mainline tree (7.1-based)
-  with these patches backported unchanged: the driver probes; the
-  bootloader had left the S2 type at 0x01 (warm reset), patch 1 set it
-  to 0x07 and the read-back passed; a bite restarts the phone. After a
-  bite S2 stays enabled, and booting a kernel without this driver then
-  looped until a full power-off: the reason for patch 2.
-- Pixel 2 (MSM8998, PM8998), on v7.3 with patch 4 and the pm8998 node:
-  the watchdog bites 20 s after being armed for 20 s, but the phone
-  powered off rather than restarting. Patch 1 is meant for that case and
-  has not yet been tested on this phone.
+  with patches 1, 2 and 4 backported unchanged: the driver probes; the
+  bootloader had left the S2 type at 0x01, patch 1 set it to 0x07 and
+  the read-back passed; a bite restarts the phone. Before patch 2, a
+  bite left S2 enabled, and booting a kernel without this driver then
+  looped until a full power-off.
 
-Rebased onto next-20261118 for sending: built with LLVM W=1, checkpatch
+Rebased onto next-20261119 for sending: built with LLVM W=1, checkpatch
 --strict, dt_binding_check for the binding, and CHECK_DTBS on
 msm8998-oneplus-cheeseburger, sm7125-xiaomi-joyeuse and
 sc7180-acer-aspire1 with the new nodes enabled: no new warnings.
@@ -59,7 +63,7 @@ orchestration-renewed (1):
  4 files changed, 108 insertions(+), 10 deletions(-)
 
 
-base-commit: e8017d29067fd1310a65c3494ce1a1b492adbac6
+base-commit: adcad7f4e6332cff3d6d7165f41584899f598534
 -- 
 2.56.1
 

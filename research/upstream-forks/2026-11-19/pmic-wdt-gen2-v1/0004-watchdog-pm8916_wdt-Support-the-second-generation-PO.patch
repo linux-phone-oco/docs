@@ -1,4 +1,4 @@
-From cc3933713ed485b03094826fcbbca13e11668651 Mon Sep 17 00:00:00 2001
+From 80c8237d8e361a79ca3c3cce5614347135e55e87 Mon Sep 17 00:00:00 2001
 From: orchestration-renewed <agent@creation-guidelines>
 Date: Wed, 18 Nov 2026 13:30:46 +0100
 Subject: [PATCH 4/6] watchdog: pm8916_wdt: Support the second generation PON
