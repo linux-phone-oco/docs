@@ -4325,3 +4325,27 @@ Rejected
 
 About
 : manifest-attended-keys
+
+---
+
+
+<a id="2026-11-19-lab-tools-builder-kernel-try-cmdline-lpoco"></a>
+### lab-tools-builder: kernel try --cmdline, lpoco-attended shipped, call limit
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Landed lab-tools #272 (kernel try --cmdline, + message, remove takes -cl/-dt entries), #274 (lpoco-attended in the host family, stray word refused), #275 (lpoco-attended --call-limit SECONDS, opt-in, the call stays in the run's process group, kill of the attached tree, limit also bounds the wait for output; lpoco attended run forwards it). The parked builder-attended-call-limit branch's two review defects (600 s default could cut devlab's boot wait; own process group stopped Ctrl-C) are fixed in #275 with its three review findings (respawning child, daemon on the pipes, flag not forwarded). The lpoco-attended item stays in-progress: library steps keyed to bring-up ids, device values, unattended runner remain.
+
+Considered
+: A combined --dtb and --cmdline entry (NAME-dt-cl): refused for now, try one then the other. A process group for the limit: kept out, it cuts Ctrl-C.
+
+Rejected
+: A default call limit: devlab's own boot wait is ten minutes and more. Exit 2 for an unknown flag: argenv owns that refusal (exit 1) across the family.
+
+About
+: bringup-steps
