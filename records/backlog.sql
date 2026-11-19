@@ -15,6 +15,7 @@ SELECT CASE WHEN $blocked_by IS NOT NULL AND EXISTS (SELECT 1 FROM unnest(string
     THEN error('blocked-by names no item of this base: ' || (SELECT string_agg(trim(t.x), ', ') FROM unnest(string_split($blocked_by, ',')) AS t(x) WHERE trim(t.x) NOT IN (SELECT id FROM backlog))) END;
 SELECT CASE WHEN $needs IS NOT NULL AND $device IS NULL
     THEN error('an item that needs ' || $needs || ' names its device: --device xiaomi-surya or google-walleye') END;
+SELECT CASE WHEN $status = 'dropped' AND $note IS NULL THEN error('a dropped item needs its note: why it was dropped, and whose word') END;
 DELETE FROM backlog WHERE project = 'linux-phone-oco/' || $project AND id = $id;
 INSERT INTO backlog (project, id, title, status, note, opened, waits, blocked_by, needs, device, proof, about)
 VALUES ('linux-phone-oco/' || $project, $id, $title, $status, $note, $opened, $waits, $blocked_by, $needs, $device, $proof, $about);
