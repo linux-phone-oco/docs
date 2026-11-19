@@ -1,0 +1,120 @@
+From fc0e9ed885446eb5c6d00c30b6859100ee3e5871 Mon Sep 17 00:00:00 2001
+From: lane-coordinator <agent@creation-guidelines>
+Date: Wed, 18 Nov 2026 19:22:56 +0100
+Subject: [PATCH 1/6] watchdog: pm8916_wdt: Set the reset type with S2
+ disabled, and check it
+
+The PON takes a new S2 reset type only while S2 is disabled, with about
+ten sleep-clock cycles between the writes, as its other S2 resets
+(PS_HOLD, KPDPWR/RESIN) are handled downstream. Since the driver learnt
+to take over a watchdog the bootloader left running, the probe writes
+the type blind while S2 may be enabled, so the type the firmware chose
+(a warm reset, or a shutdown) can stay in place.
+
+Disable S2 around the write when it was running, update only the type
+field, and read it back: a type that did not take now fails the probe
+instead of a bite doing something other than a hard reset.
+
+Written with an AI coding assistant (Claude); reviewed and tested as
+described in the cover letter.
+
+Fixes: 066951ca33ce ("watchdog: pm8916_wdt: Handle watchdog enabled by bootloader")
+---
+ drivers/watchdog/pm8916_wdt.c | 60 ++++++++++++++++++++++++++++++++---
+ 1 file changed, 55 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/watchdog/pm8916_wdt.c b/drivers/watchdog/pm8916_wdt.c
+index 16778c67d..c221c4adb 100644
+--- a/drivers/watchdog/pm8916_wdt.c
++++ b/drivers/watchdog/pm8916_wdt.c
+@@ -1,5 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0
+ #include <linux/bitops.h>
++#include <linux/delay.h>
+ #include <linux/interrupt.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+@@ -25,6 +26,7 @@
+ #define RESET_TYPE_WARM			0x01
+ #define RESET_TYPE_SHUTDOWN		0x04
+ #define RESET_TYPE_HARD			0x07
++#define RESET_TYPE_MASK			GENMASK(3, 0)
+ 
+ #define PON_PMIC_WD_RESET_S2_CTL2	0x57
+ #define S2_RESET_EN_BIT			BIT(7)
+@@ -84,6 +86,57 @@ static int pm8916_wdt_configure_timers(struct watchdog_device *wdev)
+ 			    wdev->pretimeout);
+ }
+ 
++/*
++ * The PON takes a new S2 reset type only while S2 is disabled, and needs
++ * about ten sleep-clock cycles (32 kHz) between the two writes: the same
++ * dance the PON's other S2 resets need. Written blind while the firmware
++ * left the watchdog running, the type the firmware chose stays, and that
++ * may be a shutdown. Read it back so a type that did not take fails loudly.
++ */
++static int pm8916_wdt_set_reset_type(struct pm8916_wdt *wdt,
++				     struct device *dev, bool running)
++{
++	unsigned int ctl;
++	int err;
++
++	if (running) {
++		err = regmap_update_bits(wdt->regmap,
++					 wdt->baseaddr + PON_PMIC_WD_RESET_S2_CTL2,
++					 S2_RESET_EN_BIT, 0);
++		if (err)
++			return err;
++		usleep_range(500, 1000);
++	}
++
++	err = regmap_read(wdt->regmap, wdt->baseaddr + PON_PMIC_WD_RESET_S2_CTL,
++			  &ctl);
++	if (err)
++		return err;
++	dev_dbg(dev, "S2 reset control was %#x\n", ctl);
++
++	err = regmap_update_bits(wdt->regmap,
++				 wdt->baseaddr + PON_PMIC_WD_RESET_S2_CTL,
++				 RESET_TYPE_MASK, RESET_TYPE_HARD);
++	if (err)
++		return err;
++
++	err = regmap_read(wdt->regmap, wdt->baseaddr + PON_PMIC_WD_RESET_S2_CTL,
++			  &ctl);
++	if (err)
++		return err;
++	if ((ctl & RESET_TYPE_MASK) != RESET_TYPE_HARD)
++		return -EIO;
++
++	if (running) {
++		usleep_range(500, 1000);
++		return regmap_update_bits(wdt->regmap,
++					  wdt->baseaddr + PON_PMIC_WD_RESET_S2_CTL2,
++					  S2_RESET_EN_BIT, S2_RESET_EN_BIT);
++	}
++
++	return 0;
++}
++
+ static int pm8916_wdt_set_timeout(struct watchdog_device *wdev,
+ 				  unsigned int timeout)
+ {
+@@ -209,12 +262,9 @@ static int pm8916_wdt_probe(struct platform_device *pdev)
+ 	if (val & S2_RESET_EN_BIT)
+ 		set_bit(WDOG_HW_RUNNING, &wdt->wdev.status);
+ 
+-	/* Configure watchdog to hard-reset mode */
+-	err = regmap_write(wdt->regmap,
+-			   wdt->baseaddr + PON_PMIC_WD_RESET_S2_CTL,
+-			   RESET_TYPE_HARD);
++	err = pm8916_wdt_set_reset_type(wdt, dev, val & S2_RESET_EN_BIT);
+ 	if (err) {
+-		dev_err(dev, "failed configure watchdog\n");
++		dev_err(dev, "failed configure watchdog: %d\n", err);
+ 		return err;
+ 	}
+ 
+-- 
+2.56.1
+
