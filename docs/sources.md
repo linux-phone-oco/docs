@@ -7496,3 +7496,91 @@ By
 
 Takes
 : kernel tests run per board on lab devices; a probe or boot check proven on our phones can be offered as a KernelCI test, with the board in a lab
+
+
+<a id="labgrid-drivers-strategies"></a>
+### labgrid: drivers, resources and strategies (DigitalOutput, USBSDMux, power drivers)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://labgrid.readthedocs.io/en/latest/configuration.html
+
+Author
+: Pengutronix
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: a test asks a protocol (power cycle, set a digital output); drivers bound to the place's declared resources do it; a ManualPowerDriver asks a person - the same test runs on a bench with or without hardware
+
+
+<a id="pdudaemon"></a>
+### pdudaemon: one daemon driving many PDUs and USB relays by name
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/pdudaemon/pdudaemon
+
+Author
+: pdudaemon
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: callers say 'reboot port N of PDU X'; the relay hardware is configured once in data, swapped without touching tests
+
+
+<a id="openqa-needles"></a>
+### openQA: needles - screen regions matched to tags
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://open.qa/docs/#_needles
+
+Author
+: openQA
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: a screen check names what should be seen (a tag); a needle (image region) decides it from a camera or VNC frame - our look_for("four stripes")
+
+
+<a id="tapster-robot"></a>
+### Tapster: robots that tap phone screens for testing
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://www.tapster.io/
+
+Author
+: Tapster Robotics
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: touch(x, y) and swipes done by a stylus robot over a device stand; a calibrated mapping from screen points to arm positions per device

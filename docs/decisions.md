@@ -2307,3 +2307,31 @@ About
 
 Research
 : procedures-reflect-and-lift
+
+
+<a id="2026-11-19-attended-steps-name-the-physical-act"></a>
+### 2026-11-19-attended-steps-name-the-physical-act
+
+Brief
+: Attended steps name the physical act or observation (press_power, unplug_usb, touch, look_for, listen_for); a bench backend does it - a person today, a rig the lab declares later
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: (1) lpoco-attended's ask_author is replaced by physical steps that say what is done or seen: press_power(secs), hold_button(name, secs) for volume and others, unplug_usb, replug_usb, touch(x, y), swipe(from, to), look_for(what the screen shows), listen_for(what is heard), and confirm(what to check) for the rest. ask_author stays one release as an alias of confirm, then goes. (2) A Bench trait is the seam: each physical step asks the bench; the person backend (today's default) prints the act and what to check and waits for the answer, recorded in the log. A rig backend (USB relay, servo, camera, microphone) is a later implementation of the same trait; nothing is built for it now. (3) What a bench has is data: the lab's lab.toml declares per device which acts a rig does and on which channel (relay port, servo, camera); device.toml declares the device's own facts the acts need (button names, screen size). An act no declared hardware covers falls back to the person backend; --dry-run lists who would do each act. (4) The decision about whether a step needs attending moves from the procedure to the bench: the same procedure runs attended today and unattended on a rig.
+
+Why
+: The author, 2026-11-19, relayed verbatim: "can we replace \"asking you\" with physical attendence needed or something ? in future we will automate this by having servos that will press buttons and usb relay switches , camera, microphone in one stand, so this needs you would make no sense and could be further detailed per option if one has hardware. again for consideration". Research attended-physical-steps: labgrid drivers over declared resources with a manual driver, pdudaemon, openQA needles, Tapster.
+
+Rejected
+: Keeping ask_author with free text: a rig cannot act on prose, and every procedure would need rewriting when the stand comes. Building rig backends now: no hardware yet. Declaring the rig in device.toml: the relay channel is the lab's wiring, not the phone's - a second lab would carry other wiring for the same device.
+
+About
+: bringup-steps
+
+Research
+: attended-physical-steps
