@@ -6166,7 +6166,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
+
+Note
+: 2026-11-19, lab-tools-builder: first slice landed (lab-tools #217): lpoco layer pack --format apk|deb|rpm|archlinux writes NAME-config (declared files + /usr/lib/kernel/devicetree, same in every format) and NAME-boot (not apk: systemd preset, initramfs hook/dracut/mkinitcpio drop-in), an nfpm config each, nfpm packs. Proof: layer/tests/pack.rs (seen failing first, compile error); the research test-layer-apk-and-deb.sh passes with real nfpm on a surya-shaped fixture (surya-lab has no [layer] yet: surya-layer-declared). Reviewed by programmer; fixed deb << >> and malformed tokens, absolute paths. Open: preset scriptlet (systemctl preset), per-base dependency token map, kernel package linux-NAME, mkinitfs for apk, Nura deviceinfo, fail fast on efi-kernel-install without dtbs, pack() test with a fake nfpm, module-name validation, stale -boot left in --out.
 
 Opened
 : 2026-11-19
