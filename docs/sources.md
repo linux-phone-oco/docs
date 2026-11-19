@@ -7826,3 +7826,91 @@ By
 
 Takes
 : A start hook's output enters the context; observed here (2026-11-19): past about 10 KB the app saves it to a file and shows a 2 KB preview
+
+
+<a id="ansible-include-tasks"></a>
+### Ansible: include_tasks, import_tasks, roles and block/always
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse.html
+
+Author
+: Red Hat
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: a named task file is one line in a playbook; block/always runs the clean-up whatever failed - a group with its way back
+
+
+<a id="robot-keywords"></a>
+### Robot Framework: user keywords built from other keywords
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#creating-user-keywords
+
+Author
+: Robot Framework Foundation
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: a test reads as a list of named keywords; a keyword is itself a list of keywords, with its own teardown; nesting is ordinary
+
+
+<a id="gha-composite-reusable"></a>
+### GitHub Actions: composite actions and reusable workflows
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.github.com/en/actions/sharing-automations/avoiding-duplication
+
+Author
+: GitHub
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: composite: steps reused as one step inside the same job (one runner, one log); reusable workflow: a whole job called from another (its own runner and log) - the first is what chaining within one run needs
+
+
+<a id="pytest-fixtures-yield"></a>
+### pytest: fixtures with yield, setup and teardown composed
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.pytest.org/en/stable/how-to/fixtures.html#yield-fixtures-recommended
+
+Author
+: pytest-dev
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: setup and its teardown are one named unit; teardowns run in reverse, even after a failure; fixtures depend on fixtures

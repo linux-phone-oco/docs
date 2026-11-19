@@ -2445,3 +2445,28 @@ Sources
 
 About
 : agent-folder
+
+
+<a id="procedures-chaining"></a>
+### procedures-chaining
+
+Brief
+: Others chain steps two ways: a named group used as one line inside one run (keywords, composite actions, include_tasks), and a whole job called from another; groups carry their own clean-up
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Question
+: The author, 2026-11-19: is our procedures now easily ergonomically chainable ? or how does that work ?
+
+Found
+: What is (lab-tools main, lpoco-attended): steps chain inside one procedure as Step values; a library of small steps (dmesg_clean, check_probe, wait_for_phone, read_dmesg, wait_for_usb/gadget, boot_once, back_to_known_good, the physical acts); device steps in procedures/steps; --part picks a checklist inside one file; dev()/proc() give values; lpoco attended lift finds copies. Missing: no named group of steps used as one line, and no procedure running another's checklist; walleye's display, UFS and PMIC procedures each repeat the gate, boot, shell and way-back steps. Others: Robot Framework keywords and Ansible include_tasks/roles name a list of steps and use it as one line, nesting freely; GitHub composite actions reuse steps inside one job (one runner, one log) while reusable workflows call a whole job (its own runner and log); pytest yield fixtures and Ansible block/always pair a setup with a clean-up that runs even after a failure, in reverse order; LAVA test definitions are chained in one job's test action, sharing the boot and the device.
+
+Sources
+: ansible-include-tasks,robot-keywords,gha-composite-reusable,pytest-fixtures-yield,lava-test-definitions
+
+About
+: bringup-steps
