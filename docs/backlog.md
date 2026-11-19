@@ -6497,7 +6497,7 @@ About
 
 
 <a id="dt-check-image-published"></a>
-### Build and push the dt-check image, name it by repo digest
+### dt-check's baked image built on the lab and run for real (publishing waits on the author's registry)
 
 Project
 : linux-phone-oco/lab-tools
@@ -6506,7 +6506,7 @@ Status
 : open
 
 Note
-: Dockerfile is bringup/dt-check/Dockerfile (alpine edge digest-pinned, py3-dt-schema dtc make gcc flex bison yamllint). Build it on the lab, push to a registry, record the repo digest, then run lpoco-bringup dt-check binding on qcom,pm8916-wdt.yaml and dtbs on pm8998/pm6150 with that --image: expect clean on the wdt binding and a named violation on a bogus property.
+: Reshaped by orchestration (2026-11-19): pushing to a registry is a public publish and waits on the author naming one (ghcr.io/linux-phone-oco or none). Until then: build the baked image once on the lab (docker build, no push), pin it by its local image id/digest in lpoco-bringup's config, and run dt-check binding and dtbs for real on the PMIC watchdog series, including the bogus-prop negative and an enabled pm8998/pm6150 node. The proof is that real run, recorded; publishing is a later step on his word.
 
 Opened
 : 2026-11-19
