@@ -4181,3 +4181,27 @@ Rejected
 
 About
 : attended-step-library
+
+---
+
+
+<a id="2026-11-19-attended-wait-for-usb-keyed"></a>
+### attended: wait_for_usb keyed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: wait_for_usb keyed to gadget-enumerates, landed lab-tools #255, read back from main
+
+Considered
+: keying every step; only wait_for_usb matches a docs step
+
+Rejected
+: keying boot_once/dmesg steps to kernel-reaches-init/first-dmesg-mapped: they move or read, they do not prove it
+
+About
+: attended-step-library
