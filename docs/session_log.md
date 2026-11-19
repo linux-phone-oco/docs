@@ -4109,3 +4109,27 @@ Rejected
 
 About
 : lpoco-attended
+
+---
+
+
+<a id="2026-11-19-attended-first-library-steps"></a>
+### attended: first library steps landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lab-tools #250 (main 45d4803): lpoco-attended steps dmesg_clean (keyed dmesg-clean), check_probe (driver bound under /sys/bus/*/drivers, name validated), wait_for_phone, with examples/library.rs and 3 stand-in-phone tests in attended/tests/attended.rs (each seen failing under a mutation). Not yet: boot_once, wait_for_usb, back_to_known_good, read_dmesg (attended-step-library, values from a new device.toml [attended] table), attended-scaffold, kernel-try-cmdline.
+
+Considered
+: probe by dmesg text
+
+Rejected
+: dmesg-text probe check: review showed false passes (a line that only names the driver, deferred probe pending, failure lines naming the device); replaced by sysfs evidence
+
+About
+: lpoco-attended

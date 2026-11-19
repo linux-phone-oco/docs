@@ -6695,10 +6695,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: 2026-11-19, orchestration: the surya builder wrote these four inline in surya-lab #394 (lab/attended, on lpoco-attended-v0.29.0); walleye's display and touch programs need the same four (relayed by the Top Coordinator). Take them from surya-lab's lab/attended as the first reference, generalise by decision 2026-11-19-procedures-chain-small-device-agnostic-steps (docs #638): one Step type with lpoco-attended's .keyed(bring-up id); boot_once and back_to_known_good go through lpoco lab (kernel try / the kept kernel), never around it.
+: 2026-11-19, lab-tools-builder: first three library steps landed (lab-tools #250: dmesg_clean, check_probe, wait_for_phone; tested on a stand-in via examples/library.rs). Open: boot_once and back_to_known_good through lpoco lab kernel try / the kept kernel, wait_for_usb, read_dmesg; their values from a device.toml [attended] table (known-good entry, usb id) in the manifest crate, schema regenerated; surya-lab lab/attended to use them; fit procedures/NAME.rs (decision 2026-11-19-procedures-one-shape).
 
 Opened
 : 2026-11-19
