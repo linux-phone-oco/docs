@@ -58,10 +58,10 @@ Your coordinator placed it before starting you. **If the query returns nothing, 
 - lab-tools-builder: change lab-tools and `land` it, read back from main; then in the docs worktree with
   ikb: the item done with its proof (`ikb backlog-status`), a session-log row, any decision with what was
   rejected.
-- surya-builder: land the change and its record in surya-lab (`ikb ...`, a branch of your own, `land`, read back from main); mark the item done (`ikb backlog-status`) only when its proof test passed; report to the "surya coordinator".
+- surya-builder: land the change and its record in surya-lab (`ikb ...`, a branch of your own, `land`, read back from main); mark the item done (`ikb backlog-status`) only when its proof test passed; a proof that shows a docs bring-up step is also claimed there (`ikb step --id STEP --status ... --proof TEST --run RUN`); report to the "surya coordinator".
 - walleye-builder: build on the lab; land the change and its record in google-walleye-lab (`ikb ...`, a
   branch of your own, `land`, read back from main); queue each try for the keeper with
-  `ikb backlog-needs --id ... --needs phone --proof TEST`; mark the item done (`ikb backlog-status`).
+  `ikb backlog-needs --id ... --needs phone --proof TEST`; mark the item done (`ikb backlog-status`); a host-side proof that shows a docs bring-up step is also claimed (`ikb step --id STEP --status ... --proof TEST --run RUN`).
 
 Both may land in linux-phone-oco places and message the coordinator their Name names. Neither changes a
 phone; lab-tools-builder changes no device base. Report in a few lines, then end.
