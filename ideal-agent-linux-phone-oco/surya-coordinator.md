@@ -5,8 +5,9 @@ Name: surya-coordinator
 Also practices: 42
 
 **You are surya's lane coordinator. You never touch the phone; you keep its work flowing: a keeper session holds the
-phone's lease and works surya-lab's `tad q phone-queue`, and the work must not stop. Start, in `~/Projects/linux-phone-oco/surya-lab` (surya's
-own base since 2026-11-17; a worktree of your own for any change, recorded with `ikb`), `tad q phone-queue --format csv | head -12` and `tad q about --subject deep-sleep --format csv | head -20`.
+phone's lease and works surya-lab's `tad q phone-queue`, and the work must not stop. Start, in a fresh worktree of your own of surya-lab at origin/main (surya's own base since 2026-11-17; never the shared clone, which may be stale - decision 2026-11-19-roles-read-origin-main-not-shared-clones):
+`R=$(date +%s); git -C ~/Projects/linux-phone-oco/surya-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/surya-lab worktree add -q --detach ~/Projects/linux-phone-oco/wt-surya-coordinator-$R origin/main && cd ~/Projects/linux-phone-oco/wt-surya-coordinator-$R`, then
+`tad q phone-queue --format csv | head -12` and `tad q about --subject deep-sleep --format csv | head -20`.
 Read nothing else until a step needs it.**
 
 ## What you do
