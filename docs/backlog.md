@@ -7475,3 +7475,34 @@ Proof
 
 About
 : agent-folder
+
+
+<a id="host-clones-commons-only"></a>
+### lpoco host clones moves only commons clones (an AGENTS.md at the top), never the author's own repositories
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: the first run with folders ["~/Projects"] fast-forwarded the author's own clean clones too (inno moved 51 commits). lab.toml now lists the commons parents instead (grenudi/lab-machine), which misses commons clones sitting directly under ~/Projects (lab-agent, lab-machine). The same rule as ideal-agent's scripts/clones-check: a commons place has AGENTS.md. Then lab.toml can go back to ["~/Projects"].
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools host test: under a declared folder holding a clean main clone with AGENTS.md and one without, clones now fast-forwards the first and names the second 'not a commons place, left'
+
+Rank
+: 1
+
+About
+: agent-folder
