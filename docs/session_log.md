@@ -4652,3 +4652,27 @@ Rejected
 
 About
 : agent-folder
+
+---
+
+
+<a id="2026-11-19-manifest-check-built-and-released-device"></a>
+### manifest check built and released; device-template step waits on a token and the pin
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lpoco-lab manifest check landed (#287) and released as 0.34.2; device-template CI step built and tested on a stand-in release, branch pushed, not landed
+
+Considered
+: skipping the missing secret with a warning
+
+Rejected
+: a check that passes when its token is missing is no check; and landing it red
+
+About
+: device-toml-checked-against-host
