@@ -21,5 +21,5 @@ mkdir -p docs/graph
 rows devices "SELECT id, name, codename FROM devices ORDER BY id"
 rows status "SELECT device_id, step_id, status FROM step_status ORDER BY device_id, step_id"
 jq -c -n --slurpfile steps "$tmp/steps.json" --slurpfile edges "$tmp/edges.json" --slurpfile devices "$tmp/devices.json" \
-	--slurpfile status "$tmp/status.json" -f bin/bringup-graph.jq > "$tmp/bringup.json"
+	--slurpfile status "$tmp/status.json" --slurpfile stages "$tmp/stages.json" -f bin/bringup-graph.jq > "$tmp/bringup.json"
 mv "$tmp/bringup.json" docs/graph/bringup.json

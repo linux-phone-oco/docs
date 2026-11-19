@@ -51,7 +51,7 @@ done
 j=docs/graph/bringup.json
 [ -f "$j" ] || fail "no $j: make render writes it from the bring-up rows"
 jq -e . "$j" > /dev/null || fail "$j is not JSON"
-for part in steps edges devices status; do
+for part in stages steps edges devices status; do
 	[ "$(jq -r "has(\"$part\")" "$j")" = true ] || fail "$j has no $part"
 done
 # each part is the rows as lines, compared whole: a step, an edge, a device or a claim missing, extra or changed fails
@@ -62,8 +62,10 @@ same() { # NAME, what the rows give, what the json gives
 }
 # every status the claims carry is one the page draws a colour for
 for s in $(jq -r '.status[].status' "$j" | sort -u); do
-	grep -q "'$s'\|\b$s:" docs/graph.html || fail "docs/graph.html names no colour for the status $s"
+	grep '^var STATUS_COLOUR' docs/graph/graph.js | grep -q "'$s'\|\b$s:" || fail "docs/graph/graph.js names no colour for the status $s"
 done
+same stages "$(tad sql "SELECT id, title, ord FROM bringup_stages ORDER BY id" --format json | jq -c '.[]')" \
+	"$(jq -c '.stages | sort_by(.id)[] | {id, title, ord}' "$j")"
 same steps "$(tad sql "SELECT id, title, stage, done_when, proof, guide FROM bringup_steps ORDER BY id" --format json | jq -c '.[]')" \
 	"$(jq -c '.steps | sort_by(.id)[] | {id, title, stage, done_when, proof, guide}' "$j")"
 same edges "$(tad sql "SELECT step, requires, kind, \"group\" FROM bringup_step_edges ORDER BY step, requires" --format json | jq -c '.[]')" \
@@ -72,11 +74,24 @@ same devices "$(tad sql "SELECT id, name, codename FROM devices ORDER BY id" --f
 	"$(jq -c '.devices | sort_by(.id)[] | {id, name, codename}' "$j")"
 same status "$(tad sql "SELECT device_id, step_id, status FROM step_status ORDER BY device_id, step_id" --format json | jq -c '.[]')" \
 	"$(jq -c '.status | sort_by(.device_id, .step_id)[] | {device_id, step_id, status}' "$j")"
-# the page that draws it reads that file, left to right, at pinned versions, a tab per device and the generic one
-p=docs/graph.html
+# the page that draws it: the libraries at pinned versions in the page, and in its script the file it reads, the layout
+# left to right, a tab per device and the generic one, the goal picker, search and the open-only filter
+p=docs/graph.html; js=docs/graph/graph.js
 [ -f "$p" ] || fail "no $p"
-grep -q 'graph/bringup.json' "$p" || fail "$p does not fetch graph/bringup.json"
-grep -q "rankDir: 'LR'" "$p" || fail "$p does not lay the graph out left to right"
+[ -f "$js" ] || fail "no $js"
+grep -q 'graph/graph.js' "$p" || fail "$p does not load $js"
 grep -Eq 'cytoscape@[0-9]+\.[0-9]+\.[0-9]+' "$p" && grep -Eq 'cytoscape-dagre@[0-9]+\.[0-9]+\.[0-9]+' "$p" && grep -Eq 'dagre@[0-9]+\.[0-9]+\.[0-9]+' "$p" || fail "$p does not pin the versions of cytoscape, dagre and cytoscape-dagre"
-grep -q 'generic' "$p" || fail "$p has no generic tab"
-echo "PASS: $g has the $steps steps in $(q "SELECT count(*) FROM bringup_stages") chapters, each with its needs and what they enable, its proof, helper or gap, guide; world gaps marked"
+grep -q 'graph/bringup.json' "$js" || fail "$js does not fetch graph/bringup.json"
+grep -q "rankDir: 'LR'" "$js" || fail "$js does not lay the graph out left to right"
+grep -q 'GENERIC' "$js" || fail "$js has no generic tab"
+for id in goal search open-only; do grep -q "id=\"$id\"" "$p" || fail "$p has no $id control"; done
+# the scale fixture is deterministic, as long as asked, with every need and claim naming a step, and has no cycle
+fx=$tmp/fixture.json
+sh bin/graph-fixture.sh 300 > "$fx"
+[ "$(jq '.steps | length' "$fx")" = 303 ] || fail "bin/graph-fixture.sh 300 does not give 300 steps and the 3 goals"
+jq -e '[.steps[].id] as $ids | all(.edges[]; (.step as $s | $ids | index($s)) != null and (.requires as $r | $ids | index($r)) != null)
+	and all(.status[]; .step_id as $s | $ids | index($s) != null) and all(.edges[]; .step >= .requires or (.step | startswith("s") | not))' "$fx" > /dev/null || fail "bin/graph-fixture.sh gives an edge or a claim naming no step, or a step needing a later one"
+sh bin/graph-fixture.sh 300 | cmp -s - "$fx" || fail "bin/graph-fixture.sh does not give the same fixture twice"
+[ "$(jq '[.status | group_by(.step_id)[] | select(.[0].status != .[1].status)] | length' "$fx")" -gt 0 ] || fail "bin/graph-fixture.sh gives every step the same status on both devices"
+sh bin/graph-fixture.sh 10000 > /dev/null 2>&1 && fail "bin/graph-fixture.sh 10000 was accepted: its ids would collide"
+echo "PASS: $g has the $steps steps in $(q "SELECT count(*) FROM bringup_stages") chapters, each with its needs and what they enable, its proof, helper or gap, guide; world gaps marked; $j holds every stage, step, edge, device and claim"
