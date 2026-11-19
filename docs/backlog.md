@@ -6974,7 +6974,7 @@ Proof
 : lab-tools attended tests with two fixture device repos and the library: a step copied into both (renamed) is flagged as one pair with both places; a step the library already has is flagged as 'use the library'; a step in one repo only is listed, not flagged; three differing copies are flagged, two differing are listed
 
 Rank
-: 8
+: 9
 
 About
 : bringup-steps
@@ -7049,7 +7049,7 @@ Status
 : open
 
 Note
-: 2026-11-19, orchestration: from surya-lab surya-host-usb-timeline (surya-lab #431). Read-only: the lab machine's journalctl -k --utc since the reboot, for the phone's port found by device.toml's [[host.gadget]] usb_id/serial, never a bus number; the time range passed as arguments, never spliced into a shell string. Printed when no new boot answers in the wait; also an lpoco-attended step later (read_usb_timeline) so a procedure can check it.
+: 2026-11-19, orchestration: from surya-lab surya-host-usb-timeline (surya-lab #431). Read-only: the lab machine's journalctl -k --utc since the reboot, for the phone's port found by device.toml's [[host.gadget]] usb_id/serial, never a bus number; the time range passed as arguments, never spliced into a shell string. Printed when no new boot answers in the wait; also an lpoco-attended step later (read_usb_timeline) so a procedure can check it. 2026-11-19, orchestration: the surya coordinator handed surya-host-usb-timeline over; this item is it (same proof). kernel-try-heartbeat is the inside view of the same hang - build them one after the other.
 
 Opened
 : 2026-11-19
@@ -7158,6 +7158,37 @@ Proof
 
 Rank
 : 3
+
+About
+: bringup-steps
+
+
+<a id="kernel-try-heartbeat"></a>
+### A test kernel's own hook writes breadcrumbs to the ESP from the first second: initramfs start, then uptime and the last kernel lines every 10 s
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: from surya-lab surya-try-heartbeat-to-esp, handed over by the surya coordinator. devlab/src/kernel.rs TIMEOUT_HOOK sleeps 300 s first, so a hang before that leaves nothing. Mount the ESP by pmos_boot_uuid as soon as the block device shows, append 'initramfs start, uptime' to test-boot.stage, then every 10 s uptime and dmesg | tail -3, sync, until PID 1 is systemd. Only the try's second initramfs carries it - stock and kept kernels never run it. Never pmos.debug-shell unattended. Pairs with kernel-try-usb-timeline (the host's side of the same hang): the timeline says frozen/re-enumerating/absent from outside, the heartbeat says how far the kernel got from inside.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools devlab test (surya's test-boot-heartbeat): the try hook's text writes the stage line before any sleep and appends a heartbeat every 10 s until PID 1 is systemd; then one keeper try of a kernel whose initramfs is held leaves the heartbeat on the ESP, read by lpoco lab kernel log
+
+Rank
+: 8
 
 About
 : bringup-steps
