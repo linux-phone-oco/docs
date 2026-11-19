@@ -3968,3 +3968,27 @@ Rejected
 
 About
 : agnostic-layer
+
+---
+
+
+<a id="2026-11-19-hold-test-gets-its-own-lock-folder"></a>
+### Hold test gets its own lock folder
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Took the flaky-test items instead of lpoco-layer-pack (11 slices today, rest open is research). Hold flake: cause shared real state folder, fixed in lab-tools #239 (main e8e65b1), reviewed by programmer, no defects. Bisect flake not reproduced in 12 runs.
+
+Considered
+: A per-test HOME: cli env is a OnceLock, global to the test binary
+
+Rejected
+: Setting HOME for the test: the OnceLock is read once for all tests
+
+About
+: test-hold-parallel-flake
