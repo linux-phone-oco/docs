@@ -6744,7 +6744,7 @@ Proof
 : lab-tools devlab tests: kernel try NAME --cmdline ARGS writes a one-boot entry whose command line carries ARGS, refused when ARGS holds a newline or the entry has none to extend; the next boot is stock
 
 Rank
-: 4
+: 5
 
 About
 : bringup-steps
@@ -6775,7 +6775,7 @@ Proof
 : lab-tools tests: in a fixture device repo, attended new NAME writes procedures/NAME.rs that runs in --dry-run unchanged; with procedures/steps present it is in the cargo block; run NAME passes --dry-run/--log through; check dry-runs every procedure against the stand-in phone and names the failing one
 
 Rank
-: 3
+: 4
 
 About
 : bringup-steps
@@ -6972,7 +6972,7 @@ Proof
 : lab-tools attended tests with two fixture device repos and the library: a step copied into both (renamed) is flagged as one pair with both places; a step the library already has is flagged as 'use the library'; a step in one repo only is listed, not flagged; three differing copies are flagged, two differing are listed
 
 Rank
-: 5
+: 6
 
 About
 : bringup-steps
@@ -7001,6 +7001,37 @@ Device
 
 Proof
 : lab-tools attended tests: export of a fixture procedure writes a LAVA test definition whose run steps are its checks, with the device's values filled from device.toml; it validates against LAVA's schema
+
+About
+: bringup-steps
+
+
+<a id="attended-physical-steps"></a>
+### lpoco-attended: physical steps (press_power, hold_button, unplug_usb, replug_usb, touch, swipe, look_for, listen_for, confirm) over a Bench trait, the person backend only
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: decision 2026-11-19-attended-steps-name-the-physical-act. Build only the trait and the person backend, and the rename; no rig backend. The bench's declared acts come later from lab.toml (per device), so read nothing yet - default person. Before attended-scaffold, so its template is written with physical steps once.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools attended tests: each physical step through the person backend prints its act and what to check and records the answer; --dry-run lists the doer of each act (person); a stand-in Bench that claims unplug_usb is called instead of the person for that act only; ask_author still compiles and maps to confirm
+
+Rank
+: 3
 
 About
 : bringup-steps

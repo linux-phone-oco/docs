@@ -2342,3 +2342,28 @@ Sources
 
 About
 : bringup-steps
+
+
+<a id="attended-physical-steps"></a>
+### attended-physical-steps
+
+Brief
+: Name the physical act, not the person: steps say press, plug, touch, look, listen; a backend per bench does it - a person today, relays, servos, a camera or a microphone when declared
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Question
+: The author, 2026-11-19: can we replace "asking you" with physical attendence needed or something ? in future we will automate this by having servos that will press buttons and usb relay switches , camera, microphone in one stand, so this needs you would make no sense and could be further detailed per option if one has hardware. again for consideration
+
+Found
+: What is: lpoco-attended has ask_author(what to do / what to check) - it names who, not what. Others: labgrid tests call protocols (power, digital output) that drivers bound to a place's declared resources carry out, with a manual driver that asks a person; pdudaemon names relays and ports once in its config; openQA checks a screen by tag against needles; Tapster-style robots tap and swipe screen points through a per-device calibration. Common: the act is named, the doer is chosen by what the bench declares, a person is one backend among others.
+
+Sources
+: labgrid-drivers-strategies,pdudaemon,openqa-needles,tapster-robot,labgrid-environment,openqa-docs
+
+About
+: bringup-steps
