@@ -6085,10 +6085,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-19-hardware-test-layer. Reads only. Written first and seen failing in the suite's host fixture (a test-layer boot with an sxmo process running); on surya as it runs now it says skip and names sxmo, so the step reads unknown until the test layer boots. The layer line goes in the report header. Process names and the target come from the manifest where a device differs. Next: the builder's look-around in lpoco-health's suite (checks/base).
+: Done 2026-11-19, lab-tools-builder (lab-tools #207, main 451e1fe): base check 95-test-layer.sh (test-layer-quiet); LPOCO_BOOTED (test|shell|unknown: cmdline systemd.unit=multi-user.target, then the shell that runs) reaches the checks and every row carries booted. Test boot + shell process fails and names it; shell boot skips; unknown skips 'not known yet'. Proof: health/tests/test_layer_quiet.rs (seen failing first: no such check) and main.rs unit tests. Not yet on surya: the entry that boots the test layer is surya-test-layer-entry; until then the step reads unknown. Shell names are in the script, not the manifest (no SHELL_PROCS: reviewer found no source for it).
 
 Opened
 : 2026-11-19

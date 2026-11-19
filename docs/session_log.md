@@ -3557,3 +3557,27 @@ Done
 
 About
 : agnostic-layer
+
+---
+
+
+<a id="2026-11-19-lab-tools-builder-test-layer-quiet"></a>
+### test-layer-quiet health check
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Built the check and the booted fact, reviewed by the programmer subagent, landed #207, read back from main. Skipped dt-check-image-published (rank 1): it needs a registry to push to and a login, and publishing a public image is the author's to name.
+
+Considered
+: Reading the layer from the command line (the second boot entry's systemd.unit=multi-user.target) so a left-over tinydm session link cannot make a test boot look like a shell boot.
+
+Rejected
+: A SHELL_PROCS override in health.env: the manifest has no such field, so it was unreachable (yagni); layer as a bare string: swapped-argument risk, an enum instead.
+
+About
+: health-test-layer-quiet
