@@ -4133,3 +4133,27 @@ Rejected
 
 About
 : lpoco-attended
+
+---
+
+
+<a id="2026-11-19-builder-attended-read-dmesg-usb"></a>
+### attended library: read_dmesg and wait_for_usb
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Landed read_dmesg and wait_for_usb in lpoco-attended (lab-tools #251) after a review by the programmer subagent; fixed what it found (env var declared in the contract, empty text, error asserts, retry and id tests).
+
+Considered
+: Reading the USB bus from the phone side (devlab lsusb); chose the host's sysfs, which tells a booted gadget from a dead phone without the phone answering.
+
+Rejected
+: A [attended] table in device.toml now: orchestration asked to take values from the existing manifest tables first, so boot_once and back_to_known_good come next and read those.
+
+About
+: attended-step-library
