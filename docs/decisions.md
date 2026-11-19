@@ -2279,3 +2279,31 @@ About
 
 Research
 : attended-device-values
+
+
+<a id="2026-11-19-procedures-reflect-and-lift"></a>
+### 2026-11-19-procedures-reflect-and-lift
+
+Brief
+: Procedures start as a lane's makeshift and are lifted by a loop: lpoco attended lift lists device steps beside the library and flags near-duplicates; patrol files lift items; useful ones go upstream
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: Follows 2026-11-19-procedures-chain-small-device-agnostic-steps (#638), -procedures-one-shape (#646), -procedure-values-from-the-named-device (#651) and ideal-agent #109. (1) The easy start comes first: attended-device-values, then attended-scaffold (lpoco attended new|run|check); a lane writes a makeshift step in its procedures/steps freely. (2) The reflect loop: lpoco attended lift reads every device repo's procedures/steps (the repos device-template knows) and the library, lists each step with its places, and flags near-duplicates by their bodies, not their names; two copies the same lift at once, copies that differ lift at three (the rule of three), or at two when a lane asks. (3) The round: patrol runs lpoco attended lift each round and files 'lift STEP into lpoco-attended' on the lab-tools backlog, naming the copies; the lab-tools builder lifts it keyed to a bring-up step with its values as keys, and the lanes' copies are replaced by the library step in their next change. (4) Beyond the project: a procedure or check useful to others goes upstream where others' labs run it - a probe or boot check as a Linaro test-definition or KernelCI test, a chip's bring-up as the chip's series and its row (decision 2026-11-19-chip-knowledge-upstream-first-docs-indexes-by-part); lpoco attended export (later) writes a procedure's checks as a LAVA test definition. Nothing is mailed or opened upstream without the author's word.
+
+Why
+: The author's question, 2026-11-19 (research procedures-reflect-and-lift). The rules were in place but the lift relied on someone noticing; two lanes already wrote boot_once, wait_for_usb, back_to_known_good and read_dmesg inline before the library had them.
+
+Rejected
+: Lifting by memory or by a brief's line: it held for nobody in a day. Lifting every step at its first copy: a one-device makeshift becomes library weight. Matching by name: lanes name the same step differently (wait_for_phone vs shell_answers). Our own upstream format for procedures: Linaro test-definitions and KernelCI already run board-agnostic tests in others' labs.
+
+About
+: bringup-steps
+
+Research
+: procedures-reflect-and-lift

@@ -64,6 +64,12 @@ Judge only after measuring; what is not measured is "not known yet".
    docs' briefs; `scripts/read-weight` on each transcript started since your last round
    (`find ~/.claude/projects/-home-mll -name '*.jsonl' -newermt '-6 hours'`).
 
+7. **Steps to lift** (once lab-tools' `lpoco attended lift` exists): run it with `--format csv`. Each flagged
+   pair or triple is a sign, filed on docs' backlog for lab-tools as `lift-STEP` ("lift STEP into lpoco-attended",
+   needs build, naming each copy's repo and path), unless such an item is open already. Two copies the same,
+   or three that differ, are flagged by the tool; you add nothing by judgement (decision
+   2026-11-19-procedures-reflect-and-lift).
+
 ## Where each sign is filed
 
 From your worktree of that base, after `tad q find --text ...` shows it is not already open:

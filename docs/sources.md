@@ -7408,3 +7408,91 @@ By
 
 Takes
 : a test gets its target from one environment file named on the command line, never by guessing; drivers read their resource values from it
+
+
+<a id="rule-of-three"></a>
+### Refactoring: the rule of three (Don Roberts, in Fowler's Refactoring)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://martinfowler.com/books/refactoring.html
+
+Author
+: Martin Fowler
+
+Year
+: 2018
+
+By
+: orchestration-renewed
+
+Takes
+: the first time write it, the second time wince at the duplicate, the third time refactor: copies that differ are lifted at three, not two
+
+
+<a id="pmd-cpd"></a>
+### PMD CPD: the copy-paste detector, token-based, across files and languages (Rust included)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://pmd.github.io/pmd/pmd_userdocs_cpd.html
+
+Author
+: PMD
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: near-duplicates are found by token runs, not by names; a report lists each pair with its places - the shape of a lift check
+
+
+<a id="linaro-test-definitions"></a>
+### Linaro test-definitions: shared automated tests LAVA runs on any board
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/Linaro/test-definitions
+
+Author
+: Linaro
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: a shared upstream home for board-agnostic test procedures, by pull request; a procedure useful to others can go there as a test definition
+
+
+<a id="kernelci-tests"></a>
+### KernelCI: tests and how to add one
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.kernelci.org/
+
+Author
+: KernelCI
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: kernel tests run per board on lab devices; a probe or boot check proven on our phones can be offered as a KernelCI test, with the board in a lab
