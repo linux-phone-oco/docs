@@ -3767,3 +3767,21 @@ Rejected
 
 About
 : lpoco-layer-pack
+
+---
+
+
+<a id="2026-11-19-layer-pack-run-test-with-a-stand-in-nfpm"></a>
+### layer pack run test with a stand-in nfpm
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lab-tools #221: pack_run.rs, three tests of lpoco layer pack against a fake nfpm script; clippy ptr_arg and PR title kind fixed after CI refused the first push. Programmer review skipped (test-only change).
+
+About
+: lpoco-layer-pack
