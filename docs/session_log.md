@@ -3677,3 +3677,27 @@ Rejected
 
 About
 : apk-pages-origin-licence
+
+---
+
+
+<a id="2026-11-19-layer-table-in-manifest"></a>
+### layer table in manifest
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Typed [layer] in lpoco-manifest, schema projected, landed as lab-tools #212.
+
+Considered
+: Reviewer's points: fixed name, path, token, boot-table and test-coverage gaps.
+
+Rejected
+: A fixture file for [layer]: inline text serves the tests; a lab fixture comes with surya-layer-declared.
+
+About
+: layer-table-in-manifest

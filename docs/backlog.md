@@ -6135,7 +6135,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
+
+Note
+: 2026-11-19, lab-tools-builder: done (lab-tools #212). [layer] typed in manifest/src/layer.rs: name, needs tokens, kernel (tree, tag, config, dtbs), boot method (efi-kernel-install, android-bootimg needs [boot]), firmware method (extract-from-partitions, files), initramfs modules, [[layer.file]] with kind and plain unique /usr destination. Proof: manifest/tests/schema.rs layer tests (seen failing first) and schema_is_current. Next: lpoco-layer-pack, surya-layer-declared, walleye-layer-declared.
 
 Opened
 : 2026-11-19
