@@ -6745,7 +6745,7 @@ Proof
 : lab-tools devlab tests: kernel try NAME --cmdline ARGS writes a one-boot entry whose command line carries ARGS, refused when ARGS holds a newline or the entry has none to extend; the next boot is stock
 
 Rank
-: 5
+: 7
 
 About
 : bringup-steps
@@ -6974,7 +6974,7 @@ Proof
 : lab-tools attended tests with two fixture device repos and the library: a step copied into both (renamed) is flagged as one pair with both places; a step the library already has is flagged as 'use the library'; a step in one repo only is listed, not flagged; three differing copies are flagged, two differing are listed
 
 Rank
-: 6
+: 8
 
 About
 : bringup-steps
@@ -7037,3 +7037,65 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="kernel-try-usb-timeline"></a>
+### lpoco lab kernel try (and any reboot it waits on) reports the host's USB timeline for the phone: frozen, re-enumerating or absent
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: from surya-lab surya-host-usb-timeline (surya-lab #431). Read-only: the lab machine's journalctl -k --utc since the reboot, for the phone's port found by device.toml's [[host.gadget]] usb_id/serial, never a bus number; the time range passed as arguments, never spliced into a shell string. Printed when no new boot answers in the wait; also an lpoco-attended step later (read_usb_timeline) so a procedure can check it.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools devlab test kernel-try-reports-usb-timeline: fed the host journal excerpt of 2026-11-19 14:25-14:48 (surya-lab research 2026-11-19-calls4-hang-was-the-reboot-out-of-calls-plus), it says 'frozen: device N connected since T, no re-enumeration'; a normal boot's two enumerations 12 s apart read as re-enumerating; no events read as absent
+
+Rank
+: 6
+
+About
+: bringup-steps
+
+
+<a id="host-clones-fresh"></a>
+### lpoco host keeps the shared clones fresh: a user timer fast-forwards each clean main checkout under ~/Projects to origin/main
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: the sign - every launcher's Brief: names a file in the shared docs clone, and that clone was 41 commits behind (at #617): the surya builder read builder.md without the surya-builder row docs #643 had added. Nothing refreshes shared clones; patrol's clones-check only reports. Fast-forwarded by hand once. A user timer (no root) declared in lab.toml, prepared by lpoco host like the tools; then a lab-machine change to declare it (orchestration holds lab.toml).
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools host tests: lab.toml declares [clones] (folders, every); plan lists the user timer; the job fetches and fast-forwards a clone that is clean and on main, leaves a dirty, detached or diverged one alone and names it; after prepare, clones-check reports none behind
+
+Rank
+: 5
+
+About
+: agent-folder
