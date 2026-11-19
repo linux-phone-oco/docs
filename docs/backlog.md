@@ -5356,10 +5356,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: From the upstreams lane (docs #568, research/upstream-forks/2026-11-19/dt-checks-in-a-container.md): the kernel's dt checks run in a container with nothing Python on the host - docker is installed, the image is alpine:edge with dtschema 2026.09, and the PMIC watchdog series passes with a negative test proving the check is real. Make it a verb (lpoco-bringup dt-check, or a lab-tools script if a verb is too much): build the image once and pin it by digest, mount the source read-only, output to scratch; take the interim one-liner from the research file as the seed. About an hour. Used by the upstreams lane before each kernel series goes out.
+: Done: lab-tools #199 (main 6b9d527): lpoco-bringup dt-check binding|dtbs. Proof: bringup/tests/dt_check.rs, 6 tests seen failing first (digest-only image, source :ro, output under --out, make options refused, checker failure ends 1 with its lines, docker ending before a verdict is an error). Not measured: a real container run with the verb (fake docker in tests); the digest to pin is alpine@sha256:020dfcba... (edge, 3 months old) - the caller names it with --image or LPOCO_DT_IMAGE. Release PR left for the owner.
 
 Opened
 : 2026-11-19
