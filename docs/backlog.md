@@ -6655,7 +6655,7 @@ About
 
 
 <a id="lpoco-attended"></a>
-### lpoco attended: one shared runner for the sequences a person attends - each lane writes a sequence file, not a program
+### lpoco attended: a Rust library so a lane's attended procedure is a short entry file of named steps that reads like a script
 
 Project
 : linux-phone-oco/lab-tools
@@ -6664,7 +6664,7 @@ Status
 : open
 
 Note
-: 2026-11-19, orchestration: asked by the Top Coordinator after the author's rule (ideal-agent decision 2026-11-19-attend-only-when-one-launch-away, practice 11-heads-up): lanes ask the author to attend only when the attended sequence is prepared, tested and one launch away. Look around first (rust-script files vs a sequence file the lpoco runner executes; pmbootstrap ci, LAVA test definitions, bats, just) and record it as research. Needs: steps (run on the host or the phone through devlab), checks that stop the run, prompt-and-wait points for the person (what to do, what to check, the answer recorded), --dry-run that walks it without touching anything, a log a lane can file. Schema for the file in lab-tools so lanes validate before asking. Related: bringup-step-runner (unattended steps) - share the step format if it fits.
+: 2026-11-19, orchestration: asked by the Top Coordinator after the author's rule (ideal-agent decision 2026-11-19-attend-only-when-one-launch-away, practice 11-heads-up): lanes ask the author to attend only when the attended sequence is prepared, tested and one launch away. Shape, the author's words relayed verbatim: "make sure the rust program reads cleanly and simply on the top entry file level, like any other simple scripted procedure would read". So: a lab-tools library crate; a lane's entry file (rust-script, or a small bin) is a plain list of named steps - step("boot pmicwdt kernel", boot_kernel(..)), ask_author("what to do, what to check"), check(..) - each stopping the run on failure, the whole file readable in one screen like a shell script without being one. Plumbing, parsing, retries, the log a lane files, and --dry-run (walks every step, touches nothing) live in the library; the phone is reached through devlab. Look around first (rust-script, xshell/duct, pmbootstrap ci, LAVA test definitions) and record it as research. Related: bringup-step-runner (unattended steps) - share the step type if it fits.
 
 Opened
 : 2026-11-19
