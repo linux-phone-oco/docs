@@ -7579,7 +7579,7 @@ Status
 : open
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-bringup-graph-cytoscape-dagre. 2026-11-19, orchestration: the author added "and be switched by a subtab per device, or something ?": a sub-tab per device read from the devices table (not hard-coded) plus a generic tab with no status, the goal picker inside each tab, each tab its own link (#device).
+: 2026-11-19, orchestration: decision 2026-11-19-bringup-graph-cytoscape-dagre. 2026-11-19, orchestration: the author added "and be switched by a subtab per device, or something ?": a sub-tab per device read from the devices table (not hard-coded) plus a generic tab with no status, the goal picker inside each tab, each tab its own link (#device). 2026-11-19, orchestration: scale - the author expects the catalogue past a thousand steps ("over a thoughthand at least"): open folded with stages as compound nodes, depth limit and show more; search reveals a step's chain to the goal; an open-only filter; layout on the visible part only; a generated 1500-step fixture measures dagre on full and folded views. ELK (rejected at 118 steps) is revisited in the decision from those numbers.
 
 Opened
 : 2026-11-19
