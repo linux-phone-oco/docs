@@ -6744,7 +6744,7 @@ Proof
 : lab-tools devlab tests: kernel try NAME --cmdline ARGS writes a one-boot entry whose command line carries ARGS, refused when ARGS holds a newline or the entry has none to extend; the next boot is stock
 
 Rank
-: 3
+: 4
 
 About
 : bringup-steps
@@ -6775,7 +6775,7 @@ Proof
 : lab-tools tests: in a fixture device repo, attended new NAME writes procedures/NAME.rs that runs in --dry-run unchanged; with procedures/steps present it is in the cargo block; run NAME passes --dry-run/--log through; check dry-runs every procedure against the stand-in phone and names the failing one
 
 Rank
-: 2
+: 3
 
 About
 : bringup-steps
@@ -6914,3 +6914,34 @@ Proof
 
 About
 : chip-layer
+
+
+<a id="attended-device-values"></a>
+### lpoco-attended loads the named device's device.toml: steps read keys, a missing key fails the dry run, devlab gets --device
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: decision 2026-11-19-procedure-values-from-the-named-device (amends docs #638 and #646). Before attended-scaffold, so the scaffold's template names no values. Reuse lpoco-manifest's loader and the existing tables; add a key only where none holds the fact. boot_once and back_to_known_good (in progress) take their kernel names from the kernel entries and the kept kernel there.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools attended tests with two fixture device repos: procedure(name, device) loads the named one's device.toml; wait_for_usb() and check_probe read their keys from it; --dry-run with a key missing fails naming the key and touches nothing; phone() runs devlab with that device's --device even when run from the other repo
+
+Rank
+: 2
+
+About
+: bringup-steps

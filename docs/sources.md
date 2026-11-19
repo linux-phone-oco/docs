@@ -7342,3 +7342,69 @@ By
 
 Takes
 : a board file names its family; one family file serves many boards; no chip file
+
+
+<a id="lava-device-dictionary"></a>
+### LAVA: device dictionaries - per-device values over shared device-type templates
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.lavasoftware.org/lava/glossary.html#term-device-dictionary
+
+Author
+: Linaro
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: a test job names the device; the job's commands read that device's dictionary (serial, power, boot commands); the job never carries the values, and a missing key fails before the device is touched
+
+
+<a id="ansible-host-vars"></a>
+### Ansible: host_vars and group_vars - variables per host, read by roles
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html#organizing-host-and-group-variables
+
+Author
+: Red Hat
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: roles name variables, the inventory supplies them per host; the playbook names the target host explicitly; --check mode reports undefined variables
+
+
+<a id="labgrid-environment"></a>
+### labgrid: the environment configuration - targets, resources and drivers per place
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://labgrid.readthedocs.io/en/latest/configuration.html#environment-configuration
+
+Author
+: Pengutronix
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: a test gets its target from one environment file named on the command line, never by guessing; drivers read their resource values from it

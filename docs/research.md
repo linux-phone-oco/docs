@@ -2292,3 +2292,28 @@ Sources
 
 About
 : chip-layer
+
+
+<a id="attended-device-values"></a>
+### attended-device-values
+
+Brief
+: Per-device values live in the device's own file, the procedure names the device, steps name keys; LAVA, Ansible and labgrid all fail early on a missing key and never guess the target
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Question
+: The author, 2026-11-19: how per device values that are needed for those procedures are stored, where, and how they are supplied to run a procedure ?
+
+Found
+: What is (lab-tools main): procedure(name, device) uses device only as a log label; library steps take plain values (check_probe(driver), wait_for_usb(id, tries, every), wait_for_phone(tries, every)); so lanes hard-code them (surya-lab session.rs: const PMICWDT_KERNEL = "calls4+", WAY_BACK, STANDBY); devlab finds device.toml in the current folder or above, so which phone it reaches depends on where it runs. Others: a LAVA job names the device and its commands read the device dictionary; Ansible roles name variables that host_vars supply, the playbook names its hosts, --check reports undefined ones; labgrid takes one environment file on the command line and its drivers read resources from it. Common: values in the target's own file, the procedure names the target, steps name keys, a missing key fails before anything is touched.
+
+Sources
+: lava-device-dictionary,ansible-host-vars,labgrid-environment
+
+About
+: bringup-steps
