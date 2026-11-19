@@ -6686,3 +6686,65 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="attended-step-library"></a>
+### lpoco-attended library steps boot_once, wait_for_usb, back_to_known_good, read_dmesg - keyed to bring-up steps, values from device.toml
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: the surya builder wrote these four inline in surya-lab #394 (lab/attended, on lpoco-attended-v0.29.0); walleye's display and touch programs need the same four (relayed by the Top Coordinator). Take them from surya-lab's lab/attended as the first reference, generalise by decision 2026-11-19-procedures-chain-small-device-agnostic-steps (docs #638): one Step type with lpoco-attended's .keyed(bring-up id); boot_once and back_to_known_good go through lpoco lab (kernel try / the kept kernel), never around it.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools attended tests: each step against a stand-in phone reads its values from a fixture device.toml (no device value in the library), names its bring-up step id, runs in --dry-run without touching anything; surya-lab lab/attended uses them in place of its inline copies
+
+Rank
+: 1
+
+About
+: bringup-steps
+
+
+<a id="kernel-try-cmdline"></a>
+### lpoco lab kernel try --cmdline: boot an entry once with an extra or replaced kernel command line
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: the surya keeper's real run of the attended program may need it if kernel try calls4+ refuses (relayed by the Top Coordinator). lpoco 0.24.0's kernel try has only --dtb and --device. Ready it before the keeper's run.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools devlab tests: kernel try NAME --cmdline ARGS writes a one-boot entry whose command line carries ARGS, refused when ARGS holds a newline or the entry has none to extend; the next boot is stock
+
+Rank
+: 2
+
+About
+: bringup-steps
