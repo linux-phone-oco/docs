@@ -5485,6 +5485,9 @@ Device
 Proof
 : the check fails on an APKBUILD with no license= or origin line and passes on packaging/; the published page shows sxmo-utils with AGPL-3.0-only, its origin and the tag's source link
 
+Rank
+: 5
+
 About
 : nura-relation
 
@@ -5550,6 +5553,9 @@ Opened
 
 Proof
 : a unit test: with the base entry named nura.conf and the title Nura, kernel install writes a one-try entry from it and the sort test still puts 0-test- first
+
+Rank
+: 10
 
 About
 : nura-relation
