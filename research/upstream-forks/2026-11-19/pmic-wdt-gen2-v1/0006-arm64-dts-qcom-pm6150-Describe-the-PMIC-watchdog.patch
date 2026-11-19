@@ -1,0 +1,34 @@
+From 2bb45656b4e340855591477783d8e61edf15dcbe Mon Sep 17 00:00:00 2001
+From: lane-coordinator <agent@creation-guidelines>
+Date: Thu, 19 Nov 2026 05:29:35 +0100
+Subject: [PATCH 6/6] arm64: dts: qcom: pm6150: Describe the PMIC watchdog
+
+The PON of PM6150 carries the same PMIC watchdog as PM8998. Describe
+it, with its bark interrupt, and leave it disabled for boards to enable.
+
+Written with an AI coding assistant (Claude); reviewed and tested as
+described in the cover letter.
+---
+ arch/arm64/boot/dts/qcom/pm6150.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/pm6150.dtsi b/arch/arm64/boot/dts/qcom/pm6150.dtsi
+index 59524609f..2464d3856 100644
+--- a/arch/arm64/boot/dts/qcom/pm6150.dtsi
++++ b/arch/arm64/boot/dts/qcom/pm6150.dtsi
+@@ -61,6 +61,12 @@ pm6150_resin: resin {
+ 				bias-pull-up;
+ 				status = "disabled";
+ 			};
++
++			pm6150_wdt: watchdog {
++				compatible = "qcom,pm6150-wdt", "qcom,pm8998-wdt";
++				interrupts = <0x0 0x8 6 IRQ_TYPE_EDGE_RISING>;
++				status = "disabled";
++			};
+ 		};
+ 
+ 		pm6150_vbus: usb-vbus-regulator@1100 {
+-- 
+2.56.1
+

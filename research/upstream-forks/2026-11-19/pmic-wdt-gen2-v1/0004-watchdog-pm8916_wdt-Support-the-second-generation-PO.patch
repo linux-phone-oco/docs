@@ -1,28 +1,28 @@
-From 59df2cc83a05d4b1f891b328016d1be86f414968 Mon Sep 17 00:00:00 2001
+From cc3933713ed485b03094826fcbbca13e11668651 Mon Sep 17 00:00:00 2001
 From: orchestration-renewed <agent@creation-guidelines>
 Date: Wed, 18 Nov 2026 13:30:46 +0100
-Subject: [RFC PATCH 2/4] watchdog: pm8916_wdt: Support the second generation
- PON
+Subject: [PATCH 4/6] watchdog: pm8916_wdt: Support the second generation PON
 
 PM8998 and later PMICs (PM6150, PM8150...) carry the same PMIC watchdog
 in their PON_HLOS peripheral: the timers, control and pet registers are
 at the same offsets (0x54-0x58), while the power-off reasons moved to
-0xc5 with the faults split into registers of their own.
+0xc5, with the faults split into registers of their own.
 
 Read the power-off reason from where the PMIC keeps it, through match
-data, and only the first reason register on the second generation, where
-PMIC_WD is reported.
+data, and only the first reason register on the second generation,
+where PMIC_WD is reported.
 
-Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Written with an AI coding assistant (Claude); reviewed and tested as
+described in the cover letter.
 ---
  drivers/watchdog/pm8916_wdt.c | 31 +++++++++++++++++++++++++++----
  1 file changed, 27 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/watchdog/pm8916_wdt.c b/drivers/watchdog/pm8916_wdt.c
-index 007ed139a..b0803c624 100644
+index 11b40e0d1..e88c150b5 100644
 --- a/drivers/watchdog/pm8916_wdt.c
 +++ b/drivers/watchdog/pm8916_wdt.c
-@@ -15,6 +15,9 @@
+@@ -16,6 +16,9 @@
  #define PON_POFF_REASON2_UVLO		BIT(5)
  #define PON_POFF_REASON2_OTST3		BIT(6)
  
@@ -32,7 +32,7 @@ index 007ed139a..b0803c624 100644
  #define PON_INT_RT_STS			0x10
  #define PMIC_WD_BARK_STS_BIT		BIT(6)
  
-@@ -36,6 +39,11 @@
+@@ -38,6 +41,11 @@
  #define PM8916_WDT_MIN_TIMEOUT		1
  #define PM8916_WDT_MAX_TIMEOUT		127
  
@@ -44,7 +44,7 @@ index 007ed139a..b0803c624 100644
  struct pm8916_wdt {
  	struct regmap *regmap;
  	struct watchdog_device wdev;
-@@ -141,10 +149,15 @@ static int pm8916_wdt_probe(struct platform_device *pdev)
+@@ -194,10 +202,15 @@ static int pm8916_wdt_probe(struct platform_device *pdev)
  {
  	struct device *dev = &pdev->dev;
  	struct pm8916_wdt *wdt;
@@ -59,9 +59,9 @@ index 007ed139a..b0803c624 100644
 +	if (!data)
 +		return -ENODEV;
  
- 	wdt = devm_kzalloc(dev, sizeof(*wdt), GFP_KERNEL);
+ 	wdt = devm_kzalloc_obj(dev, *wdt);
  	if (!wdt)
-@@ -185,8 +198,8 @@ static int pm8916_wdt_probe(struct platform_device *pdev)
+@@ -238,8 +251,8 @@ static int pm8916_wdt_probe(struct platform_device *pdev)
  		wdt->wdev.info = &pm8916_wdt_ident;
  	}
  
@@ -72,8 +72,8 @@ index 007ed139a..b0803c624 100644
  	if (err) {
  		dev_err(dev, "failed to read POFF reason: %d\n", err);
  		return err;
-@@ -256,8 +269,18 @@ static int __maybe_unused pm8916_wdt_resume(struct device *dev)
- static SIMPLE_DEV_PM_OPS(pm8916_wdt_pm_ops, pm8916_wdt_suspend,
+@@ -313,8 +326,18 @@ static int pm8916_wdt_resume(struct device *dev)
+ static DEFINE_SIMPLE_DEV_PM_OPS(pm8916_wdt_pm_ops, pm8916_wdt_suspend,
  			 pm8916_wdt_resume);
  
 +static const struct pm8916_wdt_data pm8916_wdt_data = {

@@ -1,0 +1,34 @@
+From 74d01c68106acb7a5bb0ae6c5e3657a9d633212e Mon Sep 17 00:00:00 2001
+From: lane-coordinator <agent@creation-guidelines>
+Date: Thu, 19 Nov 2026 05:29:30 +0100
+Subject: [PATCH 5/6] arm64: dts: qcom: pm8998: Describe the PMIC watchdog
+
+The PON of PM8998 carries the PMIC watchdog. Describe it, with its bark
+interrupt, and leave it disabled for boards to enable.
+
+Written with an AI coding assistant (Claude); reviewed and tested as
+described in the cover letter.
+---
+ arch/arm64/boot/dts/qcom/pm8998.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/pm8998.dtsi b/arch/arm64/boot/dts/qcom/pm8998.dtsi
+index 3ecb33059..8b8730347 100644
+--- a/arch/arm64/boot/dts/qcom/pm8998.dtsi
++++ b/arch/arm64/boot/dts/qcom/pm8998.dtsi
+@@ -59,6 +59,12 @@ pm8998_resin: resin {
+ 				bias-pull-up;
+ 				status = "disabled";
+ 			};
++
++			pm8998_wdt: watchdog {
++				compatible = "qcom,pm8998-wdt";
++				interrupts = <0x0 0x8 6 IRQ_TYPE_EDGE_RISING>;
++				status = "disabled";
++			};
+ 		};
+ 
+ 		pm8998_temp: temp-alarm@2400 {
+-- 
+2.56.1
+

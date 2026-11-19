@@ -1,0 +1,42 @@
+From df83e03a8cd652bdc81bf0145640e2d197778dfe Mon Sep 17 00:00:00 2001
+From: lane-coordinator <agent@creation-guidelines>
+Date: Thu, 19 Nov 2026 05:29:25 +0100
+Subject: [PATCH 3/6] dt-bindings: watchdog: qcom,pm8916-wdt: Add PM8998 and
+ PM6150
+
+The PMIC watchdog of the PON block is also present in the second
+generation PON of PM8998 and later PMICs, at the same offsets in the
+PON_HLOS peripheral; only the power-off reason registers moved, so it
+needs a compatible of its own.
+
+PM6150 carries the same second generation PON: document it with
+PM8998 as the fallback.
+
+Written with an AI coding assistant (Claude); reviewed and tested as
+described in the cover letter.
+---
+ .../devicetree/bindings/watchdog/qcom,pm8916-wdt.yaml     | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/watchdog/qcom,pm8916-wdt.yaml b/Documentation/devicetree/bindings/watchdog/qcom,pm8916-wdt.yaml
+index a519422c3..56cfb2f69 100644
+--- a/Documentation/devicetree/bindings/watchdog/qcom,pm8916-wdt.yaml
++++ b/Documentation/devicetree/bindings/watchdog/qcom,pm8916-wdt.yaml
+@@ -14,7 +14,13 @@ allOf:
+ 
+ properties:
+   compatible:
+-    const: qcom,pm8916-wdt
++    oneOf:
++      - enum:
++          - qcom,pm8916-wdt
++          - qcom,pm8998-wdt
++      - items:
++          - const: qcom,pm6150-wdt
++          - const: qcom,pm8998-wdt
+ 
+   interrupts:
+     maxItems: 1
+-- 
+2.56.1
+

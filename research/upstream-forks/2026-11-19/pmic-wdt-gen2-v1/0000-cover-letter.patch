@@ -1,0 +1,65 @@
+From 2bb45656b4e340855591477783d8e61edf15dcbe Mon Sep 17 00:00:00 2001
+From: lane-coordinator <agent@creation-guidelines>
+Date: Thu, 19 Nov 2026 05:30:43 +0100
+Subject: [PATCH 0/6] watchdog: pm8916_wdt: Second generation PON (PM8998, PM6150)
+
+The PMIC watchdog of the PON block is also found in the second
+generation PON of PM8998 and later PMICs, at the same register offsets;
+only the power-off reason registers moved. This series adds support for
+it, and fixes two things found while bringing it up on two phones:
+
+1. The S2 reset type is written blind at probe, while S2 may already be
+   enabled by the bootloader. The PON takes a new type only while S2 is
+   disabled, so the firmware's type can stay. Disable S2 around the
+   write and read the type back.
+
+2. S2 outlives a reset of the SoC. Rebooted with the watchdog open, a
+   following kernel without this driver is reset every timeout seconds.
+   Stop the watchdog on reboot and on unregister.
+
+Then the PM8998 compatible (PM6150 with PM8998 as fallback), the driver
+support, and the nodes in pm8998.dtsi and pm6150.dtsi, left disabled.
+
+Testing, on hardware:
+
+- POCO X3 NFC (SM7150, PM6150), on the sm7150-mainline tree (7.1-based)
+  with these patches backported unchanged: the driver probes; the
+  bootloader had left the S2 type at 0x01 (warm reset), patch 1 set it
+  to 0x07 and the read-back passed; a bite restarts the phone. After a
+  bite S2 stays enabled, and booting a kernel without this driver then
+  looped until a full power-off: the reason for patch 2.
+- Pixel 2 (MSM8998, PM8998), on v7.3 with patch 4 and the pm8998 node:
+  the watchdog bites 20 s after being armed for 20 s, but the phone
+  powered off rather than restarting. Patch 1 is meant for that case and
+  has not yet been tested on this phone.
+
+Rebased onto next-20261118 for sending: built with LLVM W=1, checkpatch
+--strict, dt_binding_check for the binding, and CHECK_DTBS on
+msm8998-oneplus-cheeseburger, sm7125-xiaomi-joyeuse and
+sc7180-acer-aspire1 with the new nodes enabled: no new warnings.
+
+These patches were written with an AI coding assistant (Claude),
+reviewed by me, and tested on the phones above.
+
+lane-coordinator (5):
+  watchdog: pm8916_wdt: Set the reset type with S2 disabled, and check
+    it
+  watchdog: pm8916_wdt: Stop the watchdog on reboot and unregister
+  dt-bindings: watchdog: qcom,pm8916-wdt: Add PM8998 and PM6150
+  arm64: dts: qcom: pm8998: Describe the PMIC watchdog
+  arm64: dts: qcom: pm6150: Describe the PMIC watchdog
+
+orchestration-renewed (1):
+  watchdog: pm8916_wdt: Support the second generation PON
+
+ .../bindings/watchdog/qcom,pm8916-wdt.yaml    |  8 +-
+ arch/arm64/boot/dts/qcom/pm6150.dtsi          |  6 ++
+ arch/arm64/boot/dts/qcom/pm8998.dtsi          |  6 ++
+ drivers/watchdog/pm8916_wdt.c                 | 98 +++++++++++++++++--
+ 4 files changed, 108 insertions(+), 10 deletions(-)
+
+
+base-commit: e8017d29067fd1310a65c3494ce1a1b492adbac6
+-- 
+2.56.1
+

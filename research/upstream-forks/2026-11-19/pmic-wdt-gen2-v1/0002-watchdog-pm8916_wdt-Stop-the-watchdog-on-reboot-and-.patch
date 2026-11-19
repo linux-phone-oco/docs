@@ -1,0 +1,43 @@
+From 5e2d22ba640ecf952b23ed50c87c01835ddfcb8b Mon Sep 17 00:00:00 2001
+From: lane-coordinator <agent@creation-guidelines>
+Date: Wed, 18 Nov 2026 20:15:34 +0100
+Subject: [PATCH 2/6] watchdog: pm8916_wdt: Stop the watchdog on reboot and
+ unregister
+
+The PMIC watchdog's S2 stage outlives a reset of the SoC: its enable
+bit and timers stay set across a reboot. Rebooted with the watchdog
+open, the next kernel finds it running, and a kernel without this
+driver is reset every timeout seconds (seen on a PM6150: a reboot loop
+that only a full power-off ended).
+
+Stop it on an orderly reboot or shutdown and when the device goes away.
+A bite still leaves S2 enabled; the next kernel's driver finds it
+running and keeps petting it until userspace takes over.
+
+Written with an AI coding assistant (Claude); reviewed and tested as
+described in the cover letter.
+---
+ drivers/watchdog/pm8916_wdt.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/watchdog/pm8916_wdt.c b/drivers/watchdog/pm8916_wdt.c
+index c221c4adb..11b40e0d1 100644
+--- a/drivers/watchdog/pm8916_wdt.c
++++ b/drivers/watchdog/pm8916_wdt.c
+@@ -280,6 +280,13 @@ static int pm8916_wdt_probe(struct platform_device *pdev)
+ 	watchdog_init_timeout(&wdt->wdev, 0, dev);
+ 	pm8916_wdt_configure_timers(&wdt->wdev);
+ 
++	/*
++	 * S2 outlives a reset of the SoC: left enabled, it bites the next
++	 * kernel, and one without this driver resets every timeout seconds.
++	 */
++	watchdog_stop_on_reboot(&wdt->wdev);
++	watchdog_stop_on_unregister(&wdt->wdev);
++
+ 	return devm_watchdog_register_device(dev, &wdt->wdev);
+ }
+ 
+-- 
+2.56.1
+
