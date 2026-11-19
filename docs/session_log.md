@@ -4301,3 +4301,27 @@ Rejected
 
 About
 : attended-scaffold
+
+---
+
+
+<a id="2026-11-19-lab-tools-builder-manifest-keys-for-attended"></a>
+### lab-tools-builder: manifest keys for attended procedures, v0.32.0
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: manifest-attended-keys built, reviewed, landed (#270) and released (v0.32.0).
+
+Considered
+: a per-call time limit for attended calls (branch builder-attended-call-limit in lab-tools, local only)
+
+Rejected
+: Landing the call limit: review found the 600 s default can cut devlab's own boot wait (it waits up to 600 s) and process_group(0) stops Ctrl-C reaching the call; needs a per-step deadline and a signal forward first. Not requested, so parked.
+
+About
+: manifest-attended-keys

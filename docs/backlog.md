@@ -7139,10 +7139,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-attended-keys-in-the-manifest. Blocks walleye-try-settings-into-device-toml (google-walleye-lab #506) and surya's consts move. Then release, and tell both coordinators the tag.
+: 2026-11-19, lab-tools-builder: landed lab-tools #270 (main df874ae), released as v0.32.0 (tags lpoco-manifest-v0.32.0, lpoco-attended-v0.32.0). [connection] shell_port/shell_address, [tools] adb/fastboot, [health] battery_floor_mv + battery_source (fastboot-getvar; the two go together), [boot] device_wait/back_wait, [images] dir + [images.NAME] path/sha256, [procedures.NAME] numbers and words; lpoco-attended dev("a.b") and proc("key") (NAME = procedure name as lowercase words joined by -) give a Val (.int/.float/.text); a missing or wrong-kind key ends the run exit 2 naming it - found by --dry-run only when read outside a step closure. Proof: manifest/tests/attended_keys.rs (6), attended/tests/attended.rs a_procedure_reads_the_devices_keys_and_its_own_values_by_name, a_missing_key_fails_the_dry_run_naming_it_before_any_step; device.schema.json regenerated. Review fixed: dotted procedure keys refused, empty procedure name stops, one name rule (is_kernel_name). Known: a misspelt key directly under [images] is refused but the error does not name it (flatten); a misspelt [images.X] table is taken as an image named X; inf/nan, empty tool paths and battery_floor_mv = 0 parse. Open: no per-image sha256 check against the file yet; no device repo declares the keys yet (walleye/surya moves).
 
 Opened
 : 2026-11-19
