@@ -2507,3 +2507,28 @@ About
 
 Research
 : dagre-lays-out-the-bring-up-graph-in-0-13-s-at
+
+
+<a id="2026-11-19-way-backs-run-on-failure-only"></a>
+### 2026-11-19-way-backs-run-on-failure-only
+
+Brief
+: A group's way back runs only when the run fails after one of its steps began, finished groups included; a panic or a missing device key counts as failing
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: Way backs are owed from the first step run of their group, run once in reverse order of entry on any failure (error, panic, exit 2 from a missing key), never on a passing run; a group skipped whole by --from owes none; --until FIRST_PROMPT runs none.
+
+Why
+: Spec 2026-11-19-procedures-chain-by-named-groups said 'whatever failed after the start'; a panic left the phone on the test kernel in the review's scenario.
+
+Rejected
+: Running way backs on success as well (Ansible always, pytest teardown): a passing run ends where its procedure ended it, with leave_known_good as an explicit group. Dropping a finished group's way back: kept per the spec; revisit if leave_known_good makes it reboot twice.
+
+About
+: attended-step-groups

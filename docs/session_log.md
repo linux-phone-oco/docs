@@ -4913,3 +4913,27 @@ Rejected
 
 About
 : bringup-graph-page
+
+---
+
+
+<a id="2026-11-19-lab-tools-builder-attended-step-groups"></a>
+### lab-tools-builder: attended step groups
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Built attended-step-groups (lab-tools #300): named groups, way backs, nested dry run, --from, library groups phone_ready and leave_known_good. Review by programmer found panic and exit-2 paths skipping way backs; fixed.
+
+Considered
+: Way back on success too (pytest fixtures): not done, the run's end is explicit. Library gate step in phone_ready: not done, the gate is the device's own.
+
+Rejected
+: Taking lpoco-layer-pack, the query's first row only because it was left in-progress; orchestration confirmed attended-step-groups.
+
+About
+: attended-step-groups
