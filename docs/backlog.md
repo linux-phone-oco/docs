@@ -7506,3 +7506,34 @@ Rank
 
 About
 : agent-folder
+
+
+<a id="attended-step-groups"></a>
+### lpoco-attended: named step groups (one line, logged as one, nestable) with their own way back; library groups phone_ready and leave_known_good
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: decision 2026-11-19-procedures-chain-by-named-groups. Then walleye's display, UFS and PMIC procedures replace their repeated gate/boot/shell/way-back with phone_ready and leave_known_good (google-walleye-lab, its coordinator's item).
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools attended tests: a procedure of two groups and a step runs them in order with each group's steps logged under its name; --dry-run lists them nested; a failing step inside a group runs that group's way back once, after the step, and the run stops; --from names a group; phone_ready and leave_known_good read their values from device.toml
+
+Rank
+: 2
+
+About
+: bringup-steps
