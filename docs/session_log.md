@@ -4253,3 +4253,27 @@ Rejected
 
 About
 : lpoco-attended
+
+---
+
+
+<a id="2026-11-19-attended-physical-acts-and-kernels-declared"></a>
+### attended: physical acts and kernels declared
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Landed lab-tools #265 (physical acts over a Bench, person by default) and #267 ([kernels] in device.toml read by boot_once and back_to_known_good); both reviewed by the programmer subagent, findings fixed.
+
+Considered
+: [boot.kernels] was the first idea; [boot] has required header fields a systemd-boot phone does not have, so a top-level [kernels]. back_to_known_good with a missing kept: stock is a valid default, so it requires the table, not kept.
+
+Rejected
+: Failing the dry run on a missing kept key (stock is a real answer); a Bench trait with a rig backend (the decision says person only now).
+
+About
+: attended-physical-steps
