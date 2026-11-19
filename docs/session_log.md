@@ -4418,3 +4418,27 @@ Rejected
 
 About
 : attended-ready-on-host
+
+---
+
+
+<a id="2026-11-19-release-assets-for-the-lpoco-family-host-side"></a>
+### Release assets for the lpoco family, host side
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lab-tools #278: prepare installs from release assets with sha256 check, cargo fallback on 404 only; assets.yml workflow. Reviewed by the programmer subagent; fixed 6 of its findings.
+
+Considered
+: A native HTTP client (rejected below), attestation for authenticity (left open).
+
+Rejected
+: A Rust http crate in the host: curl is stubbed in tests and already on every lab host. Falling back to cargo on a hash mismatch: it would hide a tampered asset.
+
+About
+: release-host-binaries
