@@ -5471,7 +5471,7 @@ Status
 : done
 
 Note
-: 2026-11-19, lab-tools-builder: the check half done (lab-tools #211, main 11d8d2b): .github/check-apk-origin.sh fails an APKBUILD with no license=, https url=, public-tag source= or '# Origin:' line; both APKBUILDs carry an Origin line; its test .github/test-check-apk-origin.sh fails six bad ones; CI runs both (seen failing first on the real APKBUILDs). The page half (per package: name, licence, origin, source link on linux-phone-oco.github.io/lab-tools) is the conveyor's template: item conveyor-site-origin-licence.
+: 2026-11-19: both halves met - the check (lab-tools #211, check-apk-origin.sh) and the page (conveyor v1.2.2, PR 22): the live page shows lpoco-health's licence, origin and source tag. The proof named sxmo-utils; it was retired from the pages the same day (sxmo-apk-retired), so the display stands on lpoco-health and on any package that returns.
 
 Opened
 : 2026-11-19
@@ -5899,10 +5899,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: 2026-11-19, lab-tools-builder: lab-tools half done (lab-tools #214): packaging/sxmo-utils, its conveyor job and tag trigger, CI check, REUSE annotation and AGPL text removed; sxmo-utils-v* tags kept. NOT done: the Pages repository still lists sxmo-utils. The conveyor (linux-package-distribution-oco/conveyor, .github/workflows/alpine.yml) fetches every live package whose origin is not its own NAME into the new index ('kept.txt') and its 'Nothing already live is lost' step fails a site missing a live package, so a deliberate removal is refused. Needs: a declared retirement (for example [alpine] retire = ["sxmo-utils"] in packaging/conveyor.toml) that drops those origins from kept.txt and from the lost-check, then one packages run (workflow_dispatch) and a look at the page. Proof still to see: https://linux-phone-oco.github.io/lab-tools/ lists no sxmo-utils and lpoco-health installs.
+: 2026-11-19, conveyor-builder: conveyor v1.2.2/v1.2.3 (retire: [alpine] retire in the declaration, and a call input for a retirement newer than the release tag), lab-tools #215 (retire line) and #216 (packages workflow_dispatch input retire); run 44466561032 with retire=sxmo-utils: the live page and APKINDEX list lpoco-health only, the sxmo-utils apk and its record answer 404. Left: the retire line in packaging/conveyor.toml stays until sxmo-utils is shipped again, then it must go.
 
 Opened
 : 2026-11-19
@@ -6599,10 +6599,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: For the conveyor's owner (linux-package-distribution-oco/conveyor): lab-tools #211 puts license=, url= and a '# Origin:' comment in every packaging/*/APKBUILD; the site template should render them per package. Not started.
+: 2026-11-19, conveyor-builder: conveyor PR 22 (v1.2.2): each package on the apk page has its licence (index L:), project url, origin (the APKBUILD's '# Origin:' line) and exact source (source= as abuild expands it, plus the APKBUILD folder at the release tag), derived, kept per package in origins/NAME.json; tests/alpine/run.sh proves it. Seen on https://linux-phone-oco.github.io/lab-tools/ for lpoco-health (MIT OR Apache-2.0, tag lpoco-health-v0.24.0). The sxmo-utils proof is moot: it left the pages (sxmo-apk-retired).
 
 Opened
 : 2026-11-19
