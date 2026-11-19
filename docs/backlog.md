@@ -5349,37 +5349,6 @@ About
 : phone-side-pieces
 
 
-<a id="reference-capture-diff"></a>
-### lpoco-bringup reference capture and diff: what the stock OS does for a part, against our mainline boot
-
-Project
-: linux-phone-oco/lab-tools
-
-Status
-: open
-
-Note
-: The author, through the coordinator (2026-11-19): 'why cant we use comparison with what android does for everything like we did for storage ? is it too prici on time and effort ? cant be automated with small makeshift tools for analysis ?'. One lpoco-bringup helper. 'reference capture' takes a stock OS with root (adb, or ssh for a booted distro) and saves a normalised snapshot: /proc/device-tree (dtc -I fs), debugfs gpio, pinctrl, regulator_summary, clk_summary, interrupts, loaded drivers and their bound devices, per-part sysfs. 'reference diff PART' compares it with the same capture from our mainline boot, filtered to one part. It is the helper of bring-up step stock-measured (android-reference) and can be each part's first helper in the steps table. Seed: walleye's by-hand UFS comparison (google-walleye-lab research/walleye-first-fastboot-boot/2026-11-18-ufs-android-way) and its touch comparison now in work. Look around first (what pmOS porters use: adb shell cat /proc/device-tree, dtc -I fs, debugfs dumps, dtdiff and similar tools); keep it small - shell for the capture over adb/ssh, Rust for normalise and diff.
-
-Opened
-: 2026-11-18
-
-Needs
-: build
-
-Device
-: google-walleye
-
-Proof
-: bringup/tests/reference.rs from fixtures: capture normalises a device-tree, gpio, pinctrl, regulator, clk, interrupts and driver-binding snapshot taken over adb or ssh (fixture dirs); diff PART filters both snapshots to one part's nodes, supplies, pins and clocks and names each difference; walleye's UFS case (research walleye-first-fastboot-boot/2026-11-18-ufs-android-way: live-ufs-props vs ours-ufs-props) is reproduced as a fixture and its known difference is named
-
-Rank
-: 7
-
-About
-: bringup-steps
-
-
 <a id="dt-check-verb"></a>
 ### lpoco-bringup dt-check: dt_binding_check and CHECK_DTBS in a digest-pinned container
 
@@ -5406,6 +5375,37 @@ Proof
 
 Rank
 : 6
+
+About
+: bringup-steps
+
+
+<a id="reference-capture-diff"></a>
+### lpoco-bringup reference capture and diff: what the stock OS does for a part, against our mainline boot
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: done
+
+Note
+: 2026-11-19, lab-tools-builder: landed (lab-tools #197, main a4095b8). lpoco-bringup reference capture --via CMD --out DIR (script on stdin: adb shell su 0 sh, ssh HOST sudo sh; saves devicetree.txt normalised as 'node prop = value', plus gpio, pinctrl, regulator_summary, clk_summary, interrupts, drivers; what the phone did not give is 'not measured yet', stale files removed) and reference diff PART --live DIR --ours DIR [--match WORDS] (exit 1 differences, 2 not known yet or a side unmeasured). Proof: bringup/tests/reference.rs (14, seen failing first), walleye's UFS fixture names core_clk_ice, ufs-qcom-crypto only live, power-domains only ours, interrupts 0x0 vs 0x4; the real capture script run by sh against a fake device-tree folder exits 0. Not run on a phone. Open (reviewer): phandles are one placeholder, not the target node's name or the specifier cells, and the list of phandle properties is partial (gpios, interrupts-extended, assigned-clocks...); interrupts and clk_summary lines carry counters and never match - normalise before use; root-node properties dropped; part filter matches node names only (touch needs --match); debugfs mount is done by the script and not undone; no timeout on the transport; the stage in the steps table is not wired.
+
+Opened
+: 2026-11-18
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: bringup/tests/reference.rs from fixtures: capture normalises a device-tree, gpio, pinctrl, regulator, clk, interrupts and driver-binding snapshot taken over adb or ssh (fixture dirs); diff PART filters both snapshots to one part's nodes, supplies, pins and clocks and names each difference; walleye's UFS case (research walleye-first-fastboot-boot/2026-11-18-ufs-android-way: live-ufs-props vs ours-ufs-props) is reproduced as a fixture and its known difference is named
+
+Rank
+: 7
 
 About
 : bringup-steps
