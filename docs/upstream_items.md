@@ -760,7 +760,7 @@ Form
 : finding
 
 State
-: draft
+: landed
 
 From work
 : 2026-11-19-roles-read-origin-main-not-shared-clones
@@ -768,8 +768,11 @@ From work
 About
 : agent-folder
 
+Applied upstream
+: grenudi/ideal-agent#113 (plugin 0.3.63)
+
 Note
-: For ideal-agent-builder. The role hook's output (card + practices + brief, 10.6 KB for builder) is over Claude Code's hook-output cap in 203 of 333 starts (2026-11-18 12:00 to 11-19 20:30): the app saves it and shows a 2 KB preview, so the from-main read of 0.3.28 never arrives and 200 of 333 starts read the Brief: path's stale disk copy (research stale-clones-where-roles-read). Proof: a start with a 20 KB brief prints under the cap, the session file equals origin/main's and names its commit; a transcript shows no Read of the Brief: path.
+: 2026-11-19: the whole brief from origin/main in ~/.local/state/ideal-agent/sessions/SESSION.brief.md; starts 5.7-8.3 KB for linux-phone-oco's roles, under the 10,000 cap (ideal-agent decision 2026-11-19-roles-act-on-origin-main).
 
 Last update
 : 2026-11-19
@@ -785,7 +788,7 @@ Form
 : finding
 
 State
-: draft
+: landed
 
 From work
 : 2026-11-19-roles-read-origin-main-not-shared-clones
@@ -793,8 +796,11 @@ From work
 About
 : agent-folder
 
+Applied upstream
+: grenudi/ideal-agent 0.3.63
+
 Note
-: For ideal-agent-builder. Today's guard refuses writes there; reads pass. HEAD..refs/remotes/origin/main needs no fetch (each worktree add fetches through the clone) and named both of today's incidents (41 and 64 behind). Bash (cwd or a cd into it) and Read/Grep/Glob on its paths; SHARED_CLONE_OK=1 stays the author's way past. Proof: guard tests - tad q in a clone 1 behind refused, current allowed, Read of a stale clone's file refused, a worktree never refused.
+: 2026-11-19: PreToolUse on Bash|Read|Grep|Glob refuses work in a shared clone behind its origin/main; seen refusing orchestration's ikb in the docs clone 1 behind the same evening.
 
 Last update
 : 2026-11-19
@@ -810,7 +816,7 @@ Form
 : finding
 
 State
-: draft
+: landed
 
 From work
 : 2026-11-19-roles-read-origin-main-not-shared-clones
@@ -818,8 +824,11 @@ From work
 About
 : agent-folder
 
+Applied upstream
+: grenudi/ideal-agent#114 (plugin 0.3.64)
+
 Note
-: For ideal-agent-builder; lower than the two above. A session that cds into a leftover (wt-walleye-builder-lab sits on main 538 behind) reads very old state, and the stale-read guard would not see it as a shared clone. Like build runs (0.3.62): a clean worktree nothing wrote to for 3 days is removed. Proof: agent-env's daily sweep removes a clean 3-day-old worktree and keeps a dirty one, naming it.
+: 2026-11-19: ideal-agent prune now|show, daily from the session start; clean worktrees and build runs idle 3 days. Also fixed orchestration's 0.3.62 sweep (find -newermt '-3 days' fails under bfs, so it removed every other build run folder).
 
 Last update
 : 2026-11-19
