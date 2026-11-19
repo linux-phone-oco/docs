@@ -59,12 +59,16 @@ Judge only after measuring; what is not measured is "not known yet".
    **Workarounds:** the newest ideal-agent's `scripts/workarounds` over docs, lab-tools and each lab
    (decision 2026-11-18-workarounds-read-as-one). A sign is each line it ends 1 on (`due: retire`), and any
    `WORKAROUND(` rule spoken of in a backlog note but not marked where it stands.
-6. **Role health:** the newest ideal-agent's `scripts/start-weight`
-   (`ls -d ~/.claude/plugins/cache/ideal-agent/ideal-agent/*/scripts/start-weight | sort -V | tail -1`) on
-   docs' briefs; `scripts/read-weight` on each transcript started since your last round
+6. **Role health:** the newest ideal-agent's `scripts/start-weight` on docs at its main, as one command:
+   `R=$(date +%s); git -C ~/Projects/linux-phone-oco/docs fetch -q origin && git -C ~/Projects/linux-phone-oco/docs worktree add -q --detach ~/Projects/linux-phone-oco/wt-docs-patrol-$R origin/main && S=$(ls -d ~/.claude/plugins/cache/ideal-agent/ideal-agent/*/scripts/start-weight | sort -V | tail -1) && sh "$S" ~/Projects/linux-phone-oco/wt-docs-patrol-$R`
+   (PLACE is the worktree, the agent folder found in it; never the shared clone, which the guard refuses when
+   behind; remove the worktree at the end); `scripts/read-weight` on each transcript started since your last round
    (`find ~/.claude/projects/-home-mll -name '*.jsonl' -newermt '-6 hours'`).
 
-7. **Steps to lift** (once lab-tools' `lpoco attended lift` exists): run it with `--format csv`. Each flagged
+7. **Steps to lift**: `lpoco-attended lift` over fresh worktrees at origin/main of each lab and of lab-tools:
+   `lpoco-attended lift --repos WT-SURYA,WT-WALLEYE --library WT-LAB-TOOLS/attended/src --format csv` (each WT a
+   `git -C ~/Projects/linux-phone-oco/REPO worktree add -q --detach ... origin/main`, removed at the end; a lab with no
+   procedures/steps yet is left out and named). Each flagged
    pair or triple is a sign, filed on docs' backlog for lab-tools as `lift-STEP` ("lift STEP into lpoco-attended",
    needs build, naming each copy's repo and path), unless such an item is open already. Two copies the same,
    or three that differ, are flagged by the tool; you add nothing by judgement (decision
