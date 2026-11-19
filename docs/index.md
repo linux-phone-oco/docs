@@ -4,13 +4,13 @@
 
 The memory of linux-phone-oco, whose goal is Linux phones as good as Android for everyday use, and better: which phone supports which hardware, how we know, why decisions were made, and what is next. Plain versioned data; see AGENTS.md. The plan, and where Linux phones stand against Android and iOS: [the grand picture](picture.md), and the main screen, [features against Android and iOS](feature_support.md).
 
-- [Backlog](backlog.md): 232
+- [Backlog](backlog.md): 243
 - [Bringup Stages](bringup_stages.md): 20
 - [Bringup Step Edges](bringup_step_edges.md): 245
 - [Bringup Steps](bringup_steps.md): 113
 - [Components](components.md): 25
 - [Concepts](concepts.md): 10
-- [Decisions](decisions.md): 78
+- [Decisions](decisions.md): 79
 - [Devices](devices.md): 3
 - [Feature Support](feature_support.md): 101
 - [Features](features.md): 46
@@ -24,16 +24,16 @@ The memory of linux-phone-oco, whose goal is Linux phones as good as Android for
 - [Milestones](milestones.md): 24
 - [Platforms](platforms.md): 7
 - [Problems](problems.md): 17
-- [Research](research.md): 74
-- [Session Log](session_log.md): 154
+- [Research](research.md): 77
+- [Session Log](session_log.md): 155
 - [Shell Releases](shell_releases.md): 2
-- [Sources](sources.md): 362
+- [Sources](sources.md): 374
 - [Step Status](step_status.md): 226
-- [Summaries](summaries.md): 12
+- [Summaries](summaries.md): 13
 - [Support Status](support_status.md): 71
 - [Test Results](test_results.md): 0
 - [Test Runs](test_runs.md): 0
-- [Tests](tests.md): 54
+- [Tests](tests.md): 55
 - [Translations](translations.md): 204
 - [Upstream Items](upstream_items.md): 21
 - [Upstreams](upstreams.md): 14

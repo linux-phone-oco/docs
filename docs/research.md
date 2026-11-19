@@ -1975,3 +1975,91 @@ Sources
 
 About
 : base-distro
+
+
+<a id="test-layer-sxmo-cost-measured"></a>
+### test-layer-sxmo-cost-measured
+
+Brief
+: sxmo's cost measured: ~70 PRs (25 on its behaviour, ~43 on our response), ~13 h surya unreachable, 3 author hands, ~17 lane-hours over ~27 h; 'almost 2 days' is a day and a night
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: Is the author right that sxmo cost almost 2 days of hurdles in hardware testing, and how much was sxmo's own behaviour versus ours?
+
+Found
+: Measured from surya-lab, docs and lab-tools on origin/main (commit times, session-log ids, research and backlog), 2026-11-19. Episodes (first sign -> fix): (1) 11-10 USB flapping, sxmo's idle suspend retried ~12 s on USB -> devlab-usb-awake same evening (#40); (2) 11-10 sound lost to sxmo's loopback card (#30); (3) 11-17 22:45Z r4 wedge: after a Bluetooth SSR, sxmo kept calling rtcwake -m mem -s 99999999 -> forced reboot 23:56, ~1.2 h; (4) 11-18 00:10 nested sxmo rtcwake after a systemctl suspend -> author's power cycle, back 08:21, ~8.2 h; (5) 08:20-11:17 suspend loop fed by our lock dropping with USB -> lock always held (#195), proven 12:23, ~3 h off USB; (6) screen blanking/lock flicker (swayidle 3 s, key-driven state), the author's question, closed 12:39; (7) try 4: sxmo's 99999999 alarm replaced the try's 15 s one -> power hold 12:16, cause 13:46, ~0.5 h down; (8) wake-lock fight devlab-usb-awake vs lpoco-awake 13:22-21:38, host-check-stale-pieces still open; (9) fork + 3-patch series + lab apk 13:51-18:52; (10) config migration after the apk 19:14-21:43, user configs declared 01:38. Counts: surya-lab 47 PRs (25 on sxmo's behaviour, 20 our response, 2 its profile; 42 of 151 commits on 11-18 = 28%), docs 16, lab-tools 7: ~70 PRs; ~24 backlog items; ~13 h surya unreachable; the author's hands 3 times (3 of 4 interventions on 11-17/18); ~27 h wall clock (11-17 22:45 -> 11-19 01:38) in four lanes at once, ~17 lane-hours, plus ~1 h on 11-10. Verdict: a day and a night, not two days; the direction holds. sxmo's own: 1 s retry with no backoff, the 3-year rtcwake default, swayidle 3 s and key-driven lock/screen state, its own wake locks, the loopback default output, configversion prompts. Ours: a keep-awake that dropped with USB, tries that dropped the lock, a watchdog not armed through s2idle, and the response chosen - fork, series, apk, package swap, migration (~43 of 70 PRs). Bluetooth SSR, RootPD crash and irq 157 are kernel bugs sxmo's suspends found, not sxmo's. Episode table and PR lists in the material.
+
+Sources
+: sxmo-autosuspend,sxmo-autosuspend-service
+
+About
+: test-layer
+
+Material
+: research/test-layer/2026-11-19/
+
+
+<a id="test-layer-landscape"></a>
+### test-layer-landscape
+
+Brief
+: A no-shell layer exists already: the same Nura image at multi-user.target starts no tinydm and no sxmo; ui=console has no surya image; walleye runs a bare init; Nura CI and others test with no shell
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: How do others test phone hardware without a shell, what does Nura offer for a console layer, and what does walleye use?
+
+Found
+: Nura ui=console (postmarketos-ui-console): base-ui + NetworkManager, no compositor, no idle daemon, systemd by default; ui=none installs no UI package; both have sshd from postmarketos-base. No console image for qcom-sm7150 on images.nura.eco (only gnome-mobile, phosh, plasma-mobile, sxmo-de-sway, 2026-11-19): one would be built with pmbootstrap. On Nura systemd, logind has HandlePowerKey=ignore and IdleAction=ignore (systemd default): a tty system neither suspends nor powers off by itself. Nura's UIs start through tinydm as display-manager.service (conflicts with getty@tty1, falls back to it); sxmo's autosuspend, swayidle and input handling are services of that session. So the same image booted to multi-user.target runs getty, sshd and the system services, and no shell: the cheapest split, no new image. walleye runs no distribution and no init system: busybox /init, USB gadget, telnetd and a ttyGS0 shell; nothing suspends or reads keys (bare-init form, for boot/console/kernel stages). Nura's hardware CI boots kernel+initramfs on a OnePlus 6T and matches serial strings; Braam's rig did the same; no one found tests hardware under a phone shell. The UX layer brings its own idle policy to hold off in the lab: Phosh (gsd sleep-inactive-*), Plasma Mobile (PowerDevil, hard to disable: KDE 497893), sxmo (autosuspend). Unverified: a second root by pmos.root_uuid per boot entry (no one documents it on a phone); in-place UI swap has no official doc.
+
+Sources
+: pmaports-ui-console,pmaports-tinydm-systemd,pmaports-base-systemd-logind,nura-images-sm7150,nura-explicit-service-managers,nura-hw-ci-mvp,brixit-phone-testing-4,systemd-logind-conf,phosh-686-sleep-inactive,kde-497893-plasma-suspend,walleye-bare-init,sxmo-autosuspend-service
+
+About
+: test-layer
+
+Material
+: research/test-layer/2026-11-19/
+
+
+<a id="test-layer-how-it-stands"></a>
+### test-layer-how-it-stands
+
+Brief
+: Test layer: recommended, waits on the author - same Nura image at multi-user.target for hardware tests, shell later, sxmo fork and apk retired; first step a read-only look and one boot entry
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: How does the hardware-test layer stand, what is next, and what must not be redone?
+
+Found
+: Where it stands (2026-11-19): recommended, waiting on the author's word (decision 2026-11-19-hardware-test-layer, research test-layer-sxmo-cost-measured and test-layer-landscape, material research/test-layer/2026-11-19/). Hardware tests in a layer with no phone shell; on surya the same Nura v26.06 image from a second boot entry at multi-user.target (no tinydm, so no sxmo); the shell (sxmo, Phosh, Plasma Mobile) a later layer in the bring-up steps' shell stage; the sxmo fork, its series and the sxmo-utils@lab apk retired; lpoco-awake kept as lab policy.
+Items, unranked: test-layer (parent); health-test-layer-quiet (lab-tools, the failing check first); surya-test-layer-entry (read-only look, then one entry; waits on the author) -> surya-test-layer-default -> surya-sxmo-from-nura -> sxmo-apk-retired -> sxmo-fork-retired -> awake-not-a-workaround; suspend-cycle-stops-services (sensors across suspend in our tool); steps-shell-stage-split (docs steps); walleye-rootfs-test-layer-first. Test: test-layer-quiet.
+Measured, not to redo: ~70 PRs, ~13 h surya unreachable, 3 author hands, ~17 lane-hours over ~27 h (a day and a night, not two days); most of it our response to sxmo, not sxmo itself.
+Unknowns, cheap to settle on the phone, read only: what graphical.target alone pulls in on surya; which suite checks need the user session (pipewire).
+Never: change what surya boots without the author's word; send the sxmo series from an agent (SourceHut's terms); treat a check under a shell as a hardware result when the test layer can run it.
+
+Sources
+: pmaports-tinydm-systemd,walleye-bare-init,pmaports-ui-console
+
+About
+: test-layer
+
+Material
+: research/test-layer/2026-11-19/

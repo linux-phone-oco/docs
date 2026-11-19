@@ -3428,3 +3428,27 @@ Done
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-19-research-test-layer"></a>
+### Research: a hardware-test layer with no phone shell
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: Research lead test-layer-research (for orchestration, on the author's words): measured sxmo's cost across surya-lab, docs and lab-tools (episodes, ~70 PRs classified, phone-down hours, lane-hours); looked around with one read-only researcher (Nura ui=console/none, tinydm, logind, hardware CI, Phosh/Plasma idle) and at walleye's bare init; recommended the split (decision 2026-11-19-hardware-test-layer), recorded 12 sources, 3 research rows, the test test-layer-quiet and 10 unranked items. No phone touched, no lab repository changed.
+
+Considered
+: A fresh ui=console image; an in-place UI swap; two root filesystems; keeping sxmo tamed; initramfs-only tests; Phosh or Plasma as the lab shell.
+
+Rejected
+: All but the boot entry at multi-user.target, for the reasons in the decision; changing surya-lab's own queue (its keeper and coordinator take the surya items on the author's word).
+
+About
+: test-layer

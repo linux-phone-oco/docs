@@ -6206,3 +6206,210 @@ By
 
 Takes
 : Our conveyor builds, signs and publishes pacman and apk repositories; no deb lane
+
+
+<a id="pmaports-ui-console"></a>
+### pmaports main/postmarketos-ui-console APKBUILD
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/tree/master/main/postmarketos-ui-console
+
+By
+: Nura
+
+Takes
+: ui=console pulls base-ui and NetworkManager, no compositor or idle daemon; systemd by default
+
+
+<a id="pmaports-tinydm-systemd"></a>
+### pmaports extra-repos/systemd: system-tinydm.service
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/tree/master/extra-repos/systemd/systemd-services
+
+By
+: Nura
+
+Takes
+: the UI session is display-manager.service (tinydm), conflicting with getty@tty1: multi-user.target boots the same image with no shell
+
+
+<a id="pmaports-base-systemd-logind"></a>
+### pmaports postmarketos-base-systemd logind.conf
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/tree/master/extra-repos/systemd/postmarketos-base-systemd
+
+By
+: Nura
+
+Takes
+: HandlePowerKey=ignore on Nura systemd: a tty system does not power off on a key edge
+
+
+<a id="nura-images-sm7150"></a>
+### Nura images for qcom-sm7150 (edge, v26.06, v25.12)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://images.nura.eco/bpo/v26.06/qcom-sm7150/
+
+By
+: Nura
+
+Takes
+: only gnome-mobile, phosh, plasma-mobile and sxmo-de-sway images: no prebuilt console image for surya (2026-11-19)
+
+
+<a id="nura-explicit-service-managers"></a>
+### Nura edge: UIs declare their service managers
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://nura.eco/edge/2026/07/10/explicit-service-managers/
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: ui-console and ui-phosh default to systemd; no supported switch of service manager on an install
+
+
+<a id="nura-hw-ci-mvp"></a>
+### Nura hardware CI MVP
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://nura.eco/blog/2026/01/21/hw-ci-mvp/
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: hardware CI boots kernel and initramfs on a OnePlus 6T and matches PMOS-CI-OK on serial: no phone shell in the loop
+
+
+<a id="brixit-phone-testing-4"></a>
+### Automated phone testing pt 4
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://blog.brixit.nl/automated-phone-testing-pt-4/
+
+Author
+: Martijn Braam
+
+Year
+: 2022
+
+By
+: orchestration-renewed
+
+Takes
+: phone tests boot a rootfs or initramfs and match serial strings, no shell
+
+
+<a id="systemd-logind-conf"></a>
+### logind.conf(5)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.freedesktop.org/software/systemd/man/latest/logind.conf.html
+
+By
+: systemd
+
+Takes
+: IdleAction=ignore by default
+
+
+<a id="phosh-686-sleep-inactive"></a>
+### Phosh #686: idle suspend through gnome-settings-daemon sleep-inactive
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.gnome.org/World/Phosh/phosh/-/issues/686
+
+By
+: Phosh
+
+Takes
+: the UX layer Phosh suspends by gsd sleep-inactive-*: its own lab hold-off
+
+
+<a id="kde-497893-plasma-suspend"></a>
+### KDE bug 497893: Plasma Mobile, can't disable or modify suspend
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://bugs.kde.org/show_bug.cgi?id=497893
+
+Year
+: 2024
+
+By
+: KDE
+
+Takes
+: PowerDevil's suspend is hard to hold off on a phone: a UX-layer proof of its own
+
+
+<a id="walleye-bare-init"></a>
+### google-walleye-lab build/initramfs/init
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/linux-phone-oco/google-walleye-lab/blob/main/build/initramfs/init
+
+By
+: linux-phone-oco
+
+Takes
+: the bare-init form of a test layer: busybox, USB gadget, telnetd, a ttyGS0 shell; nothing suspends or reads keys
+
+
+<a id="sxmo-autosuspend-service"></a>
+### sxmo-utils configs/services/sxmo_autosuspend.service (lab branch)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/grenudi/sxmo-utils/tree/lab/configs/services
+
+By
+: Sxmo
+
+Takes
+: autosuspend, swayidle and input handling are services of the sxmo session, started by the display manager
