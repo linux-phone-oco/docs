@@ -24,9 +24,9 @@ sql:              ## ask the data in SQL: make sql Q="SELECT ..." (a change is k
 land-regen: canon render  ## what land runs after rebasing a branch onto a moved main (lab-machine bin/land, PR 79)
 
 verify: check     ## what CI runs: data is valid and canonical, docs are fresh
-	@before="$$(find data docs -type f -print0 | sort -z | xargs -0 sha256sum)"; \
+	@before="$$(find data docs face/graph -type f -print0 | sort -z | xargs -0 sha256sum)"; \
 	$(TAD) canon && $(TAD) render && ./bin/render-pages.sh || exit 1; \
-	after="$$(find data docs -type f -print0 | sort -z | xargs -0 sha256sum)"; \
+	after="$$(find data docs face/graph -type f -print0 | sort -z | xargs -0 sha256sum)"; \
 	if [ "$$before" != "$$after" ]; then \
 	  echo "data/ or docs/ was not canonical/fresh and has been rewritten. Review and commit:"; \
 	  diff <(echo "$$before") <(echo "$$after") || true; exit 1; \

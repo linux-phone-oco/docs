@@ -4961,3 +4961,27 @@ Rejected
 
 About
 : attended-way-back-settled
+
+---
+
+
+<a id="2026-11-19-bringup-graph-in-the-face"></a>
+### The bring-up graph moved into the face, as a tab of the steps page
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: The author chose to change the engine: ocoeco-engine may ship JavaScript and data for views that need it (engine #65: a view of kind embed and a CSS-only strip of tabs; #66: an in-window full screen where the browser has none). Here: face/lens.toml gives the steps view a Graph tab (script face/graph/graph.js and data face/graph/bringup.json, pinned libraries named in the lens; bin/face-data hands them to the engine), graph.js builds its own controls inside the container with the site's classes and gets a full screen button and a hide/show details button, docs/graph.html redirects, the tests read the new places; the decision 2026-11-19-bringup-graph-cytoscape-dagre names the tab, not the standalone page.
+
+Considered
+: How Hugo, Astro and mdBook embed an interactive island (research interactive-islands-in-static-generators): a readable container with data-* attributes, a plain script tag, a hidden island waits until shown.
+
+Rejected
+: A script-only tab strip; a second hard-coded page in the engine; reopening the details panel on every click (the author: opening it is manual).
+
+About
+: bringup-steps

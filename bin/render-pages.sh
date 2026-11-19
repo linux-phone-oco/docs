@@ -1,6 +1,6 @@
 #!/bin/sh
 # The pages tad render does not draw - one page per table is all it draws - made from the same rows, never by hand
-# (backlog bringup-guidebook): docs/guidebook.md; and the graph's data, docs/graph/bringup.json, which docs/graph.html draws (backlog
+# (backlog bringup-guidebook): docs/guidebook.md; and the graph's data, face/graph/bringup.json, which the Graph tab of the steps page draws (face/graph/graph.js; backlog
 # bringup-graph-page). make render runs it after tad render, and make verify
 # runs it again to see the pages are as the rows leave them. A page is written whole or not at all.
 #   bin/render-pages.sh
@@ -17,9 +17,9 @@ jq -r -n --slurpfile stages "$tmp/stages.json" --slurpfile steps "$tmp/steps.jso
 	--slurpfile sources "$tmp/sources.json" --slurpfile chain "$tmp/chain.json" -f bin/guidebook.jq > "$tmp/guidebook.md"
 mv "$tmp/guidebook.md" docs/guidebook.md
 # the graph page's data, written whole like the guidebook: the steps, their edges, the devices and each device's claims
-mkdir -p docs/graph
+mkdir -p face/graph
 rows devices "SELECT id, name, codename FROM devices ORDER BY id"
 rows status "SELECT device_id, step_id, status FROM step_status ORDER BY device_id, step_id"
 jq -c -n --slurpfile steps "$tmp/steps.json" --slurpfile edges "$tmp/edges.json" --slurpfile devices "$tmp/devices.json" \
 	--slurpfile status "$tmp/status.json" --slurpfile stages "$tmp/stages.json" -f bin/bringup-graph.jq > "$tmp/bringup.json"
-mv "$tmp/bringup.json" docs/graph/bringup.json
+mv "$tmp/bringup.json" face/graph/bringup.json

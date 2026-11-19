@@ -2492,3 +2492,29 @@ Found
 
 About
 : bringup-steps
+
+
+<a id="interactive-islands-in-static-generators"></a>
+### interactive-islands-in-static-generators
+
+Brief
+: Static generators emit readable markup with a data-* container and a plain script tag for a file beside the page; the script upgrades it, a hidden island waits
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: How do static site generators embed an interactive page (island) in an otherwise static, readable-without-JavaScript page?
+
+Found
+: Hugo, Astro and mdBook agree on one shape: the generator writes ordinary markup, a container carrying its data in data-* attributes, and a plain script tag for a file copied next to the page - the page is static and readable, the script only upgrades it. Hugo shortcodes are templates taking named arguments and reading resources bundled with the page; mdBook lists additional-js files in its configuration and copies them (preprocessors rewrite chapter text to plain markup first); Astro makes a page static HTML and hydrates only a marked component, and client:visible holds an island until it is in view (client:only, which shows only a fallback, is the one kind that gives up readability). Zola's shortcode page could not be read (404), so it is not counted.
+Taken: the container holds a readable fallback (a noscript note), the first tab - the table - stays the default and reads without JavaScript; data in data-* attributes; one script tag for a file copied next to the page, libraries as pinned addresses named in the lens; a script whose container is hidden (another tab shows) waits until it has a size, as Astro's client:visible waits for view (the use of this for tabs is our inference, no source states it). Set aside: framework hydration, server islands, mdBook's JSON preprocessor protocol, content-hashed file names (the engine's pages are rebuilt whole on every deploy).
+
+Sources
+: hugo-shortcodes,hugo-shortcode-templates,astro-islands,astro-client-directives,astro-client-side-scripts,mdbook-renderers,mdbook-preprocessors
+
+About
+: bringup-steps

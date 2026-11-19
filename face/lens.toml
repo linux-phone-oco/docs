@@ -74,6 +74,19 @@ row_key = "step_id"
 columns = "devices"
 column_key = "device_id"
 
+[[view.tabs]]   # the bring-up graph (decision 2026-11-19-bringup-graph-cytoscape-dagre): drawn in the browser; the script and its data are
+                # face/graph/ (bin/face-data puts them in the engine's data, bin/render-pages.sh writes bringup.json), the libraries pinned
+id = "graph"
+title = "Graph"
+kind = "embed"
+script = "graph/graph.js"
+data = "graph/bringup.json"
+libs = [
+	"https://cdn.jsdelivr.net/npm/cytoscape@3.30.2/dist/cytoscape.min.js",
+	"https://cdn.jsdelivr.net/npm/dagre@0.8.5/dist/dagre.min.js",
+	"https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.js",
+]
+
 [[view]]   # where the bring-up is told and shown: the guidebook, the steps against each phone, the tables; the cards are face/guide-pages.json
 id = "guide"
 title = "Bring-up guide"

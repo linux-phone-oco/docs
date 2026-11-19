@@ -1,8 +1,8 @@
 #!/bin/sh
 # A fixture for the graph page at scale (backlog bringup-graph-page; the catalogue will pass a thousand steps): N steps
-# (default 1500) in the shape of docs/graph/bringup.json - stages, steps, edges (a few soft, a few alternatives of one
+# (default 1500) in the shape of face/graph/bringup.json - stages, steps, edges (a few soft, a few alternatives of one
 # group), two devices with a claim on every step, and the three goal steps - deterministic, so a measurement can be
-# repeated. It is a test file, never data: serve it in place of docs/graph/bringup.json and read the layout time the page
+# repeated. It is a test file, never data: serve it in place of face/graph/bringup.json and read the layout time the page
 # shows. The steps go in an order where each needs earlier ones, so the graph is acyclic by construction.
 #   bin/graph-fixture.sh [N] > fixture.json
 set -eu

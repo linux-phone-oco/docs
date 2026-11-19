@@ -18,3 +18,4 @@
 {"id":"lenses:linux-phone-oco/lens:view.surya.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.surya.title","lang":"ru","text":"Телефон в лаборатории","by":"machine"}
 {"id":"lenses:linux-phone-oco/lens:view.tests.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.tests.title","lang":"ru","text":"Тесты","by":"machine"}
 {"id":"lenses:linux-phone-oco/lens:view.work.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.work.title","lang":"ru","text":"Сделано работой","by":"machine"}
+{"id":"lenses:linux-phone-oco/lens:view.steps.tabs.graph.title:ru","table":"lenses","row":"linux-phone-oco/lens","column":"view.steps.tabs.graph.title","lang":"ru","text":"Граф","by":"machine"}

@@ -1,7 +1,10 @@
+(function () {
 'use strict';
-// The bring-up graph (backlog bringup-graph-page, decision 2026-11-19-bringup-graph-cytoscape-dagre): drawn in the browser
-// from graph/bringup.json, which bin/render-pages.sh writes from the rows. Cytoscape.js with the dagre layered layout, left to
-// right: the chosen goal stands on the left, what it needs to its right. Built to carry a thousand steps: the view opens
+// The bring-up graph (backlog bringup-graph-page, decision 2026-11-19-bringup-graph-cytoscape-dagre): the Graph tab of the
+// site's bring-up steps page, drawn in the browser from graph/bringup.json, which bin/render-pages.sh writes from the rows.
+// The engine (ocoeco-engine, a view of kind embed) copies this script and the data beside the page and writes the container
+// just before the script tag; the page's own classes and colours style it. Cytoscape.js with the dagre layered layout, left
+// to right: the chosen goal stands on the left, what it needs to its right. Built to carry a thousand steps: the view opens
 // folded, a goal's needs grouped by stage into one node each, and only the part in view is laid out.
 
 var GOAL_STAGE = 'goals', DEFAULT_GOAL = 'daily-usable-phone', GENERIC = 'generic', GROUP_ABOVE = 6;
@@ -15,15 +18,52 @@ var LABEL_CHARS = 28;
 var RANKER = 'network-simplex';
 // dagre lays out 138 nodes in 0.13 s, 456 in 1.7 s and 944 in 9.5 s (docs/graph measurements, bin/graph-fixture.sh 1500): a change that would draw more is refused
 var MAX_NODES = 500;
+var PANEL_KEY = 'bringup-graph-panel';
 
+var box = document.currentScript.previousElementSibling; // the container the engine wrote just before this script
 var data, byId, needs, stageTitle, claims, cy, groupColour = {};
+// the parts of the view, by name, made once by build()
+var ui = {}, tabLinks = {};
 // what the person has done to the view; the model below is a pure function of it
-var S = { tab: null, goal: null, depth: 0, toggled: new Map(), groupsOpen: new Set(), pinned: new Set(), all: false, openOnly: false };
+var S = { tab: null, goal: null, depth: 0, toggled: new Map(), groupsOpen: new Set(), pinned: new Set(), all: false, openOnly: false, panel: true };
 var distCache = {};
 
-function el(id) { return document.getElementById(id); }
+function el(id) { return ui[id]; }
 function say(text) { el('msg').textContent = text; el('msg').hidden = !text; }
 function node(tag, text) { var e = document.createElement(tag); if (text !== undefined) e.textContent = text; return e; }
+// an element with a name in ui, a class, inline style (only what the site's stylesheet has no class for) and children
+function part(name, tag, cls, css, kids) {
+	var e = node(tag); if (cls) e.className = cls; if (css) e.style.cssText = css;
+	(kids || []).forEach(function (k) { e.appendChild(typeof k === 'string' ? document.createTextNode(k) : k); });
+	if (name) ui[name] = e;
+	return e;
+}
+function button(name, text) { var b = part(name, 'button'); b.type = 'button'; b.textContent = text; return b; }
+
+// ---- the page of the view: made here, inside the container, from the site's classes
+function build() {
+	var goal = part('goal', 'select'), search = part('search', 'input');
+	search.type = 'search'; search.placeholder = 'a word of its title'; search.autocomplete = 'off';
+	var openOnly = part('open-only', 'input'); openOnly.type = 'checkbox';
+	var lab = function (text, ctl) { return part(null, 'label', '', '', [text + ' ', ctl]); };
+	var onlyLab = part('open-only-label', 'label', '', '', [openOnly, ' open only (hide done steps)']);
+	box.textContent = '';
+	[
+		part('tabs', 'nav', '', 'display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px'),
+		part(null, 'div', 'embed-bar', '', [lab('Goal', goal), lab('Find a step', search), onlyLab]),
+		part(null, 'div', 'embed-bar', '', [button('less', 'Show less'), button('more', 'Show more'), button('unfold', 'Unfold all'), button('fold', 'Fold all'),
+			button('panel-toggle', 'Hide details'), button('full', 'Full screen')]),
+		part('found', 'ul', '', 'list-style:none;margin:0 0 8px;padding:0'),
+		part('count', 'p', 'mute', 'margin:4px 0;font-size:14.5px'),
+		part('msg', 'p', '', 'margin:6px 0'),
+		part(null, 'div', 'embed-stage', '', [part('cy', 'div', 'embed-canvas', 'touch-action:none'),
+			part('panel', 'aside', 'embed-side', '', [node('p', 'Click a step to read it.')])]),
+		part('tip', 'div', '', 'position:fixed;z-index:60;max-width:24rem;padding:4px 8px;background:#1a1a1a;color:#fff;border-radius:6px;font-size:13px;pointer-events:none'),
+		part('legend', 'div', 'legend'),
+		part('timing', 'p', 'mute', 'margin:6px 0 0;font-size:13px')
+	].forEach(function (p) { box.appendChild(p); });
+	el('tip').hidden = true; say('Loading the steps...');
+}
 
 // ---- the rows, indexed once
 function index() {
@@ -148,7 +188,7 @@ var STYLE = [
 ];
 
 // a change to the view, undone with a word when what it would draw is too big to lay out in about a second or two
-function copyState() { return { tab: S.tab, goal: S.goal, depth: S.depth, toggled: new Map(S.toggled), groupsOpen: new Set(S.groupsOpen), pinned: new Set(S.pinned), all: S.all, openOnly: S.openOnly }; }
+function copyState() { return { tab: S.tab, goal: S.goal, depth: S.depth, toggled: new Map(S.toggled), groupsOpen: new Set(S.groupsOpen), pinned: new Set(S.pinned), all: S.all, openOnly: S.openOnly, panel: S.panel }; }
 function change(apply, fit) {
 	var before = copyState(); apply();
 	var m = model(), size = m.steps.size + m.groups.length;
@@ -188,46 +228,50 @@ function count(m) {
 
 // ---- the legend, for this tab
 function legend() {
-	var box = el('legend'); box.textContent = '';
-	function item(swatch, text) { var s = node('span'); s.appendChild(swatch); s.appendChild(document.createTextNode(text)); box.appendChild(s); }
-	function sw(colour, cls) { var e = node('i'); e.className = 'sw ' + (cls || ''); e.style.background = colour; return e; }
-	function ln(colour, soft) { var e = node('i'); e.className = 'ln' + (soft ? ' soft' : ''); e.style.borderTopColor = colour; return e; }
+	var legendBox = el('legend'); legendBox.textContent = '';
+	function item(swatch, text) { var s = node('span'); s.appendChild(swatch); s.appendChild(document.createTextNode(text)); legendBox.appendChild(s); }
+	function sw(colour, extra) { var e = node('i'); e.style.cssText = 'background:' + colour + ';border:1px solid #4a4f57;' + (extra || ''); return e; }
+	function ln(colour, soft) { var e = node('i'); e.style.cssText = 'background:none;height:0;border-radius:0;border-top:3px ' + (soft ? 'dashed ' : 'solid ') + colour + ';vertical-align:5px'; return e; }
 	if (S.tab === GENERIC) item(sw(NO_STATUS_COLOUR), 'generic: no status colouring');
 	else [['done', 'done'], ['partial', 'partial'], ['failing', 'failing'], ['open', 'open (claimed, not done)'], ['unknown', 'unknown: no claim yet'], ['not-needed', 'not needed']]
 		.forEach(function (p) { item(sw(STATUS_COLOUR[p[0]]), p[1]); });
 	item(ln(HARD_COLOUR, false), 'hard need: cannot be done before');
 	item(ln(HARD_COLOUR, true), 'soft need: can be, but blind or at much greater cost');
 	Object.keys(groupColour).forEach(function (g) { item(ln(groupColour[g], false), 'alternatives "' + g + '": one done is enough'); });
-	item(sw('#ffffff', 'grp'), 'a stage group: click to open it (its colour: the worst of its steps)');
-	item(sw('#ffffff', 'fold'), 'folded step: click to show its needs [+n]');
+	item(sw('#ffffff', 'border-style:dashed;border-width:2px'), 'a stage group: click to open it (its colour: the worst of its steps)');
+	item(sw('#ffffff', 'border-style:double;border-width:4px'), 'folded step: click to show its needs [+n]');
 }
 
-// ---- the side panel
+// ---- the side panel: it shows the selected step whether or not it is open; only its button opens it
 function panelReset() { var p = el('panel'); p.textContent = ''; p.appendChild(node('p', 'Click a step to read it. Click it again to fold what it needs.')); }
+function heading(text) { var h = node('h4', text); h.style.cssText = 'margin:0 0 4px;font-size:17px'; return h; }
+function term(text) { var t = node('dt', text); t.style.cssText = 'font-weight:600;margin-top:10px'; return t; }
+function def(text) { var d = node('dd', text); d.style.cssText = 'margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14.5px'; return d; }
+function link(text, action) { var a = node('a', text); a.href = '#'; a.onclick = function (e) { e.preventDefault(); action(); }; return a; }
 
 function panelStep(id) {
-	var s = byId[id], box = el('panel'); box.textContent = '';
-	box.appendChild(node('h2', s.title));
-	box.appendChild(node('div', s.id + ' - stage ' + (stageTitle[s.stage] || s.stage) + (S.tab === GENERIC ? '' : ' - ' + tabName(S.tab) + ': ' + statusOf(id))));
-	var dl = node('dl'); box.appendChild(dl);
-	[['Done when', s.done_when], ['Proof', s.proof], ['Guide', s.guide]].forEach(function (r) { dl.appendChild(node('dt', r[0])); dl.appendChild(node('dd', r[1])); });
+	var s = byId[id], side = el('panel'); side.textContent = '';
+	side.appendChild(heading(s.title));
+	side.appendChild(node('div', s.id + ' - stage ' + (stageTitle[s.stage] || s.stage) + (S.tab === GENERIC ? '' : ' - ' + tabName(S.tab) + ': ' + statusOf(id))));
+	var dl = node('dl'); side.appendChild(dl);
+	[['Done when', s.done_when], ['Proof', s.proof], ['Guide', s.guide]].forEach(function (r) { dl.appendChild(term(r[0])); dl.appendChild(def(r[1])); });
 	if (needs[id].length) {
-		dl.appendChild(node('dt', 'Needs'));
-		var d = node('dd'), ul = node('ul'); d.appendChild(ul); dl.appendChild(d);
+		dl.appendChild(term('Needs'));
+		var d = node('dd'), ul = node('ul'); d.style.margin = '0'; ul.style.cssText = 'margin:0;padding-left:18px'; d.appendChild(ul); dl.appendChild(d);
 		needs[id].forEach(function (e) {
-			var li = node('li'), a = node('a', byId[e.requires].title);
-			a.onclick = function () { reveal(e.requires); };
-			li.appendChild(a); li.appendChild(document.createTextNode(' (' + e.kind + (e.group ? ', alternatives "' + e.group + '"' : '') + ')'));
+			var li = node('li');
+			li.appendChild(link(byId[e.requires].title, function () { reveal(e.requires); }));
+			li.appendChild(document.createTextNode(' (' + e.kind + (e.group ? ', alternatives "' + e.group + '"' : '') + ')'));
 			ul.appendChild(li);
 		});
 	}
 }
 
 function panelGroup(g) {
-	var box = el('panel'); box.textContent = '';
-	box.appendChild(node('h2', (stageTitle[g.stage] || g.stage) + ': ' + g.edges.length + ' steps folded'));
-	var ul = node('ul'); box.appendChild(ul);
-	g.edges.forEach(function (e) { var li = node('li'), a = node('a', byId[e.requires].title); a.onclick = function () { reveal(e.requires); }; li.appendChild(a); ul.appendChild(li); });
+	var side = el('panel'); side.textContent = '';
+	side.appendChild(heading((stageTitle[g.stage] || g.stage) + ': ' + g.edges.length + ' steps folded'));
+	var ul = node('ul'); ul.style.cssText = 'margin:0;padding-left:18px'; side.appendChild(ul);
+	g.edges.forEach(function (e) { var li = node('li'); li.appendChild(link(byId[e.requires].title, function () { reveal(e.requires); })); ul.appendChild(li); });
 }
 
 // ---- what a click does
@@ -251,26 +295,29 @@ function reveal(id) {
 }
 
 function search(text) {
-	var box = el('found'); box.textContent = '';
+	var found = el('found'); found.textContent = '';
 	var q = text.trim().toLowerCase(); if (!q) return;
 	var needed = reach(S.goal).dist, hits = data.steps.filter(function (s) { return s.title.toLowerCase().indexOf(q) >= 0 || s.id.indexOf(q) >= 0; })
 		.sort(function (a, b) { return (needed[a.id] === undefined) - (needed[b.id] === undefined); });
 	hits.slice(0, 8).forEach(function (s) {
-		var li = node('li'), a = node('a', s.title + (reach(S.goal).dist[s.id] === undefined ? ' (not needed by this goal)' : ''));
-		a.onclick = function () { box.textContent = ''; reveal(s.id); }; li.appendChild(a); box.appendChild(li);
+		var li = node('li');
+		li.appendChild(link(s.title + (needed[s.id] === undefined ? ' (not needed by this goal)' : ''), function () { found.textContent = ''; reveal(s.id); }));
+		found.appendChild(li);
 	});
-	if (hits.length > 8) box.appendChild(node('li', '... ' + (hits.length - 8) + ' more: narrow the search'));
-	if (!hits.length) box.appendChild(node('li', 'No step matches.'));
+	if (hits.length > 8) found.appendChild(node('li', '... ' + (hits.length - 8) + ' more: narrow the search'));
+	if (!hits.length) found.appendChild(node('li', 'No step matches.'));
 }
 
-// ---- the tabs: a device per row of the devices table, then the generic one; the hash names the tab
+
+// ---- the tabs: a device per row of the devices table, then the generic one. Each tab is a link whose id is the device's, inside
+// the Graph pane, so the address #xiaomi-surya opens the Graph tab of the page on that device (the page's CSS shows the pane that holds the target)
 function tabList() { return data.devices.map(function (d) { return d.id; }).concat([GENERIC]); }
 
 function tabs() {
-	var ul = el('tabs'); ul.textContent = '';
+	var nav = el('tabs'); nav.textContent = '';
 	tabList().forEach(function (id) {
-		var li = node('li'), a = node('a', id === GENERIC ? 'generic' : tabName(id));
-		a.href = '#' + id; a.id = 'tab-' + id; a.setAttribute('role', 'tab'); li.appendChild(a); ul.appendChild(li);
+		var a = node('a', id === GENERIC ? 'generic' : tabName(id));
+		a.href = '#' + id; a.id = id; a.className = 'chip'; nav.appendChild(a); tabLinks[id] = a;
 	});
 }
 
@@ -290,13 +337,56 @@ function defaultTab() {
 function foldAll() { S.depth = 0; S.all = false; S.toggled.clear(); S.groupsOpen.clear(); S.pinned.clear(); }
 
 function showTab() {
-	var want = hashTab();
-	S.tab = tabList().indexOf(want) >= 0 ? want : defaultTab();
-	tabList().forEach(function (id) { el('tab-' + id).setAttribute('aria-selected', String(id === S.tab)); });
-	el('open-only').disabled = S.tab === GENERIC; el('open-only').parentNode.hidden = S.tab === GENERIC;
+	// an address that names no device (#graph, #table) leaves the device as it is: showing the tab again changes nothing
+	var want = hashTab(), next = tabList().indexOf(want) >= 0 ? want : S.tab || defaultTab();
+	if (next === S.tab) return;
+	S.tab = next;
+	tabList().forEach(function (id) {
+		tabLinks[id].classList.toggle('warn', id === S.tab);
+		if (id === S.tab) tabLinks[id].setAttribute('aria-current', 'true'); else tabLinks[id].removeAttribute('aria-current');
+	});
+	el('open-only-label').hidden = S.tab === GENERIC; el('open-only').disabled = S.tab === GENERIC;
 	if (S.tab === GENERIC) S.openOnly = false;
 	el('open-only').checked = S.openOnly;
 	foldAll(); legend(); draw(true); panelReset();
+}
+
+// ---- the panel and the full screen: two buttons of the bar. The panel is shown or hidden by its button alone (a click on a
+// step only selects and folds it, it never opens the panel); the choice is kept for the viewer where storage allows. Full
+// screen is the container's, so the graph and its panel go together; both re-fit the view to the room they now have.
+function refit() { cy.resize(); cy.fit(undefined, 20); focusGoal(); }
+
+function storedPanel() { try { return localStorage.getItem(PANEL_KEY) !== 'hidden'; } catch (e) { return true; } }
+function storePanel(open) { try { localStorage.setItem(PANEL_KEY, open ? 'open' : 'hidden'); } catch (e) { /* no storage: the choice lasts for the page */ } }
+
+function showPanel(open, keep) {
+	S.panel = open; el('panel').hidden = !open;
+	el('panel-toggle').textContent = open ? 'Hide details' : 'Show details';
+	el('panel-toggle').setAttribute('aria-pressed', String(!open));
+	if (!keep) storePanel(open);
+	if (cy && !keep) refit();
+}
+
+var fullApi = !!(box.requestFullscreen || box.webkitRequestFullscreen);
+function isFull() { return document.fullscreenElement === box || document.webkitFullscreenElement === box || box.classList.contains('full'); }
+var wasFull = false, fallbackTimer = null;
+function fullChanged() {
+	if (isFull() === wasFull) return; // another element's full screen is not ours
+	wasFull = isFull(); clearTimeout(fallbackTimer);
+	el('full').textContent = wasFull ? 'Leave full screen' : 'Full screen';
+	el('full').setAttribute('aria-pressed', String(wasFull));
+	if (cy) refit();
+}
+function toggleFull() {
+	clearTimeout(fallbackTimer);
+	if (box.classList.contains('full')) { box.classList.remove('full'); fullChanged(); return; }
+	if (document.fullscreenElement === box || document.webkitFullscreenElement === box) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+	// the browser's full screen where it gives one; where it has none, refuses, or says nothing (a web view in an app), the graph fills the window instead
+	function inWindow() { if (!isFull()) { box.classList.add('full'); fullChanged(); } }
+	if (!fullApi) { inWindow(); return; }
+	var asked = (box.requestFullscreen || box.webkitRequestFullscreen).call(box);
+	if (asked && asked.catch) asked.catch(inWindow);
+	fallbackTimer = setTimeout(inWindow, 600);
 }
 
 // ---- the controls
@@ -306,13 +396,28 @@ function controls() {
 	goalSteps.forEach(function (s) { var o = node('option', s.title + ' (' + s.id + ')'); o.value = s.id; sel.appendChild(o); });
 	if (byId[DEFAULT_GOAL]) sel.value = DEFAULT_GOAL;
 	S.goal = sel.value;
-	sel.onchange = function () { S.goal = sel.value; foldAll(); draw(true); panelReset(); el('found').textContent = ""; el('search').value = ""; };
+	sel.onchange = function () { S.goal = sel.value; foldAll(); draw(true); panelReset(); el('found').textContent = ''; el('search').value = ''; };
 	el('more').onclick = function () { change(function () { S.depth++; S.all = false; S.toggled.clear(); S.pinned.clear(); }, false); };
 	el('less').onclick = function () { change(function () { S.depth = Math.max(0, S.depth - 1); S.all = false; S.toggled.clear(); S.pinned.clear(); }, false); };
 	el('unfold').onclick = function () { change(function () { S.all = true; }, false); };
 	el('fold').onclick = function () { foldAll(); draw(true); panelReset(); };
-	el('open-only').onchange = function () { var box = this; if (!change(function () { S.openOnly = box.checked; }, true)) box.checked = S.openOnly; };
+	el('open-only').onchange = function () { var checkbox = this; if (!change(function () { S.openOnly = checkbox.checked; }, true)) checkbox.checked = S.openOnly; };
 	el('search').oninput = function () { search(this.value); };
+	el('panel-toggle').onclick = function () { showPanel(!S.panel); };
+	el('full').onclick = toggleFull;
+	document.addEventListener('fullscreenchange', fullChanged);
+	document.addEventListener('webkitfullscreenchange', fullChanged);
+	document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('full')) toggleFull(); });
+}
+
+// the container has no size while another tab of the page shows: when it gets one, fit the graph to it
+function whenShown(canvas) {
+	var sized = canvas.offsetWidth > 0;
+	function seen() {
+		if (!sized && canvas.offsetWidth > 0) { sized = true; cy.resize(); draw(true); }
+		else if (canvas.offsetWidth === 0) sized = false;
+	}
+	if (window.ResizeObserver) new ResizeObserver(seen).observe(canvas); else window.addEventListener('hashchange', seen);
 }
 
 function start() {
@@ -323,16 +428,25 @@ function start() {
 	cy.on('mouseout tap', 'node', function () { tooltip(false); });
 	cy.on('viewport', function () { tooltip(false); });
 	tabs(); controls();
+	if (!fullApi) el('full').title = 'This browser has no full screen for part of a page: the graph fills the window instead';
+	showPanel(storedPanel(), true);
 	window.addEventListener('hashchange', showTab);
 	window.addEventListener('resize', function () { cy.resize(); });
+	whenShown(el('cy'));
 	showTab();
 	say('');
+	// an address that names a device was made before that device's tab existed, and the page's CSS shows the pane that holds the
+	// address's target: replacing the address with itself (no new history entry, no hashchange) has the browser look for the target again
+	if (location.hash.length > 1) location.replace(location.href);
 }
 
 function load() {
-	if (typeof cytoscape === 'undefined' || typeof cytoscapeDagre === 'undefined') { say('The graph libraries did not load (they come from cdn.jsdelivr.net): reload when online.'); return; }
-	fetch('graph/bringup.json').then(function (r) { if (!r.ok) throw new Error('graph/bringup.json: ' + r.status); return r.json(); })
+	build();
+	if (typeof cytoscape === 'undefined' || typeof cytoscapeDagre === 'undefined') { say('The graph libraries did not load (they come from cdn.jsdelivr.net): reload when online.'); Array.prototype.forEach.call(box.querySelectorAll('button, input, select'), function (c) { c.disabled = true; }); return; }
+	var from = box.getAttribute('data-data');
+	fetch(from).then(function (r) { if (!r.ok) throw new Error(from + ': ' + r.status); return r.json(); })
 		.then(function (d) { data = d; index(); start(); })
 		.catch(function (e) { say('The steps did not load: ' + e.message); });
 }
 load();
+})();
