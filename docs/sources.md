@@ -5485,7 +5485,7 @@ By
 : orchestration-renewed
 
 Takes
-: Forbids generative AI in Nura since 2026-02-16: no contribution fully or in part created by it, no recommending it; repeat breaches go to CoC enforcement. Names no kinds, so issues, comments, test results and wiki text are inside it
+: Forbids generative AI in Nura since 2026-02-18 (adopted; proposed 2026-02-16): no contribution fully or in part created by it, no recommending it; repeat breaches go to CoC enforcement. Names no kinds, so issues, comments, test results and wiki text are inside it
 
 
 <a id="nura-code-of-conduct"></a>
