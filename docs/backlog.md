@@ -7537,3 +7537,34 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="weigh-built-against-shelf"></a>
+### Weigh what we built against off-the-shelf tools: Renovate/Dependabot moving lpoco-attended pins in device repos, the lift check, git-rhizoid; drop what does not pay for itself
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: from the author's question on one procedures repo with per-device forks, branches or submodules (answered by the library-and-pin model; his words: "ye, looks sane. i was just asking"), relayed by the Top Coordinator. Low rank, after lab-tools attended-step-groups. Today the lpoco-attended pins in surya-lab and google-walleye-lab procedures are moved by hand; Renovate's regex manager (source renovate-regex-manager) or Dependabot could open those bumps; lpoco attended lift (lab-tools) finds copied steps; git-rhizoid is planned for the device-layer graph.
+
+Opened
+: 2026-11-19
+
+Needs
+: research
+
+Device
+: xiaomi-surya
+
+Proof
+: a research row with sources and a decision naming, for each of the three, keep / replace with the shelf tool / drop, with what it costs to run and to keep; a backlog row for each change it chooses
+
+Rank
+: 9
+
+About
+: agent-folder
