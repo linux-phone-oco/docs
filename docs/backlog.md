@@ -7201,10 +7201,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: the sign - surya's attended run was called ready, one command away, with the author at the phones, while the lab's installed lpoco was 0.24.0 and refused surya-lab's device.toml ([kernels], unknown field). The dry run used the library linked into the procedure, not the host's binaries. Fix: the ready check runs the real installed tools; and orchestration prepares the host whenever a release changes the manifest (lab.toml pin) before a lane may call a run ready. Relayed by the Top Coordinator.
+: 2026-11-19, lab-tools-builder: landed (lab-tools #276, main): lpoco attended check --host also runs the installed devlab (LPOCO_ATTENDED_DEVLAB) on the repo's device.toml: --version, then --device FILE keeper status (read-only), each cut after 30 s; a failure prints 'host: FAILED' naming the binary, its version and its refusal, exit 1. Proof: attended/tests/scaffold.rs check_host_fails_naming_an_installed_devlab_that_cannot_read_the_manifest (stand-in 0.24.0 refusing [kernels]), check_host_passes_..._calls_it_once, check_without_host_never_calls_the_installed_devlab, check_host_fails_for_a_devlab_that_is_missing_or_has_no_version (seen failing first as unknown flag --host). Review (programmer) caught no time limit, empty version, stale usage/README: fixed. Not covered: the procedures' own dry run still uses the linked library (only the devlab call is host-real); lpoco itself is not probed; no test of the 30 s cut. Not yet in a release (release PR left). Orchestration still prepares the host when a release changes the manifest.
 
 Opened
 : 2026-11-19
