@@ -5615,3 +5615,128 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="base-distro"></a>
+### Which distribution our phones build on, so that we never maintain our own OS
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: Researched 2026-11-19 (base-distro-candidates, base-distro-how-it-stands): recommended staying on Nura with a thin device layer in our own apk repository; walleye starts on the same base. Next: the author's word; then the open items about base-distro.
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-base-distro
+
+
+<a id="walleye-rootfs-on-our-layer"></a>
+### walleye's first root filesystem: Alpine 3.24 / Nura v26.06 userland with walleye's own kernel and device packages from its lab's apk repository, built by the conveyor, no pmaports fork
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Decision 2026-11-19-base-distro (recommended). After walleye's own boot images reach a shell. Nura has no walleye package and archived msm8998; nearest prior art is porthole-dev's taimen pmaports work (walleye-mainline-prior-art). The route (pmbootstrap with a custom mirror, or an apk --root build) is chosen by the builder. Next: the author's word, then the walleye builder's look-around.
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-base-distro
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: on walleye, booted from this root filesystem: root-writable and no-failed-units pass, and apk policy names the kernel and device packages from the lab repository
+
+About
+: base-distro
+
+
+<a id="mobian-sm7150-offphone"></a>
+### Mobian's SM7150 family measured off the phone: build the surya image from mobian-recipes on the lab machine, flash nothing
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Settles the fallback's biggest unknown cheaply (decision 2026-11-19-base-distro): kernel 6.18.51 and sm7150-support are in staging only, no image is published, the branch idle since 2026-09-13. Next: a builder runs the recipe and records the result.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: a research row about base-distro naming the built image's kernel version, the packages from staging, whether the recipe builds unchanged, and what boots surya would need (U-Boot or not); the phone untouched
+
+About
+: base-distro
+
+
+<a id="base-distro-triggers"></a>
+### Re-check the triggers that reopen the base question: Alpine's AI policy (council #697/#703), Nura's qcom-sm7150 category, Mobian's SM7150 suite and images
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-19-base-distro names them. Next: re-check at Nura's next release (end of 2026) or when #697 closes, whichever is first.
+
+Opened
+: 2026-11-19
+
+Proof
+: a dated research row about base-distro with the three readings and their sources; a fired trigger opens a new decision
+
+About
+: base-distro
+
+
+<a id="device-facts-as-data"></a>
+### Each lab base keeps the facts its device packages use as data - kernel tag and config fragment, boot image addresses, firmware list - so packaging for another base is generated, not rediscovered
+
+Project
+: linux-phone-oco/device-template
+
+Status
+: open
+
+Note
+: Decision 2026-11-19-base-distro: keeps a later move of base cheap. Comes through the device template (decision 2026-11-18-device-layer-from-docs); a schema change, so the docs owner's. Next: the author's word, then the template's owner looks around.
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-base-distro
+
+Proof
+: surya-lab and google-walleye-lab each answer one query with their kernel tag, config fragment, boot addresses and firmware list, and their APKBUILDs read them
+
+About
+: base-distro

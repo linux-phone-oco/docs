@@ -1957,3 +1957,34 @@ Rejected
 
 About
 : bringup-steps
+
+
+<a id="2026-11-19-base-distro"></a>
+### 2026-11-19-base-distro
+
+Brief
+: Recommended for the author's word: stay on Nura, carry a thin device layer in our own apk repo via the conveyor; walleye starts on it; Mobian the fallback, on named triggers
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Decision
+: A recommendation for the author's word - moving surya's OS is his call. Stay on Nura and carry a thin device layer in our own apk repository, built, signed and published by the package conveyor. surya stays on Nura v26.06 as it runs; nothing is reinstalled. The layer is what we already carry - lab tools, sxmo-utils@lab, test kernels from grenudi/linux - plus our own kernel and device packages wherever Nura carries none, walleye's first. walleye starts on the same base: an Alpine 3.24 / Nura v26.06 userland with walleye's kernel and device packages from its lab's own repository through the conveyor, and no fork of pmaports (walleye-rootfs-on-our-layer). Each device's facts the layer packages (kernel tag and config, boot image addresses, firmware list) are kept in its lab's base as data, not only inside an APKBUILD, so a later move costs packaging, not knowledge. Mobian is the named fallback: its SM7150 family is measured off the phone first (mobian-sm7150-offphone), and a move is reconsidered when a trigger fires (base-distro-triggers): Alpine adopts an AI ban (council #697), Nura archives or drops qcom-sm7150, or Mobian ships an SM7150 image on a maintained kernel. Giving back with this pick: device work goes to the kernel (sm7150-mainline, the lists) under the author's sign-off, open on any base; Alpine aports while #697 stays open; Nura only by the author's own hand (2026-11-19-nura-relation); sxmo stays closed by SourceHut's terms whatever the base (giving-back-by-distro).
+
+Why
+: We already do not maintain an OS: for surya, Nura carries the device package, the kernel package (sm7150-mainline's tags, 7.1_rc3), the Qualcomm daemons and the UI, kept by the SoC's own mainline people; we carry a thin layer (base-distro-candidates, nura-relation-how-it-stands). Every other base would make the layer thicker, not thinner: no Arch-based, Fedora, openSUSE or NixOS distribution carries any SM7150 or MSM8998 device - on them we would carry the kernel, device, firmware, boot config, the Qualcomm daemons (AUR-only on ALARM, measured) and sxmo, which is our own phone OS. Mobian is the one real alternative for surya, but measured on 2026-11-19 its SM7150 kernel (6.18.51) and support package sit in staging only, no image is published, and the branch has been idle since 2026-09-13 - a move today trades a maintained 7.x port for an unpublished 6.18 one. What a move buys is giving back to the distribution's own packaging; our device work goes to the kernel, open on any base, and sxmo is closed by SourceHut on any base, so the gain is small today and grows only if Alpine closes too - hence that trigger. One base for both phones keeps one packaging lane (the conveyor has pacman and apk, no deb) and one set of lab tools; walleye's nearest prior art (porthole-dev's taimen pmaports work, Nura's archived msm8998 packages) is in the same shape. The author's word on the Halium route, verbatim: "no ubuntu touch its premise is stupid and in vane from the day one, they made 0 upstream contributions beside halium, and they are the one ones who use halium this day".
+
+Rejected
+: Ubuntu Touch, on the author's word (verbatim): "no ubuntu touch its premise is stupid and in vane from the day one, they made 0 upstream contributions beside halium, and they are the one ones who use halium this day". Droidian with it: the same Halium route (Android vendor kernels, surya 4.14.221), against mainline-first. Moving surya to Mobian now: reinstall with no upgrade path and the author's hands to flash; an image built from mobian-recipes' staging recipe that nobody has published or measured; the kernel back from 7.1 to 6.18 and our grenudi/linux topics rebased onto it; a deb lane the conveyor does not have; lpoco's boot names (pmos.conf, boot-deploy's title) rewritten for Mobian's boot; sxmo 1.18 packaged as a deb by us (Debian has 1.12); every surya proof measured again - roughly 25-40 agent-hours plus a witnessed flash and risk to the reference device, for a base whose SM7150 branch is idle. Kept as the fallback instead. Arch Linux ARM with our own pacman repository: healthy and generic, and the conveyor already has pacman, but its kernel drives neither SoC and the Qualcomm daemons and sxmo are AUR-only, so we would maintain the phone OS on top - the burden asked to avoid. DanctNix: Pine64 only, one maintainer, forbids LLM-written work. Manjaro ARM: without an ARM maintainer. Fedora / Pocketblue: a dormant sm7150 COPR, no device, two people; we would carry everything. openSUSE Mobile: one volunteer, neither SoC. Mobile NixOS: one maintainer, neither device (walleye dropped in 2023), forbids LLM-written work, sxmo not in nixpkgs. A fork of pmaports for walleye: a second OS tree to rebase; our own packages on Nura's binary repository need none. walleye on a different base than surya: two lanes and two sets of tools for one lab.
+
+About
+: base-distro
+
+Research
+: base-distro-candidates
+
+Tracked by
+: base-distro

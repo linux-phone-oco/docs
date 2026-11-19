@@ -1909,3 +1909,69 @@ About
 
 Material
 : research/upstream-forks/2026-11-19/
+
+
+<a id="base-distro-candidates"></a>
+### base-distro-candidates
+
+Brief
+: No base but Nura carries SM7150 (Mobian: staging only, no image); none carries MSM8998; no Arch-based distro has a Qualcomm phone - elsewhere we would carry the whole phone OS
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: Which distribution should our phones build on, so that we never maintain our own OS: Nura, Arch-based (DanctNix, Manjaro ARM, ALARM), Mobian, Fedora, openSUSE, Mobile NixOS, Ubuntu Touch/Droidian - device support, how devices are added, AI policy, sxmo/Phosh/Plasma packaging, health, cost to us?
+
+Found
+: Only Nura carries surya today; nothing carries walleye. Per candidate (surya SM7150 / walleye MSM8998 / health / AI rule / what we would carry):
+- Nura (stay): generic community port device-qcom-sm7150 by the sm7150-mainline people (4), kernel 7.1_rc3 / none, msm8998 archived / 30 Assembly members, ASBL, release every 6 months + edge / forbids generative AI, merged 2026-02-18 (nura-ai-policy) / today's thin layer: lab apk repo (lab tools, sxmo-utils@lab), test kernels.
+- Mobian: linux-image-6.18-sm7150 6.18.51 and sm7150-support in staging only, recipe lists surya, no image published (release or weekly), kernel branch idle since 2026-09-13 (mobian-repo-dists, mobian-images-qcom, mobian-qcom-linux) / none / 2-3 core, weekly images / Debian GR 2026-002 allows / reinstall, kernel back to 6.18, sxmo is 1.12 in Debian so ours, a deb lane the conveyor lacks (lpd-conveyor).
+- Arch Linux ARM: none; stock linux-aarch64 7.3.5 has MSM_GCC_8998 and SM_GCC_7150 unset (alarm-linux-aarch64-config) / none / rolling, current, 2 committers / no written rule / the whole device layer: kernel, device, firmware, boot, the Qualcomm daemons (qrtr, rmtfs, tqftpserv, hexagonrpcd, qbootctl: AUR only, measured), sxmo (AUR, stale).
+- DanctNix: Pine64 only, one maintainer, forbids LLM-written work. Manjaro ARM: no ARM maintainer, not a base. No Arch-based project carries any Qualcomm mainline phone.
+- Fedora/Pocketblue: a dormant sm7150 COPR (6.18, 2026-02), no device / none / Pocketblue 2 people, Mobility SIG a rallying point / allows with disclosure. openSUSE Mobile: one volunteer, neither SoC.
+- Mobile NixOS: neither (walleye dropped 2023), one maintainer, no releases; mobile-nixos forbids LLM-written work, nixpkgs allows with Assisted-by; sxmo not in nixpkgs.
+- Ubuntu Touch, Droidian (Halium): Android vendor kernels (surya 4.14.221), against mainline-first; rejected on the author's word.
+A thin layer on a general base is documented everywhere (pacman/apt/COPR/OBS/flake; pmbootstrap custom mirrors); its thickness is the question: thin on Nura, the whole phone OS on ALARM/Fedora/Tumbleweed/NixOS, middling on Mobian for surya and whole for walleye. Giving back: as giving-back-by-distro; the kernel is open with any base, sxmo is closed by SourceHut with any base, so a move opens only the distribution's own packaging. Material: the table and every URL read.
+
+Sources
+: nura-ai-policy,pmaports-device-qcom-sm7150,pmaports-linux-qcom-sm7150,nura-road-to-main,nura-v26-06-release,nura-team,pmbootstrap-mirrors,alpine-council-697,mobian-qcom-linux,mobian-recipes-sm7150,mobian-repo-dists,mobian-images-qcom,mobian-contribute,debian-gr-2026-002,debian-sxmo-utils,alarm-generic,alarm-linux-aarch64-config,alarm-pkgbuilds,aur-qcom-userspace,danctnix-contributing,manjaro-arm-fate,omarchy-mobile,fedora-ai-policy,pocketblue,opensuse-mobile,mobile-nixos-devices,mobile-nixos-contributing,ut-surya,ubuntu-touch-walleye,droidian-surya,lpd-conveyor
+
+About
+: base-distro
+
+Material
+: research/base-distro/2026-11-19/
+
+
+<a id="base-distro-how-it-stands"></a>
+### base-distro-how-it-stands
+
+Brief
+: Base distro: recommended to stay on Nura with a thin device layer of our own (apk repo, conveyor); walleye starts there; Mobian is the fallback on named triggers; waits on the author
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: How does the choice of our phones' base distribution stand, what is next, and what must not be redone?
+
+Found
+: Where it stands (2026-11-19): recommended, waiting on the author's word - stay on Nura, a thin device layer in our own apk repository through the conveyor, walleye on the same base, Mobian the fallback (decision 2026-11-19-base-distro, research base-distro-candidates).
+Items: walleye-rootfs-on-our-layer (google-walleye-lab, build), mobian-sm7150-offphone (build, phone untouched), base-distro-triggers (research), device-facts-as-data (device-template); the parent base-distro.
+Dead ends, not to redo: Arch-based bases carry no Qualcomm phone and ALARM's kernel drives neither SoC; Manjaro ARM has no ARM maintainer; DanctNix is Pine64-only and bars LLM work; Fedora/Pocketblue, openSUSE and Mobile NixOS carry neither device; the Halium route (Ubuntu Touch, Droidian) is closed on the author's word and by mainline-first.
+Measured, re-check before relying on it: Mobian's sm7150 kernel 6.18.51 in staging only, no image (repo.mobian.org, images.mobian.org, 2026-11-19); Nura's qcom-sm7150 in community at 7.1_rc3; Alpine council #697 open.
+Never: reinstall surya on another base without the author's word and a witnessed flash; send anything to Nura made by an agent; fork pmaports for a device when our own repository on Nura's binaries does.
+Giving back with the pick: kernel open (author's sign-off), Alpine aports open while #697 is, Nura by the author's own hand only, sxmo closed by SourceHut.
+
+Sources
+: mobian-repo-dists,mobian-images-qcom,alpine-council-697,pmaports-linux-qcom-sm7150,nura-ai-policy,lpd-conveyor
+
+About
+: base-distro

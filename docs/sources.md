@@ -5712,3 +5712,497 @@ By
 
 Takes
 : What we redistribute: lpoco-health and sxmo-utils; the index names licence and URL per package, the page names neither origin, licence nor source
+
+
+<a id="nura-road-to-main"></a>
+### Road to the main category
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://nura.eco/blog/2026/09/29/road-to-main-category/
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: Main now needs UEFI, generic kernels and device packages, a team of 5 and hardware CI; first candidates are SM7325, not SM7150
+
+
+<a id="nura-v26-06-release"></a>
+### Nura (postmarketOS) v26.06 release
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://nura.eco/blog/2026/06/21/v26.06-release/
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: v26.06 on Alpine 3.24: Phosh 0.55, Plasma Mobile 6.6.5, Sxmo 1.18.1; releases every six months plus edge
+
+
+<a id="nura-team"></a>
+### Nura team and Assembly
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://nura.eco/team/
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: 30 Assembly members; legal entity NURA PROJECT ASBL
+
+
+<a id="pmbootstrap-mirrors"></a>
+### pmbootstrap: mirrors (custom repositories)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmbootstrap/-/blob/main/docs/mirrors.md
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: mirrors.pmaports_custom / systemd_custom put a third-party apk repository in front; keys in config_apk_keys
+
+
+<a id="alpine-council-697"></a>
+### Alpine council: Policy for AI/LLM contributions (#697)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.alpinelinux.org/alpine/council/-/work_items/697
+
+Year
+: 2025
+
+By
+: Alpine Linux
+
+Takes
+: Open since 2025-12-22, leaning to discourage AI; no Alpine policy adopted yet - the open risk of an Alpine base
+
+
+<a id="mobian-qcom-linux"></a>
+### Mobian qcom-linux kernels (branch mobian-sm7150-6.18)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://salsa.debian.org/Mobian-team/devices/kernels/qcom-linux
+
+Year
+: 2026
+
+By
+: Mobian
+
+Takes
+: One kernel per SoC family; sm7150 at 6.18 from sm7150-mainline patches, no commit since 2026-09-13
+
+
+<a id="mobian-recipes-sm7150"></a>
+### Mobian recipes: devices/qcom/configs/sm7150.toml
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://salsa.debian.org/Mobian-team/mobian-recipes
+
+Year
+: 2025
+
+By
+: Mobian
+
+Takes
+: The SM7150 recipe lists surya (huaxing, tianma), davinci, sunfish, sweet, toco
+
+
+<a id="mobian-repo-dists"></a>
+### Mobian apt repository (dists)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://repo.mobian.org/dists/
+
+Year
+: 2026
+
+By
+: Mobian
+
+Takes
+: Measured 2026-11-19: linux-image-6.18-sm7150 6.18.51-1 and sm7150-support only in staging; nothing sm7150 in trixie; nothing msm8998
+
+
+<a id="mobian-images-qcom"></a>
+### Mobian Qualcomm images
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://images.mobian.org/qcom/
+
+Year
+: 2026
+
+By
+: Mobian
+
+Takes
+: Measured 2026-11-19: images for sc7280, sdm670, sdm845, sm6350 only; no sm7150 in release or weekly
+
+
+<a id="mobian-contribute"></a>
+### Mobian: Contribute
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.debian.org/Mobian/Contribute
+
+Year
+: 2026
+
+By
+: Mobian
+
+Takes
+: Mainline-based kernels only, no vendor kernels or Halium; ask a Mobian dev; volunteer-run
+
+
+<a id="debian-gr-2026-002"></a>
+### Debian GR 2026-002: Responsible Use of Generative AI
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.debian.org/vote/2026/vote_002
+
+Year
+: 2026
+
+By
+: Debian
+
+Takes
+: Debian neither endorses nor prohibits generative AI; the contributor is responsible
+
+
+<a id="debian-sxmo-utils"></a>
+### Debian sources: sxmo-utils
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://sources.debian.org/src/sxmo-utils/
+
+Year
+: 2026
+
+By
+: Debian
+
+Takes
+: sxmo-utils 1.12.0 in trixie to sid (2023); 1.14.2 in experimental - a Debian base means carrying sxmo ourselves
+
+
+<a id="alarm-generic"></a>
+### Arch Linux ARM: Generic AArch64
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://archlinuxarm.org/platforms/armv8/generic
+
+Year
+: 2026
+
+By
+: Arch Linux ARM
+
+Takes
+: A generic mainline aarch64 userland and EFI kernel; DTBs only for mainline-supported boards
+
+
+<a id="alarm-linux-aarch64-config"></a>
+### Arch Linux ARM linux-aarch64 kernel config
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/archlinuxarm/PKGBUILDs/blob/master/core/linux-aarch64/config
+
+Year
+: 2026
+
+By
+: Arch Linux ARM
+
+Takes
+: MSM_GCC_8998 and SM_GCC_7150 not set: the stock kernel drives neither of our SoCs
+
+
+<a id="alarm-pkgbuilds"></a>
+### Arch Linux ARM PKGBUILDs
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/archlinuxarm/PKGBUILDs
+
+Year
+: 2026
+
+By
+: Arch Linux ARM
+
+Takes
+: Rolling and current (commits 2026-11-19); 80 and 19 of the last 100 commits by two people; no AI rule in CONTRIBUTING
+
+
+<a id="aur-qcom-userspace"></a>
+### AUR: qrtr, rmtfs, tqftpserv, hexagonrpcd, qbootctl
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://aur.archlinux.org/packages?K=qrtr
+
+Year
+: 2026
+
+By
+: Arch User Repository
+
+Takes
+: Measured 2026-11-19: the Qualcomm daemons are in the AUR only, not in Arch Linux ARM; sxmo only as sxmo-utils-git 1.17.1
+
+
+<a id="danctnix-contributing"></a>
+### DanctNIX Pine64-Arch CONTRIBUTING
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://codeberg.org/DanctNIX/Pine64-Arch/src/branch/master/CONTRIBUTING.md
+
+Year
+: 2026
+
+By
+: DanctNIX
+
+Takes
+: Pine64 devices only, one maintainer; contributions written largely with LLMs not welcome
+
+
+<a id="manjaro-arm-fate"></a>
+### The fate of Manjaro ARM unstable
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://forum.manjaro.org/t/the-fate-of-manjaro-arm-unstable/181661
+
+Year
+: 2025
+
+By
+: Manjaro
+
+Takes
+: Manjaro ARM has one active packager at most and no branch manager: not a base
+
+
+<a id="omarchy-mobile"></a>
+### omarchy-mobile
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/derekross/omarchy-mobile
+
+Year
+: 2026
+
+By
+: derekross
+
+Takes
+: The precedent of ALARM plus an own pacman repository with mainline kernels per device (Pixel Tensor, not Qualcomm)
+
+
+<a id="fedora-ai-policy"></a>
+### Fedora Council: AI-assisted contributions policy
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.fedoraproject.org/en-US/council/policy/ai-contribution-policy/
+
+Year
+: 2025
+
+By
+: Fedora
+
+Takes
+: AI assistance allowed; contributor accountable; significant output disclosed, Assisted-by recommended
+
+
+<a id="pocketblue"></a>
+### Pocketblue (Fedora Atomic for phones)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/pocketblue/pocketblue
+
+Year
+: 2026
+
+By
+: Pocketblue
+
+Takes
+: Fedora's active phone effort: SDM845 and Xiaomi tablets; a dormant sm7150 COPR (kernel 6.18, 2026-02), no SM7150 device; two main people
+
+
+<a id="opensuse-mobile"></a>
+### openSUSE Mobile
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://en.opensuse.org/Mobile
+
+Year
+: 2026
+
+By
+: openSUSE
+
+Takes
+: PinePhone, OnePlus 6/6T, Poco F1; one volunteer's home projects; no SM7150 or MSM8998
+
+
+<a id="mobile-nixos-devices"></a>
+### Mobile NixOS devices
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://mobile-nixos.github.io/mobile-nixos/devices/index.html
+
+Year
+: 2026
+
+By
+: Mobile NixOS
+
+Takes
+: Mainline Qualcomm only OnePlus 6 (sdm845 at 6.4); no surya, walleye dropped in 2023
+
+
+<a id="mobile-nixos-contributing"></a>
+### Mobile NixOS CONTRIBUTING
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/mobile-nixos/mobile-nixos/blob/development/CONTRIBUTING.adoc
+
+Year
+: 2026
+
+By
+: Mobile NixOS
+
+Takes
+: Contributions written largely with LLMs not welcome; one active maintainer
+
+
+<a id="droidian-surya"></a>
+### Droidian device entry: surya
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/droidian-devices/devices.droidian.org/blob/master/src/devices/surya.json
+
+Year
+: 2023
+
+By
+: Droidian
+
+Takes
+: surya listed as Potential, currently unsupported; Halium route
+
+
+<a id="lpd-conveyor"></a>
+### Package conveyor
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/linux-package-distribution-oco/conveyor
+
+Year
+: 2026
+
+By
+: linux-package-distribution-oco
+
+Takes
+: Our conveyor builds, signs and publishes pacman and apk repositories; no deb lane
