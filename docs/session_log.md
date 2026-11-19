@@ -5006,3 +5006,27 @@ Considered
 
 Rejected
 : Filing the awake.rs workaround again: awake-not-a-workaround is open.
+
+---
+
+
+<a id="2026-11-19-phone-reached-by-its-declared-transport-slice-1"></a>
+### Phone reached by its declared transport, slice 1
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: manifest transport/login, Phone over telnet and adb, suite not applicable without a login; landed lab-tools #304
+
+Considered
+: a telnet client binary (banner noise on stdout) vs raw TCP with run markers
+
+Rejected
+: using the telnet binary: prints Trying/Connected lines and no exit status; faking a login on no-login phones (decision says never)
+
+About
+: phone-declared-transport
