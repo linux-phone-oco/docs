@@ -7192,3 +7192,34 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="attended-ready-on-host"></a>
+### lpoco-attended check --host: a procedure is ready only when the lab's installed lpoco/devlab read its device.toml and run its dry run
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: the sign - surya's attended run was called ready, one command away, with the author at the phones, while the lab's installed lpoco was 0.24.0 and refused surya-lab's device.toml ([kernels], unknown field). The dry run used the library linked into the procedure, not the host's binaries. Fix: the ready check runs the real installed tools; and orchestration prepares the host whenever a release changes the manifest (lab.toml pin) before a lane may call a run ready. Relayed by the Top Coordinator.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools attended tests: check --host with a stand-in installed devlab older than the manifest (one that refuses [kernels]) fails naming the binary, its version and the refusal; with a matching one it passes; the procedure's dry run calls the installed devlab --device PATH (a read-only command) once
+
+Rank
+: 4
+
+About
+: bringup-steps

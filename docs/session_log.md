@@ -4349,3 +4349,27 @@ Rejected
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-19-host-behind-the-manifest"></a>
+### The host's lpoco was behind the manifest the lanes use
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: surya's attended keeper failed with the author at the phones: installed lpoco 0.24.0 refused device.toml [kernels] (surya-lab #444). Pinned the lpoco family at 0.32.1 in lab.toml (lab-machine) and prepared the host (no root commands, both keeper leases free). Queued attended-ready-on-host (rank 4).
+
+Considered
+: Telling lanes to wait for the next routine prepare; installing by hand outside lab.toml.
+
+Rejected
+: A hand install: the host drifts from lab.toml again. Waiting: the author's go window closes at 19:23.
+
+About
+: bringup-steps
