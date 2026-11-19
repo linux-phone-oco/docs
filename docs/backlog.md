@@ -5646,7 +5646,7 @@ Status
 : open
 
 Note
-: Decision 2026-11-19-base-distro (recommended). After walleye's own boot images reach a shell. Nura has no walleye package and archived msm8998; nearest prior art is porthole-dev's taimen pmaports work (walleye-mainline-prior-art). The route (pmbootstrap with a custom mirror, or an apk --root build) is chosen by the builder. Next: the author's word, then the walleye builder's look-around.
+: Decision 2026-11-19-base-distro as amended by 2026-11-19-base-distro-any-arm-base: Nura/Alpine by default (it saves walleye the Qualcomm daemons, phone scripts and the boot.img rewrite; one apk lane), but walleye's layer is ours on any base, so the author may set Debian instead. After walleye's own boot images reach a shell, test layer first (walleye-rootfs-test-layer-first). Next: the author's word, then the walleye builder's look-around.
 
 Opened
 : 2026-11-19

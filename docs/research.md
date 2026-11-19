@@ -1947,36 +1947,6 @@ Material
 : research/base-distro/2026-11-19/
 
 
-<a id="base-distro-how-it-stands"></a>
-### base-distro-how-it-stands
-
-Brief
-: Base distro: recommended to stay on Nura with a thin device layer of our own (apk repo, conveyor); walleye starts there; Mobian is the fallback on named triggers; waits on the author
-
-Project
-: linux-phone-oco/docs
-
-Date
-: 2026-11-19
-
-Question
-: How does the choice of our phones' base distribution stand, what is next, and what must not be redone?
-
-Found
-: Where it stands (2026-11-19): recommended, waiting on the author's word - stay on Nura, a thin device layer in our own apk repository through the conveyor, walleye on the same base, Mobian the fallback (decision 2026-11-19-base-distro, research base-distro-candidates).
-Items: walleye-rootfs-on-our-layer (google-walleye-lab, build), mobian-sm7150-offphone (build, phone untouched), base-distro-triggers (research), device-facts-as-data (device-template); the parent base-distro.
-Dead ends, not to redo: Arch-based bases carry no Qualcomm phone and ALARM's kernel drives neither SoC; Manjaro ARM has no ARM maintainer; DanctNix is Pine64-only and bars LLM work; Fedora/Pocketblue, openSUSE and Mobile NixOS carry neither device; the Halium route (Ubuntu Touch, Droidian) is closed on the author's word and by mainline-first.
-Measured, re-check before relying on it: Mobian's sm7150 kernel 6.18.51 in staging only, no image (repo.mobian.org, images.mobian.org, 2026-11-19); Nura's qcom-sm7150 in community at 7.1_rc3; Alpine council #697 open.
-Never: reinstall surya on another base without the author's word and a witnessed flash; send anything to Nura made by an agent; fork pmaports for a device when our own repository on Nura's binaries does.
-Giving back with the pick: kernel open (author's sign-off), Alpine aports open while #697 is, Nura by the author's own hand only, sxmo closed by SourceHut.
-
-Sources
-: mobian-repo-dists,mobian-images-qcom,alpine-council-697,pmaports-linux-qcom-sm7150,nura-ai-policy,lpd-conveyor
-
-About
-: base-distro
-
-
 <a id="test-layer-sxmo-cost-measured"></a>
 ### test-layer-sxmo-cost-measured
 
@@ -2063,3 +2033,72 @@ About
 
 Material
 : research/test-layer/2026-11-19/
+
+
+<a id="base-distro-device-layer"></a>
+### base-distro-device-layer
+
+Brief
+: Any general aarch64 distro will do: a phone needs a device layer, not an OS; on Nura ~0 of it is ours for surya, on Debian ~8 small packages, Fedora ~9, ALARM ~13; walleye's is ours anywhere
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: Why a mobile distribution at all: what does a phone need beyond a general aarch64 distribution, which of it is device layer we carry anyway and which is OS burden, how big is that layer on ALARM, Debian, Fedora against Nura, and what only a mobile distribution gives?
+
+Found
+: The author is right: a phone needs no special OS, only a device layer, and that layer is carried by someone on any base. Measured 2026-11-19 (pmaports main; Repology).
+What a phone needs beyond a general aarch64 systemd distribution, each marked:
+- Kernel + dtb per SoC/device - DEVICE LAYER. Nura carries surya's (linux-postmarketos-qcom-sm7150, sm7150-mainline tags); Mobian has 6.18 in staging; elsewhere ours. walleye's is ours on every base, Nura included.
+- Boot glue - DEVICE LAYER. surya: U-Boot from sm7150-mainline flashed once, then systemd-boot EFI, which kernel-install updates on any systemd base - near generic. walleye: Android boot.img v0 with appended dtb; a kernel upgrade must rewrite the boot partition: Nura's boot-deploy does it, on a general base a kernel-install plugin of ours.
+- Firmware - DEVICE LAYER: firmware-xiaomi-surya and the ath10k board files (sm7150-mainline); the generic part (adreno, qca) is in linux-firmware on every base.
+- Qualcomm userspace - BASE where packaged: qrtr, rmtfs, tqftpserv, qbootctl in Debian 13, Fedora 45, Alpine 3.24; AUR-only on Arch. pd-mapper is in the kernel now (no base packages it). hexagonrpcd: Alpine only (AUR) - device layer elsewhere.
+- UCM and udev/UPower/wireplumber config - DEVICE LAYER: surya's UCM is sm7150-mainline's fork (alsa-ucm-conf-qcom-sm7150); the config is soc-qcom's few files.
+- ModemManager, feedbackd, callaudiod, iio-sensor-proxy - BASE: in Debian 13, Arch, Fedora 45 and Alpine 3.24 alike.
+- Phone glue only Nura has: bootmac, swclock-offset, msm-firmware-loader, msm-modem-uim-selection, the call-audio idle workaround, make-dynpart-mappings, unl0kr; q6voiced Alpine only, 81voltd Debian and Alpine. Small scripts - DEVICE LAYER on a general base. This, plus someone keeping the device packages, is all only a mobile distribution gives.
+- Initramfs - DEVICE LAYER at most: dracut, mkinitcpio, initramfs-tools or mkosi-initrd boot a UFS root; Nura's adds a USB-gadget debug shell, unl0kr unlock and first-boot resize (systemd-repart/growfs elsewhere). walleye already has its own (lpoco-bringup).
+- Image builder - DEVICE LAYER config, a general tool: pmbootstrap for Nura; mkosi covers Debian, Arch and Fedora (not Alpine).
+OS burden proper - what a distribution's maintainers carry and we carry on none of these bases: the toolchain and bootstrap; thousands of general packages with their security fixes; releases, upgrade paths, end of life; archive-wide build, mirrors and signing; installer and base images; archive QA and users' reports. We take a piece of it only by forking the base's tree, patching a general package we must rebase (sxmo-utils@lab was one; decision 2026-11-19-hardware-test-layer retires it), or holding a base past its end of life.
+Size of our device layer for surya: Nura ~0 packages (it carries ~13: device, kernel, firmware x2, UCM, soc-qcom with modem and qbootctl, hexagonrpcd, msm-modem, q6voiced, bootmac, swclock-offset, ramdisk/boot-deploy); Debian ~8 (kernel, firmware, UCM, config, hexagonrpcd, q6voiced, bootmac, swclock-offset) plus a deb lane; Fedora ~9 (also 81voltd) plus an rpm lane; Arch Linux ARM ~13 (also qrtr, rmtfs, tqftpserv, qbootctl), the pacman lane exists. walleye: the kernel, dtb, firmware, UCM, boot.img glue and initramfs are ours on every base; Nura saves it the Qualcomm daemons, glue scripts and boot.img rewrite.
+With sxmo dropped for a bare tty test layer, the hardware layer needs only kernel, firmware, the Qualcomm daemons, ModemManager, ALSA and lpoco - in every general base - and the last tie to Alpine (sxmo's upstream tracks Alpine; Debian has 1.12) goes.
+
+Sources
+: pmaports-device-qcom-sm7150,pmaports-soc-qcom,pmaports-firmware-qcom-sm7150,pmaports-alsa-ucm-sm7150,pmaports-linux-qcom-sm7150,repology-phone-packages,aur-qcom-userspace,alarm-linux-aarch64-config,mkosi-distributions,mobian-repo-dists,lpd-conveyor
+
+About
+: base-distro
+
+
+<a id="base-distro-how-it-stands"></a>
+### base-distro-how-it-stands
+
+Brief
+: Base distro: recommended to stay on Nura with a thin device layer of our own (apk repo, conveyor); walleye starts there; Mobian is the fallback on named triggers; waits on the author
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: How does the choice of our phones' base distribution stand, what is next, and what must not be redone?
+
+Found
+: Where it stands (2026-11-19): recommended, waiting on the author's word - stay on Nura, a thin device layer in our own apk repository through the conveyor, walleye on the same base, Mobian the fallback (decision 2026-11-19-base-distro, research base-distro-candidates).
+Items: walleye-rootfs-on-our-layer (google-walleye-lab, build), mobian-sm7150-offphone (build, phone untouched), base-distro-triggers (research), device-facts-as-data (device-template); the parent base-distro.
+Dead ends, not to redo: Arch-based bases carry no Qualcomm phone and ALARM's kernel drives neither SoC; Manjaro ARM has no ARM maintainer; DanctNix is Pine64-only and bars LLM work; Fedora/Pocketblue, openSUSE and Mobile NixOS carry neither device; the Halium route (Ubuntu Touch, Droidian) is closed on the author's word and by mainline-first.
+Measured, re-check before relying on it: Mobian's sm7150 kernel 6.18.51 in staging only, no image (repo.mobian.org, images.mobian.org, 2026-11-19); Nura's qcom-sm7150 in community at 7.1_rc3; Alpine council #697 open.
+Never: reinstall surya on another base without the author's word and a witnessed flash; send anything to Nura made by an agent; fork pmaports for a device when our own repository on Nura's binaries does.
+Giving back with the pick: kernel open (author's sign-off), Alpine aports open while #697 is, Nura by the author's own hand only, sxmo closed by SourceHut.
+Amended the same day on the author's question (decision 2026-11-19-base-distro-any-arm-base, research base-distro-device-layer): any general aarch64 systemd base will do; a phone needs a device layer, not an OS, and we keep ours base-neutral and take no OS burden. surya stays on Nura because Nura carries its layer (~0 ours, against ~8 Debian, ~9 Fedora, ~13 ALARM); walleye's layer is ours on every base, so its base is a close call for the author (Nura by default, Debian if its layer should be giveable). Fallback: any general base, Debian first. Not to redo: the per-item list of what is device layer and what is OS burden, and the package counts (Repology, pmaports main, 2026-11-19).
+
+Sources
+: mobian-repo-dists,mobian-images-qcom,alpine-council-697,pmaports-linux-qcom-sm7150,nura-ai-policy,lpd-conveyor,repology-phone-packages
+
+About
+: base-distro

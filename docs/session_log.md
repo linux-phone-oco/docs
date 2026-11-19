@@ -3452,3 +3452,24 @@ Rejected
 
 About
 : test-layer
+
+---
+
+
+<a id="2026-11-19-base-distro-any-arm-base"></a>
+### Base distro amended: any general aarch64 base, a device layer not an OS
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: On the author's question, relayed by orchestration, verbatim: "we have looked at mobile distributions but why do we even have to make such difference ? i mean cant we just use any upstream linux distro that supports arm , what holds us ? do we need to keep phone os, at least its base distribution form with some special care ? i mean, for de/shell we can craft/use whatever we like that doesnt really what makes a burdain of maintaining our own linux distribution os(btw what are the burdains, would be nice to list them exactly) ?" Read Nura's sm7150 device, soc-qcom, firmware and UCM packages on pmaports main and the phone userspace across Debian, Arch, AUR, Fedora, Alpine on Repology; listed each item as device layer or OS burden; counted the layer per base; read test-layer's rows. Recorded research base-distro-device-layer, decision 2026-11-19-base-distro-any-arm-base (amends 2026-11-19-base-distro), 5 sources; how-it-stands and the walleye item updated.
+
+Rejected
+: Superseding the first decision whole: its surya recommendation and items stand; only the framing and walleye's base change, so an amendment.
+
+About
+: base-distro

@@ -6413,3 +6413,98 @@ By
 
 Takes
 : autosuspend, swayidle and input handling are services of the sxmo session, started by the display manager
+
+
+<a id="pmaports-soc-qcom"></a>
+### pmaports: soc-qcom (Qualcomm common package)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/tree/main/device/community/soc-qcom
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: What Nura adds for every Qualcomm phone: tqftpserv, bootmac, swclock-offset, UPower and wireplumber config; -modem pulls 81voltd, msm-modem, msm-modem-uim-selection, q6voiced; -qbootctl
+
+
+<a id="pmaports-firmware-qcom-sm7150"></a>
+### pmaports: firmware-qcom-sm7150
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/tree/main/device/community/firmware-qcom-sm7150
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: SM7150 firmware: ath10k board files built from sm7150-mainline, per-device firmware-xiaomi-surya, adreno a630, linux-firmware-qca
+
+
+<a id="pmaports-alsa-ucm-sm7150"></a>
+### pmaports: alsa-ucm-conf-qcom-sm7150
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/tree/main/device/community/alsa-ucm-conf-qcom-sm7150
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: surya's UCM is sm7150-mainline's fork of alsa-ucm-conf, a device-layer package on any base
+
+
+<a id="repology-phone-packages"></a>
+### Repology: phone userspace packages across distributions
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://repology.org/api/v1/project/rmtfs
+
+Year
+: 2026
+
+By
+: Repology
+
+Takes
+: Measured 2026-11-19 (Debian 13/sid, Arch, AUR, Fedora 45, Alpine 3.24, postmarketOS) for ModemManager, feedbackd, callaudiod, qrtr, rmtfs, tqftpserv, pd-mapper, hexagonrpcd, qbootctl, q6voiced, 81voltd, bootmac, swclock-offset, msm-firmware-loader, alsa-ucm-conf, iio-sensor-proxy, unl0kr, linux-firmware
+
+
+<a id="mkosi-distributions"></a>
+### mkosi(1): Distribution=
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/systemd/mkosi/blob/main/mkosi/resources/man/mkosi.1.md
+
+Year
+: 2026
+
+By
+: systemd
+
+Takes
+: One image builder for Fedora, Debian, Ubuntu, Arch, openSUSE and others, not Alpine; also a kernel-install plugin

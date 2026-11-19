@@ -170,21 +170,6 @@ Condenses
 ### Row 12
 
 About
-: base-distro
-
-Date
-: 2026-11-19
-
-Says
-: Which distribution our phones build on. Recommended, waiting on the author's word (decision 2026-11-19-base-distro): stay on Nura - it alone carries surya's SM7150 (community port by the sm7150-mainline people, kernel 7.1) - and carry a thin device layer of our own in the apk repository the conveyor publishes; walleye, which no base carries, starts on the same base with its own kernel and device packages. Arch-based, Fedora, openSUSE and NixOS bases carry neither SoC, so the layer would become our own phone OS; Mobian's SM7150 is staging-only and unpublished, so it is the fallback, measured off the phone first. Ubuntu Touch and Droidian (Halium) are out on the author's word. Giving back: kernel open on any base; Nura only by the author's hand; Alpine open while council #697 is; sxmo closed by SourceHut. Records: base-distro-candidates, base-distro-how-it-stands; items walleye-rootfs-on-our-layer, mobian-sm7150-offphone, base-distro-triggers, device-facts-as-data.
-
-Condenses
-: 2026-11-19-base-distro, 2026-11-19-research-base-distro, base-distro-candidates, base-distro-how-it-stands
-
-
-### Row 13
-
-About
 : test-layer
 
 Date
@@ -195,3 +180,18 @@ Says
 
 Condenses
 : 2026-11-19-hardware-test-layer, 2026-11-19-research-test-layer, test-layer-how-it-stands, test-layer-landscape, test-layer-sxmo-cost-measured
+
+
+### Row 13
+
+About
+: base-distro
+
+Date
+: 2026-11-19
+
+Says
+: Which distribution our phones build on. Any general aarch64 systemd distribution will do: a phone needs a device layer (kernel and dtb, boot glue, firmware, UCM and config, a few Qualcomm daemons and phone scripts, initramfs and image config), not an OS; ModemManager, feedbackd, callaudiod are in every base, and the OS burdens (toolchain, archive, security, releases, infrastructure) we carry on none (research base-distro-device-layer). The base for a device is chosen by how much of its layer it carries, then one conveyor lane, then giving back. Recommended, waiting on the author's word (decisions 2026-11-19-base-distro, amended by 2026-11-19-base-distro-any-arm-base): surya stays on Nura, which carries its whole layer (~0 ours vs ~8 Debian, ~9 Fedora, ~13 ALARM); walleye's layer is ours on any base - Nura by default, Debian if the author wants it giveable. Fallback: any general base, Debian first. Ubuntu Touch and Droidian out on the author's word. Giving back: kernel open anywhere; Nura only by the author's hand; Alpine open while council #697 is; sxmo closed by SourceHut. Records: base-distro-candidates, base-distro-device-layer, base-distro-how-it-stands; items walleye-rootfs-on-our-layer, mobian-sm7150-offphone, base-distro-triggers, device-facts-as-data.
+
+Condenses
+: 2026-11-19-base-distro, 2026-11-19-base-distro-any-arm-base, 2026-11-19-research-base-distro, base-distro-candidates, base-distro-device-layer, base-distro-how-it-stands

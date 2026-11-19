@@ -2016,3 +2016,37 @@ About
 
 Research
 : test-layer-sxmo-cost-measured
+
+
+<a id="2026-11-19-base-distro-any-arm-base"></a>
+### 2026-11-19-base-distro-any-arm-base
+
+Brief
+: Amends base-distro: any general aarch64 base will do - we keep a base-neutral device layer and no OS burden; surya stays on Nura because it carries surya's layer; walleye's base is a close call
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Decision
+: Amends 2026-11-19-base-distro, still a recommendation for the author's word. The base is any general aarch64 systemd distribution; a mobile distribution is not needed for what it is, only for what it carries. What we keep for each phone is a device layer (kernel and dtb, boot glue, firmware, UCM and config, the few Qualcomm daemons and phone scripts a base lacks, initramfs and image config), written base-neutral (device-facts-as-data), and we never take OS burden: no fork of a base's package tree, no patched general package to rebase, no base past its end of life. The base for a device is chosen by how much of its device layer the base carries, then by one conveyor lane for the lab, then by giving back. surya stays on Nura: Nura carries its whole layer (~13 packages, kept by the SoC's own mainline people), against ~8 small packages of ours on Debian, ~9 on Fedora, ~13 on Arch Linux ARM, plus a reinstall. walleye stays on the same base by default (Nura saves it the Qualcomm daemons, the phone scripts and the boot.img rewrite, and keeps one apk lane), but its layer is ours on every base, so its base is a close call the author may set otherwise - Debian, if he wants walleye's device layer to be something a distribution can take from us. The fallback is no longer Mobian alone but any general base: Debian first (packages most of the Qualcomm userspace, allows the author's AI-assisted work), Fedora second, Arch Linux ARM third (the pacman lane exists, the Qualcomm daemons would be ours).
+
+Why
+: The author, verbatim: "we have looked at mobile distributions but why do we even have to make such difference ? i mean cant we just use any upstream linux distro that supports arm , what holds us ? do we need to keep phone os, at least its base distribution form with some special care ? i mean, for de/shell we can craft/use whatever we like that doesnt really what makes a burdain of maintaining our own linux distribution os(btw what are the burdains, would be nice to list them exactly) ?" He is right, and the first decision counted device-layer items (a kernel that drives neither SoC, AUR-only Qualcomm daemons) as OS burden. Measured (research base-distro-device-layer): nothing a phone needs is OS burden; the kernel, boot glue, firmware, UCM, config, phone scripts, initramfs and image config are device layer on every base, ModemManager, feedbackd, callaudiod and iio-sensor-proxy are in every general base, and qrtr, rmtfs, tqftpserv, qbootctl in Debian, Fedora and Alpine. The OS burdens - toolchain, thousands of packages and their security fixes, releases and upgrades, archive infrastructure and signing, installer images, archive QA - we carry on no base. So the choice is a matter of whose hands the device layer is in: for surya, Nura's; for walleye, ours anywhere. With sxmo dropped for a bare tty test layer (decision 2026-11-19-hardware-test-layer), the hardware layer needs only what every general base packages, which removes the last tie to Alpine but does not make a move pay for surya.
+
+Rejected
+: Keeping the first framing (mobile distributions only, Arch Linux ARM and others as "carrying the OS"): it counted device layer as OS burden. Moving surya to a general base now: the same layer we get from Nura would become ~8-13 packages of ours plus a reinstall and a witnessed flash, with sxmo dropped roughly 20-30 agent-hours, for nothing Nura does not already give. Choosing walleye's base by mobile-ness: no base carries walleye, so it is chosen by cost and giving back.
+
+About
+: base-distro
+
+Research
+: base-distro-device-layer
+
+Amends
+: 2026-11-19-base-distro
+
+Tracked by
+: base-distro
