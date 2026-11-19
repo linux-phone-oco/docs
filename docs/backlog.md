@@ -7514,10 +7514,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-procedures-chain-by-named-groups. Then walleye's display, UFS and PMIC procedures replace their repeated gate/boot/shell/way-back with phone_ready and leave_known_good (google-walleye-lab, its coordinator's item).
+: 2026-11-19, lab-tools-builder: landed (lab-tools #300). group(name, items), Group::way_back, run_group; steps logged GROUP > STEP, --dry-run nested, --from names a group or a step; library groups steps::phone_ready(kernel) and steps::leave_known_good() read [kernels] from device.toml. Proof: attended/tests/groups.rs (8 tests; the way-back arming and the panic path seen failing first). Review caught: a panicking step and the exit-2 paths skipped the way backs - fixed. Open: walleye procedures still repeat their own gate/boot/shell steps (their coordinator's item: swap in phone_ready/leave_known_good; the device's gate stays its own step before the group); a finished group still owes its way back after a later leave_known_good (phone_ready's way back then reboots again on a stock default); lpoco attended lift does not yet see groups; a way back that itself fails has no test.
 
 Opened
 : 2026-11-19
