@@ -6652,3 +6652,34 @@ Rank
 
 About
 : health-reports-pieces
+
+
+<a id="lpoco-attended"></a>
+### lpoco attended: one shared runner for the sequences a person attends - each lane writes a sequence file, not a program
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: asked by the Top Coordinator after the author's rule (ideal-agent decision 2026-11-19-attend-only-when-one-launch-away, practice 11-heads-up): lanes ask the author to attend only when the attended sequence is prepared, tested and one launch away. Look around first (rust-script files vs a sequence file the lpoco runner executes; pmbootstrap ci, LAVA test definitions, bats, just) and record it as research. Needs: steps (run on the host or the phone through devlab), checks that stop the run, prompt-and-wait points for the person (what to do, what to check, the answer recorded), --dry-run that walks it without touching anything, a log a lane can file. Schema for the file in lab-tools so lanes validate before asking. Related: bringup-step-runner (unattended steps) - share the step format if it fits.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools tests: a sequence file with steps, a stopping check, a prompt-and-wait point and a log runs in --dry-run and for real against a stand-in phone; a failing check stops the run and names the step
+
+Rank
+: 1
+
+About
+: bringup-steps
