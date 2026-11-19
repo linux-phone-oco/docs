@@ -7914,3 +7914,47 @@ By
 
 Takes
 : setup and its teardown are one named unit; teardowns run in reverse, even after a failure; fixtures depend on fixtures
+
+
+<a id="cytoscape-dagre"></a>
+### Cytoscape.js with the cytoscape-dagre layout (layered, rankDir LR)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/cytoscape/cytoscape.js-dagre
+
+Author
+: Cytoscape Consortium
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: a static JS graph drawn from a JSON list of nodes and edges, Sugiyama-style layered layout left to right, clicks, styles per node and edge, hiding a branch - no server
+
+
+<a id="mermaid-flowchart"></a>
+### Mermaid flowcharts (graph LR)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://mermaid.js.org/syntax/flowchart.html
+
+Author
+: Mermaid
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: a text flowchart drawn by its own layered layout; clicks link out, but no folding, and a device picker means one chart per device and goal

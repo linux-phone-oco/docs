@@ -7567,3 +7567,34 @@ Rank
 
 About
 : agent-folder
+
+
+<a id="bringup-graph-page"></a>
+### A page draws the bring-up graph from the database: goal on the left, needs to the right, coloured by a device's status, click to read and fold
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: decision 2026-11-19-bringup-graph-cytoscape-dagre.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: make verify: bin/test-bringup-pages.sh also checks docs/graph/bringup.json has every step and edge of the rows and each device's status; the deployed page /tables/graph.html draws daily-usable-phone with its needs to the right (a screenshot looked at)
+
+Rank
+: 1
+
+About
+: bringup-steps
