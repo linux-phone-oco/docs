@@ -7263,10 +7263,11 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
 : 2026-11-19, orchestration: decision 2026-11-19-host-follows-releases (b). Declared in lab.toml ([follow] every, window), prepared once by hand; the pin bump lands through land as lab-host-follow. Same user-unit machinery as host-clones-fresh - build them together if it is simpler.
+2026-11-19, lab-tools-builder: slice 1 landed (lab-tools #280, main 6aa4ac0): lpoco-host follow [now]. lab.toml [follow] every = "15min" makes plan list and prepare now write+enable lpoco-host-follow.timer/.service (user units). follow reads the releases list (LPOCO_RELEASES, GitHub API default), takes the newest lpoco-vX.Y.Z, and if newer than the pin: waits while any phone's keeper lease is held (devlab keeper.lease/holder, 90 min lapse; read again after the baseline and after the install); preflights that lab.toml is in a clone with an origin and land is on PATH; the host's own check must pass first; installs the family from release assets; runs the new host's check and plan against a staged lab.toml with the pin moved; steps back (previous binaries incl. devlab, tone) on a failing check, a plan that does not answer, a root command the old plan did not list, or a pin that cannot land; lands the pin as a fresh clone + branch + land, signed lab-host-follow; restarts enabled devlab-watch@ units. Proof: host/tests/follow.rs (13) + unit tests in host/src/follow.rs; the first seven seen failing first (no such command), the six added after review were written with the fix, not seen failing alone. Review (programmer) found: root blamed on the release, no baseline check, lease read once, landing failure left new programs under an old pin, plan fail-open, watchers not restarted: all fixed. Open: [follow] window not built (lease-free is the only window); the previous programs are kept in memory only (a kill mid-install leaves a mix: persist a journal); no lock between follow and prepare runs; the lease is not held during the install (a keeper taking it then is only noticed after); no run on the real lab or a real release; service carries no --lab (default lab.toml only); every = 1s would exhaust the unauthenticated API; a cargo fallback in the timer if a release lags its assets; declaring [follow] in lab-machine lab.toml is orchestration's.
 
 Opened
 : 2026-11-19

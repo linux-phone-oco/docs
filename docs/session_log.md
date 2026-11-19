@@ -4442,3 +4442,27 @@ Rejected
 
 About
 : release-host-binaries
+
+---
+
+
+<a id="2026-11-19-host-follow-first-slice-landed"></a>
+### host follow: first slice landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lab-tools #280: lpoco-host follow (timer units from [follow], lease-free window, baseline check, install from assets, new host's check and plan, step back, pin landed as lab-host-follow, watchers restarted). 13 tests; review by the programmer subagent fixed six findings.
+
+Considered
+: Judging a release's root need by comparing the new host's plan with the old host's plan; refusing to follow while the host's own check fails; a landing failure rolling the programs back.
+
+Rejected
+: Treating any root command in the new plan as the release's need: a pending udev change of the declarations would block every release. Leaving new programs under an old pin when landing fails: every keeper's check would fail on it.
+
+About
+: host-follows-releases
