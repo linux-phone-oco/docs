@@ -7326,10 +7326,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: seen twice today (relayed by the Top Coordinator): messages to a keeper queue while it sits in a Bash wait, so the author's answer to look_for on walleye's display arrived after hold+30 s and 'no' was fed though he had seen the console and a stripe flash; surya's prompts lagged the same way. With the files, the Top Coordinator reads the prompt and writes the author's words, no keeper turn between. A rig backend later answers the same file.
+: 2026-11-19, lab-tools-builder: lab-tools #284 (main): the person backend files each pending prompt at DIR/DEVICE/prompt (0600, dir 0700; id, step, do, check, waits-until, state) and polls DIR/DEVICE/answer (first line the answer; optional 'by: NAME' and 'for: ID'); the terminal answers too, whichever first; the log says 'by: terminal' or 'file, written by NAME|user UID'. DIR = LPOCO_ATTENDED_PROMPT_DIR or ~/.cache/lpoco-attended. --answer-limit/LPOCO_ATTENDED_ANSWER_LIMIT SECONDS: with no limit an ended stdin is nobody answering (as before); with one the wait goes on for the file, and past it the prompt file says timed out and the step fails. Proof: attended/tests/prompt_file.rs, 8 tests (seen failing first); programmer review fixed: a half-written answer (no final newline) waits, an answer 'for:' another prompt is dropped, an unfiled prompt with input ended fails at once, timeout is a typed outcome, a tty's typed-ahead lines are drained. Open: a crash leaves the prompt file 'waiting' until the next prompt (no drop guard); a keeper must pass --answer-limit (or the env) to use the file with no terminal; the rig backend answering the same file is later.
 
 Opened
 : 2026-11-19
