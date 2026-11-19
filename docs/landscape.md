@@ -2,25 +2,6 @@
 
 # Landscape
 
-<a id="pmos-initramfs-tests"></a>
-### Initramfs CI hook and test packages
-
-Project
-: postmarketOS
-
-What
-: postmarketos-mkinitfs-hook-ci runs tests inside the initramfs; tests ship as small subpackages that install themselves for the right device (postmarketos-test-suspend, -unl0kr).
-
-For us
-: Our automatic checks and the test kernel's timeout hook belong in this shape, so they can go upstream and run in their CI.
-
-Link
-: https://docs.postmarketos.org/pmaports/main/ci/hardware-ci.html
-
-Checked
-: 2026-11-10
-
-
 <a id="bootrr"></a>
 ### bootrr
 
@@ -92,25 +73,6 @@ For us
 
 Link
 : https://wiki.debian.org/Teams/Mobian/DevelopersGuide
-
-Checked
-: 2026-11-10
-
-
-<a id="pmos-hardware-ci"></a>
-### postmarketOS hardware CI
-
-Project
-: postmarketOS
-
-What
-: Tests on real phones: CI-tron as the testing gateway, power units that switch devices and press buttons, GitLab pipelines generated per device from a template in its package; scaling toward a farm of dozens of devices (talk at the 2026 conference).
-
-For us
-: Our lab is a one-phone version of it. Aim: surya as a device under test in their farm, our tests in their shape - contributed, not kept apart.
-
-Link
-: https://docs.postmarketos.org/hardware-ci
 
 Checked
 : 2026-11-10
@@ -247,3 +209,60 @@ Link
 
 Checked
 : 2026-11-18
+
+
+<a id="pmos-initramfs-tests"></a>
+### Initramfs CI hook and test packages
+
+Project
+: Nura (formerly postmarketOS)
+
+What
+: postmarketos-mkinitfs-hook-ci runs tests inside the initramfs; tests ship as small subpackages that install themselves for the right device (postmarketos-test-suspend, -unl0kr).
+
+For us
+: Our automatic checks and the test kernel's timeout hook keep this shape so they sit beside Nura's. They cannot go upstream: Nura forbids contributions made in part by generative AI (research nura-relation-how-it-stands).
+
+Link
+: https://docs.nura.eco/pmaports/main/ci/hardware-ci.html
+
+Checked
+: 2026-11-19
+
+
+<a id="pmos-hardware-ci"></a>
+### Nura (postmarketOS) hardware CI
+
+Project
+: Nura (formerly postmarketOS)
+
+What
+: Tests on real phones: CI-tron as the testing gateway, power units that switch devices and press buttons, GitLab pipelines generated per device from a template in its package; scaling toward a farm of dozens of devices (talk at the 2026 conference). None for sm7150 today.
+
+For us
+: Our lab is a one-phone version of it, in its shape. Our tests are not contributed: Nura forbids AI-made contributions. Surya as a device in their farm is the author's own act if he wants it (research nura-relation-how-it-stands).
+
+Link
+: https://docs.nura.eco/pmaports/main/ci/hardware-ci.html
+
+Checked
+: 2026-11-19
+
+
+<a id="nura"></a>
+### Nura (formerly postmarketOS)
+
+Project
+: Nura (formerly postmarketOS)
+
+What
+: The Alpine-based distribution for phones: pmaports (its packages and device ports), pmbootstrap, prebuilt images, a wiki and porting guides. Renamed from postmarketOS on 2026-09-27; pmaports and pmbootstrap keep their names. Forbids generative-AI contributions since 2026-02-16.
+
+For us
+: Surya's whole OS (v26.06 image, generic qcom-sm7150 port, its kernel package of sm7150-mainline, UI packages) and the names lpoco lab kernel boots by (pmos.conf, the postmarketOS title). We redistribute none of it; our apk repository builds for v26.06. We give back only through the author himself and through the upstreams Nura packages (sm7150-mainline, kernel.org, sxmo). Upstream row: nura-pmaports. Research nura-relation-how-it-stands.
+
+Link
+: https://nura.eco/
+
+Checked
+: 2026-11-19

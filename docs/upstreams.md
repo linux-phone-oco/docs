@@ -76,22 +76,6 @@ How
 : git send-email to the remoteproc and Qualcomm maintainers from scripts/get_maintainer.pl
 
 
-<a id="alpine-aports"></a>
-### Alpine aports / postmarketOS pmaports
-
-Kind
-: distro
-
-Address
-: https://gitlab.alpinelinux.org/alpine/aports
-
-How
-: A merge request or an issue on the repository; a request to Alpine is made in the author's name
-
-Notes
-: pmaports issue 4441 is the report for tqftpserv
-
-
 <a id="idealkb"></a>
 ### ideal-knowledge-base (idealkb)
 
@@ -217,3 +201,38 @@ How
 
 Notes
 : Design log git-rhizoid.github.io, code git-rhizoid/rhizoid (CLI typed, add/update/status stubbed, parked 2026-11-11)
+
+
+<a id="nura-pmaports"></a>
+### Nura (formerly postmarketOS): pmaports, pmbootstrap, its wiki
+
+Kind
+: distro
+
+Address
+: https://gitlab.nura.eco/nura/pmaports
+
+How
+: Only by the author himself, in his own words and work: an issue, a merge request test (Testing Team, mrtest), a wiki edit. Nura forbids contributions fully or in part created by generative AI, so no agent drafts anything headed here - no patch, test, report, comment or wiki line.
+
+Contacts
+: device-qcom-sm7150 co-maintainers: Danila Tikhonov, David Wronek, Arian Kulmer (the APKBUILD's lines)
+
+Notes
+: AI policy since 2026-02-16 (source nura-ai-policy); the Code of Conduct and the wiki rules reach issues, comments and wiki text too. Renamed from postmarketOS on 2026-09-27; pmaports and pmbootstrap keep their names. pmaports issue 4441 (tqftpserv, surya's SIM slot) is the one of its reports we cite. Our kernel and sxmo work reaches Nura through sm7150-mainline, kernel.org and sxmo, not through here.
+
+
+<a id="alpine-aports"></a>
+### Alpine aports
+
+Kind
+: distro
+
+Address
+: https://gitlab.alpinelinux.org/alpine/aports
+
+How
+: A merge request or an issue on the repository; a request to Alpine is made in the author's name
+
+Notes
+: Alpine's own; Nura's pmaports is the upstream nura-pmaports. Alpine's rules on AI-made contributions not checked (research nura-relation-how-it-stands).

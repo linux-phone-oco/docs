@@ -5394,3 +5394,321 @@ By
 
 Takes
 : WORKAROUND(ITEM) markers read against upstream_items: due once our fork carries the fix, upstream has it, or the item is not known
+
+
+<a id="nura-rename-post"></a>
+### Nura: postmarketOS is renamed (blog, 2026-09-27)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://nura.eco/blog/2026/09/27/nura-rename/
+
+Year
+: 2026
+
+By
+: orchestration-renewed
+
+Takes
+: The rename's date and announcement: postmarketOS is Nura from 2026-09-27; user-facing strings renamed over time
+
+
+<a id="nura-pmcr-0006-name-change"></a>
+### PMCR 0006: name change amendment
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.nura.eco/pmcr/main/0006-name-change-amendment.html
+
+Year
+: 2025
+
+By
+: orchestration-renewed
+
+Takes
+: pmaports, bpo and pmbootstrap keep their names; the mirror keeps a postmarketos path; postmarketos-* packages renamed later with provides for the old names
+
+
+<a id="nura-pmcr-0003-name-change"></a>
+### PMCR 0003: plan name change
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.nura.eco/pmcr/main/0003-name-change-plan.html
+
+Year
+: 2025
+
+By
+: orchestration-renewed
+
+Takes
+: The process that chose the new name
+
+
+<a id="endoflife-postmarketos"></a>
+### endoflife.date: postmarketOS
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://endoflife.date/postmarketos
+
+By
+: orchestration-renewed
+
+Takes
+: Independent: renamed to Nura in September 2026; release support windows (v26.06)
+
+
+<a id="nura-ai-policy"></a>
+### Nura AI policy
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.nura.eco/policies-and-processes/development/ai-policy.html
+
+Year
+: 2026
+
+By
+: orchestration-renewed
+
+Takes
+: Forbids generative AI in Nura since 2026-02-16: no contribution fully or in part created by it, no recommending it; repeat breaches go to CoC enforcement. Names no kinds, so issues, comments, test results and wiki text are inside it
+
+
+<a id="nura-code-of-conduct"></a>
+### Nura Code of Conduct
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.nura.eco/policies-and-processes/community/code-of-conduct.html
+
+Year
+: 2026
+
+By
+: orchestration-renewed
+
+Takes
+: Lists using or promoting generative AI tools as unacceptable behaviour; applies on GitLab and the wiki
+
+
+<a id="nura-wiki-rules"></a>
+### Nura wiki: rules and style guide
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.nura.eco/wiki/Help:Wiki_editor%27s_guide/Wiki_rules_and_style_guide
+
+Year
+: 2026
+
+By
+: orchestration-renewed
+
+Takes
+: Wiki writing must be the editor's own; AI-assisted writing is named and refused
+
+
+<a id="nura-contribute"></a>
+### Nura: contribute
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://nura.eco/contribute/
+
+By
+: orchestration-renewed
+
+Takes
+: How a person gives back: issues, wiki, Testing Team, porting, upstream work, donations
+
+
+<a id="nura-testing-team"></a>
+### Nura wiki: Testing Team
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.nura.eco/wiki/Testing_Team
+
+Year
+: 2026
+
+By
+: orchestration-renewed
+
+Takes
+: Members test merge requests on their device with mrtest; on edge any person in an MR thread may confirm it works
+
+
+<a id="nura-home"></a>
+### Nura home page
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://nura.eco/
+
+By
+: orchestration-renewed
+
+Takes
+: How a downstream names its parent in one line: Alpine Linux, on which Nura is directly based
+
+
+<a id="pmaports-device-qcom-sm7150"></a>
+### pmaports device-qcom-sm7150 (generic SM7150 port)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.nura.eco/nura/pmaports/-/tree/master/device/community/device-qcom-sm7150
+
+By
+: orchestration-renewed
+
+Takes
+: What surya runs from Nura: r11, MIT; depends systemd-boot, soc-qcom, hexagonrpcd, qbootctl, linux-postmarketos-qcom-sm7150 7.1_rc3, firmware and UCM of qcom-sm7150; three co-maintainers
+
+
+<a id="debian-census-mobian"></a>
+### Debian derivatives census: Mobian
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.debian.org/Derivatives/Census/Mobian
+
+Year
+: 2023
+
+By
+: orchestration-renewed
+
+Takes
+: A downstream recorded where the parent keeps them: base, what it changes (an overlay archive), contacts
+
+
+<a id="debian-census-purism"></a>
+### Debian derivatives census: Purism (PureOS)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.debian.org/Derivatives/Census/Purism
+
+Year
+: 2022
+
+By
+: orchestration-renewed
+
+Takes
+: The Librem 5's PureOS recorded as a Debian derivative in the census; its own site does not say it
+
+
+<a id="debian-derivatives"></a>
+### Debian: derivatives
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.debian.org/derivatives/
+
+By
+: orchestration-renewed
+
+Takes
+: What a parent asks of a downstream: name it right, join the census, give back
+
+
+<a id="ubuntu-debian-governance"></a>
+### Ubuntu and Debian
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://ubuntu.com/community/docs/governance/debian
+
+By
+: orchestration-renewed
+
+Takes
+: A downstream's own page on its parent: what it takes and gives back
+
+
+<a id="agpl-3"></a>
+### GNU Affero General Public License v3
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.gnu.org/licenses/agpl-3.0.html
+
+By
+: orchestration-renewed
+
+Takes
+: Section 6(d): object code on a server needs clear directions next to it to the corresponding source, the build scripts included
+
+
+<a id="sxmo-utils-repo"></a>
+### sxmo-utils (sr.ht ~mil)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git.sr.ht/~mil/sxmo-utils
+
+By
+: orchestration-renewed
+
+Takes
+: AGPL-3.0-only (LICENSE; SPDX in its files): the licence the lab apk carries
+
+
+<a id="lab-tools-apk-pages"></a>
+### lab-tools packages (our apk repository)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://linux-phone-oco.github.io/lab-tools/
+
+Year
+: 2026
+
+By
+: orchestration-renewed
+
+Takes
+: What we redistribute: lpoco-health and sxmo-utils; the index names licence and URL per package, the page names neither origin, licence nor source

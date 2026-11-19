@@ -5440,3 +5440,141 @@ Rank
 
 About
 : bringup-generic-init
+
+
+<a id="nura-relation"></a>
+### How we relate to Nura (formerly postmarketOS): what we use, depend on and owe, and where it is recorded
+
+Project
+: linux-phone-oco/docs
+
+Status
+: done
+
+Note
+: Research nura-relation-how-it-stands, decision 2026-11-19-nura-relation; recorded as landscape nura, upstream nura-pmaports (alpine-aports made Alpine's alone); steps: apk-pages-origin-licence, built-on-nura-line, surya-base-image-named, lpoco-nura-names-one-place, nura-give-back-by-hand
+
+Opened
+: 2026-11-19
+
+Proof
+: tad q about --subject nura-relation shows the research, the decision and the five items
+
+
+<a id="apk-pages-origin-licence"></a>
+### The lab apk repository's page names each package's origin, licence and source, checked in CI
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Research nura-relation-how-it-stands: the APKINDEX carries L: and U:, the source tag is public, but https://linux-phone-oco.github.io/lab-tools/ names neither; AGPL-3.0 6(d) asks for clear directions to the source beside the object code. Test first: a check (beside .github/check-sxmo-utils-apk.sh) that every packaging/*/APKBUILD has license=, url=, a source at a public tag and an origin line (# Origin: ... - e.g. sxmo-utils by ~mil on sr.ht, APKBUILD from Alpine aports community/sxmo-utils 1.18.1-r5), failing on one without; then the page lists per package name, licence, origin and the source link. The page is rendered by the conveyor (linux-package-distribution-oco/conveyor): if its site template must change, that is an item for the conveyor's owner.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: the check fails on an APKBUILD with no license= or origin line and passes on packaging/; the published page shows sxmo-utils with AGPL-3.0-only, its origin and the tag's source link
+
+About
+: nura-relation
+
+
+<a id="built-on-nura-line"></a>
+### One line in each lab README: built on Nura (formerly postmarketOS), itself based on Alpine Linux
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Research nura-relation-how-it-stands: no README of docs, surya-lab or google-walleye-lab names Nura; Mobian, Ubuntu and Nura itself name their parent in one line where a reader meets them. One line each in docs, surya-lab, lab-tools and device-template (walleye once it runs Nura), linking https://nura.eco/; no credits page. Each repository's owner lands its own line; docs' is orchestration's.
+
+Opened
+: 2026-11-19
+
+Proof
+: grep -l 'Nura' README.md finds the line in docs, surya-lab, lab-tools and device-template on origin/main
+
+About
+: nura-relation
+
+
+<a id="surya-base-image-named"></a>
+### Surya's base image named and kept: the Nura v26.06 image and U-Boot images by name, sha256 and URL, a copy outside surya-audio
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: Research nura-relation-how-it-stands: surya was flashed from 20261030-1151-nura-v26.06-sxmo-de-sway-qcom-sm7150.img (2.8 GB) with u-boot-sm7150-xiaomi-surya-{huaxing,tianma}.img; the only copies sit in ~/Projects/surya-audio, a tree queued for cleanup (surya-lab's surya-audio-cleanup), and Nura's image server keeps recent builds only. Record name, sha256 and origin URL in surya-lab (README or device.toml comment), move the files to a kept place before that cleanup. No phone.
+
+Opened
+: 2026-11-19
+
+Proof
+: sha256sum of the kept image equals the one recorded in surya-lab on origin/main
+
+About
+: nura-relation
+
+
+<a id="lpoco-nura-names-one-place"></a>
+### The Nura names lpoco relies on in one place, and lpoco lab kernel reads the phone's own entry name
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Research nura-relation-how-it-stands: devlab/src/kernel.rs, outcome.rs and mcp.rs hard-code boot-deploy's pmos.conf, pmos_boot_uuid, /pmOS_init.log and the title postmarketOS (test entries sort before it); guard.rs and fastboot.rs 172.16.42.1 and 18d1:d001. Nura's rename of user-facing strings is announced, not dated (PMCR 0006). Gather them as named constants in one module, and have kernel install take the base entry from the phone (the one LoaderEntryDefault names) rather than pmos.conf, so a renamed entry is said, not misread.
+
+Opened
+: 2026-11-19
+
+Proof
+: a unit test: with the base entry named nura.conf and the title Nura, kernel install writes a one-try entry from it and the sort test still puts 0-test- first
+
+About
+: nura-relation
+
+
+<a id="nura-give-back-by-hand"></a>
+### Giving back to Nura, by the author himself: what he may do, what agents may and may not prepare
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Nura forbids contributions fully or in part created by generative AI (source nura-ai-policy); the CoC names using it, the wiki rules name AI-assisted writing. Agents prepare nothing headed to Nura - no draft issue, report, test result text, patch or wiki line, not even for him to send. Agents may keep our own measurements in our own public places (docs, the labs). The author, if he wants: join the Testing Team and test sm7150 merge requests on surya with mrtest; report in his own words what he has seen on surya; write the surya wiki page facts himself. Not a promise: an option he takes or leaves.
+
+Opened
+: 2026-11-19
+
+Waits
+: the author: every act toward Nura is his own, in his own words
+
+Proof
+: the author's word: taken (his own act, recorded as an upstream item to nura-pmaports in state sent) or left (this item closed)
+
+About
+: nura-relation

@@ -3338,3 +3338,27 @@ Considered
 
 Rejected
 : Splicing make arguments into the sh -c string (injection); a default image tag (a later edge dtschema would change results unseen).
+
+---
+
+
+<a id="2026-11-19-research-nura-relation"></a>
+### Research: how we relate to Nura
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: nura-relation-research (research-lead, for orchestration): measured what each lab place takes from Nura on origin/main, read the rename (blog 2026-09-27, PMCR 0003/0006), the AI policy (2026-02-16), the CoC and wiki rules, licences, and how Mobian, PureOS, Ubuntu and Nura name their parents; recorded research nura-relation-how-it-stands with its material, 18 sources, decision 2026-11-19-nura-relation, landscape nura (and two rows corrected), upstream nura-pmaports (alpine-aports narrowed), five open items, the summary. Nothing filed, no one contacted, no phone.
+
+Considered
+: A credits page; a relations table; mirroring Nura's images; preparing reports for the author to file.
+
+Rejected
+: All four, as the decision says: the existing landscape and upstreams records hold it, one kept image covers the risk, and anything an agent drafts for Nura falls under its ban.
+
+About
+: nura-relation
