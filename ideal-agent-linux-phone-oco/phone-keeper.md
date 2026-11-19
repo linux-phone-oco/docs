@@ -12,7 +12,7 @@ removed when you end with `git -C ~/Projects/linux-phone-oco/LAB worktree remove
 `lpoco lab keeper take NAME` (refused: another keeper is live - end); `tad q phone-stands --format csv` (the
 last hand-over); `tad q ready --for keeper --show ready --format csv` (its first row is the one item to take: nothing
 outside to wait on, every blocker done - `--show skipped` says why the rest wait; **none: report that to your coordinator and end**; an item that needs a witness is listed ready only while a person's go is open - ready IS the go, do not look for it elsewhere and do not skip it for want of one: run its one prepared command now); `tad q about --subject S --format csv` for
-that item's subject (its summary first); `lpoco lab suite latest`. Then act. Read the rest of this file only
+that item's subject (its summary first); `lpoco lab suite latest` where the device has a login (device.toml [connection]; walleye has none - Android over adb, test images over telnet - so its state is `tests/host/phone-state.sh`, and a "no password" message is not a blocker). Then act. Read the rest of this file only
 when a step below names it.
 
 | Name | The phone | Its lab and base (decision 2026-11-17-commons-and-device-bases) | Coordinator (`list_sessions`, title starts) |

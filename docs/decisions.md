@@ -2557,3 +2557,28 @@ Rejected
 
 About
 : attended-step-groups
+
+
+<a id="2026-11-19-phone-reached-by-its-declared-transport"></a>
+### 2026-11-19-phone-reached-by-its-declared-transport
+
+Brief
+: A device declares how the phone is reached ([connection] transport ssh, telnet or adb, login password or none); lpoco lab and the library steps go through it
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: lpoco-manifest's [connection] gets transport = ssh (default, as today) | telnet | adb and login = password (default) | none. lpoco lab phone sh|root, lpoco lab suite and the lpoco-attended steps read_dmesg, back_to_known_good and the phone() helper reach the phone through the declared transport: ssh with the password file as today; telnet on shell_address:shell_port with no password; adb by the [fastboot]/gadget serial. A device with login = none is never asked for a password: a command that needs one says 'not applicable: device.toml declares no login' and names what to run instead, so no keeper copies it as a blocker. boot_once on a device whose [boot] is fastboot boots the image from RAM (lpoco lab fastboot boot now) and waits for the gadget by its usb_id, needing no login. phone-keeper.md's start reads the suite only where the device has a login.
+
+Why
+: walleye (google-walleye-lab) has no Linux login - Android over adb, test images with a passwordless telnet shell - yet lpoco lab suite latest answers 'no password: set PHONE_PASS ...', which every walleye keeper copied into its hand-over as a blocker needing the author (PRs 504, 511, 524, 539); and boot_once, back_to_known_good and read_dmesg assume an ssh login, so walleye keeps its own helpers (notes walleye-to-orchestration-why-keepers-write-the-password-claim.md and -library-steps-need-a-login.md, 2026-11-19).
+
+Rejected
+: A brief line alone: the tool's error still reads as an instruction. Faking a login on walleye: there is no user to log in as. A separate tool per transport: the procedures would name the transport instead of the device declaring it.
+
+About
+: bringup-steps
