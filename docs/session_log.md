@@ -3923,3 +3923,24 @@ Rejected
 
 About
 : lpoco-layer-pack
+
+---
+
+
+<a id="2026-11-19-lpoco-layer-pack-nura-deviceinfo-slice-10"></a>
+### lpoco layer pack: Nura deviceinfo (slice 10)
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: apk NAME-config gets /etc/deviceinfo from [boot]+[device]; codename/cmdline refused when a shell would run them; landed lab-tools #235, read back from main.
+
+Considered
+: writing it in -boot (rejected: it is device config, kept with -config's files); keeping cmdline although pmaports calls it obsolete (kept until boot-deploy is confirmed)
+
+About
+: lpoco-layer-pack
