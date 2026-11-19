@@ -2108,13 +2108,22 @@ Step id
 : kernel-reaches-init
 
 Status
-: unknown
+: done
+
+Proof
+: suite run itself
+
+Run
+: 20261119-013649
+
+Proven on
+: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: The suite ran on this kernel's boot: no-oops and no-processor-crashes pass in the same run. The step's own proof test (kernel-alive) has no result of its own; claimed from the boot the run rode.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 127
@@ -2144,13 +2153,22 @@ Step id
 : gadget-enumerates
 
 Status
-: unknown
+: done
+
+Proof
+: gadget-enumerates
+
+Run
+: 20261119-042511
+
+Proven on
+: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: Present and answering only (tests/health/base/boot-basics.sh, PR 348); not an end-to-end proof.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 129
@@ -2180,13 +2198,22 @@ Step id
 : shell-on-console
 
 Status
-: unknown
+: done
+
+Proof
+: shell-on-console
+
+Run
+: 20261119-042511
+
+Proven on
+: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: Present and answering only (tests/health/base/boot-basics.sh, PR 348); not an end-to-end proof.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 131
@@ -2216,13 +2243,22 @@ Step id
 : dmesg-clean
 
 Status
-: unknown
+: partial
+
+Proof
+: boot-warnings, no-oops
+
+Run
+: 20261119-013649
+
+Proven on
+: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: boot-warnings pass (3 warnings, all known), no oops. Not clean: calls+ boot warnings are known and listed, not zero. dmesg-clean proof not run by that name.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 133
@@ -2234,13 +2270,22 @@ Step id
 : pmic-bound
 
 Status
-: unknown
+: done
+
+Proof
+: pmic-bound
+
+Run
+: 20261119-042511
+
+Proven on
+: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: Present and answering only (tests/health/base/boot-basics.sh, PR 348); not an end-to-end proof.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 134
@@ -2258,16 +2303,16 @@ Proof
 : charger-online
 
 Run
-: 20261118-204845
+: 20261119-013649
 
 Proven on
-: 7.1.0-sm7150-calls+
+: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
 
 Notes
-: suite run 20261118-204845 charger-online pass
+: Re-run: pm8150b-charger online=1 when plugged in.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 135
@@ -2279,13 +2324,22 @@ Step id
 : watchdog-way-back
 
 Status
-: unknown
+: partial
+
+Proof
+: way-back-* checks
+
+Run
+: 20261119-013649
+
+Proven on
+: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: The set-up is checked (panic_on_rcu_stall=1, panic=5, ramoops bound, qcom_wdt picked by identity). The way back itself is not proven: a suspend try failed to return 2026-11-18 (resume-stall); no unattended suspend until the repro is read.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 136
@@ -2297,13 +2351,22 @@ Step id
 : storage-readonly
 
 Status
-: unknown
+: done
+
+Proof
+: storage-readonly
+
+Run
+: 20261119-042511
+
+Proven on
+: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: Present and answering only (tests/health/base/boot-basics.sh, PR 348); not an end-to-end proof.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 137
@@ -2315,13 +2378,22 @@ Step id
 : usb-network
 
 Status
-: unknown
+: partial
+
+Proof
+: usb-awake,usb-role
+
+Run
+: 20261119-013649
+
+Proven on
+: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: usb-awake pass (on USB to a host), usb-role pass; gadget-up has no result of its own. Not claimed done.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 138
@@ -2333,13 +2405,22 @@ Step id
 : rootfs-boots
 
 Status
-: unknown
+: done
+
+Proof
+: root-writable, root-has-room
+
+Run
+: 20261119-013649
+
+Proven on
+: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: Rootfs up, written to (root-writable pass), 4% full, systemd units fine (no-failed-units pass). Step proof rootfs-ssh not run by that name; the lab reached the phone and ran the suite in it.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 139
@@ -2351,13 +2432,22 @@ Step id
 : health-suite-runs
 
 Status
-: unknown
+: done
+
+Proof
+: suite run 20261119-013649 filed
+
+Run
+: 20261119-013649
+
+Proven on
+: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: The run is filed: 85 results (76 pass, 3 fail, 6 skip), base+shell+telephony layers. Skips: no SIM or not measured; fails: image-sensor x2, reader-exposed (parts not brought up).
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 140
@@ -4034,13 +4124,22 @@ Step id
 : linux-runs
 
 Status
-: unknown
+: done
+
+Proof
+: linux-runs
+
+Run
+: 20261119-042511
+
+Proven on
+: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: Present and answering only (tests/health/base/boot-basics.sh, PR 348); not an end-to-end proof.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 217
