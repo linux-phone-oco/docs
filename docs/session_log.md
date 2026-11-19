@@ -3386,3 +3386,27 @@ Rejected
 
 About
 : user-config-drift-named
+
+---
+
+
+<a id="2026-11-19-research-base-distro"></a>
+### Research: which distribution our phones build on
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: Research lead base-distro-research for orchestration. Four read-only researchers in parallel (Arch family; Mobian/Fedora/openSUSE; Mobile NixOS/Ubuntu Touch/Droidian; Nura/Alpine); the lead re-measured Mobian's suites and images, ALARM/AUR/Debian/Alpine packages for the Qualcomm daemons and sxmo, and read our own rows (nura-relation-how-it-stands, giving-back-by-distro, 2026-11-18-upstream-forks, walleye-mainline-prior-art) and lab-tools' conveyor packaging. Recorded 26 sources, research base-distro-candidates and base-distro-how-it-stands, decision 2026-11-19-base-distro (a recommendation for the author's word), items base-distro, walleye-rootfs-on-our-layer, mobian-sm7150-offphone, base-distro-triggers, device-facts-as-data, unranked. Mid-task the author's turn, relayed by orchestration, verbatim: "no ubuntu touch its premise is stupid and in vane from the day one, they made 0 upstream contributions beside halium, and they are the one ones who use halium this day" - Ubuntu Touch dropped, Droidian named in one line as the same route. Orchestration also relayed the upstreams coordinator's giving-back view (giving-back-by-distro), built on rather than redone.
+
+Considered
+: A Mobian move for surya now; Arch Linux ARM with our own pacman repository (the conveyor has pacman); Mobile NixOS as a flake overlay; a pmaports fork for walleye; Mobian for walleye only.
+
+Rejected
+: Each in decision 2026-11-19-base-distro's rejected: a thicker layer than today (ALARM, Fedora, openSUSE, NixOS), an unpublished idle 6.18 port (Mobian now), the Halium route on the author's word, two bases for one lab.
+
+About
+: base-distro

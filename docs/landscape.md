@@ -266,3 +266,155 @@ Link
 
 Checked
 : 2026-11-19
+
+
+<a id="arch-linux-arm"></a>
+### Arch Linux ARM
+
+Project
+: Arch Linux ARM
+
+What
+: Unofficial rolling aarch64 port of Arch with a generic mainline kernel (linux-aarch64) and userland; Phosh and Plasma Mobile in extra; two committers.
+
+For us
+: Not our base: its kernel drives neither SM7150 nor MSM8998 and the Qualcomm daemons and sxmo are AUR-only, so we would carry the phone OS (decision 2026-11-19-base-distro). No written AI rule.
+
+Link
+: https://archlinuxarm.org/platforms/armv8/generic
+
+Checked
+: 2026-11-19
+
+
+<a id="danctnix"></a>
+### DanctNIX
+
+Project
+: DanctNIX
+
+What
+: Arch Linux ARM for PinePhone, PinePhone Pro and PineTabs, one maintainer; packages Phosh, sxmo and Plasma Mobile helpers.
+
+For us
+: Pine64 only, not a base for us; forbids LLM-written contributions, so nothing goes back from us.
+
+Link
+: https://codeberg.org/DanctNIX/Pine64-Arch
+
+Checked
+: 2026-11-19
+
+
+<a id="manjaro-arm"></a>
+### Manjaro ARM
+
+Project
+: Manjaro
+
+What
+: Manjaro's ARM edition (Pine, Pi, Rockchip images); no ARM branch manager since 2025, at most one packager.
+
+For us
+: Not a base: unmaintained, no Qualcomm phone.
+
+Link
+: https://manjaro.org/products/download/arm
+
+Checked
+: 2026-11-19
+
+
+<a id="mobian"></a>
+### Mobian
+
+Project
+: Mobian
+
+What
+: Debian for phones: Debian userland plus per-SoC mainline kernels and support packages; an SM7150 family (kernel 6.18.51, recipe naming surya) in staging only, no image, idle since 2026-09-13.
+
+For us
+: Our named fallback base (decision 2026-11-19-base-distro): measured off the phone first (mobian-sm7150-offphone). Debian's GR 2026-002 lets the author send AI-assisted work under his name.
+
+Link
+: https://wiki.debian.org/Mobian
+
+Checked
+: 2026-11-19
+
+
+<a id="pocketblue"></a>
+### Pocketblue
+
+Project
+: Fedora
+
+What
+: Fedora Atomic remix for phones and tablets (SDM845, Xiaomi Pad); kernels per SoC in COPR; a dormant sm7150 COPR, no SM7150 device; two main people.
+
+For us
+: Not our base: we would carry kernel and device alone. Fedora allows disclosed AI assistance; Pocketblue asks reviewed, disclosed work.
+
+Link
+: https://github.com/pocketblue/pocketblue
+
+Checked
+: 2026-11-19
+
+
+<a id="opensuse-mobile"></a>
+### openSUSE Mobile
+
+Project
+: openSUSE
+
+What
+: Tumbleweed images for PinePhone, OnePlus 6/6T and Poco F1 from one volunteer's OBS home projects.
+
+For us
+: Not our base: neither SoC, no team.
+
+Link
+: https://en.opensuse.org/Mobile
+
+Checked
+: 2026-11-19
+
+
+<a id="mobile-nixos"></a>
+### Mobile NixOS
+
+Project
+: NixOS
+
+What
+: NixOS modules and device definitions for phones; mainline Qualcomm only OnePlus 6 (sdm845 6.4); one active maintainer; no releases.
+
+For us
+: Not our base: neither device (walleye dropped in 2023), sxmo not in nixpkgs; mobile-nixos forbids LLM-written contributions, nixpkgs allows them with Assisted-by.
+
+Link
+: https://mobile-nixos.github.io/mobile-nixos/
+
+Checked
+: 2026-11-19
+
+
+<a id="droidian"></a>
+### Droidian
+
+Project
+: Droidian
+
+What
+: Debian with Halium: Android vendor kernels and blobs through libhybris; surya listed as unsupported.
+
+For us
+: Rejected with Ubuntu Touch on the author's word: the Halium route, against mainline-first.
+
+Link
+: https://droidian.org/
+
+Checked
+: 2026-11-19

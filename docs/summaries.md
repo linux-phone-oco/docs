@@ -165,3 +165,18 @@ Says
 
 Condenses
 : 2026-11-19-nura-relation, nura-relation-how-it-stands
+
+
+### Row 12
+
+About
+: base-distro
+
+Date
+: 2026-11-19
+
+Says
+: Which distribution our phones build on. Recommended, waiting on the author's word (decision 2026-11-19-base-distro): stay on Nura - it alone carries surya's SM7150 (community port by the sm7150-mainline people, kernel 7.1) - and carry a thin device layer of our own in the apk repository the conveyor publishes; walleye, which no base carries, starts on the same base with its own kernel and device packages. Arch-based, Fedora, openSUSE and NixOS bases carry neither SoC, so the layer would become our own phone OS; Mobian's SM7150 is staging-only and unpublished, so it is the fallback, measured off the phone first. Ubuntu Touch and Droidian (Halium) are out on the author's word. Giving back: kernel open on any base; Nura only by the author's hand; Alpine open while council #697 is; sxmo closed by SourceHut. Records: base-distro-candidates, base-distro-how-it-stands; items walleye-rootfs-on-our-layer, mobian-sm7150-offphone, base-distro-triggers, device-facts-as-data.
+
+Condenses
+: 2026-11-19-base-distro, 2026-11-19-research-base-distro, base-distro-candidates, base-distro-how-it-stands
