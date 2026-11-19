@@ -4583,3 +4583,27 @@ Considered
 
 About
 : lpoco-attended
+
+---
+
+
+<a id="2026-11-19-host-clones-fresh-built-and-parked-next-item"></a>
+### host-clones-fresh built and parked; next item blocked
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Built lpoco-host clones [now] (lab-tools branch builder-host-clones-fresh, pushed, NOT landed, no PR): lab.toml [clones] folders (under ~) + every; user timer lpoco-host-clones.timer/.service planned and written by prepare; each clone (the folder itself or its direct subfolders with a .git dir, so worktrees are skipped) that is on main, has no tracked changes and is an ancestor of origin/main is ff-only merged; dirty, off-main, detached, diverged or fetch-failed ones are left and named; exit 0. Proof host/tests/clones.rs (6, seen failing first), cargo test/clippy/fmt clean. Programmer review not run: orchestration said HOLD (author wants a look-around and a decision first), review stopped. Orchestration asked for it inside the follow timer; I built an own timer unit via the shared timer_units helper, so folding it into follow is a small change. Next item device-toml-checked-against-host not started: it edits device-template and copies into surya-lab and google-walleye-lab (places other sessions own) and needs an lpoco-manifest binary, which the release assets do not carry yet.
+
+Considered
+: Folding clones into the follow run (needs [follow] declared and a lease-free window; the clones job must not wait on leases)
+
+Rejected
+: Landing before the hold was lifted
+
+About
+: host-clones-fresh
