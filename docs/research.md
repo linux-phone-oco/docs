@@ -2191,3 +2191,28 @@ Sources
 
 About
 : lpoco-attended
+
+
+<a id="procedures-one-shape"></a>
+### procedures-one-shape
+
+Brief
+: Many small procedures over one framework: each its own short file in one folder, a shared step library, one helper module per repo, a runner that scaffolds and runs them by name
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Question
+: The author, 2026-11-19: do we have that scafolding as a shared base for procedures so that future procedures doesnt have to reinvent scafolding and duplicate the code base ? or what makes sense here and who can lookaround and check how to best organize this ?
+
+Found
+: What is: surya-lab #394 made a crate for its one procedure (lab/attended: Cargo.toml + lock, main.rs, session.rs, checks.rs, tests/dry_run.rs); google-walleye-lab #448 made a rust-script entry (tests/attended/touch-try.rs) over one lab crate (tools/walleye-tries). Others: just and pytest keep many small named units in one place run by name, with one shared helper module per folder (conftest); Ansible and LAVA keep the procedure as a thin chain over reused roles/device-type plumbing with device values as data; cargo xtask folds procedures into one binary (each a match arm, not a file); rust-script runs a single .rs file with its manifest inside. The common shape: one folder of one-file procedures, one helper module per repo, a runner that scaffolds, lists, runs and dry-runs them by name. walleye's shape is that minus the runner and the folder name.
+
+Sources
+: cargo-xtask,just-recipes,rust-script,lava-test-definitions,pytest-conftest,ansible-roles
+
+About
+: bringup-steps
