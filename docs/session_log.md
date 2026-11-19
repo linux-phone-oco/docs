@@ -3992,3 +3992,24 @@ Rejected
 
 About
 : test-hold-parallel-flake
+
+---
+
+
+<a id="2026-11-19-hold-flake-proof-run-found-the-bisect-flake"></a>
+### hold-flake proof run found the bisect flake
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Ran cargo test --workspace 13 times at default parallelism on main 05dfd4b: the hold test passed every time; run 13 failed in bringup_bisect_runs_declared_series (empty lz4 -dc output). Recorded both items with the log's finding.
+
+Considered
+: Fixing the bisect test blind; rejected: its failure shows no lz4 status, so the first step is to make it say
+
+About
+: test-hold-parallel-flake
