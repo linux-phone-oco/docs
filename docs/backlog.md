@@ -3862,10 +3862,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: 2026-11-18, lab-tools-builder: first slice landed (lab-tools #183, main da435eb, released 0.18.1): lpoco-bringup initramfs init --device device.toml [--out] [--net] makes the /init from [boot.gadget] (serial, product, manufacturer, label, rndis); the gadget names are data, the address a variable, a word that would break its quotes refused. Proof: bringup/tests/init.rs (seen failing first); and walleye's build/selftest-initramfs.sh (QEMU, dummy_hcd) PASS with the generated init in place of build/initramfs/init (run in a scratch copy, walleye's repo unchanged). Open: selftest.sh, udhcpd.conf, udhcpc.script are still walleye's own (generate or ship them with the init); the FunctionFS ACM console (ffs-acm-rs) and the mass-storage window are not in the init yet; walleye's device.toml has no [boot.gadget] yet and its build does not call the generator; shellcheck on the template; ShellWord newtype in the manifest so BootGadget cannot hold a bad word (reviewer). 2026-11-18, lab-tools-builder: second slice (lab-tools #185, main c10a85b): a [boot.gadget] word that would break the init's quotes is refused when device.toml is read (Manifest::parse -> BootGadget::check, shell_word in lpoco-manifest); make re-checks a hand-built gadget. Proof: manifest/tests/schema.rs a_gadget_word_that_would_break_the_inits_quotes_is_refused_when_the_manifest_is_read (all four fields, seven bad words; seen failing first); bringup unit test for the hand-built gadget. Release PR for 0.18.2 left waiting. Still open: ShellWord newtype is the tidier form (reviewer); selftest.sh, udhcpd.conf, udhcpc.script; FunctionFS ACM console; mass-storage window; walleye [boot.gadget] and build call. 2026-11-18, lab-tools-builder: third slice (lab-tools #186, main 1369cac): lpoco-bringup initramfs files --out DIR [--net N] writes udhcpd.conf, udhcpc.script and selftest.sh (byte-identical to walleye's at net 42; address rewritten at other nets) beside the init, so a phone's lab keeps none of them. Proof: bringup/tests/init.rs the_init_ships_its_dhcp_and_selftest_files_at_the_chosen_address, at_the_default_net_the_files_are_the_shipped_text, files_without_an_out_folder_is_refused_in_words (seen failing first: verb files unknown). Reviewer's catches fixed: selftest lease grep needs 'inet ADDR/' (was a prefix match), config mode 644. Still open: FunctionFS ACM console (ffs-acm-rs); mass-storage window; walleye [boot.gadget] and its build calling init and files; shellcheck on the templates (not installed here); ShellWord newtype. 2026-11-19, lab-tools-builder: fourth slice (lab-tools #188, main e7e5b50): [boot.gadget] window = true (default false) adds a read-only 2 MiB mass-storage LUN the init keeps written (uptime, cmdline, kernel log, padded to 64 KiB, started before the bind, failures said). Proof: bringup/tests/init.rs a_window_adds_a_read_only_mass_storage_lun_the_init_keeps_written, without_a_window_the_init_has_no_mass_storage, the_window_is_ready_before_the_bind_and_the_script_is_valid_shell (seen failing first); sh -n clean; not run under busybox/QEMU. Release PR left waiting. Still open: FunctionFS ACM console (ffs-acm-rs); walleye [boot.gadget] and its build calling init and files; shellcheck; ShellWord newtype; the host caches a raw LUN, so a reader needs direct reads or a media change. 2026-11-19, lab-tools-builder: fifth slice (lab-tools #190, main d06cef4): ShellWord newtype in lpoco-manifest - the four [boot.gadget] words are ShellWord, made only by ShellWord::new and the manifest reader, so a BootGadget cannot hold a bad word; BootGadget::check and make's re-check are gone, schema unchanged. Proof: manifest/tests/schema.rs a_shell_word_cannot_be_made_from_a_word_that_would_break_the_quotes (seen failing first), boot.rs the_default_gadget_words_pass_the_one_gate; the existing refusal test still passes. Reviewer: errors name the field only through toml's source snippet. Still open: FunctionFS ACM console (ffs-acm-rs); walleye [boot.gadget] and its build calling init and files; shellcheck. Release PR left waiting. 2026-11-19, lab-tools-builder: sixth slice (lab-tools #192, main fc2a76a): the FunctionFS ACM console helper moved from google-walleye-lab build/ffs-acm-rs into the family as crate lpoco-ffs-acm (bin ffs-acm, GPL-2.0-only as the original; release-plz wired, changelogs include it). Proof: ffs-acm blobs_are_the_c_probes (descriptors+strings byte for byte vs the C probe; seen failing first against an empty crate). Reviewer's fixes landed: the shell gets SIGPIPE back, stop reaps its two pumps by pid, a zero write ends a pump. Still open: the init does not start it yet (it uses the kernel acm function; ffs needs its single-interface gadget, walleye decision 2026-11-17-walleye-ffs-acm-single-interface, a [boot.gadget] switch); walleye's build still builds its own copy and has no [boot.gadget]; reviewer's: functional core for setup() with a test, OwnedFd for the pty master on the failure path, stale errno in a short write; a cross build of lpoco-ffs-acm in the lab; shellcheck; licence GPL vs the family's MIT OR Apache (owner decides). Release PR left waiting. 2026-11-19, lab-tools-builder: seventh slice (lab-tools #195, main 7cc5a0e): [boot.gadget] console = "acm" (default) | "ffs"; with ffs the init makes functions/ffs.acm in place of the kernel acm in both configs, mounts functionfs on /dev/ffs and starts /bin/ffs-acm (which binds the UDC after ep0), says so when the mount fails or the helper is not in the ramdisk, and starts no ttyGS0 shell; the UDC wait stays in the init for both. Proof: bringup/tests/init.rs an_ffs_console_swaps_the_kernel_acm_for_the_helper_that_binds_the_udc, the_default_console_is_the_kernel_acm_and_an_unknown_one_is_refused (seen failing first: unknown field console); schema regenerated. Reviewer: ffs function linked in both c.1 and c.2 is untested on hardware; self-test with ffs needs usb_f_fs in modules.list. Still open: walleye [boot.gadget] console=ffs and its build calling init, files and the ffs-acm crate (walleye's builder); shellcheck; cross build of lpoco-ffs-acm; ffs in selftest.
+: Done (orchestration, 2026-11-19): the generic init is shipped in seven slices - lab-tools #183, #185, #186, #188, #190, #192, #195 (released through v0.21.0): [boot.gadget] init and files, the read-only log window, ShellWord, lpoco-ffs-acm (MIT OR Apache-2.0 on the author's word) and console = "ffs". Walleye's selftest-initramfs.sh passed with the generated init in a scratch copy. The adoption is walleye-init-from-roof (walleye's lane); the lab-tools leftovers are bringup-init-finish.
 
 Opened
 : 2026-11-18
@@ -5409,3 +5409,34 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="bringup-init-finish"></a>
+### The generic init's leftovers: shellcheck on its templates, lpoco-ffs-acm cross-built, ffs in the self-test
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Split from bringup-generic-init (done) so the picking query offers these on their own; the reviewer's caveat stands: an ffs function linked in both c.1 and c.2 is untested on hardware.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: CI runs shellcheck on every template lpoco-bringup writes (init, udhcpc.script, selftest.sh) and passes; lpoco-ffs-acm builds for aarch64-unknown-linux-musl in CI; selftest.sh with console = ffs checks the ffs function (usb_f_fs in modules.list) and fails without it
+
+Rank
+: 9
+
+About
+: bringup-generic-init
