@@ -5876,9 +5876,6 @@ Note
 Opened
 : 2026-11-19
 
-Blocked by
-: surya-test-layer-default
-
 Needs
 : phone
 
@@ -5887,6 +5884,9 @@ Device
 
 Proof
 : shell-up
+
+Rank
+: 1
 
 About
 : test-layer
@@ -5920,7 +5920,7 @@ Proof
 : lab apk repository lists no sxmo-utils (CI check)
 
 Rank
-: 4
+: 1
 
 About
 : test-layer
