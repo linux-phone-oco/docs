@@ -3851,3 +3851,27 @@ Done
 
 Rejected
 : Claiming the mutation check proved the yaml key: it did not, so noted as a caveat.
+
+---
+
+
+<a id="2026-11-19-lpoco-layer-pack-the-kernel-package-linux-name"></a>
+### lpoco layer pack: the kernel package linux-NAME
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lab-tools #229: --kernel-build packs a finished kernel build as linux-NAME (arm64) laid out for kernel-install; tests first, programmer review fixed the tree mode, a clash and stale naming. Also built mkinitfs for apk on a branch, unlanded.
+
+Considered
+: building the kernel inside pack (hours, a cross toolchain: left to a build step); an Arch enum; symlink checks in modules/
+
+Rejected
+: landing the mkinitfs slice: its module file format is wrong (paths, not names) and orchestration said leave it
+
+About
+: lpoco-layer-pack
