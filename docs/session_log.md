@@ -4490,3 +4490,27 @@ Rejected
 
 About
 : attended-lift
+
+---
+
+
+<a id="2026-11-19-attended-prompt-file-built-and-landed"></a>
+### attended-prompt-file built and landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: The person backend's prompt and answer files, lab-tools #284, after a programmer review whose defects were fixed.
+
+Considered
+: An id every answer must carry (rejected as the only way: a plain echo ok > answer must work, so 'for: ID' is optional); draining typed-ahead lines always (only on a tty, so piped scripts keep working).
+
+Rejected
+: Ending the wait at the end of stdin when a limit is given: a keeper has no terminal, so that would make the file useless.
+
+About
+: attended-prompt-file
