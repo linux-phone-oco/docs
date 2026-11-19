@@ -5584,3 +5584,34 @@ Proof
 
 About
 : nura-relation
+
+
+<a id="dt-check-verdict-from-output"></a>
+### dt-check: the verdict comes from the schema's output, dtbs runs defconfig, the image bakes dtschema
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: From the upstreams lane's first real run (docs #576, research/upstream-forks/2026-11-19/dt-checks-in-a-container.md), lpoco-bringup 0.21.2: (1) blocking - dtbs printed 3 violations for a bogus property and said 'dt-check: clean', exit 0: CHECK_DTBS reports violations as warnings and make succeeds; dt_binding_check's example warnings the same. (2) dtbs on a fresh --out stops at the missing .config. (3) The digest pins only alpine: dtschema is apk-added from edge at run time, so results drift. Also: dtschema skips disabled nodes, so the tests need a fixture with the node enabled. Matches the one-liner where it should: binding on qcom,pm8916-wdt.yaml clean in 69 s, output user-owned, source read-only.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: bringup/tests/dt_check.rs: a fixture whose output carries a schema violation ('.dtb: ... Unevaluated properties are not allowed') while make exits 0 is reported failing with the lines named (fails on main today: 'dt-check: clean'); dtbs on a fresh --out runs make defconfig in O= first (or reports a setup error, never 'checker failed'); the image named by digest contains py3-dt-schema and the build tools (no apk add at run time); a fixture with an enabled pm8998/pm6150 node is checked
+
+Rank
+: 1
+
+About
+: bringup-steps
