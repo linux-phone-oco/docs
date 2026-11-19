@@ -1884,3 +1884,28 @@ About
 
 Material
 : research/nura-relation/2026-11-19/
+
+
+<a id="giving-back-by-distro"></a>
+### giving-back-by-distro
+
+Brief
+: SourceHut's ToS forbids LLM-written content (since 2026-09-10): sxmo's list is closed to our patches; Debian/Mobian, Fedora, nixpkgs and the kernel allow human-signed AI-assisted work
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: For each candidate base distro, where does device work go, who reviews it, and does its AI policy let the author send AI-assisted work under his own sign-off?
+
+Found
+: Allow: Debian (GR 2026-08; Mobian merged SM7150 images 2025-12), Fedora (2025-10, FPCA), nixpkgs (2026-05, Assisted-by; no LLM text in PR/commit bodies since 2026-11-15), kernel. Forbid: Nura, DanctNix (2026-07), Gentoo (2024-04), anything on SourceHut (ToS since 2026-09-10, verified on man.sr.ht/terms.md), so sxmo's list. Unclear: Alpine (council #697), openSUSE, Arch/ALARM, Manjaro ARM, UBports, Droidian.
+
+About
+: upstreams-lane
+
+Material
+: research/upstream-forks/2026-11-19/
