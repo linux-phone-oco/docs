@@ -2485,7 +2485,7 @@ About
 ### 2026-11-19-bringup-graph-cytoscape-dagre
 
 Brief
-: The bring-up graph page is Cytoscape.js with the dagre layout (LR) on a JSON that render-pages.sh exports from the same rows; no server, no new pipeline
+: The bring-up graph page is Cytoscape.js with dagre (LR) on a JSON render-pages.sh exports; it opens folded and draws at most 500 nodes; ELK or a worker only for a full view at 1000+
 
 Project
 : linux-phone-oco/docs
@@ -2494,13 +2494,16 @@ Date
 : 2026-11-19
 
 Decision
-: bin/render-pages.sh (make render, checked fresh by make verify) also writes docs/graph/bringup.json: the steps, their edges (kind, group) and every device's step status. docs/graph.html (Jekyll, served under /tables/) loads Cytoscape.js and cytoscape-dagre at pinned versions and draws it: rankDir LR so the chosen goal sits left and its needs grow right; a goal picker (daily-usable-phone by default, linux-runs, complete-phone) keeps only the goal's ancestors; a device picker colours nodes done, partial, failing, open or unknown; hard edges solid, soft dashed, alternatives of one group drawn in one colour with the group named; a click shows the step's title, done_when, proof and guide and folds or unfolds what it needs. The guide view on the face links to it.
+: bin/render-pages.sh (make render, checked fresh by make verify) writes docs/graph/bringup.json: steps, stages, edges (kind, group), devices and every device's step status. docs/graph.html (/tables/graph.html) draws it with Cytoscape.js and cytoscape-dagre at pinned versions, rankDir LR: the goal on the left, its needs to the right. A tab per device read from the devices table plus a generic tab, each its own link (#device); a goal picker in each tab; nodes coloured by that device's status; hard edges solid, soft dashed, alternatives coloured by group; a click shows title, done_when, proof and guide. For a catalogue past a thousand steps (the author): it opens folded (the goal and one node per stage group), Show more opens the next rank, a search reveals a step's chain to the goal, open only hides done steps, and only the visible part is laid out; a change that would draw more than 500 nodes is refused with a message. Measured (research dagre-lays-out-the-bring-up-graph-in-0-13-s-at, a generated 1500-step fixture): folded 15 nodes 14-23 ms, one rank 138 nodes 0.13 s, two ranks 456 nodes 1.7 s, three ranks 944 nodes 9.5 s, all 1458 nodes 17-26 s; today's 91 needed steps unfold whole in 0.12-0.18 s. A full view of 1000+ steps is the point where ELK (elkjs layered) or dagre in a web worker replaces the main-thread layout; not built until wanted.
 
 Why
-: The author, 2026-11-19, relayed verbatim: can our webpage render that from our database as a dynamic tree or draw that graph dynamically ? ... if currently the linux as a dayly driver step is a top one, it will endup on the left of the graph and relations chain will grow to the right ? can it be done, and without overengineering ? is it a trivial, well known method. A layered (Sugiyama) layout is the known method; dagre is its common small implementation.
+: The author, 2026-11-19: can our webpage render that from our database as a dynamic tree or draw that graph dynamically ? ... is it a trivial, well known method; then a sub-tab per device; then the catalogue "over a thoughthand at least". A layered (Sugiyama) layout is the known method; dagre is its small implementation, and the measurements show where it stops.
 
 Rejected
-: Mermaid generated at build: no folding and one chart per goal and device. ELK: a heavier engine for no gain at 118 steps. d3-dag: a lower-level kit, more code of ours. A server or a new build step: the site already renders from the rows.
+: Mermaid generated at build: no folding, one chart per goal and device. ELK now: at 1500 steps it is the answer for a full view, but the folded page draws under 0.2 s with dagre and a full view of 1000+ steps is unreadable anyway; revisit when someone needs the whole graph at once. Compound parent nodes for stages: cytoscape-dagre does not lay them out, so stage groups are summary nodes. d3-dag: more code of ours. A server or a new build step: the site already renders from the rows.
 
 About
 : bringup-steps
+
+Research
+: dagre-lays-out-the-bring-up-graph-in-0-13-s-at
