@@ -7660,3 +7660,34 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="phone-declared-transport"></a>
+### lpoco lab and lpoco-attended reach the phone by its declared transport (ssh, telnet, adb) and login (password, none); boot_once by fastboot boot where the device boots so
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: decision 2026-11-19-phone-reached-by-its-declared-transport. Then walleye declares [connection] transport and login = none and drops its own boot/dmesg/way-back helpers (its coordinator's item).
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools tests: a fixture device.toml with transport = telnet, login = none runs phone sh over telnet to the shell address and port, suite latest says not applicable with no password asked; adb runs through adb -s SERIAL shell; ssh unchanged; boot_once on a fastboot-boot device calls fastboot boot and waits for the gadget usb_id; the manifest refuses an unknown transport
+
+Rank
+: 2
+
+About
+: bringup-steps
