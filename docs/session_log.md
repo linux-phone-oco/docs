@@ -3719,3 +3719,27 @@ Done
 
 About
 : surya-sxmo-from-nura
+
+---
+
+
+<a id="2026-11-19-lpoco-layer-pack-first-slice"></a>
+### lpoco layer pack, first slice
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: New crate lpoco-layer (lab-tools #217): pack from [layer] into nfpm configs and packages for four formats; test first, reviewer's defects on deb bounds and paths fixed.
+
+Considered
+: devicetree in -boot only for non-apk: the research test lists the deb files through the apk's names, and the formats should hold the same declared files, so it moved to -config
+
+Rejected
+: writing apk/deb archives in Rust instead of nfpm: nfpm is the chosen packer (decision 2026-11-19-device-layer-declared-once)
+
+About
+: lpoco-layer-pack
