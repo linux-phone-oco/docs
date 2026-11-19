@@ -3743,3 +3743,27 @@ Rejected
 
 About
 : lpoco-layer-pack
+
+---
+
+
+<a id="2026-11-19-lpoco-layer-pack-refuse-and-clean"></a>
+### lpoco layer pack: refuse and clean
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: check() and stale() in lpoco-layer (lab-tools #219), proof tests seen failing first; reviewed by programmer: fixed missing [layer.kernel], apk no longer refused for modules; surya main's [layer] writes its config.
+
+Considered
+: Putting the module rule in manifest Layer::validate (parse-dont-validate); matching stale packages of any version.
+
+Rejected
+: Both left for later: they widen the slice and touch the manifest crate other tools read.
+
+About
+: lpoco-layer-pack
