@@ -7579,7 +7579,7 @@ Status
 : open
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-bringup-graph-cytoscape-dagre.
+: 2026-11-19, orchestration: decision 2026-11-19-bringup-graph-cytoscape-dagre. 2026-11-19, orchestration: the author added "and be switched by a subtab per device, or something ?": a sub-tab per device read from the devices table (not hard-coded) plus a generic tab with no status, the goal picker inside each tab, each tab its own link (#device).
 
 Opened
 : 2026-11-19
