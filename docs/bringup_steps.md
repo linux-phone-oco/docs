@@ -3432,3 +3432,62 @@ Sources
 
 Checked on
 : 2026-11-19
+
+
+<a id="display-any-order"></a>
+### The display comes up at boot in any order
+
+Stage
+: display
+
+Ord
+: 6
+
+Applies
+: any
+
+Done when
+: on three cold boots the panel, its bridge and the GPU bind by deferred probe with their modules autoloaded (modalias), no initramfs module list or modprobe ordering of ours, and the console shows on the panel each time
+
+Proof
+: display-boots-any-order: three boots; each boot's dmesg shows the panel bound after any deferral, lsmod lists the modules with no ordering file in the image, the panel lit
+
+Proof kind
+: phone-suite
+
+Component
+: display-panel
+
+Guide
+: Upstream-readiness: a driver that only works with a hand-ordered module list is not ready for mainline. Return -EPROBE_DEFER for each supplier not yet there (regulators, the DSI host, the backlight, the GPIO expander), declare the suppliers in the device tree so fw_devlink orders it, and drop any modules-load or initramfs ordering list. walleye's B1 bring-up met the order dependence (walleye-display-s6e3fa5).
+
+Checked on
+: 2026-11-19
+
+
+<a id="storage-full-speed"></a>
+### Internal storage links at full speed
+
+Stage
+: storage
+
+Ord
+: 2
+
+Applies
+: any
+
+Done when
+: the internal storage's link runs at the fastest mode the SoC and the card both support - UFS: the HS gear and lane count of the SoC's spec, both lanes up; eMMC: HS400 (or HS200 where HS400 is not supported) - read from the kernel, and a sequential read measures within reach of that mode
+
+Proof
+: storage-link-speed: the link mode from debugfs or dmesg (UFS power mode HS-Gn, lanes; eMMC timing) matches the SoC's documented maximum, and a read-only dd of a partition measures the throughput
+
+Proof kind
+: phone-suite
+
+Guide
+: Upstream-readiness: a storage driver that links at PWM or one lane boots but is not done. On Qualcomm UFS the PHY tables and the gear limits per SoC decide it; compare with the downstream tree's settings. Read only: never write the internal storage to measure it.
+
+Checked on
+: 2026-11-19

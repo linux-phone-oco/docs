@@ -4841,3 +4841,27 @@ Rejected
 
 About
 : host-follows-releases
+
+---
+
+
+<a id="2026-11-19-step-claims-named-in-briefs"></a>
+### Step claims named in the briefs; two upstream-readiness steps
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: Added generic bring-up steps display-any-order (display comes up at boot by deferred probe, modules autoloaded, no ordering list) and storage-full-speed (the SoC's top UFS gear and lanes, or eMMC HS400), with hard edges after panel-lit and storage-readonly. Step status was not kept current (walleye last claimed 11-18, though display, PMIC and UFS proofs ran today): the lane bases have ikb step and docs feeds their steps table, but no brief said to claim a step when a proof ran. phone-keeper.md and builder.md now say so.
+
+Considered
+: Proofs on existing steps instead of new steps; a query of proofs run but not claimed.
+
+Rejected
+: New steps' text in a lane's base: they hold for any phone, so they are docs' catalogue.
+
+About
+: bringup-steps

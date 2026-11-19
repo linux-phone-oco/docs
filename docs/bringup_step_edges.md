@@ -3741,3 +3741,33 @@ Kind
 
 Why
 : the shell's idle loop is held off first, or it cuts the lab off from its test (2026-11-18-who-runs-rtcwake-99999999)
+
+
+### Row 250
+
+Step
+: display-any-order
+
+Requires
+: panel-lit
+
+Kind
+: hard
+
+Why
+: the panel must light by hand before its order can be left to deferred probe
+
+
+### Row 251
+
+Step
+: storage-full-speed
+
+Requires
+: storage-readonly
+
+Kind
+: hard
+
+Why
+: the link speed is read on a card that already lists its partitions

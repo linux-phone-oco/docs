@@ -247,3 +247,5 @@
 {"step":"standby-current","requires":"suspend-way-back","kind":"hard","group":null,"why":"a hang in sleep must find its way back before a night is measured"}
 {"step":"daily-usable-phone","requires":"real-suspend-under-shell","kind":"hard","group":null,"why":"a person's phone sleeps under its shell and returns"}
 {"step":"real-suspend-under-shell","requires":"shell-autosleep-tamed","kind":"hard","group":null,"why":"the shell's idle loop is held off first, or it cuts the lab off from its test (2026-11-18-who-runs-rtcwake-99999999)"}
+{"step":"display-any-order","requires":"panel-lit","kind":"hard","group":null,"why":"the panel must light by hand before its order can be left to deferred probe"}
+{"step":"storage-full-speed","requires":"storage-readonly","kind":"hard","group":null,"why":"the link speed is read on a card that already lists its partitions"}

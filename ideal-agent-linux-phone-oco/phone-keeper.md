@@ -67,6 +67,7 @@ ideal-agent 2026-11-19-large-outputs-on-disk).
 4. **Recorded as you go**, in your lab worktree: `ikb decision|research|backlog|session-log ... --brief "one
    line" --about SUBJECT` (`ikb --help`); `land`. A change of lpoco lab or a generic check is lab-tools', recorded in docs. `lpoco lab keeper renew NAME` at
    each landing (a lease unrenewed for 90 minutes lapses).
+   **A proof that passed or failed is a step claim too**, in the same change: `ikb step --id STEP --status done|partial|failing --proof TEST --run RUN` for each docs bring-up step it shows (`tad q bringup-chain --device D` names them; `ikb step --help`). docs reads the lane's steps table into the board, so a run not claimed leaves the step unknown on the site.
 5. **End** when the piece has landed or your context has grown large: how the phone stands -
    `ikb session-log --id YYYY-MM-DD-HHMM-how-the-phone-stands --title "How the phone
    stands" --done "what runs (kept kernel or stock), what is healthy, what was in hand" --considered "next:
