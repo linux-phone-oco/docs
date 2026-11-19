@@ -7076,10 +7076,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: 2026-11-19, lab-tools-builder: landed lab-tools #289, released v0.35.0: lpoco-host clones [now] on its own user timer lpoco-host-clones (not folded into follow), declared by lab.toml [clones] folders/every; plan lists it, prepare writes and enables it. After the programmer review (fixed: origin/main fetched with an explicit refspec so a clone without a fetch refspec is not read as up to date; git errors named, not read as up to date or diverged; --no-optional-locks; status re-checked before the merge; stderr first line only; TimeoutStartSec=10min; a missing folder or all fetches failing fails the unit; tests: untracked collision left intact, no refspec, missing folder, all fetches failing, refusal names [clones]). Cannot catch (said in README): a clone on another branch or detached is named, not moved; an untracked file in the way stops the fast-forward. Left to finish the proof: orchestration declares [clones] in grenudi/lab-machine lab.toml (folders ~/Projects) once the host follows to 0.35.0; then clones-check reports none behind.
+: 2026-11-19, orchestration: live. lab-tools #289 (v0.35.0); lab.toml [clones] declared (grenudi/lab-machine), lpoco-host-clones.timer enabled by prepare, first run 21:14 fast-forwarded clean clones and named snapall (diverged). Its first run also moved the author's own repositories under ~/Projects: folders narrowed to the commons parents; the filter is host-clones-commons-only (rank 1).
 
 Opened
 : 2026-11-19
