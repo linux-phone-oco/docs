@@ -21,3 +21,10 @@ theme (deliberately: structure by indentation and whitespace, not font-size jump
 ## Process
 Built on [`creation-guidelines/text-as-data-template`](https://github.com/creation-guidelines/text-as-data-template); the
 engineering process this org follows is [`ideal-project-playbook`](https://github.com/creation-guidelines/ideal-project-playbook).
+## Licence
+
+The data, the pages, the briefs and the research notes here are [CC-BY-SA-4.0](LICENSE); the scripts, statements and configuration (`bin/`,
+`records/`, `queries/`, `.github/`, and the scripts of a research note) are MIT OR Apache-2.0, at your option ([`LICENSE-MIT`](LICENSE-MIT),
+[`LICENSE-APACHE`](LICENSE-APACHE)). A patch we wrote against a third-party project carries the licence of the files it changes: the kernel's
+GPL-2.0-only, a device tree's own BSD-3-Clause or MIT, sxmo-utils' AGPL-3.0-only.
+[`REUSE.toml`](REUSE.toml) says it per path, the texts are in `LICENSES/`, and `bin/licence-check` (run by `make verify`) keeps new files covered.

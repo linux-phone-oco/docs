@@ -42,3 +42,4 @@ verify: check     ## what CI runs: data is valid and canonical, docs are fresh
 	@./bin/test-bringup-pages.sh
 	@./bin/test-face-steps.sh
 	@./bin/test-face-guide.sh
+	@sh bin/licence-check
