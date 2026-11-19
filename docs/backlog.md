@@ -5778,3 +5778,332 @@ Opened
 
 Proof
 : a file touched after 2026-11-19 that holds logic (parsing, loops over data, functions) is Rust (rust-script for a single file); a count of shell lines in lab-tools only falls
+
+
+<a id="test-layer"></a>
+### Hardware tests run in a layer with no phone shell; the shell is a later layer tested on its own (the author's proposal, 2026-11-10 and 2026-11-19)
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Research lead test-layer-research: measured sxmo's cost, recommended the split (decision 2026-11-19-hardware-test-layer), waiting on the author's word. Carries surya-lab shell-free-base. Next: the author's word, then surya-test-layer-entry.
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-hardware-test-layer
+
+Proof
+: test-layer-quiet
+
+
+<a id="surya-test-layer-entry"></a>
+### surya boots its hardware-test layer: a second boot entry, the same image at multi-user.target, the sxmo entry kept
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: Carries surya-lab shell-free-base. First, read only: systemctl get-default; what graphical.target alone pulls in (systemctl list-dependencies graphical.target vs multi-user.target); which suite checks need the user session (pipewire, wireplumber are user services). Then one entry beside the stock one through lpoco's test-kernel route (boot counting, fallback to the sxmo entry): same kernel, dtb and root, systemd.unit=multi-user.target. Boot it once, run the suite: test-layer-quiet passes and the base layer passes as under sxmo (29 of 29 outside known gaps); audio checks that need the session say so, they are not hidden. lpoco-awake stays enabled. No suspend in this item.
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-hardware-test-layer
+
+Blocked by
+: health-test-layer-quiet
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: test-layer-quiet
+
+About
+: test-layer
+
+
+<a id="surya-test-layer-default"></a>
+### The test layer is surya's default boot; the sxmo entry is chosen for shell tests only
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: After surya-test-layer-entry passes. The watch's boots land in the test layer (test-layer-quiet passes on every boot report); suspend items (health-suspend-cycle-proof, sleep-standby-current r5, sensors-across-suspend) drop their 'sxmo autosleep stopped first' step and run there. The shell entry stays and is chosen by the shell-stage items.
+
+Opened
+: 2026-11-19
+
+Blocked by
+: surya-test-layer-entry
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: test-layer-quiet
+
+About
+: test-layer
+
+
+<a id="surya-sxmo-from-nura"></a>
+### surya runs Nura's own sxmo-utils again, not sxmo-utils@lab
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Note
+: Supersedes surya-sxmo-suspend-series (its suspend tests suspend-retry-backs-off and sensors-after-suspend under sxmo are not run). Keep modemmanager, mmsd-tng and vvmd in world (the -r4/-r5 deps; world backup /root/world.before-sxmo-lab), drop the @lab pin and its repository tag for sxmo-utils, apk fix to Nura's sxmo-utils, then sxmo_migrate.sh state and the user_config drift check read clean. Wake lock held throughout, no suspend. Proof: shell-up in the shell entry, apk policy names Nura's repository for every sxmo-utils subpackage.
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-hardware-test-layer
+
+Blocked by
+: surya-test-layer-default
+
+Needs
+: phone
+
+Device
+: xiaomi-surya
+
+Proof
+: shell-up
+
+About
+: test-layer
+
+
+<a id="sxmo-apk-retired"></a>
+### lab-tools stops building sxmo-utils: packaging/sxmo-utils, its CI check and its Pages entry go
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: After surya runs Nura's sxmo-utils. The package conveyor then publishes lpoco-health alone; the apk page's sxmo-utils licence notice (docs apk-pages-origin-licence) goes with it. Proof: a CI check that the published index carries no sxmo-utils.
+
+Opened
+: 2026-11-19
+
+Blocked by
+: surya-sxmo-from-nura
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab apk repository lists no sxmo-utils (CI check)
+
+About
+: test-layer
+
+
+<a id="sxmo-fork-retired"></a>
+### Retire the sxmo fork: grenudi/sxmo-utils archived with its history, its three upstream items withdrawn, fork tracking stops
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Items sxmo-autosuspend-backoff, sxmo-suspend-stop-by-profile, sxmo-surya-sensors-suspend: state withdrawn, carried-in none (SourceHut's terms bar agent-made patches; the author may send his own by hand). fork-tracking-job drops fork-sxmo-utils. Archive (read-only) on GitHub is the author's or orchestration's act; the tag lab-20261118.1 and the topics stay as history. The surya profile is upstream (1fd7822) and is not touched.
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-hardware-test-layer
+
+Blocked by
+: sxmo-apk-retired
+
+Proof
+: tad q carried lists no fork-sxmo-utils item; upstream items withdrawn, carried in none
+
+About
+: test-layer
+
+
+<a id="awake-not-a-workaround"></a>
+### lpoco-awake is the lab's policy, not a WORKAROUND(sxmo-autosuspend-backoff): the mark and the item's local-ref go
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: A lab phone on USB stays awake unless a test asks, in every layer; the bluetooth-not-up gate stays for allow-autosleep runs. Retire the stale devlab-usb-awake declaration with host-check-stale-pieces (surya-lab). Proof: awake-wakelock-held passes; scripts/workarounds no longer lists it.
+
+Opened
+: 2026-11-19
+
+Blocked by
+: sxmo-fork-retired
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: awake-wakelock-held
+
+About
+: test-layer
+
+
+<a id="suspend-cycle-stops-services"></a>
+### lpoco-health suspend cycle stops the services the manifest names before a suspend and starts them after (sensorspd on surya)
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: What sxmo patch 2/3 did inside sxmo, in our own tool, so sensors-across-suspend is proven in the test layer. way-back.sh's stop-sensors flag is the prior art (research 2026-11-18-sensorspd-stopped-no-adsp-crash); a real systemctl suspend needs the delayed restart (research 2026-11-18-systemctl-suspend-leaves-sensors-stopped). The test sensors-after-suspend is re-said without 'under Sxmo'.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: sensors-after-suspend
+
+About
+: test-layer
+
+
+<a id="steps-shell-stage-split"></a>
+### Bring-up steps: the shell's own sleep goes to the shell stage; a lab step test-layer-boots; standby measured first in the test layer
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Steps are the owner's (orchestration). (1) New step test-layer-boots (stage lab, proof test-layer-quiet): a hardware-test layer with no shell boots, and the lab's suspend work runs there. (2) shell-autosleep-tamed moves from stage lab to stage shell, done_when 'the shell's idle suspend is held off while the lab works', proven per shell; its edge on lab-link-held-awake stays; suspend-retry-backs-off retires with the sxmo series. (3) real-suspend-under-shell moves to the shell stage. (4) standby-current: its hard edge on real-suspend-under-shell becomes soft; a hard edge on s2idle-cycle-returns and suspend-way-back, measured first in the test layer; the shell's figure follows. call-wakes-from-sleep and alarm-wakes-from-sleep keep theirs (they are daily-use). (5) test sensors-after-suspend re-said without 'under Sxmo'.
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-hardware-test-layer
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: tad q bringup-chain: test-layer-boots in stage lab with proof test-layer-quiet; shell-autosleep-tamed in stage shell
+
+About
+: test-layer
+
+
+<a id="walleye-rootfs-test-layer-first"></a>
+### walleye's first root filesystem is a test layer: no UI package, tty and ssh, lpoco-health
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Note
+: Decision 2026-11-19-hardware-test-layer point 5 on walleye-rootfs-on-our-layer (decision 2026-11-19-base-distro): build it with no postmarketos-ui-* package (ui=none or console), sshd from the base, lpoco-health and lpoco-awake; a shell comes later in the shell stage. Its bare init stays for the boot, console and kernel stages.
+
+Opened
+: 2026-11-19
+
+Blocked by
+: walleye-rootfs-on-our-layer
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: test-layer-quiet
+
+About
+: test-layer
+
+
+<a id="health-test-layer-quiet"></a>
+### lpoco-health base check test-layer-quiet, and each report says which layer the phone booted (test or shell)
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-19-hardware-test-layer. Reads only. Written first and seen failing in the suite's host fixture (a test-layer boot with an sxmo process running); on surya as it runs now it says skip and names sxmo, so the step reads unknown until the test layer boots. The layer line goes in the report header. Process names and the target come from the manifest where a device differs. Next: the builder's look-around in lpoco-health's suite (checks/base).
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: test-layer-quiet
+
+About
+: test-layer

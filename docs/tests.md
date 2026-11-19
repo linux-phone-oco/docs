@@ -702,3 +702,16 @@ Proves
 
 Says
 : while suspend keeps failing under Sxmo, the tries are spaced 1, 2, 4 ... 64 s apart (sxmo.log 'next try in'), and the USB link drops at most 8 times in 5 minutes (26 before the fix)
+
+
+<a id="test-layer-quiet"></a>
+### test-layer-quiet
+
+Component id
+: deep-sleep
+
+Proves
+: works
+
+Says
+: in a boot that claims the hardware-test layer (multi-user.target, no display manager), no shell or idle-suspend process runs (tinydm, sxmo_*, superd, swayidle, phoc, phosh, plasmashell, powerdevil, gsd-power), logind's IdleAction and HandlePowerKey are ignore, and no suspend was entered this boot but lpoco-health's own cycles; a boot into a shell layer says skip and names the shell, so the step stays unknown until the test layer boots

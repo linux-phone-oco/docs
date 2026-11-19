@@ -1988,3 +1988,31 @@ Research
 
 Tracked by
 : base-distro
+
+
+<a id="2026-11-19-hardware-test-layer"></a>
+### 2026-11-19-hardware-test-layer
+
+Brief
+: Recommended for the author's word: hardware tests run in a no-shell layer (the same Nura image at multi-user.target); the shell is a later layer; the sxmo fork, series and lab apk retire
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Decision
+: A recommendation for the author's word - what surya runs is his call, and the change is the surya keeper's. (1) Hardware tests run in a hardware-test layer with no phone shell: a tty with getty and ssh, the system services, lpoco-health and lpoco-awake, and nothing that suspends, locks or reacts to keys unless a test asks. On surya it is the image it runs now (Nura v26.06), booted from a second boot entry with systemd.unit=multi-user.target: no display manager, so no sxmo session; the sxmo entry stays beside it. Once proven, the test layer is the lab's default boot and the shell entry is chosen for shell tests. (2) The user-experience layer - sxmo, Phosh or Plasma Mobile - is a separate, later concern, tested on its own once the hardware steps pass: the bring-up steps' shell stage carries it, including each shell's own idle-suspend hold-off and its real suspend. (3) The sxmo fork (grenudi/sxmo-utils lab branch, tag lab-20261118.1, three topics), its three upstream items and the sxmo-utils@lab apk are retired: surya goes back to Nura's own sxmo-utils, lab-tools drops the packaging, the fork is archived with its history. The device profile stays upstream (1fd7822). (4) lpoco-awake stays as the lab's policy (a lab phone on USB stays awake unless a test asks), no longer a workaround for sxmo. (5) New devices' first root filesystem is the test layer: no UI package (walleye-rootfs-on-our-layer, decision 2026-11-19-base-distro). Amends 2026-11-18-upstream-forks for sxmo-utils only, and the thin layer of 2026-11-19-base-distro (it no longer carries sxmo-utils@lab).
+
+Why
+: Measured (test-layer-sxmo-cost-measured): ~70 PRs, ~13 h surya unreachable, three of the author's hands and ~17 lane-hours over a day and a night went to sxmo's suspend policy and our ways of living with it; most of the spend was our response (fork, series, apk, package swap, migration), which a layer without a shell makes unneeded. The suspend steps that matter for hardware (s2idle-cycle-returns, radios-survive-suspend, suspend-way-back) are already proven by lpoco-health's own cycle, shell-free. The same image at multi-user.target is the cheapest honest split (test-layer-landscape): no reflash, a command-line change with the lab's boot-count fallback, the shell kept for its own stage. The series has no agent path upstream: SourceHut's terms bar LLM-written content since 2026-09-10 (giving-back-by-distro). The author proposed the split on 2026-11-10 (surya-lab shell-free-base) and again on 2026-11-19: 'for hardware support tests we dont use any shells at all and use our own simple tty setup'.
+
+Rejected
+: A fresh Nura ui=console image built by pmbootstrap and flashed: the cleanest baseline, but 4-8 h, a witnessed flash and the provisioned state redone, for a split the boot entry gives at once; kept for new devices and as a later step if the entry shows leaks. Swapping the UI in place (apk del sxmo, add ui-console): loses the UX layer, no official doc, autologin and tinydm leftovers. Two root filesystems chosen by pmos.root_uuid: needs space, boot-deploy may rewrite hand entries, undocumented on phones. Keeping sxmo and taming it (lpoco-awake, gates, the fork's series): the status quo that cost the 70 PRs, a tax on every suspend test, and a series with no way upstream. initramfs-only tests (walleye's bare init, Nura CI's hook): right for boot, console and kernel stages, not for coprocessors, audio and modem on surya, which need the rootfs daemons. Phosh or Plasma Mobile as the lab's shell instead of sxmo: each brings its own idle suspend (gsd, PowerDevil) - the same problem in another form.
+
+About
+: test-layer
+
+Research
+: test-layer-sxmo-cost-measured

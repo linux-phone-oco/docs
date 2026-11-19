@@ -180,3 +180,18 @@ Says
 
 Condenses
 : 2026-11-19-base-distro, 2026-11-19-research-base-distro, base-distro-candidates, base-distro-how-it-stands
+
+
+### Row 13
+
+About
+: test-layer
+
+Date
+: 2026-11-19
+
+Says
+: Hardware tests in a layer with no phone shell, the shell a later layer tested on its own - the author's proposal (2026-11-10, surya-lab shell-free-base; again 2026-11-19). Recommended, waiting on his word: decision 2026-11-19-hardware-test-layer. Measured first (test-layer-sxmo-cost-measured): ~70 PRs, ~13 h surya unreachable, 3 author hands, ~17 lane-hours over ~27 h - a day and a night, not two days; most of it our response to sxmo (fork, series, apk, package swap, migration), not sxmo itself. Way (test-layer-landscape): surya boots the same Nura v26.06 image from a second entry at multi-user.target - no tinydm, so no sxmo; a fresh ui=console image is kept for new devices (walleye-rootfs-test-layer-first). The sxmo fork, its three upstream items and the sxmo-utils@lab apk retire; lpoco-awake stays as lab policy; sensors across suspend move into lpoco-health's cycle. Items (unranked): health-test-layer-quiet, surya-test-layer-entry, surya-test-layer-default, surya-sxmo-from-nura, sxmo-apk-retired, sxmo-fork-retired, awake-not-a-workaround, suspend-cycle-stops-services, steps-shell-stage-split. Test: test-layer-quiet. Where it stands in detail: test-layer-how-it-stands.
+
+Condenses
+: 2026-11-19-hardware-test-layer, 2026-11-19-research-test-layer, test-layer-how-it-stands, test-layer-landscape, test-layer-sxmo-cost-measured
