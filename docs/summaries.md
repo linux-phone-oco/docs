@@ -150,3 +150,18 @@ Says
 
 Condenses
 : 2026-11-18-author-yes-bringup-steps, 2026-11-18-bringup-steps-generic-in-docs-status-in-each-base, 2026-11-18-bringup-steps-off-side, 2026-11-18-bringup-steps-phone-stages-and-goal-steps, 2026-11-18-docs-builder-bringup-chain-goal, 2026-11-18-docs-builder-bringup-shape-check, 2026-11-18-docs-builder-components-for-the-phone-steps, 2026-11-18-docs-builder-feed-device-steps, 2026-11-18-docs-builder-milestones-name-goal-steps, 2026-11-18-docs-builder-milestones-name-steps, 2026-11-18-docs-builder-tad-q-prior-art, 2026-11-18-docs-builder-the-landscape-record, 2026-11-18-docs-builder-the-steps-contract-in-docs-device, 2026-11-18-phone-stages-research, 2026-11-18-research-bringup-steps, bringup-steps-coverage-map, bringup-steps-how-it-stands, bringup-steps-landscape, bringup-steps-phone-stages
+
+
+### Row 11
+
+About
+: nura-relation
+
+Date
+: 2026-11-19
+
+Says
+: Nura (postmarketOS until 2026-09-27) is the distribution surya runs whole - the v26.06 image, the generic qcom-sm7150 port, its sm7150-mainline kernel package, the UI packages - and lpoco lab kernel boots by its names (pmos.conf, the postmarketOS title). walleye runs no Nura yet. We redistribute nothing of Nura's; we redistribute sxmo-utils (AGPL-3.0-only) on our apk page, whose source directions are missing. Nura forbids AI-made contributions, so agents send or prepare nothing for it; giving back directly is the author's own act. Recorded in landscape nura and upstream nura-pmaports (research nura-relation-how-it-stands, decision 2026-11-19-nura-relation). Open: apk-pages-origin-licence, built-on-nura-line, surya-base-image-named, lpoco-nura-names-one-place, nura-give-back-by-hand (waits on the author).
+
+Condenses
+: 2026-11-19-nura-relation, nura-relation-how-it-stands

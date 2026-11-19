@@ -1904,3 +1904,31 @@ About
 
 Research
 : oneoffs-and-workarounds-measured
+
+
+<a id="2026-11-19-nura-relation"></a>
+### 2026-11-19-nura-relation
+
+Brief
+: Nura is recorded as one landscape row and one upstream (nura-pmaports, human-only); we owe it a README line and AGPL directions on our apk page; agents send it nothing
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Decision
+: Nura (formerly postmarketOS, renamed 2026-09-27) is the distribution our phones run; the relation is kept in the records that exist, not a new page or table: landscape row nura (what we take, what we leave, how we give back), upstream nura-pmaports (how: only the author himself, by Nura's AI policy), alpine-aports narrowed to Alpine's own, and the two landscape rows that aimed to contribute our tests to Nura's CI corrected. What we owe and do: one line in each lab README naming Nura and Alpine (built-on-nura-line); the apk repository's page names each package's origin, licence and source, checked in CI (apk-pages-origin-licence). What we depend on and guard: surya's base image named by hash and kept outside a tree queued for cleanup (surya-base-image-named); the Nura names lpoco relies on in one place and the base boot entry read from the phone (lpoco-nura-names-one-place). Giving back: no agent drafts anything headed to Nura - patch, test, report, comment or wiki line, not even for the author to send; our work reaches Nura through the upstreams it packages; anything direct is the author's own act (nura-give-back-by-hand). Amends the upstream-forks rule 'mail on the author's word, Assisted-by' for Nura: there it is the author's own work or nothing.
+
+Why
+: Measured on origin/main 2026-11-19: surya runs Nura v26.06 whole and lpoco hard-codes its boot names, but nothing of Nura's is redistributed, so we owe it credit, not licence duties; sxmo-utils (AGPL-3.0-only) is what we redistribute, and our page lacks the source directions its 6(d) asks. Nura forbids contributions fully or in part created by generative AI (nura-ai-policy), naming no kinds; its CoC and wiki rules reach issues and wiki text, so the only line that keeps the author clear is that agents prepare nothing for Nura. Mobian, Ubuntu and Nura itself name their parent in one line where readers meet them, plus one structured entry; our landscape and upstreams tables are that entry. The relation already lives in 45 sources, 4 landscape rows and 20 research rows: what was missing was one row saying the whole, a correct upstream, and the two gaps (credit, source directions). The author asked to keep it small.
+
+Rejected
+: A credits page or a per-project relations page in docs: duplicates landscape and upstreams, and a face page is the owner's schema; a line in each README is what derivative distributions do. A new relations table: the landscape record already holds what a project is for us. Nothing at all: leaves the upstream row pointing pmaports at Alpine, the AGPL directions missing, and two landscape rows aiming at a contribution the policy forbids. Mirroring or vendoring Nura (images, packages): costs storage and upkeep for a risk one named and kept image covers; v26.06 is already the pin. Agents preparing reports or test results for the author to file under his name: 'in part created by generative AI' covers a draft he only edits, and the CoC names using the tools; it would put his standing in Nura at risk. Joining Nura's hardware CI with our tests: the tests are AI-made, so not contributable; a farm slot is the author's own choice. Renaming every postmarketOS mention in our code and records now: source titles quote real documents, and Nura has not renamed boot-deploy's names or packages yet.
+
+About
+: nura-relation
+
+Research
+: nura-relation-how-it-stands

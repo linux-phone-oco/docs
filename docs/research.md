@@ -1851,3 +1851,36 @@ About
 
 Material
 : research/upstream-forks/2026-11-19/
+
+
+<a id="nura-relation-how-it-stands"></a>
+### nura-relation-how-it-stands
+
+Brief
+: Nura (postmarketOS until 2026-09-27) is surya's whole OS and our tools' boot names; we redistribute none of it; its AI ban closes every agent-made give-back - only the author's own
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: What do we use from Nura (formerly postmarketOS), what do we depend on, what do we owe it, how can we give back under its no-AI policy, and where does the relation belong in our records?
+
+Found
+: Rename: postmarketOS became Nura on 2026-09-27 (nura-rename-post; endoflife-postmarketos); PMCR 0006 keeps pmaports, bpo and pmbootstrap named as they are and plans postmarketos-* package renames with provides; postmarketos.org redirects to nura.eco, GitLab is gitlab.nura.eco/nura.
+Use, measured on origin/main 2026-11-19 (material table): surya runs Nura v26.06 (Alpine 3.24) whole - the prebuilt image 20261030-1151-nura-v26.06-sxmo-de-sway-qcom-sm7150.img, the generic port device-qcom-sm7150 r11 (systemd-boot, soc-qcom, hexagonrpcd, qbootctl, UCM, firmware), linux-postmarketos-qcom-sm7150 7.1_rc3 (sm7150-mainline's tag), the UI meta-packages (ui/switch.sh), the debug shell and 172.16.42.1; U-Boot comes from sm7150-mainline, installed by Nura's wiki steps. lab-tools hard-codes boot-deploy's names (pmos.conf, pmos_boot_uuid, /pmOS_init.log, the title postmarketOS its test entries sort before), the gadget 18d1:d001 and deviceinfo's words; its apk repository targets v26.06. walleye runs no Nura yet (kernel.org v7.3, own initramfs); it reads porthole-dev's pmaports fork for the msm8998 series; Nura has no walleye package or wiki page. sxmo comes through Nura's UI package and Alpine's sxmo-utils; sxmo is its own project.
+Depend: if Nura changed or left - the image cannot be fetched again (only a copy in ~/Projects/surya-audio, a tree queued for cleanup; nothing names its hash); a rename of the boot entry or title breaks lpoco lab kernel; v26.06 pins the apk repo and the provision list (Alpine edge only for tqftpserv). We vendor nothing of Nura's and pin only the release.
+Owe: we redistribute nothing of Nura's (no pmaports file, image or firmware leaves the lab machine). We redistribute sxmo-utils (AGPL-3.0-only) built from Alpine's APKBUILD: the index names licence and URL, the source tag is public, but the Pages page gives no origin, licence or source directions (AGPL 6(d)). No README of ours credits Nura (0 in docs and surya-lab); no repository has a LICENSE file.
+Give back: Nura forbids contributions fully or in part made by generative AI, since 2026-02-16 (nura-ai-policy), names no kinds, and its CoC and wiki rules reach issues, comments and wiki text. So no agent drafts anything headed to Nura - not a patch, test, report or wiki line - and the landscape aims "our tests contributed to their CI" are closed. What stays open: the author himself (Testing Team on surya, his own reports and wiki edits), and our work reaching Nura through upstreams whose rules allow it (kernel.org with Assisted-by; the stances of sm7150-mainline and sxmo not checked).
+Others: Mobian and PureOS appear in Debian's census; Mobian, Ubuntu and Nura itself say their parent in one line where a reader meets them. Nura keeps no census. Ours: one landscape row and one upstream row, a line in the READMEs.
+
+Sources
+: nura-rename-post,nura-pmcr-0003-name-change,nura-pmcr-0006-name-change,endoflife-postmarketos,nura-ai-policy,nura-code-of-conduct,nura-wiki-rules,nura-contribute,nura-testing-team,nura-home,pmaports-device-qcom-sm7150,pmaports-linux-qcom-sm7150,nura-sm7150-wiki,porthole-pmaports,debian-census-mobian,debian-census-purism,debian-derivatives,ubuntu-debian-governance,agpl-3,sxmo-utils-repo,lab-tools-apk-pages
+
+About
+: nura-relation
+
+Material
+: research/nura-relation/2026-11-19/
