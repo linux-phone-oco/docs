@@ -7576,10 +7576,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-bringup-graph-cytoscape-dagre. 2026-11-19, orchestration: the author added "and be switched by a subtab per device, or something ?": a sub-tab per device read from the devices table (not hard-coded) plus a generic tab with no status, the goal picker inside each tab, each tab its own link (#device). 2026-11-19, orchestration: scale - the author expects the catalogue past a thousand steps ("over a thoughthand at least"): open folded with stages as compound nodes, depth limit and show more; search reveals a step's chain to the goal; an open-only filter; layout on the visible part only; a generated 1500-step fixture measures dagre on full and folded views. ELK (rejected at 118 steps) is revisited in the decision from those numbers.
+: 2026-11-19, docs-graph-builder: landed in #706 (page, tabs per device, bringup.json, test) and #707 (folded by stage, search, open-only, 1500-step fixture, measurements in research dagre-lays-out-the-bring-up-graph-in-0-13-s-at). Deployed at https://linux-phone-oco.github.io/docs/tables/graph.html (#xiaomi-surya, #google-walleye, #generic); screenshot looked at: goal on the left, needs to the right, done/partial/failing/open/unknown coloured, no overlap. Next if wanted: ELK or a web worker for a full view past 500 nodes (dagre is 9.5 s at 944 nodes).
 
 Opened
 : 2026-11-19
