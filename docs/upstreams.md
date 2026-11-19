@@ -219,7 +219,7 @@ Contacts
 : device-qcom-sm7150 co-maintainers: Danila Tikhonov, David Wronek, Arian Kulmer (the APKBUILD's lines)
 
 Notes
-: AI policy since 2026-02-16 (source nura-ai-policy); the Code of Conduct and the wiki rules reach issues, comments and wiki text too. Renamed from postmarketOS on 2026-09-27; pmaports and pmbootstrap keep their names. pmaports issue 4441 (tqftpserv, surya's SIM slot) is the one of its reports we cite. Our kernel and sxmo work reaches Nura through sm7150-mainline, kernel.org and sxmo, not through here.
+: AI policy since 2026-02-18 (adopted; proposed 2026-02-16) (source nura-ai-policy); the Code of Conduct and the wiki rules reach issues, comments and wiki text too. Renamed from postmarketOS on 2026-09-27; pmaports and pmbootstrap keep their names. pmaports issue 4441 (tqftpserv, surya's SIM slot) is the one of its reports we cite. Our kernel and sxmo work reaches Nura through sm7150-mainline, kernel.org and sxmo, not through here.
 
 
 <a id="alpine-aports"></a>

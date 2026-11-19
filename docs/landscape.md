@@ -256,7 +256,7 @@ Project
 : Nura (formerly postmarketOS)
 
 What
-: The Alpine-based distribution for phones: pmaports (its packages and device ports), pmbootstrap, prebuilt images, a wiki and porting guides. Renamed from postmarketOS on 2026-09-27; pmaports and pmbootstrap keep their names. Forbids generative-AI contributions since 2026-02-16.
+: The Alpine-based distribution for phones: pmaports (its packages and device ports), pmbootstrap, prebuilt images, a wiki and porting guides. Renamed from postmarketOS on 2026-09-27; pmaports and pmbootstrap keep their names. Forbids generative-AI contributions since 2026-02-18 (adopted; proposed 2026-02-16).
 
 For us
 : Surya's whole OS (v26.06 image, generic qcom-sm7150 port, its kernel package of sm7150-mainline, UI packages) and the names lpoco lab kernel boots by (pmos.conf, the postmarketOS title). We redistribute none of it; our apk repository builds for v26.06. We give back only through the author himself and through the upstreams Nura packages (sm7150-mainline, kernel.org, sxmo). Upstream row: nura-pmaports. Research nura-relation-how-it-stands.
