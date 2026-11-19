@@ -2426,3 +2426,31 @@ Research
 
 Tracked by
 : briefs-start-in-a-worktree
+
+
+<a id="2026-11-19-procedures-chain-by-named-groups"></a>
+### 2026-11-19-procedures-chain-by-named-groups
+
+Brief
+: Procedures chain by named step groups, each one line inside one run with its own way back; a procedure reuses another's checklist by calling its group, not by running it as a second run
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: (1) lpoco-attended gets a named group: group("boot the test image and reach the shell", [steps...]) returns one Step-like unit; a procedure writes it as one line, its steps are logged under the group's name, --dry-run lists them, --from/--until can name a group or a step in it, and groups nest. (2) A group may carry its way back - .way_back(back_to_known_good()) - which runs whatever failed after the group's start, in reverse order of entry, once per run (pytest yield fixtures, Ansible block/always). (3) Groups any device needs live in the library (first: phone_ready - gate, boot_once, wait_for_phone, shell answers - and leave_known_good); a device's own groups in its procedures/steps; the lift check covers groups like steps. (4) A procedure that needs another's checklist calls that checklist's group: the entry file stays a plain list, with one log, one lease and one way back held by the outer run. Running another procedure file as a sub-run is not offered. Follows 2026-11-19-procedures-chain-small-device-agnostic-steps and -procedures-reflect-and-lift; backlog attended-step-groups.
+
+Why
+: The author, 2026-11-19: is our procedures now easily ergonomically chainable ? or how does that work ? Today steps chain only inside one file; walleye's display, UFS and PMIC procedures each repeat the gate, boot, shell and way-back steps. Research procedures-chaining: Robot keywords, Ansible include_tasks and block/always, GitHub composite actions, pytest fixtures, LAVA test definitions in one job.
+
+Rejected
+: A procedure running another procedure file as a sub-run (GitHub's reusable workflow): a second log, lease and way back, and the phone's state handed between two runs. Copy-paste with the lift check catching it: the lift finds copies, it does not give a way to name them. Macros or a DSL: the entry file stops reading like plain Rust.
+
+About
+: bringup-steps
+
+Research
+: procedures-chaining
