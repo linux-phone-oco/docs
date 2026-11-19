@@ -4538,3 +4538,27 @@ Rejected
 
 About
 : attended-run-from-step
+
+---
+
+
+<a id="2026-11-19-attended-skip-when-already-in-state"></a>
+### attended skip when already in state
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lab-tools #286: boot_once and back_to_known_good skip when the kernel already runs.
+
+Considered
+: Substring match of the name in uname -r (rejected after review: a wrong hit leaves the test kernel unbooted); exact version-then-name match.
+
+Rejected
+: Skipping a stock default: the phone cannot be told stock by name.
+
+About
+: attended-skip-when-in-state
