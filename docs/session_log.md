@@ -3317,3 +3317,24 @@ Rejected
 
 About
 : reference-capture-diff
+
+---
+
+
+<a id="2026-11-19-dt-check-verb-in-lpoco-bringup"></a>
+### dt-check verb in lpoco-bringup
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Built lpoco-bringup dt-check binding|dtbs (lab-tools #199): digest-pinned container, source read-only, output in scratch, make arguments passed as arguments not a shell string. Reviewer's defects fixed: container failure vs checker failure told apart, make options refused in --dtbs/--arch, : in a mount path refused, id checked, flag/verb mismatch refused.
+
+Considered
+: A lab-tools script instead of a verb; a bare dt-check with no verb.
+
+Rejected
+: Splicing make arguments into the sh -c string (injection); a default image tag (a later edge dtschema would change results unseen).
