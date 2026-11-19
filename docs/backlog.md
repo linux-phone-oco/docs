@@ -7297,7 +7297,7 @@ Status
 : open
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-host-follows-releases (c); attended-ready-on-host is the run-time side. The step reads the pin from grenudi/lab-machine's lab.toml on main and installs that lpoco-manifest (a release asset once release-host-binaries lands).
+: 2026-11-19, orchestration: decision 2026-11-19-host-follows-releases (c); attended-ready-on-host is the run-time side. The step reads the pin from grenudi/lab-machine's lab.toml on main and installs that lpoco-manifest (a release asset once release-host-binaries lands). 2026-11-19, orchestration: split by owner. lab-tools (this item): a read-only devlab manifest check --device FILE (parse and validate only, no state, no phone) in the released lpoco-lab binary, so CI downloads the pinned asset - no lpoco-manifest binary needed. device-template (orchestration's place; the lab-tools builder may edit it for this item): the CI step reading the pin from grenudi/lab-machine lab.toml on main, fetching that lpoco-lab asset, running the check. surya-lab and google-walleye-lab copy the step: their coordinators' items, asked when the step lands.
 
 Opened
 : 2026-11-19
