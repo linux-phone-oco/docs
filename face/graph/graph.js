@@ -230,7 +230,7 @@ function count(m) {
 function legend() {
 	var legendBox = el('legend'); legendBox.textContent = '';
 	function item(swatch, text) { var s = node('span'); s.appendChild(swatch); s.appendChild(document.createTextNode(text)); legendBox.appendChild(s); }
-	function sw(colour, extra) { var e = node('i'); e.style.cssText = 'background:' + colour + ';border:1px solid #4a4f57;' + (extra || ''); return e; }
+	function sw(colour, extra) { var e = node('i'); e.style.cssText = 'background:' + colour + ';border:1px solid var(--mute);' + (extra || ''); return e; }
 	function ln(colour, soft) { var e = node('i'); e.style.cssText = 'background:none;height:0;border-radius:0;border-top:3px ' + (soft ? 'dashed ' : 'solid ') + colour + ';vertical-align:5px'; return e; }
 	if (S.tab === GENERIC) item(sw(NO_STATUS_COLOUR), 'generic: no status colouring');
 	else [['done', 'done'], ['partial', 'partial'], ['failing', 'failing'], ['open', 'open (claimed, not done)'], ['unknown', 'unknown: no claim yet'], ['not-needed', 'not needed']]
