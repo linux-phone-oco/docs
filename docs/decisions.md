@@ -2089,3 +2089,28 @@ Scope
 
 Tracked by
 : agnostic-layer
+
+
+<a id="2026-11-19-procedures-chain-small-device-agnostic-steps"></a>
+### 2026-11-19-procedures-chain-small-device-agnostic-steps
+
+Brief
+: A procedure, attended or not, is a chain of small device-agnostic library steps keyed to bring-up step ids; a lane's file only chains them with its device's values
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: (1) A step is a small library function in lab-tools, keyed to a bring-up step id where one exists (boot_once, read_dmesg, check_probe(driver), wait_for_usb, ask_author, back_to_known_good); it takes its device values from device.toml or its [layer] table, never hard-coded. (2) A lane's procedure file only chains those steps with its own values; a step written in a lane is a candidate to move into the library as soon as a second device needs it. (3) One step type serves the attended runner (lpoco-attended) and the unattended bringup-step-runner, so an attended procedure and a nightly health run are the same chain. Carried by backlog lpoco-attended and bringup-step-runner.
+
+Why
+: The author, 2026-11-19, relayed verbatim by the Top Coordinator: "is test procedures are small so that they can be later on chained together and extracted into general tools that will work for any device ? do we have that reflected somewhere in our structures ?" It was only partly there: the bring-up steps with proofs from device-template, practice 20 (an action past three asks for a tool), and lpoco-attended's note to share a step type.
+
+Rejected
+: Each lane's procedure as its own program with device values inline: it cannot be chained or reused on another phone. Two step types, one attended and one unattended: the same check written twice, and a nightly run that proves something different from what the author attended.
+
+About
+: bringup-steps
