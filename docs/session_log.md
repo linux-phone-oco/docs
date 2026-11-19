@@ -4769,3 +4769,27 @@ Rejected
 
 About
 : kernel-try-usb-timeline
+
+---
+
+
+<a id="2026-11-19-host-lock-and-clones-commons"></a>
+### lab-tools-builder: host lock, clones commons only
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Landed lab-tools #293 (one flock for follow now and prepare now) and #295 (clones touches only AGENTS.md places).
+
+Considered
+: Lock through a pid file with stale takeover; the programmer review found a takeover race and a lock surviving a reboot.
+
+Rejected
+: pid file with takeover: not atomic, pid reuse after reboot; flock is freed by the kernel on any death.
+
+About
+: host-follows-releases
