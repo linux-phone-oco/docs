@@ -5740,3 +5740,41 @@ Proof
 
 About
 : base-distro
+
+
+<a id="shell-past-glue-into-rust"></a>
+### docs's shell past glue moves to Rust as each file is touched
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: ideal-agent 0.3.56, decision 2026-11-19-rust-for-scripts-shell-only-glue (the author's word): shell is only one-off glue - a few commands in order, no parsing, no loops over data, no functions; anything with logic is Rust. docs carries about 2169 lines of shell (bin/, research scripts). Move as each file is touched, not as one rewrite; a new script with logic starts in Rust.
+
+Opened
+: 2026-11-19
+
+Proof
+: a file touched after 2026-11-19 that holds logic (parsing, loops over data, functions) is Rust (rust-script for a single file); a count of shell lines in docs only falls
+
+
+<a id="shell-past-glue-into-rust"></a>
+### lab-tools's shell past glue moves to Rust as each file is touched
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: ideal-agent 0.3.56, decision 2026-11-19-rust-for-scripts-shell-only-glue (the author's word): shell is only one-off glue - a few commands in order, no parsing, no loops over data, no functions; anything with logic is Rust. lab-tools carries about 731 lines of shell (health checks, bin, CI). Move as each file is touched, not as one rewrite; a new script with logic starts in Rust.
+
+Opened
+: 2026-11-19
+
+Proof
+: a file touched after 2026-11-19 that holds logic (parsing, loops over data, functions) is Rust (rust-script for a single file); a count of shell lines in lab-tools only falls
