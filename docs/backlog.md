@@ -7693,3 +7693,34 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="attended-eof-is-no-answer"></a>
+### lpoco-attended: EOF on stdin is no answer; with no terminal a prompt waits on its answer file up to a default limit (300 s)
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19/20, orchestration: seen live - a walleye keeper ran lpoco-attended run pmic-watchdog-v1-on-the-pixel-2 from a non-interactive shell; the first ask failed in 0 s ('nobody answered') while the author was at the phone and the Top Coordinator watched the prompt file. attended-prompt-file (#284) made a keeper with no terminal need --answer-limit or LPOCO_ATTENDED_ANSWER_LIMIT; without it EOF read as no answer. Ranked first.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools attended tests: run with stdin at EOF (non-interactive) - a look_for waits on DIR/DEVICE/answer, takes an answer written after 2 s, and times out only after the limit (default 300 s, --answer-limit and LPOCO_ATTENDED_ANSWER_LIMIT still override); with a terminal, the terminal and the file both answer as now; EOF is logged as 'no terminal, waiting on the answer file', never as an answer
+
+Rank
+: 1
+
+About
+: bringup-steps
