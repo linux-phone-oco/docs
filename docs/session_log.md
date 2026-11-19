@@ -3515,3 +3515,27 @@ Rejected
 
 About
 : agnostic-layer
+
+---
+
+
+<a id="2026-11-19-dt-check-verdict-from-output"></a>
+### dt-check verdict from output
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Verdict from .dtb:/.yaml: output lines, defconfig on a fresh --out, stale dtb removed, tools in a Dockerfile instead of apk add at run time; 13 dt_check tests pass; landed #205, released v0.22.1.
+
+Considered
+: Listing exit codes 1/2 as failures (old way) - make exits 0 on violations.
+
+Rejected
+: Keeping apk add at run time: results drift with the package index. Parsing dtschema JSON: output lines suffice for now.
+
+About
+: dt-check-verdict-from-output

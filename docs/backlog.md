@@ -5593,10 +5593,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: From the upstreams lane's first real run (docs #576, research/upstream-forks/2026-11-19/dt-checks-in-a-container.md), lpoco-bringup 0.21.2: (1) blocking - dtbs printed 3 violations for a bogus property and said 'dt-check: clean', exit 0: CHECK_DTBS reports violations as warnings and make succeeds; dt_binding_check's example warnings the same. (2) dtbs on a fresh --out stops at the missing .config. (3) The digest pins only alpine: dtschema is apk-added from edge at run time, so results drift. Also: dtschema skips disabled nodes, so the tests need a fixture with the node enabled. Matches the one-liner where it should: binding on qcom,pm8916-wdt.yaml clean in 69 s, output user-owned, source read-only.
+: Done 2026-11-19, lab-tools-builder: lab-tools #205 (main), released v0.22.1 (#206). bringup/tests/dt_check.rs, seen failing first: a violation printed with make exit 0 is failed (1) with lines named; make failing with none named is a setup error (2); dtbs on a fresh --out runs defconfig first; an already built dtb is removed so its check reruns (reviewer's catch); yamllint lines count; enabled node checked, disabled not (fake docker, not real dtschema). The container no longer apk-adds: bringup/dt-check/Dockerfile bakes the tools. Not measured: no real container run, and the image is not built or pushed yet - see dt-check-image-published.
 
 Opened
 : 2026-11-19
@@ -6437,3 +6437,31 @@ Proof
 
 About
 : agnostic-layer
+
+
+<a id="dt-check-image-published"></a>
+### Build and push the dt-check image, name it by repo digest
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Dockerfile is bringup/dt-check/Dockerfile (alpine edge digest-pinned, py3-dt-schema dtc make gcc flex bison yamllint). Build it on the lab, push to a registry, record the repo digest, then run lpoco-bringup dt-check binding on qcom,pm8916-wdt.yaml and dtbs on pm8998/pm6150 with that --image: expect clean on the wdt binding and a named violation on a bogus property.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: a real dt-check dtbs run with the pushed image names a bogus property's violation and exits 1
+
+About
+: bringup-steps
