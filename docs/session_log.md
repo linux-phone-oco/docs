@@ -4937,3 +4937,27 @@ Rejected
 
 About
 : attended-step-groups
+
+---
+
+
+<a id="2026-11-19-lab-tools-builder-attended-way-back-settled"></a>
+### lab-tools-builder: a finished group's way back settled
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Built attended-way-back-settled (lab-tools #302): Group::settling(), leave_known_good settling, nested and failing cases tested; review fixed depth-vs-identity.
+
+Considered
+: Testing the real leave_known_good with a stand-in phone: cannot, the phone never goes down; wiring is pinned by the dry-run line.
+
+Rejected
+: Taking lpoco-layer-pack or others: the first lab-tools row was this item.
+
+About
+: attended-way-back-settled

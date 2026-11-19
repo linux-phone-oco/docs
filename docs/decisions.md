@@ -2532,3 +2532,28 @@ Rejected
 
 About
 : attended-step-groups
+
+
+<a id="2026-11-19-settling-groups-settle-by-identity"></a>
+### 2026-11-19-settling-groups-settle-by-identity
+
+Brief
+: A settling group (leave_known_good) settles the way backs of every group no longer open, by identity; open ancestors' stay owed
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: Group::settling(): when its steps have all passed, owed way backs of groups that are not open any more are dropped, whatever their depth; way backs of groups still open stay; a failure inside it settles nothing.
+
+Why
+: After leave_known_good the phone is on its known good; a later failure would reboot it again (attended-way-back-settled). The reviewer found a depth-based version missed a finished group shallower than the settler.
+
+Rejected
+: Settle by depth (misses a shallower finished group). Clearing every owed way back (drops open ancestors' guarantees). Settling on the group's name leave_known_good (a flag any group can use is the general form).
+
+About
+: attended-step-groups
