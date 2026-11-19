@@ -3809,3 +3809,27 @@ Rejected
 
 About
 : lpoco-layer-pack
+
+---
+
+
+<a id="2026-11-19-layer-pack-dependency-token-map"></a>
+### layer pack: dependency token map
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Slice 5 of lpoco-layer-pack landed (lab-tools #225): [layer.names.FORMAT] maps a needs token to a format's package name, bound kept, validated at parse; schema regenerated; reviewed by the programmer subagent (schema, name-with-operator, spaced-token cases fixed).
+
+Considered
+: A built-in token table inside lpoco-layer; a map per token with a column per format.
+
+Rejected
+: Built-in table: package names per base are the phone's declaration, not the tool's guess, and a wrong built-in name would break every phone. Per-token columns: the per-format form reads like the format's own repository names and validates the same.
+
+About
+: lpoco-layer-pack
