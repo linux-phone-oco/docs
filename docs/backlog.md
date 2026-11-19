@@ -6124,9 +6124,6 @@ Note
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
-
 About
 : base-distro
 
@@ -6143,11 +6140,17 @@ Status
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
+Needs
+: build
+
+Device
+: xiaomi-surya
 
 Proof
 : manifest tests: a fixture with [layer] parses, an unknown [layer] field is refused, device.schema.json equals the types
+
+Rank
+: 6
 
 About
 : agnostic-layer
@@ -6165,11 +6168,20 @@ Status
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
+Blocked by
+: layer-table-in-manifest
+
+Needs
+: build
+
+Device
+: xiaomi-surya
 
 Proof
 : docs research/base-distro/2026-11-19-agnostic-layer/test-layer-apk-and-deb.sh passes for surya
+
+Rank
+: 7
 
 About
 : agnostic-layer
@@ -6187,11 +6199,20 @@ Status
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
+Blocked by
+: layer-apk-via-nfpm
+
+Needs
+: build
+
+Device
+: xiaomi-surya
 
 Proof
 : lab-tools CI runs the test on every change; it reads fail before lpoco-layer-pack and pass after
+
+Rank
+: 9
 
 About
 : agnostic-layer
@@ -6208,9 +6229,6 @@ Status
 
 Opened
 : 2026-11-19
-
-Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
 
 Proof
 : docs research/base-distro/2026-11-19-agnostic-layer/test-layer-apk-and-deb.sh passes against surya-lab; the remaining overlays are lab-only
@@ -6231,9 +6249,6 @@ Status
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
-
 Proof
 : the same test run against google-walleye-lab passes
 
@@ -6253,11 +6268,20 @@ Status
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
+Blocked by
+: lpoco-layer-pack
+
+Needs
+: build
+
+Device
+: xiaomi-surya
 
 Proof
 : the layer's apk installs at its version in a clean alpine:3.24 container from the published repository
+
+Rank
+: 8
 
 About
 : agnostic-layer
@@ -6275,11 +6299,20 @@ Status
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
+Blocked by
+: layer-apk-via-nfpm
+
+Needs
+: build
+
+Device
+: xiaomi-surya
 
 Proof
 : the layer's deb installs at its version in a clean debian:trixie container from the published repository
+
+Rank
+: 10
 
 About
 : agnostic-layer
@@ -6298,7 +6331,13 @@ Opened
 : 2026-11-19
 
 Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
+: a device asks for this format (decision 2026-11-19-device-layer-declared-once: rpm and arch only on demand)
+
+Needs
+: build
+
+Device
+: xiaomi-surya
 
 Proof
 : the layer's rpm installs at its version in a clean fedora container from the published repository
@@ -6320,7 +6359,13 @@ Opened
 : 2026-11-19
 
 Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
+: a device asks for this format (decision 2026-11-19-device-layer-declared-once: rpm and arch only on demand)
+
+Needs
+: build
+
+Device
+: xiaomi-surya
 
 Proof
 : the layer's package installs with pacman in a clean archlinux:arm container from the published repository
@@ -6341,11 +6386,17 @@ Status
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
+Needs
+: build
+
+Device
+: xiaomi-surya
 
 Proof
 : in a container per base, installing a new kernel package leaves a boot.img that lpoco bringup image check accepts with the dtb appended
+
+Rank
+: 11
 
 About
 : agnostic-layer
@@ -6363,11 +6414,17 @@ Status
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
+Needs
+: build
+
+Device
+: xiaomi-surya
 
 Proof
 : make install DESTDIR=x from the tarball yields the deb's file list
+
+Rank
+: 13
 
 About
 : agnostic-layer
@@ -6384,9 +6441,6 @@ Status
 
 Opened
 : 2026-11-19
-
-Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
 
 Proof
 : each upstream row in docs names its policy with a source; the upstream-first table in the material has no 'not known yet'
@@ -6407,9 +6461,6 @@ Status
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
-
 Proof
 : tad q bringup-chain lists device-layer-packaged, unknown for surya and walleye until claimed
 
@@ -6429,11 +6480,17 @@ Status
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-device-layer-declared-once
+Needs
+: build
+
+Device
+: xiaomi-surya
 
 Proof
 : the test's packages hold the extractor's entry for surya and no file under /lib/firmware signed by the OEM
+
+Rank
+: 12
 
 About
 : agnostic-layer
@@ -6468,3 +6525,65 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="layer-install-test-per-distro"></a>
+### CI installs each phone's packages into a clean container of every enabled distribution, then runs the health suite
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The author, with his yes to decision 2026-11-19-device-layer-declared-once ('ok, sounds good'), on how it stays organized (through the Top Coordinator, 2026-11-19): CI per change builds each phone's packages in every enabled format and installs them into a clean container of that distribution; the phone's health suite runs after installing from each repository.
+
+Opened
+: 2026-11-19
+
+Blocked by
+: layer-test-in-lab-tools
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: per change, CI packs each declared phone's layer in every enabled format, installs it into a clean container of that distribution (alpine, debian, ...), and checks every declared file is in place; the phone's health suite runs after installing from each published repository. Grows from test-layer-apk-and-deb.sh. Fails while a format's install leaves a declared file out
+
+Rank
+: 9
+
+About
+: agnostic-layer
+
+
+<a id="site-packaged-and-upstream"></a>
+### The site shows, per phone, which distributions it is packaged for and which layer pieces are already upstream
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: The author's second part of 'how it stays organized' (with his yes to decision 2026-11-19-device-layer-declared-once): the site and the steps view show per phone which distributions it is packaged for and which layer pieces are already upstream, derived from the data.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: the steps view (or its own view) shows per phone a row of the formats/repositories its layer is published in and, per layer piece (kernel, dtb, firmware, UCM, udev, boot glue), whether it is upstream (from upstream_items) - derived from the data, a make verify check that every declared phone appears
+
+About
+: agnostic-layer

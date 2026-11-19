@@ -3539,3 +3539,21 @@ Rejected
 
 About
 : dt-check-verdict-from-output
+
+---
+
+
+<a id="2026-11-19-author-yes-device-layer-declared-once"></a>
+### The author's yes: each phone's device layer declared once, packed per format
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: The author's word, verbatim (through the Top Coordinator, 2026-11-19), on decision 2026-11-19-device-layer-declared-once (docs #595): 'ok, sounds good', said after hearing how it stays organized: (1) CI per change builds each phone's packages in every enabled format and installs them into a clean container of that distribution, the health suite running after installing from each repository - item layer-install-test-per-distro; (2) the site and the steps view show per phone which distributions it is packaged for and which layer pieces are already upstream - item site-packaged-and-upstream. Ranked in lab-tools: layer-table-in-manifest 6, lpoco-layer-pack 7, layer-apk-via-nfpm 8, layer-test-in-lab-tools 9 (and the install test), conveyor-deb-lane 10, bootimg-trigger-per-base 11, firmware-extract-declared 12, layer-export-makefile 13; rpm and arch wait for a device to ask. The base distro stays postponed, leaning Debian.
+
+About
+: agnostic-layer
