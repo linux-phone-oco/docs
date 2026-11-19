@@ -6664,11 +6664,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: 2026-11-19, lab-tools-builder: first slice released as lpoco-attended-v0.29.0 (lab-tools #247; example tag #248): crate attended/, free functions procedure/step/check/ask_author/phone/retry over one Step type (decision 2026-11-19-attended-crate-free-functions; it supersedes the bringup module of #243). Proof: attended/tests/attended.rs (8: dry run reaches no phone, even from main; real run via a stand-in devlab files the log; failing check names the step; non-ok answer stops at the ask; no answer stops; a panic is never a pass; help) + unit tests for retry and outcomes; failing first as a module move. Review fixed: panic reported as a pass, guard dropped at once (must_use), dry run reaching the phone from main, false end line in a dry run. Open: library steps keyed to bring-up ids (boot_once, read_dmesg, check_probe, wait_for_usb, back_to_known_good), reading values from device.toml/[layer]; the unattended runner on the same Step (bringup-step-runner); a step time limit; Step<'a> if a file needs shared locals; no run against a real devlab or phone; the log holds no output of a passing step.
- 2026-11-19, lab-tools-builder: lab-tools #262 (main): the log files what the phone said to a passing step as an out line under that step (the last 4000 bytes of a call, newlines as ' | ', a cut says how much; nothing outside a step, none in a dry run). Proof: attended/tests/attended.rs the_log_holds_what_the_phone_said_to_a_passing_step_under_that_step, a_dry_run_logs_no_output_and_long_output_is_cut_and_says_so, a_cut_never_splits_a_character_and_two_steps_keep_their_own_output (seen failing first). Caveat: the log is a plain file, so a step that makes the phone print a secret files it. The gap 'the log holds no output of a passing step' is closed.
+: 2026-11-19, lab-tools-builder: proof re-run on lab-tools main 10ab8d3 (cargo test -p lpoco-attended: all pass; dry run and real run against a stand-in devlab, failing check names its step, prompt-and-wait, log with step output). Closed as the library. Former open parts now have their own item or need hardware: unattended runner = bringup-step-runner; LAVA export = attended-export; step time limit, --from, prompt files exist. Not done: no run on a real phone (builders never touch one).
 
 Opened
 : 2026-11-19
