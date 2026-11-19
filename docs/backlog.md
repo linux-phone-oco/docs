@@ -7418,10 +7418,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-19-roles-read-origin-main-not-shared-clones, part 3; orchestration's (owner of the briefs). phone-keeper.md lists keeper take and the three start queries before its worktree recipe: put the recipe first and say the queries run in it. surya-coordinator.md says 'Start, in ~/Projects/linux-phone-oco/surya-lab' (today detached, 23 behind): give it walleye-coordinator's worktree line. coordinator.md says 'at origin/main' with no command: give it one (or git show origin/main:). Minutes of work.
+: 2026-11-19, orchestration: phone-keeper.md puts the worktree first and runs the start queries in it; surya-coordinator.md and coordinator.md start in a fresh worktree at origin/main with the command given; no brief's start line runs in a shared clone path (grep). The second half of the proof (patrol-counts-shared-clone-reads reads 0 over a day) is that item's.
 
 Opened
 : 2026-11-19

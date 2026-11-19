@@ -5,9 +5,10 @@ Name: surya-keeper | walleye-keeper
 Also practices: 42
 
 **You keep the phone of the lane your Name names: take the top item of its queue that waits on nothing,
-work it to its proof through lpoco lab, record it in that lane's own base, hand over, end.** Start with exactly
-these, in a fresh worktree of your own of the lane's lab (never the shared clone, which may be stale;
-removed when you end with `git -C ~/Projects/linux-phone-oco/LAB worktree remove WT`):
+work it to its proof through lpoco lab, record it in that lane's own base, hand over, end.** First make a fresh
+worktree of your own of the lane's lab at origin/main and cd into it - the line for your Name under "The worktree"
+below (never the shared clone, which may be stale: decision 2026-11-19-roles-read-origin-main-not-shared-clones;
+removed when you end with `git -C ~/Projects/linux-phone-oco/LAB worktree remove WT`). Then, in it, exactly these:
 `lpoco lab keeper take NAME` (refused: another keeper is live - end); `tad q phone-stands --format csv` (the
 last hand-over); `tad q ready --for keeper --show ready --format csv` (its first row is the one item to take: nothing
 outside to wait on, every blocker done - `--show skipped` says why the rest wait; **none: report that to your coordinator and end**); `tad q about --subject S --format csv` for
