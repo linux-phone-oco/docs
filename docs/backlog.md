@@ -6618,3 +6618,34 @@ Proof
 
 About
 : nura-relation
+
+
+<a id="lpoco-health-suspend-trace-hook"></a>
+### lpoco-health suspend cycle: pre/post hooks or a --trace option (dyndbg, irq trace), so probes need no wrapper
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Taken over from surya-lab's queue (the lanes waker nudged surya over a lab-tools build item; coordinator, 2026-11-19). surya's sleep/bt-trace.sh is the stopgap probe that wraps the cycle to trace Bluetooth across suspend; it is removed once this exists. Fits beside suspend_stop (lab-tools #209).
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: health/tests/suspend_cycle.rs from fixtures: a cycle run with --trace (or a declared [health] suspend_trace / pre and post hooks) enables the given dynamic_debug sites and irq tracepoints before suspend, collects their output after resume into the run's report, and restores them; without the option nothing is changed
+
+Rank
+: 8
+
+About
+: health-reports-pieces
