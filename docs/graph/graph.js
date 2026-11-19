@@ -299,6 +299,7 @@ function start() {
 	cy.on('tap', 'node', onTap);
 	tabs(); controls();
 	window.addEventListener('hashchange', showTab);
+	window.addEventListener('resize', function () { cy.resize(); });
 	showTab();
 	say('');
 }

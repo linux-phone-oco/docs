@@ -4865,3 +4865,27 @@ Rejected
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-19-the-bring-up-graph-page-drawn-from-the-rows"></a>
+### The bring-up graph page, drawn from the rows, scaled to 1500 steps
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: docs/graph/bringup.json (stages, steps, edges, devices, claims) written by render-pages.sh and checked whole against the rows by test-bringup-pages.sh; docs/graph.html + graph/graph.js: Cytoscape.js + dagre LR, a tab per device from the devices table plus generic (hash-linked), goal picker, click to read and fold, legend; then the scaling the author asked for: folded by stage group, show more, search revealing the chain to the goal, open-only filter, layout of the visible part only, a refusal past 500 nodes; bin/graph-fixture.sh 1500 and the measured times. PRs 706, 707 and this one; deployed page looked at on desktop and phone width.
+
+Considered
+: Compound parent nodes for the stage groups: cytoscape-dagre does not lay out compounds, so groups are summary nodes. ELK in a worker for a full 1500-step view: not built, dagre needs 17-26 s there.
+
+Rejected
+: A full-expansion view at 1500 with dagre: 26 s. Reading the guide as HTML: all text goes through textContent.
+
+About
+: bringup-graph-page
