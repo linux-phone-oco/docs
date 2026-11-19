@@ -1,0 +1,74 @@
+# Who may use which file, and under what (REUSE: https://reuse.software/spec-3.3/#reusetoml), by path; later annotations win
+# where they overlap. Decision 2026-11-19-licences-for-our-repositories (this repository's own data/docs):
+#   - documentation and knowledge-base data, the briefs, the research notes: CC-BY-SA-4.0 (LICENSE, LICENSES/CC-BY-SA-4.0.txt)
+#   - the scripts, statements and configuration, in research/ too: MIT OR Apache-2.0 (LICENSE-MIT, LICENSE-APACHE)
+#   - a patch we wrote against a third-party project carries the licence of the files it changes, never ours: the
+#     kernel's (GPL-2.0-only; a dts file or binding by its own header: BSD-3-Clause, GPL-2.0+ OR MIT, GPL-2.0-only OR
+#     BSD-2-Clause), sxmo-utils' AGPL-3.0-only
+# bin/licence-check keeps every new file covered (make verify). It is ideal-agent's scripts/licence-check, copied as it
+# is (grenudi/ideal-agent#101): it reads one `path = [...]` per line, and `*` for it crosses folders, so a path is
+# written in REUSE's own sense too: `*` for the folder's files, `**/*` for the files below it.
+version = 1
+
+# Documentation and data.
+[[annotations]]
+path = ["LICENSE", "README.md", "AGENTS.md", "CLAUDE.md", "CONTRIBUTING.md", "CHANGELOG.md", "data/**", "docs/**", "research/**", "ideal-agent-linux-phone-oco/**", "upstream/**/*.md", "device-layer/README.md"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 grenudi"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+# Scripts, statements and configuration. device-layer/ is what device bases follow: they annotate it the same way.
+[[annotations]]
+path = ["bin/**", "records/**", "queries/**", "device-layer/records/**", "device-layer/queries/**", "device-layer/tables.toml", ".github/**", "face/**", "lenses/**", "Makefile", "package.json", "commitlint.config.js", "release-please-config.json", ".release-please-manifest.json", ".gitignore", "tables.toml", "idealkb.toml", "oco.toml", "generic", "consumers", "REUSE.toml"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 grenudi"
+SPDX-License-Identifier = "MIT OR Apache-2.0"
+
+# The scripts and statements a research note keeps beside it.
+[[annotations]]
+path = ["research/**/*.sh", "research/**/*.sql", "research/**/schema.toml"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 grenudi"
+SPDX-License-Identifier = "MIT OR Apache-2.0"
+
+# Patches against the kernel, under the kernel's licence (GPL-2.0-only: the drivers, the sound codecs, the Makefile) ...
+[[annotations]]
+path = ["upstream/linux-sound/**/*.patch", "upstream/sm7150-mainline/sm7150-wcd-series/*-pinctrl-*.patch", "research/upstream-forks/2026-11-18/patches/linux/*-watchdog-*.patch", "research/deep-sleep/2026-11-17/lpass-macros-drop-hw-votes-at-runtime-suspend.patch", "research/upstream-forks/2026-11-19/walleye-dts-candidate.diff"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 grenudi"
+SPDX-License-Identifier = "GPL-2.0-only"
+
+# ... the sm7150 and pm6150 device trees under theirs (BSD-3-Clause) ...
+[[annotations]]
+path = ["upstream/sm7150-mainline/sm7150-wcd-series/*-arm64-dts-*.patch"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 grenudi"
+SPDX-License-Identifier = "BSD-3-Clause"
+
+# ... the one that also changes pm8998.dtsi (GPL-2.0+ OR MIT: we take MIT) ...
+[[annotations]]
+path = ["research/upstream-forks/2026-11-18/patches/linux/*-arm64-dts-*.patch"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 grenudi"
+SPDX-License-Identifier = "BSD-3-Clause AND MIT"
+
+# ... and a device-tree binding under the kernel's dual licence for them.
+[[annotations]]
+path = ["research/upstream-forks/2026-11-18/patches/linux/*-dt-bindings-*.patch"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 grenudi"
+SPDX-License-Identifier = "GPL-2.0-only OR BSD-2-Clause"
+
+# Patches against sxmo-utils under its licence (the sxmo-utils fork is AGPL-3.0-only) ...
+[[annotations]]
+path = ["upstream/sxmo-devel/**/*.patch", "research/upstream-forks/2026-11-18/patches/sxmo-utils/*.patch"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 grenudi"
+SPDX-License-Identifier = "AGPL-3.0-only"
+
+# ... but a cover letter is our prose.
+[[annotations]]
+path = ["research/upstream-forks/2026-11-18/patches/linux/0000-cover-letter.patch", "research/upstream-forks/2026-11-18/patches/sxmo-utils/0000-cover-letter.patch"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 grenudi"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
