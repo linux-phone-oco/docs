@@ -3875,3 +3875,27 @@ Rejected
 
 About
 : lpoco-layer-pack
+
+---
+
+
+<a id="2026-11-19-lab-tools-builder-mkinitfs-apk"></a>
+### lpoco layer pack: mkinitfs for apk
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Redid the parked mkinitfs branch on main: module lines as globs (mkinitfs globs each line under /lib/modules/KERNEL), idempotent scriptlet, mkinitfs dependency; reviewed by the programmer subagent, its findings fixed; landed as lab-tools #231, read back from main.
+
+Considered
+: Listing module paths exactly: needs the kernel build, which the config package is made without. One glob line per depth and spelling instead.
+
+Rejected
+: Bare module names (match nothing in mkinitfs); a regex per name in the scriptlet without escaping the dot (matched other names).
+
+About
+: lpoco-layer-pack
