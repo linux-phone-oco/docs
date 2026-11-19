@@ -3899,3 +3899,27 @@ Rejected
 
 About
 : lpoco-layer-pack
+
+---
+
+
+<a id="2026-11-19-lpoco-layer-pack-modules-symlinks-refused"></a>
+### lpoco layer pack: modules symlinks refused
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Slice 9 landed (lab-tools #233): a kernel build's modules/ symlinks that leave the tree are refused; tests first, programmer review fixed a climb-through-a-link hole.
+
+Considered
+: Resolving targets with canonicalize (needs the target to exist, the build machine's paths are not there).
+
+Rejected
+: Following links lexically only: a link through another link climbed out unseen; any .. after a name is refused instead.
+
+About
+: lpoco-layer-pack
