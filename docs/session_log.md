@@ -4676,3 +4676,27 @@ Rejected
 
 About
 : device-toml-checked-against-host
+
+---
+
+
+<a id="2026-11-19-host-clones-fresh-reviewed-fixed-landed-and"></a>
+### host-clones-fresh reviewed, fixed, landed and released as 0.35.0
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Review of the branch as built found a stale-origin reading, swallowed git errors, optional locks and no timeout; fixed with tests, landed #289, released 0.35.0
+
+Considered
+: folding the job into follow (orchestration: its own timer)
+
+Rejected
+: landing as built: the stale origin/main would have read as up to date indefinitely in a clone without a fetch refspec
+
+About
+: host-clones-fresh
