@@ -6758,10 +6758,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-procedures-one-shape. The template is attended/examples/attended.rs; rust-script runs each file (cached builds in AGENT_BUILD). The steps crate is the repo's own procedures/steps when present. Then surya-lab and google-walleye-lab move over (their own items, by their builders).
+: 2026-11-19, lab-tools-builder: landed (lab-tools #268, main 02aaa7a): lpoco-attended binary (attended/src/bin/lpoco-attended): new NAME writes procedures/NAME.rs for the repo's device.toml codename (the repo's procedures/steps crate in the cargo block when present; refuses an existing file, a link, a bad name, a codename that is not one safe word; mode 0755), run NAME passes --dry-run/--log/--device/--until/--part through and returns the procedure's exit code, check dry-runs every procedure (own scratch logs, --device handed on) and names each failure, exit 1. Proof: attended/tests/scaffold.rs (9; seen failing first as no binary; new+real rust-script dry run unchanged; stand-in rust-script for the rest). Review (programmer) caught codename/lib-path injection into the file, check ignoring --device, check/run disagreeing on what a procedure is, a write through a dangling link, predictable log names: all fixed with tests. Open: the binary is not yet in the release packaging (check packaging lists), unknown extra arguments are dropped silently, exit 2 is both the tool's error and the lib's, --lib beside a steps crate on the git tag gives two copies of the crate. Next for the lane: surya-lab and google-walleye-lab move their procedures over; attended-lift.
 
 Opened
 : 2026-11-19
