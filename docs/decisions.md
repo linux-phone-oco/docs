@@ -2167,3 +2167,28 @@ Rejected
 
 About
 : lpoco-attended
+
+
+<a id="2026-11-19-running-is-not-moving"></a>
+### 2026-11-19-running-is-not-moving
+
+Brief
+: A lane session that shows running with no activity for over 30 min counts as stalled: the lanes waker nudges its coordinator naming it, and patrol reports it
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Decision
+: The lanes waker no longer skips a lane because one of its sessions is running: a session with no event for more than 30 min counts as stalled, and the waker nudges that lane's coordinator naming the session. Patrol measures the same (patrol.md item 4): sessions running but not moving, with what they wait on.
+
+Why
+: The sign, 2026-11-19: the surya builder (local_78068da9) sat about an hour at a rejected permission prompt asking how to proceed, while the lanes waker skipped surya every round because the session isRunning. Running is not moving. The Top Coordinator changed the waker's prompt and asked for this record.
+
+Rejected
+: Trusting isRunning: a session waiting at a prompt or a question is running and stuck alike. Killing a quiet session: it may be in a long build; a nudge to its coordinator, who reads its events, is the safe step.
+
+About
+: agent-folder
