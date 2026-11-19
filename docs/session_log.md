@@ -4013,3 +4013,27 @@ Considered
 
 About
 : test-hold-parallel-flake
+
+---
+
+
+<a id="2026-11-19-patrol-1108"></a>
+### Patrol round 2026-11-19 11:08 UTC
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: Read-only round. Landings (6h): docs #616-#632, lab-tools #214-#240 with releases, surya-lab #365-#383, walleye-lab #399-#409, all by PR; device rows in their own bases; device-template none. devlab-watch@surya-lab active, a report of 7 runs landed 07:29 (surya-lab #367), no repeating error. lab-agent active, 0 poll error/401 lines. Pages build: 3 of 3 success. lpoco host check: no FAIL; walleye pieces/fastboot/share not measured (phone not on this host's USB), surya phone pieces ok. Launcher runs (surya-keeper, walleye-keeper, walleye-builder, lab-tools-builder): recent runs succeeded or running; surya-research and walleye-research read by last-run time only. Workarounds: surya's kept-kernel-with-pmic-wdt and surya-adsp-audio-boot-race are open backlog in surya-lab (read against docs' base they show as not known: the base argument, not a stale marker); lab-tools awake.rs one withdrawn marker with its way out; no due line. Stale waits: surya waits cleared in #380; walleye pmic-wdt items superseded and say when to drop. start-weight: patrol 31855, phone-keeper 33729 the heaviest. read-weight, per-run reports to coordinators: not known yet. No sign filed; nothing reported.
+
+Considered
+: a sign on the workarounds reader giving not-in-backlog against docs' base for a lab's markers
+
+Rejected
+: a sign on the walleye superseded pmic-wdt items: their own waits already name the drop
+
+About
+: patrol-measures-the-start
