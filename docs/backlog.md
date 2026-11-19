@@ -6729,7 +6729,7 @@ Status
 : open
 
 Note
-: 2026-11-19, orchestration: the surya keeper's real run of the attended program may need it if kernel try calls4+ refuses (relayed by the Top Coordinator). lpoco 0.24.0's kernel try has only --dtb and --device. Ready it before the keeper's run.
+: 2026-11-19, orchestration: the surya keeper's real run of the attended program may need it if kernel try calls4+ refuses (relayed by the Top Coordinator). lpoco 0.24.0's kernel try has only --dtb and --device. Ready it before the keeper's run. 2026-11-19, orchestration: also in devlab/src/kernel.rs: the refusal of a name with + is deliberate - entries are pmos-NAME+1-0.conf (systemd-boot's boot-counting suffix) and removal globs pmos-NAME+*.conf, so a + in NAME would be read as the counter and a try named calls would remove the kept calls+ entries. Keep the rule; make the message say why ("+ is systemd-boot's try counter in the entry name; the label is free, e.g. calls4"). The kept calls+ and calls2+ predate the rule and cannot be kept/unkept through lpoco: surya's keeper retires them by new names, not a workaround.
 
 Opened
 : 2026-11-19
