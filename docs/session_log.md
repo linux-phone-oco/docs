@@ -4229,3 +4229,27 @@ Rejected
 
 About
 : attended-device-values
+
+---
+
+
+<a id="2026-11-19-lab-tools-builder-attended-log-output-and-the"></a>
+### lab-tools-builder: attended log output and the device's usb_id
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lab-tools #262: the attended log files what the phone said to a passing step. #264: [[host.gadget]] usb_id in device.toml and steps::wait_for_gadget reading it; a missing key ends the run (exit 2, dry run too) naming it. Both reviewed by the programmer subagent; findings on attribution, tail-not-head cut, schema regeneration and README fixed.
+
+Considered
+: A UsbId newtype in lpoco-manifest to hold the vendor:product check once (left open); resolving every key before the first step (needs an up-front declaration).
+
+Rejected
+: Keying boot_once, check_probe, read_dmesg to bring-up ids: none of docs' steps says what they prove (reference-kernel-boots and kernel-reaches-init are other things), so they stay unkeyed rather than carry a wrong id.
+
+About
+: lpoco-attended
