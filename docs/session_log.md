@@ -4985,3 +4985,24 @@ Rejected
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-20-patrol-round-0009"></a>
+### patrol round 2026-11-20 00:09
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: Measured read-only: landings in 5 repos (all through PRs); devlab-watch@surya-lab active, no repeating error; retired lab-agent still active, 0 poll error/401 lines in 6h; pages.yml last 3 runs success; lpoco host check no FAIL (walleye lines not measured; oco-work pin not known yet). Phones: surya lane paused with no go window, walleye on Android - silence expected. Launcher runs ended with summaries, lab-tools builder running and moving. Filed 1 sign: surya-lab waits-on-landed-usb-timeline (surya-host-usb-timeline waits on a lab-tools item landed in v0.35.1; surya-lab #465). Report only: awake.rs WORKAROUND sxmo-autosuspend-backoff has no upstream item, covered by open docs item awake-not-a-workaround; 8 of 17 shared clones off main or behind (docs 21, walleye 17, lab-tools 6). Not measured yet: start-weight and read-weight, lift (needs device repos' procedures/steps).
+
+Considered
+: A sign per behind clone; left to the report.
+
+Rejected
+: Filing the awake.rs workaround again: awake-not-a-workaround is open.
