@@ -24,6 +24,10 @@ The shared clones under `~/Projects/linux-phone-oco/` may be stale: never work i
 
 At the end remove each: `git -C ~/Projects/linux-phone-oco/REPO worktree remove ~/Projects/linux-phone-oco/wt-...-$R`.
 
+Large outputs - kernel builds, images, package trees, a `cargo install` build - go to `$AGENT_BUILD` (on disk,
+set by agent-env, with `TMPDIR` under it); a cargo target stays in its worktree. The session scratchpad under
+/tmp is a RAM tmpfs all sessions share: small files only there (decision ideal-agent 2026-11-19-large-outputs-on-disk).
+
 ## Your item
 
 Your coordinator placed it before starting you. **If the query returns nothing, report that and end.**

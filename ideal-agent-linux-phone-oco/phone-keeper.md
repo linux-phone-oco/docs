@@ -48,6 +48,10 @@ itself if the link does not come back, and no rebind is trusted to bring the gad
 with the watchdog in the state `way-back.sh check` passes. (Docs PR 272, surya-lab log
 2026-11-17-1900-keeper9-udc-unbound-stuck: a UDC unbind followed by a `cycle` that defused on return left the
 phone without its link and nothing to reset it; it waited for the author's hands.)
+Large outputs - kernel builds, boot images, package trees - go to `$AGENT_BUILD` (on disk, set by agent-env,
+`TMPDIR` under it); the /tmp scratchpad is a RAM tmpfs all sessions share, small files only (decision
+ideal-agent 2026-11-19-large-outputs-on-disk).
+
 
 ## The steps
 
