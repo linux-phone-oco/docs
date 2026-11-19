@@ -10,6 +10,8 @@ var STATUS_TEXT = { done: '#ffffff', failing: '#ffffff' };
 var NO_STATUS_COLOUR = '#e3eaf3';
 var GROUP_COLOURS = ['#7b3fbf', '#d9480f', '#0b7285', '#a61e4d', '#5c940d', '#1864ab'];
 var HARD_COLOUR = '#777777';
+// a node's label is cut at a word to LABEL_CHARS characters with an ellipsis; the whole title is the tooltip and the panel
+var LABEL_CHARS = 28;
 var RANKER = 'network-simplex';
 // dagre lays out 138 nodes in 0.13 s, 456 in 1.7 s and 944 in 9.5 s (docs/graph measurements, bin/graph-fixture.sh 1500): a change that would draw more is refused
 var MAX_NODES = 500;
@@ -93,18 +95,38 @@ function groupStatus(g) {
 	return 'unknown';
 }
 
+function shorten(text, max) {
+	max = max || LABEL_CHARS;
+	if (text.length <= max) return text;
+	var cut = text.lastIndexOf(' ', max - 1);
+	return text.slice(0, cut > max / 2 ? cut : max - 1).replace(/[ ,;:.-]+$/, '') + '…';
+}
+
+// the whole title of a node, in a small box beside it, while the pointer is on it
+function tooltip(on, node) {
+	var tip = el('tip');
+	tip.hidden = !on;
+	if (!on) return;
+	var rect = el('cy').getBoundingClientRect(), at = node.renderedPosition();
+	tip.textContent = node.data('full');
+	tip.style.left = Math.max(4, Math.min(rect.left + at.x - 60, window.innerWidth - tip.offsetWidth - 4)) + 'px';
+	tip.style.top = (rect.top + at.y + 28 * cy.zoom() + 6) + 'px';
+}
+
 // ---- the elements Cytoscape draws, from the model
 function elements(m) {
 	var els = [], placed = {};
 	m.steps.forEach(function (id) {
 		var st = statusOf(id), more = needs[id].length && !isOpen(id, m.dist) ? hiddenNeeds(id, m) : 0;
-		els.push({ group: 'nodes', data: { id: id, kind: 'step', label: byId[id].title + (more ? '  [+' + more + ']' : ''),
+		els.push({ group: 'nodes', data: { id: id, kind: 'step', label: shorten(byId[id].title) + (more ? '  [+' + more + ']' : ''),
+			full: byId[id].title + (st ? ' - ' + st + ' on ' + tabName(S.tab) : ''),
 			fill: colourOf(st), ink: STATUS_TEXT[st] || '#1a1a1a', folded: more ? 'yes' : 'no' } });
 	});
 	m.groups.forEach(function (g) {
 		var st = groupStatus(g), done = g.edges.filter(function (e) { return statusOf(e.requires) === 'done'; }).length;
 		els.push({ group: 'nodes', data: { id: g.id, kind: 'group', fill: colourOf(st), ink: STATUS_TEXT[st] || '#1a1a1a', folded: 'no',
-			label: (stageTitle[g.stage] || g.stage) + ': ' + g.edges.length + ' steps' + (st ? ' (' + done + ' done)' : '') + '  [+]' } });
+			label: shorten(stageTitle[g.stage] || g.stage, 20) + ': ' + g.edges.length + ' steps' + (st ? ' (' + done + ' done)' : '') + '  [+]',
+			full: (stageTitle[g.stage] || g.stage) + ': ' + g.edges.length + ' steps folded' + (st ? ', ' + done + ' done on ' + tabName(S.tab) : '') + '; click to open' } });
 		els.push({ group: 'edges', data: { id: g.parent + '>' + g.id, source: g.parent, target: g.id, colour: HARD_COLOUR,
 			kind: g.edges.some(function (e) { return e.kind === 'hard'; }) ? 'hard' : 'soft' } });
 	});
@@ -297,6 +319,9 @@ function start() {
 	cytoscape.use(cytoscapeDagre);
 	cy = cytoscape({ container: el('cy'), elements: [], style: STYLE, wheelSensitivity: 0.3, minZoom: 0.05, maxZoom: 2.5, boxSelectionEnabled: false });
 	cy.on('tap', 'node', onTap);
+	cy.on('mouseover', 'node', function (event) { tooltip(true, event.target); });
+	cy.on('mouseout tap', 'node', function () { tooltip(false); });
+	cy.on('viewport', function () { tooltip(false); });
 	tabs(); controls();
 	window.addEventListener('hashchange', showTab);
 	window.addEventListener('resize', function () { cy.resize(); });

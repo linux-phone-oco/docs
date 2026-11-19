@@ -31,6 +31,7 @@ read from the devices table (a device added later gets its tab), and a generic t
 	.ln { display: inline-block; width: 1.6rem; border-top: 3px solid #666; vertical-align: .25rem; margin-right: .3rem; }
 	.ln.soft { border-top-style: dashed; }
 	#msg { margin: .5rem 0; }
+	#tip { position: fixed; z-index: 10; max-width: 24rem; padding: .3rem .5rem; background: #1a1a1a; color: #fff; border-radius: 3px; pointer-events: none; }
 	#found { list-style: none; margin: 0 0 .5rem; padding: 0; } #found li { margin: .15rem 0; } #found a { cursor: pointer; text-decoration: underline; }
 	#count, .small { margin: .25rem 0; }
 	.sw.grp { border-style: dashed; border-width: 2px; } .sw.fold { border-style: double; border-width: 4px; width: .6rem; height: .6rem; }
@@ -53,6 +54,7 @@ read from the devices table (a device added later gets its tab), and a generic t
 	<div id="cy"></div>
 	<aside id="panel"><p>Click a step to read it.</p></aside>
 </div>
+<div id="tip" role="tooltip" hidden></div>
 <div id="legend"></div>
 <p id="timing" class="small"></p>
 </div>
