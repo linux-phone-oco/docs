@@ -744,7 +744,7 @@ Waits
 : walleye's attended Pixel 2 bite at v7.3 + 8b2283da3 showing a restart (the author's 'Yes, test first'), then the cover letter's testing paragraph updated, a rebase and re-check on the day, and the author's sign-off; sent by him
 
 Note
-: Prepared and checked on next-20261118 (build, checkpatch, lpoco-bringup dt-check with nodes enabled); SEND-NOTES.md says the steps before sending and what is not proven. Not sent.
+: Prepared and checked on next-20261118 (build, checkpatch, lpoco-bringup dt-check with nodes enabled); SEND-NOTES.md says the steps before sending and what is not proven. Walleye 2026-11-19: images A and B built and booted, S2 reset type 7 read; the reboot test and the bite are not run yet. Not sent.
 
 Last update
 : 2026-11-19
