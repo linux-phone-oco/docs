@@ -86,3 +86,46 @@ Nothing is ready yet. Every class (b) row below is ready apart from the sign-off
 4. **Walleye dts (#7):** after the trim and a dtbs_check.
 5. **Watchdog in suspend (#5),** then **msm8998 APSS wdt (#8),** **charger (#9)** and **tas2562 resume (#10),** each after its proof.
 6. **sm7150-mainline (#11, #12):** a pull request or mail to that team, not to mainline.
+
+## Walleye board dts: dt checks in the container (2026-11-19, later)
+
+Run with docker alpine:edge, dtschema 2026.09, W=1, on v7.3. The lab dts is at google-walleye-lab
+origin/main.
+
+**As the lab builds it** (on e123d3bff, which the `&pm8998_wdt` label needs), CHECK_DTBS reports 5
+distinct faults:
+- the board compatible matches no schema ([google,walleye, google,wahoo, qcom,msm8998]);
+- `qup@c179000`: the node name doesn't match `^i2c`, and its children are not allowed;
+- `/soc@0/tps61099`: no reg;
+- 2 DSI avoid_unnecessary_addr_size warnings. These come from mainline's msm8998.dtsi, not from us.
+
+On plain v7.3 the lab dts doesn't build at all: `Label or path pm8998_wdt not found`.
+
+**The upstream candidate** is on plain v7.3 (`walleye-dts-candidate.diff`, a draft). The lab dts with
+these removed:
+- the overlay stubs include and `/delete-node/ &pcie0`;
+- `&pm8998_wdt`;
+- the charger and the tps61099 boost (later series);
+- touch: its pins, its regulator, and the `qup@` re-definition;
+- `google,wahoo` from the compatible.
+
+The binding adds `google,walleye` to the msm8998 enum in arm/qcom.yaml.
+
+Results:
+- `dt_binding_check DT_SCHEMA_FILES=arm/qcom.yaml`: clean.
+- `CHECK_DTBS=y W=1`: 0 schema warnings. Only the 2 DSI warnings from msm8998.dtsi remain.
+- `dt-check-style --mode=relaxed`: clean.
+- `--mode=strict` (asked of new submissions): 76 findings, all style: 36 line-length (comments with
+  lab ids, to rewrite), 32 property-order, 5 child-name-order, 3 unused labels (rails of the dropped
+  touch).
+
+For scale, merged boards in strict mode: fxtec-pro1 has 146 findings, oneplus-common.dtsi 106,
+cheeseburger 6. So strict is not yet held to zero, but a new board should arrive near it.
+
+Still to do before mailing:
+- rewrite the comments without lab ids, under 80 columns;
+- sort the properties and the regulator children;
+- drop the unused labels;
+- move the APSS `qcom,kpss-wdt` node to msm8998.dtsi as its own patch, or drop it;
+- decide on `&adreno_smmu` disabled (reviewers will ask why);
+- record the UFS proof.

@@ -1,0 +1,310 @@
+diff --git a/Documentation/devicetree/bindings/arm/qcom.yaml b/Documentation/devicetree/bindings/arm/qcom.yaml
+index ff8a35df7..ceb73da9c 100644
+--- a/Documentation/devicetree/bindings/arm/qcom.yaml
++++ b/Documentation/devicetree/bindings/arm/qcom.yaml
+@@ -391,6 +391,7 @@ properties:
+           - enum:
+               - asus,novago-tp370ql
+               - fxtec,pro1
++              - google,walleye
+               - hp,envy-x2
+               - lenovo,miix-630
+               - oneplus,cheeseburger
+diff --git a/arch/arm64/boot/dts/qcom/Makefile b/arch/arm64/boot/dts/qcom/Makefile
+index 1c86e7e98..46bfe110e 100644
+--- a/arch/arm64/boot/dts/qcom/Makefile
++++ b/arch/arm64/boot/dts/qcom/Makefile
+@@ -151,6 +151,7 @@ dtb-$(CONFIG_ARCH_QCOM)	+= msm8996pro-xiaomi-natrium.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= msm8996pro-xiaomi-scorpio.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= msm8998-asus-novago-tp370ql.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= msm8998-fxtec-pro1.dtb
++dtb-$(CONFIG_ARCH_QCOM)	+= msm8998-google-walleye.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= msm8998-hp-envy-x2.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= msm8998-lenovo-miix-630.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= msm8998-mtp.dtb
+diff --git a/arch/arm64/boot/dts/qcom/msm8998-google-walleye.dts b/arch/arm64/boot/dts/qcom/msm8998-google-walleye.dts
+new file mode 100644
+index 000000000..0cae0db50
+--- /dev/null
++++ b/arch/arm64/boot/dts/qcom/msm8998-google-walleye.dts
+@@ -0,0 +1,280 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Google Pixel 2 (walleye) - the first mainline board file: only what a boot without a display needs.
++ *
++ * It brings up the SoC, its reserved memory, the RPM regulators the USB 2.0 PHY stands on, the USB
++ * controller as a high-speed peripheral (the gadget is the first sign of life), pstore/ramoops and the
++ * debug UART, and (from z11) the UFS storage, read-only. Display, touch, GPU, Wi-Fi and remote processors stay off
++ * until a part is brought up on purpose. The PMICs' SPMI nodes (mainline's pm8998.dtsi and pmi8998.dtsi) are in: their children bind or defer on their own.
++ *
++ * No /chosen/bootargs and no stdout-path: the bootloader appends the boot image's command line to the
++ * device tree, and a bootargs already there would hide it (decision 2026-11-17-walleye-first-kernel).
++ *
++ * Derived, with their licences and authors kept, from the GPL wahoo board files of
++ *   Copyright (c) 2020 Caleb Connolly <caleb@connolly.tech>   (kcxt/linux-wahoo, wahoo/5.17)
++ * and, for the regulator and USB nodes, from mainline's OnePlus 5(T) common file
++ *   Copyright (c) 2021, Jami Kettunen <jamipkettunen@gmail.com>
++ *   Copyright (c) 2016, The Linux Foundation. All rights reserved.
++ * The reserved-memory carve-outs and the regulator limits are the values of that GPL wahoo file
++ * (the downstream sources are kerneltoast/android_kernel_google_wahoo, arch/arm64/boot/dts/htc).
++ * Nothing here comes from a proprietary source (decision walleye-input-wall).
++ */
++
++/dts-v1/;
++
++#include "msm8998.dtsi"
++#include "pm8998.dtsi"
++#include "pmi8998.dtsi"
++
++/delete-node/ &mpss_mem;
++/delete-node/ &venus_mem;
++/delete-node/ &mba_mem;
++/delete-node/ &slpi_mem;
++
++/ {
++	model = "Google Pixel 2";
++	compatible = "google,walleye", "qcom,msm8998";
++
++	/* Required for the bootloader to select this device tree: 8998 v2.1 (taimen has the same) */
++	qcom,msm-id = <0x124 0x20001>;
++
++	reserved-memory {
++		/* Where Google's kernel puts the modem, video, MBA and sensor-hub regions (all unused here) */
++		mpss_mem: memory@8cc00000 {
++			reg = <0x0 0x8cc00000 0x0 0x7800000>;
++			no-map;
++		};
++
++		venus_mem: memory@94400000 {
++			reg = <0x0 0x94400000 0x0 0x500000>;
++			no-map;
++		};
++
++		mba_mem: memory@94900000 {
++			reg = <0x0 0x94900000 0x0 0x200000>;
++			no-map;
++		};
++
++		slpi_mem: memory@94b00000 {
++			reg = <0x0 0x94b00000 0x0 0x700000>;
++			no-map;
++		};
++
++		/* The phone's own ramoops region (stock: 0xa1100000, 2 MiB, record 0x80000, console 0x20000, no pmsg): the stock system reads our kernel's log back after a warm reset */
++		ramoops@a1100000 {
++			compatible = "ramoops";
++			reg = <0x0 0xa1100000 0x0 0x200000>;
++			record-size = <0x80000>;
++			console-size = <0x20000>;
++		};
++	};
++
++	vph_pwr: vph-pwr-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vph_pwr";
++		regulator-always-on;
++		regulator-boot-on;
++	};
++};
++
++/*
++ * The apps-processor (SoC) watchdog: msm8998.dtsi has none. Address and bark interrupt (SPI 3) are the downstream
++ * MSM8998 values (wdog 0x17817000), NOT measured on this phone yet. The mainline-light init opens /dev/watchdog and
++ * never pets it, so the SoC resets the phone by itself (the try's way back without hands). Decision
++ * 2026-11-17-walleye-try-returns-without-hands.
++ */
++&soc {
++	watchdog@17817000 {
++		compatible = "qcom,kpss-wdt";
++		reg = <0x17817000 0x1000>;
++		clocks = <&sleep_clk>;
++		interrupts = <GIC_SPI 3 IRQ_TYPE_EDGE_RISING>;
++	};
++};
++
++/* The debug UART (the Pixel debug cable): earlycon=msm_serial_dm,0xc1b0000 */
++&blsp2_uart1 {
++	status = "okay";
++};
++
++&qusb2phy {
++	status = "okay";
++
++	vdd-supply = <&vreg_l1a_0p875>;
++	vdda-pll-supply = <&vreg_l12a_1p8>;
++	vdda-phy-dpdm-supply = <&vreg_l24a_3p075>;
++};
++
++/* The rails the USB 2.0 PHY stands on, and the rails those hang from */
++&rpm_requests {
++	regulators-0 {
++		compatible = "qcom,rpm-pm8998-regulators";
++
++		vdd_s3-supply = <&vph_pwr>;
++		vdd_s4-supply = <&vph_pwr>;
++		vdd_s5-supply = <&vph_pwr>;
++		vdd_s7-supply = <&vph_pwr>;
++		vdd_l1_l27-supply = <&vreg_s7a_1p025>;
++		vdd_l2_l8_l17-supply = <&vreg_s3a_1p35>;
++		vdd_l6-supply = <&vreg_s5a_2p04>;
++		vdd_l7_l12_l14_l15-supply = <&vreg_s5a_2p04>;
++		vdd_l20_l24-supply = <&vreg_bob>;
++		vdd_l26-supply = <&vreg_s3a_1p35>;
++		vdd_l16_l28-supply = <&vreg_bob>;
++		vdd_lvs1_lvs2-supply = <&vreg_s4a_1p8>;
++
++		vreg_s3a_1p35: s3 {
++			regulator-min-microvolt = <1352000>;
++			regulator-max-microvolt = <1352000>;
++		};
++
++		vreg_s4a_1p8: s4 {
++			regulator-min-microvolt = <1800000>;
++			regulator-max-microvolt = <1800000>;
++			regulator-allow-set-load;
++		};
++
++		vreg_s5a_2p04: s5 {
++			regulator-min-microvolt = <1904000>;
++			regulator-max-microvolt = <2040000>;
++		};
++
++		vreg_s7a_1p025: s7 {
++			regulator-min-microvolt = <900000>;
++			regulator-max-microvolt = <1028000>;
++		};
++
++		vreg_l1a_0p875: l1 {
++			regulator-min-microvolt = <880000>;
++			regulator-max-microvolt = <880000>;
++		};
++
++		/* msm8998.dtsi names these rails for the display PHY and the sensor hub (both off here); l2 also feeds the UFS phy PLL */
++		vreg_l2a_1p2: l2 {
++			regulator-min-microvolt = <1200000>;
++			regulator-max-microvolt = <1200000>;
++		};
++
++		vreg_lvs2a_1p8: lvs2 {
++			regulator-min-microvolt = <1800000>;
++			regulator-max-microvolt = <1800000>;
++		};
++
++		vreg_l12a_1p8: l12 {
++			regulator-min-microvolt = <1800000>;
++			regulator-max-microvolt = <1800000>;
++		};
++
++		/* The touch panel's rails (item walleye-touch-rmi4): l6 its I/O, l28 its supply, the OnePlus 5's values */
++		vreg_l6a_1p8: l6 {
++			regulator-min-microvolt = <1808000>;
++			regulator-max-microvolt = <1808000>;
++		};
++
++		vreg_l28_3p0: l28 {
++			regulator-min-microvolt = <3008000>;
++			regulator-max-microvolt = <3008000>;
++		};
++
++		/* UFS rails (item walleye-ufs-readonly): VCC from l20, VCCQ and the host adapter from l26, as the OnePlus 5 and the wahoo GPL tree */
++		vreg_l20a_2p95: l20 {
++			regulator-min-microvolt = <2960000>;
++			regulator-max-microvolt = <2960000>;
++			regulator-allow-set-load;
++		};
++
++		vreg_l26a_1p2: l26 {
++			regulator-min-microvolt = <1200000>;
++			regulator-max-microvolt = <1200000>;
++			regulator-allow-set-load;
++		};
++
++		vreg_l24a_3p075: l24 {
++			regulator-min-microvolt = <3088000>;
++			regulator-max-microvolt = <3088000>;
++		};
++	};
++
++	regulators-1 {
++		compatible = "qcom,rpm-pmi8998-regulators";
++
++		vdd_bob-supply = <&vph_pwr>;
++
++		vreg_bob: bob {
++			regulator-min-microvolt = <3312000>;
++			regulator-max-microvolt = <3600000>;
++		};
++	};
++};
++
++/*
++ * The type-C port is USB 3 capable, but the SuperSpeed PHY is dropped: Google's wahoo boards (kcxt,
++ * porthole) only got the gadget up at USB 2.0 speed.
++ */
++&usb3 {
++	status = "okay";
++
++	/* Operate "GCC_USB30_MASTER_CLK" in HS mode (>= 60 MHz) */
++	assigned-clock-rates = <19200000>, <60000000>;
++
++	/* Disable the USB3 pipe_clk requirement */
++	qcom,select-utmi-as-pipe-clk;
++};
++
++&usb3_dwc3 {
++	/* Drop the USB 3 PHY */
++	phys = <&qusb2phy>;
++	phy-names = "usb2-phy";
++
++	maximum-speed = "high-speed";
++
++	/* Peripheral until the type-C port is hooked up */
++	dr_mode = "peripheral";
++};
++
++&tlmm {
++	/*
++	 * GPIOs 0-3 and 81-84 are expected to belong to the secure world (TrustZone); touching them from
++	 * the non-secure side is expected to reset the phone (the mechanism is inferred, not measured here).
++	 * Source: the alive taimen dtb and porthole's walleye dtb carry exactly this property, and the fdt
++	 * bisect (research walleye-fdt-bisect-x-tried) showed that taking it out of the alive tree kills init
++	 * twice (x1): its absence is a cause of dead dtbs of ours; image y1 tests whether adding it is enough.
++	 * The vendor kernel's running fdt has no such property (its driver never touches those pins).
++	 */
++	gpio-reserved-ranges = <0 4>, <81 4>;
++};
++
++/*
++ * The GPU's smmu stays off until GPU work (item walleye-dmesg-clean, research walleye-z6-dmesg-mapped G1): its power domain is
++ * gpucc's GPU_GX_GDSC, which cannot switch on without a GFX rail nothing in this dts powers (which rail: not known yet). Left on, it
++ * logs six "gpu_gx status stuck" WARNs, defers for ever and holds gcc's and gpucc's sync_state.
++ */
++&adreno_smmu {
++	status = "disabled";
++};
++
++/*
++ * The UFS storage (item walleye-ufs-readonly): host controller and QMP phy with the rails of the OnePlus 5 (same SoC, same RPM
++ * regulators: l20 2.96 V vcc, l26 1.2 V vccq and hba, s4 1.8 V vccq2; phy l1 and l2). The init only lists the LUNs and reads the
++ * partition names and one header page; nothing is mounted and nothing is written. Sony's yoshino keeps UFS off for a card that
++ * needs quirks before it is probed (msm8998-sony-xperia-yoshino.dtsi): which card is in the phone is not known yet (the sysfs
++ * vendor/model of the LUN tells), and the image does no write, discard or unmap.
++ */
++&ufshc {
++	status = "okay";
++
++	vcc-supply = <&vreg_l20a_2p95>;
++	vccq-supply = <&vreg_l26a_1p2>;
++	vccq2-supply = <&vreg_s4a_1p8>;
++	vdd-hba-supply = <&vreg_l26a_1p2>;
++	vcc-max-microamp = <750000>;
++	vccq-max-microamp = <560000>;
++	vccq2-max-microamp = <750000>;
++};
++
++&ufsphy {
++	status = "okay";
++
++	vdda-phy-supply = <&vreg_l1a_0p875>;
++	vdda-pll-supply = <&vreg_l2a_1p2>;
++};
