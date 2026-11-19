@@ -7388,10 +7388,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: relayed by the Top Coordinator with attended-run-from-step: fewer reboots is fewer risks on the phones. Read the running kernel from the device (uname -r against device.toml [kernels]).
+: 2026-11-19, lab-tools-builder: lab-tools #286 (main): boot_once asks the phone 'uname -r' first and, when the running kernel is the named one, says 'already running', logs 'skip' and asks devlab for no try; back_to_known_good does the same when the device's kept kernel runs (a stock default cannot be told by name, so it reboots as before). A probe that fails means do the work. Match is exact: release = version, '-', then the kernel's whole name (6.1.0-pmicwdt); programmer review found a looser match could skip a needed boot (name 'wdt' on 6.1.0-pmic-wdt) and it was made exact (a miss costs one reboot). Proof: attended/tests/attended.rs (3 new) + steps.rs unit test, seen failing first. Open: no run on a real phone; the failed probe is not logged; a try kernel with an -rc or + release suffix is never recognised.
 
 Opened
 : 2026-11-19
