@@ -7638,10 +7638,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: open end of attended-step-groups (lab-tools #300): after leave_known_good, a finished group's way back stays owed and would run again on a later failure.
+: 2026-11-19, lab-tools-builder: landed (lab-tools #302, main 1d3616c): Group::settling(); leave_known_good is one. Once a settling group has passed, the way backs owed by groups no longer open are settled (by group identity, not depth); open ancestors' stay owed; a failing step in it settles nothing. Dry run says '(settles the way backs of finished groups)'. Proof: attended/tests/groups.rs a_settling_group_that_finished_leaves_the_way_backs_of_finished_groups_settled, a_settling_group_nested_deeper_settles_the_finished_groups_but_not_the_open_one_around_it, a_settling_group_that_failed_settles_nothing, phone_ready_and_leave_known_good_are_groups... (settling shown); first three seen failing (no settling()). Review caught the depth bug (settler nested deeper than the finished group): fixed with ids. Not covered: real leave_known_good against a phone (stand-in never goes down), --from with a settling group, a settling group with its own way back.
 
 Opened
 : 2026-11-19
