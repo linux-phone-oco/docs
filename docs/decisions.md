@@ -2479,3 +2479,28 @@ Rejected
 
 About
 : host-follows-releases
+
+
+<a id="2026-11-19-bringup-graph-cytoscape-dagre"></a>
+### 2026-11-19-bringup-graph-cytoscape-dagre
+
+Brief
+: The bring-up graph page is Cytoscape.js with the dagre layout (LR) on a JSON that render-pages.sh exports from the same rows; no server, no new pipeline
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Decision
+: bin/render-pages.sh (make render, checked fresh by make verify) also writes docs/graph/bringup.json: the steps, their edges (kind, group) and every device's step status. docs/graph.html (Jekyll, served under /tables/) loads Cytoscape.js and cytoscape-dagre at pinned versions and draws it: rankDir LR so the chosen goal sits left and its needs grow right; a goal picker (daily-usable-phone by default, linux-runs, complete-phone) keeps only the goal's ancestors; a device picker colours nodes done, partial, failing, open or unknown; hard edges solid, soft dashed, alternatives of one group drawn in one colour with the group named; a click shows the step's title, done_when, proof and guide and folds or unfolds what it needs. The guide view on the face links to it.
+
+Why
+: The author, 2026-11-19, relayed verbatim: can our webpage render that from our database as a dynamic tree or draw that graph dynamically ? ... if currently the linux as a dayly driver step is a top one, it will endup on the left of the graph and relations chain will grow to the right ? can it be done, and without overengineering ? is it a trivial, well known method. A layered (Sugiyama) layout is the known method; dagre is its common small implementation.
+
+Rejected
+: Mermaid generated at build: no folding and one chart per goal and device. ELK: a heavier engine for no gain at 118 steps. d3-dag: a lower-level kit, more code of ours. A server or a new build step: the site already renders from the rows.
+
+About
+: bringup-steps
