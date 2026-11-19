@@ -4220,7 +4220,7 @@ Status
 : open
 
 Note
-: Sign (coordinator, 2026-11-18): failed once in a parallel workspace run, passes alone. Likely shared state between tests (a fixed temp path, cwd, or env var); give each test its own dir/env.
+: 2026-11-19, lab-tools-builder: not reproduced: the bisect test binary passed 12 runs in a row alone (temp dirs are per pid and per name, so no shared path in the file itself). Next: run cargo test --workspace in a loop under load and keep the failing log; suspects are avbtool/lz4 contention or another process on the lab.
 
 Opened
 : 2026-11-18
@@ -4248,10 +4248,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: Sign (coordinator, 2026-11-18): failed once in a parallel workspace run, passes alone. Likely a shared lease file or lock path across tests; give each test its own.
+: 2026-11-19, lab-tools-builder: cause found and fixed (lab-tools #239, main e8e65b1): the test locked the lab user's real ~/.local/state/devlab/devlab-hold-guard/phone.lock, so any other process holding it (another run of these tests) made it block or fail; hold() is now hold_in(dir) and the test uses a temp dir of its own. Seen failing first: with the lock held by flock from another process the test hung 68 s. Not yet done: the stated proof, 20 workspace runs in a row with default parallelism, was not run; mark done after it.
 
 Opened
 : 2026-11-18
