@@ -3605,3 +3605,27 @@ Rejected
 
 About
 : steps-shell-stage-split
+
+---
+
+
+<a id="2026-11-19-dt-check-real-run"></a>
+### dt-check run for real on the lab with its baked image
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Built bringup/dt-check/Dockerfile from main 4926adf locally on the lab (docker build, no push); image id sha256:632e25f8b283316564bbe54d2a9d80be74276870361ec4f506d334a39e7bd1d2, run as lpoco-dt-check@sha256:632e25f8b283316564bbe54d2a9d80be74276870361ec4f506d334a39e7bd1d2 (docker takes the id as the digest of a local image; lpoco-bringup's --image check passes). On a scratch worktree of linux-topics 8b2283d with pm8998_wdt and pm6150_wdt set okay: dt-check dtbs on msm8998-oneplus-cheeseburger.dtb + sm7125-xiaomi-joyeuse.dtb: clean, exit 0; with bogus-prop added to the enabled pm8998 watchdog: 3 violations named (qcom,pm8916-wdt schema among them), exit 1; dt-check binding watchdog/qcom,pm8916-wdt.yaml: clean, exit 0. Scratch tree and outputs removed.
+
+Considered
+: Pinning in lpoco-bringup config: no config holds the image, the verb takes --image each run, so the pin is this record. The unlanded branch feat/dt-check-verdict-from-output (wt-lab-tools-builder-1795051976) duplicates #205 already on main; left for its owner to drop.
+
+Rejected
+: Pushing to a registry: a public publish, waits on the author naming one.
+
+About
+: dt-check-image-published

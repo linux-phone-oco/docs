@@ -6503,10 +6503,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Reshaped by orchestration (2026-11-19): pushing to a registry is a public publish and waits on the author naming one (ghcr.io/linux-phone-oco or none). Until then: build the baked image once on the lab (docker build, no push), pin it by its local image id/digest in lpoco-bringup's config, and run dt-check binding and dtbs for real on the PMIC watchdog series, including the bogus-prop negative and an enabled pm8998/pm6150 node. The proof is that real run, recorded; publishing is a later step on his word.
+: Local half done 2026-11-19: baked image built on the lab, real run proven (clean on enabled pm8998/pm6150 watchdog nodes; bogus-prop named, 3 violations, exit 1; binding clean); pin lpoco-dt-check@sha256:632e25f8b283316564bbe54d2a9d80be74276870361ec4f506d334a39e7bd1d2 (local id, lab only). Not done: publishing, on the author naming a registry (ghcr.io/linux-phone-oco or none).
 
 Opened
 : 2026-11-19
