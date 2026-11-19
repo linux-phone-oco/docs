@@ -1,4 +1,4 @@
-From 5e2d22ba640ecf952b23ed50c87c01835ddfcb8b Mon Sep 17 00:00:00 2001
+From eeb73defff1b0464155527ebea9ea49ec69f894c Mon Sep 17 00:00:00 2001
 From: lane-coordinator <agent@creation-guidelines>
 Date: Wed, 18 Nov 2026 20:15:34 +0100
 Subject: [PATCH 2/6] watchdog: pm8916_wdt: Stop the watchdog on reboot and

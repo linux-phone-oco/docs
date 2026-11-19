@@ -1,4 +1,4 @@
-From df83e03a8cd652bdc81bf0145640e2d197778dfe Mon Sep 17 00:00:00 2001
+From cbb3eb5a725cac95fac9b4b9dfe50c3cb76ba6e6 Mon Sep 17 00:00:00 2001
 From: lane-coordinator <agent@creation-guidelines>
 Date: Thu, 19 Nov 2026 05:29:25 +0100
 Subject: [PATCH 3/6] dt-bindings: watchdog: qcom,pm8916-wdt: Add PM8998 and

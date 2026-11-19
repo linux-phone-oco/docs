@@ -1,7 +1,8 @@
 # PMIC watchdog gen2, v1: what to check and how to send (prepared 2026-11-19)
 
-These are the six patches and cover letter in this folder, made on next-20261118 (base e8017d290).
-Nothing has been sent. Sending is the author's decision, from his own clone, with his own
+These are the six patches and cover letter in this folder. They were made on next-20261118 and
+rebased on 2026-11-20 onto next-20261119 (base adcad7f4e), where they apply unchanged. Nothing has
+been sent. Sending is the author's decision, from his own clone, with his own
 Signed-off-by.
 
 ## The series
@@ -47,11 +48,23 @@ pmic-wdt-wakes-in-suspend is proven.
    published. Until then, the container one-liner in research/upstream-forks/2026-11-19/
    dt-checks-in-a-container.md; read its output, and remember disabled nodes are skipped.
 
-## Open on hardware
+## Tested on the Pixel 2 (2026-11-20)
 
-- Patch 1 on a PM8998 (walleye): the case it is meant for, not yet tested (parked in the walleye
-  lane). The cover letter says so.
-- Patch 2's stop-on-reboot path: not exercised explicitly on a phone.
+walleye-try-pmic-wdt-v1 (google-walleye-lab PR 624), with the author at the phone: image A, which is
+this series on next-20261118. The run log is ~/lab-material/walleye/pmic-wdt-v1-run-1795130247.log
+(26 steps, all passed).
+- **Probe (patch 1):** the firmware left the S2 type at 0x1; the driver set 0x7 and the read-back
+  passed.
+- **Reboot (patch 2): PASS.** Armed with type 0x07, then a clean reboot. Android came up and stayed
+  up for 180 s with no loop. When the image was booted again, S2 read as off.
+- **Bite: PASS.** Armed and not pinged, the PMIC reset the phone about 20 s after arming. Android's
+  boot reason was [reboot], and it stayed up 60 s with no loop.
+- **Caveat, carried in the cover letter:** after the bite, with USB connected, the bootloader
+  stopped in its off-mode charging screen, and Android needed a press of the power button (the
+  author's report, through the Top Coordinator). The run's automatic check saw Android back 112 s
+  after arming, so it can't tell this from a restart on its own. A hard reset (type 0x07) with a
+  charger attached is booted as a charger power-on by this bootloader. That is the bootloader's
+  choice, not the driver's. Not read: the watchdog's bootstatus (WDIOF_CARDRESET).
 
 ## Recipients (scripts/get_maintainer.pl)
 
@@ -91,10 +104,22 @@ v1 tree:
 
 ## Not proven, in full
 
-- **Patch 1 on a PM8998.** walleye's bite at 8b2283da3 hasn't run. walleye's earlier bite, without
-  patch 1, powered the phone off.
-- **Patch 2's stop-on-reboot path:** not exercised explicitly.
-- **Testing base.** All hardware runs were on backported trees: sm7150-mainline 7.1 on surya, v7.3 on
-  walleye. The surya runs also carried the suspend patch, which this v1 leaves out. The next-based v1
-  itself is built and checked only, never booted.
+- **A restart with no charger attached** on the Pixel 2: the bite ran with USB in only, and ended in
+  the bootloader's charging screen.
+- **bootstatus** after a bite: not read on either phone.
+- **The rebased tree** (next-20261119): built and checked, not booted. The phone ran the same six
+  patches on next-20261118, and they apply unchanged.
+- **Surya** ran a 7.1 backport that also carried the suspend patch, which this v1 leaves out.
 - **pmic-wdt-wakes-in-suspend:** not run. It belongs to the later suspend series, not to this v1.
+
+## Re-checked on next-20261119 (2026-11-20)
+
+The six patches applied unchanged with `git am`.
+- LLVM W=1 build of pm8916_wdt.o and of the cheeseburger, joyeuse and acer-aspire1 dtbs: exit 0, no
+  warnings from our files.
+- `checkpatch --strict`: the same as on next-20261118. The only problems are the missing
+  Signed-off-by on each patch, and the unknown Fixes id on patch 1, which is unknown only because the
+  clone is shallow.
+- `lpoco-bringup dt-check binding` (qcom,pm8916-wdt.yaml): clean, exit 0.
+- `lpoco-bringup dt-check dtbs` on the same three boards, with both new nodes set to okay: clean,
+  exit 0.

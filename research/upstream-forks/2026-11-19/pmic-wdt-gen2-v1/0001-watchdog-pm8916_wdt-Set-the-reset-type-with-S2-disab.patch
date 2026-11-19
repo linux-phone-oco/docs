@@ -1,4 +1,4 @@
-From fc0e9ed885446eb5c6d00c30b6859100ee3e5871 Mon Sep 17 00:00:00 2001
+From fd25b7bd0ccd2b746620fa87ac80700803fb23bd Mon Sep 17 00:00:00 2001
 From: lane-coordinator <agent@creation-guidelines>
 Date: Wed, 18 Nov 2026 19:22:56 +0100
 Subject: [PATCH 1/6] watchdog: pm8916_wdt: Set the reset type with S2

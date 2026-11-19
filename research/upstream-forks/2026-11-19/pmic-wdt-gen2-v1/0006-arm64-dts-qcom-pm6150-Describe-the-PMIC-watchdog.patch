@@ -1,4 +1,4 @@
-From 2bb45656b4e340855591477783d8e61edf15dcbe Mon Sep 17 00:00:00 2001
+From 4644d4880e0a92d3bf5f3b2106d7ec60bade10f0 Mon Sep 17 00:00:00 2001
 From: lane-coordinator <agent@creation-guidelines>
 Date: Thu, 19 Nov 2026 05:29:35 +0100
 Subject: [PATCH 6/6] arm64: dts: qcom: pm6150: Describe the PMIC watchdog
