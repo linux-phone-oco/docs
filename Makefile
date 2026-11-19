@@ -5,7 +5,7 @@ TAD ?= tad
 # The format of the rendered pages: md (the default), rst, or both as md,rst.
 export DOCS_FORMAT ?= md
 
-.PHONY: setup check canon render feeds sql verify
+.PHONY: setup check canon render feeds sql verify land-regen
 setup:            ## install tad from its pinned release (its checksum checked)
 	./bin/install-tad.sh
 	$(TAD) engine
@@ -21,6 +21,8 @@ feeds:            ## refresh the tables the feeds fill (records/feed-*.sql), the
 	./bin/run-feeds.sh
 sql:              ## ask the data in SQL: make sql Q="SELECT ..." (a change is kept only if every rule holds)
 	$(TAD) sql "$(Q)"
+land-regen: canon render  ## what land runs after rebasing a branch onto a moved main (lab-machine bin/land, PR 79)
+
 verify: check     ## what CI runs: data is valid and canonical, docs are fresh
 	@before="$$(find data docs -type f -print0 | sort -z | xargs -0 sha256sum)"; \
 	$(TAD) canon && $(TAD) render && ./bin/render-pages.sh || exit 1; \
