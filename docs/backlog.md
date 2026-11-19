@@ -4235,7 +4235,7 @@ Proof
 : cargo test --workspace passes 20 runs in a row with default parallelism
 
 Rank
-: 10
+: 4
 
 About
 : bringup
@@ -4266,7 +4266,7 @@ Proof
 : cargo test --workspace passes 20 runs in a row with default parallelism
 
 Rank
-: 10
+: 4
 
 
 <a id="sxmo-utils-lab-apk-deliver"></a>
