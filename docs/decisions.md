@@ -2454,3 +2454,28 @@ About
 
 Research
 : procedures-chaining
+
+
+<a id="2026-11-19-host-lock-is-flock"></a>
+### 2026-11-19-host-lock-is-flock
+
+Brief
+: The host's run lock is an flock on a file, not a pid file
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: follow now and prepare now hold an flock on ~/.local/state/lpoco-host/lock; the pid written in it is for the message only.
+
+Why
+: The kernel frees it however a run ends, so no stale lock is judged; review found the pid-file takeover raced and survived a reboot.
+
+Rejected
+: pid file with takeover (race, pid reuse); lock under XDG_RUNTIME_DIR (still needs a stale rule); start time in /proc/pid/stat (more machinery).
+
+About
+: host-follows-releases
