@@ -3833,3 +3833,21 @@ Rejected
 
 About
 : lpoco-layer-pack
+
+---
+
+
+<a id="2026-11-19-layer-pack-postinstall-asserted-end-to-end"></a>
+### layer pack: postinstall asserted end to end
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lab-tools #227: pack_run test that the written postinstall is the one nfpm receives (item lpoco-layer-pack slice 6).
+
+Rejected
+: Claiming the mutation check proved the yaml key: it did not, so noted as a caveat.
