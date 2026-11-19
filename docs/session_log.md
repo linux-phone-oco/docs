@@ -4157,3 +4157,27 @@ Rejected
 
 About
 : attended-step-library
+
+---
+
+
+<a id="2026-11-19-attended-library-boot-once-and-back-to-known"></a>
+### attended library: boot_once and back_to_known_good
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Landed lab-tools #253: boot_once through devlab kernel try, back_to_known_good as a checked reboot, tested on a stand-in that cannot reboot the host; review fixes applied.
+
+Considered
+: Reading the kernel name from device.toml now: left to attended-device-values, which orchestration ordered next.
+
+Rejected
+: back_to_known_good via kernel unkeep: that only applies to a kept kernel; a one-boot try needs just a reboot into the default.
+
+About
+: attended-step-library
