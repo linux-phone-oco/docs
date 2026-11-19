@@ -4793,3 +4793,27 @@ Rejected
 
 About
 : host-follows-releases
+
+---
+
+
+<a id="2026-11-19-lab-tools-builder-follow-and-clones-services"></a>
+### lab-tools-builder: follow and clones services carry --lab
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Landed lab-tools #296 (main 6f95357): both user services read the lab they were prepared from, a non-default lab.toml made absolute and quoted for systemd; proof tests seen failing first; programmer review fixes applied.
+
+Considered
+: Always writing --lab (units of existing hosts would all be rewritten once); making a relative path an error.
+
+Rejected
+: Always carrying --lab: churns every existing unit for no change in behaviour. Refusing a relative path: making it absolute at load is what a person typing --lab lab.toml means.
+
+About
+: host-follows-releases
