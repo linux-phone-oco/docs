@@ -3410,3 +3410,21 @@ Rejected
 
 About
 : base-distro
+
+---
+
+
+<a id="2026-11-19-author-shell-stays"></a>
+### The author: existing shell stays as it is
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: The author's word, verbatim (through the Top Coordinator, 2026-11-19): 'i dont think its necessary, too much work.. if we dont rely on it much i say we leave them as is for now'. It reverses the shell-to-Rust migration of ideal-agent 0.3.56 for existing scripts: shell-past-glue-into-rust is closed in docs and lab-tools, and the surya and walleye lanes close theirs (walleye's AGENTS.md line from lab PR 336 comes out). Practice 21 stays for new work: a new script with logic starts in Rust.
+
+About
+: bringup-steps
