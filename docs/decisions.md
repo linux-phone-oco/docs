@@ -2251,3 +2251,31 @@ Research
 
 Tracked by
 : chip-layer
+
+
+<a id="2026-11-19-procedure-values-from-the-named-device"></a>
+### 2026-11-19-procedure-values-from-the-named-device
+
+Brief
+: A procedure names its device; lpoco-attended loads that device.toml, steps read named keys from it, a missing key fails the dry run, devlab gets the device explicitly
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: Amends 2026-11-19-procedures-chain-small-device-agnostic-steps (docs #638) and 2026-11-19-procedures-one-shape (docs #646), which said values come from device.toml without saying how. (1) procedure(name, device) finds that device's device.toml (the device repo's, the one devlab --device takes) and loads it with lpoco-manifest; its existing tables are the values: [device], [boot], [health], [layer], the USB ids, kernel entries, the kept kernel and the way back, timeouts. A new key is added only where no table holds the fact, under the table it belongs to (device-layer-declared-once). (2) Library steps take a key, not a value - wait_for_usb() reads its own default key, or wait_for_usb(dev("usb.gadget")) names one - so a procedure file names no number, path or kernel name. (3) --dry-run and lpoco attended check resolve every key a procedure uses against that device.toml and fail, naming the key, before anything touches a phone. (4) phone() calls devlab with --device PATH of the procedure's device, never the device.toml found by the current folder. (5) surya-lab's consts (PMICWDT_KERNEL, WAY_BACK, STANDBY and the rest) and walleye's WALLEYE_TRY_* settings move into their device.toml.
+
+Why
+: The author, 2026-11-19: how per device values that are needed for those procedures are stored, where, and how they are supplied to run a procedure ? The Top Coordinator read lab-tools main: the device name is only a log label, steps take plain values, so lanes hard-code them; devlab picks the device.toml by the current folder. Look-around (research attended-device-values): LAVA device dictionaries, Ansible host_vars, labgrid environments - values in the target's file, target named, missing key fails early.
+
+Rejected
+: Values as arguments in the procedure: each lane writes them again and a second phone cannot reuse the file. An [attended] table of copies: the same fact in two places of device.toml. Environment variables (walleye's WALLEYE_TRY_*): invisible in the repo and unchecked before a run. devlab guessing the phone from the current folder or USB: with both phones attached, the wrong one.
+
+About
+: bringup-steps
+
+Research
+: attended-device-values
