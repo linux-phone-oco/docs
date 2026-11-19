@@ -2,7 +2,7 @@
 
 # Bring-up guidebook
 
-Every small step that makes Linux run on a phone, in the order a bring-up meets them: 114 steps in 20 stages, one chapter each. A step shows what done means, what it needs and what it enables, the proof that tests it, the helper that does it or the gap, and how it is done with the traps met so far. A **World gap** marks a step the world has no open answer to yet. Where each phone stands on each step is the [bring-up steps view of the face](../en/linux-phones/steps.html); the rows themselves are in the [steps table](bringup_steps.md).
+Every small step that makes Linux run on a phone, in the order a bring-up meets them: 116 steps in 20 stages, one chapter each. A step shows what done means, what it needs and what it enables, the proof that tests it, the helper that does it or the gap, and how it is done with the traps met so far. A **World gap** marks a step the world has no open answer to yet. Where each phone stands on each step is the [bring-up steps view of the face](../en/linux-phones/steps.html); the rows themselves are in the [steps table](bringup_steps.md).
 
 ## The chapters
 
@@ -11,11 +11,11 @@ Every small step that makes Linux run on a phone, in the order a bring-up meets 
 3. [Console](#stage-console) - 4 steps
 4. [Kernel](#stage-kernel) - 5 steps
 5. [Power](#stage-power) - 13 steps
-6. [Storage](#stage-storage) - 1 step
+6. [Storage](#stage-storage) - 2 steps
 7. [Userspace](#stage-userspace) - 3 steps
 8. [Lab](#stage-lab) - 2 steps
 9. [Coprocessors](#stage-coprocessors) - 4 steps
-10. [Display and input](#stage-display) - 5 steps
+10. [Display and input](#stage-display) - 6 steps
 11. [Sound](#stage-audio) - 9 steps
 12. [Modem, SMS and data](#stage-modem) - 7 steps
 13. [Calls](#stage-calls) - 4 steps
@@ -215,7 +215,7 @@ Step 20 in the chain, id `banner-on-console`, applies to `any`, checked on 2026-
 <a id="step-shell-on-console"></a>
 ### A shell answers on the console
 
-Step 27 in the chain, id `shell-on-console`, applies to `any`, checked on 2026-11-18.
+Step 28 in the chain, id `shell-on-console`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** commands sent on the console answer, one at a time, reliably across hangups
 - **Needs:**
@@ -278,7 +278,7 @@ Step 14 in the chain, id `kernel-reaches-init`, applies to `any`, checked on 202
 <a id="step-first-dmesg-mapped"></a>
 ### The first dmesg mapped
 
-Step 32 in the chain, id `first-dmesg-mapped`, applies to `any`, checked on 2026-11-18.
+Step 33 in the chain, id `first-dmesg-mapped`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the first full dmesg of our kernel is read and every line placed: works, defers, fails, and whose
 - **Needs:**
@@ -291,7 +291,7 @@ Step 32 in the chain, id `first-dmesg-mapped`, applies to `any`, checked on 2026
 <a id="step-dmesg-clean"></a>
 ### dmesg clean
 
-Step 36 in the chain, id `dmesg-clean`, applies to `any`, checked on 2026-11-18.
+Step 37 in the chain, id `dmesg-clean`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** no WARN, oops or -110, and no probe deferred but the known ones
 - **Needs:**
@@ -309,7 +309,7 @@ The PMIC, the charger and the watchdog: what keeps the machine alive and safe to
 <a id="step-pmic-bound"></a>
 ### The PMIC bound
 
-Step 37 in the chain, id `pmic-bound`, applies to `any`, checked on 2026-11-18.
+Step 38 in the chain, id `pmic-bound`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the PMIC's children bind on their bus, the RTC and the power-on reason read
 - **Needs:**
@@ -323,7 +323,7 @@ Step 37 in the chain, id `pmic-bound`, applies to `any`, checked on 2026-11-18.
 <a id="step-charger-online"></a>
 ### The charger online
 
-Step 42 in the chain, id `charger-online`, applies to `power:battery`, checked on 2026-11-18.
+Step 43 in the chain, id `charger-online`, applies to `power:battery`, checked on 2026-11-18.
 
 - **Done when:** a power\_supply of type USB appears, online follows the cable, and the voltage rises while connected
 - **Needs:**
@@ -336,7 +336,7 @@ Step 42 in the chain, id `charger-online`, applies to `power:battery`, checked o
 <a id="step-watchdog-way-back"></a>
 ### A hung kernel comes back by itself
 
-Step 43 in the chain, id `watchdog-way-back`, applies to `any`, checked on 2026-11-18.
+Step 44 in the chain, id `watchdog-way-back`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** a hung kernel resets by itself and the phone returns to a known system without hands
 - **Needs:**
@@ -350,7 +350,7 @@ Step 43 in the chain, id `watchdog-way-back`, applies to `any`, checked on 2026-
 <a id="step-battery-gauge-reads"></a>
 ### The battery gauge reads true
 
-Step 44 in the chain, id `battery-gauge-reads`, applies to `power:battery`, checked on 2026-11-18, first light of the part `battery`.
+Step 45 in the chain, id `battery-gauge-reads`, applies to `power:battery`, checked on 2026-11-18, first light of the part `battery`.
 
 - **Done when:** capacity, voltage and current read in power\_supply agree with a meter within 5 % over a discharge
 - **Needs:**
@@ -364,7 +364,7 @@ Step 44 in the chain, id `battery-gauge-reads`, applies to `power:battery`, chec
 <a id="step-pon-reason-read"></a>
 ### Why it turned on, and why it last turned off, are read
 
-Step 45 in the chain, id `pon-reason-read`, applies to `any`, checked on 2026-11-18.
+Step 46 in the chain, id `pon-reason-read`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** each boot logs the power-on reason (key, USB charger, RTC alarm, warm reset, watchdog, key-combo reset) and the last power-off reason, read from the PMIC
 - **Needs:**
@@ -378,7 +378,7 @@ Step 45 in the chain, id `pon-reason-read`, applies to `any`, checked on 2026-11
 <a id="step-reset-types-right"></a>
 ### Power-off, reboot and a bite each reach the right PMIC reset
 
-Step 48 in the chain, id `reset-types-right`, applies to `any`, checked on 2026-11-18.
+Step 49 in the chain, id `reset-types-right`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** power-off ends in the PMIC's shutdown, reboot in a warm or hard reset, and a watchdog bite in a hard reset - each read back from the PMIC and seen in the next boot's reason
 - **Needs:**
@@ -393,7 +393,7 @@ Step 48 in the chain, id `reset-types-right`, applies to `any`, checked on 2026-
 <a id="step-reset-state-survives"></a>
 ### What must survive a reset does, and the rest is set again
 
-Step 49 in the chain, id `reset-state-survives`, applies to `any`, checked on 2026-11-18.
+Step 50 in the chain, id `reset-state-survives`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** across a warm reset the reboot mode (the PMIC's spare register: bootloader, recovery), the RTC and ramoops survive; after any reset the kernel sets again the PMIC state it relies on (S2 reset type, watchdogs) and reads it back
 - **Needs:**
@@ -408,7 +408,7 @@ Step 49 in the chain, id `reset-state-survives`, applies to `any`, checked on 20
 <a id="step-key-reset-recovers"></a>
 ### A held key resets a hung phone
 
-Step 50 in the chain, id `key-reset-recovers`, applies to `any`, checked on 2026-11-18, first light of the part `buttons`.
+Step 51 in the chain, id `key-reset-recovers`, applies to `any`, checked on 2026-11-18, first light of the part `buttons`.
 
 - **Done when:** holding power (with volume down where so wired) for the set time hard-resets a hung phone, and the next boot's reason says so
 - **Needs:**
@@ -422,7 +422,7 @@ Step 50 in the chain, id `key-reset-recovers`, applies to `any`, checked on 2026
 <a id="step-power-off-stays-off"></a>
 ### Off stays off
 
-Step 53 in the chain, id `power-off-stays-off`, applies to `any`, checked on 2026-11-18.
+Step 55 in the chain, id `power-off-stays-off`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** poweroff leaves the machine off, and plugging a charger in does not boot the full system
 - **Needs:**
@@ -438,7 +438,7 @@ Step 53 in the chain, id `power-off-stays-off`, applies to `any`, checked on 202
 <a id="step-thermal-zones-sane"></a>
 ### Thermal zones read and throttle
 
-Step 54 in the chain, id `thermal-zones-sane`, applies to `any`, checked on 2026-11-18.
+Step 56 in the chain, id `thermal-zones-sane`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** every thermal zone reads a plausible temperature, trips are set, and a load throttles before any shutdown
 - **Needs:**
@@ -452,7 +452,7 @@ Step 54 in the chain, id `thermal-zones-sane`, applies to `any`, checked on 2026
 <a id="step-charger-mode-entered"></a>
 ### A charger power-on starts the charging screen, not the system
 
-Step 64 in the chain, id `charger-mode-entered`, applies to `power:battery`, checked on 2026-11-18, first light of the part `battery`.
+Step 66 in the chain, id `charger-mode-entered`, applies to `power:battery`, checked on 2026-11-18, first light of the part `battery`.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -471,7 +471,7 @@ Step 64 in the chain, id `charger-mode-entered`, applies to `power:battery`, che
 <a id="step-rtc-alarm-powers-on"></a>
 ### An alarm turns the phone on from off
 
-Step 65 in the chain, id `rtc-alarm-powers-on`, applies to `any`, checked on 2026-11-18.
+Step 67 in the chain, id `rtc-alarm-powers-on`, applies to `any`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -487,7 +487,7 @@ Step 65 in the chain, id `rtc-alarm-powers-on`, applies to `any`, checked on 202
 <a id="step-off-mode-charging"></a>
 ### Charges while off
 
-Step 77 in the chain, id `off-mode-charging`, applies to `power:battery`, checked on 2026-11-18, first light of the part `battery`.
+Step 79 in the chain, id `off-mode-charging`, applies to `power:battery`, checked on 2026-11-18, first light of the part `battery`.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -511,16 +511,29 @@ Internal storage seen, first read-only.
 <a id="step-storage-readonly"></a>
 ### Internal storage read-only
 
-Step 46 in the chain, id `storage-readonly`, applies to `any`, checked on 2026-11-18.
+Step 47 in the chain, id `storage-readonly`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the internal storage lists its partitions by name, nothing written
 - **Needs:**
   - [shell-on-console](#step-shell-on-console) - hard: read through the shell
   - [dmesg-clean](#step-dmesg-clean) - soft: smmu and supplier faults stop DMA devices
-- **Enables:** [rootfs-boots](#step-rootfs-boots), [linux-runs](#step-linux-runs)
+- **Enables:** [storage-full-speed](#step-storage-full-speed), [rootfs-boots](#step-rootfs-boots), [linux-runs](#step-linux-runs)
 - **Proof:** `storage-lists`, host-check
 - **Helper:** no helper yet - a helper to write
 - **Guide:** Gives the firmware partitions every later part needs (walleye-ufs-readonly).
+
+<a id="step-storage-full-speed"></a>
+### Internal storage links at full speed
+
+Step 52 in the chain, id `storage-full-speed`, applies to `any`, checked on 2026-11-19.
+
+- **Done when:** the internal storage's link runs at the fastest mode the SoC and the card both support - UFS: the HS gear and lane count of the SoC's spec, both lanes up; eMMC: HS400 (or HS200 where HS400 is not supported) - read from the kernel, and a sequential read measures within reach of that mode
+- **Needs:**
+  - [storage-readonly](#step-storage-readonly) - hard: the link speed is read on a card that already lists its partitions
+- **Enables:** nothing
+- **Proof:** `storage-link-speed: the link mode from debugfs or dmesg (UFS power mode HS-Gn, lanes; eMMC timing) matches the SoC's documented maximum, and a read-only dd of a partition measures the throughput`, phone-suite
+- **Helper:** no helper yet - a helper to write
+- **Guide:** Upstream-readiness: a storage driver that links at PWM or one lane boots but is not done. On Qualcomm UFS the PHY tables and the gear limits per SoC decide it; compare with the downstream tree's settings. Read only: never write the internal storage to measure it.
 
 <a id="stage-userspace"></a>
 ## 7. Userspace
@@ -543,7 +556,7 @@ Step 21 in the chain, id `usb-network`, applies to `usb:gadget`, checked on 2026
 <a id="step-rootfs-boots"></a>
 ### A distribution root boots
 
-Step 51 in the chain, id `rootfs-boots`, applies to `any`, checked on 2026-11-18.
+Step 53 in the chain, id `rootfs-boots`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** a distribution's root filesystem boots to its init and ssh answers
 - **Needs:**
@@ -557,7 +570,7 @@ Step 51 in the chain, id `rootfs-boots`, applies to `any`, checked on 2026-11-18
 <a id="step-health-suite-runs"></a>
 ### The health suite runs after every boot
 
-Step 55 in the chain, id `health-suite-runs`, applies to `any`, checked on 2026-11-18.
+Step 57 in the chain, id `health-suite-runs`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the phone's own suite runs after every boot and its run is filed in the device's base
 - **Needs:**
@@ -575,7 +588,7 @@ What the lab needs of a machine to work on it without hands: the ways in, a try 
 <a id="step-lab-link-held-awake"></a>
 ### The lab's link holds the phone awake
 
-Step 28 in the chain, id `lab-link-held-awake`, applies to `any`, checked on 2026-11-18.
+Step 29 in the chain, id `lab-link-held-awake`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** while a host holds the USB link, nothing suspends the phone, and the hold is released on purpose for sleep tests
 - **Needs:**
@@ -588,7 +601,7 @@ Step 28 in the chain, id `lab-link-held-awake`, applies to `any`, checked on 202
 <a id="step-test-layer-boots"></a>
 ### The test layer boots, with no shell
 
-Step 66 in the chain, id `test-layer-boots`, applies to `any`, checked on 2026-11-19.
+Step 68 in the chain, id `test-layer-boots`, applies to `any`, checked on 2026-11-19.
 
 - **Done when:** a boot with no phone shell (multi-user.target, no display manager) is up with a tty, ssh and the lab's services, and nothing in it suspends, locks or reacts to keys unless a test asks; the lab's suspend work runs there
 - **Needs:**
@@ -650,7 +663,7 @@ Step 22 in the chain, id `remoteprocs-running`, applies to `any`, checked on 202
 <a id="step-fastrpc-helpers-stable"></a>
 ### The DSP helpers run without crashing the DSP
 
-Step 56 in the chain, id `fastrpc-helpers-stable`, applies to `soc:qcom`, checked on 2026-11-18.
+Step 58 in the chain, id `fastrpc-helpers-stable`, applies to `soc:qcom`, checked on 2026-11-18.
 
 - **Done when:** the FastRPC helpers (hexagonrpcd) serve and the DSP they talk to stays up over three boots
 - **Needs:**
@@ -674,7 +687,7 @@ Step 18 in the chain, id `panel-lit`, applies to `any`, checked on 2026-11-18, f
 - **Done when:** the console or a test pattern shows on the panel and the backlight follows its control
 - **Needs:**
   - [kernel-reaches-init](#step-kernel-reaches-init) - hard: the panel driver is the kernel's
-- **Enables:** [gpu-renders](#step-gpu-renders), [charger-mode-entered](#step-charger-mode-entered), [shell-runs-with-hardware](#step-shell-runs-with-hardware), [brightness-follows-light](#step-brightness-follows-light)
+- **Enables:** [gpu-renders](#step-gpu-renders), [display-any-order](#step-display-any-order), [charger-mode-entered](#step-charger-mode-entered), [shell-runs-with-hardware](#step-shell-runs-with-hardware), [brightness-follows-light](#step-brightness-follows-light)
 - **Proof:** `panel-connected,backlight`, phone-suite
 - **Helper:** no helper yet - a helper to write
 - **Guide:** Qualcomm DSI panels: a driver generated from the downstream tree (lmdpdg). walleye needs a command-mode panel driver (walleye-display-s6e3fa5).
@@ -708,10 +721,23 @@ Step 24 in the chain, id `gpu-renders`, applies to `any`, checked on 2026-11-18,
 - **Helper:** no helper yet - a helper to write
 - **Guide:** Test to write; never measured in our labs. Adreno needs its zap shader and GMU firmware from the device.
 
+<a id="step-display-any-order"></a>
+### The display comes up at boot in any order
+
+Step 25 in the chain, id `display-any-order`, applies to `any`, checked on 2026-11-19, first light of the part `display-panel`.
+
+- **Done when:** on three cold boots the panel, its bridge and the GPU bind by deferred probe with their modules autoloaded (modalias), no initramfs module list or modprobe ordering of ours, and the console shows on the panel each time
+- **Needs:**
+  - [panel-lit](#step-panel-lit) - hard: the panel must light by hand before its order can be left to deferred probe
+- **Enables:** nothing
+- **Proof:** `display-boots-any-order: three boots; each boot's dmesg shows the panel bound after any deferral, lsmod lists the modules with no ordering file in the image, the panel lit`, phone-suite
+- **Helper:** no helper yet - a helper to write
+- **Guide:** Upstream-readiness: a driver that only works with a hand-ordered module list is not ready for mainline. Return -EPROBE\_DEFER for each supplier not yet there (regulators, the DSI host, the backlight, the GPIO expander), declare the suppliers in the device tree so fw\_devlink orders it, and drop any modules-load or initramfs ordering list. walleye's B1 bring-up met the order dependence (walleye-display-s6e3fa5).
+
 <a id="step-buttons-report"></a>
 ### The keys report one event a press
 
-Step 57 in the chain, id `buttons-report`, applies to `any`, checked on 2026-11-18, first light of the part `buttons`.
+Step 59 in the chain, id `buttons-report`, applies to `any`, checked on 2026-11-18, first light of the part `buttons`.
 
 - **Done when:** power and volume keys give one press and one release each, no chatter
 - **Needs:**
@@ -725,7 +751,7 @@ Step 57 in the chain, id `buttons-report`, applies to `any`, checked on 2026-11-
 <a id="step-haptics-buzz"></a>
 ### The vibrator buzzes
 
-Step 58 in the chain, id `haptics-buzz`, applies to `any`, checked on 2026-11-18, first light of the part `haptics`.
+Step 60 in the chain, id `haptics-buzz`, applies to `any`, checked on 2026-11-18, first light of the part `haptics`.
 
 - **Done when:** a force-feedback effect is felt
 - **Needs:**
@@ -743,7 +769,7 @@ The card, the codec and the amplifiers, a profile for the shell, sound heard and
 <a id="step-audio-codec-attached"></a>
 ### The codec attaches and stays
 
-Step 29 in the chain, id `audio-codec-attached`, applies to `any`, checked on 2026-11-18.
+Step 30 in the chain, id `audio-codec-attached`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the codec enumerates on its buses (SoundWire, I2S, I2C) and stays attached across the boot
 - **Needs:**
@@ -757,7 +783,7 @@ Step 29 in the chain, id `audio-codec-attached`, applies to `any`, checked on 20
 <a id="step-sound-card-registered"></a>
 ### The sound card registers
 
-Step 33 in the chain, id `sound-card-registered`, applies to `any`, checked on 2026-11-18.
+Step 34 in the chain, id `sound-card-registered`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the machine's card is listed on every boot
 - **Needs:**
@@ -771,7 +797,7 @@ Step 33 in the chain, id `sound-card-registered`, applies to `any`, checked on 2
 <a id="step-speaker-amps-fed"></a>
 ### The amplifiers get their channels
 
-Step 38 in the chain, id `speaker-amps-fed`, applies to `any`, checked on 2026-11-18.
+Step 39 in the chain, id `speaker-amps-fed`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** each speaker amplifier gets its slot and is unmuted at the chip, not only in the driver's cache
 - **Needs:**
@@ -784,7 +810,7 @@ Step 38 in the chain, id `speaker-amps-fed`, applies to `any`, checked on 2026-1
 <a id="step-mic-captures"></a>
 ### The microphones capture
 
-Step 39 in the chain, id `mic-captures`, applies to `any`, checked on 2026-11-18, first light of the part `audio-mic`.
+Step 40 in the chain, id `mic-captures`, applies to `any`, checked on 2026-11-18, first light of the part `audio-mic`.
 
 - **Done when:** a second of capture from each microphone is not digital silence
 - **Needs:**
@@ -798,7 +824,7 @@ Step 39 in the chain, id `mic-captures`, applies to `any`, checked on 2026-11-18
 <a id="step-ucm-hifi-profile"></a>
 ### A UCM profile plays to the real card
 
-Step 59 in the chain, id `ucm-hifi-profile`, applies to `any`, checked on 2026-11-18.
+Step 61 in the chain, id `ucm-hifi-profile`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the shell's sound server picks the card's HiFi verb and plays in stereo, the right channel to the right speaker
 - **Needs:**
@@ -813,7 +839,7 @@ Step 59 in the chain, id `ucm-hifi-profile`, applies to `any`, checked on 2026-1
 <a id="step-speaker-heard"></a>
 ### The speaker is heard
 
-Step 67 in the chain, id `speaker-heard`, applies to `any`, checked on 2026-11-18, first light of the part `audio-speaker`.
+Step 69 in the chain, id `speaker-heard`, applies to `any`, checked on 2026-11-18, first light of the part `audio-speaker`.
 
 - **Done when:** a quiet tone on each channel is heard by the lab's ear
 - **Needs:**
@@ -826,7 +852,7 @@ Step 67 in the chain, id `speaker-heard`, applies to `any`, checked on 2026-11-1
 <a id="step-earpiece-plays"></a>
 ### The earpiece plays
 
-Step 68 in the chain, id `earpiece-plays`, applies to `form:phone`, checked on 2026-11-18, first light of the part `audio-earpiece`.
+Step 70 in the chain, id `earpiece-plays`, applies to `form:phone`, checked on 2026-11-18, first light of the part `audio-earpiece`.
 
 - **Done when:** a tone through the earpiece is heard by the bottom microphone
 - **Needs:**
@@ -839,7 +865,7 @@ Step 68 in the chain, id `earpiece-plays`, applies to `form:phone`, checked on 2
 <a id="step-headset-jack"></a>
 ### A headset works through the jack
 
-Step 69 in the chain, id `headset-jack`, applies to `any`, checked on 2026-11-18, first light of the part `audio-headphone`.
+Step 71 in the chain, id `headset-jack`, applies to `any`, checked on 2026-11-18, first light of the part `audio-headphone`.
 
 - **Done when:** plugging is detected, sound plays to the headset and its microphone records
 - **Needs:**
@@ -853,7 +879,7 @@ Step 69 in the chain, id `headset-jack`, applies to `any`, checked on 2026-11-18
 <a id="step-mic-hears-speaker"></a>
 ### Each microphone hears the speaker
 
-Step 78 in the chain, id `mic-hears-speaker`, applies to `any`, checked on 2026-11-18.
+Step 80 in the chain, id `mic-hears-speaker`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** each microphone finds the phone's own tone 20 dB above the noise
 - **Needs:**
@@ -872,7 +898,7 @@ The modem seen, the SIM read, the network joined; messages and data both ways.
 <a id="step-modem-file-services"></a>
 ### The modem's file services serve
 
-Step 60 in the chain, id `modem-file-services`, applies to `soc:qcom`, checked on 2026-11-18.
+Step 62 in the chain, id `modem-file-services`, applies to `soc:qcom`, checked on 2026-11-18.
 
 - **Done when:** rmtfs, the qrtr name service, pd-mapper and tqftpserv run and the modem's mode is online, not shutting down
 - **Needs:**
@@ -887,7 +913,7 @@ Step 60 in the chain, id `modem-file-services`, applies to `soc:qcom`, checked o
 <a id="step-modem-seen"></a>
 ### The modem is seen
 
-Step 70 in the chain, id `modem-seen`, applies to `radio:cellular`, checked on 2026-11-18.
+Step 72 in the chain, id `modem-seen`, applies to `radio:cellular`, checked on 2026-11-18.
 
 - **Done when:** ModemManager (or oFono) lists the modem
 - **Needs:**
@@ -901,7 +927,7 @@ Step 70 in the chain, id `modem-seen`, applies to `radio:cellular`, checked on 2
 <a id="step-sim-ready"></a>
 ### The SIM is read
 
-Step 79 in the chain, id `sim-ready`, applies to `radio:cellular`, checked on 2026-11-18.
+Step 81 in the chain, id `sim-ready`, applies to `radio:cellular`, checked on 2026-11-18.
 
 - **Done when:** the SIM reads present and unlocked, in each slot the device has
 - **Needs:**
@@ -915,7 +941,7 @@ Step 79 in the chain, id `sim-ready`, applies to `radio:cellular`, checked on 20
 <a id="step-modem-registered"></a>
 ### The modem joins the network
 
-Step 87 in the chain, id `modem-registered`, applies to `radio:cellular`, checked on 2026-11-18.
+Step 89 in the chain, id `modem-registered`, applies to `radio:cellular`, checked on 2026-11-18.
 
 - **Done when:** the modem is registered on a network
 - **Needs:**
@@ -928,7 +954,7 @@ Step 87 in the chain, id `modem-registered`, applies to `radio:cellular`, checke
 <a id="step-sms-both-ways"></a>
 ### SMS both ways
 
-Step 94 in the chain, id `sms-both-ways`, applies to `radio:cellular`, checked on 2026-11-18, first light of the part `modem-sms`.
+Step 96 in the chain, id `sms-both-ways`, applies to `radio:cellular`, checked on 2026-11-18, first light of the part `modem-sms`.
 
 - **Done when:** a message sent to the phone's own number comes back
 - **Needs:**
@@ -941,7 +967,7 @@ Step 94 in the chain, id `sms-both-ways`, applies to `radio:cellular`, checked o
 <a id="step-mobile-data"></a>
 ### Mobile data
 
-Step 95 in the chain, id `mobile-data`, applies to `radio:cellular`, checked on 2026-11-18, first light of the part `modem-data`.
+Step 97 in the chain, id `mobile-data`, applies to `radio:cellular`, checked on 2026-11-18, first light of the part `modem-data`.
 
 - **Done when:** pings and a 100 kB download go over the bearer's own interface, so Wi-Fi cannot stand in
 - **Needs:**
@@ -954,7 +980,7 @@ Step 95 in the chain, id `mobile-data`, applies to `radio:cellular`, checked on 
 <a id="step-mms-both-ways"></a>
 ### MMS both ways
 
-Step 100 in the chain, id `mms-both-ways`, applies to `radio:cellular`, checked on 2026-11-18.
+Step 102 in the chain, id `mms-both-ways`, applies to `radio:cellular`, checked on 2026-11-18.
 
 - **Done when:** a picture message sent to the phone's own number comes back
 - **Needs:**
@@ -973,7 +999,7 @@ A call with sound both ways, the screen dark at the ear, emergency numbers known
 <a id="step-emergency-numbers-known"></a>
 ### Emergency numbers are known
 
-Step 80 in the chain, id `emergency-numbers-known`, applies to `form:phone`, checked on 2026-11-18.
+Step 82 in the chain, id `emergency-numbers-known`, applies to `form:phone`, checked on 2026-11-18.
 
 - **Done when:** the modem's emergency list is read, and 112 would be dialled as an emergency call even without a SIM - proven without dialling
 - **Needs:**
@@ -987,7 +1013,7 @@ Step 80 in the chain, id `emergency-numbers-known`, applies to `form:phone`, che
 <a id="step-call-audio-path"></a>
 ### The call's sound path exists
 
-Step 96 in the chain, id `call-audio-path`, applies to `form:phone`, checked on 2026-11-18.
+Step 98 in the chain, id `call-audio-path`, applies to `form:phone`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1006,7 +1032,7 @@ Step 96 in the chain, id `call-audio-path`, applies to `form:phone`, checked on 
 <a id="step-voice-call-both-ways"></a>
 ### A call carries sound both ways
 
-Step 101 in the chain, id `voice-call-both-ways`, applies to `form:phone`, checked on 2026-11-18, first light of the part `modem-calls`.
+Step 103 in the chain, id `voice-call-both-ways`, applies to `form:phone`, checked on 2026-11-18, first light of the part `modem-calls`.
 
 - **Done when:** a tone sent into a call comes back from an echo line
 - **Needs:**
@@ -1020,7 +1046,7 @@ Step 101 in the chain, id `voice-call-both-ways`, applies to `form:phone`, check
 <a id="step-volte-call"></a>
 ### A call over LTE
 
-Step 107 in the chain, id `volte-call`, applies to `radio:cellular`, checked on 2026-11-18.
+Step 109 in the chain, id `volte-call`, applies to `radio:cellular`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1042,7 +1068,7 @@ Wi-Fi, Bluetooth, NFC, USB host and sharing the connection.
 <a id="step-bt-controller-up"></a>
 ### The Bluetooth controller is up
 
-Step 25 in the chain, id `bt-controller-up`, applies to `any`, checked on 2026-11-18, first light of the part `bluetooth`.
+Step 26 in the chain, id `bt-controller-up`, applies to `any`, checked on 2026-11-18, first light of the part `bluetooth`.
 
 - **Done when:** the controller is listed and powers on
 - **Needs:**
@@ -1055,7 +1081,7 @@ Step 25 in the chain, id `bt-controller-up`, applies to `any`, checked on 2026-1
 <a id="step-wifi-joins"></a>
 ### Wi-Fi joins and reaches the gateway
 
-Step 30 in the chain, id `wifi-joins`, applies to `any`, checked on 2026-11-18, first light of the part `wifi`.
+Step 31 in the chain, id `wifi-joins`, applies to `any`, checked on 2026-11-18, first light of the part `wifi`.
 
 - **Done when:** the interface joins a network and reaches its gateway
 - **Needs:**
@@ -1069,7 +1095,7 @@ Step 30 in the chain, id `wifi-joins`, applies to `any`, checked on 2026-11-18, 
 <a id="step-nfc-reads-tag"></a>
 ### NFC reads a tag
 
-Step 61 in the chain, id `nfc-reads-tag`, applies to `any`, checked on 2026-11-18, first light of the part `nfc`.
+Step 63 in the chain, id `nfc-reads-tag`, applies to `any`, checked on 2026-11-18, first light of the part `nfc`.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1085,7 +1111,7 @@ Step 61 in the chain, id `nfc-reads-tag`, applies to `any`, checked on 2026-11-1
 <a id="step-usb-host-works"></a>
 ### USB host works
 
-Step 62 in the chain, id `usb-host-works`, applies to `any`, checked on 2026-11-18, first light of the part `usb-otg`.
+Step 64 in the chain, id `usb-host-works`, applies to `any`, checked on 2026-11-18, first light of the part `usb-otg`.
 
 - **Done when:** the port switches to host and a plugged device enumerates
 - **Needs:**
@@ -1099,7 +1125,7 @@ Step 62 in the chain, id `usb-host-works`, applies to `any`, checked on 2026-11-
 <a id="step-bt-pairs-carries-audio"></a>
 ### Bluetooth pairs and carries sound
 
-Step 71 in the chain, id `bt-pairs-carries-audio`, applies to `any`, checked on 2026-11-18.
+Step 73 in the chain, id `bt-pairs-carries-audio`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** a headset pairs, plays and records, in a call too
 - **Needs:**
@@ -1113,7 +1139,7 @@ Step 71 in the chain, id `bt-pairs-carries-audio`, applies to `any`, checked on 
 <a id="step-hotspot-shares-data"></a>
 ### The phone shares its data
 
-Step 102 in the chain, id `hotspot-shares-data`, applies to `radio:cellular`, checked on 2026-11-18.
+Step 104 in the chain, id `hotspot-shares-data`, applies to `radio:cellular`, checked on 2026-11-18.
 
 - **Done when:** a client on the phone's Wi-Fi hotspot reaches the internet over mobile data
 - **Needs:**
@@ -1132,7 +1158,7 @@ Motion, light and proximity read and used; a position fix; the fingerprint reade
 <a id="step-fingerprint-unlocks"></a>
 ### The fingerprint unlocks
 
-Step 63 in the chain, id `fingerprint-unlocks`, applies to `any`, checked on 2026-11-18, first light of the part `fingerprint`.
+Step 65 in the chain, id `fingerprint-unlocks`, applies to `any`, checked on 2026-11-18, first light of the part `fingerprint`.
 
 - **Done when:** a finger enrols and unlocks through fprintd
 - **Needs:**
@@ -1145,7 +1171,7 @@ Step 63 in the chain, id `fingerprint-unlocks`, applies to `any`, checked on 202
 <a id="step-sensor-hub-stable"></a>
 ### The sensor hub runs without crashing its DSP
 
-Step 72 in the chain, id `sensor-hub-stable`, applies to `soc:qcom`, checked on 2026-11-18.
+Step 74 in the chain, id `sensor-hub-stable`, applies to `soc:qcom`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1161,7 +1187,7 @@ Step 72 in the chain, id `sensor-hub-stable`, applies to `soc:qcom`, checked on 
 <a id="step-sensors-exposed"></a>
 ### Motion and light sensors read
 
-Step 81 in the chain, id `sensors-exposed`, applies to `any`, checked on 2026-11-18, first light of the part `sensors`.
+Step 83 in the chain, id `sensors-exposed`, applies to `any`, checked on 2026-11-18, first light of the part `sensors`.
 
 - **Done when:** accelerometer, gyroscope and light give changing values through iio-sensor-proxy
 - **Needs:**
@@ -1175,7 +1201,7 @@ Step 81 in the chain, id `sensors-exposed`, applies to `any`, checked on 2026-11
 <a id="step-gnss-fix"></a>
 ### A position fix
 
-Step 82 in the chain, id `gnss-fix`, applies to `any`, checked on 2026-11-18, first light of the part `gnss`.
+Step 84 in the chain, id `gnss-fix`, applies to `any`, checked on 2026-11-18, first light of the part `gnss`.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1192,7 +1218,7 @@ Step 82 in the chain, id `gnss-fix`, applies to `any`, checked on 2026-11-18, fi
 <a id="step-proximity-reads"></a>
 ### Proximity reads near and far
 
-Step 88 in the chain, id `proximity-reads`, applies to `any`, checked on 2026-11-18.
+Step 90 in the chain, id `proximity-reads`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** covering the sensor changes its reading from far to near and back
 - **Needs:**
@@ -1223,7 +1249,7 @@ Step 19 in the chain, id `camera-bus-bound`, applies to `any`, checked on 2026-1
 <a id="step-image-sensor-identified"></a>
 ### Each image sensor is identified
 
-Step 26 in the chain, id `image-sensor-identified`, applies to `any`, checked on 2026-11-18.
+Step 27 in the chain, id `image-sensor-identified`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** each sensor's chip-id register reads its expected value in its slot
 - **Needs:**
@@ -1236,7 +1262,7 @@ Step 26 in the chain, id `image-sensor-identified`, applies to `any`, checked on
 <a id="step-raw-frame-captured"></a>
 ### A raw frame
 
-Step 31 in the chain, id `raw-frame-captured`, applies to `any`, checked on 2026-11-18.
+Step 32 in the chain, id `raw-frame-captured`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** one raw frame from each sensor arrives through the receiver
 - **Needs:**
@@ -1249,7 +1275,7 @@ Step 31 in the chain, id `raw-frame-captured`, applies to `any`, checked on 2026
 <a id="step-camera-stream-viewable"></a>
 ### A viewable stream
 
-Step 34 in the chain, id `camera-stream-viewable`, applies to `any`, checked on 2026-11-18.
+Step 35 in the chain, id `camera-stream-viewable`, applies to `any`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1266,7 +1292,7 @@ Step 34 in the chain, id `camera-stream-viewable`, applies to `any`, checked on 
 <a id="step-photo-taken"></a>
 ### A photo
 
-Step 40 in the chain, id `photo-taken`, applies to `any`, checked on 2026-11-19, first light of the part `camera-rear`.
+Step 41 in the chain, id `photo-taken`, applies to `any`, checked on 2026-11-19, first light of the part `camera-rear`.
 
 - **Done when:** a capture tool saves a photo with sane exposure and colour from each camera
 - **Needs:**
@@ -1280,7 +1306,7 @@ Step 40 in the chain, id `photo-taken`, applies to `any`, checked on 2026-11-19,
 <a id="step-focus-and-flash"></a>
 ### Focus and flash
 
-Step 41 in the chain, id `focus-and-flash`, applies to `any`, checked on 2026-11-18.
+Step 42 in the chain, id `focus-and-flash`, applies to `any`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1295,7 +1321,7 @@ Step 41 in the chain, id `focus-and-flash`, applies to `any`, checked on 2026-11
 <a id="step-video-recorded"></a>
 ### A video with sound
 
-Step 47 in the chain, id `video-recorded`, applies to `any`, checked on 2026-11-18.
+Step 48 in the chain, id `video-recorded`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** a recorded video plays back with its sound in step
 - **Needs:**
@@ -1314,7 +1340,7 @@ Suspend that returns, wakes only for what matters and reaches the SoC's floor; a
 <a id="step-suspend-way-back"></a>
 ### A hang in sleep finds its way back
 
-Step 52 in the chain, id `suspend-way-back`, applies to `any`, checked on 2026-11-18.
+Step 54 in the chain, id `suspend-way-back`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** a hang in or after suspend resets the machine or panics into ramoops
 - **Needs:**
@@ -1328,7 +1354,7 @@ Step 52 in the chain, id `suspend-way-back`, applies to `any`, checked on 2026-1
 <a id="step-s2idle-cycle-returns"></a>
 ### A timed suspend returns
 
-Step 83 in the chain, id `s2idle-cycle-returns`, applies to `any`, checked on 2026-11-18.
+Step 85 in the chain, id `s2idle-cycle-returns`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** a 15 s RTC-timed suspend returns in the same boot
 - **Needs:**
@@ -1344,7 +1370,7 @@ Step 83 in the chain, id `s2idle-cycle-returns`, applies to `any`, checked on 20
 <a id="step-suspend-wakes-quiet"></a>
 ### Only the meant sources wake it
 
-Step 89 in the chain, id `suspend-wakes-quiet`, applies to `any`, checked on 2026-11-18.
+Step 91 in the chain, id `suspend-wakes-quiet`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** over a suspend only the RTC, the modem, the keys and the charger wake it
 - **Needs:**
@@ -1357,7 +1383,7 @@ Step 89 in the chain, id `suspend-wakes-quiet`, applies to `any`, checked on 202
 <a id="step-radios-survive-suspend"></a>
 ### The radios come back from sleep
 
-Step 90 in the chain, id `radios-survive-suspend`, applies to `any`, checked on 2026-11-18.
+Step 92 in the chain, id `radios-survive-suspend`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** after 20 cycles Wi-Fi and Bluetooth are up, with no interrupt storm and no controller crash
 - **Needs:**
@@ -1372,7 +1398,7 @@ Step 90 in the chain, id `radios-survive-suspend`, applies to `any`, checked on 
 <a id="step-sensors-across-suspend"></a>
 ### Sensors come back from sleep
 
-Step 91 in the chain, id `sensors-across-suspend`, applies to `any`, checked on 2026-11-18.
+Step 93 in the chain, id `sensors-across-suspend`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the sensor helper is stopped before suspend and serves again after
 - **Needs:**
@@ -1387,7 +1413,7 @@ Step 91 in the chain, id `sensors-across-suspend`, applies to `any`, checked on 
 <a id="step-resume-without-stall"></a>
 ### Resume without a stall
 
-Step 97 in the chain, id `resume-without-stall`, applies to `any`, checked on 2026-11-18.
+Step 99 in the chain, id `resume-without-stall`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** 20 attended cycles with no coprocessor crash and no RCU stall
 - **Needs:**
@@ -1402,7 +1428,7 @@ Step 97 in the chain, id `resume-without-stall`, applies to `any`, checked on 20
 <a id="step-soc-floor-reached"></a>
 ### The SoC reaches its floor
 
-Step 98 in the chain, id `soc-floor-reached`, applies to `any`, checked on 2026-11-18, first light of the part `deep-sleep`.
+Step 100 in the chain, id `soc-floor-reached`, applies to `any`, checked on 2026-11-18, first light of the part `deep-sleep`.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1419,7 +1445,7 @@ Step 98 in the chain, id `soc-floor-reached`, applies to `any`, checked on 2026-
 <a id="step-standby-current"></a>
 ### Standby draws little
 
-Step 103 in the chain, id `standby-current`, applies to `power:battery`, checked on 2026-11-19.
+Step 105 in the chain, id `standby-current`, applies to `power:battery`, checked on 2026-11-19.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1439,7 +1465,7 @@ Step 103 in the chain, id `standby-current`, applies to `power:battery`, checked
 <a id="step-call-wakes-from-sleep"></a>
 ### A call or a message wakes it
 
-Step 108 in the chain, id `call-wakes-from-sleep`, applies to `form:phone`, checked on 2026-11-18.
+Step 110 in the chain, id `call-wakes-from-sleep`, applies to `form:phone`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1457,7 +1483,7 @@ Step 108 in the chain, id `call-wakes-from-sleep`, applies to `form:phone`, chec
 <a id="step-all-day-battery"></a>
 ### A day on one charge
 
-Step 111 in the chain, id `all-day-battery`, applies to `power:battery`, checked on 2026-11-18.
+Step 113 in the chain, id `all-day-battery`, applies to `power:battery`, checked on 2026-11-18.
 
 - **Done when:** a day of mixed use - standby, calls, screen time - ends with charge left
 - **Needs:**
@@ -1477,7 +1503,7 @@ Updates that apply and roll back, and the phone still working after days, upgrad
 <a id="step-update-applies"></a>
 ### An update applies
 
-Step 73 in the chain, id `update-applies`, applies to `any`, checked on 2026-11-18.
+Step 75 in the chain, id `update-applies`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** an update from the distribution applies over the air and the phone boots it, the health suite as before
 - **Needs:**
@@ -1492,7 +1518,7 @@ Step 73 in the chain, id `update-applies`, applies to `any`, checked on 2026-11-
 <a id="step-kernel-upgrade-keeps-steps"></a>
 ### A kernel upgrade keeps every step
 
-Step 74 in the chain, id `kernel-upgrade-keeps-steps`, applies to `any`, checked on 2026-11-18.
+Step 76 in the chain, id `kernel-upgrade-keeps-steps`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** on a new kernel release the suite passes what it passed before, and proven\_on moves to the new kernel
 - **Needs:**
@@ -1505,7 +1531,7 @@ Step 74 in the chain, id `kernel-upgrade-keeps-steps`, applies to `any`, checked
 <a id="step-update-rolls-back"></a>
 ### A bad update rolls back
 
-Step 84 in the chain, id `update-rolls-back`, applies to `any`, checked on 2026-11-18.
+Step 86 in the chain, id `update-rolls-back`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** an update that does not boot falls back to the last good one with no hands
 - **Needs:**
@@ -1521,7 +1547,7 @@ Step 84 in the chain, id `update-rolls-back`, applies to `any`, checked on 2026-
 <a id="step-coprocessor-restart-recovers"></a>
 ### A coprocessor crash is survived
 
-Step 99 in the chain, id `coprocessor-restart-recovers`, applies to `any`, checked on 2026-11-18.
+Step 101 in the chain, id `coprocessor-restart-recovers`, applies to `any`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1539,7 +1565,7 @@ Step 99 in the chain, id `coprocessor-restart-recovers`, applies to `any`, check
 <a id="step-cycles-repeat-clean"></a>
 ### Repeated cycles stay clean
 
-Step 104 in the chain, id `cycles-repeat-clean`, applies to `any`, checked on 2026-11-18.
+Step 106 in the chain, id `cycles-repeat-clean`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** 100 suspend cycles, 20 calls and 50 camera switches with no part lost
 - **Needs:**
@@ -1559,7 +1585,7 @@ The phone shell - sxmo, Phosh or Plasma Mobile - as a layer after the proven har
 <a id="step-shell-autosleep-tamed"></a>
 ### The shell's idle suspend is held off while the lab works
 
-Step 35 in the chain, id `shell-autosleep-tamed`, applies to `any`, checked on 2026-11-19.
+Step 36 in the chain, id `shell-autosleep-tamed`, applies to `any`, checked on 2026-11-19.
 
 - **Done when:** the shell's own idle suspend is off or held off while the lab works, proven per shell (sxmo's autosleep, Phosh's gsd-power, Plasma Mobile's PowerDevil)
 - **Needs:**
@@ -1572,7 +1598,7 @@ Step 35 in the chain, id `shell-autosleep-tamed`, applies to `any`, checked on 2
 <a id="step-shell-runs-with-hardware"></a>
 ### A phone shell runs on the hardware
 
-Step 75 in the chain, id `shell-runs-with-hardware`, applies to `any`, checked on 2026-11-18.
+Step 77 in the chain, id `shell-runs-with-hardware`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** a phone shell (sxmo, Phosh, Plasma Mobile) starts on the panel with touch, sound to the real card and its device profile
 - **Needs:**
@@ -1590,7 +1616,7 @@ Step 75 in the chain, id `shell-runs-with-hardware`, applies to `any`, checked o
 <a id="step-on-screen-keyboard"></a>
 ### The on-screen keyboard types
 
-Step 85 in the chain, id `on-screen-keyboard`, applies to `any`, checked on 2026-11-18.
+Step 87 in the chain, id `on-screen-keyboard`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the keyboard comes up in a text field and types into it
 - **Needs:**
@@ -1603,7 +1629,7 @@ Step 85 in the chain, id `on-screen-keyboard`, applies to `any`, checked on 2026
 <a id="step-lock-and-unlock"></a>
 ### Lock and unlock
 
-Step 86 in the chain, id `lock-and-unlock`, applies to `any`, checked on 2026-11-18.
+Step 88 in the chain, id `lock-and-unlock`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the power key locks and darkens; the phone unlocks with its code
 - **Needs:**
@@ -1617,7 +1643,7 @@ Step 86 in the chain, id `lock-and-unlock`, applies to `any`, checked on 2026-11
 <a id="step-auto-rotate-follows"></a>
 ### The screen follows rotation
 
-Step 92 in the chain, id `auto-rotate-follows`, applies to `any`, checked on 2026-11-19.
+Step 94 in the chain, id `auto-rotate-follows`, applies to `any`, checked on 2026-11-19.
 
 - **Done when:** turning the phone turns the shell's screen
 - **Needs:**
@@ -1631,7 +1657,7 @@ Step 92 in the chain, id `auto-rotate-follows`, applies to `any`, checked on 202
 <a id="step-brightness-follows-light"></a>
 ### Brightness follows the light
 
-Step 93 in the chain, id `brightness-follows-light`, applies to `any`, checked on 2026-11-19.
+Step 95 in the chain, id `brightness-follows-light`, applies to `any`, checked on 2026-11-19.
 
 - **Done when:** covering the light sensor dims the panel under auto-brightness
 - **Needs:**
@@ -1646,7 +1672,7 @@ Step 93 in the chain, id `brightness-follows-light`, applies to `any`, checked o
 <a id="step-notifications-arrive"></a>
 ### Notifications arrive with the screen off
 
-Step 105 in the chain, id `notifications-arrive`, applies to `form:phone`, checked on 2026-11-18.
+Step 107 in the chain, id `notifications-arrive`, applies to `form:phone`, checked on 2026-11-18.
 
 - **Done when:** a message or a call shows a notification and sounds while the screen is off
 - **Needs:**
@@ -1661,7 +1687,7 @@ Step 105 in the chain, id `notifications-arrive`, applies to `form:phone`, check
 <a id="step-real-suspend-under-shell"></a>
 ### The shell's own suspend returns
 
-Step 106 in the chain, id `real-suspend-under-shell`, applies to `any`, checked on 2026-11-19.
+Step 108 in the chain, id `real-suspend-under-shell`, applies to `any`, checked on 2026-11-19.
 
 - **Done when:** the shell's auto-suspend and systemctl suspend return, again and again
 - **Needs:**
@@ -1678,7 +1704,7 @@ Step 106 in the chain, id `real-suspend-under-shell`, applies to `any`, checked 
 <a id="step-alarm-wakes-from-sleep"></a>
 ### An alarm rings from sleep
 
-Step 109 in the chain, id `alarm-wakes-from-sleep`, applies to `any`, checked on 2026-11-19.
+Step 111 in the chain, id `alarm-wakes-from-sleep`, applies to `any`, checked on 2026-11-19.
 
 - **Done when:** an alarm set in the clock app rings on time while the phone sleeps under its shell's suspend
 - **Needs:**
@@ -1693,7 +1719,7 @@ Step 109 in the chain, id `alarm-wakes-from-sleep`, applies to `any`, checked on
 <a id="step-proximity-blanks-in-call"></a>
 ### The screen goes dark at the ear
 
-Step 110 in the chain, id `proximity-blanks-in-call`, applies to `form:phone`, checked on 2026-11-19.
+Step 112 in the chain, id `proximity-blanks-in-call`, applies to `form:phone`, checked on 2026-11-19.
 
 - **Done when:** in a call the screen blanks and touch is ignored while the proximity sensor is covered
 - **Needs:**
@@ -1709,7 +1735,7 @@ Step 110 in the chain, id `proximity-blanks-in-call`, applies to `form:phone`, c
 <a id="step-days-without-reboot"></a>
 ### Days without a reboot
 
-Step 112 in the chain, id `days-without-reboot`, applies to `any`, checked on 2026-11-19.
+Step 114 in the chain, id `days-without-reboot`, applies to `any`, checked on 2026-11-19.
 
 - **Done when:** seven days of ordinary use with no reboot, crash or part lost
 - **Needs:**
@@ -1729,7 +1755,7 @@ The steps that only name a whole: Linux runs, a daily-usable phone, a complete p
 <a id="step-linux-runs"></a>
 ### Linux runs
 
-Step 76 in the chain, id `linux-runs`, applies to `any`, checked on 2026-11-18.
+Step 78 in the chain, id `linux-runs`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** every step it needs is done or not-needed
 - **Needs:**
@@ -1747,7 +1773,7 @@ Step 76 in the chain, id `linux-runs`, applies to `any`, checked on 2026-11-18.
 <a id="step-daily-usable-phone"></a>
 ### A daily-usable phone
 
-Step 113 in the chain, id `daily-usable-phone`, applies to `form:phone`, checked on 2026-11-18.
+Step 115 in the chain, id `daily-usable-phone`, applies to `form:phone`, checked on 2026-11-18.
 
 - **Done when:** every step it needs is done or not-needed
 - **Needs:**
@@ -1783,7 +1809,7 @@ Step 113 in the chain, id `daily-usable-phone`, applies to `form:phone`, checked
 <a id="step-complete-phone"></a>
 ### A complete phone
 
-Step 114 in the chain, id `complete-phone`, applies to `form:phone`, checked on 2026-11-18.
+Step 116 in the chain, id `complete-phone`, applies to `form:phone`, checked on 2026-11-18.
 
 - **Done when:** every step it needs is done or not-needed
 - **Needs:**
