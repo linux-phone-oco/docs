@@ -379,7 +379,7 @@ Form
 : patch
 
 State
-: draft
+: held
 
 From work
 : 2026-11-18-upstream-forks
@@ -400,13 +400,13 @@ Carried in
 : fork-linux/topic/pmic-wdt-wake-in-suspend
 
 Waits
-: the phone proofs (tests pmic-wdt-bites, pmic-wdt-wakes-in-suspend on surya, then walleye), then the author's word and sign-off
+: pmic-wdt-gen2-v1 accepted, then the proof pmic-wdt-wakes-in-suspend on surya and walleye, then the author's word and sign-off
 
 Note
-: Built (LLVM, W=1), checkpatch --strict clean but the trailer, binding validated. Before sending: b4 prep from the author's clone, Co-Authored-By replaced by 'Assisted-by: LLM', his Signed-off-by; recipients by get_maintainer (Wim Van Sebroeck, Guenter Roeck, linux-watchdog; dt: Rob Herring, Krzysztof Kozlowski, Conor Dooley, devicetree; dts: Bjorn Andersson, Konrad Dybcio, linux-arm-msm). Drop RFC once both phones pass.
+: Split 2026-11-19: the gen2, binding, dts and the two fixes went to pmic-wdt-gen2-v1; this item is now only the later suspend series (wakeup-source, kept running in suspend), on top of v1.
 
 Last update
-: 2026-11-18
+: 2026-11-19
 
 
 <a id="sxmo-autosuspend-backoff"></a>
@@ -419,7 +419,7 @@ Form
 : patch
 
 State
-: draft
+: withdrawn
 
 From work
 : 2026-11-18-upstream-forks
@@ -437,13 +437,13 @@ Carried in
 : fork-sxmo-utils/topic/sxmo-autosuspend-backoff
 
 Waits
-: the phone proof surya-sxmo-suspend-series, then the author's word: sent in his name
+: none
 
 Note
-: Was a question; now a patch with its spec (spec/scripts/core/sxmo_autosuspend_spec.sh, fails on master, passes here). First of a series of three with sxmo-suspend-stop-by-profile and sxmo-surya-sensors-suspend; cover letter 0000 in the same folder. Send: git send-email --to '~mil/sxmo-devel@lists.sr.ht' from the author's clone. Worked around until the fix is on the phone: WORKAROUND(sxmo-autosuspend-backoff) is to stand in lpoco-health's keep-awake and the try scripts (lab-tools health), against the autosuspend loop and the 3-year rtcwake; it retires once our fork's fix is shipped to the phone, not only when it lands upstream (ideal-agent's rule). Markers in those scripts: lab-tools to place.
+: Withdrawn 2026-11-19, unsent: sxmo's list is on SourceHut, whose ToS since 2026-09-10 bars LLM-written contributions; the author's yes to 2026-11-19-hardware-test-layer. The fork branch stays as it is; nothing goes to sxmo-devel.
 
 Last update
-: 2026-11-18
+: 2026-11-19
 
 
 <a id="sxmo-suspend-stop-by-profile"></a>
@@ -456,7 +456,7 @@ Form
 : patch
 
 State
-: draft
+: withdrawn
 
 From work
 : 2026-11-18-upstream-forks
@@ -474,13 +474,13 @@ Carried in
 : fork-sxmo-utils/topic/sxmo-suspend-stop-by-profile
 
 Waits
-: the phone proof surya-sxmo-suspend-series, then the author's word: sent in his name
+: none
 
 Note
-: Was a question; now a patch. Answers why proycon's 2024 list was refused (sxmo-devel 55649: the wakeup count goes stale while services stop): the count is read again after the stop. Moves google,b4s4-sdm670 into its profile (it is now started again after suspend - say so in the cover letter).
+: Withdrawn 2026-11-19, unsent: sxmo's list is on SourceHut, whose ToS since 2026-09-10 bars LLM-written contributions; the author's yes to 2026-11-19-hardware-test-layer. The fork branch stays as it is; nothing goes to sxmo-devel.
 
 Last update
-: 2026-11-18
+: 2026-11-19
 
 
 <a id="sxmo-surya-sensors-suspend"></a>
@@ -493,7 +493,7 @@ Form
 : patch
 
 State
-: draft
+: withdrawn
 
 From work
 : 2026-11-18-upstream-forks
@@ -511,13 +511,13 @@ Carried in
 : fork-sxmo-utils/topic/sxmo-surya-sensors-suspend
 
 Waits
-: the phone proof surya-sxmo-suspend-series, then the author's word
+: none
 
 Note
-: Third of the sxmo series; proven by test sensors-after-suspend on surya.
+: Withdrawn 2026-11-19, unsent: sxmo's list is on SourceHut, whose ToS since 2026-09-10 bars LLM-written contributions; the author's yes to 2026-11-19-hardware-test-layer. The fork branch stays as it is; nothing goes to sxmo-devel.
 
 Last update
-: 2026-11-18
+: 2026-11-19
 
 
 <a id="rhizoid-carries-mail-forks"></a>
@@ -714,3 +714,37 @@ Note
 
 Last update
 : 2026-11-18
+
+
+<a id="pmic-wdt-gen2-v1"></a>
+### [PATCH 0/6] watchdog: pm8916_wdt: Second generation PON (PM8998, PM6150): two fixes, binding, driver, two dts nodes
+
+Upstream
+: linux-watchdog
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: upstream-readiness-inventory
+
+About
+: upstream-forks
+
+Local ref
+: next-20261118 + 6 (prep tree); fork-linux/topic/pmic-wdt-wake-in-suspend 8b2283da3 and f5bb57d27 for the fixes
+
+File
+: research/upstream-forks/2026-11-19/pmic-wdt-gen2-v1
+
+Waits
+: walleye's attended Pixel 2 bite at v7.3 + 8b2283da3 showing a restart (the author's 'Yes, test first'), then the cover letter's testing paragraph updated, a rebase and re-check on the day, and the author's sign-off; sent by him
+
+Note
+: Prepared and checked on next-20261118 (build, checkpatch, lpoco-bringup dt-check with nodes enabled); SEND-NOTES.md says the steps before sending and what is not proven. Not sent.
+
+Last update
+: 2026-11-19
