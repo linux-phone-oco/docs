@@ -6463,5 +6463,8 @@ Device
 Proof
 : a real dt-check dtbs run with the pushed image names a bogus property's violation and exits 1
 
+Rank
+: 1
+
 About
 : bringup-steps
