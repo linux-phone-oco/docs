@@ -5992,10 +5992,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: What sxmo patch 2/3 did inside sxmo, in our own tool, so sensors-across-suspend is proven in the test layer. way-back.sh's stop-sensors flag is the prior art (research 2026-11-18-sensorspd-stopped-no-adsp-crash); a real systemctl suspend needs the delayed restart (research 2026-11-18-systemctl-suspend-leaves-sensors-stopped). The test sensors-after-suspend is re-said without 'under Sxmo'.
+: 2026-11-19, lab-tools-builder: done (lab-tools #209, main f998e51). [health] suspend_stop (units) -> SUSPEND_STOP; lpoco-health suspend cycle stops the active ones before the alarm is armed, starts them back last-stopped-first after the wake (also after a cut-off cycle, via stopped.json); report has stopped/not_stopped/not_started, not_started fails the run. Proof: health/tests/suspend_cycle.rs (stopped before the suspend, started after, inactive left alone, refused stops nothing, stale started by next) seen failing first. Open: no device declares suspend_stop yet (surya's device.toml needs suspend_stop=[sensorspd] and the test sensors-after-suspend re-said without 'under Sxmo'); unit names unparsed (suspend_quiet likewise); reverse dependents of a stopped unit are not restarted; no phone run.
 
 Opened
 : 2026-11-19
