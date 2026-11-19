@@ -72,16 +72,6 @@ What
 : A distribution's root boots, the network is up and the health suite runs on every boot.
 
 
-<a id="lab"></a>
-### Lab
-
-Ord
-: 8
-
-What
-: What the lab needs of a machine to work on it without hands: the ways in, a try that cannot brick.
-
-
 <a id="coprocessors"></a>
 ### Coprocessors
 
@@ -172,26 +162,6 @@ What
 : Suspend that returns, wakes only for what matters and reaches the SoC's floor; a day on one charge.
 
 
-<a id="shell"></a>
-### Shell
-
-Ord
-: 18
-
-What
-: A phone shell on the hardware: keyboard, lock, notifications.
-
-
-<a id="upkeep"></a>
-### Updates and endurance
-
-Ord
-: 19
-
-What
-: Updates that apply and roll back, and the phone still working after days, upgrades and crashes of its parts.
-
-
 <a id="goals"></a>
 ### Goals
 
@@ -200,3 +170,33 @@ Ord
 
 What
 : The steps that only name a whole: Linux runs, a daily-usable phone, a complete phone - each done when all it needs is.
+
+
+<a id="lab"></a>
+### Lab
+
+Ord
+: 8
+
+What
+: What the lab needs of a machine to work on it without hands: the ways in, a try that cannot brick, and a hardware-test layer with no shell to suspend, lock or answer keys on its own.
+
+
+<a id="upkeep"></a>
+### Updates and endurance
+
+Ord
+: 18
+
+What
+: Updates that apply and roll back, and the phone still working after days, upgrades and crashes of its parts.
+
+
+<a id="shell"></a>
+### Shell
+
+Ord
+: 19
+
+What
+: The phone shell - sxmo, Phosh or Plasma Mobile - as a layer after the proven hardware: it runs on it, locks, types, notifies, rotates and holds its own idle suspend.

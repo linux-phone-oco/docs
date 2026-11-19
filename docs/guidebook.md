@@ -2,7 +2,7 @@
 
 # Bring-up guidebook
 
-Every small step that makes Linux run on a phone, in the order a bring-up meets them: 113 steps in 20 stages, one chapter each. A step shows what done means, what it needs and what it enables, the proof that tests it, the helper that does it or the gap, and how it is done with the traps met so far. A **World gap** marks a step the world has no open answer to yet. Where each phone stands on each step is the [bring-up steps view of the face](../en/linux-phones/steps.html); the rows themselves are in the [steps table](bringup_steps.md).
+Every small step that makes Linux run on a phone, in the order a bring-up meets them: 114 steps in 20 stages, one chapter each. A step shows what done means, what it needs and what it enables, the proof that tests it, the helper that does it or the gap, and how it is done with the traps met so far. A **World gap** marks a step the world has no open answer to yet. Where each phone stands on each step is the [bring-up steps view of the face](../en/linux-phones/steps.html); the rows themselves are in the [steps table](bringup_steps.md).
 
 ## The chapters
 
@@ -18,13 +18,13 @@ Every small step that makes Linux run on a phone, in the order a bring-up meets 
 10. [Display and input](#stage-display) - 5 steps
 11. [Sound](#stage-audio) - 9 steps
 12. [Modem, SMS and data](#stage-modem) - 7 steps
-13. [Calls](#stage-calls) - 5 steps
+13. [Calls](#stage-calls) - 4 steps
 14. [Local radios](#stage-radios) - 6 steps
-15. [Sensors and location](#stage-sensors) - 7 steps
+15. [Sensors and location](#stage-sensors) - 5 steps
 16. [Camera](#stage-camera) - 7 steps
-17. [Sleep and battery life](#stage-sleep) - 12 steps
-18. [Shell](#stage-shell) - 4 steps
-19. [Updates and endurance](#stage-upkeep) - 6 steps
+17. [Sleep and battery life](#stage-sleep) - 10 steps
+18. [Updates and endurance](#stage-upkeep) - 5 steps
+19. [Shell](#stage-shell) - 11 steps
 20. [Goals](#stage-goals) - 3 steps
 
 <a id="stage-prepare"></a>
@@ -323,7 +323,7 @@ Step 37 in the chain, id `pmic-bound`, applies to `any`, checked on 2026-11-18.
 <a id="step-charger-online"></a>
 ### The charger online
 
-Step 41 in the chain, id `charger-online`, applies to `power:battery`, checked on 2026-11-18.
+Step 42 in the chain, id `charger-online`, applies to `power:battery`, checked on 2026-11-18.
 
 - **Done when:** a power\_supply of type USB appears, online follows the cable, and the voltage rises while connected
 - **Needs:**
@@ -336,7 +336,7 @@ Step 41 in the chain, id `charger-online`, applies to `power:battery`, checked o
 <a id="step-watchdog-way-back"></a>
 ### A hung kernel comes back by itself
 
-Step 42 in the chain, id `watchdog-way-back`, applies to `any`, checked on 2026-11-18.
+Step 43 in the chain, id `watchdog-way-back`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** a hung kernel resets by itself and the phone returns to a known system without hands
 - **Needs:**
@@ -350,7 +350,7 @@ Step 42 in the chain, id `watchdog-way-back`, applies to `any`, checked on 2026-
 <a id="step-battery-gauge-reads"></a>
 ### The battery gauge reads true
 
-Step 43 in the chain, id `battery-gauge-reads`, applies to `power:battery`, checked on 2026-11-18, first light of the part `battery`.
+Step 44 in the chain, id `battery-gauge-reads`, applies to `power:battery`, checked on 2026-11-18, first light of the part `battery`.
 
 - **Done when:** capacity, voltage and current read in power\_supply agree with a meter within 5 % over a discharge
 - **Needs:**
@@ -364,7 +364,7 @@ Step 43 in the chain, id `battery-gauge-reads`, applies to `power:battery`, chec
 <a id="step-pon-reason-read"></a>
 ### Why it turned on, and why it last turned off, are read
 
-Step 44 in the chain, id `pon-reason-read`, applies to `any`, checked on 2026-11-18.
+Step 45 in the chain, id `pon-reason-read`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** each boot logs the power-on reason (key, USB charger, RTC alarm, warm reset, watchdog, key-combo reset) and the last power-off reason, read from the PMIC
 - **Needs:**
@@ -378,7 +378,7 @@ Step 44 in the chain, id `pon-reason-read`, applies to `any`, checked on 2026-11
 <a id="step-reset-types-right"></a>
 ### Power-off, reboot and a bite each reach the right PMIC reset
 
-Step 46 in the chain, id `reset-types-right`, applies to `any`, checked on 2026-11-18.
+Step 48 in the chain, id `reset-types-right`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** power-off ends in the PMIC's shutdown, reboot in a warm or hard reset, and a watchdog bite in a hard reset - each read back from the PMIC and seen in the next boot's reason
 - **Needs:**
@@ -393,7 +393,7 @@ Step 46 in the chain, id `reset-types-right`, applies to `any`, checked on 2026-
 <a id="step-reset-state-survives"></a>
 ### What must survive a reset does, and the rest is set again
 
-Step 47 in the chain, id `reset-state-survives`, applies to `any`, checked on 2026-11-18.
+Step 49 in the chain, id `reset-state-survives`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** across a warm reset the reboot mode (the PMIC's spare register: bootloader, recovery), the RTC and ramoops survive; after any reset the kernel sets again the PMIC state it relies on (S2 reset type, watchdogs) and reads it back
 - **Needs:**
@@ -408,7 +408,7 @@ Step 47 in the chain, id `reset-state-survives`, applies to `any`, checked on 20
 <a id="step-key-reset-recovers"></a>
 ### A held key resets a hung phone
 
-Step 48 in the chain, id `key-reset-recovers`, applies to `any`, checked on 2026-11-18, first light of the part `buttons`.
+Step 50 in the chain, id `key-reset-recovers`, applies to `any`, checked on 2026-11-18, first light of the part `buttons`.
 
 - **Done when:** holding power (with volume down where so wired) for the set time hard-resets a hung phone, and the next boot's reason says so
 - **Needs:**
@@ -422,7 +422,7 @@ Step 48 in the chain, id `key-reset-recovers`, applies to `any`, checked on 2026
 <a id="step-power-off-stays-off"></a>
 ### Off stays off
 
-Step 51 in the chain, id `power-off-stays-off`, applies to `any`, checked on 2026-11-18.
+Step 53 in the chain, id `power-off-stays-off`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** poweroff leaves the machine off, and plugging a charger in does not boot the full system
 - **Needs:**
@@ -438,7 +438,7 @@ Step 51 in the chain, id `power-off-stays-off`, applies to `any`, checked on 202
 <a id="step-thermal-zones-sane"></a>
 ### Thermal zones read and throttle
 
-Step 52 in the chain, id `thermal-zones-sane`, applies to `any`, checked on 2026-11-18.
+Step 54 in the chain, id `thermal-zones-sane`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** every thermal zone reads a plausible temperature, trips are set, and a load throttles before any shutdown
 - **Needs:**
@@ -452,7 +452,7 @@ Step 52 in the chain, id `thermal-zones-sane`, applies to `any`, checked on 2026
 <a id="step-charger-mode-entered"></a>
 ### A charger power-on starts the charging screen, not the system
 
-Step 62 in the chain, id `charger-mode-entered`, applies to `power:battery`, checked on 2026-11-18, first light of the part `battery`.
+Step 64 in the chain, id `charger-mode-entered`, applies to `power:battery`, checked on 2026-11-18, first light of the part `battery`.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -471,7 +471,7 @@ Step 62 in the chain, id `charger-mode-entered`, applies to `power:battery`, che
 <a id="step-rtc-alarm-powers-on"></a>
 ### An alarm turns the phone on from off
 
-Step 63 in the chain, id `rtc-alarm-powers-on`, applies to `any`, checked on 2026-11-18.
+Step 65 in the chain, id `rtc-alarm-powers-on`, applies to `any`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -487,7 +487,7 @@ Step 63 in the chain, id `rtc-alarm-powers-on`, applies to `any`, checked on 202
 <a id="step-off-mode-charging"></a>
 ### Charges while off
 
-Step 76 in the chain, id `off-mode-charging`, applies to `power:battery`, checked on 2026-11-18, first light of the part `battery`.
+Step 77 in the chain, id `off-mode-charging`, applies to `power:battery`, checked on 2026-11-18, first light of the part `battery`.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -511,7 +511,7 @@ Internal storage seen, first read-only.
 <a id="step-storage-readonly"></a>
 ### Internal storage read-only
 
-Step 45 in the chain, id `storage-readonly`, applies to `any`, checked on 2026-11-18.
+Step 46 in the chain, id `storage-readonly`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the internal storage lists its partitions by name, nothing written
 - **Needs:**
@@ -543,13 +543,13 @@ Step 21 in the chain, id `usb-network`, applies to `usb:gadget`, checked on 2026
 <a id="step-rootfs-boots"></a>
 ### A distribution root boots
 
-Step 49 in the chain, id `rootfs-boots`, applies to `any`, checked on 2026-11-18.
+Step 51 in the chain, id `rootfs-boots`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** a distribution's root filesystem boots to its init and ssh answers
 - **Needs:**
   - [storage-readonly](#step-storage-readonly) - hard: the root is on the storage
   - [usb-network](#step-usb-network) - hard: ssh is the proof
-- **Enables:** [thermal-zones-sane](#step-thermal-zones-sane), [health-suite-runs](#step-health-suite-runs), [fastrpc-helpers-stable](#step-fastrpc-helpers-stable), [buttons-report](#step-buttons-report), [haptics-buzz](#step-haptics-buzz), [ucm-hifi-profile](#step-ucm-hifi-profile), [modem-file-services](#step-modem-file-services), [nfc-reads-tag](#step-nfc-reads-tag), [usb-host-works](#step-usb-host-works), [s2idle-cycle-returns](#step-s2idle-cycle-returns), [shell-runs-with-hardware](#step-shell-runs-with-hardware), [update-applies](#step-update-applies), [gnss-fix](#step-gnss-fix), [fingerprint-unlocks](#step-fingerprint-unlocks)
+- **Enables:** [thermal-zones-sane](#step-thermal-zones-sane), [health-suite-runs](#step-health-suite-runs), [fastrpc-helpers-stable](#step-fastrpc-helpers-stable), [buttons-report](#step-buttons-report), [haptics-buzz](#step-haptics-buzz), [ucm-hifi-profile](#step-ucm-hifi-profile), [modem-file-services](#step-modem-file-services), [nfc-reads-tag](#step-nfc-reads-tag), [usb-host-works](#step-usb-host-works), [fingerprint-unlocks](#step-fingerprint-unlocks), [test-layer-boots](#step-test-layer-boots), [update-applies](#step-update-applies), [shell-runs-with-hardware](#step-shell-runs-with-hardware), [gnss-fix](#step-gnss-fix), [s2idle-cycle-returns](#step-s2idle-cycle-returns)
 - **Proof:** `rootfs-ssh`, host-check
 - **Helper:** `lpoco lab flash, provision`
 - **Guide:** surya boots Nura through U-Boot, systemd-boot and an EFI kernel (first-fastboot-probe).
@@ -557,12 +557,12 @@ Step 49 in the chain, id `rootfs-boots`, applies to `any`, checked on 2026-11-18
 <a id="step-health-suite-runs"></a>
 ### The health suite runs after every boot
 
-Step 53 in the chain, id `health-suite-runs`, applies to `any`, checked on 2026-11-18.
+Step 55 in the chain, id `health-suite-runs`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the phone's own suite runs after every boot and its run is filed in the device's base
 - **Needs:**
   - [rootfs-boots](#step-rootfs-boots) - hard: the suite runs on the root
-- **Enables:** [update-applies](#step-update-applies), [kernel-upgrade-keeps-steps](#step-kernel-upgrade-keeps-steps), [linux-runs](#step-linux-runs), [cycles-repeat-clean](#step-cycles-repeat-clean)
+- **Enables:** [test-layer-boots](#step-test-layer-boots), [update-applies](#step-update-applies), [kernel-upgrade-keeps-steps](#step-kernel-upgrade-keeps-steps), [linux-runs](#step-linux-runs), [cycles-repeat-clean](#step-cycles-repeat-clean)
 - **Proof:** `suite-filed`, phone-suite
 - **Helper:** `lpoco lab suite put, run`
 - **Guide:** From here a part's status is measured, not judged (surya 2026-11-17-health-on-the-phone).
@@ -570,7 +570,7 @@ Step 53 in the chain, id `health-suite-runs`, applies to `any`, checked on 2026-
 <a id="stage-lab"></a>
 ## 8. Lab
 
-What the lab needs of a machine to work on it without hands: the ways in, a try that cannot brick.
+What the lab needs of a machine to work on it without hands: the ways in, a try that cannot brick, and a hardware-test layer with no shell to suspend, lock or answer keys on its own.
 
 <a id="step-lab-link-held-awake"></a>
 ### The lab's link holds the phone awake
@@ -580,23 +580,25 @@ Step 28 in the chain, id `lab-link-held-awake`, applies to `any`, checked on 202
 - **Done when:** while a host holds the USB link, nothing suspends the phone, and the hold is released on purpose for sleep tests
 - **Needs:**
   - [usb-network](#step-usb-network) - hard: the link is the USB network
-- **Enables:** [shell-autosleep-tamed](#step-shell-autosleep-tamed), [usb-host-works](#step-usb-host-works)
+- **Enables:** [shell-autosleep-tamed](#step-shell-autosleep-tamed), [usb-host-works](#step-usb-host-works), [test-layer-boots](#step-test-layer-boots)
 - **Proof:** `usb-awake`, phone-suite
 - **Helper:** no helper yet - a helper to write
 - **Guide:** surya: 26 link drops in 5 minutes before the hold (2026-11-10-usb-flapping), the screen blanking by itself (2026-11-18-screen-blanks-by-itself); held by devlab-usb-awake-hold-through-resume, moving to a package (surya-awake-from-package).
 
-<a id="step-shell-autosleep-tamed"></a>
-### The shell's own sleep loop is gated
+<a id="step-test-layer-boots"></a>
+### The test layer boots, with no shell
 
-Step 33 in the chain, id `shell-autosleep-tamed`, applies to `any`, checked on 2026-11-18.
+Step 66 in the chain, id `test-layer-boots`, applies to `any`, checked on 2026-11-19.
 
-- **Done when:** the shell's auto-suspend is off or gated while the lab works, and a failed suspend backs off instead of looping
+- **Done when:** a boot with no phone shell (multi-user.target, no display manager) is up with a tty, ssh and the lab's services, and nothing in it suspends, locks or reacts to keys unless a test asks; the lab's suspend work runs there
 - **Needs:**
-  - [lab-link-held-awake](#step-lab-link-held-awake) - hard: the shell's loop cut the lab off (2026-11-18-who-runs-rtcwake-99999999)
-- **Enables:** [real-suspend-under-shell](#step-real-suspend-under-shell)
-- **Proof:** `autosleep-off`, phone-suite
+  - [health-suite-runs](#step-health-suite-runs) - hard: the layer is proven by a health check
+  - [lab-link-held-awake](#step-lab-link-held-awake) - hard: lpoco-awake is part of the layer: the lab's link stays up unless a test asks
+  - [rootfs-boots](#step-rootfs-boots) - hard: a root with its services
+- **Enables:** [s2idle-cycle-returns](#step-s2idle-cycle-returns)
+- **Proof:** `test-layer-quiet`, phone-suite
 - **Helper:** no helper yet - a helper to write
-- **Guide:** surya: sxmo's rtcwake loop cut the lab off (2026-11-18-who-runs-rtcwake-99999999); kept off by sxmo-autosleep-off-lasting and bt-suspend-gate, proven by suspend-retry-backs-off; the fix goes to sxmo (surya-sxmo-suspend-series).
+- **Guide:** Hardware steps are proven here, the shell's own in the shell stage (2026-11-19-hardware-test-layer). lab-tools' health-test-layer-quiet reads it: no shell or idle-suspend process runs, logind's IdleAction and HandlePowerKey are ignore, no suspend this boot but the health suite's own cycles; in a shell layer it says skip and names the shell, so the step stays unknown until the test layer boots. surya: the image it runs, booted from a second entry with systemd.unit=multi-user.target, the sxmo entry beside it. A new device's first root filesystem is this layer. Measured: test-layer-sxmo-cost-measured, test-layer-landscape.
 
 <a id="stage-coprocessors"></a>
 ## 9. Coprocessors
@@ -648,7 +650,7 @@ Step 22 in the chain, id `remoteprocs-running`, applies to `any`, checked on 202
 <a id="step-fastrpc-helpers-stable"></a>
 ### The DSP helpers run without crashing the DSP
 
-Step 54 in the chain, id `fastrpc-helpers-stable`, applies to `soc:qcom`, checked on 2026-11-18.
+Step 56 in the chain, id `fastrpc-helpers-stable`, applies to `soc:qcom`, checked on 2026-11-18.
 
 - **Done when:** the FastRPC helpers (hexagonrpcd) serve and the DSP they talk to stays up over three boots
 - **Needs:**
@@ -709,7 +711,7 @@ Step 24 in the chain, id `gpu-renders`, applies to `any`, checked on 2026-11-18,
 <a id="step-buttons-report"></a>
 ### The keys report one event a press
 
-Step 55 in the chain, id `buttons-report`, applies to `any`, checked on 2026-11-18, first light of the part `buttons`.
+Step 57 in the chain, id `buttons-report`, applies to `any`, checked on 2026-11-18, first light of the part `buttons`.
 
 - **Done when:** power and volume keys give one press and one release each, no chatter
 - **Needs:**
@@ -723,7 +725,7 @@ Step 55 in the chain, id `buttons-report`, applies to `any`, checked on 2026-11-
 <a id="step-haptics-buzz"></a>
 ### The vibrator buzzes
 
-Step 56 in the chain, id `haptics-buzz`, applies to `any`, checked on 2026-11-18, first light of the part `haptics`.
+Step 58 in the chain, id `haptics-buzz`, applies to `any`, checked on 2026-11-18, first light of the part `haptics`.
 
 - **Done when:** a force-feedback effect is felt
 - **Needs:**
@@ -755,7 +757,7 @@ Step 29 in the chain, id `audio-codec-attached`, applies to `any`, checked on 20
 <a id="step-sound-card-registered"></a>
 ### The sound card registers
 
-Step 34 in the chain, id `sound-card-registered`, applies to `any`, checked on 2026-11-18.
+Step 33 in the chain, id `sound-card-registered`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the machine's card is listed on every boot
 - **Needs:**
@@ -787,7 +789,7 @@ Step 39 in the chain, id `mic-captures`, applies to `any`, checked on 2026-11-18
 - **Done when:** a second of capture from each microphone is not digital silence
 - **Needs:**
   - [sound-card-registered](#step-sound-card-registered) - hard: capture is the card's
-- **Enables:** [headset-jack](#step-headset-jack), [mic-hears-speaker](#step-mic-hears-speaker), [video-recorded](#step-video-recorded), [call-audio-path](#step-call-audio-path)
+- **Enables:** [video-recorded](#step-video-recorded), [headset-jack](#step-headset-jack), [mic-hears-speaker](#step-mic-hears-speaker), [call-audio-path](#step-call-audio-path)
 - **Proof:** `mic-records`, phone-suite
 - **Helper:** no helper yet - a helper to write
 - **Guide:** surya: zeros meant the link named the wrong DAI (mic-zeros-meant-no-input); the mics are analog through the WCD, ADC2 on its own port (2026-11-17-microphones-analog-wcd-path).
@@ -796,7 +798,7 @@ Step 39 in the chain, id `mic-captures`, applies to `any`, checked on 2026-11-18
 <a id="step-ucm-hifi-profile"></a>
 ### A UCM profile plays to the real card
 
-Step 57 in the chain, id `ucm-hifi-profile`, applies to `any`, checked on 2026-11-18.
+Step 59 in the chain, id `ucm-hifi-profile`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the shell's sound server picks the card's HiFi verb and plays in stereo, the right channel to the right speaker
 - **Needs:**
@@ -811,7 +813,7 @@ Step 57 in the chain, id `ucm-hifi-profile`, applies to `any`, checked on 2026-1
 <a id="step-speaker-heard"></a>
 ### The speaker is heard
 
-Step 64 in the chain, id `speaker-heard`, applies to `any`, checked on 2026-11-18, first light of the part `audio-speaker`.
+Step 67 in the chain, id `speaker-heard`, applies to `any`, checked on 2026-11-18, first light of the part `audio-speaker`.
 
 - **Done when:** a quiet tone on each channel is heard by the lab's ear
 - **Needs:**
@@ -824,7 +826,7 @@ Step 64 in the chain, id `speaker-heard`, applies to `any`, checked on 2026-11-1
 <a id="step-earpiece-plays"></a>
 ### The earpiece plays
 
-Step 65 in the chain, id `earpiece-plays`, applies to `form:phone`, checked on 2026-11-18, first light of the part `audio-earpiece`.
+Step 68 in the chain, id `earpiece-plays`, applies to `form:phone`, checked on 2026-11-18, first light of the part `audio-earpiece`.
 
 - **Done when:** a tone through the earpiece is heard by the bottom microphone
 - **Needs:**
@@ -837,7 +839,7 @@ Step 65 in the chain, id `earpiece-plays`, applies to `form:phone`, checked on 2
 <a id="step-headset-jack"></a>
 ### A headset works through the jack
 
-Step 66 in the chain, id `headset-jack`, applies to `any`, checked on 2026-11-18, first light of the part `audio-headphone`.
+Step 69 in the chain, id `headset-jack`, applies to `any`, checked on 2026-11-18, first light of the part `audio-headphone`.
 
 - **Done when:** plugging is detected, sound plays to the headset and its microphone records
 - **Needs:**
@@ -851,7 +853,7 @@ Step 66 in the chain, id `headset-jack`, applies to `any`, checked on 2026-11-18
 <a id="step-mic-hears-speaker"></a>
 ### Each microphone hears the speaker
 
-Step 77 in the chain, id `mic-hears-speaker`, applies to `any`, checked on 2026-11-18.
+Step 78 in the chain, id `mic-hears-speaker`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** each microphone finds the phone's own tone 20 dB above the noise
 - **Needs:**
@@ -870,7 +872,7 @@ The modem seen, the SIM read, the network joined; messages and data both ways.
 <a id="step-modem-file-services"></a>
 ### The modem's file services serve
 
-Step 58 in the chain, id `modem-file-services`, applies to `soc:qcom`, checked on 2026-11-18.
+Step 60 in the chain, id `modem-file-services`, applies to `soc:qcom`, checked on 2026-11-18.
 
 - **Done when:** rmtfs, the qrtr name service, pd-mapper and tqftpserv run and the modem's mode is online, not shutting down
 - **Needs:**
@@ -885,7 +887,7 @@ Step 58 in the chain, id `modem-file-services`, applies to `soc:qcom`, checked o
 <a id="step-modem-seen"></a>
 ### The modem is seen
 
-Step 67 in the chain, id `modem-seen`, applies to `radio:cellular`, checked on 2026-11-18.
+Step 70 in the chain, id `modem-seen`, applies to `radio:cellular`, checked on 2026-11-18.
 
 - **Done when:** ModemManager (or oFono) lists the modem
 - **Needs:**
@@ -899,7 +901,7 @@ Step 67 in the chain, id `modem-seen`, applies to `radio:cellular`, checked on 2
 <a id="step-sim-ready"></a>
 ### The SIM is read
 
-Step 78 in the chain, id `sim-ready`, applies to `radio:cellular`, checked on 2026-11-18.
+Step 79 in the chain, id `sim-ready`, applies to `radio:cellular`, checked on 2026-11-18.
 
 - **Done when:** the SIM reads present and unlocked, in each slot the device has
 - **Needs:**
@@ -913,7 +915,7 @@ Step 78 in the chain, id `sim-ready`, applies to `radio:cellular`, checked on 20
 <a id="step-modem-registered"></a>
 ### The modem joins the network
 
-Step 88 in the chain, id `modem-registered`, applies to `radio:cellular`, checked on 2026-11-18.
+Step 87 in the chain, id `modem-registered`, applies to `radio:cellular`, checked on 2026-11-18.
 
 - **Done when:** the modem is registered on a network
 - **Needs:**
@@ -952,7 +954,7 @@ Step 95 in the chain, id `mobile-data`, applies to `radio:cellular`, checked on 
 <a id="step-mms-both-ways"></a>
 ### MMS both ways
 
-Step 99 in the chain, id `mms-both-ways`, applies to `radio:cellular`, checked on 2026-11-18.
+Step 100 in the chain, id `mms-both-ways`, applies to `radio:cellular`, checked on 2026-11-18.
 
 - **Done when:** a picture message sent to the phone's own number comes back
 - **Needs:**
@@ -971,7 +973,7 @@ A call with sound both ways, the screen dark at the ear, emergency numbers known
 <a id="step-emergency-numbers-known"></a>
 ### Emergency numbers are known
 
-Step 79 in the chain, id `emergency-numbers-known`, applies to `form:phone`, checked on 2026-11-18.
+Step 80 in the chain, id `emergency-numbers-known`, applies to `form:phone`, checked on 2026-11-18.
 
 - **Done when:** the modem's emergency list is read, and 112 would be dialled as an emergency call even without a SIM - proven without dialling
 - **Needs:**
@@ -1004,37 +1006,21 @@ Step 96 in the chain, id `call-audio-path`, applies to `form:phone`, checked on 
 <a id="step-voice-call-both-ways"></a>
 ### A call carries sound both ways
 
-Step 100 in the chain, id `voice-call-both-ways`, applies to `form:phone`, checked on 2026-11-18, first light of the part `modem-calls`.
+Step 101 in the chain, id `voice-call-both-ways`, applies to `form:phone`, checked on 2026-11-18, first light of the part `modem-calls`.
 
 - **Done when:** a tone sent into a call comes back from an echo line
 - **Needs:**
   - [call-audio-path](#step-call-audio-path) - hard: sound both ways
-- **Enables:** [proximity-blanks-in-call](#step-proximity-blanks-in-call), [volte-call](#step-volte-call), [call-wakes-from-sleep](#step-call-wakes-from-sleep), [daily-usable-phone](#step-daily-usable-phone)
+- **Enables:** [volte-call](#step-volte-call), [call-wakes-from-sleep](#step-call-wakes-from-sleep), [proximity-blanks-in-call](#step-proximity-blanks-in-call), [daily-usable-phone](#step-daily-usable-phone)
 - **Proof:** `call-echo`, phone-suite
 - **Helper:** no helper yet - a helper to write
 - **Guide:** Proven by an echo call, no hands (2026-11-17-calls-proven-by-echo-call, echo-call-test-design). surya done.
 - **Sources:** [Programmable voice (a number that answers and plays a tone)](https://www.twilio.com/docs/voice)
 
-<a id="step-proximity-blanks-in-call"></a>
-### The screen goes dark at the ear
-
-Step 105 in the chain, id `proximity-blanks-in-call`, applies to `form:phone`, checked on 2026-11-18.
-
-- **Done when:** in a call the screen blanks and touch is ignored while the proximity sensor is covered
-- **Needs:**
-  - [proximity-reads](#step-proximity-reads) - hard: the sensor it follows
-  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - hard: the shell blanks the screen
-  - [voice-call-both-ways](#step-voice-call-both-ways) - hard: in a call
-- **Enables:** [daily-usable-phone](#step-daily-usable-phone)
-- **Proof:** `proximity-in-call`, witness
-- **Helper:** no helper yet - a helper to write
-- **Guide:** surya open (sensors-proximity-in-calls). Sailfish checks it while suspended too (sailfish-hadk-checklist).
-- **Sources:** [Sailfish OS HADK: hardware adaptation checklist](https://hadk.sailfishos.org/ha-checklist/)
-
 <a id="step-volte-call"></a>
 ### A call over LTE
 
-Step 106 in the chain, id `volte-call`, applies to `radio:cellular`, checked on 2026-11-18.
+Step 107 in the chain, id `volte-call`, applies to `radio:cellular`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1083,7 +1069,7 @@ Step 30 in the chain, id `wifi-joins`, applies to `any`, checked on 2026-11-18, 
 <a id="step-nfc-reads-tag"></a>
 ### NFC reads a tag
 
-Step 59 in the chain, id `nfc-reads-tag`, applies to `any`, checked on 2026-11-18, first light of the part `nfc`.
+Step 61 in the chain, id `nfc-reads-tag`, applies to `any`, checked on 2026-11-18, first light of the part `nfc`.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1099,7 +1085,7 @@ Step 59 in the chain, id `nfc-reads-tag`, applies to `any`, checked on 2026-11-1
 <a id="step-usb-host-works"></a>
 ### USB host works
 
-Step 60 in the chain, id `usb-host-works`, applies to `any`, checked on 2026-11-18, first light of the part `usb-otg`.
+Step 62 in the chain, id `usb-host-works`, applies to `any`, checked on 2026-11-18, first light of the part `usb-otg`.
 
 - **Done when:** the port switches to host and a plugged device enumerates
 - **Needs:**
@@ -1113,7 +1099,7 @@ Step 60 in the chain, id `usb-host-works`, applies to `any`, checked on 2026-11-
 <a id="step-bt-pairs-carries-audio"></a>
 ### Bluetooth pairs and carries sound
 
-Step 68 in the chain, id `bt-pairs-carries-audio`, applies to `any`, checked on 2026-11-18.
+Step 71 in the chain, id `bt-pairs-carries-audio`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** a headset pairs, plays and records, in a call too
 - **Needs:**
@@ -1127,7 +1113,7 @@ Step 68 in the chain, id `bt-pairs-carries-audio`, applies to `any`, checked on 
 <a id="step-hotspot-shares-data"></a>
 ### The phone shares its data
 
-Step 101 in the chain, id `hotspot-shares-data`, applies to `radio:cellular`, checked on 2026-11-18.
+Step 102 in the chain, id `hotspot-shares-data`, applies to `radio:cellular`, checked on 2026-11-18.
 
 - **Done when:** a client on the phone's Wi-Fi hotspot reaches the internet over mobile data
 - **Needs:**
@@ -1143,10 +1129,23 @@ Step 101 in the chain, id `hotspot-shares-data`, applies to `radio:cellular`, ch
 
 Motion, light and proximity read and used; a position fix; the fingerprint reader.
 
+<a id="step-fingerprint-unlocks"></a>
+### The fingerprint unlocks
+
+Step 63 in the chain, id `fingerprint-unlocks`, applies to `any`, checked on 2026-11-18, first light of the part `fingerprint`.
+
+- **Done when:** a finger enrols and unlocks through fprintd
+- **Needs:**
+  - [rootfs-boots](#step-rootfs-boots) - hard: fprintd is userspace
+- **Enables:** [complete-phone](#step-complete-phone)
+- **Proof:** `fingerprint-unlock`, witness
+- **Helper:** no helper yet - a helper to write
+- **Guide:** surya: the reader is not exposed (reader-exposed fails, a declared gap). Most phone readers are not in libfprint.
+
 <a id="step-sensor-hub-stable"></a>
 ### The sensor hub runs without crashing its DSP
 
-Step 69 in the chain, id `sensor-hub-stable`, applies to `soc:qcom`, checked on 2026-11-18.
+Step 72 in the chain, id `sensor-hub-stable`, applies to `soc:qcom`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1162,12 +1161,12 @@ Step 69 in the chain, id `sensor-hub-stable`, applies to `soc:qcom`, checked on 
 <a id="step-sensors-exposed"></a>
 ### Motion and light sensors read
 
-Step 80 in the chain, id `sensors-exposed`, applies to `any`, checked on 2026-11-18, first light of the part `sensors`.
+Step 81 in the chain, id `sensors-exposed`, applies to `any`, checked on 2026-11-18, first light of the part `sensors`.
 
 - **Done when:** accelerometer, gyroscope and light give changing values through iio-sensor-proxy
 - **Needs:**
   - [sensor-hub-stable](#step-sensor-hub-stable) - hard: the hub serves them (on Qualcomm's sensor DSP)
-- **Enables:** [proximity-reads](#step-proximity-reads), [auto-rotate-follows](#step-auto-rotate-follows), [brightness-follows-light](#step-brightness-follows-light), [sensors-across-suspend](#step-sensors-across-suspend), [coprocessor-restart-recovers](#step-coprocessor-restart-recovers)
+- **Enables:** [proximity-reads](#step-proximity-reads), [sensors-across-suspend](#step-sensors-across-suspend), [auto-rotate-follows](#step-auto-rotate-follows), [brightness-follows-light](#step-brightness-follows-light), [coprocessor-restart-recovers](#step-coprocessor-restart-recovers)
 - **Proof:** `motion-and-light`, phone-suite
 - **Helper:** no helper yet - a helper to write
 - **Guide:** surya done (motion-and-light; the test once counted devices only, sensors-hardware-surya). Behind the Qualcomm DSP through libssc (iio-sensor-proxy-libssc).
@@ -1176,7 +1175,7 @@ Step 80 in the chain, id `sensors-exposed`, applies to `any`, checked on 2026-11
 <a id="step-gnss-fix"></a>
 ### A position fix
 
-Step 81 in the chain, id `gnss-fix`, applies to `any`, checked on 2026-11-18, first light of the part `gnss`.
+Step 82 in the chain, id `gnss-fix`, applies to `any`, checked on 2026-11-18, first light of the part `gnss`.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1190,24 +1189,10 @@ Step 81 in the chain, id `gnss-fix`, applies to `any`, checked on 2026-11-18, fi
 - **Guide:** On Qualcomm the location engine is the modem's (QMI LOC), through ModemManager and gnss-share. surya open (gps-measurable). World gap: no assisted GPS (XTRA) anywhere.
 - **Sources:** [gnss-share](https://gitlab.postmarketos.org/postmarketOS/gnss-share)
 
-<a id="step-fingerprint-unlocks"></a>
-### The fingerprint unlocks
-
-Step 82 in the chain, id `fingerprint-unlocks`, applies to `any`, checked on 2026-11-18, first light of the part `fingerprint`.
-
-- **Done when:** a finger enrols and unlocks through fprintd
-- **Needs:**
-  - [rootfs-boots](#step-rootfs-boots) - hard: fprintd is userspace
-  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - soft: unlocking is the shell's
-- **Enables:** [complete-phone](#step-complete-phone)
-- **Proof:** `fingerprint-unlock`, witness
-- **Helper:** no helper yet - a helper to write
-- **Guide:** surya: the reader is not exposed (reader-exposed fails, a declared gap). Most phone readers are not in libfprint.
-
 <a id="step-proximity-reads"></a>
 ### Proximity reads near and far
 
-Step 89 in the chain, id `proximity-reads`, applies to `any`, checked on 2026-11-18.
+Step 88 in the chain, id `proximity-reads`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** covering the sensor changes its reading from far to near and back
 - **Needs:**
@@ -1216,35 +1201,6 @@ Step 89 in the chain, id `proximity-reads`, applies to `any`, checked on 2026-11
 - **Proof:** `proximity-reads`, phone-suite
 - **Helper:** no helper yet - a helper to write
 - **Guide:** surya partial: covering it waits a witness (sensors-proximity-cover-witnessed).
-
-<a id="step-auto-rotate-follows"></a>
-### The screen follows rotation
-
-Step 90 in the chain, id `auto-rotate-follows`, applies to `any`, checked on 2026-11-18.
-
-- **Done when:** turning the phone turns the shell's screen
-- **Needs:**
-  - [sensors-exposed](#step-sensors-exposed) - hard: the accelerometer
-  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - hard: the shell rotates
-- **Enables:** [complete-phone](#step-complete-phone)
-- **Proof:** `auto-rotate`, witness
-- **Helper:** no helper yet - a helper to write
-- **Guide:** Never tried in our labs.
-
-<a id="step-brightness-follows-light"></a>
-### Brightness follows the light
-
-Step 91 in the chain, id `brightness-follows-light`, applies to `any`, checked on 2026-11-18.
-
-- **Done when:** covering the light sensor dims the panel under auto-brightness
-- **Needs:**
-  - [panel-lit](#step-panel-lit) - hard: the backlight
-  - [sensors-exposed](#step-sensors-exposed) - hard: the light sensor
-  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - soft: the shell's auto-brightness
-- **Enables:** [complete-phone](#step-complete-phone)
-- **Proof:** `auto-brightness`, witness
-- **Helper:** no helper yet - a helper to write
-- **Guide:** Never tried in our labs.
 
 <a id="stage-camera"></a>
 ## 16. Camera
@@ -1293,7 +1249,7 @@ Step 31 in the chain, id `raw-frame-captured`, applies to `any`, checked on 2026
 <a id="step-camera-stream-viewable"></a>
 ### A viewable stream
 
-Step 35 in the chain, id `camera-stream-viewable`, applies to `any`, checked on 2026-11-18.
+Step 34 in the chain, id `camera-stream-viewable`, applies to `any`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1301,16 +1257,30 @@ Step 35 in the chain, id `camera-stream-viewable`, applies to `any`, checked on 
 - **Needs:**
   - [raw-frame-captured](#step-raw-frame-captured) - hard: the ISP takes raw frames
   - [gpu-renders](#step-gpu-renders) - soft: libcamera's software ISP runs on the GPU (libcamera-softisp-fosdem-2026)
-- **Enables:** [focus-and-flash](#step-focus-and-flash), [photo-taken](#step-photo-taken)
+- **Enables:** [photo-taken](#step-photo-taken), [focus-and-flash](#step-focus-and-flash)
 - **Proof:** `camera-stream`, phone-suite
 - **Helper:** no helper yet - a helper to write
 - **Guide:** Today a software ISP, on the GPU since libcamera 0.7 (libcamera-softisp-fosdem-2026). World gap: the hardware ISP is not used on any Qualcomm phone (camss-stats-uapi-rfc).
 - **Sources:** [libcamera SoftISP status update](https://fosdem.org/2026/schedule/event/libcamera-softisp), [qcom-camss stats and params uAPI RFC](https://lkml.iu.edu/2604.3/02474.html)
 
+<a id="step-photo-taken"></a>
+### A photo
+
+Step 40 in the chain, id `photo-taken`, applies to `any`, checked on 2026-11-19, first light of the part `camera-rear`.
+
+- **Done when:** a capture tool saves a photo with sane exposure and colour from each camera
+- **Needs:**
+  - [camera-stream-viewable](#step-camera-stream-viewable) - hard: the app takes the stream
+- **Enables:** [video-recorded](#step-video-recorded), [daily-usable-phone](#step-daily-usable-phone)
+- **Proof:** `photo`, witness
+- **Helper:** no helper yet - a helper to write
+- **Guide:** Fairphone 6: all three cameras in 2026, the furthest any Qualcomm phone got (linmob-weekly-34-2026). Proven in the test layer with a capture tool; a shell's camera app is the shell's own use of it (2026-11-19-hardware-test-layer).
+- **Sources:** [Weekly Linux phone update 34/2026](https://linmob.net/weekly-update-34-2026/)
+
 <a id="step-focus-and-flash"></a>
 ### Focus and flash
 
-Step 40 in the chain, id `focus-and-flash`, applies to `any`, checked on 2026-11-18.
+Step 41 in the chain, id `focus-and-flash`, applies to `any`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1322,25 +1292,10 @@ Step 40 in the chain, id `focus-and-flash`, applies to `any`, checked on 2026-11
 - **Helper:** no helper yet - a helper to write
 - **Guide:** World gap: 3A tuning for phone sensors has no public prior art; focus-coil drivers were in review in 2025.
 
-<a id="step-photo-taken"></a>
-### A photo
-
-Step 83 in the chain, id `photo-taken`, applies to `any`, checked on 2026-11-18, first light of the part `camera-rear`.
-
-- **Done when:** a camera app saves a photo with sane exposure and colour from each camera
-- **Needs:**
-  - [camera-stream-viewable](#step-camera-stream-viewable) - hard: the app takes the stream
-  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - hard: an app on the shell
-- **Enables:** [video-recorded](#step-video-recorded), [daily-usable-phone](#step-daily-usable-phone)
-- **Proof:** `photo`, witness
-- **Helper:** no helper yet - a helper to write
-- **Guide:** Fairphone 6: all three cameras in 2026, the furthest any Qualcomm phone got (linmob-weekly-34-2026).
-- **Sources:** [Weekly Linux phone update 34/2026](https://linmob.net/weekly-update-34-2026/)
-
 <a id="step-video-recorded"></a>
 ### A video with sound
 
-Step 92 in the chain, id `video-recorded`, applies to `any`, checked on 2026-11-18.
+Step 47 in the chain, id `video-recorded`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** a recorded video plays back with its sound in step
 - **Needs:**
@@ -1359,12 +1314,12 @@ Suspend that returns, wakes only for what matters and reaches the SoC's floor; a
 <a id="step-suspend-way-back"></a>
 ### A hang in sleep finds its way back
 
-Step 50 in the chain, id `suspend-way-back`, applies to `any`, checked on 2026-11-18.
+Step 52 in the chain, id `suspend-way-back`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** a hang in or after suspend resets the machine or panics into ramoops
 - **Needs:**
   - [watchdog-way-back](#step-watchdog-way-back) - hard: the watchdog, kept armed through sleep
-- **Enables:** [s2idle-cycle-returns](#step-s2idle-cycle-returns), [resume-without-stall](#step-resume-without-stall)
+- **Enables:** [s2idle-cycle-returns](#step-s2idle-cycle-returns), [resume-without-stall](#step-resume-without-stall), [standby-current](#step-standby-current)
 - **Proof:** `sleep-way-back,pmic-wdt-wakes-in-suspend`, phone-suite
 - **Helper:** no helper yet - a helper to write
 - **Guide:** Extends watchdog-way-back into sleep. surya: the stock watchdog stops in suspend (2026-11-17-surya-way-back-inventory), kept armed by a patch (qcom-wdt-keep-armed-in-suspend); walleye: the PMIC watchdog bit and did not return (walleye-pmic-bite-reset-type-how-it-stands).
@@ -1373,13 +1328,14 @@ Step 50 in the chain, id `suspend-way-back`, applies to `any`, checked on 2026-1
 <a id="step-s2idle-cycle-returns"></a>
 ### A timed suspend returns
 
-Step 61 in the chain, id `s2idle-cycle-returns`, applies to `any`, checked on 2026-11-18.
+Step 83 in the chain, id `s2idle-cycle-returns`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** a 15 s RTC-timed suspend returns in the same boot
 - **Needs:**
   - [rootfs-boots](#step-rootfs-boots) - hard: an RTC-timed suspend from userspace
+  - [test-layer-boots](#step-test-layer-boots) - hard: the suspend work runs in the test layer, with no shell to suspend or lock on its own
   - [suspend-way-back](#step-suspend-way-back) - soft: blind without it: a hang in sleep leaves no trace
-- **Enables:** [suspend-wakes-quiet](#step-suspend-wakes-quiet), [radios-survive-suspend](#step-radios-survive-suspend), [soc-floor-reached](#step-soc-floor-reached), [sensors-across-suspend](#step-sensors-across-suspend), [resume-without-stall](#step-resume-without-stall)
+- **Enables:** [suspend-wakes-quiet](#step-suspend-wakes-quiet), [radios-survive-suspend](#step-radios-survive-suspend), [sensors-across-suspend](#step-sensors-across-suspend), [resume-without-stall](#step-resume-without-stall), [soc-floor-reached](#step-soc-floor-reached), [standby-current](#step-standby-current), [call-wakes-from-sleep](#step-call-wakes-from-sleep)
 - **Proof:** `suspend-cycle`, phone-suite
 - **Helper:** no helper yet - a helper to write
 - **Guide:** surya partial (health-suspend-cycle-proof): woke at once (2026-11-17-surya-s2idle-wakes-at-once), a UART wake across suspend (2026-11-17-qca-uart-wake-across-suspend). These SoCs have s2idle only (qcom-sleep-path).
@@ -1388,7 +1344,7 @@ Step 61 in the chain, id `s2idle-cycle-returns`, applies to `any`, checked on 20
 <a id="step-suspend-wakes-quiet"></a>
 ### Only the meant sources wake it
 
-Step 70 in the chain, id `suspend-wakes-quiet`, applies to `any`, checked on 2026-11-18.
+Step 89 in the chain, id `suspend-wakes-quiet`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** over a suspend only the RTC, the modem, the keys and the charger wake it
 - **Needs:**
@@ -1401,7 +1357,7 @@ Step 70 in the chain, id `suspend-wakes-quiet`, applies to `any`, checked on 202
 <a id="step-radios-survive-suspend"></a>
 ### The radios come back from sleep
 
-Step 71 in the chain, id `radios-survive-suspend`, applies to `any`, checked on 2026-11-18.
+Step 90 in the chain, id `radios-survive-suspend`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** after 20 cycles Wi-Fi and Bluetooth are up, with no interrupt storm and no controller crash
 - **Needs:**
@@ -1413,27 +1369,10 @@ Step 71 in the chain, id `radios-survive-suspend`, applies to `any`, checked on 
 - **Helper:** no helper yet - a helper to write
 - **Guide:** surya partial: the CTS pull-down hung the boot (2026-11-18-cts-pulldown-dtb-hangs); serial wakeup off (2026-11-17-serial-wakeup-off, 2026-11-18-bt-suspend-way).
 
-<a id="step-soc-floor-reached"></a>
-### The SoC reaches its floor
-
-Step 84 in the chain, id `soc-floor-reached`, applies to `any`, checked on 2026-11-18, first light of the part `deep-sleep`.
-
-**World gap** - the world has no open answer to this yet; the guide says what is missing.
-
-- **Done when:** in suspend the SoC's deepest-state counters rise (on Qualcomm: CX collapse and AOSS sleep)
-- **Needs:**
-  - [s2idle-cycle-returns](#step-s2idle-cycle-returns) - hard: read in suspend
-  - [suspend-wakes-quiet](#step-suspend-wakes-quiet) - soft: wakes keep it off the floor
-- **Enables:** [standby-current](#step-standby-current)
-- **Proof:** `soc-sleeps`, phone-suite
-- **Helper:** no helper yet - a helper to write
-- **Guide:** surya failing: cxsd, aosd and ddr stay 0 (2026-11-17-adsp-stopped-cx-aosd-ddr-stay-0, sleep-cluster-params). World gap: no public example of that floor on an SM7150/845-class phone (2026-11-17-floor-research).
-- **Sources:** [drivers/soc/qcom/qcom\_stats.c (rpmh-stats layout: aosd, cxsd, ddr read by name from the AOSS message RAM)](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/soc/qcom/qcom_stats.c), [lab-tools: the soc-sleeps check - the SoC's own sleep counters after every boot](https://github.com/linux-phone-oco/lab-tools/blob/main/health/suite/checks/base/90-sleep.sh)
-
 <a id="step-sensors-across-suspend"></a>
 ### Sensors come back from sleep
 
-Step 93 in the chain, id `sensors-across-suspend`, applies to `any`, checked on 2026-11-18.
+Step 91 in the chain, id `sensors-across-suspend`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** the sensor helper is stopped before suspend and serves again after
 - **Needs:**
@@ -1455,38 +1394,58 @@ Step 97 in the chain, id `resume-without-stall`, applies to `any`, checked on 20
   - [s2idle-cycle-returns](#step-s2idle-cycle-returns) - hard: across suspends
   - [sensors-across-suspend](#step-sensors-across-suspend) - hard: an attached helper crashes the DSP at resume (sleep-fastrpc-helpers)
   - [suspend-way-back](#step-suspend-way-back) - hard: a stall must come back to be counted
-- **Enables:** [real-suspend-under-shell](#step-real-suspend-under-shell), [cycles-repeat-clean](#step-cycles-repeat-clean)
+- **Enables:** [cycles-repeat-clean](#step-cycles-repeat-clean), [real-suspend-under-shell](#step-real-suspend-under-shell)
 - **Proof:** `resume-clean`, phone-suite
 - **Helper:** no helper yet - a helper to write
 - **Guide:** surya failing (2026-11-18-resume-stall-how-it-stands, resume-stall-stop-clients).
 
-<a id="step-real-suspend-under-shell"></a>
-### The shell's own suspend returns
+<a id="step-soc-floor-reached"></a>
+### The SoC reaches its floor
 
-Step 102 in the chain, id `real-suspend-under-shell`, applies to `any`, checked on 2026-11-18.
+Step 98 in the chain, id `soc-floor-reached`, applies to `any`, checked on 2026-11-18, first light of the part `deep-sleep`.
 
-- **Done when:** the shell's auto-suspend and systemctl suspend return, again and again
+**World gap** - the world has no open answer to this yet; the guide says what is missing.
+
+- **Done when:** in suspend the SoC's deepest-state counters rise (on Qualcomm: CX collapse and AOSS sleep)
 - **Needs:**
-  - [radios-survive-suspend](#step-radios-survive-suspend) - hard: the radios come back
-  - [resume-without-stall](#step-resume-without-stall) - hard: it returns
-  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - hard: the shell's own suspend
-  - [shell-autosleep-tamed](#step-shell-autosleep-tamed) - soft: in the lab the loop is gated first
-- **Enables:** [call-wakes-from-sleep](#step-call-wakes-from-sleep), [standby-current](#step-standby-current), [alarm-wakes-from-sleep](#step-alarm-wakes-from-sleep), [days-without-reboot](#step-days-without-reboot)
-- **Proof:** `shell-suspend`, phone-suite
+  - [s2idle-cycle-returns](#step-s2idle-cycle-returns) - hard: read in suspend
+  - [suspend-wakes-quiet](#step-suspend-wakes-quiet) - soft: wakes keep it off the floor
+- **Enables:** [standby-current](#step-standby-current)
+- **Proof:** `soc-sleeps`, phone-suite
 - **Helper:** no helper yet - a helper to write
-- **Guide:** surya failing: the phone did not return (2026-11-18-real-suspend-try4-phone-did-not-return).
-- **Sources:** [sxmo-utils scripts/core/sxmo\_autosuspend.sh, sxmo\_suspend.sh, sxmo\_wakelock.sh (868b5c9)](https://git.sr.ht/~mil/sxmo-utils/tree/master/item/scripts/core/sxmo_autosuspend.sh)
+- **Guide:** surya failing: cxsd, aosd and ddr stay 0 (2026-11-17-adsp-stopped-cx-aosd-ddr-stay-0, sleep-cluster-params). World gap: no public example of that floor on an SM7150/845-class phone (2026-11-17-floor-research).
+- **Sources:** [drivers/soc/qcom/qcom\_stats.c (rpmh-stats layout: aosd, cxsd, ddr read by name from the AOSS message RAM)](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/soc/qcom/qcom_stats.c), [lab-tools: the soc-sleeps check - the SoC's own sleep counters after every boot](https://github.com/linux-phone-oco/lab-tools/blob/main/health/suite/checks/base/90-sleep.sh)
+
+<a id="step-standby-current"></a>
+### Standby draws little
+
+Step 103 in the chain, id `standby-current`, applies to `power:battery`, checked on 2026-11-19.
+
+**World gap** - the world has no open answer to this yet; the guide says what is missing.
+
+- **Done when:** on battery alone, asleep with the modem attached, the average current is under the device's target (15 mA on surya)
+- **Needs:**
+  - [s2idle-cycle-returns](#step-s2idle-cycle-returns) - hard: measured first in the test layer
+  - [soc-floor-reached](#step-soc-floor-reached) - hard: no floor, no low current
+  - [suspend-wakes-quiet](#step-suspend-wakes-quiet) - hard: a phone woken by chatter does not stay low (floor-irq-quiet)
+  - [suspend-way-back](#step-suspend-way-back) - hard: a hang in sleep must find its way back before a night is measured
+  - [battery-gauge-reads](#step-battery-gauge-reads) - soft: a meter can stand in for the gauge
+- **Enables:** [all-day-battery](#step-all-day-battery)
+- **Proof:** `standby-current`, phone-suite
+- **Helper:** no helper yet - a helper to write
+- **Guide:** The arbiter of sleep (2026-11-17-standby-current-is-the-arbiter). surya partial: median 31 mA (2026-11-17-r3-partial-and-the-reset-after). World gap: no published s2idle figures per SoC with a modem. Measured first in the test layer, with no shell to wake it; the shell's figure follows under real-suspend-under-shell (2026-11-19-hardware-test-layer).
+- **Sources:** [Android developers: Optimize for Doze and App Standby](https://developer.android.com/training/monitoring-device-state/doze-standby)
 
 <a id="step-call-wakes-from-sleep"></a>
 ### A call or a message wakes it
 
-Step 107 in the chain, id `call-wakes-from-sleep`, applies to `form:phone`, checked on 2026-11-18.
+Step 108 in the chain, id `call-wakes-from-sleep`, applies to `form:phone`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
 - **Done when:** a call rings and an SMS arrives within 10 s while the phone sleeps
 - **Needs:**
-  - [real-suspend-under-shell](#step-real-suspend-under-shell) - hard: it sleeps as in daily use
+  - [s2idle-cycle-returns](#step-s2idle-cycle-returns) - hard: it sleeps in the test layer first, where nothing else wakes it
   - [sms-both-ways](#step-sms-both-ways) - hard: a message to arrive
   - [voice-call-both-ways](#step-voice-call-both-ways) - hard: a call to ring
 - **Enables:** [all-day-battery](#step-all-day-battery), [days-without-reboot](#step-days-without-reboot), [daily-usable-phone](#step-daily-usable-phone)
@@ -1495,44 +1454,10 @@ Step 107 in the chain, id `call-wakes-from-sleep`, applies to `form:phone`, chec
 - **Guide:** The IPCRTR glink wakeup plus ModemManager's quick suspend; reported not dependable on OnePlus 6 and Pixel 3a (qcom-wake-for-calls). World gap: waking for a call but not for chatter. surya open (sleep-wakes-for-calls).
 - **Sources:** [Nura (postmarketOS) wiki, SDM845: s2idle only; waking for calls through the modem's IPCRTR glink wakeup](https://wiki.nura.eco/wiki/Qualcomm_Snapdragon_845/850_(SDM845/SDM850)), [Nura (postmarketOS) wiki, OnePlus 6: ModemManager's quick suspend/resume and the IPCRTR wakeup](https://wiki.nura.eco/wiki/OnePlus_6_(oneplus-enchilada))
 
-<a id="step-standby-current"></a>
-### Standby draws little
-
-Step 108 in the chain, id `standby-current`, applies to `power:battery`, checked on 2026-11-18.
-
-**World gap** - the world has no open answer to this yet; the guide says what is missing.
-
-- **Done when:** on battery alone, asleep with the modem attached, the average current is under the device's target (15 mA on surya)
-- **Needs:**
-  - [real-suspend-under-shell](#step-real-suspend-under-shell) - hard: measured asleep as in daily use
-  - [soc-floor-reached](#step-soc-floor-reached) - hard: no floor, no low current
-  - [suspend-wakes-quiet](#step-suspend-wakes-quiet) - hard: a phone woken by chatter does not stay low (floor-irq-quiet)
-  - [battery-gauge-reads](#step-battery-gauge-reads) - soft: a meter can stand in for the gauge
-- **Enables:** [all-day-battery](#step-all-day-battery)
-- **Proof:** `standby-current`, phone-suite
-- **Helper:** no helper yet - a helper to write
-- **Guide:** The arbiter of sleep (2026-11-17-standby-current-is-the-arbiter). surya partial: median 31 mA (2026-11-17-r3-partial-and-the-reset-after). World gap: no published s2idle figures per SoC with a modem.
-- **Sources:** [Android developers: Optimize for Doze and App Standby](https://developer.android.com/training/monitoring-device-state/doze-standby)
-
-<a id="step-alarm-wakes-from-sleep"></a>
-### An alarm rings from sleep
-
-Step 109 in the chain, id `alarm-wakes-from-sleep`, applies to `any`, checked on 2026-11-18.
-
-- **Done when:** an alarm set in the clock app rings on time while the phone sleeps under its shell's suspend
-- **Needs:**
-  - [real-suspend-under-shell](#step-real-suspend-under-shell) - hard: it sleeps as in daily use
-  - [speaker-heard](#step-speaker-heard) - hard: it rings
-- **Enables:** [daily-usable-phone](#step-daily-usable-phone)
-- **Proof:** `alarm-rings`, phone-suite
-- **Helper:** no helper yet - a helper to write
-- **Guide:** The shell or clock must set an RTC wake alarm before suspend (kernel-sysfs-power-wakelock). Not known yet which phone shells do; never tried in our labs.
-- **Sources:** [Linux ABI: sysfs-power wake\_lock, wake\_unlock, autosleep](https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-power)
-
 <a id="step-all-day-battery"></a>
 ### A day on one charge
 
-Step 110 in the chain, id `all-day-battery`, applies to `power:battery`, checked on 2026-11-18.
+Step 111 in the chain, id `all-day-battery`, applies to `power:battery`, checked on 2026-11-18.
 
 - **Done when:** a day of mixed use - standby, calls, screen time - ends with charge left
 - **Needs:**
@@ -1544,73 +1469,8 @@ Step 110 in the chain, id `all-day-battery`, applies to `power:battery`, checked
 - **Guide:** Never measured. UBports keeps it as an endurance test (ubports-device-data).
 - **Sources:** [devices.ubuntu-touch.io data: portStatus, progressStages, supportStatus](https://gitlab.com/ubports/infrastructure/devices.ubuntu-touch.io)
 
-<a id="stage-shell"></a>
-## 18. Shell
-
-A phone shell on the hardware: keyboard, lock, notifications.
-
-<a id="step-shell-runs-with-hardware"></a>
-### A phone shell runs on the hardware
-
-Step 72 in the chain, id `shell-runs-with-hardware`, applies to `any`, checked on 2026-11-18.
-
-- **Done when:** a phone shell (sxmo, Phosh, Plasma Mobile) starts on the panel with touch, sound to the real card and its device profile
-- **Needs:**
-  - [panel-lit](#step-panel-lit) - hard: it shows
-  - [rootfs-boots](#step-rootfs-boots) - hard: a distribution's shell
-  - [touch-input](#step-touch-input) - hard: it is touched
-  - [gpu-renders](#step-gpu-renders) - soft: Phosh and Plasma Mobile need the GPU; sxmo does not
-  - [ucm-hifi-profile](#step-ucm-hifi-profile) - soft: its sound (plasma-silent)
-- **Enables:** [fingerprint-unlocks](#step-fingerprint-unlocks), [photo-taken](#step-photo-taken), [on-screen-keyboard](#step-on-screen-keyboard), [lock-and-unlock](#step-lock-and-unlock), [auto-rotate-follows](#step-auto-rotate-follows), [brightness-follows-light](#step-brightness-follows-light), [real-suspend-under-shell](#step-real-suspend-under-shell), [notifications-arrive](#step-notifications-arrive), [proximity-blanks-in-call](#step-proximity-blanks-in-call)
-- **Proof:** `shell-up`, phone-suite
-- **Helper:** no helper yet - a helper to write
-- **Guide:** surya: sxmo with its profile; under Phosh the host loses the USB link (phosh-usb); Plasma was silent from a saved -110 dB mixer (plasma-silent). Phosh and Plasma need the GPU, sxmo does not.
-- **Sources:** [Sxmo: contributing](https://sxmo.org/contribute/)
-
-<a id="step-on-screen-keyboard"></a>
-### The on-screen keyboard types
-
-Step 85 in the chain, id `on-screen-keyboard`, applies to `any`, checked on 2026-11-18.
-
-- **Done when:** the keyboard comes up in a text field and types into it
-- **Needs:**
-  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - hard: the shell's keyboard
-- **Enables:** [daily-usable-phone](#step-daily-usable-phone)
-- **Proof:** `osk-types`, witness
-- **Helper:** no helper yet - a helper to write
-- **Guide:** Witness for now; a robot finger or an input injection can stand in.
-
-<a id="step-lock-and-unlock"></a>
-### Lock and unlock
-
-Step 86 in the chain, id `lock-and-unlock`, applies to `any`, checked on 2026-11-18.
-
-- **Done when:** the power key locks and darkens; the phone unlocks with its code
-- **Needs:**
-  - [buttons-report](#step-buttons-report) - hard: the power key
-  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - hard: the shell's lock
-- **Enables:** [daily-usable-phone](#step-daily-usable-phone)
-- **Proof:** `lock-unlock`, witness
-- **Helper:** no helper yet - a helper to write
-- **Guide:** Needs the keys clean of chatter (buttons-report).
-
-<a id="step-notifications-arrive"></a>
-### Notifications arrive with the screen off
-
-Step 103 in the chain, id `notifications-arrive`, applies to `form:phone`, checked on 2026-11-18.
-
-- **Done when:** a message or a call shows a notification and sounds while the screen is off
-- **Needs:**
-  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - hard: the shell's notifications
-  - [sms-both-ways](#step-sms-both-ways) - soft: a message to announce
-  - [speaker-heard](#step-speaker-heard) - soft: it sounds
-- **Enables:** [daily-usable-phone](#step-daily-usable-phone)
-- **Proof:** `notification`, witness
-- **Helper:** no helper yet - a helper to write
-- **Guide:** Push for apps is a service (feature push-notifications), not a step.
-
 <a id="stage-upkeep"></a>
-## 19. Updates and endurance
+## 18. Updates and endurance
 
 Updates that apply and roll back, and the phone still working after days, upgrades and crashes of its parts.
 
@@ -1645,7 +1505,7 @@ Step 74 in the chain, id `kernel-upgrade-keeps-steps`, applies to `any`, checked
 <a id="step-update-rolls-back"></a>
 ### A bad update rolls back
 
-Step 87 in the chain, id `update-rolls-back`, applies to `any`, checked on 2026-11-18.
+Step 84 in the chain, id `update-rolls-back`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** an update that does not boot falls back to the last good one with no hands
 - **Needs:**
@@ -1661,7 +1521,7 @@ Step 87 in the chain, id `update-rolls-back`, applies to `any`, checked on 2026-
 <a id="step-coprocessor-restart-recovers"></a>
 ### A coprocessor crash is survived
 
-Step 98 in the chain, id `coprocessor-restart-recovers`, applies to `any`, checked on 2026-11-18.
+Step 99 in the chain, id `coprocessor-restart-recovers`, applies to `any`, checked on 2026-11-18.
 
 **World gap** - the world has no open answer to this yet; the guide says what is missing.
 
@@ -1691,10 +1551,165 @@ Step 104 in the chain, id `cycles-repeat-clean`, applies to `any`, checked on 20
 - **Guide:** 'Does audio still work after two hours asleep' (weiss-fosdem-2025-missing-20).
 - **Sources:** [Kernel support for Mobile Linux: the missing 20%](https://fosdem.org/2025/schedule/event/fosdem-2025-4836-kernel-support-for-mobile-linux-the-missing-20-/), [FOSDEM 2026: FOSS on Mobile devroom](https://archive.fosdem.org/2026/schedule/track/foss-on-mobile/)
 
+<a id="stage-shell"></a>
+## 19. Shell
+
+The phone shell - sxmo, Phosh or Plasma Mobile - as a layer after the proven hardware: it runs on it, locks, types, notifies, rotates and holds its own idle suspend.
+
+<a id="step-shell-autosleep-tamed"></a>
+### The shell's idle suspend is held off while the lab works
+
+Step 35 in the chain, id `shell-autosleep-tamed`, applies to `any`, checked on 2026-11-19.
+
+- **Done when:** the shell's own idle suspend is off or held off while the lab works, proven per shell (sxmo's autosleep, Phosh's gsd-power, Plasma Mobile's PowerDevil)
+- **Needs:**
+  - [lab-link-held-awake](#step-lab-link-held-awake) - hard: the shell's loop cut the lab off (2026-11-18-who-runs-rtcwake-99999999)
+- **Enables:** [real-suspend-under-shell](#step-real-suspend-under-shell)
+- **Proof:** `autosleep-off`, phone-suite
+- **Helper:** no helper yet - a helper to write
+- **Guide:** surya: sxmo's rtcwake loop cut the lab off (2026-11-18-who-runs-rtcwake-99999999). The test layer has no shell to hold off, so the hardware steps do not wait on this; it is the shell's own, once for each shell, and the sxmo fork and its series are retired (2026-11-19-hardware-test-layer).
+
+<a id="step-shell-runs-with-hardware"></a>
+### A phone shell runs on the hardware
+
+Step 75 in the chain, id `shell-runs-with-hardware`, applies to `any`, checked on 2026-11-18.
+
+- **Done when:** a phone shell (sxmo, Phosh, Plasma Mobile) starts on the panel with touch, sound to the real card and its device profile
+- **Needs:**
+  - [panel-lit](#step-panel-lit) - hard: it shows
+  - [rootfs-boots](#step-rootfs-boots) - hard: a distribution's shell
+  - [touch-input](#step-touch-input) - hard: it is touched
+  - [gpu-renders](#step-gpu-renders) - soft: Phosh and Plasma Mobile need the GPU; sxmo does not
+  - [ucm-hifi-profile](#step-ucm-hifi-profile) - soft: its sound (plasma-silent)
+- **Enables:** [on-screen-keyboard](#step-on-screen-keyboard), [lock-and-unlock](#step-lock-and-unlock), [auto-rotate-follows](#step-auto-rotate-follows), [brightness-follows-light](#step-brightness-follows-light), [notifications-arrive](#step-notifications-arrive), [real-suspend-under-shell](#step-real-suspend-under-shell), [proximity-blanks-in-call](#step-proximity-blanks-in-call)
+- **Proof:** `shell-up`, phone-suite
+- **Helper:** no helper yet - a helper to write
+- **Guide:** surya: sxmo with its profile; under Phosh the host loses the USB link (phosh-usb); Plasma was silent from a saved -110 dB mixer (plasma-silent). Phosh and Plasma need the GPU, sxmo does not.
+- **Sources:** [Sxmo: contributing](https://sxmo.org/contribute/)
+
+<a id="step-on-screen-keyboard"></a>
+### The on-screen keyboard types
+
+Step 85 in the chain, id `on-screen-keyboard`, applies to `any`, checked on 2026-11-18.
+
+- **Done when:** the keyboard comes up in a text field and types into it
+- **Needs:**
+  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - hard: the shell's keyboard
+- **Enables:** [daily-usable-phone](#step-daily-usable-phone)
+- **Proof:** `osk-types`, witness
+- **Helper:** no helper yet - a helper to write
+- **Guide:** Witness for now; a robot finger or an input injection can stand in.
+
+<a id="step-lock-and-unlock"></a>
+### Lock and unlock
+
+Step 86 in the chain, id `lock-and-unlock`, applies to `any`, checked on 2026-11-18.
+
+- **Done when:** the power key locks and darkens; the phone unlocks with its code
+- **Needs:**
+  - [buttons-report](#step-buttons-report) - hard: the power key
+  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - hard: the shell's lock
+- **Enables:** [daily-usable-phone](#step-daily-usable-phone)
+- **Proof:** `lock-unlock`, witness
+- **Helper:** no helper yet - a helper to write
+- **Guide:** Needs the keys clean of chatter (buttons-report).
+
+<a id="step-auto-rotate-follows"></a>
+### The screen follows rotation
+
+Step 92 in the chain, id `auto-rotate-follows`, applies to `any`, checked on 2026-11-19.
+
+- **Done when:** turning the phone turns the shell's screen
+- **Needs:**
+  - [sensors-exposed](#step-sensors-exposed) - hard: the accelerometer
+  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - hard: the shell rotates
+- **Enables:** [complete-phone](#step-complete-phone)
+- **Proof:** `auto-rotate`, witness
+- **Helper:** no helper yet - a helper to write
+- **Guide:** Never tried in our labs.
+
+<a id="step-brightness-follows-light"></a>
+### Brightness follows the light
+
+Step 93 in the chain, id `brightness-follows-light`, applies to `any`, checked on 2026-11-19.
+
+- **Done when:** covering the light sensor dims the panel under auto-brightness
+- **Needs:**
+  - [panel-lit](#step-panel-lit) - hard: the backlight
+  - [sensors-exposed](#step-sensors-exposed) - hard: the light sensor
+  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - soft: the shell's auto-brightness
+- **Enables:** [complete-phone](#step-complete-phone)
+- **Proof:** `auto-brightness`, witness
+- **Helper:** no helper yet - a helper to write
+- **Guide:** Never tried in our labs.
+
+<a id="step-notifications-arrive"></a>
+### Notifications arrive with the screen off
+
+Step 105 in the chain, id `notifications-arrive`, applies to `form:phone`, checked on 2026-11-18.
+
+- **Done when:** a message or a call shows a notification and sounds while the screen is off
+- **Needs:**
+  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - hard: the shell's notifications
+  - [sms-both-ways](#step-sms-both-ways) - soft: a message to announce
+  - [speaker-heard](#step-speaker-heard) - soft: it sounds
+- **Enables:** [daily-usable-phone](#step-daily-usable-phone)
+- **Proof:** `notification`, witness
+- **Helper:** no helper yet - a helper to write
+- **Guide:** Push for apps is a service (feature push-notifications), not a step.
+
+<a id="step-real-suspend-under-shell"></a>
+### The shell's own suspend returns
+
+Step 106 in the chain, id `real-suspend-under-shell`, applies to `any`, checked on 2026-11-19.
+
+- **Done when:** the shell's auto-suspend and systemctl suspend return, again and again
+- **Needs:**
+  - [radios-survive-suspend](#step-radios-survive-suspend) - hard: the radios come back
+  - [resume-without-stall](#step-resume-without-stall) - hard: it returns
+  - [shell-autosleep-tamed](#step-shell-autosleep-tamed) - hard: the shell's idle loop is held off first, or it cuts the lab off from its test (2026-11-18-who-runs-rtcwake-99999999)
+  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - hard: the shell's own suspend
+- **Enables:** [alarm-wakes-from-sleep](#step-alarm-wakes-from-sleep), [days-without-reboot](#step-days-without-reboot), [daily-usable-phone](#step-daily-usable-phone)
+- **Proof:** `shell-suspend`, phone-suite
+- **Helper:** no helper yet - a helper to write
+- **Guide:** surya failing: the phone did not return (2026-11-18-real-suspend-try4-phone-did-not-return). The hardware's suspend steps (s2idle-cycle-returns, radios-survive-suspend, suspend-way-back) are proven first in the test layer; this one is the shell's own idle suspend and systemctl suspend, per shell (2026-11-19-hardware-test-layer).
+- **Sources:** [sxmo-utils scripts/core/sxmo\_autosuspend.sh, sxmo\_suspend.sh, sxmo\_wakelock.sh (868b5c9)](https://git.sr.ht/~mil/sxmo-utils/tree/master/item/scripts/core/sxmo_autosuspend.sh)
+
+<a id="step-alarm-wakes-from-sleep"></a>
+### An alarm rings from sleep
+
+Step 109 in the chain, id `alarm-wakes-from-sleep`, applies to `any`, checked on 2026-11-19.
+
+- **Done when:** an alarm set in the clock app rings on time while the phone sleeps under its shell's suspend
+- **Needs:**
+  - [real-suspend-under-shell](#step-real-suspend-under-shell) - hard: it sleeps as in daily use
+  - [speaker-heard](#step-speaker-heard) - hard: it rings
+- **Enables:** [daily-usable-phone](#step-daily-usable-phone)
+- **Proof:** `alarm-rings`, phone-suite
+- **Helper:** no helper yet - a helper to write
+- **Guide:** The shell or clock must set an RTC wake alarm before suspend (kernel-sysfs-power-wakelock). Not known yet which phone shells do; never tried in our labs.
+- **Sources:** [Linux ABI: sysfs-power wake\_lock, wake\_unlock, autosleep](https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-power)
+
+<a id="step-proximity-blanks-in-call"></a>
+### The screen goes dark at the ear
+
+Step 110 in the chain, id `proximity-blanks-in-call`, applies to `form:phone`, checked on 2026-11-19.
+
+- **Done when:** in a call the screen blanks and touch is ignored while the proximity sensor is covered
+- **Needs:**
+  - [proximity-reads](#step-proximity-reads) - hard: the sensor it follows
+  - [shell-runs-with-hardware](#step-shell-runs-with-hardware) - hard: the shell blanks the screen
+  - [voice-call-both-ways](#step-voice-call-both-ways) - hard: in a call
+- **Enables:** [daily-usable-phone](#step-daily-usable-phone)
+- **Proof:** `proximity-in-call`, witness
+- **Helper:** no helper yet - a helper to write
+- **Guide:** surya open (sensors-proximity-in-calls). Sailfish checks it while suspended too (sailfish-hadk-checklist).
+- **Sources:** [Sailfish OS HADK: hardware adaptation checklist](https://hadk.sailfishos.org/ha-checklist/)
+
 <a id="step-days-without-reboot"></a>
 ### Days without a reboot
 
-Step 111 in the chain, id `days-without-reboot`, applies to `any`, checked on 2026-11-18.
+Step 112 in the chain, id `days-without-reboot`, applies to `any`, checked on 2026-11-19.
 
 - **Done when:** seven days of ordinary use with no reboot, crash or part lost
 - **Needs:**
@@ -1714,7 +1729,7 @@ The steps that only name a whole: Linux runs, a daily-usable phone, a complete p
 <a id="step-linux-runs"></a>
 ### Linux runs
 
-Step 75 in the chain, id `linux-runs`, applies to `any`, checked on 2026-11-18.
+Step 76 in the chain, id `linux-runs`, applies to `any`, checked on 2026-11-18.
 
 - **Done when:** every step it needs is done or not-needed
 - **Needs:**
@@ -1732,7 +1747,7 @@ Step 75 in the chain, id `linux-runs`, applies to `any`, checked on 2026-11-18.
 <a id="step-daily-usable-phone"></a>
 ### A daily-usable phone
 
-Step 112 in the chain, id `daily-usable-phone`, applies to `form:phone`, checked on 2026-11-18.
+Step 113 in the chain, id `daily-usable-phone`, applies to `form:phone`, checked on 2026-11-18.
 
 - **Done when:** every step it needs is done or not-needed
 - **Needs:**
@@ -1753,6 +1768,7 @@ Step 112 in the chain, id `daily-usable-phone`, applies to `form:phone`, checked
   - [on-screen-keyboard](#step-on-screen-keyboard) - hard: a person needs it every day
   - [photo-taken](#step-photo-taken) - hard: a person needs it every day
   - [proximity-blanks-in-call](#step-proximity-blanks-in-call) - hard: a person needs it every day
+  - [real-suspend-under-shell](#step-real-suspend-under-shell) - hard: a person's phone sleeps under its shell and returns
   - [sms-both-ways](#step-sms-both-ways) - hard: a person needs it every day
   - [speaker-heard](#step-speaker-heard) - hard: a person needs it every day
   - [update-applies](#step-update-applies) - hard: a person needs it every day
@@ -1767,7 +1783,7 @@ Step 112 in the chain, id `daily-usable-phone`, applies to `form:phone`, checked
 <a id="step-complete-phone"></a>
 ### A complete phone
 
-Step 113 in the chain, id `complete-phone`, applies to `form:phone`, checked on 2026-11-18.
+Step 114 in the chain, id `complete-phone`, applies to `form:phone`, checked on 2026-11-18.
 
 - **Done when:** every step it needs is done or not-needed
 - **Needs:**

@@ -3581,3 +3581,27 @@ Rejected
 
 About
 : health-test-layer-quiet
+
+---
+
+
+<a id="2026-11-19-steps-shell-stage-split"></a>
+### Bring-up steps: the hardware proven in a test layer, the shell a later stage
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: Carried out decision 2026-11-19-hardware-test-layer in the bring-up catalogue. New step test-layer-boots (lab, proof test-layer-quiet = lab-tools' health-test-layer-quiet), needed by s2idle-cycle-returns. The shell stage moved after every hardware stage (upkeep before it) and took the steps whose proof leans on a running shell: shell-autosleep-tamed (from lab), real-suspend-under-shell, alarm-wakes-from-sleep, auto-rotate-follows, brightness-follows-light, proximity-blanks-in-call, days-without-reboot; ids kept. call-wakes-from-sleep and standby-current now need s2idle-cycle-returns (standby-current also suspend-way-back) instead of real-suspend-under-shell; photo-taken and fingerprint-unlocks lost their edge on the shell, photo-taken re-said as a capture tool; daily-usable-phone needs real-suspend-under-shell itself. Test sensors-after-suspend re-said without Sxmo. bin/check-bringup-steps.sh (make verify) and daily-phone.sh's shape half now fail while a hardware step needs a shell-stage step, the shell stage is not last before the goals, or test-layer-boots is missing: they failed on the old data (upkeep after shell, six steps on shell-runs-with-hardware) and pass.
+
+Considered
+: standby-current's edge on real-suspend-under-shell as soft (the backlog's wording): dropped instead, as a soft edge still binds a hardware step to the shell stage; the shell's figure follows in its guide. Moving photo-taken to the shell stage: video-recorded needs it and is hardware.
+
+Rejected
+: A new stage for the test layer: the lab stage is where the lab's own needs sit, and one step is enough.
+
+About
+: steps-shell-stage-split

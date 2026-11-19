@@ -6023,10 +6023,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Steps are the owner's (orchestration). (1) New step test-layer-boots (stage lab, proof test-layer-quiet): a hardware-test layer with no shell boots, and the lab's suspend work runs there. (2) shell-autosleep-tamed moves from stage lab to stage shell, done_when 'the shell's idle suspend is held off while the lab works', proven per shell; its edge on lab-link-held-awake stays; suspend-retry-backs-off retires with the sxmo series. (3) real-suspend-under-shell moves to the shell stage. (4) standby-current: its hard edge on real-suspend-under-shell becomes soft; a hard edge on s2idle-cycle-returns and suspend-way-back, measured first in the test layer; the shell's figure follows. call-wakes-from-sleep and alarm-wakes-from-sleep keep theirs (they are daily-use). (5) test sensors-after-suspend re-said without 'under Sxmo'.
+: Done 2026-11-19: test-layer-boots added (lab, proof test-layer-quiet); shell stage moved last before the goals and carries shell-autosleep-tamed, real-suspend-under-shell, alarm-wakes-from-sleep, auto-rotate-follows, brightness-follows-light, proximity-blanks-in-call, days-without-reboot (ids kept); the shape check fails on a hardware step that needs a shell step. standby-current needs s2idle-cycle-returns and suspend-way-back hard, its edge on the shell removed (not soft). Lanes: claim the new test-layer-boots; no id changed.
 
 Opened
 : 2026-11-19
