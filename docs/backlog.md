@@ -5378,3 +5378,34 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="dt-check-verb"></a>
+### lpoco-bringup dt-check: dt_binding_check and CHECK_DTBS in a digest-pinned container
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: From the upstreams lane (docs #568, research/upstream-forks/2026-11-19/dt-checks-in-a-container.md): the kernel's dt checks run in a container with nothing Python on the host - docker is installed, the image is alpine:edge with dtschema 2026.09, and the PMIC watchdog series passes with a negative test proving the check is real. Make it a verb (lpoco-bringup dt-check, or a lab-tools script if a verb is too much): build the image once and pin it by digest, mount the source read-only, output to scratch; take the interim one-liner from the research file as the seed. About an hour. Used by the upstreams lane before each kernel series goes out.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: bringup/tests/dt_check.rs from fixtures: the verb names the image by digest (never a tag), mounts the kernel source read-only and writes output only under the given scratch dir, runs the two make targets with the given DT_SCHEMA_FILES / dtbs; a run on a fixture with a known schema error ends non-zero and names it (the negative test of docs research upstream-forks/2026-11-19/dt-checks-in-a-container.md)
+
+Rank
+: 6
+
+About
+: bringup-steps
