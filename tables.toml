@@ -1176,7 +1176,7 @@ name = "where"
 type = "string"
 
 [[rules.unique_ids]]
-tables = ["devices", "components", "sources"]
+tables = ["devices", "components", "sources", "chips"]
 
 [[rules.references]]
 field = "support_status.device_id"
@@ -1212,15 +1212,15 @@ to = ["backlog"]
 
 [[rules.references]]
 field = "decisions.about"
-to = ["components", "features", "milestones", "devices", "backlog", "concepts"]
+to = ["components", "features", "milestones", "devices", "backlog", "concepts", "chips"]
 
 [[rules.references]]
 field = "research.about"
-to = ["components", "features", "milestones", "devices", "backlog", "concepts"]
+to = ["components", "features", "milestones", "devices", "backlog", "concepts", "chips"]
 
 [[rules.references]]
 field = "summaries.about"
-to = ["components", "features", "milestones", "devices", "backlog"]
+to = ["components", "features", "milestones", "devices", "backlog", "chips"]
 
 [[rules.references]]
 field = "research.supersedes"
@@ -1232,11 +1232,11 @@ to = ["devices"]
 
 [[rules.references]]
 field = "backlog.about"
-to = ["components", "features", "milestones", "devices", "backlog", "concepts"]
+to = ["components", "features", "milestones", "devices", "backlog", "concepts", "chips"]
 
 [[rules.references]]
 field = "session_log.about"
-to = ["components", "features", "milestones", "devices", "backlog", "concepts"]
+to = ["components", "features", "milestones", "devices", "backlog", "concepts", "chips"]
 
 [[rules.references]]
 field = "concepts.about"
@@ -1713,3 +1713,116 @@ to = ["bringup_steps"]
 [[rules.references]]
 field = "bringup_steps.stage"
 to = ["bringup_stages"]
+
+# Chips (decision 2026-11-19-chip-knowledge-upstream-first-docs-keeps-the-index): one row per part number - a
+# chip, a panel, a storage card, a PMIC block - about the part itself, never about one product: the same part in
+# a phone, a tablet, a board or a car is one row, and the products are only where it was met (boards). The row
+# holds what no open base holds and links up to the bases that hold the rest (homes): the driver and its binding
+# live in mainline (or on its list, or a fork), the status of a SoC's blocks in linux-msm's mainline-status, the
+# firmware in linux-firmware or on the product itself - never copied here. A chip is a subject: its research,
+# decisions and backlog name it in about, and tad q about --subject ID reads it whole.
+[tables.chips]
+key = ["id"]
+
+# maker-part, lower case: ti-tas2557, ti-drv2624, samsung-s6e3fa5, qcom-pm8998
+[[tables.chips.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+# the part number as its maker writes it (TAS2557); a family's members are rows of their own
+[[tables.chips.fields]]
+name = "part"
+type = "string"
+required = true
+
+[[tables.chips.fields]]
+name = "maker"
+type = "string"
+required = true
+
+# what it is, whatever product it sits in
+[[tables.chips.fields]]
+name = "kind"
+type = "string"
+required = true
+enum = ["audio-amp", "audio-codec", "haptics", "display-panel", "touch", "storage", "pmic", "charger", "fuel-gauge", "sensor", "camera-sensor", "wireless", "modem", "nfc", "other"]
+
+# the devicetree compatible(s) it is known by, comma-separated, each with where it stands when not in
+# mainline (ti,tas2557 (on the list)); empty: no binding anywhere yet
+[[tables.chips.fields]]
+name = "compatible"
+type = "string"
+
+# how to tell the part is there, on any board: its bus, the addresses it can take, the id register and the
+# value it reads back - what a generic presence check needs (the address one board uses goes in boards)
+[[tables.chips.fields]]
+name = "identify"
+type = "string"
+
+# the furthest home its driver has reached: mainline (in a released kernel), in-review (posted on the list),
+# fork (carried in a fork that boots it), downstream (only in a vendor kernel), none (no driver anywhere)
+[[tables.chips.fields]]
+name = "driver_stage"
+type = "string"
+required = true
+enum = ["mainline", "in-review", "fork", "downstream", "none"]
+
+# where its knowledge lives upstream, one link per home: the mainline file or binding, the list thread with its
+# version, a fork's commit, a status page, LKDDb - the row links to them and never copies them
+[[tables.chips.fields]]
+name = "homes"
+type = "string"
+required = true
+
+# what it needs to run: the file's name, where it comes from, its licence and whether it may be shipped -
+# never the file itself
+[[tables.chips.fields]]
+name = "firmware"
+type = "string"
+
+# what a second board must know, each with the record or link that met it
+[[tables.chips.fields]]
+name = "quirks"
+type = "string"
+
+# the boards known to carry it, any product: board (where it sits: bus, address; and the evidence: a dts, a
+# vendor kernel, a list posting, a blob list - a claim until a board's test reads it back)
+[[tables.chips.fields]]
+name = "boards"
+type = "string"
+
+# the bring-up steps its bring-up covers: bringup_steps ids, comma-separated - its procedure is that chain
+[[tables.chips.fields]]
+name = "steps"
+type = "string"
+
+# the tests or checks that prove it works on a board: tests ids, or the check to write, named
+[[tables.chips.fields]]
+name = "proof"
+type = "string"
+
+# the tools and library steps that do its procedure: lpoco commands, lpoco-attended steps; none yet = the gap
+[[tables.chips.fields]]
+name = "tools"
+type = "string"
+
+# its datasheet or product page: a sources id
+[[tables.chips.fields]]
+name = "datasheet"
+type = "string"
+
+# the sources the row rests on, ids comma-separated
+[[tables.chips.fields]]
+name = "sources"
+type = "string"
+
+[[tables.chips.fields]]
+name = "checked_on"
+type = "date"
+required = true
+
+[[rules.references]]
+field = "chips.datasheet"
+to = ["sources"]

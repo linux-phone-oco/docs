@@ -2216,3 +2216,79 @@ Sources
 
 About
 : bringup-steps
+
+
+<a id="chip-layer-open-homes"></a>
+### chip-layer-open-homes
+
+Brief
+: No open base is keyed by part number for any product: mainline (compatible) is the shared home, the rest key by SoC, board or device; docs fills only the gap, linking up
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: Is there already an open, shared base for per-chip knowledge (any product: phones, boards, laptops, cars, MCUs) that we can add to, how does one add to each, and what does none of them hold?
+
+Found
+: No open base is keyed by part number for any product. Knowledge of a chip lives in several homes, each keyed by something else. (1) Mainline Linux is the real shared result and is product-agnostic. Its key is the devicetree compatible: the driver, the YAML binding (checked by dt_binding_check) and MAINTAINERS. U-Boot reuses the same bindings, and Zephyr reuses the convention. A chip's series goes by mail: the dt-bindings patch first, then the driver, then each board's dts apart through the SoC tree. A person signs off; the kernel accepts AI-assisted work that a human signs. (2) linux-firmware takes a blob only with its maker's licence, so board tunings such as TAS2557's stay on the product. (3) Some homes key by SoC or board. linux-msm/mainline-status (per Qualcomm SoC and PMIC block; pm8998 haptics and watchdog N/A) takes pull requests. KernelCI and LAVA key by board and SoC. Asahi, linux-sunxi and Armbian key by family. The panel generator and linux-panel-drivers key by panel. (4) Some homes key by device. The postmarketOS wiki (now Nura) is author-only: Nura forbids AI-made contributions. LineageOS blob lists are a cheap fingerprint of the chips fitted, not proof. hw-probe keys by PCI/USB ids. (5) LKDDb indexes compatible to driver per kernel release. It is generated, takes no contributions, and cannot hold a chip with no driver. (6) None holds these things: how far a chip's driver got across homes (mainline, in review, fork, downstream, none), chips with no driver, the boards carrying a part across products, firmware provenance, quirks for a second board, or the procedure and proofs that brought it up. That is the gap a thin part-number row fills, linking up and never copying. Two corrections came out of this reading. TAS2557 is in review upstream (Boiano v3, 2026-07-17, binding and driver, reviewed by Mark Brown 07-19), which walleye's port from porthole did not know. Neither porthole's TAS2557 nor its DRV2624 patch has a binding, which is the first patch either series needs. DRV2624 has no driver upstream anywhere. A second product carries it (shift-otter).
+
+Sources
+: kernel-dt-binding-patches,linux-firmware-repo,linux-msm-mainline-status,lkddb,panel-driver-generator,linux-panel-drivers,hw-probe,asahi-docs,zephyr-haptics-drivers,kernelci-hardware-registry,armbian-build,lineage-surya-tree,pmos-msm8998,tas2557-v3-boiano,tas2557-v3-review,shift-otter-dts,google-msm-4-14-drv2624,porthole-pmaports
+
+About
+: chip-layer
+
+Material
+: research/chip-layer/2026-11-19/
+
+
+<a id="chip-layer-how-it-stands"></a>
+### chip-layer-how-it-stands
+
+Brief
+: Chip layer: upstream first, one series per chip; docs' chips table landed with ti-tas2557 and ti-drv2624; the generic chip check and series check are next
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: How does the chip layer stand: where any-product knowledge of a part lives, what is done, what is next?
+
+Found
+: Decided (2026-11-19-chip-knowledge-upstream-first-docs-indexes-by-part, on research chip-layer-open-homes):
+- What any product with the same part can reuse goes upstream first. The driver and binding go to mainline, one series per chip: binding, then driver, then dts. Each sits on a fork-linux topic branch and is sent in the author's name. Status of Qualcomm blocks goes to linux-msm/mainline-status, panels to the panel generator, firmware to linux-firmware only with its maker's licence.
+- docs keeps a thin row per part number (ikb chip, tad q chips), about the part rather than a product. It holds only what no open base holds and links up to the rest.
+- A chip's procedure chains library steps (docs #638, ideal-agent #109).
+
+Done:
+- The chips table is declared with its record, query and test in make verify (chips-table).
+- Two rows are filled from google-walleye-lab and porthole: ti-tas2557 (in-review) and ti-drv2624 (fork).
+- A chip is a subject. tad q about --subject ti-tas2557 is its one page, and tad q chips --board google-walleye lists a board's parts.
+
+Open:
+- lpoco-chip-check: the generic presence check, which replaces walleye's amp-present.sh.
+- lpoco-chip-series-check: it fails today on porthole's DRV2624, which has no binding.
+- chip-series-in-fork-linux: DRV2624 needs a new binding with porthole's driver; TAS2557 takes Boiano's v3.
+- chip-boards-claimed-by-bases.
+
+For walleye: its TAS2557 port from porthole duplicates a driver already in review upstream. A v3-first item is on its backlog (walleye-tas2557-upstream-v3-first).
+
+Not known yet:
+- TAS2557's identifying register.
+- Whether the DRV2624's address is fixed.
+- Whether surya carries a DRV2624.
+- hw-probe's coverage of DT parts.
+- linux-msm/mainline-status's stance on AI-assisted pull requests.
+
+Sources
+: tas2557-v3-boiano,porthole-pmaports,linux-msm-mainline-status,kernel-dt-binding-patches
+
+About
+: chip-layer

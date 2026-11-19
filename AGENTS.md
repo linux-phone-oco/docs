@@ -10,6 +10,7 @@ Setup once: `make setup`. Editing the data: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 |---|---|
 | a phone's queue, its next item, how it stands | in its lab's own base (linux-phone-oco/surya-lab, google-walleye-lab): `tad q phone-queue`, `tad q phone-next`, `tad q lane-next --needs phone\|research\|build`, `tad q phone-stands` |
 | what each device supports | `tad q coverage` |
+| what is known of a part, whatever product carries it (its driver's standing, homes upstream, firmware, boards, procedure) | `tad q chips` (`--board google-walleye`), then `tad q about --subject ti-tas2557`; record with `ikb chip` |
 | one place's work, decisions, research | `tad q backlog --project lab-tools` (also `decisions`, `research`) |
 | the role briefs, the phone keeper, how records go here | [`ideal-agent-linux-phone-oco/`](ideal-agent-linux-phone-oco/README.md) |
 
