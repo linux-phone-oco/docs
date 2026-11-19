@@ -6779,3 +6779,138 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="chip-layer"></a>
+### The chip layer: knowledge of a part, for any product, upstream first; docs keeps a thin row per part number that links up
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: Research chip-layer-open-homes, decision 2026-11-19-chip-knowledge-upstream-first-docs-indexes-by-part. Done here: the chips table (chips-table). Open: lpoco-chip-check, lpoco-chip-series-check, chip-series-in-fork-linux, chip-boards-claimed-by-bases; each lab's chips written as it brings one up (walleye: ti-drv2624, ti-tas2557 first).
+
+Opened
+: 2026-11-19
+
+Proof
+: test-chip-record
+
+About
+: bringup-steps
+
+
+<a id="chips-table"></a>
+### The chips table: one row per part number, about the part whatever product carries it, linking up to its homes (ikb chip, tad q chips)
+
+Project
+: linux-phone-oco/docs
+
+Status
+: done
+
+Note
+: 2026-11-19, research-chip-layer: declared in tables.toml (chips; a chip is a subject: decisions, research, backlog, summaries and session logs may be about it; chips joins the unique ids), records/chip.sql, queries/chips.sql, bin/test-chip-record.sh in make verify. First rows: ti-tas2557, ti-drv2624.
+
+Opened
+: 2026-11-19
+
+Proof
+: test-chip-record
+
+About
+: chip-layer
+
+
+<a id="lpoco-chip-check"></a>
+### lpoco chip check: a library step that tells a chip is present and bound on any board, from its chips row (identify) and the board's device.toml
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-19-chip-knowledge-upstream-first-docs-indexes-by-part (3) and 2026-11-19-procedures-chain-small-device-agnostic-steps: one Step type for lpoco-attended and the runner. Board values (bus, address) from device.toml, chip values (driver name, id register and value) from docs' chips row; reading only, never writing the chip. Today the same check lives as walleye-only shell in google-walleye-lab tests/health/base/amp-present.sh.
+
+Opened
+: 2026-11-19
+
+Proof
+: lab-tools unit test on a stand-in sysfs and i2c; then walleye's amp-present.sh rewritten as library calls gives the same verdicts (amp-present-0x4c/0x4d, haptics-chip-present)
+
+About
+: chip-layer
+
+
+<a id="lpoco-chip-series-check"></a>
+### lpoco chip series-check: a chip's series is binding, driver, dts apart, each passing checkpatch --strict and dt_binding_check, authors kept
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-19-chip-knowledge-upstream-first-docs-indexes-by-part (1): the order upstream reads (docs.kernel.org devicetree/bindings/submitting-patches). Runs on a topic branch of fork-linux; checks only, sends nothing.
+
+Opened
+: 2026-11-19
+
+Proof
+: fails today on porthole's DRV2624 (0018 has no binding) and passes on Boiano's TAS2557 v3 shape (dt-bindings 1/2, driver 2/2); a lab-tools test on two fixture series
+
+About
+: chip-layer
+
+
+<a id="chip-series-in-fork-linux"></a>
+### Each chip a topic branch in fork-linux: ti-drv2624 (binding new, porthole's driver, board dts apart), ti-tas2557 (Boiano's v3 as on the list)
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: For the upstreams lane. DRV2624: write the YAML binding (ti,drv2624: the LRA properties porthole's driver reads), keep porthole's driver with Giuseppe Maggio's authorship, our changes as commits on top, then a dts patch per board (taimen, walleye). TAS2557: carry Boiano's v3 unchanged and test it on walleye; a reply on the list is the author's, in his name. Nothing is sent by an agent.
+
+Opened
+: 2026-11-19
+
+Blocked by
+: lpoco-chip-series-check
+
+Proof
+: lpoco chip series-check passes on topic/chip-ti-drv2624; the chips rows' homes name the branches
+
+About
+: chip-layer
+
+
+<a id="chip-boards-claimed-by-bases"></a>
+### Device bases claim the chips they carry (part, bus, address, read back or not); docs pulls the claims into the chips' boards
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Only once a second lab writes chips (decision 2026-11-19-chip-knowledge-upstream-first-docs-indexes-by-part rejected a join table until then); the shape follows feed-device-parts and feed-device-steps.
+
+Opened
+: 2026-11-19
+
+Proof
+: a feed test like test-feed-device-steps: a base's claim shows on its chip, an unclaimed board stays a claim
+
+About
+: chip-layer

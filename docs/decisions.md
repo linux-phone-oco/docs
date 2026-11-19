@@ -2220,3 +2220,34 @@ About
 
 Research
 : procedures-one-shape
+
+
+<a id="2026-11-19-chip-knowledge-upstream-first-docs-indexes-by-part"></a>
+### 2026-11-19-chip-knowledge-upstream-first-docs-indexes-by-part
+
+Brief
+: Chip knowledge goes upstream first, one series per chip (binding, driver, dts); docs keeps one thin product-agnostic row per part number that links up, never copies
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Decision
+: (1) Upstream first, each fact in the home its readers already search. A chip's driver and binding go into mainline as one series per chip: the dt-bindings patch, then the driver, then each board's dts as its own patch (through the SoC tree). Each is kept on a topic branch in our kernel fork (fork-linux) and sent in the author's name with his sign-off. Others' work is taken with its authorship kept and our changes on top. Where a series is already on the list (TAS2557, Boiano v3), we test it and reply rather than send a second driver. Other homes take the rest. A Qualcomm SoC or PMIC block's status goes to linux-msm/mainline-status by pull request. A panel goes through the panel generator and linux-panel-drivers, then to dri-devel. A firmware goes to linux-firmware only with its maker's licence; otherwise it stays on the product and only its provenance is recorded. Zephyr and U-Boot get a driver only when an MCU or bootloader user needs the part. The postmarketOS (Nura) wiki is the author's own act; agents prepare nothing for it (decision 2026-11-19-nura-relation). (2) docs keeps one thin row per part number in the chips table (ikb chip, tad q chips). The row is about the part, never a product: a phone, a board or a car carrying the same part shares one row, and products appear only as the boards met carrying it. The row holds only what none of those homes holds: compatible; how to identify the part on any board; the furthest stage its driver reached (mainline, in-review, fork, downstream, none); a link to each home; firmware provenance; quirks with their evidence; boards; the bring-up steps its procedure chains; its proofs; its tools. It never copies a binding, a register table or a driver. A chip is a subject: its research, decisions, backlog and upstream items name it in about, so tad q about --subject ID is its one page. (3) A chip's procedure is a chain of small device-agnostic library steps (docs #638, decision 2026-11-19-procedures-chain-small-device-agnostic-steps; ideal-agent #109, decision 2026-11-19-small-steps-compose). Each step takes the chip's values from its row and the board's values from device.toml. The first step is a generic presence check (lpoco-chip-check), and a check for a series' shape follows (lpoco-chip-series-check). (4) A lab that brings a chip up writes or renews the chip's row in docs in the same round as its own records; its board's values and claims stay in its own base. This is where walleye's per-chip record (decision 2026-11-19-walleye-audio-port-shape) lives.
+
+Why
+: The author, relayed verbatim by the Top Coordinator on 2026-11-19: "do we have these parts atomized and intelligable so that it can go upstream as a procedure or something to be useful for any other phone ?"; then "is there already shared base for such knowledge in the open where we can contribute upstream ?"; then "im not talking about linux phones specifically, as this is hardware level it doesnt matter for what it is for". Research chip-layer-open-homes answers this. Mainline, keyed by compatible, is the only product-agnostic shared home. The other homes key by SoC, board or device, and none holds a chip's standing across homes, chips without a driver, boards across products, firmware provenance, quirks or procedure. Until now that knowledge sat in one device's lab, where another board could not find it. walleye did not know TAS2557 is in review upstream, and porthole's two drivers came without bindings.
+
+Rejected
+: A chip wiki of our own with pages copying datasheets, registers and drivers: it drifts from upstream, nobody outside reads it, and it duplicates mainline. Keeping chip knowledge in each device's lab, as until now: another board cannot find it, and walleye missed the TAS2557 series on the list. The postmarketOS (Nura) wiki as the chip home: it is keyed by device and SoC, phones only, and closed to agent-made work. LKDDb as the layer: it is generated with no way to add to it, and it knows only chips that already have a driver. linux-hardware.org: it is keyed by PCI and USB id and does not cover DT parts. A new cross-project chip wiki started by us: it has no community, and its cost far exceeds a thin row that links up. A boards join table now: the boards text column is enough until a second lab claims chips (chip-boards-claimed-by-bases). Sending porthole's drivers as they stand: they have no binding, and the TAS2557 duplicates a series already in review.
+
+About
+: chip-layer
+
+Research
+: chip-layer-open-homes
+
+Tracked by
+: chip-layer

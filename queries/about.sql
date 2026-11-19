@@ -1,7 +1,7 @@
 -- Everything known of one subject, the short answer first: how it stands (its summary, dated), its status on
 -- each device and platform, then what was recorded since the summary, concepts, the open work, the tests and
 -- the sources of the research shown - and the records the summary condenses by id only (--whole gives them
--- in full; row --id one). Research a later one supersedes leaves the answer. A subject is a component,
+-- in full; row --id one). Research a later one supersedes leaves the answer. A subject is a component, chip,
 -- feature, milestone, device or backlog item; a word before a dash names them all (modem: modem-data,
 -- modem-calls, modem-sms). Without a subject: every subject, with how many records it has, what they weigh,
 -- its summary's date and whether a summary is due - when they weigh over 8 KB with none, or over 4 KB were
@@ -20,7 +20,7 @@ rec AS (
 ),
 hit AS (SELECT a FROM (SELECT about AS a FROM rec UNION SELECT about FROM backlog UNION SELECT about FROM concepts
             UNION SELECT about FROM summaries UNION SELECT component_id FROM support_status
-            UNION SELECT feature_id FROM feature_support), s
+            UNION SELECT feature_id FROM feature_support UNION SELECT id FROM chips), s
         WHERE a IS NOT NULL AND (a = s.w OR a LIKE s.w || '-%')),
 sm AS (SELECT * FROM summaries WHERE about IN (SELECT a FROM hit)),
 cond AS (SELECT about, trim(unnest(string_split(condenses, ','))) AS id FROM sm),
@@ -31,6 +31,12 @@ known AS (
            date AS day, says FROM sm
     UNION ALL SELECT 1, 'status', device_id, x.component_id, status, NULL, notes
       FROM support_status x WHERE component_id IN (SELECT a FROM hit)
+    UNION ALL SELECT 1, 'chip', c.id, c.id, c.driver_stage, c.checked_on,
+           c.part || ', ' || c.kind || ' by ' || c.maker || coalesce('; ' || c.compatible, '') || coalesce('; boards: ' || c.boards, '')
+           || CASE WHEN s.whole THEN coalesce(' Identify: ' || c.identify, '') || ' Homes: ' || c.homes || coalesce(' Firmware: ' || c.firmware, '')
+                || coalesce(' Quirks: ' || c.quirks, '') || coalesce(' Steps: ' || c.steps, '') || coalesce(' Proof: ' || c.proof, '') || coalesce(' Tools: ' || c.tools, '')
+                ELSE ' (row --id ' || c.id || ' for its homes, firmware, quirks, steps and proof)' END
+      FROM chips c, s WHERE c.id IN (SELECT a FROM hit)
     UNION ALL SELECT 2, 'feature', platform_id, feature_id, status, checked, note
       FROM feature_support WHERE feature_id IN (SELECT a FROM hit)
     UNION ALL SELECT CASE kind WHEN 'research' THEN 3 WHEN 'decision' THEN 4 ELSE 7 END, kind, id, about, NULL, day,

@@ -7055,3 +7055,290 @@ By
 
 Takes
 : a playbook only chains roles with its variables; roles are reused across hosts: a procedure chains library steps with device values
+
+
+<a id="ti-tas2557-datasheet"></a>
+### TI TAS2557 5.7-W Class-D mono audio amplifier with class-H boost and DSP (datasheet)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.ti.com/lit/ds/symlink/tas2557.pdf
+
+By
+: Texas Instruments
+
+Takes
+: the part's registers and its SmartAmp DSP; why it needs a firmware
+
+
+<a id="ti-drv2624-datasheet"></a>
+### TI DRV2624 haptic driver for ERM and LRA (product page and datasheet)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.ti.com/product/DRV2624
+
+By
+: Texas Instruments
+
+Takes
+: registers, the ID register, the LRA auto-resonance settings a binding names
+
+
+<a id="tas2557-v3-boiano"></a>
+### [PATCH v3 0/2] ASoC: codecs: add Texas Instruments TAS2557 smart amplifier driver
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.iu.edu/2607.2/04618.html
+
+Author
+: Gianluca Boiano
+
+Year
+: 2026
+
+By
+: orchestration-renewed
+
+Takes
+: the TAS2557 binding and driver in review: compatible ti,tas2557, reg array for one or two amps, four supplies, firmware-name; tested on SDM660/SDM636/MSM8953 boards
+
+
+<a id="tas2557-v3-review"></a>
+### Re: [PATCH v3 2/2] ASoC: codecs: add TAS2557 (review)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://lkml.iu.edu/2607.2/06067.html
+
+Author
+: Mark Brown
+
+Year
+: 2026
+
+By
+: orchestration-renewed
+
+Takes
+: what the maintainer still asks: board GPIO sequence, firmware device-count check, PLL index, suspend mute
+
+
+<a id="linux-msm-mainline-status"></a>
+### linux-msm/mainline-status: per-SoC and per-PMIC block status on mainline
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/linux-msm/mainline-status
+
+By
+: linux-msm
+
+Takes
+: the home for a Qualcomm SoC or PMIC block's status (pm8998: haptics, watchdog N/A); added to by pull request
+
+
+<a id="linux-firmware-repo"></a>
+### linux-firmware: WHENCE and how a firmware gets in
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.com/kernel-firmware/linux-firmware
+
+By
+: orchestration-renewed
+
+Takes
+: a firmware is in only with a licence to redistribute and its maker's part; board tunings like TAS2557's stay on the product
+
+
+<a id="kernel-dt-binding-patches"></a>
+### Linux: submitting devicetree (DT) binding patches
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.kernel.org/devicetree/bindings/submitting-patches.html
+
+By
+: kernel.org
+
+Takes
+: a chip's series: dt-bindings patch first, then the driver, the dts apart through the SoC tree; dt_binding_check
+
+
+<a id="lkddb"></a>
+### LKDDb: Linux Kernel Driver DataBase
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://cateee.net/lkddb/
+
+Author
+: Giacomo Catenazzi
+
+By
+: orchestration-renewed
+
+Takes
+: an index generated per kernel release from compatible, I2C/PCI ids and Kconfig to driver; links up to it, cannot hold a chip with no driver
+
+
+<a id="panel-driver-generator"></a>
+### linux-mdss-dsi-panel-driver-generator: DRM panel drivers from downstream qcom,mdss-dsi DT
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/msm8916-mainline/linux-mdss-dsi-panel-driver-generator
+
+By
+: msm8916-mainline
+
+Takes
+: the way to a mainline panel driver for a Qualcomm phone's panel (S6E3FA7 was made so; no S6E3FA5 yet)
+
+
+<a id="linux-panel-drivers"></a>
+### msm8916-mainline/linux-panel-drivers: generated panel drivers and their configs
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/msm8916-mainline/linux-panel-drivers
+
+By
+: msm8916-mainline
+
+Takes
+: a per-panel collection; the home a generated panel config goes to before dri-devel
+
+
+<a id="hw-probe"></a>
+### hw-probe: probe hardware and upload to linux-hardware.org
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/linuxhw/hw-probe
+
+By
+: linuxhw
+
+Takes
+: per-device status vocabulary works/limited/failed from logs; keyed by PCI/USB id, not DT chips
+
+
+<a id="asahi-docs"></a>
+### Asahi Linux docs: hw/soc and hw/peripherals
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/AsahiLinux/docs
+
+By
+: Asahi Linux
+
+Takes
+: one family's chip pages with feature tables, added to by pull request
+
+
+<a id="zephyr-haptics-drivers"></a>
+### Zephyr: drivers/haptics (drv2605) and dts/bindings per compatible
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/zephyrproject-rtos/zephyr/tree/main/drivers/haptics
+
+By
+: Zephyr Project
+
+Takes
+: MCU drivers keyed by the same compatibles; drv2605 only, no drv2624
+
+
+<a id="shift-otter-dts"></a>
+### Linux qcm6490-shift-otter.dts (names a TI drv2624 at 0x5a)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/torvalds/linux/blob/master/arch/arm64/boot/dts/qcom/qcm6490-shift-otter.dts
+
+By
+: orchestration-renewed
+
+Takes
+: a second product carrying the DRV2624, named in mainline only as a comment
+
+
+<a id="google-msm-4-14-drv2624"></a>
+### Google msm-4.14 kernel: downstream DRV2624 driver
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git.evolution-x.org/Evolution-X-Devices/kernel_google_msm-4.14/commit/7f072754a6794de44116d9100a777474584a4fc1
+
+By
+: Google
+
+Takes
+: the vendor's GPL driver: the downstream home of the DRV2624
+
+
+<a id="kernelci-hardware-registry"></a>
+### KernelCI pipeline: platforms.yaml and the hardware registry
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/kernelci/kernelci-pipeline/blob/main/config/platforms.yaml
+
+By
+: KernelCI
+
+Takes
+: boards keyed with a compatible chain board, SoC, family; nothing below the SoC
+
+
+<a id="armbian-build"></a>
+### Armbian build: config/boards and config/sources/families
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/armbian/build
+
+By
+: Armbian
+
+Takes
+: a board file names its family; one family file serves many boards; no chip file
