@@ -6923,10 +6923,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-procedure-values-from-the-named-device (amends docs #638 and #646). Before attended-scaffold, so the scaffold's template names no values. Reuse lpoco-manifest's loader and the existing tables; add a key only where none holds the fact. boot_once and back_to_known_good (in progress) take their kernel names from the kernel entries and the kept kernel there. Also from attended-step-library: wait_for_usb proves vendor:product only - the serial comes with this item; boot_once and back_to_known_good take their kernel names as parameters now (v0.29.3) and change to keys here.
+: 2026-11-19, lab-tools-builder: slice 1 landed (lab-tools #260, main dfc90aa): procedure(name, device) finds the device's device.toml (--device FILE, else from the folder upwards), loads it with lpoco-manifest, refuses a missing or invalid one or another phone's codename before any step or the log (exit 2, also in a dry run), and every devlab call is handed --device PATH (phone sh/root, kernel try) so two phones on the bench are never mixed up. Proof: attended/tests/attended.rs devlab_is_handed_the_manifest_named_by_the_flag_not_the_one_the_folder_finds, the_manifest_is_found_from_a_folder_below_it_and_a_relative_flag_is_made_absolute, a_procedure_for_another_device_is_refused_before_any_step_even_in_a_dry_run, no_device_manifest_or_a_wrong_one_is_named_before_any_step, a_refusal_comes_before_the_log... (written with the change, failing before). Review fixed: log opened before the check, current_dir error hidden, weak tests. Only schema and codename are checked: devlab still judges [connection]. Open: steps reading keys (wait_for_usb id and serial, boot_once/back_to_known_good kernel names from kernel entries and the kept kernel; no table holds the usb vendor:product yet, add it under [boot.gadget] or [device]), a missing key failing the dry run naming it, surya-lab and walleye consts moving into device.toml. Next in orchestration's order: attended-physical-steps, then attended-scaffold.
 
 Opened
 : 2026-11-19
