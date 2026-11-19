@@ -3701,3 +3701,21 @@ Rejected
 
 About
 : layer-table-in-manifest
+
+---
+
+
+<a id="2026-11-19-surya-sxmo-from-alpine-community"></a>
+### surya's sxmo now comes from Alpine community; our lab apk is no longer installed
+
+Project
+: linux-phone-oco/surya-lab
+
+Entry date
+: 2026-11-19
+
+Done
+: surya-lab PR 356: surya has no @lab sxmo package installed and the @lab repository lines are gone. All 8 sxmo-utils pieces are 1.18.1-r4 from Alpine community, because Nura's own mirror has no sxmo-utils package, so 'Nura's own' sxmo is Alpine's. Sxmo still starts (superd, sway, sxmobar), and the suite is healthy (82 pass, 0 fail). A correction to the base-distro and nura-relation records: sxmo reaches surya from Alpine community, not from Nura's repositories. lab-tools sxmo-apk-retired can now stop publishing the AGPL apk.
+
+About
+: surya-sxmo-from-nura

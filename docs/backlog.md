@@ -5868,10 +5868,10 @@ Project
 : linux-phone-oco/surya-lab
 
 Status
-: open
+: done
 
 Note
-: Supersedes surya-sxmo-suspend-series (its suspend tests suspend-retry-backs-off and sensors-after-suspend under sxmo are not run). Keep modemmanager, mmsd-tng and vvmd in world (the -r4/-r5 deps; world backup /root/world.before-sxmo-lab), drop the @lab pin and its repository tag for sxmo-utils, apk fix to Nura's sxmo-utils, then sxmo_migrate.sh state and the user_config drift check read clean. Wake lock held throughout, no suspend. Proof: shell-up in the shell entry, apk policy names Nura's repository for every sxmo-utils subpackage.
+: Done: surya-lab PR 356 - sxmo-utils 1.18.1-r4 from Alpine community, no @lab package installed, suite healthy (82 pass).
 
 Opened
 : 2026-11-19
