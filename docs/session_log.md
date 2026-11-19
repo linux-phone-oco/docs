@@ -4700,3 +4700,24 @@ Rejected
 
 About
 : host-clones-fresh
+
+---
+
+
+<a id="2026-11-19-device-toml-checked-against-the-newest-lpoco-lab"></a>
+### device.toml checked against the newest lpoco-lab, landed in device-template
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Reworked the template step as orchestration asked (newest release, no secret), landed device-template #36, green on main
+
+Rejected
+: reading lab.toml's pin: private repo, needs an author-made token; the host follows releases and lpoco-attended check --host covers the lag
+
+About
+: device-toml-checked-against-host
