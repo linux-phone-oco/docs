@@ -527,10 +527,22 @@ Step id
 : storage-readonly
 
 Status
-: open
+: done
+
+Proof
+: research walleye-ufs-try1-card-readable
+
+Run
+: research walleye-ufs-match-tried-version-ok-link-stays-gear1 (lab PR 580, 583, 584)
+
+Proven on
+: NOT-TO-BOOT-ufs-on-ufs-match.img sha256 461077869fb275ab8803b8bb771050d4f19724ccfd62e197dc1f3fe3a6297df5
+
+Notes
+: One read-only try on the author's go: UFS 3.1.0, six LUNs SKhynix H28U74301AMR D003, partition tables read by the kernel, no UFS error, nothing written. The link idles at HS gear 1 (speed, item walleye-ufs-why-gear1); by-name partition listing needs udev, not read.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 24
@@ -542,10 +554,22 @@ Step id
 : usb-network
 
 Status
-: open
+: done
+
+Proof
+: tests/host/gadget-up.sh
+
+Run
+: research walleye-z14-tried
+
+Proven on
+: boot-z14.img sha256 c2e616f872328b1a28df9ff37903796579e078a7a7ea2f66195a928beee64238
+
+Notes
+: ECM usb0 172.16.43.1 pings and telnet answers, 18 s after fastboot; every try since (z21, upstream-dts, L-images, the UFS try) used it.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 25
@@ -587,10 +611,22 @@ Step id
 : battery-gauge-reads
 
 Status
-: open
+: done
+
+Proof
+: tests/host/fuel-gauge-check.sh
+
+Run
+: research walleye-fg1-tried-capacity-matches
+
+Proven on
+: boot-fg1.img sha256 9f6a7033ae13e532b91874bb90e8a08803172ccfa552bbe6eb53d7f07086b99b
+
+Notes
+: pmi8998-fg probes; capacity 99 percent and 4374 mV equal fastboot's 4374 mV.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 28
@@ -707,10 +743,22 @@ Step id
 : panel-lit
 
 Status
-: open
+: done
+
+Proof
+: procedures/display-stripes-on-the-pixel-2.rs
+
+Run
+: research walleye-display-l7-looks-seen (lab PR 592, 594, 595)
+
+Proven on
+: boot-l7.img sha256 643d1f83c6aea4ecb2d08e95aebc7fb2694d86c5c021e8463dc902eff5b9e711
+
+Notes
+: The author saw the kernel log and four held vertical stripes on the glass, 2026-11-19, 'they look perfect'. The modules are loaded by the procedure in a hand-picked order; the display at boot in any order is not done (B2: items walleye-display-b2-dsi-clock-warning, walleye-display-dts-any-order).
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 36
@@ -722,10 +770,22 @@ Step id
 : touch-input
 
 Status
-: open
+: done
+
+Proof
+: tests/attended/touch-try.rs
+
+Run
+: research walleye-z21-touch-events-pass (lab PR 485)
+
+Proven on
+: boot-z21.img sha256 bdc0a89179d2d7fdb75e729515fcaadb9a501d4c6fdb835dc1fc3cff4639c7ff
+
+Notes
+: Synaptics S3708AR probed; 3593 EV_ABS events read while the author swiped. No UI uses it yet.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 37
@@ -752,10 +812,22 @@ Step id
 : haptics-buzz
 
 Status
-: open
+: partial
+
+Proof
+: tests/host/drv2624-builds.sh
+
+Run
+: research walleye-drv1-tried-drv2624-probes (lab PR 518)
+
+Proven on
+: boot-drv1.img sha256 96e85804db5478aae4525266997dfcf65f6990493cbb00ac3398114cc3501e8b
+
+Notes
+: DRV2624 answers at 0-005a, id 0x03, input drv2624:haptics registered. No effect has been played yet.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 39
@@ -1904,37 +1976,37 @@ Updated
 ### Row 115
 
 Device id
-: xiaomi-surya
+: google-walleye
 
 Step id
-: bootloader-unlocked
+: display-any-order
 
 Status
 : unknown
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: Not known yet: linux-phone-oco/google-walleye-lab does not claim this step.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 116
 
 Device id
-: xiaomi-surya
+: google-walleye
 
 Step id
-: stock-measured
+: storage-full-speed
 
 Status
 : unknown
 
 Notes
-: no suite result for its proof in this base's runs; nobody checked
+: Not known yet: linux-phone-oco/google-walleye-lab does not claim this step.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 117
@@ -1943,7 +2015,7 @@ Device id
 : xiaomi-surya
 
 Step id
-: stock-facts-read
+: bootloader-unlocked
 
 Status
 : unknown
@@ -1961,7 +2033,7 @@ Device id
 : xiaomi-surya
 
 Step id
-: slot-state-known
+: stock-measured
 
 Status
 : unknown
@@ -1979,7 +2051,7 @@ Device id
 : xiaomi-surya
 
 Step id
-: control-image-boots
+: stock-facts-read
 
 Status
 : unknown
@@ -1997,7 +2069,7 @@ Device id
 : xiaomi-surya
 
 Step id
-: boot-image-packs
+: slot-state-known
 
 Status
 : unknown
@@ -2015,7 +2087,7 @@ Device id
 : xiaomi-surya
 
 Step id
-: dtbo-accepted
+: control-image-boots
 
 Status
 : unknown
@@ -2033,7 +2105,7 @@ Device id
 : xiaomi-surya
 
 Step id
-: initramfs-gadget-emulated
+: boot-image-packs
 
 Status
 : unknown
@@ -2051,7 +2123,7 @@ Device id
 : xiaomi-surya
 
 Step id
-: stock-kernel-runs-our-init
+: dtbo-accepted
 
 Status
 : unknown
@@ -2069,7 +2141,7 @@ Device id
 : xiaomi-surya
 
 Step id
-: crash-window
+: initramfs-gadget-emulated
 
 Status
 : unknown
@@ -2087,7 +2159,7 @@ Device id
 : xiaomi-surya
 
 Step id
-: kernel-builds
+: stock-kernel-runs-our-init
 
 Status
 : unknown
@@ -2105,7 +2177,7 @@ Device id
 : xiaomi-surya
 
 Step id
-: reference-kernel-boots
+: crash-window
 
 Status
 : unknown
@@ -2118,6 +2190,42 @@ Updated
 
 
 ### Row 127
+
+Device id
+: xiaomi-surya
+
+Step id
+: kernel-builds
+
+Status
+: unknown
+
+Notes
+: no suite result for its proof in this base's runs; nobody checked
+
+Updated
+: 2026-11-18
+
+
+### Row 128
+
+Device id
+: xiaomi-surya
+
+Step id
+: reference-kernel-boots
+
+Status
+: unknown
+
+Notes
+: no suite result for its proof in this base's runs; nobody checked
+
+Updated
+: 2026-11-18
+
+
+### Row 129
 
 Device id
 : xiaomi-surya
@@ -2144,7 +2252,7 @@ Updated
 : 2026-11-19
 
 
-### Row 128
+### Row 130
 
 Device id
 : xiaomi-surya
@@ -2162,64 +2270,19 @@ Updated
 : 2026-11-18
 
 
-### Row 129
-
-Device id
-: xiaomi-surya
-
-Step id
-: gadget-enumerates
-
-Status
-: done
-
-Proof
-: gadget-enumerates
-
-Run
-: 20261119-042511
-
-Proven on
-: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
-
-Notes
-: Present and answering only (tests/health/base/boot-basics.sh, PR 348); not an end-to-end proof.
-
-Updated
-: 2026-11-19
-
-
-### Row 130
-
-Device id
-: xiaomi-surya
-
-Step id
-: banner-on-console
-
-Status
-: unknown
-
-Notes
-: no suite result for its proof in this base's runs; nobody checked
-
-Updated
-: 2026-11-18
-
-
 ### Row 131
 
 Device id
 : xiaomi-surya
 
 Step id
-: shell-on-console
+: gadget-enumerates
 
 Status
 : done
 
 Proof
-: shell-on-console
+: gadget-enumerates
 
 Run
 : 20261119-042511
@@ -2240,7 +2303,7 @@ Device id
 : xiaomi-surya
 
 Step id
-: first-dmesg-mapped
+: banner-on-console
 
 Status
 : unknown
@@ -2253,6 +2316,51 @@ Updated
 
 
 ### Row 133
+
+Device id
+: xiaomi-surya
+
+Step id
+: shell-on-console
+
+Status
+: done
+
+Proof
+: shell-on-console
+
+Run
+: 20261119-042511
+
+Proven on
+: kernel 7.1.0-sm7150-calls+, boot 9ed41a74
+
+Notes
+: Present and answering only (tests/health/base/boot-basics.sh, PR 348); not an end-to-end proof.
+
+Updated
+: 2026-11-19
+
+
+### Row 134
+
+Device id
+: xiaomi-surya
+
+Step id
+: first-dmesg-mapped
+
+Status
+: unknown
+
+Notes
+: no suite result for its proof in this base's runs; nobody checked
+
+Updated
+: 2026-11-18
+
+
+### Row 135
 
 Device id
 : xiaomi-surya
@@ -2279,7 +2387,7 @@ Updated
 : 2026-11-19
 
 
-### Row 134
+### Row 136
 
 Device id
 : xiaomi-surya
@@ -2306,7 +2414,7 @@ Updated
 : 2026-11-19
 
 
-### Row 135
+### Row 137
 
 Device id
 : xiaomi-surya
@@ -2333,7 +2441,7 @@ Updated
 : 2026-11-19
 
 
-### Row 136
+### Row 138
 
 Device id
 : xiaomi-surya
@@ -2360,7 +2468,7 @@ Updated
 : 2026-11-19
 
 
-### Row 137
+### Row 139
 
 Device id
 : xiaomi-surya
@@ -2387,7 +2495,7 @@ Updated
 : 2026-11-19
 
 
-### Row 138
+### Row 140
 
 Device id
 : xiaomi-surya
@@ -2414,7 +2522,7 @@ Updated
 : 2026-11-19
 
 
-### Row 139
+### Row 141
 
 Device id
 : xiaomi-surya
@@ -2441,7 +2549,7 @@ Updated
 : 2026-11-19
 
 
-### Row 140
+### Row 142
 
 Device id
 : xiaomi-surya
@@ -2468,7 +2576,7 @@ Updated
 : 2026-11-19
 
 
-### Row 141
+### Row 143
 
 Device id
 : xiaomi-surya
@@ -2495,7 +2603,7 @@ Updated
 : 2026-11-18
 
 
-### Row 142
+### Row 144
 
 Device id
 : xiaomi-surya
@@ -2513,7 +2621,7 @@ Updated
 : 2026-11-18
 
 
-### Row 143
+### Row 145
 
 Device id
 : xiaomi-surya
@@ -2540,7 +2648,7 @@ Updated
 : 2026-11-18
 
 
-### Row 144
+### Row 146
 
 Device id
 : xiaomi-surya
@@ -2567,7 +2675,7 @@ Updated
 : 2026-11-18
 
 
-### Row 145
+### Row 147
 
 Device id
 : xiaomi-surya
@@ -2585,7 +2693,7 @@ Updated
 : 2026-11-18
 
 
-### Row 146
+### Row 148
 
 Device id
 : xiaomi-surya
@@ -2612,7 +2720,7 @@ Updated
 : 2026-11-18
 
 
-### Row 147
+### Row 149
 
 Device id
 : xiaomi-surya
@@ -2639,7 +2747,7 @@ Updated
 : 2026-11-18
 
 
-### Row 148
+### Row 150
 
 Device id
 : xiaomi-surya
@@ -2666,7 +2774,7 @@ Updated
 : 2026-11-18
 
 
-### Row 149
+### Row 151
 
 Device id
 : xiaomi-surya
@@ -2693,7 +2801,7 @@ Updated
 : 2026-11-18
 
 
-### Row 150
+### Row 152
 
 Device id
 : xiaomi-surya
@@ -2720,7 +2828,7 @@ Updated
 : 2026-11-18
 
 
-### Row 151
+### Row 153
 
 Device id
 : xiaomi-surya
@@ -2738,7 +2846,7 @@ Updated
 : 2026-11-18
 
 
-### Row 152
+### Row 154
 
 Device id
 : xiaomi-surya
@@ -2765,7 +2873,7 @@ Updated
 : 2026-11-18
 
 
-### Row 153
+### Row 155
 
 Device id
 : xiaomi-surya
@@ -2783,7 +2891,7 @@ Updated
 : 2026-11-18
 
 
-### Row 154
+### Row 156
 
 Device id
 : xiaomi-surya
@@ -2810,7 +2918,7 @@ Updated
 : 2026-11-18
 
 
-### Row 155
+### Row 157
 
 Device id
 : xiaomi-surya
@@ -2837,7 +2945,7 @@ Updated
 : 2026-11-18
 
 
-### Row 156
+### Row 158
 
 Device id
 : xiaomi-surya
@@ -2864,7 +2972,7 @@ Updated
 : 2026-11-18
 
 
-### Row 157
+### Row 159
 
 Device id
 : xiaomi-surya
@@ -2891,7 +2999,7 @@ Updated
 : 2026-11-18
 
 
-### Row 158
+### Row 160
 
 Device id
 : xiaomi-surya
@@ -2909,7 +3017,7 @@ Updated
 : 2026-11-18
 
 
-### Row 159
+### Row 161
 
 Device id
 : xiaomi-surya
@@ -2936,7 +3044,7 @@ Updated
 : 2026-11-18
 
 
-### Row 160
+### Row 162
 
 Device id
 : xiaomi-surya
@@ -2963,7 +3071,7 @@ Updated
 : 2026-11-18
 
 
-### Row 161
+### Row 163
 
 Device id
 : xiaomi-surya
@@ -2990,7 +3098,7 @@ Updated
 : 2026-11-18
 
 
-### Row 162
+### Row 164
 
 Device id
 : xiaomi-surya
@@ -3017,7 +3125,7 @@ Updated
 : 2026-11-18
 
 
-### Row 163
+### Row 165
 
 Device id
 : xiaomi-surya
@@ -3044,7 +3152,7 @@ Updated
 : 2026-11-18
 
 
-### Row 164
+### Row 166
 
 Device id
 : xiaomi-surya
@@ -3071,7 +3179,7 @@ Updated
 : 2026-11-18
 
 
-### Row 165
+### Row 167
 
 Device id
 : xiaomi-surya
@@ -3089,7 +3197,7 @@ Updated
 : 2026-11-18
 
 
-### Row 166
+### Row 168
 
 Device id
 : xiaomi-surya
@@ -3116,7 +3224,7 @@ Updated
 : 2026-11-18
 
 
-### Row 167
+### Row 169
 
 Device id
 : xiaomi-surya
@@ -3143,7 +3251,7 @@ Updated
 : 2026-11-18
 
 
-### Row 168
+### Row 170
 
 Device id
 : xiaomi-surya
@@ -3170,7 +3278,7 @@ Updated
 : 2026-11-18
 
 
-### Row 169
+### Row 171
 
 Device id
 : xiaomi-surya
@@ -3188,7 +3296,7 @@ Updated
 : 2026-11-18
 
 
-### Row 170
+### Row 172
 
 Device id
 : xiaomi-surya
@@ -3215,7 +3323,7 @@ Updated
 : 2026-11-18
 
 
-### Row 171
+### Row 173
 
 Device id
 : xiaomi-surya
@@ -3242,7 +3350,7 @@ Updated
 : 2026-11-18
 
 
-### Row 172
+### Row 174
 
 Device id
 : xiaomi-surya
@@ -3260,7 +3368,7 @@ Updated
 : 2026-11-18
 
 
-### Row 173
+### Row 175
 
 Device id
 : xiaomi-surya
@@ -3278,7 +3386,7 @@ Updated
 : 2026-11-18
 
 
-### Row 174
+### Row 176
 
 Device id
 : xiaomi-surya
@@ -3305,7 +3413,7 @@ Updated
 : 2026-11-18
 
 
-### Row 175
+### Row 177
 
 Device id
 : xiaomi-surya
@@ -3332,7 +3440,7 @@ Updated
 : 2026-11-18
 
 
-### Row 176
+### Row 178
 
 Device id
 : xiaomi-surya
@@ -3350,7 +3458,7 @@ Updated
 : 2026-11-18
 
 
-### Row 177
+### Row 179
 
 Device id
 : xiaomi-surya
@@ -3368,7 +3476,7 @@ Updated
 : 2026-11-18
 
 
-### Row 178
+### Row 180
 
 Device id
 : xiaomi-surya
@@ -3395,7 +3503,7 @@ Updated
 : 2026-11-18
 
 
-### Row 179
+### Row 181
 
 Device id
 : xiaomi-surya
@@ -3413,7 +3521,7 @@ Updated
 : 2026-11-18
 
 
-### Row 180
+### Row 182
 
 Device id
 : xiaomi-surya
@@ -3440,7 +3548,7 @@ Updated
 : 2026-11-18
 
 
-### Row 181
+### Row 183
 
 Device id
 : xiaomi-surya
@@ -3467,7 +3575,7 @@ Updated
 : 2026-11-18
 
 
-### Row 182
+### Row 184
 
 Device id
 : xiaomi-surya
@@ -3494,7 +3602,7 @@ Updated
 : 2026-11-18
 
 
-### Row 183
+### Row 185
 
 Device id
 : xiaomi-surya
@@ -3512,7 +3620,7 @@ Updated
 : 2026-11-18
 
 
-### Row 184
+### Row 186
 
 Device id
 : xiaomi-surya
@@ -3530,7 +3638,7 @@ Updated
 : 2026-11-18
 
 
-### Row 185
+### Row 187
 
 Device id
 : xiaomi-surya
@@ -3548,7 +3656,7 @@ Updated
 : 2026-11-18
 
 
-### Row 186
+### Row 188
 
 Device id
 : xiaomi-surya
@@ -3575,7 +3683,7 @@ Updated
 : 2026-11-18
 
 
-### Row 187
+### Row 189
 
 Device id
 : xiaomi-surya
@@ -3593,7 +3701,7 @@ Updated
 : 2026-11-18
 
 
-### Row 188
+### Row 190
 
 Device id
 : xiaomi-surya
@@ -3611,7 +3719,7 @@ Updated
 : 2026-11-18
 
 
-### Row 189
+### Row 191
 
 Device id
 : xiaomi-surya
@@ -3629,7 +3737,7 @@ Updated
 : 2026-11-18
 
 
-### Row 190
+### Row 192
 
 Device id
 : xiaomi-surya
@@ -3647,7 +3755,7 @@ Updated
 : 2026-11-18
 
 
-### Row 191
+### Row 193
 
 Device id
 : xiaomi-surya
@@ -3665,7 +3773,7 @@ Updated
 : 2026-11-18
 
 
-### Row 192
+### Row 194
 
 Device id
 : xiaomi-surya
@@ -3683,7 +3791,7 @@ Updated
 : 2026-11-18
 
 
-### Row 193
+### Row 195
 
 Device id
 : xiaomi-surya
@@ -3710,7 +3818,7 @@ Updated
 : 2026-11-18
 
 
-### Row 194
+### Row 196
 
 Device id
 : xiaomi-surya
@@ -3728,7 +3836,7 @@ Updated
 : 2026-11-18
 
 
-### Row 195
+### Row 197
 
 Device id
 : xiaomi-surya
@@ -3746,7 +3854,7 @@ Updated
 : 2026-11-18
 
 
-### Row 196
+### Row 198
 
 Device id
 : xiaomi-surya
@@ -3764,7 +3872,7 @@ Updated
 : 2026-11-18
 
 
-### Row 197
+### Row 199
 
 Device id
 : xiaomi-surya
@@ -3791,7 +3899,7 @@ Updated
 : 2026-11-18
 
 
-### Row 198
+### Row 200
 
 Device id
 : xiaomi-surya
@@ -3809,7 +3917,7 @@ Updated
 : 2026-11-18
 
 
-### Row 199
+### Row 201
 
 Device id
 : xiaomi-surya
@@ -3827,7 +3935,7 @@ Updated
 : 2026-11-18
 
 
-### Row 200
+### Row 202
 
 Device id
 : xiaomi-surya
@@ -3845,7 +3953,7 @@ Updated
 : 2026-11-18
 
 
-### Row 201
+### Row 203
 
 Device id
 : xiaomi-surya
@@ -3863,7 +3971,7 @@ Updated
 : 2026-11-18
 
 
-### Row 202
+### Row 204
 
 Device id
 : xiaomi-surya
@@ -3881,7 +3989,7 @@ Updated
 : 2026-11-18
 
 
-### Row 203
+### Row 205
 
 Device id
 : xiaomi-surya
@@ -3899,7 +4007,7 @@ Updated
 : 2026-11-18
 
 
-### Row 204
+### Row 206
 
 Device id
 : xiaomi-surya
@@ -3917,7 +4025,7 @@ Updated
 : 2026-11-18
 
 
-### Row 205
+### Row 207
 
 Device id
 : xiaomi-surya
@@ -3935,7 +4043,7 @@ Updated
 : 2026-11-18
 
 
-### Row 206
+### Row 208
 
 Device id
 : xiaomi-surya
@@ -3953,7 +4061,7 @@ Updated
 : 2026-11-18
 
 
-### Row 207
+### Row 209
 
 Device id
 : xiaomi-surya
@@ -3971,7 +4079,7 @@ Updated
 : 2026-11-18
 
 
-### Row 208
+### Row 210
 
 Device id
 : xiaomi-surya
@@ -3989,7 +4097,7 @@ Updated
 : 2026-11-18
 
 
-### Row 209
+### Row 211
 
 Device id
 : xiaomi-surya
@@ -4016,7 +4124,7 @@ Updated
 : 2026-11-19
 
 
-### Row 210
+### Row 212
 
 Device id
 : xiaomi-surya
@@ -4034,7 +4142,7 @@ Updated
 : 2026-11-18
 
 
-### Row 211
+### Row 213
 
 Device id
 : xiaomi-surya
@@ -4052,7 +4160,7 @@ Updated
 : 2026-11-18
 
 
-### Row 212
+### Row 214
 
 Device id
 : xiaomi-surya
@@ -4070,7 +4178,7 @@ Updated
 : 2026-11-18
 
 
-### Row 213
+### Row 215
 
 Device id
 : xiaomi-surya
@@ -4088,7 +4196,7 @@ Updated
 : 2026-11-18
 
 
-### Row 214
+### Row 216
 
 Device id
 : xiaomi-surya
@@ -4106,7 +4214,7 @@ Updated
 : 2026-11-18
 
 
-### Row 215
+### Row 217
 
 Device id
 : xiaomi-surya
@@ -4124,7 +4232,7 @@ Updated
 : 2026-11-18
 
 
-### Row 216
+### Row 218
 
 Device id
 : xiaomi-surya
@@ -4142,7 +4250,7 @@ Updated
 : 2026-11-18
 
 
-### Row 217
+### Row 219
 
 Device id
 : xiaomi-surya
@@ -4160,7 +4268,7 @@ Updated
 : 2026-11-18
 
 
-### Row 218
+### Row 220
 
 Device id
 : xiaomi-surya
@@ -4178,7 +4286,7 @@ Updated
 : 2026-11-18
 
 
-### Row 219
+### Row 221
 
 Device id
 : xiaomi-surya
@@ -4196,7 +4304,7 @@ Updated
 : 2026-11-18
 
 
-### Row 220
+### Row 222
 
 Device id
 : xiaomi-surya
@@ -4214,7 +4322,7 @@ Updated
 : 2026-11-18
 
 
-### Row 221
+### Row 223
 
 Device id
 : xiaomi-surya
@@ -4232,7 +4340,7 @@ Updated
 : 2026-11-18
 
 
-### Row 222
+### Row 224
 
 Device id
 : xiaomi-surya
@@ -4250,7 +4358,7 @@ Updated
 : 2026-11-18
 
 
-### Row 223
+### Row 225
 
 Device id
 : xiaomi-surya
@@ -4268,7 +4376,7 @@ Updated
 : 2026-11-18
 
 
-### Row 224
+### Row 226
 
 Device id
 : xiaomi-surya
@@ -4286,7 +4394,7 @@ Updated
 : 2026-11-18
 
 
-### Row 225
+### Row 227
 
 Device id
 : xiaomi-surya
@@ -4304,7 +4412,7 @@ Updated
 : 2026-11-18
 
 
-### Row 226
+### Row 228
 
 Device id
 : xiaomi-surya
@@ -4322,7 +4430,7 @@ Updated
 : 2026-11-18
 
 
-### Row 227
+### Row 229
 
 Device id
 : xiaomi-surya
@@ -4340,13 +4448,49 @@ Updated
 : 2026-11-18
 
 
-### Row 228
+### Row 230
 
 Device id
 : xiaomi-surya
 
 Step id
 : test-layer-boots
+
+Status
+: unknown
+
+Notes
+: Not known yet: linux-phone-oco/surya-lab does not claim this step.
+
+Updated
+: 2026-11-19
+
+
+### Row 231
+
+Device id
+: xiaomi-surya
+
+Step id
+: display-any-order
+
+Status
+: unknown
+
+Notes
+: Not known yet: linux-phone-oco/surya-lab does not claim this step.
+
+Updated
+: 2026-11-19
+
+
+### Row 232
+
+Device id
+: xiaomi-surya
+
+Step id
+: storage-full-speed
 
 Status
 : unknown

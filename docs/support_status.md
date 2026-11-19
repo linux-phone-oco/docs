@@ -24,15 +24,15 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 
 | Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Display panel](components.md#display-panel) | [❔](support_status.md#display-panel--google-taimen) | [❔](support_status.md#display-panel--google-walleye) | [✅](support_status.md#display-panel--xiaomi-surya) |
+| [Display panel](components.md#display-panel) | [❔](support_status.md#display-panel--google-taimen) | [🟡](support_status.md#display-panel--google-walleye) | [✅](support_status.md#display-panel--xiaomi-surya) |
 | [Graphics (GPU)](components.md#gpu) | ❔ | [❔](support_status.md#gpu--google-walleye) | [❔](support_status.md#gpu--xiaomi-surya) |
 
 ### Input
 
 | Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
-| [Touchscreen](components.md#touchscreen) | [❔](support_status.md#touchscreen--google-taimen) | [❔](support_status.md#touchscreen--google-walleye) | [✅](support_status.md#touchscreen--xiaomi-surya) |
-| [Haptics (vibration motor)](components.md#haptics) | [❔](support_status.md#haptics--google-taimen) | [❔](support_status.md#haptics--google-walleye) | [✅](support_status.md#haptics--xiaomi-surya) |
+| [Touchscreen](components.md#touchscreen) | [❔](support_status.md#touchscreen--google-taimen) | [✅](support_status.md#touchscreen--google-walleye) | [✅](support_status.md#touchscreen--xiaomi-surya) |
+| [Haptics (vibration motor)](components.md#haptics) | [❔](support_status.md#haptics--google-taimen) | [🟡](support_status.md#haptics--google-walleye) | [✅](support_status.md#haptics--xiaomi-surya) |
 | [Fingerprint or face unlock](features.md#fingerprint) | [❔](support_status.md#fingerprint--google-taimen) | [❔](support_status.md#fingerprint--google-walleye) | [❌](support_status.md#fingerprint--xiaomi-surya) |
 | [Buttons (power, volume)](components.md#buttons) | ❔ | [❔](support_status.md#buttons--google-walleye) | [❔](support_status.md#buttons--xiaomi-surya) |
 
@@ -53,7 +53,7 @@ Rows are components, columns devices. ✅ works · 🟡 partial · ❌ broken ·
 | Components | [Google Pixel 2 XL](devices.md#google-taimen) | [Google Pixel 2](devices.md#google-walleye) | [Xiaomi POCO X3 NFC](devices.md#xiaomi-surya) |
 |---|---|---|---|
 | [Accelerometer / gyroscope / other sensors](components.md#sensors) | [❔](support_status.md#sensors--google-taimen) | [❔](support_status.md#sensors--google-walleye) | [❌](support_status.md#sensors--xiaomi-surya) |
-| [Kernel (boots without unexpected warnings)](components.md#kernel) | [❔](support_status.md#kernel--google-taimen) | [❔](support_status.md#kernel--google-walleye) | [❔](support_status.md#kernel--xiaomi-surya) |
+| [Kernel (boots without unexpected warnings)](components.md#kernel) | [❔](support_status.md#kernel--google-taimen) | [🟡](support_status.md#kernel--google-walleye) | [❔](support_status.md#kernel--xiaomi-surya) |
 
 ### Power
 
@@ -176,15 +176,15 @@ Rear camera(s) × Google Pixel 2
 
 <a id="display-panel--google-walleye"></a>
 Display panel × Google Pixel 2
-: unknown — notes: No report for walleye's panel. The fork has a walleye device tree, but no source says its display works (the wiki reports a blank screen on the 2 XL, taimen). No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
+: partial — notes: Lit on mainline with L7 (the late-probe kernel, modules loaded by the procedure in a hand-picked order): the author saw the kernel log and four held stripes on the glass, 2026-11-19. Not yet from the board dts in any load order: B2 fails (pixel clock rcg warning, DSI -110, SMMU faults); research walleye-display-b2-dsi-clock-warning. — updated: 2026-11-19 — judged: partial
 
 <a id="touchscreen--google-walleye"></a>
 Touchscreen × Google Pixel 2
-: unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
+: works — notes: Works as an input device on z21 (RAM-booted): 3593 EV_ABS events from the Synaptics S3708AR while the author swiped, 2026-11-19. No UI uses it yet. — updated: 2026-11-19 — judged: works
 
 <a id="haptics--google-walleye"></a>
 Haptics (vibration motor) × Google Pixel 2
-: unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
+: partial — notes: DRV2624 bound at 0-005a with its input device (2026-11-19); no effect played yet; the rail that powers it is unread. — updated: 2026-11-19 — judged: partial
 
 <a id="modem-data--google-walleye"></a>
 Mobile data × Google Pixel 2
@@ -212,7 +212,7 @@ NFC × Google Pixel 2
 
 <a id="fingerprint--google-walleye"></a>
 Fingerprint or face unlock × Google Pixel 2
-: unknown — notes: No source found reporting this on this phone (surveyed 2026-11-17: the Nura wiki, pmaports, the mainline tree, kcxt/linux-wahoo). Nobody here has measured it. Settles with: the phone's own test on a booted Linux kernel. — updated: 2026-11-17 — judged: unknown
+: unknown — notes: Identified from the vendor dtb 2026-11-19: FPC (compatible fpc,fpc1020), irq GPIO86, reset GPIO128, vdd_io PM8998 S4, SPI bus not named (TrustZone side). Exact chip and bus settle with an SPI HWID read; no driver on mainline or libfprint. — updated: 2026-11-19 — judged: unknown
 
 <a id="sensors--google-walleye"></a>
 Accelerometer / gyroscope / other sensors × Google Pixel 2
@@ -228,7 +228,7 @@ Fastboot / bootloader × Google Pixel 2
 
 <a id="kernel--google-walleye"></a>
 Kernel (boots without unexpected warnings) × Google Pixel 2
-: unknown — notes: No Nura wiki page and no pmaports package for walleye (checked 2026-11-17). The out-of-tree fork kcxt/linux-wahoo (wahoo/5.17, last push 2022-02-27) carries msm8998-google-walleye.dts and wahoo.dtsi, but no source says it boots; the repository calls itself 'Mainline Linux for the Google Pixel 2XL (And 2?)'. Not in mainline Linux (checked 2026-11-17). Settles with: booting that fork on a Pixel 2. — updated: 2026-11-17 — judged: unknown
+: partial — notes: Mainline v7.3 with our board dts boots RAM-booted from fastboot to a shell over USB (gadget 18 s); display, touch, fuel gauge, haptics and the UFS card read on it. Not installed: nothing is written to the phone (decision: no flash without a recorded decision, item walleye-install-stage-decision). — updated: 2026-11-19 — judged: partial
 
 <a id="deep-sleep--google-walleye"></a>
 Deep sleep that wakes for calls and messages × Google Pixel 2
