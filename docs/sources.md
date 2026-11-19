@@ -7584,3 +7584,69 @@ By
 
 Takes
 : touch(x, y) and swipes done by a stylus robot over a device stand; a calibrated mapping from screen points to arm positions per device
+
+
+<a id="cargo-dist"></a>
+### dist (cargo-dist): release CI that builds and attaches binaries with checksums
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://opensource.axo.dev/cargo-dist/
+
+Author
+: axo.dev
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: a release workflow builds each binary per target and attaches it with a sha256; installs download and verify instead of compiling
+
+
+<a id="cargo-binstall"></a>
+### cargo-binstall: install Rust binaries from release assets, compile as a fallback
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/cargo-bins/cargo-binstall
+
+Author
+: cargo-bins
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: fetch the release's prebuilt binary, check it, fall back to cargo install only when none fits
+
+
+<a id="systemd-unattended-upgrades"></a>
+### unattended-upgrades: a host that follows its releases on a timer, in a window, with a check
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://wiki.debian.org/UnattendedUpgrades
+
+Author
+: Debian
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: a timer applies new releases without a person, only in an allowed window, and logs what it did; the pin moves with it

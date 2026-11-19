@@ -2363,3 +2363,31 @@ About
 
 Research
 : attended-device-values
+
+
+<a id="2026-11-19-host-follows-releases"></a>
+### 2026-11-19-host-follows-releases
+
+Brief
+: The host side becomes a conveyor: release CI attaches checked binaries, the lab host follows releases by itself in a lease-free window, and a device.toml the host cannot read cannot land
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: (a) lab-tools' release CI builds the host family (lpoco, lpoco-lab/devlab, lpoco-bringup, lpoco-health, lpoco-host, lpoco-tone, lpoco-attended) for x86_64 Linux and attaches each with its sha256 to the release; lpoco host prepare downloads and checks them, compiling with cargo only when no binary fits. (b) The lab host follows releases: a lpoco-host user timer (no root) every 15 min sees a newer release, waits for a window where both keeper leases are free, installs it, runs lpoco host check (which parses every lane's device.toml with the installed tools and fails on any it cannot read), keeps the previous binaries to step back to if check fails, and lands the lab.toml pin bump itself (signed lab-host-follow) so the pin stays the record. A release needing root (udev, polkit) is not applied by the timer: it says so to orchestration. (c) A lane cannot land a device.toml the installed host cannot read: device repos' CI runs the manifest check of the version lab.toml pins (attended-ready-on-host covers the run side). Orchestration's hand step goes away; it reads the timer's log in its round.
+
+Why
+: The author, 2026-11-19, relayed verbatim: dont we have that established in conveyers for ease and egonomisy of both edit, compile run, ship, download, run and so on ? or how do we have it ? is it just me or it looks like a busy handwork that orchestrator or such are now bound to shove dust from one place to another ? The host sat at 0.24.0 while lab-tools reached 0.32.x and surya's attended run broke on it with the author at the phones (docs #666). Research host-conveyor: dist, cargo-binstall, unattended-upgrades, Renovate.
+
+Rejected
+: Keep the hand bump and prepare: it fell behind by eight releases in a day. Follow the newest release with no pin: the host's state leaves git and nobody can say what ran. Compile on the host from the timer: minutes of build per release on the lab machine while a phone may be mid-run. An agent session as the follower: a session per release for a mechanical step.
+
+About
+: bringup-steps
+
+Research
+: host-conveyor

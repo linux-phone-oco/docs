@@ -6974,7 +6974,7 @@ Proof
 : lab-tools attended tests with two fixture device repos and the library: a step copied into both (renamed) is flagged as one pair with both places; a step the library already has is flagged as 'use the library'; a step in one repo only is listed, not flagged; three differing copies are flagged, two differing are listed
 
 Rank
-: 9
+: 8
 
 About
 : bringup-steps
@@ -7064,7 +7064,7 @@ Proof
 : lab-tools devlab test kernel-try-reports-usb-timeline: fed the host journal excerpt of 2026-11-19 14:25-14:48 (surya-lab research 2026-11-19-calls4-hang-was-the-reboot-out-of-calls-plus), it says 'frozen: device N connected since T, no re-enumeration'; a normal boot's two enumerations 12 s apart read as re-enumerating; no events read as absent
 
 Rank
-: 7
+: 6
 
 About
 : bringup-steps
@@ -7095,7 +7095,7 @@ Proof
 : lab-tools host tests: lab.toml declares [clones] (folders, every); plan lists the user timer; the job fetches and fast-forwards a clone that is clean and on main, leaves a dirty, detached or diverged one alone and names it; after prepare, clones-check reports none behind
 
 Rank
-: 6
+: 5
 
 About
 : agent-folder
@@ -7188,7 +7188,7 @@ Proof
 : lab-tools devlab test (surya's test-boot-heartbeat): the try hook's text writes the stage line before any sleep and appends a heartbeat every 10 s until PID 1 is systemd; then one keeper try of a kernel whose initramfs is held leaves the heartbeat on the ESP, read by lpoco lab kernel log
 
 Rank
-: 8
+: 7
 
 About
 : bringup-steps
@@ -7220,6 +7220,99 @@ Proof
 
 Rank
 : 4
+
+About
+: bringup-steps
+
+
+<a id="release-host-binaries"></a>
+### Release CI attaches the host family's x86_64 binaries with sha256; lpoco host prepare downloads and checks them, cargo only as a fallback
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: decision 2026-11-19-host-follows-releases (a). dist or a plain matrix job in release-plz.yml; build once per release, not per tool tag if they share a version.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools: a release attaches lpoco, lpoco-lab, lpoco-bringup, lpoco-health, lpoco-host, lpoco-tone, lpoco-attended (x86_64-unknown-linux-gnu) each with a .sha256; host tests: prepare with a stand-in release installs from the asset after checking the sha, refuses a wrong sha, and falls back to cargo install when no asset fits
+
+Rank
+: 1
+
+About
+: bringup-steps
+
+
+<a id="host-follows-releases"></a>
+### lpoco host follow: a user timer installs a new release in a lease-free window, checks every device.toml, steps back on failure, and lands the lab.toml pin
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: decision 2026-11-19-host-follows-releases (b). Declared in lab.toml ([follow] every, window), prepared once by hand; the pin bump lands through land as lab-host-follow. Same user-unit machinery as host-clones-fresh - build them together if it is simpler.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools host tests with stand-ins: a newer release and both leases free install it, run check, and write the pin bump; a held lease waits; a failing check restores the previous binaries and reports; a release needing root is not applied and is reported
+
+Rank
+: 2
+
+About
+: bringup-steps
+
+
+<a id="device-toml-checked-against-host"></a>
+### Device repos' CI checks device.toml with the manifest version lab.toml pins, so a file the host cannot read cannot land
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: decision 2026-11-19-host-follows-releases (c); attended-ready-on-host is the run-time side. The step reads the pin from grenudi/lab-machine's lab.toml on main and installs that lpoco-manifest (a release asset once release-host-binaries lands).
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: device-template CI step (copied to surya-lab and google-walleye-lab): with lab.toml pinning 0.24.0, a device.toml with [kernels] fails naming the key and the pinned version; with 0.32.1 it passes
+
+Rank
+: 3
 
 About
 : bringup-steps

@@ -2367,3 +2367,28 @@ Sources
 
 About
 : bringup-steps
+
+
+<a id="host-conveyor"></a>
+### host-conveyor
+
+Brief
+: The host side has half a conveyor: releases are compiled per tool by hand after a hand pin bump; others attach checked binaries and let the host follow releases on a timer
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Question
+: The author, 2026-11-19: dont we have that established in conveyers for ease and egonomisy of both edit, compile run, ship, download, run and so on ? or how do we have it ? is it just me or it looks like a busy handwork that orchestrator or such are now bound to shove dust from one place to another ?
+
+Found
+: What is: the phone side has a conveyor (packages.yml: release, signed apk repo, apk upgrade). The host side ends at release-plz's tag: someone bumps lab.toml's pin by hand and runs lpoco host prepare now, which cargo-installs eight tools for minutes; so the host sat at 0.24.0 while lab-tools reached 0.32.x, and surya's attended run broke with the author at the phones (docs #666). Others: dist (cargo-dist) builds binaries in release CI with checksums; cargo-binstall fetches them, compiling only as a fallback; unattended-upgrades follows releases on a timer in an allowed window with a log; Renovate's regex manager moves pins in config files by itself.
+
+Sources
+: cargo-dist,cargo-binstall,systemd-unattended-upgrades,renovate-regex-manager
+
+About
+: bringup-steps
