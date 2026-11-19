@@ -6745,7 +6745,7 @@ Proof
 : lab-tools devlab tests: kernel try NAME --cmdline ARGS writes a one-boot entry whose command line carries ARGS, refused when ARGS holds a newline or the entry has none to extend; the next boot is stock
 
 Rank
-: 7
+: 4
 
 About
 : bringup-steps
@@ -7064,7 +7064,7 @@ Proof
 : lab-tools devlab test kernel-try-reports-usb-timeline: fed the host journal excerpt of 2026-11-19 14:25-14:48 (surya-lab research 2026-11-19-calls4-hang-was-the-reboot-out-of-calls-plus), it says 'frozen: device N connected since T, no re-enumeration'; a normal boot's two enumerations 12 s apart read as re-enumerating; no events read as absent
 
 Rank
-: 6
+: 7
 
 About
 : bringup-steps
@@ -7095,7 +7095,38 @@ Proof
 : lab-tools host tests: lab.toml declares [clones] (folders, every); plan lists the user timer; the job fetches and fast-forwards a clone that is clean and on main, leaves a dirty, detached or diverged one alone and names it; after prepare, clones-check reports none behind
 
 Rank
-: 5
+: 6
 
 About
 : agent-folder
+
+
+<a id="attended-binary-shipped"></a>
+### lpoco-attended's binary ships with the lpoco family and reaches the lab by lab.toml; a stray argument is refused, not dropped
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: open ends of attended-scaffold (lab-tools #268): the binary is not in release packaging, extra arguments are dropped silently. After it ships, orchestration pins it in lab.toml and prepares the host (both keeper leases free).
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools: the release builds and attaches the lpoco-attended binary like its siblings; attended tests: lpoco-attended run NAME --bogus exits 2 naming the argument; then lpoco-host plan from lab.toml lists lpoco-attended at the release
+
+Rank
+: 5
+
+About
+: bringup-steps
