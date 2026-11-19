@@ -1801,3 +1801,28 @@ About
 
 Material
 : research/upstream-forks/2026-11-19/
+
+
+<a id="dt-checks-in-a-container"></a>
+### dt-checks-in-a-container
+
+Brief
+: dtschema runs in an alpine:edge Docker container (2026.09; 3.24's 2025.12 crashes on v7.3): wdt binding and pm8998/pm6150 dtbs clean, ~2 min/run, no Python on host
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: Can dt_binding_check and dtbs_check run without installing Python on the lab host, and at what cost?
+
+Found
+: Docker 29.9 is on the host. alpine:edge py3-dt-schema 2026.09 works with v7.3; alpine:3.24 2025.12 crashes. The pm8916-wdt binding and the pm8998 (cheeseburger) and pm6150 (joyeuse) dtbs with the series pass with 0 warnings. A bogus property is flagged. About 2 min a run with apk each time; a baked, digest-pinned image cuts that.
+
+About
+: upstreams-lane
+
+Material
+: research/upstream-forks/2026-11-19/
