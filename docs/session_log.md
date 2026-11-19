@@ -4721,3 +4721,27 @@ Rejected
 
 About
 : device-toml-checked-against-host
+
+---
+
+
+<a id="2026-11-19-ready-is-the-go"></a>
+### A keeper skipped an open go: ready is the go
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: The first UFS keeper (walleye, 19:57 UTC) worked in a fresh worktree made 15 s after the go window (#577) merged; tad q ready listed walleye-try-ufs-match as ready - which for a witness item means the go is open - but the keeper looked for a go_until field the query does not print, did not find it, and skipped; the author's go waited. Not a stale read. phone-keeper.md now says ready is the go. The query printing go_until is ideal-knowledge-base's (it ships ready.sql).
+
+Considered
+: A stale clone, as first guessed: the transcript shows a fresh worktree after the merge.
+
+Rejected
+: A new check in the keeper: the query already decides; the gap was reading it.
+
+About
+: agent-folder
