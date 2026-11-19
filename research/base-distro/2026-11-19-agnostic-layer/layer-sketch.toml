@@ -1,0 +1,42 @@
+# A sketch, not a contract: what surya's [layer] in device.toml could say once lpoco-manifest declares it (item
+# layer-table-in-manifest). The builder decides the names; the test (test-layer-apk-and-deb.sh) holds only the outcome.
+# What is device layer moves here from [[flash.overlay]]; what only a lab phone needs (devlab-usb-awake, the edge
+# repository list) stays an overlay.
+[layer]
+name = "xiaomi-surya"                     # packages: xiaomi-surya-config, xiaomi-surya-boot, linux-xiaomi-surya
+needs = ["qrtr", "rmtfs", "tqftpserv>=1.2", "hexagonrpcd", "q6voiced", "pd-mapper"]   # tokens; the map names them per base
+
+[layer.kernel]
+tree = "https://github.com/grenudi/linux"
+tag = "sm7150-v7.1-rc3"                   # illustrative
+config = "kernel/surya.config"            # a fragment over arm64 defconfig
+dtbs = ["qcom/sm7150-xiaomi-surya-huaxing.dtb", "qcom/sm7150-xiaomi-surya-tianma.dtb"]
+
+[layer.boot]
+method = "efi-kernel-install"             # writes /usr/lib/kernel/devicetree; walleye: "android-bootimg", addresses from [boot]
+
+[layer.firmware]
+method = "extract-from-partitions"        # droid-juicer's entry on deb/rpm/arch, msm-firmware-loader on Nura
+
+[layer.initramfs]
+modules = ["ufs_qcom", "phy_qcom_qmp_ufs"]   # illustrative; one list, a drop-in per initramfs tool
+
+[[layer.file]]
+from = "ucm/Xiaomi/surya/HiFi.conf"
+to = "/usr/share/alsa/ucm2/Xiaomi/surya/HiFi.conf"
+kind = "data"
+
+[[layer.file]]
+from = "ucm/Xiaomi/surya/VoiceCall.conf"
+to = "/usr/share/alsa/ucm2/Xiaomi/surya/VoiceCall.conf"
+kind = "data"
+
+[[layer.file]]
+from = "lab/devlab-pd-mapper.conf"
+to = "/usr/lib/modprobe.d/xiaomi-surya-pd-mapper.conf"
+kind = "data"
+
+[[layer.file]]
+from = "lab/90-lpoco-way-back.conf"
+to = "/usr/lib/sysctl.d/90-xiaomi-surya-way-back.conf"
+kind = "data"

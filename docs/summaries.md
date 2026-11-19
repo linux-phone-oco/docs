@@ -195,3 +195,18 @@ Says
 
 Condenses
 : 2026-11-19-base-distro, 2026-11-19-base-distro-any-arm-base, 2026-11-19-research-base-distro, base-distro-candidates, base-distro-device-layer, base-distro-how-it-stands
+
+
+### Row 14
+
+About
+: agnostic-layer
+
+Date
+: 2026-11-19
+
+Says
+: A distro-agnostic device layer: each phone's kernel, dtb, firmware, UCM, config and boot glue described once and packaged for any base. Recommended, waiting on the author's word (decision 2026-11-19-device-layer-declared-once): device.toml gains [layer], typed in lpoco-manifest; lpoco layer pack makes apk, deb, rpm or archlinux through nfpm; everything per device is generated, only a kernel scriptlet, a boot trigger, a token-map column and a conveyor lane are kept per base. apk first (surya stays on Nura), deb second (the author's leaning), rpm and archlinux when asked; the base becomes a choice of repository once the deb installs and boots. Upstream first per piece: kernel and dts to Linux, firmware extracted from the phone or sent to linux-firmware, UCM to alsa-ucm-conf, walleye's boot glue to qcom-phone-utils; Nura only by the author's hand. Prior art: Asahi ships five distributions by one upstream Makefile and thin hand recipes (research device-layer-agnostic-prior-art). The failing test test-layer-apk-and-deb.sh fails today; 14 items unranked, first layer-table-in-manifest with lpoco-layer-pack (research agnostic-layer-how-it-stands).
+
+Condenses
+: 2026-11-19-device-layer-declared-once, 2026-11-19-research-agnostic-layer, agnostic-layer-how-it-stands, device-layer-agnostic-prior-art

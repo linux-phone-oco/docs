@@ -3491,3 +3491,27 @@ Done
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-19-research-agnostic-layer"></a>
+### Research: a distro-agnostic device layer
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: Briefed by orchestration (linux-phone-oco) on the author's words, verbatim: "for distro i think debian, but i would like to postpone it a bit and consider how we could work and contribute distro agnostic or something". Read the base-distro decisions and research, the manifest decision and lpoco-manifest's types, surya's device.toml (its device layer lives today in [[flash.overlay]]), the bring-up chain, the conveyor and giving-back-by-distro. Two read-only researchers read Asahi across five distributions, Pocketblue, Mobian/Debian, pmaports, mkosi, kernel-install and nfpm/fpm/OBS at source; kernel-install's devicetree file checked in the local man page (systemd 262). Recorded 23 sources, research device-layer-agnostic-prior-art and agnostic-layer-how-it-stands with material research/base-distro/2026-11-19-agnostic-layer/ (README, layer sketch, the failing test, run: fails on 2 checks), decision 2026-11-19-device-layer-declared-once for the author's word, the subject item agnostic-layer and 14 items, and a note on device-facts-as-data.
+
+Considered
+: Asahi's Makefile and hand recipes; native recipes generated per base (mkosi, OBS); image-only overlays; each distribution's own tree; fpm and melange beside nfpm; choosing Debian now
+
+Rejected
+: Each in the decision's rejected, with why; Debian now because the author asked to postpone and building the deb beside the apk keeps the choice cheap
+
+About
+: agnostic-layer

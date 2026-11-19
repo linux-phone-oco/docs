@@ -2050,3 +2050,42 @@ Amends
 
 Tracked by
 : base-distro
+
+
+<a id="2026-11-19-device-layer-declared-once"></a>
+### 2026-11-19-device-layer-declared-once
+
+Brief
+: Recommended for the author's word: each phone's device layer declared once in device.toml [layer], packed per format by lpoco layer pack (nfpm), apk then deb; upstream first; base stays postponed
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Decision
+: A recommendation for the author's word. Each phone's device layer is described once and packed for every base; the base stays postponed, as he asked.
+1. Declared once: device.toml gains [layer], typed in lpoco-manifest with its schema (decision 2026-11-18-device-manifest-schema-from-rust): the files with their kind (data, config, unit, script) and where they go under /usr, dependency tokens, the kernel (tree, tag, config fragment, dtbs), the boot method (efi-kernel-install, android-bootimg with [boot]'s addresses), the firmware method (extract-from-partitions or files), the early modules. What is device layer moves there from [[flash.overlay]]; lab-only overlays stay.
+2. Packed per format by one command: lpoco layer pack --format apk|deb|rpm|archlinux writes an nfpm config and packs; the conveyor signs and publishes each format in its own lane. Generated per device, every format: file lists, dependency names through a token map in lpoco, systemd presets instead of enable scriptlets, an initramfs drop-in for each of mkinitfs, initramfs-tools, dracut and mkinitcpio from one module list, Nura's deviceinfo, /usr/lib/kernel/devicetree. Hand-kept once per base, never per device: the kernel package's scriptlet, the boot trigger where a base has none (walleye's boot.img: a kernel-install plugin, a libalpm hook on Arch; on Debian qcom-phone-utils already does it, on Nura boot-deploy), the token map's column, the conveyor lane. lpoco layer export writes Asahi's contract too - the tree and a Makefile of install targets - for a distribution that packages us natively.
+3. Formats in order: apk (the lane runs; surya stays on Nura, which carries its layer), deb second (the author's leaning, and Debian allows his AI-assisted work), then rpm and archlinux when asked. The base for a device becomes which repository it installs from, chosen when its deb installs and boots - not before.
+4. Upstream first, per piece: kernel drivers and dts to Linux (surya through sm7150-mainline), each base's kernel config to its kernel team, redistributable firmware to linux-firmware, OEM-signed firmware never packaged but extracted from the phone (droid-juicer, msm-firmware-loader), UCM to alsa-ucm-conf, hwdb to systemd, haptics themes to feedbackd-device-themes, walleye's boot glue to qcom-phone-utils; what an upstream takes leaves our layer. Each sent under the author's sign-off where its policy allows (giving-back-by-distro); Nura only by his own hand.
+5. Bring-up: one generic step, device-layer-packaged, its helper lpoco layer pack with the format an argument - not a step or helper per format; update-applies and kernel-upgrade-keeps-steps prove it per base.
+
+Why
+: The author, verbatim: "for distro i think debian, but i would like to postpone it a bit and consider how we could work and contribute distro agnostic or something". Research device-layer-agnostic-prior-art: Asahi, the strongest prior art, keeps five distributions by one upstream source with install targets and a thin recipe per distribution, and its cost is in the hand-kept recipes (asahi-alarm's fork, Debian's unmerged patch) and the kernel fork, not in the packaging tool; its cure is upstream-first. Our layer is small and mostly files (base-distro-device-layer: surya ~8 packages on Debian; walleye's wholly ours), the facts are already typed in Rust (lpoco-manifest), and nfpm packs prebuilt files into all four formats from one config - so generating per format costs one packer, once, and a new device or format costs no recipe. surya's EFI boot glue is one data file under kernel-install (/usr/lib/kernel/devicetree), walleye's boot.img glue already exists in Debian (zz-qcom-bootimg). Postponing the base is cheap this way: the deb is built beside the apk, measured by the same test, and the move becomes a choice of repository. Cost (estimates): types 3-4 agent-hours, packer 8-12, apk via nfpm 2-3, deb lane 6-10, rpm lane 6-10, archlinux 3-5, walleye's boot trigger 4-6; a new device's [layer] 2-4. The first step settles the largest unknown cheaply: the failing test (test-layer-apk-and-deb.sh) packs surya's layer as apk and deb and shows whether nfpm's apk installs under Alpine 3.24's apk-tools.
+
+Rejected
+: Asahi's own pattern as it is - a Makefile and a hand-kept recipe per device per format (8 for two phones and four formats): its drift is what asahi-alarm's fork and Debian's unmerged patch show; its Makefile contract is kept, generated, as lpoco layer export. Native recipes generated per base and built in each base's container (systemd under mkosi, OBS): four templates and four toolchains for a quality that matters only once a distribution takes the recipe, when its packager writes it from export; kept for that day. Image-only (mkosi trees, today's flash overlays): no upgrades through the package manager and nothing a distribution can take; Nura is edge-only in mkosi. Packaging into each distribution's tree as the way to stay agnostic (Mobian's qcom-support, pmaports): that is giving back, done piece by piece where policy allows, not a description we keep. fpm (Ruby, a runtime we avoid) and melange (apk only) instead of nfpm. Choosing Debian now: the author asked to postpone; with both formats built the choice costs a repository switch later, not a repackaging. A bring-up step or helper per format: the format is an argument, the steps stay generic.
+
+About
+: agnostic-layer
+
+Research
+: device-layer-agnostic-prior-art
+
+Scope
+: lab-tools, the device bases (surya-lab, google-walleye-lab, device-template), the conveyor's use by them
+
+Tracked by
+: agnostic-layer

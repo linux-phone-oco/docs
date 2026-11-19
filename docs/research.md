@@ -2102,3 +2102,67 @@ Sources
 
 About
 : base-distro
+
+
+<a id="device-layer-agnostic-prior-art"></a>
+### device-layer-agnostic-prior-art
+
+Brief
+: Asahi ships one device family to 5 distros by one upstream Makefile of install targets and thin hand recipes per distro; nfpm packs apk/deb/rpm/pkg from one YAML; kernel-install covers EFI boot glue
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: How do others keep one device family's layer (kernel, dtb, firmware, UCM, config, boot glue) for several distributions at once - Asahi, Pocketblue, Mobian/Debian, pmaports, mkosi, kernel-install, nfpm/fpm/OBS - and what does it teach us?
+
+Found
+: Read at source 2026-11-19 (material research/base-distro/2026-11-19-agnostic-layer/).
+Asahi Linux, the strongest prior art (one device family on Fedora, Arch, Gentoo, Debian, NixOS): nothing is generated across formats. Each piece has one upstream repository with a plain Makefile of small install targets and per-distribution bundles (asahi-scripts: install, install-dracut, install-mkinitcpio, install-udev-hwdb, install-fedora, install-arch); each distribution keeps a thin hand-written recipe calling one target (Fedora %make_install install-fedora; asahi-alarm make install-arch from a fork 4 commits ahead; Gentoo's ebuild the pieces one by one; Debian patched in install-debian, never merged; NixOS skips it). The one cross-format check is Packit: every upstream commit builds the Fedora spec in COPR; asahi-alarm follows Fedora's versions. One boot script (update-m1n1), a different trigger per base: kernel-install plus rpm triggers, dpkg triggers and postinst.d, a libalpm hook, extraFiles. Firmware is never packaged: extracted from macOS at install. A written policy: Fedora flagship; an alternative is listed only if its own maintainers back it, it ships all 8 named packages, takes new versions within 2 weeks, installs the normal way and supports its users; disendorsement otherwise. What hurt: a 1000+ patch kernel fork rebased weekly by one person (now shifting to upstream-first), a stale installer, Debian still without kernel and Mesa.
+Pocketblue (Fedora Atomic phones): bootc, a device directory with a build script, all RPMs in one repo built into per-SoC COPRs, the kernel swapped by a same-named package. Mobian: debos, per-SoC TOML (sm7150.toml lists surya, boot.img offsets), sm7150-support -> kernel + qcom-support-common; gives back through DebianOnMobile (qcom-phone-utils, droid-juicer, pd-mapper, mkbootimg in Debian; kernels stay Mobian's). qcom-phone-utils' zz-qcom-bootimg rewrites the flashed boot.img with the dtb appended - walleye's boot glue, already in Debian. pmaports: device/firmware/linux/ucm/soc packages; deviceinfo is the nearest one-description of a phone (pmbootstrap, mkinitfs, boot-deploy, deviceinfo-converter already emits Lomiri's format); nobody uses it on another base.
+mkosi: one config tree with Distribution matches; supports Fedora, Debian, Arch, openSUSE and Nura (edge only; source mkosi-distributions' not-Alpine is out of date); systemd builds itself for six bases under mkosi, each from a native recipe. kernel-install: /usr/lib/kernel/devicetree names the dtb under /usr/lib/modules/VER/dtb/ (kernel-install(8), systemd 262) - surya's EFI boot glue as one data file on Fedora, Debian with systemd-boot, Arch; Alpine runs kernel-hooks.d instead, Nura mkinitfs and boot-deploy. nfpm v2.49.0 packs prebuilt files into apk, archlinux, deb, ipk, rpm from one YAML with per-format overrides and signing; compiles nothing; repository indexes and apk-tools v3 not known yet. fpm: deb, rpm, pacman, apk module. OBS: one native recipe per family, APKBUILD since 2024-11.
+Vectors: (1) declared once in Rust, packed per format by nfpm - chosen; (2) Asahi's Makefile with hand recipes per device per format; (3) native recipes generated and built per base (mkosi/OBS); (4) image-only overlays; (5) each distribution's own tree.
+
+Sources
+: asahi-scripts-makefile,asahi-distro-policy,asahi-boot-process,fedora-asahi-how-its-made,fedora-asahi-scripts-rpm,asahi-alarm-pkgbuilds,debian-asahi-scripts,gentoo-asahi-overlay,nixos-apple-silicon,asahi-packit,debian-bananas,pocketblue,mobian-recipes-qcom,mobian-qcom-support,qcom-phone-utils-bootimg,boot-deploy,mkosi-distributions,mkosi-nura,systemd-mkosi-build,kernel-install-man,debian-zz-systemd-boot,alpine-systemd-boot,nfpm-config,fpm-readme,obs-build
+
+About
+: agnostic-layer
+
+Material
+: research/base-distro/2026-11-19-agnostic-layer/
+
+
+<a id="agnostic-layer-how-it-stands"></a>
+### agnostic-layer-how-it-stands
+
+Brief
+: Distro-agnostic device layer: recommended (declared once in device.toml [layer], packed per format by nfpm, apk then deb, upstream first), waits the author; 14 items; the failing test fails
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: Where does the distro-agnostic device layer stand, and what is the path for whoever takes it?
+
+Found
+: How it stands, 2026-11-19 (run agnostic-layer-research.r1). Recommended, waiting on the author's word: decision 2026-11-19-device-layer-declared-once - each phone's device layer declared once in device.toml [layer] (lpoco-manifest types and schema), packed per format by lpoco layer pack through nfpm, apk first and deb second, rpm and archlinux when asked; the base stays postponed and becomes a choice of repository once the deb installs and boots. Prior art: research device-layer-agnostic-prior-art (Asahi: one upstream Makefile of install targets, thin hand recipes per distribution, Packit building the flagship's spec, upstream-first as the cure for its fork).
+Cost per format (estimates): generated for every device - file lists, dependency names via a token map, systemd presets, initramfs drop-ins for four tools, deviceinfo, kernel-install's devicetree file. Hand-kept once per base: kernel scriptlet, a boot trigger where the base has none, the map's column, the conveyor lane. Types 3-4 agent-hours, packer 8-12, apk via nfpm 2-3, deb lane 6-10, rpm lane 6-10, archlinux 3-5, walleye's boot.img trigger 4-6; a new device's [layer] 2-4, then every format free.
+Upstream-first map (material README): kernel and dts to Linux (allowed); each base's kernel config to its kernel team (Debian, Fedora allow; ALARM, Alpine unclear); redistributable firmware to linux-firmware; OEM-signed firmware extracted from the phone by droid-juicer or msm-firmware-loader, never packaged; UCM to alsa-ucm-conf; hwdb to systemd; haptics to feedbackd-device-themes; walleye's boot glue to qcom-phone-utils (Debian allows); Nura only by the author's hand. The policies of alsa-ucm-conf, linux-firmware, systemd, U-Boot, freedesktop and ALARM are not known yet (item upstream-policies-measured).
+Not known yet: whether nfpm's apk installs under Alpine 3.24's apk-tools and whether nfpm writes repository indexes (layer-apk-via-nfpm settles both); whether Nura's systemd edition runs kernel-install.
+The failing test: research/base-distro/2026-11-19-agnostic-layer/test-layer-apk-and-deb.sh - surya's layer packs into an apk and a deb with the same files, holding its UCM and /usr/lib/kernel/devicetree; it fails today on the missing [layer] and lpoco layer (run 2026-11-19: 2 FAIL lines). Items, unranked: layer-table-in-manifest, lpoco-layer-pack, layer-test-in-lab-tools, surya-layer-declared, walleye-layer-declared, layer-apk-via-nfpm, conveyor-deb-lane, conveyor-rpm-lane, layer-archlinux-on-pacman-lane, bootimg-trigger-per-base, layer-export-makefile, firmware-extract-declared, upstream-policies-measured, bringup-step-layer-packaged. First step once the author says yes: layer-table-in-manifest with lpoco-layer-pack for apk and deb only, proven by the test.
+
+Sources
+: asahi-scripts-makefile,asahi-distro-policy,nfpm-config,kernel-install-man,qcom-phone-utils-bootimg
+
+About
+: agnostic-layer
+
+Material
+: research/base-distro/2026-11-19-agnostic-layer/

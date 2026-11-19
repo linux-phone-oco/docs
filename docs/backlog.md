@@ -5727,7 +5727,7 @@ Status
 : open
 
 Note
-: Decision 2026-11-19-base-distro: keeps a later move of base cheap. Comes through the device template (decision 2026-11-18-device-layer-from-docs); a schema change, so the docs owner's. Next: the author's word, then the template's owner looks around.
+: Carried by decision 2026-11-19-device-layer-declared-once if the author says yes: the facts live in device.toml [layer] (item layer-table-in-manifest), typed in lpoco-manifest, and every format is generated from them
 
 Opened
 : 2026-11-19
@@ -6107,3 +6107,333 @@ Rank
 
 About
 : test-layer
+
+
+<a id="agnostic-layer"></a>
+### A distro-agnostic device layer: each phone's kernel, dtb, firmware, UCM, config and boot glue described once and packaged for any base (apk, deb, rpm, pkg), contributed upstream first
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: Researched 2026-11-19 (agnostic-layer-how-it-stands); decision 2026-11-19-device-layer-declared-once waits on the author's word; then the items about agnostic-layer, first lpoco-layer-pack's failing test
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+About
+: base-distro
+
+
+<a id="layer-table-in-manifest"></a>
+### lpoco-manifest declares [layer]: files with kind and /usr destination, dependency tokens, kernel (tree, tag, config fragment, dtbs), boot method, firmware method, early modules; schema projected
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: manifest tests: a fixture with [layer] parses, an unknown [layer] field is refused, device.schema.json equals the types
+
+About
+: agnostic-layer
+
+
+<a id="lpoco-layer-pack"></a>
+### lpoco layer pack --format apk|deb|rpm|archlinux: an nfpm config from [layer] with the dependency token map, systemd presets, initramfs drop-ins (mkinitfs, initramfs-tools, dracut, mkinitcpio), Nura deviceinfo, /usr/lib/kernel/devicetree
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: docs research/base-distro/2026-11-19-agnostic-layer/test-layer-apk-and-deb.sh passes for surya
+
+About
+: agnostic-layer
+
+
+<a id="layer-test-in-lab-tools"></a>
+### The failing test test-layer-apk-and-deb.sh moved from docs' research material into lab-tools' suite, run by CI and reported unknown until lpoco-layer-pack lands
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: lab-tools CI runs the test on every change; it reads fail before lpoco-layer-pack and pass after
+
+About
+: agnostic-layer
+
+
+<a id="surya-layer-declared"></a>
+### surya's device layer declared in device.toml [layer]: UCM, pd-mapper modprobe, way-back sysctl, call units and scripts move from [[flash.overlay]]; lab-only overlays stay
+
+Project
+: linux-phone-oco/surya-lab
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: docs research/base-distro/2026-11-19-agnostic-layer/test-layer-apk-and-deb.sh passes against surya-lab; the remaining overlays are lab-only
+
+About
+: agnostic-layer
+
+
+<a id="walleye-layer-declared"></a>
+### walleye's device layer declared in device.toml [layer], boot method android-bootimg from [boot]'s addresses
+
+Project
+: linux-phone-oco/google-walleye-lab
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: the same test run against google-walleye-lab passes
+
+About
+: agnostic-layer
+
+
+<a id="layer-apk-via-nfpm"></a>
+### The conveyor's apk lane takes an nfpm-made apk (packed unsigned, signed in the signing container); settles nfpm against Alpine 3.24's apk-tools
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: the layer's apk installs at its version in a clean alpine:3.24 container from the published repository
+
+About
+: agnostic-layer
+
+
+<a id="conveyor-deb-lane"></a>
+### The conveyor gains a deb lane (the conveyor's owner, linux-package-distribution-oco): nfpm deb, a signed apt repository on pages, an install test
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: the layer's deb installs at its version in a clean debian:trixie container from the published repository
+
+About
+: agnostic-layer
+
+
+<a id="conveyor-rpm-lane"></a>
+### The conveyor gains an rpm lane (the conveyor's owner): nfpm rpm, createrepo_c, rpmsign, an install test - when a device asks for Fedora
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: the layer's rpm installs at its version in a clean fedora container from the published repository
+
+About
+: agnostic-layer
+
+
+<a id="layer-archlinux-on-pacman-lane"></a>
+### The conveyor's pacman lane takes nfpm-made archlinux packages (repo-add) - when a device asks for Arch
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: the layer's package installs with pacman in a clean archlinux:arm container from the published repository
+
+About
+: agnostic-layer
+
+
+<a id="bootimg-trigger-per-base"></a>
+### walleye's boot.img rewrite on kernel upgrade, one script with a trigger per base: kernel-install plugin (Fedora, Arch, Debian with systemd-boot), qcom-phone-utils on Debian, boot-deploy via deviceinfo on Nura
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: in a container per base, installing a new kernel package leaves a boot.img that lpoco bringup image check accepts with the dtb appended
+
+About
+: agnostic-layer
+
+
+<a id="layer-export-makefile"></a>
+### lpoco layer export: a source tarball with the layer's tree and an Asahi-style Makefile (install, install-alpine, install-debian, install-fedora, install-arch) for a distribution's own packager
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: make install DESTDIR=x from the tarball yields the deb's file list
+
+About
+: agnostic-layer
+
+
+<a id="upstream-policies-measured"></a>
+### The AI-assisted contribution policy of each upstream of the layer, read at source: alsa-ucm-conf, linux-firmware, systemd, U-Boot, feedbackd-device-themes, DebianOnMobile (qcom-phone-utils, droid-juicer), Arch/ALARM
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: each upstream row in docs names its policy with a source; the upstream-first table in the material has no 'not known yet'
+
+About
+: agnostic-layer
+
+
+<a id="bringup-step-layer-packaged"></a>
+### A generic bring-up step device-layer-packaged (stage upkeep, helper lpoco layer pack, the format an argument) for orchestration to add to the catalogue
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: tad q bringup-chain lists device-layer-packaged, unknown for surya and walleye until claimed
+
+About
+: agnostic-layer
+
+
+<a id="firmware-extract-declared"></a>
+### [layer.firmware] extract-from-partitions packed as a droid-juicer entry (deb, rpm, archlinux) and an msm-firmware-loader config (apk), never the OEM-signed blobs themselves
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Opened
+: 2026-11-19
+
+Waits
+: the author's word on decision 2026-11-19-device-layer-declared-once
+
+Proof
+: the test's packages hold the extractor's entry for surya and no file under /lib/firmware signed by the OEM
+
+About
+: agnostic-layer

@@ -6508,3 +6508,440 @@ By
 
 Takes
 : One image builder for Fedora, Debian, Ubuntu, Arch, openSUSE and others, not Alpine; also a kernel-install plugin
+
+
+<a id="asahi-scripts-makefile"></a>
+### asahi-scripts Makefile
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/AsahiLinux/asahi-scripts/blob/main/Makefile
+
+Year
+: 2026
+
+By
+: Asahi Linux
+
+Takes
+: One upstream Makefile of small install targets and per-distribution bundles (install-fedora, install-arch) that each distribution's hand-kept recipe calls
+
+
+<a id="asahi-distro-policy"></a>
+### Asahi Linux distribution guidelines
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://raw.githubusercontent.com/AsahiLinux/docs/main/docs/alt/policy.md
+
+Year
+: 2026
+
+By
+: Asahi Linux
+
+Takes
+: Fedora flagship; an alternative distribution is listed only if its maintainers back it, it ships the 8 named packages, takes new versions within 2 weeks, and supports its users; disendorsement
+
+
+<a id="asahi-boot-process"></a>
+### Asahi boot process guide
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://raw.githubusercontent.com/AsahiLinux/docs/main/docs/alt/boot-process-guide.md
+
+Year
+: 2026
+
+By
+: Asahi Linux
+
+Takes
+: One boot script (update-m1n1) building boot.bin, triggered differently per base
+
+
+<a id="fedora-asahi-how-its-made"></a>
+### Fedora Asahi Remix: how it's made
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://forge.fedoraproject.org/asahi/docs-site/raw/branch/main/modules/ROOT/pages/how-its-made.adoc
+
+Year
+: 2026
+
+By
+: Fedora Asahi SIG
+
+Takes
+: Fedora dist-git where possible, COPR where not, kiwi images; the kernel a fork of kernel-ark
+
+
+<a id="fedora-asahi-scripts-rpm"></a>
+### Fedora asahi-scripts dist-git
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://src.fedoraproject.org/rpms/asahi-scripts
+
+Year
+: 2026
+
+By
+: Fedora Asahi SIG
+
+Takes
+: The spec runs make install-fedora and adds a kernel-install hook and rpm triggers
+
+
+<a id="asahi-alarm-pkgbuilds"></a>
+### asahi-alarm PKGBUILDs
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/asahi-alarm/PKGBUILDs
+
+Year
+: 2026
+
+By
+: asahi-alarm
+
+Takes
+: Arch recipes call make install-arch from a fork; versions follow Fedora's (versions.txt)
+
+
+<a id="debian-asahi-scripts"></a>
+### Debian asahi-scripts packaging
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://sources.debian.org/src/asahi-scripts/20250713-3/debian/
+
+Year
+: 2026
+
+By
+: Debian Bananas team
+
+Takes
+: Debian patched in install-debian and initramfs targets, never merged upstream; dpkg triggers
+
+
+<a id="gentoo-asahi-overlay"></a>
+### Gentoo asahi-overlay
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/chadmed/asahi-overlay
+
+Year
+: 2026
+
+By
+: Gentoo Project:Asahi
+
+Takes
+: The ebuild calls the Makefile's pieces one by one, adds OpenRC and a kernel-install hook
+
+
+<a id="nixos-apple-silicon"></a>
+### nixos-apple-silicon
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/nix-community/nixos-apple-silicon
+
+Year
+: 2026
+
+By
+: nix-community
+
+Takes
+: NixOS builds boot.bin in its module and skips asahi-scripts
+
+
+<a id="asahi-packit"></a>
+### asahi-scripts Packit config
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/AsahiLinux/asahi-scripts/blob/main/.packit.yaml
+
+Year
+: 2026
+
+By
+: Asahi Linux
+
+Takes
+: Every upstream commit builds the flagship's (Fedora) spec in COPR - the only cross-format check
+
+
+<a id="nfpm-config"></a>
+### nfpm configuration reference
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://raw.githubusercontent.com/goreleaser/nfpm/main/www/content/docs/configuration.md
+
+Year
+: 2026
+
+By
+: goreleaser
+
+Takes
+: One YAML packs prebuilt files into apk, archlinux, deb, ipk, rpm with per-format overrides, config files, scripts and signing; v2.49.0 2026-11-12
+
+
+<a id="fpm-readme"></a>
+### fpm
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/jordansissel/fpm
+
+Year
+: 2026
+
+By
+: Jordan Sissel
+
+Takes
+: Ruby; deb, rpm, pacman and an apk module from one invocation
+
+
+<a id="obs-build"></a>
+### obs-build
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/openSUSE/obs-build/tree/master/Build
+
+Year
+: 2026
+
+By
+: openSUSE
+
+Takes
+: Builds spec, debian/, PKGBUILD, APKBUILD (since 2024-11) and mkosi - still one native recipe per family
+
+
+<a id="mkosi-nura"></a>
+### mkosi Nura distribution
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/systemd/mkosi/blob/main/mkosi/distribution/nura.py
+
+Year
+: 2026
+
+By
+: systemd/mkosi
+
+Takes
+: mkosi supports Nura (postmarketOS) since 2024, edge only - source mkosi-distributions' not-Alpine is out of date
+
+
+<a id="systemd-mkosi-build"></a>
+### systemd's own packages under mkosi
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/systemd/systemd/tree/main/mkosi/mkosi.images/build/mkosi.conf.d
+
+Year
+: 2026
+
+By
+: systemd
+
+Takes
+: One source, six bases, each from its native recipe
+
+
+<a id="kernel-install-man"></a>
+### kernel-install(8)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/systemd/systemd/blob/main/man/kernel-install.xml
+
+Year
+: 2026
+
+By
+: systemd
+
+Takes
+: Plugins in /usr/lib/kernel/install.d, custom layouts; /usr/lib/kernel/devicetree names the dtb under /usr/lib/modules/VER/dtb/ (checked locally, systemd 262)
+
+
+<a id="debian-zz-systemd-boot"></a>
+### Debian zz-systemd-boot
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://salsa.debian.org/systemd-team/systemd/-/blob/debian/master/debian/extra/kernel/postinst.d/zz-systemd-boot
+
+Year
+: 2026
+
+By
+: Debian systemd team
+
+Takes
+: Debian runs kernel-install only when systemd-boot is installed
+
+
+<a id="alpine-systemd-boot"></a>
+### Alpine systemd-boot APKBUILD
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/main/systemd-boot/APKBUILD
+
+Year
+: 2026
+
+By
+: Alpine
+
+Takes
+: Built -Dkernel-install=false; Alpine uses its own kernel-hooks.d
+
+
+<a id="qcom-phone-utils-bootimg"></a>
+### qcom-phone-utils zz-qcom-bootimg
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://salsa.debian.org/DebianOnMobile-team/qcom-phone-utils/-/blob/debian/latest/scripts/zz-qcom-bootimg
+
+Year
+: 2026
+
+By
+: DebianOnMobile (Arnaud Ferraris)
+
+Takes
+: A postinst.d hook rewriting the flashed boot.img with the dtb appended, A/B slot by qbootctl: walleye's boot glue, in Debian
+
+
+<a id="mobian-recipes-qcom"></a>
+### mobian-recipes qcom devices
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://salsa.debian.org/Mobian-team/mobian-recipes/-/tree/master/devices/qcom
+
+Year
+: 2026
+
+By
+: Mobian
+
+Takes
+: debos; per-SoC TOML (sm7150.toml: surya huaxing/tianma, boot.img offsets); boot.img made at image time
+
+
+<a id="mobian-qcom-support"></a>
+### Mobian qcom-support
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://salsa.debian.org/Mobian-team/devices/qcom-support
+
+Year
+: 2026
+
+By
+: Mobian
+
+Takes
+: sm7150-support depends on the kernel and qcom-support-common (droid-juicer, qcom-phone-utils, rmtfs, tqftpserv)
+
+
+<a id="debian-bananas"></a>
+### Debian Teams/Bananas
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://wiki.debian.org/Teams/Bananas
+
+Year
+: 2026
+
+By
+: Debian
+
+Takes
+: Asahi in Debian proper since trixie, still without the kernel and Mesa
+
+
+<a id="boot-deploy"></a>
+### boot-deploy
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gitlab.nura.eco/nura/boot-deploy
+
+Year
+: 2026
+
+By
+: Nura
+
+Takes
+: Reads deviceinfo, builds boot.img, writes systemd-boot entries: Nura's boot glue
