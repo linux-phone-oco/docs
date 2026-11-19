@@ -4394,3 +4394,27 @@ Considered
 
 About
 : patrol-measures-the-start
+
+---
+
+
+<a id="2026-11-19-lab-tools-builder-check-host"></a>
+### lab-tools-builder: attended check --host
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lpoco attended check --host landed (lab-tools #276): the ready check runs the installed devlab on the device.toml, naming binary, version and refusal.
+
+Considered
+: Probing lpoco as well as devlab; a --call-limit for the host call.
+
+Rejected
+: A devlab command that needs the phone: keeper status is read-only and reads the manifest. Left lpoco unprobed: devlab and lpoco ship as one family version.
+
+About
+: attended-ready-on-host
