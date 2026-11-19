@@ -2114,3 +2114,31 @@ Rejected
 
 About
 : bringup-steps
+
+
+<a id="2026-11-19-attended-in-bringup-library"></a>
+### 2026-11-19-attended-in-bringup-library
+
+Brief
+: lpoco-attended is a module of lpoco-bringup: a lane's entry file is a rust-script list of step/check/ask_author calls over actions sh, phone, phone_root
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: The runner lives in lpoco_bringup::attended (bringup/src/attended), beside the library lanes already depend on from rust-script by git tag. An entry file calls procedure(name).run(|p| { p.step(name, action)?; ... }); the library reads --dry-run, --log, --help and LPOCO_ATTENDED_DEVLAB with argenv, stops at the first failing step and names it, writes one log line per step, reaches the phone through devlab phone sh|root with the script on stdin. ask_author(to_do, to_check) waits for the line ok; any other answer stops the run and is logged.
+
+Why
+: The author: the program must read cleanly and simply at the entry file level like a simple scripted procedure; lanes already use rust-script with lpoco-bringup (examples/step.rs), so one more module costs them no new dependency and the release family no new package.
+
+Rejected
+: A new crate lpoco-attended: nine release-plz entries and changelog_include lists to keep in step, for no gain to a lane. A closure per step: the dry run could not say what a step would do, so actions are values (sh, phone, phone_root). just or bats as the runner: another tool, shell plumbing, no Rust library. xshell and dialoguer as dependencies: the run needs only std::process and one line from stdin.
+
+About
+: lpoco-attended
+
+Research
+: 2026-11-19-attended-procedure-prior-art
