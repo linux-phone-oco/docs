@@ -7079,7 +7079,7 @@ Status
 : open
 
 Note
-: 2026-11-19, orchestration: the sign - every launcher's Brief: names a file in the shared docs clone, and that clone was 41 commits behind (at #617): the surya builder read builder.md without the surya-builder row docs #643 had added. Nothing refreshes shared clones; patrol's clones-check only reports. Fast-forwarded by hand once. A user timer (no root) declared in lab.toml, prepared by lpoco host like the tools; then a lab-machine change to declare it (orchestration holds lab.toml).
+: 2026-11-19, orchestration: the sign - every launcher's Brief: names a file in the shared docs clone, and that clone was 41 commits behind (at #617): the surya builder read builder.md without the surya-builder row docs #643 had added. Nothing refreshes shared clones; patrol's clones-check only reports. Fast-forwarded by hand once. A user timer (no root) declared in lab.toml, prepared by lpoco host like the tools; then a lab-machine change to declare it (orchestration holds lab.toml). 2026-11-19, orchestration: the second time today - a walleye keeper worked from a google-walleye-lab clone 64 commits behind, redid the finished TAS2557 item and delayed the UFS read the author waits on (relayed by the Top Coordinator); phone-keeper.md already says a fresh worktree at origin/main, so the brief alone does not hold. Build it into the follow timer (lpoco-host follow already runs every 15 min as a user unit): fetch and ff-only each shared clone under ~/Projects that is clean and on main; leave a dirty, detached or diverged one and log it by name. Ranked first.
 
 Opened
 : 2026-11-19
@@ -7094,7 +7094,7 @@ Proof
 : lab-tools host tests: lab.toml declares [clones] (folders, every); plan lists the user timer; the job fetches and fast-forwards a clone that is clean and on main, leaves a dirty, detached or diverged one alone and names it; after prepare, clones-check reports none behind
 
 Rank
-: 6
+: 1
 
 About
 : agent-folder
