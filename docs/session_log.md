@@ -5030,3 +5030,24 @@ Rejected
 
 About
 : phone-declared-transport
+
+---
+
+
+<a id="2026-11-19-eof-on-stdin-is-no-answer"></a>
+### EOF on stdin is no answer
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: attended prompts wait on the answer file 300 s by default with no terminal; lab-tools #306, release 0.38.1
+
+Rejected
+: waiting forever with no terminal: a keeper nobody answers would hang
+
+About
+: attended-eof-is-no-answer
