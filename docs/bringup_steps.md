@@ -890,34 +890,6 @@ Checked on
 : 2026-11-18
 
 
-<a id="shell-autosleep-tamed"></a>
-### The shell's own sleep loop is gated
-
-Stage
-: lab
-
-Ord
-: 2
-
-Applies
-: any
-
-Done when
-: the shell's auto-suspend is off or gated while the lab works, and a failed suspend backs off instead of looping
-
-Proof
-: autosleep-off
-
-Proof kind
-: phone-suite
-
-Guide
-: surya: sxmo's rtcwake loop cut the lab off (2026-11-18-who-runs-rtcwake-99999999); kept off by sxmo-autosleep-off-lasting and bt-suspend-gate, proven by suspend-retry-backs-off; the fix goes to sxmo (surya-sxmo-suspend-series).
-
-Checked on
-: 2026-11-18
-
-
 <a id="firmware-reachable"></a>
 ### The device's firmware is reachable
 
@@ -1774,37 +1746,6 @@ Checked on
 : 2026-11-18
 
 
-<a id="proximity-blanks-in-call"></a>
-### The screen goes dark at the ear
-
-Stage
-: calls
-
-Ord
-: 4
-
-Applies
-: form:phone
-
-Done when
-: in a call the screen blanks and touch is ignored while the proximity sensor is covered
-
-Proof
-: proximity-in-call
-
-Proof kind
-: witness
-
-Guide
-: surya open (sensors-proximity-in-calls). Sailfish checks it while suspended too (sailfish-hadk-checklist).
-
-Sources
-: sailfish-hadk-checklist
-
-Checked on
-: 2026-11-18
-
-
 <a id="volte-call"></a>
 ### A call over LTE
 
@@ -2109,62 +2050,6 @@ Checked on
 : 2026-11-18
 
 
-<a id="auto-rotate-follows"></a>
-### The screen follows rotation
-
-Stage
-: sensors
-
-Ord
-: 4
-
-Applies
-: any
-
-Done when
-: turning the phone turns the shell's screen
-
-Proof
-: auto-rotate
-
-Proof kind
-: witness
-
-Guide
-: Never tried in our labs.
-
-Checked on
-: 2026-11-18
-
-
-<a id="brightness-follows-light"></a>
-### Brightness follows the light
-
-Stage
-: sensors
-
-Ord
-: 5
-
-Applies
-: any
-
-Done when
-: covering the light sensor dims the panel under auto-brightness
-
-Proof
-: auto-brightness
-
-Proof kind
-: witness
-
-Guide
-: Never tried in our labs.
-
-Checked on
-: 2026-11-18
-
-
 <a id="gnss-fix"></a>
 ### A position fix
 
@@ -2340,40 +2225,6 @@ Guide
 
 Sources
 : libcamera-softisp-fosdem-2026,camss-stats-uapi-rfc
-
-Checked on
-: 2026-11-18
-
-
-<a id="photo-taken"></a>
-### A photo
-
-Stage
-: camera
-
-Ord
-: 5
-
-Applies
-: any
-
-Done when
-: a camera app saves a photo with sane exposure and colour from each camera
-
-Proof
-: photo
-
-Proof kind
-: witness
-
-Component
-: camera-rear
-
-Guide
-: Fairphone 6: all three cameras in 2026, the furthest any Qualcomm phone got (linmob-weekly-34-2026).
-
-Sources
-: linmob-weekly-34-2026
 
 Checked on
 : 2026-11-18
@@ -2612,37 +2463,6 @@ Checked on
 : 2026-11-18
 
 
-<a id="real-suspend-under-shell"></a>
-### The shell's own suspend returns
-
-Stage
-: sleep
-
-Ord
-: 7
-
-Applies
-: any
-
-Done when
-: the shell's auto-suspend and systemctl suspend return, again and again
-
-Proof
-: shell-suspend
-
-Proof kind
-: phone-suite
-
-Guide
-: surya failing: the phone did not return (2026-11-18-real-suspend-try4-phone-did-not-return).
-
-Sources
-: sxmo-autosuspend
-
-Checked on
-: 2026-11-18
-
-
 <a id="soc-floor-reached"></a>
 ### The SoC reaches its floor
 
@@ -2703,37 +2523,6 @@ Guide
 
 Sources
 : nura-sdm845-wiki,nura-enchilada-wiki
-
-Checked on
-: 2026-11-18
-
-
-<a id="standby-current"></a>
-### Standby draws little
-
-Stage
-: sleep
-
-Ord
-: 10
-
-Applies
-: power:battery
-
-Done when
-: on battery alone, asleep with the modem attached, the average current is under the device's target (15 mA on surya)
-
-Proof
-: standby-current
-
-Proof kind
-: phone-suite
-
-Guide
-: The arbiter of sleep (2026-11-17-standby-current-is-the-arbiter). surya partial: median 31 mA (2026-11-17-r3-partial-and-the-reset-after). World gap: no published s2idle figures per SoC with a modem.
-
-Sources
-: android-doze-standby
 
 Checked on
 : 2026-11-18
@@ -2998,37 +2787,6 @@ Proof kind
 
 Guide
 : surya failing for audio after a DSP restart (surya-adsp-audio-after-suspend-loop). World gap: nobody tests whole-stack recovery.
-
-Checked on
-: 2026-11-18
-
-
-<a id="days-without-reboot"></a>
-### Days without a reboot
-
-Stage
-: upkeep
-
-Ord
-: 5
-
-Applies
-: any
-
-Done when
-: seven days of ordinary use with no reboot, crash or part lost
-
-Proof
-: uptime-days
-
-Proof kind
-: phone-suite
-
-Guide
-: Reliability, not function (weiss-fosdem-2025-missing-20); UBports' noRebootTest (ubports-device-data).
-
-Sources
-: weiss-fosdem-2025-missing-20,ubports-device-data
 
 Checked on
 : 2026-11-18
@@ -3375,14 +3133,101 @@ Checked on
 : 2026-11-18
 
 
+<a id="test-layer-boots"></a>
+### The test layer boots, with no shell
+
+Stage
+: lab
+
+Ord
+: 2
+
+Applies
+: any
+
+Done when
+: a boot with no phone shell (multi-user.target, no display manager) is up with a tty, ssh and the lab's services, and nothing in it suspends, locks or reacts to keys unless a test asks; the lab's suspend work runs there
+
+Proof
+: test-layer-quiet
+
+Proof kind
+: phone-suite
+
+Guide
+: Hardware steps are proven here, the shell's own in the shell stage (2026-11-19-hardware-test-layer). lab-tools' health-test-layer-quiet reads it: no shell or idle-suspend process runs, logind's IdleAction and HandlePowerKey are ignore, no suspend this boot but the health suite's own cycles; in a shell layer it says skip and names the shell, so the step stays unknown until the test layer boots. surya: the image it runs, booted from a second entry with systemd.unit=multi-user.target, the sxmo entry beside it. A new device's first root filesystem is this layer. Measured: test-layer-sxmo-cost-measured, test-layer-landscape.
+
+Checked on
+: 2026-11-19
+
+
+<a id="shell-autosleep-tamed"></a>
+### The shell's idle suspend is held off while the lab works
+
+Stage
+: shell
+
+Ord
+: 5
+
+Applies
+: any
+
+Done when
+: the shell's own idle suspend is off or held off while the lab works, proven per shell (sxmo's autosleep, Phosh's gsd-power, Plasma Mobile's PowerDevil)
+
+Proof
+: autosleep-off
+
+Proof kind
+: phone-suite
+
+Guide
+: surya: sxmo's rtcwake loop cut the lab off (2026-11-18-who-runs-rtcwake-99999999). The test layer has no shell to hold off, so the hardware steps do not wait on this; it is the shell's own, once for each shell, and the sxmo fork and its series are retired (2026-11-19-hardware-test-layer).
+
+Checked on
+: 2026-11-19
+
+
+<a id="real-suspend-under-shell"></a>
+### The shell's own suspend returns
+
+Stage
+: shell
+
+Ord
+: 6
+
+Applies
+: any
+
+Done when
+: the shell's auto-suspend and systemctl suspend return, again and again
+
+Proof
+: shell-suspend
+
+Proof kind
+: phone-suite
+
+Guide
+: surya failing: the phone did not return (2026-11-18-real-suspend-try4-phone-did-not-return). The hardware's suspend steps (s2idle-cycle-returns, radios-survive-suspend, suspend-way-back) are proven first in the test layer; this one is the shell's own idle suspend and systemctl suspend, per shell (2026-11-19-hardware-test-layer).
+
+Sources
+: sxmo-autosuspend
+
+Checked on
+: 2026-11-19
+
+
 <a id="alarm-wakes-from-sleep"></a>
 ### An alarm rings from sleep
 
 Stage
-: sleep
+: shell
 
 Ord
-: 12
+: 7
 
 Applies
 : any
@@ -3403,4 +3248,187 @@ Sources
 : kernel-sysfs-power-wakelock
 
 Checked on
-: 2026-11-18
+: 2026-11-19
+
+
+<a id="auto-rotate-follows"></a>
+### The screen follows rotation
+
+Stage
+: shell
+
+Ord
+: 8
+
+Applies
+: any
+
+Done when
+: turning the phone turns the shell's screen
+
+Proof
+: auto-rotate
+
+Proof kind
+: witness
+
+Guide
+: Never tried in our labs.
+
+Checked on
+: 2026-11-19
+
+
+<a id="brightness-follows-light"></a>
+### Brightness follows the light
+
+Stage
+: shell
+
+Ord
+: 9
+
+Applies
+: any
+
+Done when
+: covering the light sensor dims the panel under auto-brightness
+
+Proof
+: auto-brightness
+
+Proof kind
+: witness
+
+Guide
+: Never tried in our labs.
+
+Checked on
+: 2026-11-19
+
+
+<a id="proximity-blanks-in-call"></a>
+### The screen goes dark at the ear
+
+Stage
+: shell
+
+Ord
+: 10
+
+Applies
+: form:phone
+
+Done when
+: in a call the screen blanks and touch is ignored while the proximity sensor is covered
+
+Proof
+: proximity-in-call
+
+Proof kind
+: witness
+
+Guide
+: surya open (sensors-proximity-in-calls). Sailfish checks it while suspended too (sailfish-hadk-checklist).
+
+Sources
+: sailfish-hadk-checklist
+
+Checked on
+: 2026-11-19
+
+
+<a id="days-without-reboot"></a>
+### Days without a reboot
+
+Stage
+: shell
+
+Ord
+: 11
+
+Applies
+: any
+
+Done when
+: seven days of ordinary use with no reboot, crash or part lost
+
+Proof
+: uptime-days
+
+Proof kind
+: phone-suite
+
+Guide
+: Reliability, not function (weiss-fosdem-2025-missing-20); UBports' noRebootTest (ubports-device-data).
+
+Sources
+: weiss-fosdem-2025-missing-20,ubports-device-data
+
+Checked on
+: 2026-11-19
+
+
+<a id="photo-taken"></a>
+### A photo
+
+Stage
+: camera
+
+Ord
+: 5
+
+Applies
+: any
+
+Done when
+: a capture tool saves a photo with sane exposure and colour from each camera
+
+Proof
+: photo
+
+Proof kind
+: witness
+
+Component
+: camera-rear
+
+Guide
+: Fairphone 6: all three cameras in 2026, the furthest any Qualcomm phone got (linmob-weekly-34-2026). Proven in the test layer with a capture tool; a shell's camera app is the shell's own use of it (2026-11-19-hardware-test-layer).
+
+Sources
+: linmob-weekly-34-2026
+
+Checked on
+: 2026-11-19
+
+
+<a id="standby-current"></a>
+### Standby draws little
+
+Stage
+: sleep
+
+Ord
+: 10
+
+Applies
+: power:battery
+
+Done when
+: on battery alone, asleep with the modem attached, the average current is under the device's target (15 mA on surya)
+
+Proof
+: standby-current
+
+Proof kind
+: phone-suite
+
+Guide
+: The arbiter of sleep (2026-11-17-standby-current-is-the-arbiter). surya partial: median 31 mA (2026-11-17-r3-partial-and-the-reset-after). World gap: no published s2idle figures per SoC with a modem. Measured first in the test layer, with no shell to wake it; the shell's figure follows under real-suspend-under-shell (2026-11-19-hardware-test-layer).
+
+Sources
+: android-doze-standby
+
+Checked on
+: 2026-11-19

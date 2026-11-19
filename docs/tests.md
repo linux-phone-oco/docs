@@ -678,19 +678,6 @@ Says
 : with the PMIC watchdog armed (60 s, pretimeout 30 s, wakeup on) and nothing else to wake it, a suspend is ended by the watchdog's bark within 25 to 45 s and the phone does not reset (same boot id)
 
 
-<a id="sensors-after-suspend"></a>
-### sensors-after-suspend
-
-Component id
-: sensors
-
-Proves
-: works
-
-Says
-: after a suspend under Sxmo the sensors daemon (hexagonrpcd-adsp-sensorspd) was stopped before it and runs again after it, and a sensor gives a reading
-
-
 <a id="suspend-retry-backs-off"></a>
 ### suspend-retry-backs-off
 
@@ -715,3 +702,16 @@ Proves
 
 Says
 : in a boot that claims the hardware-test layer (multi-user.target, no display manager), no shell or idle-suspend process runs (tinydm, sxmo_*, superd, swayidle, phoc, phosh, plasmashell, powerdevil, gsd-power), logind's IdleAction and HandlePowerKey are ignore, and no suspend was entered this boot but lpoco-health's own cycles; a boot into a shell layer says skip and names the shell, so the step stays unknown until the test layer boots
+
+
+<a id="sensors-after-suspend"></a>
+### sensors-after-suspend
+
+Component id
+: sensors
+
+Proves
+: works
+
+Says
+: after a suspend the sensors daemon (hexagonrpcd-adsp-sensorspd) was stopped before it and runs again after it, and a sensor gives a reading; run in the test layer, with no shell

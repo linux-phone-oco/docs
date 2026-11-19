@@ -4,6 +4,7 @@
 # 1. Shape (passes once seeded): every stage has a step; the goals linux-runs, daily-usable-phone and
 #    complete-phone exist; every step of a phone stage is needed (hard edges, transitively) by complete-phone,
 #    so no phone step is left outside a goal.
+#    The test layer (2026-11-19-hardware-test-layer): no hardware step needs a shell-stage step.
 # 2. The device (fails until it is true): every step daily-usable-phone needs, transitively, is done or
 #    not-needed in step_status - its own base's claims, pulled by feed-device-steps. Today no base claims
 #    steps, so every step is not known yet and the test fails, as measured-not-claimed wants.
@@ -24,6 +25,14 @@ outside=$(q "SELECT s.id FROM bringup_steps s JOIN bringup_stages g ON g.id = s.
              WHERE g.ord > (SELECT ord FROM bringup_stages WHERE id = 'lab') AND s.stage <> 'goals'
                AND s.id NOT IN ($(closure complete-phone)) ORDER BY s.id")
 [ -z "$outside" ] || { echo "FAIL: phone steps no goal needs: $(echo $outside)"; exit 1; }
+# 1b. The test layer (decision 2026-11-19-hardware-test-layer): no step outside the shell stage (goals apart) needs
+#     a step of it, hard or soft, the shell stage is the last before the goals, and the layer has its own step.
+late=$(q "SELECT g.id FROM bringup_stages g WHERE (g.id <> 'goals' AND g.ord > (SELECT ord FROM bringup_stages WHERE id = 'shell')) OR (g.id = 'goals' AND g.ord < (SELECT ord FROM bringup_stages WHERE id = 'shell')) ORDER BY g.ord")
+[ -z "$late" ] || { echo "FAIL: stages on the wrong side of the shell stage (it is the last before the goals): $(echo $late)"; exit 1; }
+leaning=$(q "SELECT e.step || ' needs ' || e.requires FROM bringup_step_edges e JOIN bringup_steps s ON s.id = e.step JOIN bringup_steps r ON r.id = e.requires
+             WHERE r.stage = 'shell' AND s.stage NOT IN ('shell', 'goals') ORDER BY e.step, e.requires" | tr '\n' ';')
+[ -z "$leaning" ] || { echo "FAIL: hardware steps that need a shell step: $leaning"; exit 1; }
+[ -n "$(q "SELECT id FROM bringup_steps WHERE id = 'test-layer-boots' AND stage = 'lab' AND proof = 'test-layer-quiet'")" ] || { echo "FAIL: no step test-layer-boots in the lab stage, proven by test-layer-quiet"; exit 1; }
 total=$(q "SELECT count(*) FROM ($(closure daily-usable-phone)) WHERE id <> 'daily-usable-phone'")
 echo "shape: every stage has steps; daily-usable-phone needs $total steps; complete-phone needs every phone step"
 

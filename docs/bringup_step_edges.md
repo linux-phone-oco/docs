@@ -1721,21 +1721,6 @@ Why
 ### Row 115
 
 Step
-: fingerprint-unlocks
-
-Requires
-: shell-runs-with-hardware
-
-Kind
-: soft
-
-Why
-: unlocking is the shell's
-
-
-### Row 116
-
-Step
 : camera-bus-bound
 
 Requires
@@ -1748,7 +1733,7 @@ Why
 : the receiver is the kernel's
 
 
-### Row 117
+### Row 116
 
 Step
 : image-sensor-identified
@@ -1763,7 +1748,7 @@ Why
 : read over the control bus
 
 
-### Row 118
+### Row 117
 
 Step
 : raw-frame-captured
@@ -1778,7 +1763,7 @@ Why
 : a sensor described and probed
 
 
-### Row 119
+### Row 118
 
 Step
 : camera-stream-viewable
@@ -1793,7 +1778,7 @@ Why
 : the ISP takes raw frames
 
 
-### Row 120
+### Row 119
 
 Step
 : camera-stream-viewable
@@ -1808,7 +1793,7 @@ Why
 : libcamera's software ISP runs on the GPU (libcamera-softisp-fosdem-2026)
 
 
-### Row 121
+### Row 120
 
 Step
 : photo-taken
@@ -1823,22 +1808,7 @@ Why
 : the app takes the stream
 
 
-### Row 122
-
-Step
-: photo-taken
-
-Requires
-: shell-runs-with-hardware
-
-Kind
-: hard
-
-Why
-: an app on the shell
-
-
-### Row 123
+### Row 121
 
 Step
 : video-recorded
@@ -1853,7 +1823,7 @@ Why
 : the camera app
 
 
-### Row 124
+### Row 122
 
 Step
 : video-recorded
@@ -1868,7 +1838,7 @@ Why
 : its sound
 
 
-### Row 125
+### Row 123
 
 Step
 : focus-and-flash
@@ -1883,7 +1853,7 @@ Why
 : focus is judged on the stream
 
 
-### Row 126
+### Row 124
 
 Step
 : suspend-way-back
@@ -1898,7 +1868,7 @@ Why
 : the watchdog, kept armed through sleep
 
 
-### Row 127
+### Row 125
 
 Step
 : s2idle-cycle-returns
@@ -1913,7 +1883,7 @@ Why
 : an RTC-timed suspend from userspace
 
 
-### Row 128
+### Row 126
 
 Step
 : s2idle-cycle-returns
@@ -1928,7 +1898,7 @@ Why
 : blind without it: a hang in sleep leaves no trace
 
 
-### Row 129
+### Row 127
 
 Step
 : suspend-wakes-quiet
@@ -1943,7 +1913,7 @@ Why
 : read across a suspend
 
 
-### Row 130
+### Row 128
 
 Step
 : radios-survive-suspend
@@ -1958,7 +1928,7 @@ Why
 : across suspends
 
 
-### Row 131
+### Row 129
 
 Step
 : radios-survive-suspend
@@ -1973,7 +1943,7 @@ Why
 : Wi-Fi up first
 
 
-### Row 132
+### Row 130
 
 Step
 : radios-survive-suspend
@@ -1988,7 +1958,7 @@ Why
 : Bluetooth up first
 
 
-### Row 133
+### Row 131
 
 Step
 : sensors-across-suspend
@@ -2003,7 +1973,7 @@ Why
 : across suspends
 
 
-### Row 134
+### Row 132
 
 Step
 : sensors-across-suspend
@@ -2018,7 +1988,7 @@ Why
 : sensors up first
 
 
-### Row 135
+### Row 133
 
 Step
 : resume-without-stall
@@ -2033,7 +2003,7 @@ Why
 : across suspends
 
 
-### Row 136
+### Row 134
 
 Step
 : resume-without-stall
@@ -2048,7 +2018,7 @@ Why
 : an attached helper crashes the DSP at resume (sleep-fastrpc-helpers)
 
 
-### Row 137
+### Row 135
 
 Step
 : resume-without-stall
@@ -2063,7 +2033,7 @@ Why
 : a stall must come back to be counted
 
 
-### Row 138
+### Row 136
 
 Step
 : real-suspend-under-shell
@@ -2078,7 +2048,7 @@ Why
 : the shell's own suspend
 
 
-### Row 139
+### Row 137
 
 Step
 : real-suspend-under-shell
@@ -2093,7 +2063,7 @@ Why
 : it returns
 
 
-### Row 140
+### Row 138
 
 Step
 : real-suspend-under-shell
@@ -2108,22 +2078,7 @@ Why
 : the radios come back
 
 
-### Row 141
-
-Step
-: real-suspend-under-shell
-
-Requires
-: shell-autosleep-tamed
-
-Kind
-: soft
-
-Why
-: in the lab the loop is gated first
-
-
-### Row 142
+### Row 139
 
 Step
 : soc-floor-reached
@@ -2138,7 +2093,7 @@ Why
 : read in suspend
 
 
-### Row 143
+### Row 140
 
 Step
 : soc-floor-reached
@@ -2153,22 +2108,7 @@ Why
 : wakes keep it off the floor
 
 
-### Row 144
-
-Step
-: call-wakes-from-sleep
-
-Requires
-: real-suspend-under-shell
-
-Kind
-: hard
-
-Why
-: it sleeps as in daily use
-
-
-### Row 145
+### Row 141
 
 Step
 : call-wakes-from-sleep
@@ -2183,7 +2123,7 @@ Why
 : a call to ring
 
 
-### Row 146
+### Row 142
 
 Step
 : call-wakes-from-sleep
@@ -2198,7 +2138,7 @@ Why
 : a message to arrive
 
 
-### Row 147
+### Row 143
 
 Step
 : standby-current
@@ -2213,22 +2153,7 @@ Why
 : no floor, no low current
 
 
-### Row 148
-
-Step
-: standby-current
-
-Requires
-: real-suspend-under-shell
-
-Kind
-: hard
-
-Why
-: measured asleep as in daily use
-
-
-### Row 149
+### Row 144
 
 Step
 : standby-current
@@ -2243,7 +2168,7 @@ Why
 : a meter can stand in for the gauge
 
 
-### Row 150
+### Row 145
 
 Step
 : all-day-battery
@@ -2258,7 +2183,7 @@ Why
 : most of a day is standby
 
 
-### Row 151
+### Row 146
 
 Step
 : all-day-battery
@@ -2273,7 +2198,7 @@ Why
 : a sleeping phone that misses calls is not a day's use
 
 
-### Row 152
+### Row 147
 
 Step
 : shell-runs-with-hardware
@@ -2288,7 +2213,7 @@ Why
 : it shows
 
 
-### Row 153
+### Row 148
 
 Step
 : shell-runs-with-hardware
@@ -2303,7 +2228,7 @@ Why
 : it is touched
 
 
-### Row 154
+### Row 149
 
 Step
 : shell-runs-with-hardware
@@ -2318,7 +2243,7 @@ Why
 : a distribution's shell
 
 
-### Row 155
+### Row 150
 
 Step
 : shell-runs-with-hardware
@@ -2333,7 +2258,7 @@ Why
 : its sound (plasma-silent)
 
 
-### Row 156
+### Row 151
 
 Step
 : shell-runs-with-hardware
@@ -2348,7 +2273,7 @@ Why
 : Phosh and Plasma Mobile need the GPU; sxmo does not
 
 
-### Row 157
+### Row 152
 
 Step
 : on-screen-keyboard
@@ -2363,7 +2288,7 @@ Why
 : the shell's keyboard
 
 
-### Row 158
+### Row 153
 
 Step
 : lock-and-unlock
@@ -2378,7 +2303,7 @@ Why
 : the shell's lock
 
 
-### Row 159
+### Row 154
 
 Step
 : lock-and-unlock
@@ -2393,7 +2318,7 @@ Why
 : the power key
 
 
-### Row 160
+### Row 155
 
 Step
 : notifications-arrive
@@ -2408,7 +2333,7 @@ Why
 : the shell's notifications
 
 
-### Row 161
+### Row 156
 
 Step
 : notifications-arrive
@@ -2423,7 +2348,7 @@ Why
 : a message to announce
 
 
-### Row 162
+### Row 157
 
 Step
 : notifications-arrive
@@ -2438,7 +2363,7 @@ Why
 : it sounds
 
 
-### Row 163
+### Row 158
 
 Step
 : update-applies
@@ -2453,7 +2378,7 @@ Why
 : the distribution updates
 
 
-### Row 164
+### Row 159
 
 Step
 : update-applies
@@ -2468,7 +2393,7 @@ Why
 : an update is proven by the same suite
 
 
-### Row 165
+### Row 160
 
 Step
 : update-rolls-back
@@ -2483,7 +2408,7 @@ Why
 : a bad one to roll back from
 
 
-### Row 166
+### Row 161
 
 Step
 : update-rolls-back
@@ -2498,7 +2423,7 @@ Why
 : a hung boot must come back
 
 
-### Row 167
+### Row 162
 
 Step
 : update-rolls-back
@@ -2513,7 +2438,7 @@ Why
 : A/B slots are one way back
 
 
-### Row 168
+### Row 163
 
 Step
 : kernel-upgrade-keeps-steps
@@ -2528,7 +2453,7 @@ Why
 : the suite says what still passes
 
 
-### Row 169
+### Row 164
 
 Step
 : coprocessor-restart-recovers
@@ -2543,7 +2468,7 @@ Why
 : a coprocessor to crash
 
 
-### Row 170
+### Row 165
 
 Step
 : coprocessor-restart-recovers
@@ -2558,7 +2483,7 @@ Why
 : sound to come back
 
 
-### Row 171
+### Row 166
 
 Step
 : coprocessor-restart-recovers
@@ -2573,7 +2498,7 @@ Why
 : the modem to come back
 
 
-### Row 172
+### Row 167
 
 Step
 : coprocessor-restart-recovers
@@ -2588,7 +2513,7 @@ Why
 : sensors to come back
 
 
-### Row 173
+### Row 168
 
 Step
 : days-without-reboot
@@ -2603,7 +2528,7 @@ Why
 : daily use sleeps
 
 
-### Row 174
+### Row 169
 
 Step
 : days-without-reboot
@@ -2618,7 +2543,7 @@ Why
 : and is reachable
 
 
-### Row 175
+### Row 170
 
 Step
 : cycles-repeat-clean
@@ -2633,7 +2558,7 @@ Why
 : a cycle that returns
 
 
-### Row 176
+### Row 171
 
 Step
 : cycles-repeat-clean
@@ -2648,7 +2573,7 @@ Why
 : what is lost is read by the suite
 
 
-### Row 177
+### Row 172
 
 Step
 : linux-runs
@@ -2663,7 +2588,7 @@ Why
 : the close of the generic bring-up
 
 
-### Row 178
+### Row 173
 
 Step
 : linux-runs
@@ -2678,7 +2603,7 @@ Why
 : the close of the generic bring-up
 
 
-### Row 179
+### Row 174
 
 Step
 : linux-runs
@@ -2693,7 +2618,7 @@ Why
 : the close of the generic bring-up
 
 
-### Row 180
+### Row 175
 
 Step
 : linux-runs
@@ -2708,7 +2633,7 @@ Why
 : the close of the generic bring-up
 
 
-### Row 181
+### Row 176
 
 Step
 : linux-runs
@@ -2723,7 +2648,7 @@ Why
 : the close of the generic bring-up
 
 
-### Row 182
+### Row 177
 
 Step
 : daily-usable-phone
@@ -2738,7 +2663,7 @@ Why
 : a person needs it every day
 
 
-### Row 183
+### Row 178
 
 Step
 : daily-usable-phone
@@ -2753,7 +2678,7 @@ Why
 : a person needs it every day
 
 
-### Row 184
+### Row 179
 
 Step
 : daily-usable-phone
@@ -2768,7 +2693,7 @@ Why
 : a person needs it every day
 
 
-### Row 185
+### Row 180
 
 Step
 : daily-usable-phone
@@ -2783,7 +2708,7 @@ Why
 : a person needs it every day
 
 
-### Row 186
+### Row 181
 
 Step
 : daily-usable-phone
@@ -2798,7 +2723,7 @@ Why
 : a person needs it every day
 
 
-### Row 187
+### Row 182
 
 Step
 : daily-usable-phone
@@ -2813,7 +2738,7 @@ Why
 : a person needs it every day
 
 
-### Row 188
+### Row 183
 
 Step
 : daily-usable-phone
@@ -2828,7 +2753,7 @@ Why
 : a person needs it every day
 
 
-### Row 189
+### Row 184
 
 Step
 : daily-usable-phone
@@ -2843,7 +2768,7 @@ Why
 : a person needs it every day
 
 
-### Row 190
+### Row 185
 
 Step
 : daily-usable-phone
@@ -2858,7 +2783,7 @@ Why
 : a person needs it every day
 
 
-### Row 191
+### Row 186
 
 Step
 : daily-usable-phone
@@ -2873,7 +2798,7 @@ Why
 : a person needs it every day
 
 
-### Row 192
+### Row 187
 
 Step
 : daily-usable-phone
@@ -2888,7 +2813,7 @@ Why
 : a person needs it every day
 
 
-### Row 193
+### Row 188
 
 Step
 : daily-usable-phone
@@ -2903,7 +2828,7 @@ Why
 : a person needs it every day
 
 
-### Row 194
+### Row 189
 
 Step
 : daily-usable-phone
@@ -2918,7 +2843,7 @@ Why
 : a person needs it every day
 
 
-### Row 195
+### Row 190
 
 Step
 : daily-usable-phone
@@ -2933,7 +2858,7 @@ Why
 : a person needs it every day
 
 
-### Row 196
+### Row 191
 
 Step
 : daily-usable-phone
@@ -2948,7 +2873,7 @@ Why
 : a person needs it every day
 
 
-### Row 197
+### Row 192
 
 Step
 : daily-usable-phone
@@ -2963,7 +2888,7 @@ Why
 : a person needs it every day
 
 
-### Row 198
+### Row 193
 
 Step
 : daily-usable-phone
@@ -2978,7 +2903,7 @@ Why
 : a person needs it every day
 
 
-### Row 199
+### Row 194
 
 Step
 : daily-usable-phone
@@ -2993,7 +2918,7 @@ Why
 : a person needs it every day
 
 
-### Row 200
+### Row 195
 
 Step
 : daily-usable-phone
@@ -3008,7 +2933,7 @@ Why
 : a person needs it every day
 
 
-### Row 201
+### Row 196
 
 Step
 : daily-usable-phone
@@ -3023,7 +2948,7 @@ Why
 : a person needs it every day
 
 
-### Row 202
+### Row 197
 
 Step
 : complete-phone
@@ -3038,7 +2963,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 203
+### Row 198
 
 Step
 : complete-phone
@@ -3053,7 +2978,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 204
+### Row 199
 
 Step
 : complete-phone
@@ -3068,7 +2993,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 205
+### Row 200
 
 Step
 : complete-phone
@@ -3083,7 +3008,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 206
+### Row 201
 
 Step
 : complete-phone
@@ -3098,7 +3023,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 207
+### Row 202
 
 Step
 : complete-phone
@@ -3113,7 +3038,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 208
+### Row 203
 
 Step
 : complete-phone
@@ -3128,7 +3053,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 209
+### Row 204
 
 Step
 : complete-phone
@@ -3143,7 +3068,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 210
+### Row 205
 
 Step
 : complete-phone
@@ -3158,7 +3083,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 211
+### Row 206
 
 Step
 : complete-phone
@@ -3173,7 +3098,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 212
+### Row 207
 
 Step
 : complete-phone
@@ -3188,7 +3113,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 213
+### Row 208
 
 Step
 : complete-phone
@@ -3203,7 +3128,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 214
+### Row 209
 
 Step
 : complete-phone
@@ -3218,7 +3143,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 215
+### Row 210
 
 Step
 : complete-phone
@@ -3233,7 +3158,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 216
+### Row 211
 
 Step
 : complete-phone
@@ -3248,7 +3173,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 217
+### Row 212
 
 Step
 : complete-phone
@@ -3263,7 +3188,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 218
+### Row 213
 
 Step
 : complete-phone
@@ -3278,7 +3203,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 219
+### Row 214
 
 Step
 : complete-phone
@@ -3293,7 +3218,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 220
+### Row 215
 
 Step
 : complete-phone
@@ -3308,7 +3233,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 221
+### Row 216
 
 Step
 : complete-phone
@@ -3323,7 +3248,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 222
+### Row 217
 
 Step
 : complete-phone
@@ -3338,7 +3263,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 223
+### Row 218
 
 Step
 : standby-current
@@ -3353,7 +3278,7 @@ Why
 : a phone woken by chatter does not stay low (floor-irq-quiet)
 
 
-### Row 224
+### Row 219
 
 Step
 : pon-reason-read
@@ -3368,7 +3293,7 @@ Why
 : the reasons are the PMIC's registers
 
 
-### Row 225
+### Row 220
 
 Step
 : reset-types-right
@@ -3383,7 +3308,7 @@ Why
 : the reset types are the PMIC's
 
 
-### Row 226
+### Row 221
 
 Step
 : reset-types-right
@@ -3398,7 +3323,7 @@ Why
 : blind without it: the next boot's reason is the proof
 
 
-### Row 227
+### Row 222
 
 Step
 : power-off-stays-off
@@ -3413,7 +3338,7 @@ Why
 : off must end in the PMIC's shutdown, not a reset
 
 
-### Row 228
+### Row 223
 
 Step
 : power-off-stays-off
@@ -3428,7 +3353,7 @@ Why
 : tells a reboot from a charger or alarm power-on
 
 
-### Row 229
+### Row 224
 
 Step
 : charger-mode-entered
@@ -3443,7 +3368,7 @@ Why
 : a charger power-on is told by its reason
 
 
-### Row 230
+### Row 225
 
 Step
 : charger-mode-entered
@@ -3458,7 +3383,7 @@ Why
 : a charger mode needs an off to start from
 
 
-### Row 231
+### Row 226
 
 Step
 : charger-mode-entered
@@ -3473,7 +3398,7 @@ Why
 : it shows the level
 
 
-### Row 232
+### Row 227
 
 Step
 : charger-mode-entered
@@ -3488,7 +3413,7 @@ Why
 : the level is the gauge's
 
 
-### Row 233
+### Row 228
 
 Step
 : off-mode-charging
@@ -3503,7 +3428,7 @@ Why
 : the screen and the power key while off
 
 
-### Row 234
+### Row 229
 
 Step
 : reset-state-survives
@@ -3518,7 +3443,7 @@ Why
 : read after each kind of reset
 
 
-### Row 235
+### Row 230
 
 Step
 : reset-state-survives
@@ -3533,7 +3458,7 @@ Why
 : the watchdog state is part of it
 
 
-### Row 236
+### Row 231
 
 Step
 : key-reset-recovers
@@ -3548,7 +3473,7 @@ Why
 : the key reset is the PMIC's
 
 
-### Row 237
+### Row 232
 
 Step
 : key-reset-recovers
@@ -3563,7 +3488,7 @@ Why
 : the reason proves it was the key
 
 
-### Row 238
+### Row 233
 
 Step
 : rtc-alarm-powers-on
@@ -3578,7 +3503,7 @@ Why
 : it must be off to be turned on
 
 
-### Row 239
+### Row 234
 
 Step
 : rtc-alarm-powers-on
@@ -3593,7 +3518,7 @@ Why
 : the reason reads RTC alarm
 
 
-### Row 240
+### Row 235
 
 Step
 : alarm-wakes-from-sleep
@@ -3608,7 +3533,7 @@ Why
 : it sleeps as in daily use
 
 
-### Row 241
+### Row 236
 
 Step
 : alarm-wakes-from-sleep
@@ -3623,7 +3548,7 @@ Why
 : it rings
 
 
-### Row 242
+### Row 237
 
 Step
 : daily-usable-phone
@@ -3638,7 +3563,7 @@ Why
 : a person needs it every day
 
 
-### Row 243
+### Row 238
 
 Step
 : daily-usable-phone
@@ -3653,7 +3578,7 @@ Why
 : a person needs it every day
 
 
-### Row 244
+### Row 239
 
 Step
 : complete-phone
@@ -3668,7 +3593,7 @@ Why
 : everything the hardware does, lasting
 
 
-### Row 245
+### Row 240
 
 Step
 : complete-phone
@@ -3681,3 +3606,138 @@ Kind
 
 Why
 : everything the hardware does, lasting
+
+
+### Row 241
+
+Step
+: test-layer-boots
+
+Requires
+: rootfs-boots
+
+Kind
+: hard
+
+Why
+: a root with its services
+
+
+### Row 242
+
+Step
+: test-layer-boots
+
+Requires
+: health-suite-runs
+
+Kind
+: hard
+
+Why
+: the layer is proven by a health check
+
+
+### Row 243
+
+Step
+: test-layer-boots
+
+Requires
+: lab-link-held-awake
+
+Kind
+: hard
+
+Why
+: lpoco-awake is part of the layer: the lab's link stays up unless a test asks
+
+
+### Row 244
+
+Step
+: s2idle-cycle-returns
+
+Requires
+: test-layer-boots
+
+Kind
+: hard
+
+Why
+: the suspend work runs in the test layer, with no shell to suspend or lock on its own
+
+
+### Row 245
+
+Step
+: call-wakes-from-sleep
+
+Requires
+: s2idle-cycle-returns
+
+Kind
+: hard
+
+Why
+: it sleeps in the test layer first, where nothing else wakes it
+
+
+### Row 246
+
+Step
+: standby-current
+
+Requires
+: s2idle-cycle-returns
+
+Kind
+: hard
+
+Why
+: measured first in the test layer
+
+
+### Row 247
+
+Step
+: standby-current
+
+Requires
+: suspend-way-back
+
+Kind
+: hard
+
+Why
+: a hang in sleep must find its way back before a night is measured
+
+
+### Row 248
+
+Step
+: daily-usable-phone
+
+Requires
+: real-suspend-under-shell
+
+Kind
+: hard
+
+Why
+: a person's phone sleeps under its shell and returns
+
+
+### Row 249
+
+Step
+: real-suspend-under-shell
+
+Requires
+: shell-autosleep-tamed
+
+Kind
+: hard
+
+Why
+: the shell's idle loop is held off first, or it cuts the lab off from its test (2026-11-18-who-runs-rtcwake-99999999)

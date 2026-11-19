@@ -112,14 +112,12 @@
 {"step":"gnss-fix","requires":"modem-seen","kind":"hard","group":null,"why":"on Qualcomm the location engine is the modem's (QMI LOC)"}
 {"step":"gnss-fix","requires":"rootfs-boots","kind":"hard","group":null,"why":"ModemManager, gnss-share and geoclue are userspace"}
 {"step":"fingerprint-unlocks","requires":"rootfs-boots","kind":"hard","group":null,"why":"fprintd is userspace"}
-{"step":"fingerprint-unlocks","requires":"shell-runs-with-hardware","kind":"soft","group":null,"why":"unlocking is the shell's"}
 {"step":"camera-bus-bound","requires":"kernel-reaches-init","kind":"hard","group":null,"why":"the receiver is the kernel's"}
 {"step":"image-sensor-identified","requires":"camera-bus-bound","kind":"hard","group":null,"why":"read over the control bus"}
 {"step":"raw-frame-captured","requires":"image-sensor-identified","kind":"hard","group":null,"why":"a sensor described and probed"}
 {"step":"camera-stream-viewable","requires":"raw-frame-captured","kind":"hard","group":null,"why":"the ISP takes raw frames"}
 {"step":"camera-stream-viewable","requires":"gpu-renders","kind":"soft","group":null,"why":"libcamera's software ISP runs on the GPU (libcamera-softisp-fosdem-2026)"}
 {"step":"photo-taken","requires":"camera-stream-viewable","kind":"hard","group":null,"why":"the app takes the stream"}
-{"step":"photo-taken","requires":"shell-runs-with-hardware","kind":"hard","group":null,"why":"an app on the shell"}
 {"step":"video-recorded","requires":"photo-taken","kind":"hard","group":null,"why":"the camera app"}
 {"step":"video-recorded","requires":"mic-captures","kind":"hard","group":null,"why":"its sound"}
 {"step":"focus-and-flash","requires":"camera-stream-viewable","kind":"hard","group":null,"why":"focus is judged on the stream"}
@@ -138,14 +136,11 @@
 {"step":"real-suspend-under-shell","requires":"shell-runs-with-hardware","kind":"hard","group":null,"why":"the shell's own suspend"}
 {"step":"real-suspend-under-shell","requires":"resume-without-stall","kind":"hard","group":null,"why":"it returns"}
 {"step":"real-suspend-under-shell","requires":"radios-survive-suspend","kind":"hard","group":null,"why":"the radios come back"}
-{"step":"real-suspend-under-shell","requires":"shell-autosleep-tamed","kind":"soft","group":null,"why":"in the lab the loop is gated first"}
 {"step":"soc-floor-reached","requires":"s2idle-cycle-returns","kind":"hard","group":null,"why":"read in suspend"}
 {"step":"soc-floor-reached","requires":"suspend-wakes-quiet","kind":"soft","group":null,"why":"wakes keep it off the floor"}
-{"step":"call-wakes-from-sleep","requires":"real-suspend-under-shell","kind":"hard","group":null,"why":"it sleeps as in daily use"}
 {"step":"call-wakes-from-sleep","requires":"voice-call-both-ways","kind":"hard","group":null,"why":"a call to ring"}
 {"step":"call-wakes-from-sleep","requires":"sms-both-ways","kind":"hard","group":null,"why":"a message to arrive"}
 {"step":"standby-current","requires":"soc-floor-reached","kind":"hard","group":null,"why":"no floor, no low current"}
-{"step":"standby-current","requires":"real-suspend-under-shell","kind":"hard","group":null,"why":"measured asleep as in daily use"}
 {"step":"standby-current","requires":"battery-gauge-reads","kind":"soft","group":null,"why":"a meter can stand in for the gauge"}
 {"step":"all-day-battery","requires":"standby-current","kind":"hard","group":null,"why":"most of a day is standby"}
 {"step":"all-day-battery","requires":"call-wakes-from-sleep","kind":"hard","group":null,"why":"a sleeping phone that misses calls is not a day's use"}
@@ -243,3 +238,12 @@
 {"step":"daily-usable-phone","requires":"key-reset-recovers","kind":"hard","group":null,"why":"a person needs it every day"}
 {"step":"complete-phone","requires":"rtc-alarm-powers-on","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
 {"step":"complete-phone","requires":"reset-state-survives","kind":"hard","group":null,"why":"everything the hardware does, lasting"}
+{"step":"test-layer-boots","requires":"rootfs-boots","kind":"hard","group":null,"why":"a root with its services"}
+{"step":"test-layer-boots","requires":"health-suite-runs","kind":"hard","group":null,"why":"the layer is proven by a health check"}
+{"step":"test-layer-boots","requires":"lab-link-held-awake","kind":"hard","group":null,"why":"lpoco-awake is part of the layer: the lab's link stays up unless a test asks"}
+{"step":"s2idle-cycle-returns","requires":"test-layer-boots","kind":"hard","group":null,"why":"the suspend work runs in the test layer, with no shell to suspend or lock on its own"}
+{"step":"call-wakes-from-sleep","requires":"s2idle-cycle-returns","kind":"hard","group":null,"why":"it sleeps in the test layer first, where nothing else wakes it"}
+{"step":"standby-current","requires":"s2idle-cycle-returns","kind":"hard","group":null,"why":"measured first in the test layer"}
+{"step":"standby-current","requires":"suspend-way-back","kind":"hard","group":null,"why":"a hang in sleep must find its way back before a night is measured"}
+{"step":"daily-usable-phone","requires":"real-suspend-under-shell","kind":"hard","group":null,"why":"a person's phone sleeps under its shell and returns"}
+{"step":"real-suspend-under-shell","requires":"shell-autosleep-tamed","kind":"hard","group":null,"why":"the shell's idle loop is held off first, or it cuts the lab off from its test (2026-11-18-who-runs-rtcwake-99999999)"}
