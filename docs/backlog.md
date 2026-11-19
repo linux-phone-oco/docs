@@ -6744,6 +6744,37 @@ Proof
 : lab-tools devlab tests: kernel try NAME --cmdline ARGS writes a one-boot entry whose command line carries ARGS, refused when ARGS holds a newline or the entry has none to extend; the next boot is stock
 
 Rank
+: 3
+
+About
+: bringup-steps
+
+
+<a id="attended-scaffold"></a>
+### lpoco attended new|run|check: scaffold, run and dry-run a device repo's procedures/NAME.rs
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: decision 2026-11-19-procedures-one-shape. The template is attended/examples/attended.rs; rust-script runs each file (cached builds in AGENT_BUILD). The steps crate is the repo's own procedures/steps when present. Then surya-lab and google-walleye-lab move over (their own items, by their builders).
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools tests: in a fixture device repo, attended new NAME writes procedures/NAME.rs that runs in --dry-run unchanged; with procedures/steps present it is in the cargo block; run NAME passes --dry-run/--log through; check dry-runs every procedure against the stand-in phone and names the failing one
+
+Rank
 : 2
 
 About

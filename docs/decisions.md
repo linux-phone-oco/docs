@@ -2192,3 +2192,31 @@ Rejected
 
 About
 : agent-folder
+
+
+<a id="2026-11-19-procedures-one-shape"></a>
+### 2026-11-19-procedures-one-shape
+
+Brief
+: Every device repo keeps procedures/NAME.rs (one rust-script entry each) over lpoco-attended and at most one procedures/steps crate; lpoco attended new/run/check scaffolds and runs them
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: (1) Procedures live in a device repo as procedures/NAME.rs: one rust-script file each, the cargo block pinned to an lpoco-attended tag, the body a plain chain of steps that reads in one screen. (2) Steps only that device has go in one crate per repo, procedures/steps (DEVICE-steps), or none; a step a second device needs moves to lpoco-attended's library (decision 2026-11-19-procedures-chain-small-device-agnostic-steps). Device values come from device.toml, never from the procedure. (3) lpoco attended new NAME writes procedures/NAME.rs from the template (current tag, the steps crate when there is one); lpoco attended run NAME [--dry-run] [--log FILE] runs it; lpoco attended check dry-runs every procedure against the stand-in phone - the repo's CI calls it, so no lane writes a Cargo.toml, a lock or a dry-run test for a procedure. (4) surya-lab #394 (lab/attended) and google-walleye-lab #448 (tests/attended + tools/walleye-tries) move onto it.
+
+Why
+: The author, 2026-11-19: do we have that scafolding as a shared base for procedures so that future procedures doesnt have to reinvent scafolding and duplicate the code base ? Two lanes had already drifted into two shapes in a day (research procedures-one-shape); three more walleye programs and every new device follow. The look-around: just, pytest, Ansible and LAVA all keep many small units in one folder over shared helpers, run by name.
+
+Rejected
+: One crate per procedure (surya #394): a Cargo.toml, lock and dry-run test each time - the duplication asked about. cargo xtask: procedures become match arms in one binary, not files that read like scripts. just recipes or shell: the author wants Rust, no new shell logic. LAVA YAML definitions: data, not the Rust entry the author shaped. A crate for each lane's steps plus the library: two homes for the same step.
+
+About
+: bringup-steps
+
+Research
+: procedures-one-shape

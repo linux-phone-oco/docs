@@ -6945,3 +6945,113 @@ By
 
 Takes
 : Reads deviceinfo, builds boot.img, writes systemd-boot entries: Nura's boot glue
+
+
+<a id="cargo-xtask"></a>
+### cargo xtask: repository automation as a Rust binary in the workspace
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/matklad/cargo-xtask
+
+Author
+: Aleksey Kladov
+
+Year
+: 2019
+
+By
+: orchestration-renewed
+
+Takes
+: one binary per repo, procedures as subcommands: no extra tool, but every procedure is a match arm in one program, not a file of its own
+
+
+<a id="just-recipes"></a>
+### just: a command runner of named recipes
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://just.systems/man/en/
+
+Author
+: Casey Rodarmor
+
+Year
+: 2016
+
+By
+: orchestration-renewed
+
+Takes
+: many small named recipes in one file, run by name: the shape we want, but recipes are shell
+
+
+<a id="lava-test-definitions"></a>
+### LAVA: writing tests - test definitions run over shared device-types
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.lavasoftware.org/lava/writing-tests.html
+
+Author
+: Linaro
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: procedures as small definitions over shared device-type plumbing, device values from the device dictionary: our device.toml
+
+
+<a id="pytest-conftest"></a>
+### pytest: test directories and conftest.py shared fixtures
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.pytest.org/en/stable/reference/fixtures.html
+
+Author
+: pytest-dev
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: a directory of small test files plus one shared helper module per directory, discovered by the runner: procedures/ plus one steps crate
+
+
+<a id="ansible-roles"></a>
+### Ansible: playbooks reusing roles
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html
+
+Author
+: Red Hat
+
+Year
+: 2024
+
+By
+: orchestration-renewed
+
+Takes
+: a playbook only chains roles with its variables; roles are reused across hosts: a procedure chains library steps with device values
