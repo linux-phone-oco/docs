@@ -6727,10 +6727,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: the surya keeper's real run of the attended program may need it if kernel try calls4+ refuses (relayed by the Top Coordinator). lpoco 0.24.0's kernel try has only --dtb and --device. Ready it before the keeper's run. 2026-11-19, orchestration: also in devlab/src/kernel.rs: the refusal of a name with + is deliberate - entries are pmos-NAME+1-0.conf (systemd-boot's boot-counting suffix) and removal globs pmos-NAME+*.conf, so a + in NAME would be read as the counter and a try named calls would remove the kept calls+ entries. Keep the rule; make the message say why ("+ is systemd-boot's try counter in the entry name; the label is free, e.g. calls4"). The kept calls+ and calls2+ predate the rule and cannot be kept/unkept through lpoco: surya's keeper retires them by new names, not a workaround.
+: 2026-11-19, lab-tools-builder: landed (lab-tools #272, main 7b894fb). lpoco-lab kernel try NAME --cmdline ARGS writes pmos-NAME-cl+1-0.conf (the installed kernel's entry, options followed by ARGS, bless masked, one try); ARGS go to the phone as a file read into an env var and appended by awk, never into a shell string; refused when empty, with a newline, no options line to extend, or the kernel not installed; --dtb with --cmdline refused (try one, then the other). The + refusal says why (systemd-boot's try counter; label free, e.g. calls4); names ending -cl or -dt are refused (they clash with a try entry); kernel remove takes the -cl and -dt entries and dtbs-NAME-dt (review catch: it left them and kept the modules). Proof: devlab/src/kernel.rs tests a_cmdline_try_extends_the_options_once_and_never_blesses, a_cmdline_try_of_an_entry_without_options_or_an_absent_kernel_is_refused, a_cmdline_of_more_than_one_line_or_none_is_refused_and_a_plus_in_a_name_says_why, removing_a_kernel_takes_its_try_entries_... (seen failing first). Open: outcome::judge compares the booted initrd name with the NAME-cl/NAME-dt name when LoaderEntrySelected is empty, so a try that did boot reads as not chosen; run once on the phone's busybox awk (tested with gawk); no run on a phone yet. Available when the release PR (v0.32.1+) is merged and the host prepared.
 
 Opened
 : 2026-11-19
@@ -7108,10 +7108,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: open ends of attended-scaffold (lab-tools #268): the binary is not in release packaging, extra arguments are dropped silently. After it ships, orchestration pins it in lab.toml and prepares the host (both keeper leases free).
+: 2026-11-19, lab-tools-builder: landed (lab-tools #274, main 6640337). lpoco-attended is in host FAMILY (lpoco host plan installs it from lpoco-attended-vX like its siblings; the plan test asserts it); lpoco attended refuses a third word (run NAME extra) with exit 2 naming it. Proof: attended/tests/scaffold.rs a_stray_argument_is_refused_naming_it_and_nothing_runs (seen failing first), host/tests/plan.rs. Differs from the item's proof: an unknown flag (--bogus) was already refused by argenv, exit 1 not 2, naming it (test a_flag_that_is_not_declared_is_refused...); left at 1. Left for orchestration: pin lpoco-attended in lab.toml and prepare the host after the release (both keeper leases free). check NAME still ignores NAME.
 
 Opened
 : 2026-11-19
