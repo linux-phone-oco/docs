@@ -7702,10 +7702,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19/20, orchestration: seen live - a walleye keeper ran lpoco-attended run pmic-watchdog-v1-on-the-pixel-2 from a non-interactive shell; the first ask failed in 0 s ('nobody answered') while the author was at the phone and the Top Coordinator watched the prompt file. attended-prompt-file (#284) made a keeper with no terminal need --answer-limit or LPOCO_ATTENDED_ANSWER_LIMIT; without it EOF read as no answer. Ranked first.
+: 2026-11-20, lab-tools-builder: landed lab-tools #306 (released 0.38.1, #307): with no terminal (stdin not a tty) a prompt waits on its answer file 300 s by default; --answer-limit and LPOCO_ATTENDED_ANSWER_LIMIT override; stderr says 'no terminal, waiting on the answer file'. Proof: attended/tests/prompt_file.rs with_no_terminal_a_prompt_waits_on_its_answer_file_by_default_and_says_so (seen failing first). Not covered: a real tty.
 
 Opened
 : 2026-11-19
