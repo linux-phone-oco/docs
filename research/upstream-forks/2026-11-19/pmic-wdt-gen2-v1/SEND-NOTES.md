@@ -123,3 +123,24 @@ The six patches applied unchanged with `git am`.
 - `lpoco-bringup dt-check binding` (qcom,pm8916-wdt.yaml): clean, exit 0.
 - `lpoco-bringup dt-check dtbs` on the same three boards, with both new nodes set to okay: clean,
   exit 0.
+
+## On hold (2026-11-20)
+
+The author, through the Top Coordinator: "lets hold on them for now, good thing they are prepared. just
+in case we stumble upon something more while working on walleye that is relative to those patches".
+The series stays prepared and unsent. When one of the items below lands, re-check the series against it
+and tell the Top Coordinator whether it changes:
+
+| Open item | Where | What it could change |
+|---|---|---|
+| walleye-wdt-reset-boots-charger-mode | google-walleye-lab | If a warm-reset type or a PON setting is the answer, patch 1's reset type (0x07) may change, as a property or a later patch |
+| bootstatus (WDIOF_CARDRESET) after a bite | not read on either phone | Perhaps a driver addition, if the gen2 POFF reason does not read as a card reset |
+| surya's PM6150 bite: attended-keep-calls4-for-bite (way-back.sh fuse-pmic) | surya-lab | The PM6150 half of the testing paragraph. Until then the cover letter claims only the probe and read-back on PM6150 |
+| A restart with no charger attached: walleye-wdt-bite-cable-out | google-walleye-lab | The Pixel 2 testing sentence: whether it reads as a plain restart |
+
+**Correction (2026-11-20):** the earlier cover letter said a bite restarts the POCO X3 NFC, and that a
+bite before patch 2 looped. That came from surya-lab PR 276. Surya's research
+bite-pon-and-calls4-choice shows that the fuse armed the APSS watchdog, never the PMIC's. POFF read
+0x00, with no PMIC_WD bit. So no PM6150 bite is proven. The cover letter now says only that the driver
+probes there and that the type read-back passes. Patch 2's reason stands on the Pixel 2's reboot test
+and on the PON's design (S2 is not reset by a SoC reset), not on a surya observation.

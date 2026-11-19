@@ -33,9 +33,7 @@ Testing, on hardware:
 - POCO X3 NFC (SM7150, PM6150), on the sm7150-mainline tree (7.1-based)
   with patches 1, 2 and 4 backported unchanged: the driver probes; the
   bootloader had left the S2 type at 0x01, patch 1 set it to 0x07 and
-  the read-back passed; a bite restarts the phone. Before patch 2, a
-  bite left S2 enabled, and booting a kernel without this driver then
-  looped until a full power-off.
+  the read-back passed. A bite has not been tested on this phone yet.
 
 Rebased onto next-20261119 for sending: built with LLVM W=1, checkpatch
 --strict, dt_binding_check for the binding, and CHECK_DTBS on

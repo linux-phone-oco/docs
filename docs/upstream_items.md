@@ -726,7 +726,7 @@ Form
 : patch
 
 State
-: draft
+: held
 
 From work
 : upstream-readiness-inventory
@@ -741,10 +741,10 @@ File
 : research/upstream-forks/2026-11-19/pmic-wdt-gen2-v1
 
 Waits
-: the author: read the patches (the cover letter says 'reviewed by me'), re-author and sign off, his go; sent by him from his clone
+: the author's word to send; first re-checked against walleye-wdt-reset-boots-charger-mode, bootstatus after a bite, surya's PM6150 bite (attended-keep-calls4-for-bite) and walleye-wdt-bite-cable-out, as each lands
 
 Note
-: Tested on the Pixel 2 2026-11-20 with the author at the phone (google-walleye-lab PR 624, walleye-try-pmic-wdt-v1, image A on next-20261118): reboot PASS (S2 off after), bite PASS (reset 20 s after arming). With USB in, the bootloader then stopped at its off-mode charging screen and needed a power press; bootstatus was not read. Both are in the cover letter. Rebased onto next-20261119 and re-checked clean (build W=1, checkpatch apart from the SoB, dt-check binding and dtbs with nodes enabled). Not sent.
+: Held 2026-11-20 on the author's word: 'lets hold on them for now, good thing they are prepared. just in case we stumble upon something more while working on walleye that is relative to those patches'. Prepared on next-20261119, checked clean, Pixel 2 bite and reboot passed (PR 624). Corrected: surya's bite was the APSS watchdog's, so no PM6150 bite is proven; the cover letter now says so. SEND-NOTES 'On hold' ties the series to the four open items.
 
 Last update
 : 2026-11-19
