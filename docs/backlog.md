@@ -5749,10 +5749,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: ideal-agent 0.3.56, decision 2026-11-19-rust-for-scripts-shell-only-glue (the author's word): shell is only one-off glue - a few commands in order, no parsing, no loops over data, no functions; anything with logic is Rust. docs carries about 2169 lines of shell (bin/, research scripts). Move as each file is touched, not as one rewrite; a new script with logic starts in Rust.
+: Closed, not done (2026-11-19): the author reversed it, verbatim - 'i dont think its necessary, too much work.. if we dont rely on it much i say we leave them as is for now'. Existing shell stays as it is, with no migration and no move-when-touched rule. What stays is practice 21: a new script with logic starts in Rust.
 
 Opened
 : 2026-11-19
@@ -5768,10 +5768,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: ideal-agent 0.3.56, decision 2026-11-19-rust-for-scripts-shell-only-glue (the author's word): shell is only one-off glue - a few commands in order, no parsing, no loops over data, no functions; anything with logic is Rust. lab-tools carries about 731 lines of shell (health checks, bin, CI). Move as each file is touched, not as one rewrite; a new script with logic starts in Rust.
+: Closed, not done (2026-11-19): the author reversed it, verbatim - 'i dont think its necessary, too much work.. if we dont rely on it much i say we leave them as is for now'. Existing shell stays as it is, with no migration and no move-when-touched rule. What stays is practice 21: a new script with logic starts in Rust.
 
 Opened
 : 2026-11-19
