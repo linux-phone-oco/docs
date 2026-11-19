@@ -84,6 +84,7 @@ grep -Eq 'cytoscape@[0-9]+\.[0-9]+\.[0-9]+' "$p" && grep -Eq 'cytoscape-dagre@[0
 grep -q 'graph/bringup.json' "$js" || fail "$js does not fetch graph/bringup.json"
 grep -q "rankDir: 'LR'" "$js" || fail "$js does not lay the graph out left to right"
 grep -q 'GENERIC' "$js" || fail "$js has no generic tab"
+grep -q 'function shorten' "$js" && grep -q 'function tooltip' "$js" && grep -q 'id="tip"' "$p" || fail "$js does not shorten labels and show the whole title on hover"
 for id in goal search open-only; do grep -q "id=\"$id\"" "$p" || fail "$p has no $id control"; done
 # the scale fixture is deterministic, as long as asked, with every need and claim naming a step, and has no cycle
 fx=$tmp/fixture.json

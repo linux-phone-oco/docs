@@ -4889,3 +4889,27 @@ Rejected
 
 About
 : bringup-graph-page
+
+---
+
+
+<a id="2026-11-19-the-bring-up-graph-page-short-labels-the-whole"></a>
+### The bring-up graph page: short labels, the whole title on hover
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: graph.js: node labels cut at a word to 28 characters (stage names to 20) with an ellipsis; the whole title, with the status on the tab's device, in a tooltip on hover and in the panel as before.
+
+Considered
+: A minimum zoom and a fit to the first rank so labels are never under 11 px: built, then dropped at the author's word (the mouse wheel zooms).
+
+Rejected
+: Bigger fonts: they widen every node.
+
+About
+: bringup-graph-page
