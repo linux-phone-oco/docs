@@ -3785,3 +3785,27 @@ Done
 
 About
 : lpoco-layer-pack
+
+---
+
+
+<a id="2026-11-19-lab-tools-builder-layer-preset"></a>
+### lpoco layer pack: the preset scriptlet
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Slice 4 of lpoco-layer-pack landed (lab-tools #223): -boot postinstall runs systemctl preset on first install, depends on -config, unit names checked. Tests first, seen failing.
+
+Considered
+: Putting the scriptlet in -config: the preset file is in -boot, so -boot follows -config and keeps file and scriptlet together.
+
+Rejected
+: Guarding on /run/systemd/system (skips chroots and image builds); swallowing a failed preset with || true (silent); running on every upgrade (re-enables what the user disabled).
+
+About
+: lpoco-layer-pack
