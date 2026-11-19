@@ -5795,9 +5795,6 @@ Note
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-hardware-test-layer
-
 Proof
 : test-layer-quiet
 
@@ -5816,9 +5813,6 @@ Note
 
 Opened
 : 2026-11-19
-
-Waits
-: the author's word on decision 2026-11-19-hardware-test-layer
 
 Blocked by
 : health-test-layer-quiet
@@ -5882,9 +5876,6 @@ Note
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-hardware-test-layer
-
 Blocked by
 : surya-test-layer-default
 
@@ -5928,6 +5919,9 @@ Device
 Proof
 : lab apk repository lists no sxmo-utils (CI check)
 
+Rank
+: 4
+
 About
 : test-layer
 
@@ -5946,9 +5940,6 @@ Note
 
 Opened
 : 2026-11-19
-
-Waits
-: the author's word on decision 2026-11-19-hardware-test-layer
 
 Blocked by
 : sxmo-apk-retired
@@ -5987,6 +5978,9 @@ Device
 Proof
 : awake-wakelock-held
 
+Rank
+: 5
+
 About
 : test-layer
 
@@ -6015,6 +6009,9 @@ Device
 Proof
 : sensors-after-suspend
 
+Rank
+: 3
+
 About
 : test-layer
 
@@ -6034,9 +6031,6 @@ Note
 Opened
 : 2026-11-19
 
-Waits
-: the author's word on decision 2026-11-19-hardware-test-layer
-
 Needs
 : build
 
@@ -6045,6 +6039,9 @@ Device
 
 Proof
 : tad q bringup-chain: test-layer-boots in stage lab with proof test-layer-quiet; shell-autosleep-tamed in stage shell
+
+Rank
+: 1
 
 About
 : test-layer
@@ -6104,6 +6101,9 @@ Device
 
 Proof
 : test-layer-quiet
+
+Rank
+: 2
 
 About
 : test-layer

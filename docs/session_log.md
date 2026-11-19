@@ -3473,3 +3473,21 @@ Rejected
 
 About
 : base-distro
+
+---
+
+
+<a id="2026-11-19-author-yes-test-layer-and-distro-later"></a>
+### The author: yes to the hardware-test layer; the base distro postponed, leaning Debian
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: The author's words, verbatim (through the Top Coordinator, 2026-11-19). On decision 2026-11-19-hardware-test-layer (no-shell test layer, surya's console boot entry, retiring the sxmo fork): 'yes, if archiving will still leave the repo as openly awailable searchable and publicly visible' - a GitHub archive keeps a repository public, read-only and searchable, so the condition holds: items unheld and ranked, surya mirrors its own, grenudi/sxmo-utils archived. On the base distro (decisions 2026-11-19-base-distro and -any-arm-base): 'for distro i think debian, but i would like to postpone it a bit and consider how we could work and contribute distro agnostic or something' - the decision stays open, leaning Debian; surya stays on Nura for now; a research on a distro-agnostic device layer (described once, packaged for any base, contributed to several distributions) is started.
+
+About
+: bringup-steps
