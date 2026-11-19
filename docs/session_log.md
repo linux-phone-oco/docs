@@ -4817,3 +4817,27 @@ Rejected
 
 About
 : host-follows-releases
+
+---
+
+
+<a id="2026-11-19-lab-tools-builder-follow-journal"></a>
+### lab-tools-builder: follow journal
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lab-tools #298: a follow killed mid-install is stepped back by the next run from an on-disk journal; review findings fixed.
+
+Considered
+: Restoring from the journal by the new binary's program list; a TARGET file and listing the journal instead.
+
+Rejected
+: Restoring always (it undoes a follow whose pin landed before the kill): the journal names its target and is dropped when the pin is there. In-memory only (the old way): a kill loses it.
+
+About
+: host-follows-releases
