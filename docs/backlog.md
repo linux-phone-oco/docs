@@ -7130,3 +7130,34 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="manifest-attended-keys"></a>
+### lpoco-manifest gives homes to the attended keys: [connection] port, [tools] adb/fastboot, [health] battery floor, [boot] device_wait/back_wait, [images.NAME], [procedures.NAME]
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: decision 2026-11-19-attended-keys-in-the-manifest. Blocks walleye-try-settings-into-device-toml (google-walleye-lab #506) and surya's consts move. Then release, and tell both coordinators the tag.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools manifest tests: a device.toml with every key of walleye's list (note walleye-to-orchestration-manifest-keys.md) passes lpoco-manifest check and a misspelt one is refused; device.schema.json regenerated; lpoco-attended reads dev("health.battery_floor_mv") and proc("window") from it, and a procedure's --dry-run fails naming a missing [procedures.NAME] key
+
+Rank
+: 3
+
+About
+: bringup-steps
