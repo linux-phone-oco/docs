@@ -4562,3 +4562,24 @@ Rejected
 
 About
 : attended-skip-when-in-state
+
+---
+
+
+<a id="2026-11-19-lab-tools-builder-lpoco-attended-closed"></a>
+### lab-tools builder: lpoco-attended closed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Re-ran the attended crate's proof on main 10ab8d3, all pass; marked lpoco-attended done; no code change.
+
+Considered
+: Another slice of lpoco-attended: every remaining gap is another item or needs a phone.
+
+About
+: lpoco-attended
