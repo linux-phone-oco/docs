@@ -79,3 +79,22 @@ Sending them as one series is common; the cover letter can say which tree takes 
       --cc=linux-arm-msm@vger.kernel.org 00*.patch
 
 Or use b4: `b4 prep`, then `--auto-to-cc`, `--check`, and `b4 send --reflect` first.
+
+## Re-checked with the baked dt-check image (2026-11-19, later)
+
+`lpoco-bringup dt-check` 0.22.2, image lpoco-dt-check@sha256:632e25f8b283… (local, docs #606), on the
+v1 tree:
+- `binding` (qcom,pm8916-wdt.yaml): clean.
+- `dtbs` on cheeseburger, joyeuse and acer-aspire1, with the new nodes set to okay: clean, exit 0.
+  This verb fails on violations: a bogus property gives 3 violations and exit 1 (orchestration's
+  run).
+
+## Not proven, in full
+
+- **Patch 1 on a PM8998.** walleye's bite at 8b2283da3 hasn't run. walleye's earlier bite, without
+  patch 1, powered the phone off.
+- **Patch 2's stop-on-reboot path:** not exercised explicitly.
+- **Testing base.** All hardware runs were on backported trees: sm7150-mainline 7.1 on surya, v7.3 on
+  walleye. The surya runs also carried the suspend patch, which this v1 leaves out. The next-based v1
+  itself is built and checked only, never booted.
+- **pmic-wdt-wakes-in-suspend:** not run. It belongs to the later suspend series, not to this v1.
