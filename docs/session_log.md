@@ -4373,3 +4373,24 @@ Rejected
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-19-patrol-1707"></a>
+### Patrol round 2026-11-19 17:07 UTC
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: Read-only round. Landings (6h): docs #641-#666, lab-tools #247-#275 with releases to v0.32.1, surya-lab #417-#447, walleye-lab #501-#530, all by PR, device rows in their own bases; device-template none. devlab-watch@surya-lab active (restarted 18:05 local, a report of 14 runs landed 16:11); lab-agent active, 0 poll error/401 lines; pages build 3 of 3 success; lpoco host check: no FAIL, walleye pieces/blocks/share not measured (phone not attached). Sessions: all lane sessions moved within the last 10 min, none running and still. Workarounds: surya's two read as open backlog items, lab-tools awake.rs sxmo-autosuspend-backoff is withdrawn and already on docs item awake-not-a-workaround, no line due. Start weights: patrol 32965, phone-keeper 34439, orchestration 31177, others 25-30k. One sign filed: surya-lab backlog waits-on-landed-kernel-try-cmdline (two items wait on lab-tools kernel try --cmdline, landed in v0.32.1). Not known yet: lpoco attended lift (the installed lpoco-attended has only new|run|check; docs item attended-lift is open), per-launcher-run events and read-weight were not read this round.
+
+Considered
+: Reading each launcher's runs by list_task_runs; sessions' last activity answered the moving question instead.
+
+About
+: patrol-measures-the-start
