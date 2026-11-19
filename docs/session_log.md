@@ -4514,3 +4514,27 @@ Rejected
 
 About
 : attended-prompt-file
+
+---
+
+
+<a id="2026-11-19-attended-run-from-landed"></a>
+### attended run --from landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lab-tools #285: --from STEP and the resume hint after --until.
+
+Considered
+: Rejecting repeated step names under --from (rejected: legitimate procedures repeat check names); the hint says no --from resumes when the name repeats instead.
+
+Rejected
+: Checking --from names before the run: step names exist only as the procedure's code reaches them, so an unknown name is found at the end, after only skips.
+
+About
+: attended-run-from-step

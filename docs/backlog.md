@@ -7357,10 +7357,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: surya's run ended with --until and restarted from the top, paying two extra risky reboots (relayed by the Top Coordinator).
+: 2026-11-19, lab-tools-builder: lab-tools #285 (main): run --from STEP (also on the procedure itself): earlier steps are said 'skipped (before --from)' and logged 'skip', never run; an unknown name exits 2 listing the steps met (log gets a FAIL line); a dry run shows the skips; a stop at --until FIRST_PROMPT names 'resume with [--part P] --from NAME' (or says no --from resumes when the name repeats), and counts only steps that ran. Proof: attended/tests/attended.rs from_* tests (4, seen failing first). The --until STEP half of the title is not built: only --until FIRST_PROMPT exists. Review fixes: repeated names, --part in the hint, a FAIL note, skipped steps not counted.
 
 Opened
 : 2026-11-19
