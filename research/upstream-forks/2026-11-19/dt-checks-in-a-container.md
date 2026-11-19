@@ -30,3 +30,30 @@ the end:
        make O=/out ARCH=arm64 CHECK_DTBS=y qcom/BOARD.dtb; chown -R UID:GID /out'
 
 Pin the image by digest, or bake it, so a later edge dtschema doesn't change results unseen.
+
+## Correction, and the first real run of `lpoco-bringup dt-check` (2026-11-19, later)
+
+**Correction.** The pm8998 and pm6150 watchdog nodes are `status = "disabled"` on cheeseburger and
+joyeuse, and dtschema skips disabled nodes. So the "0 warnings" above never covered our nodes.
+
+Re-run with both nodes set to okay (a scratch copy of 8b2283da3):
+- cheeseburger and joyeuse: clean.
+- With `bogus-prop` added to the enabled pm8998 node, the qcom,pm8916-wdt schema flags it 3 times
+  ("Unevaluated properties are not allowed").
+
+The nodes do pass. A negative test only means something on an enabled node.
+
+**The verb** is lab-tools 0.21.2 (#199), with image alpine@sha256:020dfcba…, the pin named in its
+backlog row. Compared with the one-liner:
+
+1. `dt-check binding`: matches. watchdog/qcom,pm8916-wdt.yaml is clean; 69 s.
+2. `dt-check dtbs` on a fresh `--out` fails: it doesn't run defconfig, so make stops at a missing
+   .config. The verb then calls that a checker failure ("dt-check: failed ... the checker's lines
+   are above").
+3. `dt-check dtbs` prints schema violations and still says "dt-check: clean", exit 0. CHECK_DTBS
+   reports violations as warnings, so make succeeds. The verdict has to come from the output
+   (lines matching `.dtb: `), not from make's exit code. The same holds for dt_binding_check, whose
+   example warnings don't fail make either.
+4. The digest pins only the base image. dtschema comes from `apk add py3-dt-schema` at run time, from
+   whatever edge holds that day, so a later dtschema can still change results unseen. The image
+   needs dtschema baked in, then pinned.
