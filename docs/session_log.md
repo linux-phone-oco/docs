@@ -3653,3 +3653,27 @@ Rejected
 
 About
 : suspend-cycle-stops-services
+
+---
+
+
+<a id="2026-11-19-apk-origin-check"></a>
+### Lab apk origin and licence checked in CI
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: apk-pages-origin-licence, check half: check-apk-origin.sh, its test of six bad APKBUILDs (seen failing), Origin lines, CI wiring; landed #211, read back from main 11d8d2b. Reviewer's findings fixed: branch tarball and comment-only tag URL no longer pass, relative args work, Origin lines no longer restate the licence.
+
+Considered
+: Extending check-sxmo-utils-apk.sh; one script over all packaging/*/APKBUILD chosen
+
+Rejected
+: Editing the conveyor's site template from here: another owner's place
+
+About
+: apk-pages-origin-licence
