@@ -7231,10 +7231,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-host-follows-releases (a). 2026-11-19, lab-tools-builder: landed lab-tools #278 (main be909a9): lpoco host prepare fetches NAME-x86_64-unknown-linux-gnu + .sha256 from the tag's release (LPOCO_RELEASE_BASE overrides), installs only on a matching hash (also as devlab/tone), refuses a wrong/missing/garbled hash without building, falls back to cargo install --force only on a 404 or a host that fits no asset (not x86_64 linux gnu); an outage fails. New workflow .github/workflows/assets.yml builds once at the lpoco-v tag after a Release run and uploads each program's asset (hash first). Proof: host/tests/release_asset.rs (9 tests; review fixed --force, outage vs 404, partial also install order, gnu gate, workflow injection). Open: assets.yml has never run (first real release will show it; workflow_dispatch with a tag to run by hand); integrity only, the hash lives beside the binary (no attestation); no post-install --version check; glibc of ubuntu-latest vs older hosts.
+: 2026-11-19, lab-tools-builder: proof met, read back from GitHub: assets.yml ran green after each release (latest run 44590547416); every lpoco-*-v0.34.1 release (lpoco, lpoco-lab, lpoco-bringup, lpoco-health, lpoco-host, lpoco-tone, lpoco-attended) carries NAME-x86_64-unknown-linux-gnu + .sha256; host tests landed in #278. Left open, not blocking: integrity only (hash beside binary, no attestation), no post-install --version check, glibc of ubuntu-latest vs older hosts. lpoco-manifest release has no asset (not in the proof's list).
 
 Opened
 : 2026-11-19
