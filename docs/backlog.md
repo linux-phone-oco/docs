@@ -4217,10 +4217,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: 2026-11-19, lab-tools-builder: reproduced once in 13 full workspace runs (lab-tools main 05dfd4b): bringup/tests/bisect.rs:197 'range end index 9000 out of range for slice of length 0': plain.stdout of 'lz4 -dc kernel' was empty (the other 3 bisect tests passed). The test ignores lz4's exit status and stderr, so the cause is not known: it fails with contention only. Next: make the test report lz4's status and stderr (and the kernel file's size) when stdout is short, rerun the workspace loop until it fails again, then fix by what that says. Earlier note: alone it passed 12 runs in a row.
+: 2026-11-19, lab-tools-builder: cause found: the test ran 'lz4 -dc' on the frame plus the appended dtb behind it; lz4 1.11.1 exits 34 (ERROR_frameType_unknown) on that trailing garbage and under load wrote 0 bytes to stdout. Seen failing first (diagnostic run 1 of the loop: 0 bytes, status 34, 246-byte kernel). Fixed (lab-tools #241, main d44af06): the test cuts the dtb off before decoding and asserts lz4 succeeds. Proof: cargo test -p lpoco-bringup --test bisect 30 runs in a row, cargo test --workspace 20 runs in a row at default parallelism, all passed.
 
 Opened
 : 2026-11-18
@@ -4248,10 +4248,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: 2026-11-19, lab-tools-builder: cause found and fixed (lab-tools #239, main e8e65b1): the test locked the lab user's real ~/.local/state/devlab/devlab-hold-guard/phone.lock, so any other process holding it (another run of these tests) made it block or fail; hold() is now hold_in(dir) and the test uses a temp dir of its own. Seen failing first: with the lock held by flock from another process the test hung 68 s. Proof run on main 05dfd4b: cargo test --workspace, default parallelism, in a loop: 12 runs in a row passed, run 13 failed only in another test (bringup_bisect_runs_declared_series, see test-bisect-parallel-flake); the hold test passed in every run it ran. The stated 20 in a row is not yet reached: rerun after the bisect flake is fixed, or count it per test.
+: 2026-11-19, lab-tools-builder: the 20-in-a-row proof is reached with the bisect flake fixed (#241, main d44af06): cargo test --workspace 20 runs in a row, default parallelism, all passed.
 
 Opened
 : 2026-11-18

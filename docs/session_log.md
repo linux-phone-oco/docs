@@ -4037,3 +4037,27 @@ Rejected
 
 About
 : patrol-measures-the-start
+
+---
+
+
+<a id="2026-11-19-parallel-test-flakes-closed"></a>
+### Parallel test flakes closed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Found the bisect flake: lz4 -dc on frame plus trailing dtb exits 34 and may write nothing under load; the test now cuts the dtb off first (lab-tools #241). 20 workspace runs in a row pass, which also closes the hold test's proof.
+
+Considered
+: Retrying lz4, or ignoring its exit status and checking only that output starts right
+
+Rejected
+: Retrying or ignoring the status: it hides a race instead of removing the trailing garbage that causes it
+
+About
+: test-bisect-parallel-flake
