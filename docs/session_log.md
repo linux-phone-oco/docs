@@ -4466,3 +4466,27 @@ Rejected
 
 About
 : host-follows-releases
+
+---
+
+
+<a id="2026-11-19-attended-lift-built-and-landed"></a>
+### attended-lift built and landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lpoco attended lift in lab-tools #282, with a programmer review whose two defects were fixed.
+
+Considered
+: Matching by name only (the decision rejects it); counting a name at 3 repos before bodies (chosen: name pass first, so two agreeing plus one differing still flags).
+
+Rejected
+: Reading device-template's repo list now: its format is not in this base; --repos is explicit until it is.
+
+About
+: attended-lift

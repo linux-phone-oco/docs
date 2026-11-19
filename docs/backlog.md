@@ -6956,10 +6956,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-procedures-reflect-and-lift. Reads the device repos device-template knows. Bodies compared as token runs (PMD CPD's way), not by name. Output a table patrol can read (--format csv). After attended-device-values and attended-scaffold.
+: 2026-11-19, lab-tools-builder: lab-tools #282 (main): lpoco attended lift --repos DIR,DIR [--library DIR] --format csv (kind,step,places): bodies compared as comment-free token runs with the fn name left out; use-library, lift (same body in 2+ repos), lift-differing (a name in 3+ repos whose bodies differ), listed. Proof: attended/tests/lift.rs, 7 tests (renamed pair, library, single listed, 3 differing vs 2, literals/raw strings lose no step, two agree + one differs, unreadable file stops naming it), seen failing first; programmer review fixed char-literal/raw-string tokenizing, unbalanced braces now an error, name pass before body pass. Open: --repos is explicit (device-template's repo list is not read yet); patrol's round and the 'lift STEP' items are not wired; release PR left for land --release.
 
 Opened
 : 2026-11-19
