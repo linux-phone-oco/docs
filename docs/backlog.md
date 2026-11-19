@@ -5468,10 +5468,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Research nura-relation-how-it-stands: the APKINDEX carries L: and U:, the source tag is public, but https://linux-phone-oco.github.io/lab-tools/ names neither; AGPL-3.0 6(d) asks for clear directions to the source beside the object code. Test first: a check (beside .github/check-sxmo-utils-apk.sh) that every packaging/*/APKBUILD has license=, url=, a source at a public tag and an origin line (# Origin: ... - e.g. sxmo-utils by ~mil on sr.ht, APKBUILD from Alpine aports community/sxmo-utils 1.18.1-r5), failing on one without; then the page lists per package name, licence, origin and the source link. The page is rendered by the conveyor (linux-package-distribution-oco/conveyor): if its site template must change, that is an item for the conveyor's owner.
+: 2026-11-19, lab-tools-builder: the check half done (lab-tools #211, main 11d8d2b): .github/check-apk-origin.sh fails an APKBUILD with no license=, https url=, public-tag source= or '# Origin:' line; both APKBUILDs carry an Origin line; its test .github/test-check-apk-origin.sh fails six bad ones; CI runs both (seen failing first on the real APKBUILDs). The page half (per package: name, licence, origin, source link on linux-phone-oco.github.io/lab-tools) is the conveyor's template: item conveyor-site-origin-licence.
 
 Opened
 : 2026-11-19
@@ -6587,3 +6587,31 @@ Proof
 
 About
 : agnostic-layer
+
+
+<a id="conveyor-site-origin-licence"></a>
+### The conveyor's published page lists each package's licence, origin and source link
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: For the conveyor's owner (linux-package-distribution-oco/conveyor): lab-tools #211 puts license=, url= and a '# Origin:' comment in every packaging/*/APKBUILD; the site template should render them per package. Not started.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: the published lab-tools page shows sxmo-utils with AGPL-3.0-only, its '# Origin:' line and the tag's source link
+
+About
+: nura-relation
