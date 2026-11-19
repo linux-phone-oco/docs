@@ -2470,3 +2470,25 @@ Sources
 
 About
 : bringup-steps
+
+
+<a id="dagre-lays-out-the-bring-up-graph-in-0-13-s-at"></a>
+### dagre-lays-out-the-bring-up-graph-in-0-13-s-at
+
+Brief
+: dagre lays out the bring-up graph in 0.13 s at 138 nodes, 1.7 s at 456, 9.5 s at 944 and 17-26 s at all 1458 of a 1500-step fixture
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: How fast is dagre (cytoscape-dagre, rankDir LR) on a 1500-step bring-up graph, fully expanded and as a folded view, in the browser?
+
+Found
+: Measured 2026-11-19 in the built-in browser (Chromium) on bin/graph-fixture.sh 1500 (1503 steps, 4560 edges; the goal daily-usable-phone needs 1458 of them), layout time only, the elements built in 1-130 ms. Folded view (goal plus one node per stage group): 15 nodes, 14 edges, 14-23 ms. One rank opened (depth 1): 138 nodes, 171 edges, 121-135 ms. Two ranks: 456 nodes, 783 edges, 1.7 s. Three ranks: 944 nodes, 2295 edges, 9.5 s. Fully expanded: 1458 nodes, 4411 edges, 26.2 s with the network-simplex ranker and 16.8 s with longest-path, so the ranker is not the main cost (crossing reduction and positioning are). The real catalogue today (116 steps, the goal needing 91): fully expanded 91 nodes, 182 edges, 181 ms. So dagre serves every folded or partly opened view and the whole of today's catalogue; full expansion at 1500 is over 10 times the 2 s bar. The page keeps dagre and refuses a change that would draw more than 500 nodes and groups (about 2 s) with a message saying to open a stage group, search or turn on open only. Where a full view at 1000+ steps is wanted, ELK layered (elkjs, run in a web worker so the page stays alive) or a dagre run in a web worker would take over; neither is built. Stage groups are summary nodes (one per stage under a step, click to open), not compound parents: cytoscape-dagre does not lay out compound nodes, so a compound would be drawn over the layout and not shape it. The fixture is denser than the real rows (3 edges a step against 2.2), so the numbers are on the cautious side.
+
+About
+: bringup-steps

@@ -31,243 +31,32 @@ read from the devices table (a device added later gets its tab), and a generic t
 	.ln { display: inline-block; width: 1.6rem; border-top: 3px solid #666; vertical-align: .25rem; margin-right: .3rem; }
 	.ln.soft { border-top-style: dashed; }
 	#msg { margin: .5rem 0; }
+	#found { list-style: none; margin: 0 0 .5rem; padding: 0; } #found a { cursor: pointer; text-decoration: underline; }
+	#count, .small { margin: .25rem 0; }
+	.sw.grp { border-style: dashed; border-width: 2px; } .sw.fold { border-style: double; border-width: 4px; width: .6rem; height: .6rem; }
 	@media (max-width: 40rem) { #cy { height: 60vh; min-height: 22rem; } #panel { flex-basis: 100%; max-height: none; } }
 </style>
 <div id="graph-page">
 <h1>The bring-up graph</h1>
-<p class="lead">The goal stands on the left; what it needs grows to the right. A tab per phone colours each step by what that phone's own base claims; the generic tab leaves them uncoloured. Click a step to read it and to fold or unfold what it needs. Drag to pan, scroll or pinch to zoom.</p>
+<p class="lead">The goal stands on the left; what it needs grows to the right. A tab per phone colours each step by what that phone's own base claims; the generic tab leaves them uncoloured. The view opens folded: a stage group stands for the steps of one stage, and a click opens it. Click a step to read it and to fold or unfold what it needs; "Show more" opens the next rank. Drag to pan, scroll or pinch to zoom.</p>
 <ul id="tabs" role="tablist"></ul>
 <div id="bar">
 	<label>Goal <select id="goal"></select></label>
-	<button id="unfold" type="button">Unfold all</button>
-	<span id="count"></span>
+	<label>Find a step <input id="search" type="search" placeholder="a word of its title" autocomplete="off"></label>
+	<label hidden><input id="open-only" type="checkbox"> open only (hide done steps)</label>
+	<span class="btns"><button id="less" type="button">Show less</button> <button id="more" type="button">Show more</button> <button id="unfold" type="button">Unfold all</button> <button id="fold" type="button">Fold all</button></span>
 </div>
+<ul id="found"></ul>
+<p id="count"></p>
 <p id="msg" role="status">Loading the steps...</p>
 <div id="stage">
 	<div id="cy"></div>
 	<aside id="panel"><p>Click a step to read it.</p></aside>
 </div>
 <div id="legend"></div>
+<p id="timing" class="small"></p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.30.2/dist/cytoscape.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dagre@0.8.5/dist/dagre.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.js"></script>
-<script>
-'use strict';
-var GOAL_STAGE = 'goals', DEFAULT_GOAL = 'daily-usable-phone';
-var GENERIC = 'generic';
-var STATUS_COLOUR = { done: '#2e9e5b', partial: '#e8a317', failing: '#d64545', open: '#ffffff', unknown: '#b5b8bd', 'not-needed': '#d6e4d6' };
-var STATUS_TEXT = { done: '#ffffff', failing: '#ffffff' };
-var NO_STATUS_COLOUR = '#e3eaf3';
-var GROUP_COLOURS = ['#7b3fbf', '#d9480f', '#0b7285', '#a61e4d', '#5c940d', '#1864ab'];
-var HARD_COLOUR = '#777777';
-
-var data, byId, needs, claims, cy, tab, goal, collapsed = new Set(), groupColour = {};
-
-function el(id) { return document.getElementById(id); }
-function say(text) { el('msg').textContent = text; el('msg').hidden = !text; }
-
-// the rows, indexed once
-function index() {
-	byId = {}; needs = {}; claims = {};
-	data.steps.forEach(function (s) { byId[s.id] = s; needs[s.id] = []; });
-	data.edges.forEach(function (e) { needs[e.step].push(e); });
-	data.status.forEach(function (c) { (claims[c.device_id] = claims[c.device_id] || {})[c.step_id] = c.status; });
-	data.edges.map(function (e) { return e.group; }).filter(Boolean).sort().filter(function (g, i, a) { return a.indexOf(g) === i; })
-		.forEach(function (g, i) { groupColour[g] = GROUP_COLOURS[i % GROUP_COLOURS.length]; });
-}
-
-// what is drawn: the goal and its ancestors through requires-edges, not going through a folded step
-function visible() {
-	var seen = new Set([goal]), todo = [goal];
-	while (todo.length) {
-		var id = todo.pop();
-		if (collapsed.has(id)) continue;
-		needs[id].forEach(function (e) { if (!seen.has(e.requires)) { seen.add(e.requires); todo.push(e.requires); } });
-	}
-	return seen;
-}
-
-function statusOf(id) {
-	if (tab === GENERIC) return null;
-	return (claims[tab] || {})[id] || 'unknown';
-}
-
-function elements() {
-	var shown = visible(), els = [];
-	shown.forEach(function (id) {
-		var s = byId[id], st = statusOf(id), hidden = collapsed.has(id) && needs[id].length > 0;
-		els.push({ group: 'nodes', data: { id: id, label: s.title + (hidden ? '  [+' + needs[id].length + ']' : ''),
-			fill: st ? (STATUS_COLOUR[st] || STATUS_COLOUR.unknown) : NO_STATUS_COLOUR, ink: STATUS_TEXT[st] || '#1a1a1a', folded: hidden ? 'yes' : 'no' } });
-	});
-	data.edges.forEach(function (e) {
-		if (!shown.has(e.step) || !shown.has(e.requires)) return;
-		els.push({ group: 'edges', data: { id: e.step + '>' + e.requires, source: e.step, target: e.requires, kind: e.kind,
-			colour: e.group ? groupColour[e.group] : HARD_COLOUR } });
-	});
-	return els;
-}
-
-var STYLE = [
-	{ selector: 'node', style: { shape: 'round-rectangle', width: 190, height: 50, label: 'data(label)', 'background-color': 'data(fill)', color: 'data(ink)',
-		'font-size': 12, 'text-wrap': 'wrap', 'text-max-width': 176, 'text-valign': 'center', 'text-halign': 'center',
-		'border-width': 1.5, 'border-color': '#4a4f57' } },
-	{ selector: 'node[folded = "yes"]', style: { 'border-width': 4, 'border-style': 'double' } },
-	{ selector: 'node:selected', style: { 'border-width': 4, 'border-color': '#1a73e8', 'border-style': 'solid' } },
-	{ selector: 'edge', style: { width: 2, 'line-color': 'data(colour)', 'target-arrow-color': 'data(colour)', 'target-arrow-shape': 'triangle',
-		'arrow-scale': 1.1, 'curve-style': 'bezier' } },
-	{ selector: 'edge[kind = "soft"]', style: { 'line-style': 'dashed', 'line-dash-pattern': [6, 4] } }
-];
-
-function layout() {
-	return cy.layout({ name: 'dagre', rankDir: 'LR', nodeSep: 12, rankSep: 70, edgeSep: 8, ranker: 'network-simplex', fit: false, animate: false });
-}
-
-// draw: rebuild the elements, lay them out; fit the view only when asked (a goal or tab change, not a fold)
-function draw(fit) {
-	var pan = cy.pan(), zoom = cy.zoom(), selected = cy.$(':selected').id();
-	cy.batch(function () { cy.elements().remove(); cy.add(elements()); });
-	layout().run();
-	if (fit) { cy.fit(undefined, 20); focusGoal(); } else { cy.zoom(zoom); cy.pan(pan); }
-	if (!fit && selected && cy.getElementById(selected).nonempty()) cy.getElementById(selected).select();
-	count();
-}
-
-// the goal is on the left: when fitted, show it at a readable size at the left edge rather than shrinking the whole graph to nothing
-function focusGoal() {
-	var g = cy.getElementById(goal);
-	if (cy.zoom() < 0.45) { cy.zoom({ level: 0.45, renderedPosition: { x: 20, y: 20 } }); }
-	cy.pan({ x: 20 - g.position().x * cy.zoom() + 95 * cy.zoom(), y: cy.height() / 2 - g.position().y * cy.zoom() });
-}
-
-function count() {
-	var nodes = cy.nodes(), text = nodes.length + ' of ' + data.steps.length + ' steps shown';
-	if (tab !== GENERIC) {
-		var done = nodes.filter(function (n) { return statusOf(n.id()) === 'done'; }).length;
-		text += ', ' + done + ' done on ' + tabName(tab);
-	}
-	el('count').textContent = text;
-}
-
-function tabName(id) { var d = data.devices.filter(function (x) { return x.id === id; })[0]; return d ? d.name : id; }
-
-// the legend: what the colours and lines say, for this tab
-function legend() {
-	var box = el('legend'); box.textContent = '';
-	function item(swatch, text) {
-		var s = document.createElement('span'); s.appendChild(swatch); s.appendChild(document.createTextNode(text)); box.appendChild(s);
-	}
-	function sw(colour) { var e = document.createElement('i'); e.className = 'sw'; e.style.background = colour; return e; }
-	function ln(colour, soft) { var e = document.createElement('i'); e.className = 'ln' + (soft ? ' soft' : ''); if (colour) e.style.borderTopColor = colour; return e; }
-	if (tab === GENERIC) item(sw(NO_STATUS_COLOUR), 'no device chosen: no status colouring');
-	else [['done', 'done'], ['partial', 'partial'], ['failing', 'failing'], ['open', 'open (claimed, not done)'], ['unknown', 'unknown: no claim yet'], ['not-needed', 'not needed']]
-		.forEach(function (p) { item(sw(STATUS_COLOUR[p[0]]), p[1]); });
-	item(ln(HARD_COLOUR, false), 'hard need: cannot be done before');
-	item(ln(HARD_COLOUR, true), 'soft need: can be, but blind or at much greater cost');
-	Object.keys(groupColour).forEach(function (g) { item(ln(groupColour[g], false), 'alternatives "' + g + '": one done is enough'); });
-	var f = document.createElement('i'); f.className = 'sw'; f.style.borderStyle = 'double'; f.style.borderWidth = '4px'; f.style.width = '.6rem'; f.style.height = '.6rem';
-	item(f, 'folded: its needs are hidden [+n]');
-}
-
-function panel(id) {
-	var s = byId[id], box = el('panel'); box.textContent = '';
-	function add(tag, text) { var e = document.createElement(tag); e.textContent = text; box.appendChild(e); return e; }
-	add('h2', s.title);
-	add('div', s.id + ' - stage ' + s.stage + (tab === GENERIC ? '' : ' - ' + tabName(tab) + ': ' + statusOf(id)));
-	var dl = document.createElement('dl'); box.appendChild(dl);
-	function row(name, text) { var t = document.createElement('dt'); t.textContent = name; var d = document.createElement('dd'); d.textContent = text; dl.appendChild(t); dl.appendChild(d); }
-	row('Done when', s.done_when); row('Proof', s.proof); row('Guide', s.guide);
-	if (needs[id].length) {
-		var t = document.createElement('dt'); t.textContent = 'Needs'; dl.appendChild(t);
-		var d = document.createElement('dd'), ul = document.createElement('ul'); d.appendChild(ul); dl.appendChild(d);
-		needs[id].forEach(function (e) {
-			var li = document.createElement('li'), a = document.createElement('a');
-			a.textContent = byId[e.requires].title; a.onclick = function () { reveal(e.requires); };
-			li.appendChild(a); li.appendChild(document.createTextNode(' (' + e.kind + (e.group ? ', alternatives "' + e.group + '"' : '') + ')'));
-			ul.appendChild(li);
-		});
-	}
-}
-
-// a need named in the panel: draw it if folded away, select it and bring it to the middle
-function reveal(id) {
-	if (cy.getElementById(id).empty()) { collapsed.clear(); draw(false); }
-	var n = cy.getElementById(id);
-	cy.$(':selected').unselect(); n.select(); panel(id);
-	cy.animate({ center: { eles: n }, duration: 200 });
-}
-
-function onTap(event) {
-	var id = event.target.id();
-	panel(id);
-	if (needs[id].length) { if (collapsed.has(id)) collapsed.delete(id); else collapsed.add(id); draw(false); cy.getElementById(id).select(); }
-}
-
-// the tabs: a device per row of the devices table, then the generic one; the hash names the tab
-function tabList() { return data.devices.map(function (d) { return d.id; }).concat([GENERIC]); }
-
-function tabs() {
-	var ul = el('tabs'); ul.textContent = '';
-	tabList().forEach(function (id) {
-		var li = document.createElement('li'), a = document.createElement('a');
-		a.href = '#' + id; a.id = 'tab-' + id; a.setAttribute('role', 'tab');
-		a.textContent = id === GENERIC ? 'generic' : tabName(id);
-		li.appendChild(a); ul.appendChild(li);
-	});
-}
-
-// the device with the most steps done is where the page opens when the hash names no tab
-function defaultTab() {
-	var best = GENERIC, most = 0;
-	data.devices.forEach(function (d) {
-		var n = Object.keys(claims[d.id] || {}).filter(function (k) { return claims[d.id][k] === 'done'; }).length;
-		if (n > most) { most = n; best = d.id; }
-	});
-	return best;
-}
-
-// the tab the hash names; a hash that is not a tab (or not valid text) names none
-function hashTab() {
-	try { return decodeURIComponent(location.hash.slice(1)); } catch (e) { return ''; }
-}
-
-function showTab() {
-	var want = hashTab();
-	tab = tabList().indexOf(want) >= 0 ? want : defaultTab();
-	tabList().forEach(function (id) { el('tab-' + id).setAttribute('aria-selected', String(id === tab)); });
-	collapsed.clear(); legend(); draw(true); panelReset();
-}
-
-function panelReset() { el('panel').innerHTML = '<p>Click a step to read it.</p>'; }
-
-function goals() {
-	var sel = el('goal');
-	var goalSteps = data.steps.filter(function (s) { return s.stage === GOAL_STAGE; });
-	if (!goalSteps.length) throw new Error('the steps have no goal (stage ' + GOAL_STAGE + ')');
-	goalSteps.forEach(function (s) {
-		var o = document.createElement('option'); o.value = s.id; o.textContent = s.title + ' (' + s.id + ')'; sel.appendChild(o);
-	});
-	if (byId[DEFAULT_GOAL]) sel.value = DEFAULT_GOAL;
-	goal = sel.value;
-	sel.onchange = function () { goal = sel.value; collapsed.clear(); draw(true); panelReset(); };
-	el('unfold').onclick = function () { collapsed.clear(); draw(false); };
-}
-
-function start() {
-	cytoscape.use(cytoscapeDagre);
-	cy = cytoscape({ container: el('cy'), elements: [], style: STYLE, wheelSensitivity: 0.3, minZoom: 0.08, maxZoom: 2.5, boxSelectionEnabled: false });
-	cy.on('tap', 'node', onTap);
-	tabs(); goals();
-	window.addEventListener('hashchange', showTab);
-	showTab();
-	say('');
-}
-
-function load() {
-	if (typeof cytoscape === 'undefined' || typeof cytoscapeDagre === 'undefined') { say('The graph libraries did not load (they come from cdn.jsdelivr.net): reload when online.'); return; }
-	fetch('graph/bringup.json').then(function (r) { if (!r.ok) throw new Error('graph/bringup.json: ' + r.status); return r.json(); })
-		.then(function (d) { data = d; index(); start(); })
-		.catch(function (e) { say('The steps did not load: ' + e.message); });
-}
-load();
-</script>
+<script src="graph/graph.js"></script>
