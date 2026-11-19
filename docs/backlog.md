@@ -7598,3 +7598,65 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="attended-lift-sees-groups"></a>
+### lpoco attended lift lists step groups beside steps, so a group copied across device repos is flagged like a step
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: open end of attended-step-groups (lab-tools #300): lift does not see groups (decision 2026-11-19-procedures-chain-by-named-groups said it should).
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools attended tests: two fixture repos with the same group under different names are flagged as one pair; a group the library has is flagged 'use the library'
+
+Rank
+: 4
+
+About
+: bringup-steps
+
+
+<a id="attended-way-back-settled"></a>
+### A finished group's way back is settled once leave_known_good has put the phone back, not left owed
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: open end of attended-step-groups (lab-tools #300): after leave_known_good, a finished group's way back stays owed and would run again on a later failure.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools attended tests: phone_ready then leave_known_good then a failing step - the failure runs no way back of phone_ready (already settled); without leave_known_good it still runs
+
+Rank
+: 3
+
+About
+: bringup-steps
