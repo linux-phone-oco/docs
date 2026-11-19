@@ -3944,3 +3944,27 @@ Considered
 
 About
 : lpoco-layer-pack
+
+---
+
+
+<a id="2026-11-19-layer-pack-slice-11-kernel-cmdline-d"></a>
+### layer pack slice 11: kernel-cmdline.d
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: apk NAME-config also writes /usr/lib/kernel-cmdline.d/50-NAME.conf from [boot] cmdline (lab-tools #237), test seen failing first, programmer review applied
+
+Considered
+: a separate add_cmdline_d function (review: call-order hazard, silent skip)
+
+Rejected
+: dropping deviceinfo_kernel_cmdline: boot-deploy 0.24 not confirmed to ignore it
+
+About
+: agnostic-layer
