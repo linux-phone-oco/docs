@@ -3629,3 +3629,27 @@ Rejected
 
 About
 : dt-check-image-published
+
+---
+
+
+<a id="2026-11-19-suspend-stop"></a>
+### suspend cycle stops the services the manifest names
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Built [health] suspend_stop and the stop/start around lpoco-health suspend cycle (lab-tools #209). Programmer review changed it: stop before arming the alarm, only active units, stopped.json for a cut-off cycle, -- before the unit, failed start fails the run. My first fake systemctl lacked its closing bracket so two tests passed vacuously; fixed.
+
+Considered
+: Starting every named unit unconditionally; writing the stop inside the quiet step.
+
+Rejected
+: Starting units that were not active (would start masked or deliberately stopped ones); arming the alarm first (a slow stop eats the sleep).
+
+About
+: suspend-cycle-stops-services
