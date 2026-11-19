@@ -7958,3 +7958,115 @@ By
 
 Takes
 : a text flowchart drawn by its own layered layout; clicks link out, but no folding, and a device picker means one chart per device and goal
+
+
+<a id="hugo-shortcodes"></a>
+### Hugo: shortcodes
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gohugo.io/content-management/shortcodes/
+
+By
+: orchestration-renewed
+
+Takes
+: A page's script and data file sit beside the page and are addressed relatively; the template writes plain HTML, so fallback text inside the container stays readable
+
+
+<a id="astro-islands"></a>
+### Astro: islands
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.astro.build/en/concepts/islands/
+
+By
+: orchestration-renewed
+
+Takes
+: Static HTML by default; only a marked component becomes an island, and the page stays readable without JavaScript
+
+
+<a id="astro-client-directives"></a>
+### Astro: template directives reference (client:visible, client:only)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.astro.build/en/reference/directives-reference/
+
+By
+: orchestration-renewed
+
+Takes
+: An island that is not in view (a hidden container) waits until it is shown (IntersectionObserver); client:only is the one kind that gives up readability
+
+
+<a id="astro-client-side-scripts"></a>
+### Astro: client-side scripts
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.astro.build/en/guides/client-side-scripts/
+
+By
+: orchestration-renewed
+
+Takes
+: Data reaches a script through data-* attributes on its container; an inline script is a plain script tag pointing at a file next to the page
+
+
+<a id="mdbook-renderers"></a>
+### mdBook: renderer configuration (additional-js, hash-files)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://rust-lang.github.io/mdBook/format/configuration/renderers.html
+
+By
+: orchestration-renewed
+
+Takes
+: A book adds scripts by listing files in its configuration; the generator copies them; content hashes in file names give cache safety
+
+
+<a id="mdbook-preprocessors"></a>
+### mdBook: preprocessors
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://rust-lang.github.io/mdBook/for_developers/preprocessors.html
+
+By
+: orchestration-renewed
+
+Takes
+: A preprocessor rewrites chapter text into ordinary markup before rendering, so what it writes reads without JavaScript
+
+
+<a id="hugo-shortcode-templates"></a>
+### Hugo: shortcode templates
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://gohugo.io/templates/shortcode/
+
+By
+: orchestration-renewed
+
+Takes
+: A shortcode takes named arguments from the page and reads page resources bundled with it

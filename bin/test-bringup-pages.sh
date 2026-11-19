@@ -45,10 +45,10 @@ done
 [ "$(grep -c '^- \*\*Helper:\*\* no helper yet' "$g")" = "$(q "SELECT count(*) FROM bringup_steps WHERE helper IS NULL")" ] || fail "the steps with no helper do not all show the gap"
 # the world gaps the guides name are marked
 [ "$(grep -c '^\*\*World gap\*\*' "$g")" = "$(q "SELECT count(*) FROM bringup_steps WHERE guide LIKE '%World gap%'")" ] || fail "the steps that name a world gap are not all marked"
-# the graph page's data: docs/graph/bringup.json holds every step, every edge, every device and every device's step
+# the graph page's data: face/graph/bringup.json holds every step, every edge, every device and every device's step
 # status of the rows (backlog bringup-graph-page): the steps with what the page shows of them, the edges with kind and
 # group, the devices read off the devices table (a device added later gets its tab), the status claims as they stand
-j=docs/graph/bringup.json
+j=face/graph/bringup.json
 [ -f "$j" ] || fail "no $j: make render writes it from the bring-up rows"
 jq -e . "$j" > /dev/null || fail "$j is not JSON"
 for part in stages steps edges devices status; do
@@ -62,7 +62,7 @@ same() { # NAME, what the rows give, what the json gives
 }
 # every status the claims carry is one the page draws a colour for
 for s in $(jq -r '.status[].status' "$j" | sort -u); do
-	grep '^var STATUS_COLOUR' docs/graph/graph.js | grep -q "'$s'\|\b$s:" || fail "docs/graph/graph.js names no colour for the status $s"
+	grep '^var STATUS_COLOUR' face/graph/graph.js | grep -q "'$s'\|\b$s:" || fail "face/graph/graph.js names no colour for the status $s"
 done
 same stages "$(tad sql "SELECT id, title, ord FROM bringup_stages ORDER BY id" --format json | jq -c '.[]')" \
 	"$(jq -c '.stages | sort_by(.id)[] | {id, title, ord}' "$j")"
@@ -74,18 +74,29 @@ same devices "$(tad sql "SELECT id, name, codename FROM devices ORDER BY id" --f
 	"$(jq -c '.devices | sort_by(.id)[] | {id, name, codename}' "$j")"
 same status "$(tad sql "SELECT device_id, step_id, status FROM step_status ORDER BY device_id, step_id" --format json | jq -c '.[]')" \
 	"$(jq -c '.status | sort_by(.device_id, .step_id)[] | {device_id, step_id, status}' "$j")"
-# the page that draws it: the libraries at pinned versions in the page, and in its script the file it reads, the layout
-# left to right, a tab per device and the generic one, the goal picker, search and the open-only filter
-p=docs/graph.html; js=docs/graph/graph.js
-[ -f "$p" ] || fail "no $p"
+# the page that draws it is the Graph tab of the steps view (face/lens.toml, kind embed, drawn by the engine): its script and
+# data in face/graph/, the libraries at pinned versions named in the lens, the script reading the file its container names, the
+# layout left to right, a tab per device and the generic one, the goal picker, search, open-only, the details panel and full screen
+js=face/graph/graph.js
 [ -f "$js" ] || fail "no $js"
-grep -q 'graph/graph.js' "$p" || fail "$p does not load $js"
-grep -Eq 'cytoscape@[0-9]+\.[0-9]+\.[0-9]+' "$p" && grep -Eq 'cytoscape-dagre@[0-9]+\.[0-9]+\.[0-9]+' "$p" && grep -Eq 'dagre@[0-9]+\.[0-9]+\.[0-9]+' "$p" || fail "$p does not pin the versions of cytoscape, dagre and cytoscape-dagre"
-grep -q 'graph/bringup.json' "$js" || fail "$js does not fetch graph/bringup.json"
+# the Graph tab is declared in face/lens.toml (read as text: no yq here), after the steps view and before the next one
+tab=$(awk '/^\[\[view\]\]/ { in_steps = 0 } /^id = "steps"/ { in_steps = 1 } /^\[\[view.tabs\]\]/ && in_steps { on = 1 } /^\[\[view\]\]/ { on = 0 } on' face/lens.toml)
+printf '%s\n' "$tab" | grep -q '^kind = "embed"' && printf '%s\n' "$tab" | grep -q '^script = "graph/graph.js"' && printf '%s\n' "$tab" | grep -q '^data = "graph/bringup.json"' || fail "face/lens.toml: the steps view has no Graph tab of kind embed with graph/graph.js and graph/bringup.json"
+for lib in 'cytoscape@' 'dagre@' 'cytoscape-dagre@'; do
+	printf '%s\n' "$tab" | grep -Eq "/${lib}[0-9]+\.[0-9]+\.[0-9]+/" || fail "face/lens.toml does not pin ${lib}x.y.z for the Graph tab"
+done
+grep -q "getAttribute('data-data')" "$js" || fail "$js does not read the file its container names"
 grep -q "rankDir: 'LR'" "$js" || fail "$js does not lay the graph out left to right"
 grep -q 'GENERIC' "$js" || fail "$js has no generic tab"
-grep -q 'function shorten' "$js" && grep -q 'function tooltip' "$js" && grep -q 'id="tip"' "$p" || fail "$js does not shorten labels and show the whole title on hover"
-for id in goal search open-only; do grep -q "id=\"$id\"" "$p" || fail "$p has no $id control"; done
+grep -q 'function shorten' "$js" && grep -q 'function tooltip' "$js" || fail "$js does not shorten labels and show the whole title on hover"
+for id in goal search open-only panel-toggle full; do grep -q "'$id'" "$js" || fail "$js has no $id control"; done
+grep -q 'requestFullscreen' "$js" && grep -q "'fullscreenchange'" "$js" || fail "$js does not use the Fullscreen API for the graph region"
+grep -q 'localStorage' "$js" && grep -q 'catch (e)' "$js" || fail "$js does not keep the panel choice in localStorage inside a try"
+# the old standalone page leads to the tab: a refresh and a link, both
+p=docs/graph.html
+[ -f "$p" ] || fail "no $p"
+grep -q 'http-equiv="refresh"' "$p" && grep -q 'en/linux-phones/steps.html#graph' "$p" || fail "$p does not lead to the Graph tab of the steps page"
+grep -q '<a href="[^"]*en/linux-phones/steps.html#graph"' "$p" || fail "$p has no link to the Graph tab"
 # the scale fixture is deterministic, as long as asked, with every need and claim naming a step, and has no cycle
 fx=$tmp/fixture.json
 sh bin/graph-fixture.sh 300 > "$fx"

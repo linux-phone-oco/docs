@@ -22,15 +22,15 @@ while IFS= read -r row || [ -n "$row" ]; do
 	for f in title what link; do
 		[ -n "$(printf '%s\n' "$row" | jq -r ".$f // empty")" ] || fail "card $n has no $f"
 	done
-	case $link in
-		../../tables/*.html) page=docs/$(basename "$link" .html); [ -f "$page.md" ] || [ -f "$page.html" ] || fail "card $n links $link, but $page.md or $page.html is not there" ;;
+	case ${link%%#*} in
+		../../tables/*.html) page=docs/$(basename "${link%%#*}" .html); [ -f "$page.md" ] || [ -f "$page.html" ] || fail "card $n links $link, but $page.md or $page.html is not there" ;;
 		*/*) fail "card $n links $link: neither a view nor a page under the tables" ;;
-		*.html) id=$(basename "$link" .html); grep -qx "id = \"$id\"" face/lens.toml || fail "card $n links the view $id, which the lens does not have" ;;
+		*.html) id=$(basename "${link%%#*}" .html); grep -qx "id = \"$id\"" face/lens.toml || fail "card $n links the view $id, which the lens does not have" ;;
 		*) fail "card $n links $link: neither a view nor a page under the tables" ;;
 	esac
 	echo "$link"
 done < face/guide-pages.json > "$tmp/links"
-for want in ../../tables/guidebook.html ../../tables/graph.html ../../tables/bringup_steps.html ../../tables/step_status.html steps.html; do
+for want in ../../tables/guidebook.html ../../tables/bringup_steps.html ../../tables/step_status.html steps.html steps.html#graph; do
 	grep -qxF "$want" "$tmp/links" || fail "no card links $want"
 done
 echo "PASS: the face's guide view has $n cards: the guidebook, the graph, the steps table, the step claims and the steps view, each link to a page that exists"

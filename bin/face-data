@@ -29,6 +29,12 @@ jq -c '. + {project: "linux-phone-oco/docs"}' "$here/face/guide-pages.json" > "$
 # 1b. the bring-up view: a row per step, a cell per step and device, and its headline (bin/face-steps)
 "$here/bin/face-steps" "$out"
 
+# 1c. the Graph tab of the steps view: its script (face/graph/graph.js) and its data (face/graph/bringup.json, made by
+#     bin/render-pages.sh from the same rows as every page), beside the tables, at the paths face/lens.toml names; the engine
+#     copies them next to the page (ocoeco-engine, a view of kind embed)
+mkdir -p "$out/graph"
+cp "$here/face/graph/graph.js" "$here/face/graph/bringup.json" "$out/graph/"
+
 # 2. the lens: its views, as the engine reads them
 # (the steps view's headline, the goals each device has reached, leads it)
 yq -p toml -o json "$here/face/lens.toml" |

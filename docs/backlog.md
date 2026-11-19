@@ -7580,6 +7580,7 @@ Status
 
 Note
 : 2026-11-19, docs-graph-builder: landed in #706 (page, tabs per device, bringup.json, test) and #707 (folded by stage, search, open-only, 1500-step fixture, measurements in research dagre-lays-out-the-bring-up-graph-in-0-13-s-at). Deployed at https://linux-phone-oco.github.io/docs/tables/graph.html (#xiaomi-surya, #google-walleye, #generic); screenshot looked at: goal on the left, needs to the right, done/partial/failing/open/unknown coloured, no overlap. Next if wanted: ELK or a web worker for a full view past 500 nodes (dagre is 9.5 s at 944 nodes).
+2026-11-19, engine-embed-builder: moved into the face. The graph is the Graph tab of the bring-up steps page (face/lens.toml, a tab of kind embed; ocoeco-engine #65 and #66, decision 2026-11-19-views-that-need-javascript-may-ship-it there): en/linux-phones/steps.html#graph, devices at #xiaomi-surya, #google-walleye, #generic; face/graph/graph.js and bringup.json (render-pages.sh writes it) reach the engine through bin/face-data; /tables/graph.html redirects to the tab. Added for the author: full screen for the graph region and a button that hides and shows the details panel (kept per viewer, never reopened by a click on a step). Session log row 2026-11-19-bringup-graph-in-the-face.
 
 Opened
 : 2026-11-19
