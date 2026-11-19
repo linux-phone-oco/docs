@@ -2317,3 +2317,28 @@ Sources
 
 About
 : bringup-steps
+
+
+<a id="procedures-reflect-and-lift"></a>
+### procedures-reflect-and-lift
+
+Brief
+: Lifting shared steps needs a finder and a round: a clone report over every device repo's steps next to the library, read on a schedule, lifting at two identical copies or three that differ
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Question
+: The author, 2026-11-19: are the mechanism for making procedures is now well organized and ergonomic ? so that per device work can make their own procedures on shared scafolding, as easy makeshift works, and then reflect on them combine, reshape and ship upstream usable for all phones versions ? or how do we have it currently setup ?
+
+Found
+: What is: the runner and 7 library steps (lpoco-attended v0.29.3); the rules docs #638 (small device-agnostic steps), #646 (procedures/NAME.rs, one steps crate), #651 (values from the named device.toml), ideal-agent #109 (when to lift). Missing: the easy start (attended-scaffold, attended-device-values, both queued first) and the loop: 'a step moves to the library when a second device needs it' relies on someone noticing; nothing finds the same step in two repos and no round reads it. Others: the rule of three (lift copies that differ at the third); PMD CPD-style clone detection by token runs, reported as pairs with places; Linaro test-definitions and KernelCI as upstream homes where board-agnostic tests live and are run by others' labs.
+
+Sources
+: rule-of-three,pmd-cpd,linaro-test-definitions,kernelci-tests,lava-test-definitions,kernelci-pipeline-config
+
+About
+: bringup-steps

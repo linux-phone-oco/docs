@@ -6945,3 +6945,62 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="attended-lift"></a>
+### lpoco attended lift: every device repo's procedures/steps beside the library, near-duplicates flagged by body
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: decision 2026-11-19-procedures-reflect-and-lift. Reads the device repos device-template knows. Bodies compared as token runs (PMD CPD's way), not by name. Output a table patrol can read (--format csv). After attended-device-values and attended-scaffold.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools attended tests with two fixture device repos and the library: a step copied into both (renamed) is flagged as one pair with both places; a step the library already has is flagged as 'use the library'; a step in one repo only is listed, not flagged; three differing copies are flagged, two differing are listed
+
+Rank
+: 5
+
+About
+: bringup-steps
+
+
+<a id="attended-export"></a>
+### lpoco attended export: a procedure's checks as a LAVA test definition others' labs can run
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: decision 2026-11-19-procedures-reflect-and-lift, part (4). Later than the lift loop; nothing is opened upstream without the author's word.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools attended tests: export of a fixture procedure writes a LAVA test definition whose run steps are its checks, with the device's values filled from device.toml; it validates against LAVA's schema
+
+About
+: bringup-steps
