@@ -1932,3 +1932,28 @@ About
 
 Research
 : nura-relation-how-it-stands
+
+
+<a id="2026-11-19-licences-for-our-repositories"></a>
+### 2026-11-19-licences-for-our-repositories
+
+Brief
+: Our code is MIT OR Apache-2.0, our device trees GPL-2.0-only OR BSD-2-Clause, our docs and data CC-BY-SA-4.0; third-party code keeps its own
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Decision
+: Code (lab-tools, ideal-agent, git-rhizoid, idealkb, tad tooling, and the scripts in every base): MIT OR Apache-2.0, both texts shipped as LICENSE-MIT and LICENSE-APACHE. Device trees and dts patches we write: GPL-2.0-only OR BSD-2-Clause, with SPDX headers (the kernel's own dual licence for dts). Documentation and knowledge-base data (docs, each device base's data, device-template, the software-engineering canon, the ideal-project playbook): CC-BY-SA-4.0. Every repository adds its LICENSE files, SPDX-License-Identifier headers where files carry code, a README line naming the licences, and a check in CI that keeps new files covered (REUSE-style: an SPDX header or a REUSE.toml annotation per path; REUSE lint itself is Python, so a small shell check where it does not fit). Third-party code we carry keeps its own licence: the sxmo-utils fork (AGPL-3.0-only), the kernel fork (GPL-2.0), vendored firmware or blobs as their licences say. One change per repository, by its owner.
+
+Why
+: The author's word, verbatim (through the Top Coordinator, 2026-11-19): 'Yes, as suggested' - to the suggestion above. Found by research nura-relation: no repository of ours had a LICENSE file; lab-tools' crates declared MIT OR Apache-2.0 without its text. MIT OR Apache-2.0 is the Rust ecosystem's norm; GPL-2.0-only OR BSD-2-Clause is what upstream dts files carry, so ours can go upstream as they are; CC-BY-SA-4.0 keeps shared knowledge shareable alike.
+
+Rejected
+: One licence for everything (a dts must match the kernel's terms; prose under a code licence reads poorly); GPL for our tools (the author's family is MIT OR Apache-2.0, and lpoco-ffs-acm was relicensed to match); leaving it implicit (no licence means all rights reserved, which no one can build on).
+
+About
+: bringup-steps
