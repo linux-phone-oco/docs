@@ -6974,7 +6974,7 @@ Proof
 : lab-tools attended tests with two fixture device repos and the library: a step copied into both (renamed) is flagged as one pair with both places; a step the library already has is flagged as 'use the library'; a step in one repo only is listed, not flagged; three differing copies are flagged, two differing are listed
 
 Rank
-: 8
+: 9
 
 About
 : bringup-steps
@@ -7064,7 +7064,7 @@ Proof
 : lab-tools devlab test kernel-try-reports-usb-timeline: fed the host journal excerpt of 2026-11-19 14:25-14:48 (surya-lab research 2026-11-19-calls4-hang-was-the-reboot-out-of-calls-plus), it says 'frozen: device N connected since T, no re-enumeration'; a normal boot's two enumerations 12 s apart read as re-enumerating; no events read as absent
 
 Rank
-: 6
+: 7
 
 About
 : bringup-steps
@@ -7095,7 +7095,7 @@ Proof
 : lab-tools host tests: lab.toml declares [clones] (folders, every); plan lists the user timer; the job fetches and fast-forwards a clone that is clean and on main, leaves a dirty, detached or diverged one alone and names it; after prepare, clones-check reports none behind
 
 Rank
-: 5
+: 6
 
 About
 : agent-folder
@@ -7188,7 +7188,7 @@ Proof
 : lab-tools devlab test (surya's test-boot-heartbeat): the try hook's text writes the stage line before any sleep and appends a heartbeat every 10 s until PID 1 is systemd; then one keeper try of a kernel whose initramfs is held leaves the heartbeat on the ESP, read by lpoco lab kernel log
 
 Rank
-: 7
+: 8
 
 About
 : bringup-steps
@@ -7313,7 +7313,100 @@ Proof
 : device-template CI step (copied to surya-lab and google-walleye-lab): with lab.toml pinning 0.24.0, a device.toml with [kernels] fails naming the key and the pinned version; with 0.32.1 it passes
 
 Rank
+: 5
+
+About
+: bringup-steps
+
+
+<a id="attended-prompt-file"></a>
+### lpoco-attended's person backend writes each pending prompt to a file and takes the answer from an answer file it polls
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: seen twice today (relayed by the Top Coordinator): messages to a keeper queue while it sits in a Bash wait, so the author's answer to look_for on walleye's display arrived after hold+30 s and 'no' was fed though he had seen the console and a stripe flash; surya's prompts lagged the same way. With the files, the Top Coordinator reads the prompt and writes the author's words, no keeper turn between. A rig backend later answers the same file.
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools attended tests: a look_for step writes ~/.cache/lpoco-attended/DEVICE/prompt (the act, what to check, the step, the time it waits until; mode 0600) and polls ~/.cache/lpoco-attended/DEVICE/answer; an answer written while it waits is taken and logged with who wrote it; the terminal still answers too, whichever comes first; on the timeout the prompt file says timed out and the step fails as now; both files are removed when the step ends
+
+Rank
+: 2
+
+About
+: bringup-steps
+
+
+<a id="attended-run-from-step"></a>
+### lpoco-attended run --from STEP (and --until STEP needs a matching start), so a resumed run does not repeat risky steps
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: surya's run ended with --until and restarted from the top, paying two extra risky reboots (relayed by the Top Coordinator).
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools attended tests: run --from 'step name' skips earlier steps (logged as skipped) and starts there; an unknown name exits 2 listing the names; --dry-run shows what --from would skip; the log of a run that ended at --until names the --from that resumes it
+
+Rank
 : 3
+
+About
+: bringup-steps
+
+
+<a id="attended-skip-when-in-state"></a>
+### lpoco-attended install and boot steps skip when the phone is already in that state (the test kernel running, the image in place)
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-19, orchestration: relayed by the Top Coordinator with attended-run-from-step: fewer reboots is fewer risks on the phones. Read the running kernel from the device (uname -r against device.toml [kernels]).
+
+Opened
+: 2026-11-19
+
+Needs
+: build
+
+Device
+: xiaomi-surya
+
+Proof
+: lab-tools attended tests on a stand-in: boot_once of the test kernel when uname -r already names it is skipped and logged 'already running'; back_to_known_good when the kept kernel runs is skipped; any other kernel still boots
+
+Rank
+: 4
 
 About
 : bringup-steps
