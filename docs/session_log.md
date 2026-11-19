@@ -4085,3 +4085,27 @@ Rejected
 
 About
 : lpoco-attended
+
+---
+
+
+<a id="2026-11-19-lpoco-attended-as-its-own-crate"></a>
+### lpoco-attended as its own crate
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Moved the runner into crate lpoco-attended with free functions and one Step type as orchestration asked; released lpoco-attended-v0.29.0; reviewed and fixed four defects.
+
+Considered
+: Step<'a>; keeping the bringup module
+
+Rejected
+: See decision 2026-11-19-attended-crate-free-functions
+
+About
+: lpoco-attended

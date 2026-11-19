@@ -2142,3 +2142,28 @@ About
 
 Research
 : 2026-11-19-attended-procedure-prior-art
+
+
+<a id="2026-11-19-attended-crate-free-functions"></a>
+### 2026-11-19-attended-crate-free-functions
+
+Brief
+: lpoco-attended is its own crate: free functions over one Step type, a Run guard, devlab for the phone; replaces the module in lpoco-bringup
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: Crate attended (lpoco-attended, tag lpoco-attended-vX.Y.Z, in the lpoco release family) as the orchestration role asked: use lpoco_attended::prelude::*; let _run = procedure(name, device); step/check(what, || closure); ask_author("do / check"); phone().sh|root; retry. A closure returns (), bool or Result; a failure ends the process with exit 1 naming the step. One Step type (kind, name, bring-up step id, closure; execute()) for this runner and the later unattended one; library steps are fns returning a Step (steps::ask first). Dry run runs no closure and phone() refuses to reach a phone. A panic is logged PANIC, never reported as a pass.
+
+Why
+: Orchestration (2026-11-19, relaying the author): the entry file reads like a simple script, the shape its lanes were told; decision 2026-11-19-procedures-chain-small-device-agnostic-steps asks for one step type for both runners. Supersedes 2026-11-19-attended-in-bringup-library, whose module is removed from lpoco-bringup (released one version, no user).
+
+Rejected
+: Keeping the module in bringup: the lanes were told a crate with this name and tag. Closures returning Result with ? (the first slice): the free-function form reads shorter. Step<'a> instead of 'static closures: not needed until an entry file wants shared locals; a lane can move or clone.
+
+About
+: lpoco-attended
