@@ -6,7 +6,7 @@ The memory of linux-phone-oco, whose goal is Linux phones as good as Android for
 
 - [Backlog](backlog.md): 295
 - [Bringup Stages](bringup_stages.md): 20
-- [Bringup Step Edges](bringup_step_edges.md): 251
+- [Bringup Step Edges](bringup_step_edges.md): 253
 - [Bringup Steps](bringup_steps.md): 116
 - [Chips](chips.md): 2
 - [Components](components.md): 25

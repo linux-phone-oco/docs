@@ -530,7 +530,7 @@ Step 52 in the chain, id `storage-full-speed`, applies to `any`, checked on 2026
 - **Done when:** the internal storage's link runs at the fastest mode the SoC and the card both support - UFS: the HS gear and lane count of the SoC's spec, both lanes up; eMMC: HS400 (or HS200 where HS400 is not supported) - read from the kernel, and a sequential read measures within reach of that mode
 - **Needs:**
   - [storage-readonly](#step-storage-readonly) - hard: the link speed is read on a card that already lists its partitions
-- **Enables:** nothing
+- **Enables:** [complete-phone](#step-complete-phone)
 - **Proof:** `storage-link-speed: the link mode from debugfs or dmesg (UFS power mode HS-Gn, lanes; eMMC timing) matches the SoC's documented maximum, and a read-only dd of a partition measures the throughput`, phone-suite
 - **Helper:** no helper yet - a helper to write
 - **Guide:** Upstream-readiness: a storage driver that links at PWM or one lane boots but is not done. On Qualcomm UFS the PHY tables and the gear limits per SoC decide it; compare with the downstream tree's settings. Read only: never write the internal storage to measure it.
@@ -729,7 +729,7 @@ Step 25 in the chain, id `display-any-order`, applies to `any`, checked on 2026-
 - **Done when:** on three cold boots the panel, its bridge and the GPU bind by deferred probe with their modules autoloaded (modalias), no initramfs module list or modprobe ordering of ours, and the console shows on the panel each time
 - **Needs:**
   - [panel-lit](#step-panel-lit) - hard: the panel must light by hand before its order can be left to deferred probe
-- **Enables:** nothing
+- **Enables:** [complete-phone](#step-complete-phone)
 - **Proof:** `display-boots-any-order: three boots; each boot's dmesg shows the panel bound after any deferral, lsmod lists the modules with no ordering file in the image, the panel lit`, phone-suite
 - **Helper:** no helper yet - a helper to write
 - **Guide:** Upstream-readiness: a driver that only works with a hand-ordered module list is not ready for mainline. Return -EPROBE\_DEFER for each supplier not yet there (regulators, the DSI host, the backlight, the GPIO expander), declare the suppliers in the device tree so fw\_devlink orders it, and drop any modules-load or initramfs ordering list. walleye's B1 bring-up met the order dependence (walleye-display-s6e3fa5).
@@ -1820,6 +1820,7 @@ Step 116 in the chain, id `complete-phone`, applies to `form:phone`, checked on 
   - [cycles-repeat-clean](#step-cycles-repeat-clean) - hard: everything the hardware does, lasting
   - [daily-usable-phone](#step-daily-usable-phone) - hard: everything the hardware does, lasting
   - [days-without-reboot](#step-days-without-reboot) - hard: everything the hardware does, lasting
+  - [display-any-order](#step-display-any-order) - hard: a complete phone's display needs no hand-ordered modules: what mainline takes (2026-11-19)
   - [fingerprint-unlocks](#step-fingerprint-unlocks) - hard: everything the hardware does, lasting
   - [focus-and-flash](#step-focus-and-flash) - hard: everything the hardware does, lasting
   - [gpu-renders](#step-gpu-renders) - hard: everything the hardware does, lasting
@@ -1831,6 +1832,7 @@ Step 116 in the chain, id `complete-phone`, applies to `form:phone`, checked on 
   - [nfc-reads-tag](#step-nfc-reads-tag) - hard: everything the hardware does, lasting
   - [reset-state-survives](#step-reset-state-survives) - hard: everything the hardware does, lasting
   - [rtc-alarm-powers-on](#step-rtc-alarm-powers-on) - hard: everything the hardware does, lasting
+  - [storage-full-speed](#step-storage-full-speed) - hard: a complete phone's storage runs at the speed its SoC supports (2026-11-19)
   - [thermal-zones-sane](#step-thermal-zones-sane) - hard: everything the hardware does, lasting
   - [update-rolls-back](#step-update-rolls-back) - hard: everything the hardware does, lasting
   - [usb-host-works](#step-usb-host-works) - hard: everything the hardware does, lasting

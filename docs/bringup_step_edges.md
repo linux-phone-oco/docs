@@ -3771,3 +3771,33 @@ Kind
 
 Why
 : the link speed is read on a card that already lists its partitions
+
+
+### Row 252
+
+Step
+: complete-phone
+
+Requires
+: display-any-order
+
+Kind
+: hard
+
+Why
+: a complete phone's display needs no hand-ordered modules: what mainline takes (2026-11-19)
+
+
+### Row 253
+
+Step
+: complete-phone
+
+Requires
+: storage-full-speed
+
+Kind
+: hard
+
+Why
+: a complete phone's storage runs at the speed its SoC supports (2026-11-19)

@@ -249,3 +249,5 @@
 {"step":"real-suspend-under-shell","requires":"shell-autosleep-tamed","kind":"hard","group":null,"why":"the shell's idle loop is held off first, or it cuts the lab off from its test (2026-11-18-who-runs-rtcwake-99999999)"}
 {"step":"display-any-order","requires":"panel-lit","kind":"hard","group":null,"why":"the panel must light by hand before its order can be left to deferred probe"}
 {"step":"storage-full-speed","requires":"storage-readonly","kind":"hard","group":null,"why":"the link speed is read on a card that already lists its partitions"}
+{"step":"complete-phone","requires":"display-any-order","kind":"hard","group":null,"why":"a complete phone's display needs no hand-ordered modules: what mainline takes (2026-11-19)"}
+{"step":"complete-phone","requires":"storage-full-speed","kind":"hard","group":null,"why":"a complete phone's storage runs at the speed its SoC supports (2026-11-19)"}
