@@ -4277,3 +4277,27 @@ Rejected
 
 About
 : attended-physical-steps
+
+---
+
+
+<a id="2026-11-19-attended-scaffold-lpoco-attended-new-run-check"></a>
+### attended-scaffold: lpoco attended new|run|check
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Built and landed the lpoco-attended binary (lab-tools #268): scaffold, run and dry-run a device repo's procedures/NAME.rs; test first (scaffold.rs), review by the programmer subagent, its findings fixed.
+
+Considered
+: Taking lpoco-attended (rank 1, already many slices) instead: its open points are small; the scaffold was the clearly specified next item. A LPOCO_ATTENDED_LIB env so the scaffold's dependency can be a checkout while working on lab-tools.
+
+Rejected
+: Hand-parsing the passed-on options (declared once with argenv instead); a separate crate for the binary (the attended crate already has the lib and the version group); trusting the codename into the template (refused unless one safe word).
+
+About
+: attended-scaffold
