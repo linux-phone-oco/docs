@@ -4205,3 +4205,27 @@ Rejected
 
 About
 : attended-step-library
+
+---
+
+
+<a id="2026-11-19-attended-procedure-loads-the-named-device-toml"></a>
+### attended: procedure loads the named device.toml
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: lab-tools #260: procedure() loads and checks the named device.toml, hands devlab --device PATH; review by the programmer subagent fixed 3 points; conflict with #259 (--until/--part) resolved by keeping both.
+
+Considered
+: Sharing devlab's Device::parse for the check (derive-dont-verify): left, it needs [connection], which a procedure's dry run need not have; named in the docs instead.
+
+Rejected
+: Keys in this slice: no table holds the USB vendor:product, so adding one is its own change with a schema regeneration.
+
+About
+: attended-device-values
