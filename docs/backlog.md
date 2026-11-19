@@ -7294,10 +7294,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: 2026-11-19, lab-tools-builder: (1) lab-tools done: lpoco-lab manifest check --device FILE (lab-tools #287, released as lpoco-lab 0.34.2, asset + sha256 attached; read back: the asset checks the template's device.toml ok, a bad key exits 1 naming file, version and key); reads through Device::parse like every command, finds device.toml above when no --device, tests in devlab/tests/manifest_check.rs. (2) device-template: branch builder-device-toml-check pushed (bin/check-device-toml.sh + tests/ci/check-device-toml.sh with a stand-in release: pin 0.24.0 refuses [kernels] naming key and version, 0.32.1 passes, no asset / wrong sha refused; job device-toml in check.yml) - NOT landed: it would turn CI red until two things hold: the repository secret LAB_MACHINE_READ (a read-only token for the private grenudi/lab-machine, set on device-template and later on surya-lab and google-walleye-lab; only the author can create it) and lab.toml pinning lpoco >= 0.34.2 (the follow timer lands that). Then land the branch and ask the surya and walleye coordinators to copy the step.
+: 2026-11-19, lab-tools-builder: done. lab-tools: lpoco-lab manifest check (#287, 0.34.2). device-template #36 (orchestration's word: no token, no lab.toml pin): job device-toml runs bin/check-device-toml.sh, which takes the newest lpoco-lab release whose asset is attached (one still uploading is skipped for the one before), checks its sha256, runs manifest check on device.toml; tests/ci/check-device-toml.sh proves it on a stand-in release (older reader refuses [kernels] naming key and release; newer passes; unattached newest skipped; wrong sha refused); green on main against lpoco-lab 0.35.0. The pin-based variant of the proof (lab.toml 0.24.0 vs 0.32.1) is superseded by that word. Left to the lanes: copy bin/check-device-toml.sh, tests/ci/check-device-toml.sh and the device-toml job into surya-lab and google-walleye-lab.
 
 Opened
 : 2026-11-19
