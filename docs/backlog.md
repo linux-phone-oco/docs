@@ -7294,10 +7294,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-host-follows-releases (c); attended-ready-on-host is the run-time side. The step reads the pin from grenudi/lab-machine's lab.toml on main and installs that lpoco-manifest (a release asset once release-host-binaries lands). 2026-11-19, orchestration: split by owner. lab-tools (this item): a read-only devlab manifest check --device FILE (parse and validate only, no state, no phone) in the released lpoco-lab binary, so CI downloads the pinned asset - no lpoco-manifest binary needed. device-template (orchestration's place; the lab-tools builder may edit it for this item): the CI step reading the pin from grenudi/lab-machine lab.toml on main, fetching that lpoco-lab asset, running the check. surya-lab and google-walleye-lab copy the step: their coordinators' items, asked when the step lands.
+: 2026-11-19, lab-tools-builder: (1) lab-tools done: lpoco-lab manifest check --device FILE (lab-tools #287, released as lpoco-lab 0.34.2, asset + sha256 attached; read back: the asset checks the template's device.toml ok, a bad key exits 1 naming file, version and key); reads through Device::parse like every command, finds device.toml above when no --device, tests in devlab/tests/manifest_check.rs. (2) device-template: branch builder-device-toml-check pushed (bin/check-device-toml.sh + tests/ci/check-device-toml.sh with a stand-in release: pin 0.24.0 refuses [kernels] naming key and version, 0.32.1 passes, no asset / wrong sha refused; job device-toml in check.yml) - NOT landed: it would turn CI red until two things hold: the repository secret LAB_MACHINE_READ (a read-only token for the private grenudi/lab-machine, set on device-template and later on surya-lab and google-walleye-lab; only the author can create it) and lab.toml pinning lpoco >= 0.34.2 (the follow timer lands that). Then land the branch and ask the surya and walleye coordinators to copy the step.
 
 Opened
 : 2026-11-19
