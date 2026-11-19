@@ -2166,3 +2166,28 @@ About
 
 Material
 : research/base-distro/2026-11-19-agnostic-layer/
+
+
+<a id="2026-11-19-attended-procedure-prior-art"></a>
+### 2026-11-19-attended-procedure-prior-art
+
+Brief
+: No Rust crate is a named-steps runner with dry-run, prompt and log; the pieces exist (rust-script, xshell, just), the runner is about 150 lines
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Question
+: What do others use for a scripted attended procedure: named steps, each stopping the run, a prompt-and-wait point, a dry run, a log?
+
+Found
+: rust-script: one-file Rust scripts with a cargo block of dependencies, no steps, dry-run or log (lab-tools already uses it for bringup/examples/step.rs). xshell: cmd! runs commands safely, no dry-run or prompt (its own example passes --dry-run through by hand). just: recipes stop on a failing command and read as a list of steps; no Rust library, no per-step log. bats: TAP test framework for bash, built for tests. dialoguer: prompts, behaviour without a terminal not documented. cargo-xtask: a convention, not a library. LAVA test definitions and pmbootstrap ci: from memory only, not verified (docs hosts failed): unattended step lists, no human pause. So nothing to adopt whole: borrow rust-script for the entry file, just's reading shape, one log line per step; write the runner.
+
+Sources
+: https://github.com/fornwall/rust-script,https://github.com/matklad/xshell,https://github.com/casey/just,https://github.com/bats-core/bats-core,https://docs.rs/dialoguer/latest/dialoguer/
+
+About
+: lpoco-attended

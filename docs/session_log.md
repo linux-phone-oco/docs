@@ -4061,3 +4061,27 @@ Rejected
 
 About
 : test-bisect-parallel-flake
+
+---
+
+
+<a id="2026-11-19-lpoco-attended-runner-landed"></a>
+### lpoco attended runner landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Built lpoco_bringup::attended and its example; released as lpoco-v0.28.3; review fixed log truncation, missing begin notes, a bare Enter. The device-agnostic step library of the newer decision is not started.
+
+Considered
+: A new crate; a closure per step; just/bats; xshell/dialoguer
+
+Rejected
+: See decision 2026-11-19-attended-in-bringup-library
+
+About
+: lpoco-attended
