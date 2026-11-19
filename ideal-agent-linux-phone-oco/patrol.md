@@ -49,6 +49,10 @@ Judge only after measuring; what is not measured is "not known yet".
    builder run on it for longer than one lanes-waker period (30 min) - each side waiting on the other, as
    on surya on 2026-11-18. It goes in your report with a refinement proposed for ideal-agent's
    keeper/lane-coordinator hand-off, not a guard.
+   A sign too: a session that shows running but has not moved - its newest event (`list_events`) is over
+   30 min old - most often a run waiting at a permission prompt or a question no one sees, as the surya
+   builder on 2026-11-19 (about an hour at a rejected prompt, asking "how to proceed", while the lanes
+   waker skipped surya because the session "isRunning"). Name the session and what it waits on.
 5. **Stale waits**, in each base (`tad q next`): an item in-progress with no landing for over a day; a
    non-empty `waits` unchanged for over 3 days; a `blocked_by` naming an item that is done but still shown
    as blocked; a `waits` naming another item of the same base (it belongs in `blocked_by`).
