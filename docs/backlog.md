@@ -5899,10 +5899,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: After surya runs Nura's sxmo-utils. The package conveyor then publishes lpoco-health alone; the apk page's sxmo-utils licence notice (docs apk-pages-origin-licence) goes with it. Proof: a CI check that the published index carries no sxmo-utils.
+: 2026-11-19, lab-tools-builder: lab-tools half done (lab-tools #214): packaging/sxmo-utils, its conveyor job and tag trigger, CI check, REUSE annotation and AGPL text removed; sxmo-utils-v* tags kept. NOT done: the Pages repository still lists sxmo-utils. The conveyor (linux-package-distribution-oco/conveyor, .github/workflows/alpine.yml) fetches every live package whose origin is not its own NAME into the new index ('kept.txt') and its 'Nothing already live is lost' step fails a site missing a live package, so a deliberate removal is refused. Needs: a declared retirement (for example [alpine] retire = ["sxmo-utils"] in packaging/conveyor.toml) that drops those origins from kept.txt and from the lost-check, then one packages run (workflow_dispatch) and a look at the page. Proof still to see: https://linux-phone-oco.github.io/lab-tools/ lists no sxmo-utils and lpoco-health installs.
 
 Opened
 : 2026-11-19
