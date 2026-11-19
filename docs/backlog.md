@@ -7462,10 +7462,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-19-roles-read-origin-main-not-shared-clones, part 3; once, by orchestration (SHARED_CLONE_OK=1). surya-lab is detached 23 behind with wt-surya-keeper-1795001997/ inside; google-walleye-lab is on branch build/tad-0.7.1 (since 2026-11-18 15:57) with wt-walleye-keeper-1795015383/ inside. Off main, host-clones-fresh leaves them as they are.
+: 2026-11-19, orchestration: every commons clone under ~/Projects that was clean on main is fast-forwarded (docs 25, lab-tools 7, lab-agent 215 behind, and five others). surya-lab (detached) and google-walleye-lab (on build/tad-0.7.1) had no commits of their own; main was held by two clean leftover worktrees (surya-lab-hw-wt from 11-18, wt-walleye-builder-lab from 11-17, 203 and 542 behind) - detached them, put both clones on main, fast-forwarded. Left: snapall (one local commit, diverged; not linux-phone-oco). ideal-agent 0.3.63's guard now refuses reads in a clone behind origin/main; the clones timer (lab-tools host-clones-fresh) keeps them moving.
 
 Opened
 : 2026-11-19
