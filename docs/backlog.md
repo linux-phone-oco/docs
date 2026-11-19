@@ -7045,10 +7045,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: from surya-lab surya-host-usb-timeline (surya-lab #431). Read-only: the lab machine's journalctl -k --utc since the reboot, for the phone's port found by device.toml's [[host.gadget]] usb_id/serial, never a bus number; the time range passed as arguments, never spliced into a shell string. Printed when no new boot answers in the wait; also an lpoco-attended step later (read_usb_timeline) so a procedure can check it. 2026-11-19, orchestration: the surya coordinator handed surya-host-usb-timeline over; this item is it (same proof). kernel-try-heartbeat is the inside view of the same hang - build them one after the other.
+: 2026-11-19, lab-tools-builder: landed lab-tools #291, released v0.35.1. devlab/src/usb_timeline.rs reads the host's journalctl -k --utc -o short-iso (from an hour before the try, times passed as arguments) for the [[host.gadget]] usb_id and serial and says frozen / re-enumerating (settle 60 s) / absent (no event, or gone and not back; a log with no kernel line is 'not known yet'); try_and_report's ten-minute bail prints it. Proof: devlab test kernel_try_reports_usb_timeline (the 14:25-14:48 night fixture; seen failing first) and four more (port-keyed matching, 60/61 s boundary, empty log). Review (programmer) fixed: window too late for a freeze that never left the bus, events matched across ports, an empty log read as absent. Open: not run on the real lab with a real hang; the later attended step read_usb_timeline; one shared kernel-log scanner with lpoco-host gadgets_seen (two parsers now); a device with no serial line is accepted.
 
 Opened
 : 2026-11-19

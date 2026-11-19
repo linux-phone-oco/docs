@@ -4745,3 +4745,27 @@ Rejected
 
 About
 : agent-folder
+
+---
+
+
+<a id="2026-11-19-kernel-try-reports-the-host-s-usb-timeline"></a>
+### kernel try reports the host's USB timeline
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Built usb_timeline in lpoco-lab (lab-tools #291, v0.35.1), proof test seen failing first, programmer review fixed three bugs.
+
+Considered
+: Reading only since the try began; a bus-state probe in sysfs as tie-breaker.
+
+Rejected
+: Since-the-try window alone: a phone that froze without leaving the bus has its connect line before it and would read absent.
+
+About
+: kernel-try-usb-timeline
