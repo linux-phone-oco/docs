@@ -2391,3 +2391,38 @@ About
 
 Research
 : host-conveyor
+
+
+<a id="2026-11-19-roles-read-origin-main-not-shared-clones"></a>
+### 2026-11-19-roles-read-origin-main-not-shared-clones
+
+Brief
+: Roles act on origin/main, never a shared clone: the start hands the brief over whole, the guard refuses stale reads; host-clones-fresh lands as a convenience, not the fix
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Decision
+: What a role acts on is origin/main - read in a fresh worktree of its own or with git show origin/main:PATH - never a shared clone's working tree; the shared clones under ~/Projects are for the author and for fetching through. Three parts:
+1. Delivery (ideal-agent, owner ideal-agent-builder; upstream item role-start-brief-whole): the role start hands the brief over whole from origin/main - written to a per-session file with the commit it was read at, the hook printing a pointer and staying under the app's output cap - so no agent needs the Brief: path's copy on disk.
+2. Enforcement (ideal-agent; upstream item guard-refuses-stale-clone-reads): the PreToolUse guard refuses a command run in, or a file read from, a shared clone's main checkout whose HEAD is behind its local origin/main (no fetch: every worktree add already fetches through it), naming the fresh-worktree line; SHARED_CLONE_OK=1 stays the author's way past. Fail-closed, like If-Match.
+3. The briefs (docs, orchestration's): phone-keeper.md makes the worktree first and runs every start command in it; surya-coordinator.md and coordinator.md start in a worktree at origin/main as walleye-coordinator.md does (backlog briefs-start-in-a-worktree); patrol counts reads of a shared clone each round (patrol-counts-shared-clone-reads); the two lane clones are put back on main once (shared-clones-back-on-main).
+host-clones-fresh changes, it is not dropped: it lands as built (branch builder-host-clones-fresh, its own user timer, not folded into follow) as a convenience that keeps the author's clones and the start's fallback current, and it is not the fix; ranked after the briefs item.
+
+Why
+: Research stale-clones-where-roles-read. Six incidents in three days; today's two cost a builder its own row and a keeper a redone item while the author waited on the UFS read. The from-main brief already exists (ideal-agent 0.3.28) but reaches the agent as a 2 KB preview in 203 of 333 starts, and 200 of 333 starts then read the stale disk copy: the reading is right, its delivery is cut. Prose alone did not hold: phone-keeper.md said "never the shared clone" and 5 of 253 lane sessions still ran their picking query there. The built timer would have caught docs but not google-walleye-lab (on branch build/tad-0.7.1) nor surya-lab (detached). The world gives each worker a fresh tree or reads the ref, and enforces it fail-closed; nobody fast-forwards a tree in use (git's own prefetch avoids moving refs; git-sync swaps a symlink with one writer). The author asked how best to apprehend it: a check that refuses old state, at the one place every role passes, rather than a refresher that narrows the window.
+
+Rejected
+: The follow timer as the fix (host-clones-fresh ranked first, or folded into lpoco-host follow): leaves detached, branched and dirty clones - two of the three lane clones today, the walleye one when it bit - keeps a window of up to 15 minutes, and moves a tree others read in place; folding it into follow ties clone moves to tool installs for nothing, and it is already built on its own timer. Briefs only: they already said it; 5 of 253 sessions and 200 of 333 brief reads went to the shared clone anyway. tad refusing to answer from a checkout behind origin/main: in tad-engine, another owner's engine for every base, and narrower than the guard (it misses Read and cat of a brief); kept as a later upstream note if the guard proves too coarse. Removing the shared clones: worktrees need a parent clone and the author reads them; the guard gives the same safety. A fetch inside the guard: network in a 10-second hook, and the local origin/main is already fresh. A git-sync symlink farm: one writer and atomic swaps for readers that do not exist; the worktree per session is that shape already.
+
+About
+: agent-folder
+
+Research
+: stale-clones-where-roles-read
+
+Tracked by
+: briefs-start-in-a-worktree

@@ -2392,3 +2392,56 @@ Sources
 
 About
 : bringup-steps
+
+
+<a id="stale-clones-where-roles-read"></a>
+### stale-clones-where-roles-read
+
+Brief
+: Roles act on stale shared clones because the start's from-main brief is cut to a preview (203 of 333 starts) and the disk copy is read; a timer alone would miss 2 of 3 lane clones
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: Where do roles read repository state, how did stale shared clones bite (surya builder 41 behind, walleye keeper 64 behind), and how do others keep many workers off a stale view?
+
+Found
+: Six times in three days a role acted on the old state of a shared clone or branch (material research/agent-folder/2026-11-19/). Today: surya-builder starts read builder.md from the docs clone 41 behind and missed their own row (docs 643); a walleye keeper ran its picking query in google-walleye-lab 64 behind and redid the finished TAS2557 item. Measured since 2026-11-18 12:00: the role hook already fetches the brief from origin/main (ideal-agent 0.3.28), but in 203 of 333 starts its output is over the app's hook-output cap and only a 2 KB preview arrives, so 200 of 333 starts read the brief again from the stale disk copy; 5 of 253 lane sessions ran their first picking query in a shared clone (phone-keeper.md lists the start commands before its worktree recipe). surya-coordinator.md starts in the shared surya-lab clone; coordinator.md says "at origin/main" with no command. Already right: builder, research, patrol, wakers (fresh worktree), lpoco host (reads origin/main), land's stale-tree guard (write side), the guard refusing writes in a shared clone. Every lane clone's origin/main is fresh locally (each worktree add fetches through it), so HEAD..origin/main without network names every incident. The built host-clones-fresh timer would have caught docs but not walleye (on branch build/tad-0.7.1) nor surya-lab (detached). The world: CI and agent tooling give each job a fresh tree at a SHA; GitOps reads the ref, not a tree; fail-closed version checks (If-Match, resourceVersion, force-with-lease) enforce it; nobody fast-forwards a tree in use except git-sync's one-writer symlink shape. One checkout many agents read is the anti-pattern; the fix is reading main, enforced, with a refresher only as a convenience.
+
+Sources
+: actions-checkout,gitlab-git-strategy,claude-code-worktrees,git-show-rev-path,git-maintenance-prefetch,flux-gitrepository,argocd-webhook,opengitops-principles,kubernetes-git-sync,rfc9110-if-match,claude-code-hooks-output
+
+About
+: agent-folder
+
+Material
+: research/agent-folder/2026-11-19/
+
+
+<a id="stale-clones-how-it-stands"></a>
+### stale-clones-how-it-stands
+
+Brief
+: Stale shared clones: decided (read origin/main; brief whole at start; guard refuses stale reads), nothing built; first briefs-start-in-a-worktree, then two ideal-agent items
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: Where does the stale-shared-clone work stand, and what is next?
+
+Found
+: Hand-over, 2026-11-19 21:00 CET. Decided (2026-11-19-roles-read-origin-main-not-shared-clones, on research stale-clones-where-roles-read): roles act on origin/main, never a shared clone's tree. Nothing of it built yet. Queue, in order: (1) docs briefs-start-in-a-worktree - orchestration, minutes; (2) ideal-agent role-start-brief-whole and guard-refuses-stale-clone-reads - upstream items for ideal-agent-builder, the real fix; (3) docs shared-clones-back-on-main - once, orchestration; (4) lab-tools host-clones-fresh - built on branch builder-host-clones-fresh, review and land as a convenience; (5) docs patrol-counts-shared-clone-reads - the measure that says the fix holds; later ideal-agent stale-worktrees-pruned. Baseline to beat: 5 of 253 picking queries and 200 of 333 brief reads went to a shared clone (2026-11-18 12:00 to 11-19 20:30). Until (2) lands, a start that reads a brief or runs tad in ~/Projects/linux-phone-oco/{docs,surya-lab,google-walleye-lab} may get old state.
+
+Sources
+: claude-code-hooks-output
+
+About
+: agent-folder
