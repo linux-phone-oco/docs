@@ -1826,3 +1826,28 @@ About
 
 Material
 : research/upstream-forks/2026-11-19/
+
+
+<a id="walleye-dts-dt-checks"></a>
+### walleye-dts-dt-checks
+
+Brief
+: Walleye dts trimmed for upstream passes dtbs_check (0 own warnings) and the qcom.yaml binding; strict style: 76, mostly comment length and property order
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Question
+: Does the walleye board dts, trimmed of lab hacks, pass the kernel's dt schema and style checks on v7.3?
+
+Found
+: As the lab builds it: 5 faults (board compatible undocumented, qup@ rename x2, tps61099 stub, plus 2 msm8998.dtsi DSI warnings not ours); it doesn't build on plain v7.3 without the wdt series. Trimmed candidate (no stubs/pcie0/wdt/charger/touch, compatible google,walleye + qcom,msm8998, binding enum entry): dt_binding_check clean, CHECK_DTBS W=1 0 own warnings, dt-check-style relaxed clean, strict 76 (36 line-length, 32 property-order, 5 child order, 3 unused labels). Draft diff in material.
+
+About
+: upstreams-lane
+
+Material
+: research/upstream-forks/2026-11-19/
