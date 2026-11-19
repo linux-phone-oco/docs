@@ -36,7 +36,7 @@ Nothing is ready yet. Every class (b) row below is ready apart from the sign-off
 | # | Change | Where | Missing | Target |
 |---|---|---|---|---|
 | 1 | ASoC: tas2562: RX slot length matches the sample width in I2S | linux fix/tas2562-i2s-slot-length c2815377c; upstream-queue/linux/0001 | The author's SoB; rewrap the commit message to 75 columns; one run on a v7.3-based kernel (proven on the 7.1 base). Applies cleanly to v7.3 and next; W=1 clean. | ASoC: Mark Brown, Liam Girdwood, TI tas256x (Shenghao Ding, Kevin Lu, Baojun Xu); linux-sound |
-| 2 | watchdog: pm8916_wdt: gen2 PON (PM8998/PM6150) | grenudi/linux topic/pmic-wdt-wake-in-suspend 59df2cc83 + f5bb57d27 + 8b2283da3 | The SoB. Settle the clk.c boot warning seen on surya calls2+ (open, stack being read). Walleye has only bitten 59df2cc83 (pass, z9); surya has bitten f5bb57d27 (pass, PR 276). | linux-watchdog: Guenter Roeck, Wim Van Sebroeck |
+| 2 | watchdog: pm8916_wdt: gen2 PON (PM8998/PM6150) | grenudi/linux topic/pmic-wdt-wake-in-suspend 59df2cc83 + f5bb57d27 + 8b2283da3 | The SoB. (The clk.c boot warning seen on surya calls2+ is cleared from the series: the DSI PLL lock failure and the clk.c warnings occur alike on calls+ without the driver, calls3+ (clang) and calls4+ (=m), so the root is display-side, research item dsi-pll-lock-failed-sm7150, surya-lab PR 345. Not measured with the pm6150 node disabled: that try left no log.) Walleye has only bitten 59df2cc83 (pass, z9); surya has bitten f5bb57d27 (pass, PR 276). | linux-watchdog: Guenter Roeck, Wim Van Sebroeck |
 | 3 | dt-bindings: watchdog: qcom,pm8916-wdt: PM8998 | 11ca7029a, first half | Split off the wakeup-source half. Give PM6150 its own compatible with a fallback (`"qcom,pm6150-wdt", "qcom,pm8998-wdt"`): the DT maintainers ask for SoC-specific compatibles. Needs dt_binding_check. | devicetree + linux-watchdog |
 | 4 | arm64: dts: qcom: pm8998 / pm6150: PMIC watchdog node | e123d3bff | Split per PMIC. The pm6150 node takes the new compatible pair. Needs dtbs_check. | linux-arm-msm: Bjorn Andersson, Konrad Dybcio |
 | 5 | watchdog: pm8916_wdt: wakeup-source; keep running through suspend | 11ca7029a second half + 833162dcf | The proof pmic-wdt-wakes-in-suspend (surya); walleye does not suspend yet. Send after series 2–4. | linux-watchdog, devicetree |
@@ -82,7 +82,7 @@ Nothing is ready yet. Every class (b) row below is ready apart from the sign-off
 
 1. **tas2562 slot length (#1):** one patch, after his SoB and a v7.3 run.
 2. **sxmo suspend series (#6):** once surya's attended proofs pass.
-3. **PMIC watchdog gen2:** #3 + #4 (pm8998 half) + #2, after the clk warning is cleared. The pm6150 half comes with the PM6150 compatible.
+3. **PMIC watchdog gen2:** #3 + #4 (pm8998 half) + #2; the clk warning is cleared from the series (2026-11-19, display-side). The pm6150 half comes with the PM6150 compatible.
 4. **Walleye dts (#7):** after the trim and a dtbs_check.
 5. **Watchdog in suspend (#5),** then **msm8998 APSS wdt (#8),** **charger (#9)** and **tas2562 resume (#10),** each after its proof.
 6. **sm7150-mainline (#11, #12):** a pull request or mail to that team, not to mainline.
