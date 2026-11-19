@@ -28,7 +28,6 @@
 {"device_id":"google-walleye","step_id":"off-mode-charging","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"thermal-zones-sane","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"lab-link-held-awake","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
-{"device_id":"google-walleye","step_id":"shell-autosleep-tamed","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"firmware-reachable","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"pd-mapper-before-remoteproc","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"remoteprocs-running","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
@@ -57,7 +56,6 @@
 {"device_id":"google-walleye","step_id":"call-audio-path","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"voice-call-both-ways","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"emergency-numbers-known","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
-{"device_id":"google-walleye","step_id":"proximity-blanks-in-call","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"volte-call","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"wifi-joins","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"bt-controller-up","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
@@ -68,15 +66,12 @@
 {"device_id":"google-walleye","step_id":"sensor-hub-stable","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"sensors-exposed","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"proximity-reads","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
-{"device_id":"google-walleye","step_id":"auto-rotate-follows","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
-{"device_id":"google-walleye","step_id":"brightness-follows-light","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"gnss-fix","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"fingerprint-unlocks","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"camera-bus-bound","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"image-sensor-identified","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"raw-frame-captured","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"camera-stream-viewable","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
-{"device_id":"google-walleye","step_id":"photo-taken","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"video-recorded","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"focus-and-flash","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"suspend-way-back","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
@@ -85,10 +80,8 @@
 {"device_id":"google-walleye","step_id":"radios-survive-suspend","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"sensors-across-suspend","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"resume-without-stall","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
-{"device_id":"google-walleye","step_id":"real-suspend-under-shell","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"soc-floor-reached","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"call-wakes-from-sleep","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
-{"device_id":"google-walleye","step_id":"standby-current","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"all-day-battery","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"shell-runs-with-hardware","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"on-screen-keyboard","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
@@ -98,7 +91,6 @@
 {"device_id":"google-walleye","step_id":"update-rolls-back","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"kernel-upgrade-keeps-steps","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"coprocessor-restart-recovers","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
-{"device_id":"google-walleye","step_id":"days-without-reboot","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"cycles-repeat-clean","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"linux-runs","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"daily-usable-phone","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
@@ -110,7 +102,16 @@
 {"device_id":"google-walleye","step_id":"reset-state-survives","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"key-reset-recovers","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"rtc-alarm-powers-on","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
+{"device_id":"google-walleye","step_id":"shell-autosleep-tamed","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
+{"device_id":"google-walleye","step_id":"real-suspend-under-shell","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"alarm-wakes-from-sleep","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
+{"device_id":"google-walleye","step_id":"auto-rotate-follows","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
+{"device_id":"google-walleye","step_id":"brightness-follows-light","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
+{"device_id":"google-walleye","step_id":"proximity-blanks-in-call","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
+{"device_id":"google-walleye","step_id":"days-without-reboot","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
+{"device_id":"google-walleye","step_id":"photo-taken","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
+{"device_id":"google-walleye","step_id":"standby-current","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
+{"device_id":"google-walleye","step_id":"test-layer-boots","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/google-walleye-lab does not claim this step.","updated":"2026-11-19"}
 {"device_id":"xiaomi-surya","step_id":"bootloader-unlocked","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"stock-measured","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"stock-facts-read","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
@@ -141,7 +142,6 @@
 {"device_id":"xiaomi-surya","step_id":"off-mode-charging","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"thermal-zones-sane","status":"done","proof":"thermal-zones","run":"20261118-204845","proven_on":"7.1.0-sm7150-calls+","notes":"suite run 20261118-204845 thermal-zones pass","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"lab-link-held-awake","status":"done","proof":"usb-awake","run":"20261118-191339","proven_on":"7.1.0-sm7150-calls+","notes":"suite run 20261118-191339: usb-awake=pass","updated":"2026-11-18"}
-{"device_id":"xiaomi-surya","step_id":"shell-autosleep-tamed","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"firmware-reachable","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"pd-mapper-before-remoteproc","status":"done","proof":"sound-card","run":"20261118-202945","proven_on":"7.1.0-sm7150-calls+","notes":"suite run 20261118-202945: sound-card=pass (the 19:13 run failed on a boot whose ADSP came up without its audio services; see log 2026-11-18-2035-adsp-audio-restart)","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"remoteprocs-running","status":"done","proof":"adsp-running,cdsp-running,modem-running,no-processor-crashes","run":"20261118-191339","proven_on":"7.1.0-sm7150-calls+","notes":"suite run 20261118-191339: adsp-running=pass cdsp-running=pass modem-running=pass no-processor-crashes=pass","updated":"2026-11-18"}
@@ -170,7 +170,6 @@
 {"device_id":"xiaomi-surya","step_id":"call-audio-path","status":"done","proof":"call-audio-path","run":"20261118-202945","proven_on":"7.1.0-sm7150-calls+","notes":"suite run 20261118-202945: call-audio-path=pass","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"voice-call-both-ways","status":"open","proof":"call-echo","run":"20261118-191339","proven_on":"7.1.0-sm7150-calls+","notes":"suite run 20261118-191339: call-echo=skip","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"emergency-numbers-known","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
-{"device_id":"xiaomi-surya","step_id":"proximity-blanks-in-call","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"volte-call","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"wifi-joins","status":"done","proof":"wifi-interface,wifi-connected,wifi-reaches-gateway","run":"20261118-191339","proven_on":"7.1.0-sm7150-calls+","notes":"suite run 20261118-191339: wifi-interface=pass wifi-connected=pass wifi-reaches-gateway=pass","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"bt-controller-up","status":"done","proof":"bt-controller,bt-powered","run":"20261118-191339","proven_on":"7.1.0-sm7150-calls+","notes":"suite run 20261118-191339: bt-controller=pass bt-powered=pass","updated":"2026-11-18"}
@@ -181,15 +180,12 @@
 {"device_id":"xiaomi-surya","step_id":"sensor-hub-stable","status":"done","proof":"no-processor-crashes","run":"20261118-191339","proven_on":"7.1.0-sm7150-calls+","notes":"suite run 20261118-191339: no-processor-crashes=pass","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"sensors-exposed","status":"done","proof":"motion-and-light","run":"20261118-202945","proven_on":"7.1.0-sm7150-calls+","notes":"suite run 20261118-202945: motion-and-light=pass","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"proximity-reads","status":"done","proof":"proximity-reads","run":"20261118-202945","proven_on":"7.1.0-sm7150-calls+","notes":"suite run 20261118-202945: proximity-reads=pass","updated":"2026-11-18"}
-{"device_id":"xiaomi-surya","step_id":"auto-rotate-follows","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
-{"device_id":"xiaomi-surya","step_id":"brightness-follows-light","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"gnss-fix","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"fingerprint-unlocks","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"camera-bus-bound","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"image-sensor-identified","status":"failing","proof":"image-sensor","run":"20261118-202945","proven_on":"7.1.0-sm7150-calls+","notes":"suite run 20261118-202945: image-sensor=fail (0 sensors bound): a real gap on this kernel, not a stale run","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"raw-frame-captured","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"camera-stream-viewable","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
-{"device_id":"xiaomi-surya","step_id":"photo-taken","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"video-recorded","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"focus-and-flash","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"suspend-way-back","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
@@ -198,10 +194,8 @@
 {"device_id":"xiaomi-surya","step_id":"radios-survive-suspend","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"sensors-across-suspend","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"resume-without-stall","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
-{"device_id":"xiaomi-surya","step_id":"real-suspend-under-shell","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"soc-floor-reached","status":"open","proof":"soc-sleeps","run":"20261118-191339","proven_on":"7.1.0-sm7150-calls+","notes":"suite run 20261118-191339: soc-sleeps=skip","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"call-wakes-from-sleep","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
-{"device_id":"xiaomi-surya","step_id":"standby-current","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"all-day-battery","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"shell-runs-with-hardware","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"on-screen-keyboard","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
@@ -211,7 +205,6 @@
 {"device_id":"xiaomi-surya","step_id":"update-rolls-back","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"kernel-upgrade-keeps-steps","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"coprocessor-restart-recovers","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
-{"device_id":"xiaomi-surya","step_id":"days-without-reboot","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"cycles-repeat-clean","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"linux-runs","status":"done","proof":"linux-runs","run":"20261119-042511","proven_on":"kernel 7.1.0-sm7150-calls+, boot 9ed41a74","notes":"Present and answering only (tests/health/base/boot-basics.sh, PR 348); not an end-to-end proof.","updated":"2026-11-19"}
 {"device_id":"xiaomi-surya","step_id":"daily-usable-phone","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
@@ -223,4 +216,13 @@
 {"device_id":"xiaomi-surya","step_id":"reset-state-survives","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"key-reset-recovers","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"rtc-alarm-powers-on","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
+{"device_id":"xiaomi-surya","step_id":"shell-autosleep-tamed","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
+{"device_id":"xiaomi-surya","step_id":"real-suspend-under-shell","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"alarm-wakes-from-sleep","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
+{"device_id":"xiaomi-surya","step_id":"auto-rotate-follows","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
+{"device_id":"xiaomi-surya","step_id":"brightness-follows-light","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
+{"device_id":"xiaomi-surya","step_id":"proximity-blanks-in-call","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
+{"device_id":"xiaomi-surya","step_id":"days-without-reboot","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
+{"device_id":"xiaomi-surya","step_id":"photo-taken","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
+{"device_id":"xiaomi-surya","step_id":"standby-current","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
+{"device_id":"xiaomi-surya","step_id":"test-layer-boots","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/surya-lab does not claim this step.","updated":"2026-11-19"}

@@ -644,7 +644,7 @@ Device id
 : google-walleye
 
 Step id
-: shell-autosleep-tamed
+: firmware-reachable
 
 Status
 : open
@@ -659,7 +659,7 @@ Device id
 : google-walleye
 
 Step id
-: firmware-reachable
+: pd-mapper-before-remoteproc
 
 Status
 : open
@@ -674,7 +674,7 @@ Device id
 : google-walleye
 
 Step id
-: pd-mapper-before-remoteproc
+: remoteprocs-running
 
 Status
 : open
@@ -689,7 +689,7 @@ Device id
 : google-walleye
 
 Step id
-: remoteprocs-running
+: fastrpc-helpers-stable
 
 Status
 : open
@@ -704,7 +704,7 @@ Device id
 : google-walleye
 
 Step id
-: fastrpc-helpers-stable
+: panel-lit
 
 Status
 : open
@@ -719,7 +719,7 @@ Device id
 : google-walleye
 
 Step id
-: panel-lit
+: touch-input
 
 Status
 : open
@@ -734,7 +734,7 @@ Device id
 : google-walleye
 
 Step id
-: touch-input
+: buttons-report
 
 Status
 : open
@@ -749,7 +749,7 @@ Device id
 : google-walleye
 
 Step id
-: buttons-report
+: haptics-buzz
 
 Status
 : open
@@ -764,7 +764,7 @@ Device id
 : google-walleye
 
 Step id
-: haptics-buzz
+: gpu-renders
 
 Status
 : open
@@ -779,7 +779,7 @@ Device id
 : google-walleye
 
 Step id
-: gpu-renders
+: audio-codec-attached
 
 Status
 : open
@@ -794,7 +794,7 @@ Device id
 : google-walleye
 
 Step id
-: audio-codec-attached
+: sound-card-registered
 
 Status
 : open
@@ -809,7 +809,7 @@ Device id
 : google-walleye
 
 Step id
-: sound-card-registered
+: speaker-amps-fed
 
 Status
 : open
@@ -824,7 +824,7 @@ Device id
 : google-walleye
 
 Step id
-: speaker-amps-fed
+: ucm-hifi-profile
 
 Status
 : open
@@ -839,7 +839,7 @@ Device id
 : google-walleye
 
 Step id
-: ucm-hifi-profile
+: speaker-heard
 
 Status
 : open
@@ -854,7 +854,7 @@ Device id
 : google-walleye
 
 Step id
-: speaker-heard
+: mic-captures
 
 Status
 : open
@@ -869,7 +869,7 @@ Device id
 : google-walleye
 
 Step id
-: mic-captures
+: mic-hears-speaker
 
 Status
 : open
@@ -884,7 +884,7 @@ Device id
 : google-walleye
 
 Step id
-: mic-hears-speaker
+: earpiece-plays
 
 Status
 : open
@@ -899,7 +899,7 @@ Device id
 : google-walleye
 
 Step id
-: earpiece-plays
+: headset-jack
 
 Status
 : open
@@ -914,7 +914,7 @@ Device id
 : google-walleye
 
 Step id
-: headset-jack
+: modem-file-services
 
 Status
 : open
@@ -929,7 +929,7 @@ Device id
 : google-walleye
 
 Step id
-: modem-file-services
+: modem-seen
 
 Status
 : open
@@ -944,7 +944,7 @@ Device id
 : google-walleye
 
 Step id
-: modem-seen
+: sim-ready
 
 Status
 : open
@@ -959,7 +959,7 @@ Device id
 : google-walleye
 
 Step id
-: sim-ready
+: modem-registered
 
 Status
 : open
@@ -974,7 +974,7 @@ Device id
 : google-walleye
 
 Step id
-: modem-registered
+: sms-both-ways
 
 Status
 : open
@@ -989,7 +989,7 @@ Device id
 : google-walleye
 
 Step id
-: sms-both-ways
+: mobile-data
 
 Status
 : open
@@ -1004,7 +1004,7 @@ Device id
 : google-walleye
 
 Step id
-: mobile-data
+: mms-both-ways
 
 Status
 : open
@@ -1019,7 +1019,7 @@ Device id
 : google-walleye
 
 Step id
-: mms-both-ways
+: call-audio-path
 
 Status
 : open
@@ -1034,7 +1034,7 @@ Device id
 : google-walleye
 
 Step id
-: call-audio-path
+: voice-call-both-ways
 
 Status
 : open
@@ -1049,7 +1049,7 @@ Device id
 : google-walleye
 
 Step id
-: voice-call-both-ways
+: emergency-numbers-known
 
 Status
 : open
@@ -1064,7 +1064,7 @@ Device id
 : google-walleye
 
 Step id
-: emergency-numbers-known
+: volte-call
 
 Status
 : open
@@ -1079,7 +1079,7 @@ Device id
 : google-walleye
 
 Step id
-: proximity-blanks-in-call
+: wifi-joins
 
 Status
 : open
@@ -1094,7 +1094,7 @@ Device id
 : google-walleye
 
 Step id
-: volte-call
+: bt-controller-up
 
 Status
 : open
@@ -1109,7 +1109,7 @@ Device id
 : google-walleye
 
 Step id
-: wifi-joins
+: bt-pairs-carries-audio
 
 Status
 : open
@@ -1124,7 +1124,7 @@ Device id
 : google-walleye
 
 Step id
-: bt-controller-up
+: nfc-reads-tag
 
 Status
 : open
@@ -1139,7 +1139,7 @@ Device id
 : google-walleye
 
 Step id
-: bt-pairs-carries-audio
+: usb-host-works
 
 Status
 : open
@@ -1154,7 +1154,7 @@ Device id
 : google-walleye
 
 Step id
-: nfc-reads-tag
+: hotspot-shares-data
 
 Status
 : open
@@ -1169,7 +1169,7 @@ Device id
 : google-walleye
 
 Step id
-: usb-host-works
+: sensor-hub-stable
 
 Status
 : open
@@ -1184,7 +1184,7 @@ Device id
 : google-walleye
 
 Step id
-: hotspot-shares-data
+: sensors-exposed
 
 Status
 : open
@@ -1199,7 +1199,7 @@ Device id
 : google-walleye
 
 Step id
-: sensor-hub-stable
+: proximity-reads
 
 Status
 : open
@@ -1214,7 +1214,7 @@ Device id
 : google-walleye
 
 Step id
-: sensors-exposed
+: gnss-fix
 
 Status
 : open
@@ -1229,7 +1229,7 @@ Device id
 : google-walleye
 
 Step id
-: proximity-reads
+: fingerprint-unlocks
 
 Status
 : open
@@ -1244,7 +1244,7 @@ Device id
 : google-walleye
 
 Step id
-: auto-rotate-follows
+: camera-bus-bound
 
 Status
 : open
@@ -1259,7 +1259,7 @@ Device id
 : google-walleye
 
 Step id
-: brightness-follows-light
+: image-sensor-identified
 
 Status
 : open
@@ -1274,7 +1274,7 @@ Device id
 : google-walleye
 
 Step id
-: gnss-fix
+: raw-frame-captured
 
 Status
 : open
@@ -1289,7 +1289,7 @@ Device id
 : google-walleye
 
 Step id
-: fingerprint-unlocks
+: camera-stream-viewable
 
 Status
 : open
@@ -1304,7 +1304,7 @@ Device id
 : google-walleye
 
 Step id
-: camera-bus-bound
+: video-recorded
 
 Status
 : open
@@ -1319,7 +1319,7 @@ Device id
 : google-walleye
 
 Step id
-: image-sensor-identified
+: focus-and-flash
 
 Status
 : open
@@ -1334,7 +1334,7 @@ Device id
 : google-walleye
 
 Step id
-: raw-frame-captured
+: suspend-way-back
 
 Status
 : open
@@ -1349,7 +1349,7 @@ Device id
 : google-walleye
 
 Step id
-: camera-stream-viewable
+: s2idle-cycle-returns
 
 Status
 : open
@@ -1364,7 +1364,7 @@ Device id
 : google-walleye
 
 Step id
-: photo-taken
+: suspend-wakes-quiet
 
 Status
 : open
@@ -1379,7 +1379,7 @@ Device id
 : google-walleye
 
 Step id
-: video-recorded
+: radios-survive-suspend
 
 Status
 : open
@@ -1394,7 +1394,7 @@ Device id
 : google-walleye
 
 Step id
-: focus-and-flash
+: sensors-across-suspend
 
 Status
 : open
@@ -1409,7 +1409,7 @@ Device id
 : google-walleye
 
 Step id
-: suspend-way-back
+: resume-without-stall
 
 Status
 : open
@@ -1424,7 +1424,7 @@ Device id
 : google-walleye
 
 Step id
-: s2idle-cycle-returns
+: soc-floor-reached
 
 Status
 : open
@@ -1439,7 +1439,7 @@ Device id
 : google-walleye
 
 Step id
-: suspend-wakes-quiet
+: call-wakes-from-sleep
 
 Status
 : open
@@ -1454,7 +1454,7 @@ Device id
 : google-walleye
 
 Step id
-: radios-survive-suspend
+: all-day-battery
 
 Status
 : open
@@ -1469,7 +1469,7 @@ Device id
 : google-walleye
 
 Step id
-: sensors-across-suspend
+: shell-runs-with-hardware
 
 Status
 : open
@@ -1484,7 +1484,7 @@ Device id
 : google-walleye
 
 Step id
-: resume-without-stall
+: on-screen-keyboard
 
 Status
 : open
@@ -1499,7 +1499,7 @@ Device id
 : google-walleye
 
 Step id
-: real-suspend-under-shell
+: lock-and-unlock
 
 Status
 : open
@@ -1514,7 +1514,7 @@ Device id
 : google-walleye
 
 Step id
-: soc-floor-reached
+: notifications-arrive
 
 Status
 : open
@@ -1529,7 +1529,7 @@ Device id
 : google-walleye
 
 Step id
-: call-wakes-from-sleep
+: update-applies
 
 Status
 : open
@@ -1544,7 +1544,7 @@ Device id
 : google-walleye
 
 Step id
-: standby-current
+: update-rolls-back
 
 Status
 : open
@@ -1559,7 +1559,7 @@ Device id
 : google-walleye
 
 Step id
-: all-day-battery
+: kernel-upgrade-keeps-steps
 
 Status
 : open
@@ -1574,7 +1574,7 @@ Device id
 : google-walleye
 
 Step id
-: shell-runs-with-hardware
+: coprocessor-restart-recovers
 
 Status
 : open
@@ -1589,7 +1589,7 @@ Device id
 : google-walleye
 
 Step id
-: on-screen-keyboard
+: cycles-repeat-clean
 
 Status
 : open
@@ -1604,7 +1604,7 @@ Device id
 : google-walleye
 
 Step id
-: lock-and-unlock
+: linux-runs
 
 Status
 : open
@@ -1619,7 +1619,7 @@ Device id
 : google-walleye
 
 Step id
-: notifications-arrive
+: daily-usable-phone
 
 Status
 : open
@@ -1634,7 +1634,7 @@ Device id
 : google-walleye
 
 Step id
-: update-applies
+: complete-phone
 
 Status
 : open
@@ -1649,7 +1649,7 @@ Device id
 : google-walleye
 
 Step id
-: update-rolls-back
+: pon-reason-read
 
 Status
 : open
@@ -1664,7 +1664,7 @@ Device id
 : google-walleye
 
 Step id
-: kernel-upgrade-keeps-steps
+: reset-types-right
 
 Status
 : open
@@ -1679,7 +1679,7 @@ Device id
 : google-walleye
 
 Step id
-: coprocessor-restart-recovers
+: power-off-stays-off
 
 Status
 : open
@@ -1694,7 +1694,7 @@ Device id
 : google-walleye
 
 Step id
-: days-without-reboot
+: charger-mode-entered
 
 Status
 : open
@@ -1709,7 +1709,7 @@ Device id
 : google-walleye
 
 Step id
-: cycles-repeat-clean
+: reset-state-survives
 
 Status
 : open
@@ -1724,7 +1724,7 @@ Device id
 : google-walleye
 
 Step id
-: linux-runs
+: key-reset-recovers
 
 Status
 : open
@@ -1739,7 +1739,7 @@ Device id
 : google-walleye
 
 Step id
-: daily-usable-phone
+: rtc-alarm-powers-on
 
 Status
 : open
@@ -1754,7 +1754,7 @@ Device id
 : google-walleye
 
 Step id
-: complete-phone
+: shell-autosleep-tamed
 
 Status
 : open
@@ -1769,7 +1769,7 @@ Device id
 : google-walleye
 
 Step id
-: pon-reason-read
+: real-suspend-under-shell
 
 Status
 : open
@@ -1784,7 +1784,7 @@ Device id
 : google-walleye
 
 Step id
-: reset-types-right
+: alarm-wakes-from-sleep
 
 Status
 : open
@@ -1799,7 +1799,7 @@ Device id
 : google-walleye
 
 Step id
-: power-off-stays-off
+: auto-rotate-follows
 
 Status
 : open
@@ -1814,7 +1814,7 @@ Device id
 : google-walleye
 
 Step id
-: charger-mode-entered
+: brightness-follows-light
 
 Status
 : open
@@ -1829,7 +1829,7 @@ Device id
 : google-walleye
 
 Step id
-: reset-state-survives
+: proximity-blanks-in-call
 
 Status
 : open
@@ -1844,7 +1844,7 @@ Device id
 : google-walleye
 
 Step id
-: key-reset-recovers
+: days-without-reboot
 
 Status
 : open
@@ -1859,7 +1859,7 @@ Device id
 : google-walleye
 
 Step id
-: rtc-alarm-powers-on
+: photo-taken
 
 Status
 : open
@@ -1874,7 +1874,7 @@ Device id
 : google-walleye
 
 Step id
-: alarm-wakes-from-sleep
+: standby-current
 
 Status
 : open
@@ -1884,6 +1884,24 @@ Updated
 
 
 ### Row 114
+
+Device id
+: google-walleye
+
+Step id
+: test-layer-boots
+
+Status
+: unknown
+
+Notes
+: Not known yet: linux-phone-oco/google-walleye-lab does not claim this step.
+
+Updated
+: 2026-11-19
+
+
+### Row 115
 
 Device id
 : xiaomi-surya
@@ -1901,7 +1919,7 @@ Updated
 : 2026-11-18
 
 
-### Row 115
+### Row 116
 
 Device id
 : xiaomi-surya
@@ -1919,7 +1937,7 @@ Updated
 : 2026-11-18
 
 
-### Row 116
+### Row 117
 
 Device id
 : xiaomi-surya
@@ -1937,7 +1955,7 @@ Updated
 : 2026-11-18
 
 
-### Row 117
+### Row 118
 
 Device id
 : xiaomi-surya
@@ -1955,7 +1973,7 @@ Updated
 : 2026-11-18
 
 
-### Row 118
+### Row 119
 
 Device id
 : xiaomi-surya
@@ -1973,7 +1991,7 @@ Updated
 : 2026-11-18
 
 
-### Row 119
+### Row 120
 
 Device id
 : xiaomi-surya
@@ -1991,7 +2009,7 @@ Updated
 : 2026-11-18
 
 
-### Row 120
+### Row 121
 
 Device id
 : xiaomi-surya
@@ -2009,7 +2027,7 @@ Updated
 : 2026-11-18
 
 
-### Row 121
+### Row 122
 
 Device id
 : xiaomi-surya
@@ -2027,7 +2045,7 @@ Updated
 : 2026-11-18
 
 
-### Row 122
+### Row 123
 
 Device id
 : xiaomi-surya
@@ -2045,7 +2063,7 @@ Updated
 : 2026-11-18
 
 
-### Row 123
+### Row 124
 
 Device id
 : xiaomi-surya
@@ -2063,7 +2081,7 @@ Updated
 : 2026-11-18
 
 
-### Row 124
+### Row 125
 
 Device id
 : xiaomi-surya
@@ -2081,7 +2099,7 @@ Updated
 : 2026-11-18
 
 
-### Row 125
+### Row 126
 
 Device id
 : xiaomi-surya
@@ -2099,7 +2117,7 @@ Updated
 : 2026-11-18
 
 
-### Row 126
+### Row 127
 
 Device id
 : xiaomi-surya
@@ -2126,7 +2144,7 @@ Updated
 : 2026-11-19
 
 
-### Row 127
+### Row 128
 
 Device id
 : xiaomi-surya
@@ -2144,7 +2162,7 @@ Updated
 : 2026-11-18
 
 
-### Row 128
+### Row 129
 
 Device id
 : xiaomi-surya
@@ -2171,7 +2189,7 @@ Updated
 : 2026-11-19
 
 
-### Row 129
+### Row 130
 
 Device id
 : xiaomi-surya
@@ -2189,7 +2207,7 @@ Updated
 : 2026-11-18
 
 
-### Row 130
+### Row 131
 
 Device id
 : xiaomi-surya
@@ -2216,7 +2234,7 @@ Updated
 : 2026-11-19
 
 
-### Row 131
+### Row 132
 
 Device id
 : xiaomi-surya
@@ -2234,7 +2252,7 @@ Updated
 : 2026-11-18
 
 
-### Row 132
+### Row 133
 
 Device id
 : xiaomi-surya
@@ -2261,7 +2279,7 @@ Updated
 : 2026-11-19
 
 
-### Row 133
+### Row 134
 
 Device id
 : xiaomi-surya
@@ -2288,7 +2306,7 @@ Updated
 : 2026-11-19
 
 
-### Row 134
+### Row 135
 
 Device id
 : xiaomi-surya
@@ -2315,7 +2333,7 @@ Updated
 : 2026-11-19
 
 
-### Row 135
+### Row 136
 
 Device id
 : xiaomi-surya
@@ -2342,7 +2360,7 @@ Updated
 : 2026-11-19
 
 
-### Row 136
+### Row 137
 
 Device id
 : xiaomi-surya
@@ -2369,7 +2387,7 @@ Updated
 : 2026-11-19
 
 
-### Row 137
+### Row 138
 
 Device id
 : xiaomi-surya
@@ -2396,7 +2414,7 @@ Updated
 : 2026-11-19
 
 
-### Row 138
+### Row 139
 
 Device id
 : xiaomi-surya
@@ -2423,7 +2441,7 @@ Updated
 : 2026-11-19
 
 
-### Row 139
+### Row 140
 
 Device id
 : xiaomi-surya
@@ -2450,7 +2468,7 @@ Updated
 : 2026-11-19
 
 
-### Row 140
+### Row 141
 
 Device id
 : xiaomi-surya
@@ -2477,7 +2495,7 @@ Updated
 : 2026-11-18
 
 
-### Row 141
+### Row 142
 
 Device id
 : xiaomi-surya
@@ -2495,7 +2513,7 @@ Updated
 : 2026-11-18
 
 
-### Row 142
+### Row 143
 
 Device id
 : xiaomi-surya
@@ -2522,7 +2540,7 @@ Updated
 : 2026-11-18
 
 
-### Row 143
+### Row 144
 
 Device id
 : xiaomi-surya
@@ -2544,24 +2562,6 @@ Proven on
 
 Notes
 : suite run 20261118-191339: usb-awake=pass
-
-Updated
-: 2026-11-18
-
-
-### Row 144
-
-Device id
-: xiaomi-surya
-
-Step id
-: shell-autosleep-tamed
-
-Status
-: unknown
-
-Notes
-: no suite result for its proof in this base's runs; nobody checked
 
 Updated
 : 2026-11-18
@@ -3266,24 +3266,6 @@ Device id
 : xiaomi-surya
 
 Step id
-: proximity-blanks-in-call
-
-Status
-: unknown
-
-Notes
-: no suite result for its proof in this base's runs; nobody checked
-
-Updated
-: 2026-11-18
-
-
-### Row 174
-
-Device id
-: xiaomi-surya
-
-Step id
 : volte-call
 
 Status
@@ -3296,7 +3278,7 @@ Updated
 : 2026-11-18
 
 
-### Row 175
+### Row 174
 
 Device id
 : xiaomi-surya
@@ -3323,7 +3305,7 @@ Updated
 : 2026-11-18
 
 
-### Row 176
+### Row 175
 
 Device id
 : xiaomi-surya
@@ -3350,7 +3332,7 @@ Updated
 : 2026-11-18
 
 
-### Row 177
+### Row 176
 
 Device id
 : xiaomi-surya
@@ -3368,7 +3350,7 @@ Updated
 : 2026-11-18
 
 
-### Row 178
+### Row 177
 
 Device id
 : xiaomi-surya
@@ -3386,7 +3368,7 @@ Updated
 : 2026-11-18
 
 
-### Row 179
+### Row 178
 
 Device id
 : xiaomi-surya
@@ -3413,7 +3395,7 @@ Updated
 : 2026-11-18
 
 
-### Row 180
+### Row 179
 
 Device id
 : xiaomi-surya
@@ -3431,7 +3413,7 @@ Updated
 : 2026-11-18
 
 
-### Row 181
+### Row 180
 
 Device id
 : xiaomi-surya
@@ -3458,7 +3440,7 @@ Updated
 : 2026-11-18
 
 
-### Row 182
+### Row 181
 
 Device id
 : xiaomi-surya
@@ -3485,7 +3467,7 @@ Updated
 : 2026-11-18
 
 
-### Row 183
+### Row 182
 
 Device id
 : xiaomi-surya
@@ -3512,43 +3494,7 @@ Updated
 : 2026-11-18
 
 
-### Row 184
-
-Device id
-: xiaomi-surya
-
-Step id
-: auto-rotate-follows
-
-Status
-: unknown
-
-Notes
-: no suite result for its proof in this base's runs; nobody checked
-
-Updated
-: 2026-11-18
-
-
-### Row 185
-
-Device id
-: xiaomi-surya
-
-Step id
-: brightness-follows-light
-
-Status
-: unknown
-
-Notes
-: no suite result for its proof in this base's runs; nobody checked
-
-Updated
-: 2026-11-18
-
-
-### Row 186
+### Row 183
 
 Device id
 : xiaomi-surya
@@ -3566,7 +3512,7 @@ Updated
 : 2026-11-18
 
 
-### Row 187
+### Row 184
 
 Device id
 : xiaomi-surya
@@ -3584,7 +3530,7 @@ Updated
 : 2026-11-18
 
 
-### Row 188
+### Row 185
 
 Device id
 : xiaomi-surya
@@ -3602,7 +3548,7 @@ Updated
 : 2026-11-18
 
 
-### Row 189
+### Row 186
 
 Device id
 : xiaomi-surya
@@ -3629,7 +3575,7 @@ Updated
 : 2026-11-18
 
 
-### Row 190
+### Row 187
 
 Device id
 : xiaomi-surya
@@ -3647,7 +3593,7 @@ Updated
 : 2026-11-18
 
 
-### Row 191
+### Row 188
 
 Device id
 : xiaomi-surya
@@ -3665,25 +3611,7 @@ Updated
 : 2026-11-18
 
 
-### Row 192
-
-Device id
-: xiaomi-surya
-
-Step id
-: photo-taken
-
-Status
-: unknown
-
-Notes
-: no suite result for its proof in this base's runs; nobody checked
-
-Updated
-: 2026-11-18
-
-
-### Row 193
+### Row 189
 
 Device id
 : xiaomi-surya
@@ -3701,7 +3629,7 @@ Updated
 : 2026-11-18
 
 
-### Row 194
+### Row 190
 
 Device id
 : xiaomi-surya
@@ -3719,7 +3647,7 @@ Updated
 : 2026-11-18
 
 
-### Row 195
+### Row 191
 
 Device id
 : xiaomi-surya
@@ -3737,7 +3665,7 @@ Updated
 : 2026-11-18
 
 
-### Row 196
+### Row 192
 
 Device id
 : xiaomi-surya
@@ -3755,7 +3683,7 @@ Updated
 : 2026-11-18
 
 
-### Row 197
+### Row 193
 
 Device id
 : xiaomi-surya
@@ -3782,7 +3710,7 @@ Updated
 : 2026-11-18
 
 
-### Row 198
+### Row 194
 
 Device id
 : xiaomi-surya
@@ -3800,7 +3728,7 @@ Updated
 : 2026-11-18
 
 
-### Row 199
+### Row 195
 
 Device id
 : xiaomi-surya
@@ -3818,7 +3746,7 @@ Updated
 : 2026-11-18
 
 
-### Row 200
+### Row 196
 
 Device id
 : xiaomi-surya
@@ -3836,25 +3764,7 @@ Updated
 : 2026-11-18
 
 
-### Row 201
-
-Device id
-: xiaomi-surya
-
-Step id
-: real-suspend-under-shell
-
-Status
-: unknown
-
-Notes
-: no suite result for its proof in this base's runs; nobody checked
-
-Updated
-: 2026-11-18
-
-
-### Row 202
+### Row 197
 
 Device id
 : xiaomi-surya
@@ -3881,7 +3791,7 @@ Updated
 : 2026-11-18
 
 
-### Row 203
+### Row 198
 
 Device id
 : xiaomi-surya
@@ -3899,25 +3809,7 @@ Updated
 : 2026-11-18
 
 
-### Row 204
-
-Device id
-: xiaomi-surya
-
-Step id
-: standby-current
-
-Status
-: unknown
-
-Notes
-: no suite result for its proof in this base's runs; nobody checked
-
-Updated
-: 2026-11-18
-
-
-### Row 205
+### Row 199
 
 Device id
 : xiaomi-surya
@@ -3935,7 +3827,7 @@ Updated
 : 2026-11-18
 
 
-### Row 206
+### Row 200
 
 Device id
 : xiaomi-surya
@@ -3953,7 +3845,7 @@ Updated
 : 2026-11-18
 
 
-### Row 207
+### Row 201
 
 Device id
 : xiaomi-surya
@@ -3971,7 +3863,7 @@ Updated
 : 2026-11-18
 
 
-### Row 208
+### Row 202
 
 Device id
 : xiaomi-surya
@@ -3989,7 +3881,7 @@ Updated
 : 2026-11-18
 
 
-### Row 209
+### Row 203
 
 Device id
 : xiaomi-surya
@@ -4007,7 +3899,7 @@ Updated
 : 2026-11-18
 
 
-### Row 210
+### Row 204
 
 Device id
 : xiaomi-surya
@@ -4025,7 +3917,7 @@ Updated
 : 2026-11-18
 
 
-### Row 211
+### Row 205
 
 Device id
 : xiaomi-surya
@@ -4043,7 +3935,7 @@ Updated
 : 2026-11-18
 
 
-### Row 212
+### Row 206
 
 Device id
 : xiaomi-surya
@@ -4061,7 +3953,7 @@ Updated
 : 2026-11-18
 
 
-### Row 213
+### Row 207
 
 Device id
 : xiaomi-surya
@@ -4079,25 +3971,7 @@ Updated
 : 2026-11-18
 
 
-### Row 214
-
-Device id
-: xiaomi-surya
-
-Step id
-: days-without-reboot
-
-Status
-: unknown
-
-Notes
-: no suite result for its proof in this base's runs; nobody checked
-
-Updated
-: 2026-11-18
-
-
-### Row 215
+### Row 208
 
 Device id
 : xiaomi-surya
@@ -4115,7 +3989,7 @@ Updated
 : 2026-11-18
 
 
-### Row 216
+### Row 209
 
 Device id
 : xiaomi-surya
@@ -4142,7 +4016,7 @@ Updated
 : 2026-11-19
 
 
-### Row 217
+### Row 210
 
 Device id
 : xiaomi-surya
@@ -4160,7 +4034,7 @@ Updated
 : 2026-11-18
 
 
-### Row 218
+### Row 211
 
 Device id
 : xiaomi-surya
@@ -4178,7 +4052,7 @@ Updated
 : 2026-11-18
 
 
-### Row 219
+### Row 212
 
 Device id
 : xiaomi-surya
@@ -4196,7 +4070,7 @@ Updated
 : 2026-11-18
 
 
-### Row 220
+### Row 213
 
 Device id
 : xiaomi-surya
@@ -4214,7 +4088,7 @@ Updated
 : 2026-11-18
 
 
-### Row 221
+### Row 214
 
 Device id
 : xiaomi-surya
@@ -4232,7 +4106,7 @@ Updated
 : 2026-11-18
 
 
-### Row 222
+### Row 215
 
 Device id
 : xiaomi-surya
@@ -4250,7 +4124,7 @@ Updated
 : 2026-11-18
 
 
-### Row 223
+### Row 216
 
 Device id
 : xiaomi-surya
@@ -4268,7 +4142,7 @@ Updated
 : 2026-11-18
 
 
-### Row 224
+### Row 217
 
 Device id
 : xiaomi-surya
@@ -4286,7 +4160,7 @@ Updated
 : 2026-11-18
 
 
-### Row 225
+### Row 218
 
 Device id
 : xiaomi-surya
@@ -4304,7 +4178,43 @@ Updated
 : 2026-11-18
 
 
-### Row 226
+### Row 219
+
+Device id
+: xiaomi-surya
+
+Step id
+: shell-autosleep-tamed
+
+Status
+: unknown
+
+Notes
+: no suite result for its proof in this base's runs; nobody checked
+
+Updated
+: 2026-11-18
+
+
+### Row 220
+
+Device id
+: xiaomi-surya
+
+Step id
+: real-suspend-under-shell
+
+Status
+: unknown
+
+Notes
+: no suite result for its proof in this base's runs; nobody checked
+
+Updated
+: 2026-11-18
+
+
+### Row 221
 
 Device id
 : xiaomi-surya
@@ -4320,3 +4230,129 @@ Notes
 
 Updated
 : 2026-11-18
+
+
+### Row 222
+
+Device id
+: xiaomi-surya
+
+Step id
+: auto-rotate-follows
+
+Status
+: unknown
+
+Notes
+: no suite result for its proof in this base's runs; nobody checked
+
+Updated
+: 2026-11-18
+
+
+### Row 223
+
+Device id
+: xiaomi-surya
+
+Step id
+: brightness-follows-light
+
+Status
+: unknown
+
+Notes
+: no suite result for its proof in this base's runs; nobody checked
+
+Updated
+: 2026-11-18
+
+
+### Row 224
+
+Device id
+: xiaomi-surya
+
+Step id
+: proximity-blanks-in-call
+
+Status
+: unknown
+
+Notes
+: no suite result for its proof in this base's runs; nobody checked
+
+Updated
+: 2026-11-18
+
+
+### Row 225
+
+Device id
+: xiaomi-surya
+
+Step id
+: days-without-reboot
+
+Status
+: unknown
+
+Notes
+: no suite result for its proof in this base's runs; nobody checked
+
+Updated
+: 2026-11-18
+
+
+### Row 226
+
+Device id
+: xiaomi-surya
+
+Step id
+: photo-taken
+
+Status
+: unknown
+
+Notes
+: no suite result for its proof in this base's runs; nobody checked
+
+Updated
+: 2026-11-18
+
+
+### Row 227
+
+Device id
+: xiaomi-surya
+
+Step id
+: standby-current
+
+Status
+: unknown
+
+Notes
+: no suite result for its proof in this base's runs; nobody checked
+
+Updated
+: 2026-11-18
+
+
+### Row 228
+
+Device id
+: xiaomi-surya
+
+Step id
+: test-layer-boots
+
+Status
+: unknown
+
+Notes
+: Not known yet: linux-phone-oco/surya-lab does not claim this step.
+
+Updated
+: 2026-11-19
