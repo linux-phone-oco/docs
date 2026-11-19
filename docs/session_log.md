@@ -3293,3 +3293,27 @@ Rejected
 
 About
 : bringup-generic-init
+
+---
+
+
+<a id="2026-11-19-reference-capture-and-diff"></a>
+### reference capture and diff
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Built lpoco-bringup reference capture/diff (lab-tools #197): test first against walleye's UFS by-hand comparison as fixture, capture proven through a fake transport and the real script against a fake device-tree folder. Programmer review found the script exiting 1 on a normal run, an unmeasured side passing, and repeated node names colliding - all three fixed before landing; stale files after a recapture too.
+
+Considered
+: Keying lines by full path with phandle targets resolved (better, bigger: left open); a tar pull of /proc/device-tree (no tar reader in the crate; od hex over one transport call chosen).
+
+Rejected
+: Comparing text files by position (counters and ordering churn); a manifest part table for the filter words (a --match word is enough for a first slice).
+
+About
+: reference-capture-diff
