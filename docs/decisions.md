@@ -2335,3 +2335,31 @@ About
 
 Research
 : attended-physical-steps
+
+
+<a id="2026-11-19-attended-keys-in-the-manifest"></a>
+### 2026-11-19-attended-keys-in-the-manifest
+
+Brief
+: The keys attended procedures read get homes in lpoco-manifest: each fact in the table that owns it, named images in [images], a procedure's own values in [procedures.NAME]
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-19
+
+Decision
+: Completes 2026-11-19-procedure-values-from-the-named-device (docs #651): steps read keys the schema (deny_unknown_fields) refused. Homes, from walleye's list (google-walleye-lab #506): the shell's port and address pair in [connection]; adb and fastboot paths in [tools] beside lpoco; the battery floor (mV, and how it is read) in [health]; how long the device takes to answer after a boot and to come back to the known-good system (device_wait, back_wait) in [boot]; images as [images.NAME] (path relative to the device repo, sha256), with [images] dir; values only one procedure uses (window, min_window, stay, bite_wait and the like) in [procedures.NAME], a free table of named numbers and strings that the procedure's own --dry-run checks for the keys it reads. A key goes in [procedures.NAME] only when no table owns the fact; a second procedure needing it lifts it to the owning table (the reflect-and-lift rule). lpoco-attended reads them by name (dev("health.battery_floor_mv"), proc("window")).
+
+Why
+: walleye's settings move (google-walleye-lab #506, note walleye-to-orchestration-manifest-keys.md) and surya's consts move are blocked: lpoco-manifest is deny_unknown_fields and has no home for these keys; relayed by the Top Coordinator as a gap in v0.31.0's device-values work.
+
+Rejected
+: One [attended] table holding all of it: the same fact (a port, a battery floor) would sit beside its owning table, declared twice. Turning deny_unknown_fields off: a misspelt key would pass and fail only at a run. Program paths per procedure: they are the lab's tools, one [tools] table.
+
+About
+: bringup-steps
+
+Research
+: attended-device-values
