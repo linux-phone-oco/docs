@@ -7650,3 +7650,179 @@ By
 
 Takes
 : a timer applies new releases without a person, only in an allowed window, and logs what it did; the pin moves with it
+
+
+<a id="actions-checkout"></a>
+### actions/checkout: check out a repository at the event's SHA
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/actions/checkout
+
+By
+: GitHub
+
+Takes
+: Each CI job gets its own tree pinned to one SHA, cleaned of leftovers; a reused tree is never the truth
+
+
+<a id="gitlab-git-strategy"></a>
+### GitLab Runner: Git strategy (clone, fetch, none)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.gitlab.com/ci/runners/configure_runners/
+
+By
+: GitLab
+
+Takes
+: fetch reuses a tree only after clean and fetch; none is called likely out of date
+
+
+<a id="claude-code-worktrees"></a>
+### Claude Code: worktrees (baseRef fresh)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://code.claude.com/docs/en/worktrees.md
+
+By
+: Anthropic
+
+Takes
+: An agent's worktree starts from the remote's default branch; re-fetched only past 24 h, so fetch first
+
+
+<a id="git-show-rev-path"></a>
+### git show REV:PATH
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git-scm.com/docs/git-show
+
+By
+: Git
+
+Takes
+: After a fetch, origin/main:PATH reads the commit with no checkout and no dirty-tree conflict
+
+
+<a id="git-maintenance-prefetch"></a>
+### git maintenance: the prefetch task
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git-scm.com/docs/git-maintenance
+
+By
+: Git
+
+Takes
+: Git prefetches into refs/prefetch so as never to move refs a user sees in the background
+
+
+<a id="flux-gitrepository"></a>
+### Flux source-controller: GitRepository
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://fluxcd.io/flux/components/source/gitrepositories/
+
+By
+: Flux (CNCF)
+
+Takes
+: A snapshot per commit, labelled with its revision; not Ready while behind the remote
+
+
+<a id="argocd-webhook"></a>
+### Argo CD: Git webhook configuration (3-minute poll)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://argo-cd.readthedocs.io/en/stable/operator-manual/webhook/
+
+By
+: Argo CD (CNCF)
+
+Takes
+: Bounded polling plus push events; desired state from the repository, not a local copy
+
+
+<a id="opengitops-principles"></a>
+### OpenGitOps principles
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://opengitops.dev/
+
+By
+: CNCF OpenGitOps
+
+Takes
+: Desired state versioned and immutable, pulled automatically, continuously reconciled
+
+
+<a id="kubernetes-git-sync"></a>
+### kubernetes/git-sync
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/kubernetes/git-sync
+
+By
+: Kubernetes
+
+Takes
+: The proven shared refreshed copy: one writer, a new worktree per revision, an atomic symlink swap, nobody edits it
+
+
+<a id="rfc9110-if-match"></a>
+### RFC 9110 section 13.1.1: If-Match
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://www.rfc-editor.org/rfc/rfc9110#name-if-match
+
+By
+: IETF
+
+Takes
+: An action carries the version it read and is refused (412) when that is no longer current: fail closed
+
+
+<a id="claude-code-hooks-output"></a>
+### Claude Code: hooks reference (hook output added to context)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://code.claude.com/docs/en/hooks
+
+By
+: Anthropic
+
+Takes
+: A start hook's output enters the context; observed here (2026-11-19): past about 10 KB the app saves it to a file and shows a 2 KB preview

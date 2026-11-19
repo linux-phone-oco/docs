@@ -7079,7 +7079,7 @@ Status
 : open
 
 Note
-: 2026-11-19, orchestration: the sign - every launcher's Brief: names a file in the shared docs clone, and that clone was 41 commits behind (at #617): the surya builder read builder.md without the surya-builder row docs #643 had added. Nothing refreshes shared clones; patrol's clones-check only reports. Fast-forwarded by hand once. A user timer (no root) declared in lab.toml, prepared by lpoco host like the tools; then a lab-machine change to declare it (orchestration holds lab.toml). 2026-11-19, orchestration: the second time today - a walleye keeper worked from a google-walleye-lab clone 64 commits behind, redid the finished TAS2557 item and delayed the UFS read the author waits on (relayed by the Top Coordinator); phone-keeper.md already says a fresh worktree at origin/main, so the brief alone does not hold. Build it into the follow timer (lpoco-host follow already runs every 15 min as a user unit): fetch and ff-only each shared clone under ~/Projects that is clean and on main; leave a dirty, detached or diverged one and log it by name. Ranked first.
+: 2026-11-19, orchestration: the sign - every launcher's Brief: names a file in the shared docs clone, and that clone was 41 commits behind (at #617): the surya builder read builder.md without the surya-builder row docs #643 had added. Nothing refreshes shared clones; patrol's clones-check only reports. Fast-forwarded by hand once. A user timer (no root) declared in lab.toml, prepared by lpoco host like the tools; then a lab-machine change to declare it (orchestration holds lab.toml). 2026-11-19, orchestration: the second time today - a walleye keeper worked from a google-walleye-lab clone 64 commits behind, redid the finished TAS2557 item and delayed the UFS read the author waits on (relayed by the Top Coordinator); phone-keeper.md already says a fresh worktree at origin/main, so the brief alone does not hold. Build it into the follow timer (lpoco-host follow already runs every 15 min as a user unit): fetch and ff-only each shared clone under ~/Projects that is clean and on main; leave a dirty, detached or diverged one and log it by name. Ranked first. 2026-11-19, research-stale-clones: decision 2026-11-19-roles-read-origin-main-not-shared-clones - proceeds, changed: it lands as built (branch builder-host-clones-fresh, d446c2d, its own user timer, not folded into follow) as a convenience, not the fix; the fix is the start handing the brief over whole and the guard refusing stale reads (ideal-agent). It would have caught the docs clone (on main) but not google-walleye-lab (branch build/tad-0.7.1) nor surya-lab (detached): shared-clones-back-on-main puts them on main once. Its proof keeps naming a detached and a branched clone.
 
 Opened
 : 2026-11-19
@@ -7409,3 +7409,69 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="briefs-start-in-a-worktree"></a>
+### Every brief's start runs in a fresh worktree at origin/main: phone-keeper makes it first, surya-coordinator and coordinator stop starting in the shared clone
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-19-roles-read-origin-main-not-shared-clones, part 3; orchestration's (owner of the briefs). phone-keeper.md lists keeper take and the three start queries before its worktree recipe: put the recipe first and say the queries run in it. surya-coordinator.md says 'Start, in ~/Projects/linux-phone-oco/surya-lab' (today detached, 23 behind): give it walleye-coordinator's worktree line. coordinator.md says 'at origin/main' with no command: give it one (or git show origin/main:). Minutes of work.
+
+Opened
+: 2026-11-19
+
+Proof
+: grep of ideal-agent-linux-phone-oco/*.md: no start line runs in a shared clone path; patrol-counts-shared-clone-reads reads 0 first picking queries in a shared clone over the next day
+
+About
+: agent-folder
+
+
+<a id="patrol-counts-shared-clone-reads"></a>
+### Patrol counts, each round, the role sessions that read a shared clone: first picking query there, a brief read from the docs clone's disk
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-19-roles-read-origin-main-not-shared-clones, part 3. The measure of research stale-clones-where-roles-read, repeated from the transcripts (jq over the session's tool calls): 5 of 253 picking queries and 200 of 333 brief reads on 2026-11-18/19. It shows whether the start fix and the guard hold. patrol.md is orchestration's.
+
+Opened
+: 2026-11-19
+
+Proof
+: a patrol round's log names both counts with the window read
+
+About
+: agent-folder
+
+
+<a id="shared-clones-back-on-main"></a>
+### Put surya-lab and google-walleye-lab's shared clones back on main and remove the worktree folders nested inside them
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-19-roles-read-origin-main-not-shared-clones, part 3; once, by orchestration (SHARED_CLONE_OK=1). surya-lab is detached 23 behind with wt-surya-keeper-1795001997/ inside; google-walleye-lab is on branch build/tad-0.7.1 (since 2026-11-18 15:57) with wt-walleye-keeper-1795015383/ inside. Off main, host-clones-fresh leaves them as they are.
+
+Opened
+: 2026-11-19
+
+Proof
+: scripts/clones-check: neither lane clone named
+
+About
+: agent-folder

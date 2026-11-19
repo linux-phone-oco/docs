@@ -4628,3 +4628,27 @@ Considered
 
 About
 : release-host-binaries
+
+---
+
+
+<a id="2026-11-19-research-stale-clones"></a>
+### Research: agents acting on stale shared clones
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-19
+
+Done
+: Read the incidents off the data, the reflogs and the session transcripts; mapped every place a role reads repository state; a researcher read the world (CI, worktrees, GitOps, git-sync, fail-closed checks). Found the root: the role start's from-main brief reaches the agent as a preview in 203 of 333 starts, so 200 of 333 read the stale disk copy. Recorded research stale-clones-where-roles-read (11 sources, material research/agent-folder/2026-11-19/), decision 2026-11-19-roles-read-origin-main-not-shared-clones, docs items briefs-start-in-a-worktree, shared-clones-back-on-main, patrol-counts-shared-clone-reads, ideal-agent upstream items role-start-brief-whole, guard-refuses-stale-clone-reads, stale-worktrees-pruned; host-clones-fresh's note; stale-clones-how-it-stands; the agent-folder summary. Class: a copy read as if it were its source. Where else: the plugin cache (0.3.59 installed, 0.3.62 on main), about 90 leftover worktrees. Root: read the source, enforced at the guard.
+
+Considered
+: The follow timer as the fix; tad refusing when behind; briefs only; removing the shared clones.
+
+Rejected
+: Each, as the decision says: the timer misses detached and branched clones (both lane clones today); tad is another owner's and narrower; prose already said it.
+
+About
+: agent-folder

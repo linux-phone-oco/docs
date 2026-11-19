@@ -210,3 +210,18 @@ Says
 
 Condenses
 : 2026-11-19-device-layer-declared-once, 2026-11-19-research-agnostic-layer, agnostic-layer-how-it-stands, device-layer-agnostic-prior-art
+
+
+### Row 15
+
+About
+: agent-folder
+
+Date
+: 2026-11-19
+
+Says
+: The agent folder (ideal-agent-linux-phone-oco/: the role briefs, their launchers and starts) is orchestration's. Starts: the ideal-agent role hook prints the card, practices and the brief read from origin/main, but past the app's output cap (most starts) only a preview arrives and the agent reads the brief from the shared docs clone's disk (research stale-clones-where-roles-read). Decided 2026-11-19 (2026-11-19-roles-read-origin-main-not-shared-clones): every role acts on origin/main - a fresh worktree or git show - never a shared clone; the start hands the brief over whole and the guard refuses reads in a clone behind origin/main (ideal-agent items role-start-brief-whole, guard-refuses-stale-clone-reads); briefs start in a worktree (briefs-start-in-a-worktree); host-clones-fresh lands as a convenience. Where it stands: stale-clones-how-it-stands. Other standing records: 2026-11-19-running-is-not-moving (a lane session idle 30 min counts as stalled), the orchestration hand-overs (orchestration-2026-11-18-morning), start-weight-measured. The briefs keep only what is linux-phone's; the methods are ideal-agent's skills.
+
+Condenses
+: 2026-11-17-a-backlog-item-names-its-device, 2026-11-17-agent-folder, 2026-11-17-briefs-in-head-form-for-the-stored-starts, 2026-11-17-briefs-restored, 2026-11-17-ideal-agent-upstream, 2026-11-17-orchestration-3-start, 2026-11-18-briefs-name-intents, 2026-11-18-class-question-places, 2026-11-19-roles-read-origin-main-not-shared-clones, 2026-11-19-running-is-not-moving, coordinator-how-it-stands, orchestration-2026-11-17-evening, orchestration-2026-11-17-late, orchestration-2026-11-17-night, orchestration-2026-11-18-morning, orchestration-how-it-stands, orchestration-renewed-2026-11-18-host-060, orchestration-renewed-2026-11-18-suspend-cycle, stale-clones-how-it-stands, stale-clones-where-roles-read, start-weight-measured
