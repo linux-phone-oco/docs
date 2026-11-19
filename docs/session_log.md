@@ -4607,3 +4607,24 @@ Rejected
 
 About
 : host-clones-fresh
+
+---
+
+
+<a id="2026-11-19-release-host-binaries-closed-on-read-back"></a>
+### release-host-binaries closed on read-back
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-19
+
+Done
+: Read the releases back: all seven host binaries with sha256 attached at v0.34.1; assets.yml green on its first real runs. Marked the item done.
+
+Considered
+: Taking the next ready item instead: this one was in-progress with its proof now observable, so closing it first.
+
+About
+: release-host-binaries
