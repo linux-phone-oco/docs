@@ -7674,7 +7674,7 @@ Status
 : open
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-phone-reached-by-its-declared-transport. Then walleye declares [connection] transport and login = none and drops its own boot/dmesg/way-back helpers (its coordinator's item).
+: 2026-11-19, orchestration: decision 2026-11-19-phone-reached-by-its-declared-transport. Then walleye declares [connection] transport and login = none and drops its own boot/dmesg/way-back helpers (its coordinator's item). 2026-11-20, lab-tools-builder: slice 1 landed (lab-tools #304, main 5b12e43): [connection] transport ssh|telnet|adb and login password|none (manifest refuses a pair that cannot work, an unknown word, telnet without shell_port); phone sh|root|put reach the phone through it (telnet: raw TCP to shell_address:shell_port with run markers; adb: adb -s SERIAL shell, serial from [fastboot] else first gadget); suite says 'not applicable: device.toml declares no login' and asks no password (exit 0 latest/list, 2 others). Proof: manifest/tests/transport.rs, devlab/tests/transport.rs (telnet via a real sh on a socket, adb and sshpass stand-ins; seen failing first), phone.rs unit tests for echo/prompt/IAC parsing. Review caught prompt-before-marker, IAC subnegotiation, hangs, large-script deadlock, noisy adb probe: fixed. Open now: boot_once by fastboot boot waiting for the gadget usb_id, lpoco-attended read_dmesg/back_to_known_good/phone() through the transport, other callers (provision, kernel try, watch, MCP suite tools) still assume login, telnet root = sh, a script that exits the shell or reads stdin is an error over telnet, Phone::at ignores addr for telnet/adb, adb serial taken from fastboot (may differ from adb's). Not run on a real telnetd/pty or real adb.
 
 Opened
 : 2026-11-19
