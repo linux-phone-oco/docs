@@ -7733,10 +7733,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: in-progress
 
 Note
-: From research how-outgoing-series-got-two-homes and decision 2026-11-20-outgoing-items-live-in-upstream: upstream/ was named only in the record's --file help and one skill sentence; AGENTS.md and the role briefs never said where a prepared series goes, so #469's research/ folder became the precedent. The owner's files: (1) records/upstream-item.sql: refuse a file that does not start with upstream/ (auto stays the default); (2) AGENTS.md's recording paragraph (idealkb-kept, so upstream in ideal-knowledge-base) and the coordinator/builder briefs: 'a prepared series, its cover letter and send notes go in upstream/DESTINATION/ITEM/ (--file auto); research keeps only the material behind it'. Sent to orchestration by the upstreams lane.
+: Part done 2026-11-20 (orchestration): ideal-agent-linux-phone-oco/README.md, read by every role at start, now says a prepared series, cover letter and send notes live in upstream/DESTINATION/ITEM/ (--file auto) and research keeps only the material. Left: records/upstream-item.sql refusing a --file outside upstream/, and AGENTS.md's recording line - both ship from ideal-knowledge-base, sent to its owner by orchestration.
 
 Opened
 : 2026-11-20
