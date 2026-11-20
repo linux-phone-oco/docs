@@ -5147,3 +5147,27 @@ Rejected
 
 About
 : phone-declared-transport
+
+---
+
+
+<a id="2026-11-21-connection-login-key"></a>
+### login = key for an ssh phone
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-20
+
+Done
+: [connection] login = key with an absolute identity path: phone, test, health and suite go over ssh -i PATH -o IdentitiesOnly=yes -o BatchMode=yes, no password; missing, non-file or group/world-readable identity refused naming the path; manifest refuses key without identity, identity without key, key on telnet/adb; root over a key is the login itself for user root, else sudo -n. Landed lab-tools #316, released v0.40.0 (#315); read back from main. Tests use a throwaway file in a temp dir, no real key made or touched.
+
+Considered
+: an enum Login::Key { identity } (makes key-without-identity unrepresentable; changes the schema, a follow-up); expanding ~ in identity
+
+Rejected
+: reading the key through sshpass -f or ssh-agent: -i with IdentitiesOnly names the one key and BatchMode never asks; ~ expansion: the path is declared absolute so a refusal names what was written
+
+About
+: connection-login-key
