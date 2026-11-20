@@ -2518,3 +2518,40 @@ Sources
 
 About
 : bringup-steps
+
+
+<a id="how-outgoing-series-got-two-homes"></a>
+### how-outgoing-series-got-two-homes
+
+Brief
+: Series landed in research/ because the first one did (#469) and nothing refused it: the skill and the record name upstream/ via --file auto, but AGENTS.md, the decision and the lane brief never do
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-20
+
+Question
+: Why did prepared upstream series sit in research/upstream-forks/ and a lab base, not docs upstream/DESTINATION/ITEM/?
+
+Found
+: What the sources say about where a prepared series goes:
+- The skill record-the-work says "a patch or long message in its --file auto folder". The record upstream-item says "--file auto makes upstream/UPSTREAM/ID/". So the rule existed, but only as the default of an option.
+- The record accepts any path in --file. Nothing refuses a path outside upstream/, and make verify doesn't check it.
+- Decision 2026-11-18-upstream-forks names forks, topic branches and the author mailing, but no folder.
+- The upstreams lane's brief (a message from orchestration) names no folder.
+- AGENTS.md, read at every start, says "record with ikb upstream-item --from-work ID" and never names upstream/ or --file auto. Neither do the role briefs in ideal-agent-linux-phone-oco/.
+- So upstream/ appears nowhere a session reads at start. It appears only in a skill's sentence and in the record's help.
+
+When research/upstream-forks/ started holding series (git log, docs):
+- #469 (2026-11-18, branch research/upstream-forks): the session that wrote decision 2026-11-18-upstream-forks put the three fixes as patch series in research/upstream-forks/2026-11-18/patches/{linux,sxmo-utils}/, beside the research, and pointed the items' file at them.
+- #573 (2026-11-19, upstreams-coordinator) added walleye-dts-candidate.diff. That one was dt-check material, rightly research.
+- #604 (2026-11-19, upstreams-coordinator) prepared pmic-wdt-gen2-v1 in research/upstream-forks/2026-11-19/ and passed --file with that path, following #469's precedent instead of --file auto.
+- The walleye lane kept its board dts series in its own lab base, under research/walleye-first-fastboot-boot/2026-11-19-upstream-dts/. Nothing pointed it to docs.
+- Meanwhile upstream/ had existed since #221 (2026-11-17): seeded from the old queue, with eight items.
+
+Root: one precedent, followed because nothing at start named the place and nothing refused the wrong one. The move (docs #726) fixes the files. The source is fixed by naming upstream/ where sessions read at start, and by a refusal in the record. Both are the owner's (orchestration's) files: AGENTS.md is idealkb-kept, and records/ is the owner's. So they are asked for in backlog upstream-item-file-under-upstream.
+
+About
+: upstream-forks
