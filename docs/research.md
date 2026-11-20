@@ -500,19 +500,19 @@ About
 ### orchestration-how-it-stands
 
 Brief
-: Orchestration hand-over, 2026-11-17 13:00 UTC: conveyor sound, face drawn from docs alone, keeper flow live; open: dispatcher's permission mode, read-weight, start weight on the face.
+: Paused 2026-11-20 at a stable point: nothing of orchestration runs; resume from the lab-tools queue top (phone-declared-transport, rank 2)
 
 Project
 : linux-phone-oco/docs
 
 Date
-: 2026-11-17
+: 2026-11-20
 
 Question
 : Where does orchestration's work stand, for a fresh orchestration session to take it up without the old session's long context?
 
 Found
-: ROLE: owns the conveyor - lab-tools (devlab: phone, kernel try/keep/--dtb/remove, suite put from the Alpine package and the lab's main, gather once quiet, watch, guard for the phone, hazards, keeper lease), device-template, the package conveyor's Alpine path (alpine.yml, v1), docs' face (bin/face-data + engine, no ocoeco) and derive/queries - and tends the agents. Brief: ideal-agent-linux-phone-oco/orchestration.md; method: ideal-agent orchestrate-agents. LIVE: phone keeper flow (phone-keeper.md; lease devlab keeper; queue tad q phone-queue in the author's rank order, deep sleep first; waker = scheduled task linux-phone-keeper-waker titled surya dispatcher, hourly; patrol every 6 h). surya-keeper-2 held the lease at 12:49 UTC. OPEN, the author's: the dispatcher task's permission mode/model (its runs stall on the first prompt; Sonnet 5.5 medium proposed); whether dispatcher runs start from orchestration instead (visible in the left pane); gather.yml in five repos and land's observatory pings (passive ocoeco links, his call); archiving linux-phone-oco/lens; cards waiting: research charging, research GPS, programs on argenv. OPEN, orchestration's: run read-weight on surya-keeper-2's transcript and send ideal-agent its read and first-turn tokens (where read-weight lives was asked of ideal-agent); add read-weight to the patrol round; backlog start-weight-on-the-face, kernel-orphan-modules, health-carry-old-checks, guard items moved to ideal-agent. DO NOT UNDO: suite put reads the lab at main (a stale clone once regressed the phone); gather lands only after 15 quiet minutes; the face's data sorts like observe did and maps a non-linux-phone project field to docs; a kept kernel sorts 1-kept-* after tries; remove keeps shared modules. Notes: side-session-notes/local_12b18c70-.../orchestration-2026-11-17.md.
+: How it stands at the pause (2026-11-20, the author's word). Running: nothing of orchestration (no builder, no subagent); the host's lpoco host follow and clones user timers keep running - follow installs a release only when both keeper leases are free, clones fast-forwards only clean commons clones on main. Host: lpoco family 0.39.x via release binaries; land with land-regen (lab-machine PR 79, pinned 39ad836). Resume: start lab-tools-builder; its queue (tad q ready --for builder) leads with phone-declared-transport (rank 2, slices 1-3 landed: transport/login, fastboot boot_once, image sha and gadget serial; open: the phone must already be in fastboot; provision, kernel try, watch and MCP suite still assume a login), then attended-lift-sees-groups (4), host-follows-releases (6: window, lease during install, rate limit, cargo fallback), lpoco-layer-pack (7), kernel-try-heartbeat (8), lpoco-health-suspend-trace-hook (8), lpoco-host-rest (9). docs: weigh-built-against-shelf (research, 9); docs #557 dependabot actions/cache 4 to 6 open. Waiting on others: ideal-knowledge-base's owner (print witness and go_until in ready; upstream-item --file under upstream/ and the AGENTS.md line); lab-machine-builder (stop the retired lab-agent service); the lanes (surya and walleye: procedures/ move, step groups, values in device.toml, land-regen target, device.toml CI check copied, walleye transport/login declared). Briefs owned here: builder, phone-keeper, coordinators, patrol, README (upstream/ rule). Session log 2026-11-20-orchestration-pause.
 
 About
 : agent-folder
