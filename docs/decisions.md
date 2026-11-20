@@ -2638,3 +2638,31 @@ About
 
 Research
 : bringup-steps
+
+
+<a id="2026-11-21-pre-boot-gates-are-argv-before-the-fastboot-boot"></a>
+### 2026-11-21-pre-boot-gates-are-argv-before-the-fastboot-boot
+
+Brief
+: [kernels] pre_boot: command lines run as argv, in order, before a fastboot boot touches the phone; one failing stops the boot
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-20
+
+Decision
+: pre_boot is a list of command lines split on spaces (no shell, no quoting), run in the device's folder before boot_once checks the image or reboots the phone to the bootloader; a gate that exits non-zero or cannot start ends the step naming it and its output; it needs boot = fastboot; the dry run names the gates in the step.
+
+Why
+: walleye's UFS-off gate and battery rule were wired by hand (orchestration, 2026-11-21); with the sha check the boot becomes one declared line
+
+Rejected
+: sh -c strings (splicing, quoting); array-of-argv form now (the item's proof is strings; a quoting need can add it later); gates for the entry boot (it goes through devlab kernel try, which has its own gates)
+
+About
+: boot-once-pre-boot-gates
+
+Research
+: bringup-steps

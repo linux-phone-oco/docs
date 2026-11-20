@@ -7786,10 +7786,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-21, orchestration: walleye's second need - its UFS-off gate (with its go marker) and the battery rule are wired by hand today; with the sha check this makes the boot one declared line.
+: Landed lab-tools #317, released v0.41.0. Proof: attended/tests/attended.rs (pre_boot_gates_run_in_order..., a_failing_pre_boot_gate_boots_nothing..., the_dry_run_lists_the_pre_boot_gates...), manifest/tests/transport.rs. Follow-ups: parse gates once into a Gate type; a per-gate timeout; lpoco lab kernel try ignores pre_boot.
 
 Opened
 : 2026-11-20
