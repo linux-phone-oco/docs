@@ -7746,3 +7746,90 @@ Proof
 
 About
 : upstream-forks
+
+
+<a id="connection-login-key"></a>
+### [connection] login = key with an identity path: ssh by that key for phone, test, health and suite; not applicable only for none
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-21, orchestration: walleye's stage 1 blocker (its coordinator, in order of need): the Alpine image on system_a has a key-only sshd. The identity is a private file on the lab machine (mode 600, never in a repo); the lab key itself waits on the author's yes, so build against the declared path. Decision 2026-11-19-phone-reached-by-its-declared-transport extended: login = password | key | none.
+
+Opened
+: 2026-11-20
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools tests: device.toml [connection] transport = ssh, login = key, identity = PATH runs phone sh, suite, health and test over ssh -i PATH -o IdentitiesOnly=yes with no password asked; a missing or world-readable identity file is refused naming the path; login = none still says not applicable; the manifest refuses login = key without identity
+
+Rank
+: 1
+
+About
+: bringup-steps
+
+
+<a id="boot-once-pre-boot-gates"></a>
+### boot_once runs declared pre-boot gates (commands that must exit 0) before fastboot boot
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-21, orchestration: walleye's second need - its UFS-off gate (with its go marker) and the battery rule are wired by hand today; with the sha check this makes the boot one declared line.
+
+Opened
+: 2026-11-20
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools tests: [kernels] (or [procedures.NAME]) pre_boot = ["CMD", ...] - boot_once runs each in order before fastboot boot, as argv not a shell string, and boots nothing when one exits non-zero, naming it and its output; the dry run lists the gates; with no pre_boot nothing changes
+
+Rank
+: 2
+
+About
+: bringup-steps
+
+
+<a id="walleye-install-steps-lift"></a>
+### Lift walleye's proven install steps into the library: read_slot, adb_write_partition (allow-listed other slot, read back by sha256), mount_is_readonly
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-21, orchestration: walleye builds these in tools/walleye-tries first (items walleye-install-write-procedure, walleye-install-boot-procedure) and sends the code once proven; lift on the second use (decision 2026-11-19-procedures-reflect-and-lift). adb_write_partition writes only a partition in a declared allow-list and only the other slot.
+
+Opened
+: 2026-11-20
+
+Needs
+: build
+
+Device
+: google-walleye
+
+About
+: bringup-steps
