@@ -5075,3 +5075,27 @@ Rejected
 
 About
 : phone-declared-transport
+
+---
+
+
+<a id="2026-11-20-phone-reached-by-its-declared-transport-slice-3"></a>
+### Phone reached by its declared transport, slice 3
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-20
+
+Done
+: boot_once checks the declared image sha256 and matches the gadget by serial; landed lab-tools #310, released v0.39.1
+
+Considered
+: serial match in wait_for_usb too (it would break every device with no serial file); hashing in one read vs chunks
+
+Rejected
+: changing wait_for_usb/wait_for_gadget: other callers rely on vendor:product alone; lowercasing the serial: a declared serial is compared as written (devlab's rule too)
+
+About
+: phone-declared-transport
