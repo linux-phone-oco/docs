@@ -461,16 +461,19 @@ Status
 : done
 
 Proof
-: tests/host/pmic-dmesg-check.sh
+: pmic-bound
 
 Run
-: walleye-z7-tried
+: research walleye-pmic-wdt-v1-try-result
 
 Proven on
-: z7
+: boot-wdt1-a.img (images-wdt1-sysfsless) sha256 9dfea09637a813fa677449780ac475a3b859e81135a056fadd8811dadc2f40b4
+
+Notes
+: The PMIC and its watchdog bind on mainline (pm8916-wdt gen2: pmic=watchdog1 soc=watchdog0), S2 type 0x7 read back, the stop on reboot leaves S2 off.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 21
@@ -509,13 +512,22 @@ Step id
 : watchdog-way-back
 
 Status
-: unknown
+: partial
+
+Proof
+: way-back
+
+Run
+: research walleye-pmic-wdt-v1-try-result
+
+Proven on
+: boot-wdt1-a.img (images-wdt1-sysfsless) sha256 9dfea09637a813fa677449780ac475a3b859e81135a056fadd8811dadc2f40b4
 
 Notes
-: The z9 PMIC bite did bite (20 s after arming; the series works) but the phone's recovery is unproven as 'by itself' (the author's Power hold fell in the window: research walleye-z9-recovery-unproven); a bite that restarts is not measured yet (decision 2026-11-18-walleye-pmic-bite-read-then-warm, the series fix f5bb57d27 is untried).
+: A hung kernel is RESET by itself 20 s after arming, unpetted (PMIC watchdog v1, S2 type 7). It does not yet COME BACK to Android by itself with USB in: the phone boots off-mode charging and Android starts after a short power press (the author's words in the research row). Item walleye-wdt-reset-boots-charger-mode.
 
 Updated
-: 2026-11-18
+: 2026-11-19
 
 
 ### Row 23
@@ -1961,13 +1973,19 @@ Device id
 : google-walleye
 
 Step id
-: test-layer-boots
+: display-any-order
 
 Status
-: unknown
+: open
+
+Proof
+: display-boots-any-order
+
+Run
+: research walleye-display-b2-dsi-clock-warning; items walleye-display-delay-bisect, walleye-display-splash-region-dts, walleye-display-dts-any-order
 
 Notes
-: Not known yet: linux-phone-oco/google-walleye-lab does not claim this step.
+: Not yet: B2 loaded at 2 s fails (SMMU faults at the splash buffer, pclk0 rcg warnings, DSI -110), clean at 66 s; the dts reserves nothing at 0x9d400000. The cause is the bootloader's scan-out still live; the fix is the splash region in the dts (decision 2026-11-19-walleye-display-early-load-splash-handover).
 
 Updated
 : 2026-11-19
@@ -1979,13 +1997,19 @@ Device id
 : google-walleye
 
 Step id
-: display-any-order
+: storage-full-speed
 
 Status
-: unknown
+: open
+
+Proof
+: storage-link-speed
+
+Run
+: research walleye-ufs-why-gear1-ranked; item walleye-ufs-try-2
 
 Notes
-: Not known yet: linux-phone-oco/google-walleye-lab does not claim this step.
+: Not yet: UFS try 1 reads the link at HS gear 1, 2 lanes, FAST_MODE, HIBERN8. The power-mode change was made; gear 1 at idle is most likely clock scale-down (no operating-points table in msm8998.dtsi). A second try with read-only readings after a bounded read waits for the author's word.
 
 Updated
 : 2026-11-19
@@ -1997,7 +2021,7 @@ Device id
 : google-walleye
 
 Step id
-: storage-full-speed
+: test-layer-boots
 
 Status
 : unknown
@@ -2006,7 +2030,7 @@ Notes
 : Not known yet: linux-phone-oco/google-walleye-lab does not claim this step.
 
 Updated
-: 2026-11-19
+: 2026-11-20
 
 
 ### Row 117
@@ -4463,7 +4487,7 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-19
+: 2026-11-20
 
 
 ### Row 231
@@ -4481,7 +4505,7 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-19
+: 2026-11-20
 
 
 ### Row 232
@@ -4499,4 +4523,4 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-19
+: 2026-11-20
