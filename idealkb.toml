@@ -3,7 +3,7 @@
 # job (idealkb's bin/update-pins.sh) moves it; own names the generic files this base keeps as its own.
 # docs is one database of several places: its records take --project, its about query also reads the
 # support matrix and the tests, and its standing tables carry project, needs and proof - so those are its own.
-version = "0.24.0"
+version = "0.25.0"
 own = ["queries/about.sql", "records/decision.sql", "records/research.sql", "records/backlog.sql", "records/session-log.sql", "records/source.sql", "tables.toml"]
 # Records kept for machines - feeds, derivations, a run filed, a filing from a script: ikb runs them like any
 # other but leaves them out of ikb --help and ikb help.
