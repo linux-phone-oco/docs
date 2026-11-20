@@ -2610,3 +2610,31 @@ Rejected
 
 About
 : upstream-forks
+
+
+<a id="2026-11-21-login-key-is-ssh-by-declared-identity"></a>
+### 2026-11-21-login-key-is-ssh-by-declared-identity
+
+Brief
+: login = key: ssh -i the declared absolute identity (mode 600), BatchMode, no password; root via key is the login itself or sudo -n
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-20
+
+Decision
+: Connection.login is password | key | none; key is for ssh only and needs identity (an absolute path on the lab machine); lpoco reads it, never creates it, refuses it missing, not a file or readable by group/others. Extends 2026-11-19-phone-reached-by-its-declared-transport.
+
+Why
+: walleye's Alpine image has a key-only sshd (orchestration, 2026-11-21); the lab key is private to the lab machine and its creation is the walleye lane's, with the author's yes
+
+Rejected
+: Login::Key { identity } enum now: schema change, left as a follow-up; relative or ~ identity paths: ambiguous cwd and home; ssh-agent: not declared in data, not reproducible
+
+About
+: connection-login-key
+
+Research
+: bringup-steps

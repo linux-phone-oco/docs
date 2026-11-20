@@ -7755,10 +7755,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-21, orchestration: walleye's stage 1 blocker (its coordinator, in order of need): the Alpine image on system_a has a key-only sshd. The identity is a private file on the lab machine (mode 600, never in a repo); the lab key itself waits on the author's yes, so build against the declared path. Decision 2026-11-19-phone-reached-by-its-declared-transport extended: login = password | key | none.
+: Landed lab-tools #316, released v0.40.0. Proof: devlab/tests/transport.rs (a_key_phone_is_reached_by_ssh_dash_i..., a_missing_or_world_readable_identity..., root_over_a_key...), manifest/tests/transport.rs; all green in CI. Follow-up idea: Login::Key { identity } enum. Real run waits on the walleye lane's key.
 
 Opened
 : 2026-11-20
