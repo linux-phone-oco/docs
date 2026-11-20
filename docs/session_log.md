@@ -5123,3 +5123,27 @@ Rejected
 
 About
 : agent-folder
+
+---
+
+
+<a id="2026-11-21-transport-slices-4-5"></a>
+### Declared transport: no-login suite, fastboot from Android
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-20
+
+Done
+: Slice 4 (lab-tools #312): suite-based commands say not applicable on login = none. Slice 5 (#314, v0.39.2): boot_once puts a phone not in fastboot there with reboot bootloader over the declared transport. Both reviewed by the programmer; tests seen failing first. Flash/provision examined: flash has no login; provision is postmarketOS-specific.
+
+Considered
+: A unified guard in Phone vs a helper in suite (helper: the phone is still reachable, only the suite is absent); failing early on the reboot's transport error (no: the connection dropping is the normal result).
+
+Rejected
+: Rebooting on any devlab fastboot state error (review: a guess reboots a phone); returning Ok from MCP action tools when the suite did not run (reads as a pass).
+
+About
+: phone-declared-transport
