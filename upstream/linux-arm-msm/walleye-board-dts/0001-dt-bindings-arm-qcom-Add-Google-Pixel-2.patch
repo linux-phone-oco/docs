@@ -1,0 +1,26 @@
+From 6d9006a4fd2e36adfcf9d7eacc65ce288f8065ac Mon Sep 17 00:00:00 2001
+From: "walleye-builder.e7150c" <idunerg+walleye-builder.e7150c@gmail.com>
+Date: Thu, 19 Nov 2026 07:52:22 +0100
+Subject: [PATCH 1/2] dt-bindings: arm: qcom: Add Google Pixel 2
+
+Document the compatible of the Google Pixel 2 (walleye), a phone
+built on the Qualcomm MSM8998 SoC.
+---
+ Documentation/devicetree/bindings/arm/qcom.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/arm/qcom.yaml b/Documentation/devicetree/bindings/arm/qcom.yaml
+index ff8a35df7..ceb73da9c 100644
+--- a/Documentation/devicetree/bindings/arm/qcom.yaml
++++ b/Documentation/devicetree/bindings/arm/qcom.yaml
+@@ -391,6 +391,7 @@ properties:
+           - enum:
+               - asus,novago-tp370ql
+               - fxtec,pro1
++              - google,walleye
+               - hp,envy-x2
+               - lenovo,miix-630
+               - oneplus,cheeseburger
+-- 
+2.56.1
+

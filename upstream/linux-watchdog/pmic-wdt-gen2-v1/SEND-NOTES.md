@@ -1,6 +1,6 @@
 # PMIC watchdog gen2, v1: what to check and how to send (prepared 2026-11-19)
 
-These are the six patches and cover letter in this folder. They were made on next-20261118 and
+These are the six patches and cover letter in this folder (upstream/linux-watchdog/pmic-wdt-gen2-v1/; until 2026-11-20 in research/upstream-forks/2026-11-19/). They were made on next-20261118 and
 rebased on 2026-11-20 onto next-20261119 (base adcad7f4e), where they apply unchanged. Nothing has
 been sent. Sending is the author's decision, from his own clone, with his own
 Signed-off-by.

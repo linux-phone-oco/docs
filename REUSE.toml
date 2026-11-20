@@ -33,35 +33,35 @@ SPDX-License-Identifier = "MIT OR Apache-2.0"
 
 # Patches against the kernel, under the kernel's licence (GPL-2.0-only: the drivers, the sound codecs, the Makefile) ...
 [[annotations]]
-path = ["upstream/linux-sound/**/*.patch", "upstream/sm7150-mainline/sm7150-wcd-series/*-pinctrl-*.patch", "research/upstream-forks/2026-11-18/patches/linux/*-watchdog-*.patch", "research/deep-sleep/2026-11-17/lpass-macros-drop-hw-votes-at-runtime-suspend.patch", "research/upstream-forks/2026-11-19/walleye-dts-candidate.diff"]
+path = ["upstream/linux-sound/**/*.patch", "upstream/sm7150-mainline/sm7150-wcd-series/*-pinctrl-*.patch", "upstream/linux-watchdog/**/*.patch", "upstream/linux-arm-msm/walleye-board-dts/*.patch", "research/deep-sleep/2026-11-17/lpass-macros-drop-hw-votes-at-runtime-suspend.patch", "research/upstream-forks/2026-11-19/walleye-dts-candidate.diff"]
 precedence = "override"
 SPDX-FileCopyrightText = "2026 grenudi"
 SPDX-License-Identifier = "GPL-2.0-only"
 
 # ... the sm7150 and pm6150 device trees under theirs (BSD-3-Clause) ...
 [[annotations]]
-path = ["upstream/sm7150-mainline/sm7150-wcd-series/*-arm64-dts-*.patch"]
+path = ["upstream/sm7150-mainline/sm7150-wcd-series/*-arm64-dts-*.patch", "upstream/linux-watchdog/pmic-wdt-gen2-v1/*-pm6150-*.patch"]
 precedence = "override"
 SPDX-FileCopyrightText = "2026 grenudi"
 SPDX-License-Identifier = "BSD-3-Clause"
 
-# ... the one that also changes pm8998.dtsi (GPL-2.0+ OR MIT: we take MIT) ...
+# ... pm8998.dtsi (GPL-2.0+ OR MIT: we take MIT) ...
 [[annotations]]
-path = ["research/upstream-forks/2026-11-18/patches/linux/*-arm64-dts-*.patch"]
+path = ["upstream/linux-watchdog/pmic-wdt-gen2-v1/*-pm8998-*.patch"]
 precedence = "override"
 SPDX-FileCopyrightText = "2026 grenudi"
-SPDX-License-Identifier = "BSD-3-Clause AND MIT"
+SPDX-License-Identifier = "MIT"
 
 # ... and a device-tree binding under the kernel's dual licence for them.
 [[annotations]]
-path = ["research/upstream-forks/2026-11-18/patches/linux/*-dt-bindings-*.patch"]
+path = ["upstream/linux-watchdog/**/*-dt-bindings-*.patch"]
 precedence = "override"
 SPDX-FileCopyrightText = "2026 grenudi"
 SPDX-License-Identifier = "GPL-2.0-only OR BSD-2-Clause"
 
 # Patches against sxmo-utils under its licence (the sxmo-utils fork is AGPL-3.0-only) ...
 [[annotations]]
-path = ["upstream/sxmo-devel/**/*.patch", "research/upstream-forks/2026-11-18/patches/sxmo-utils/*.patch"]
+path = ["upstream/sxmo-devel/**/*.patch"]
 precedence = "override"
 SPDX-FileCopyrightText = "2026 grenudi"
 SPDX-License-Identifier = "AGPL-3.0-only"
