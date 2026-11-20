@@ -5171,3 +5171,27 @@ Rejected
 
 About
 : connection-login-key
+
+---
+
+
+<a id="2026-11-21-boot-once-pre-boot-gates"></a>
+### boot_once pre_boot gates
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-20
+
+Done
+: [kernels] pre_boot = ["CMD ARG", ...] for a fastboot boot: boot_once runs each gate first, in order, as argv (split on spaces, no shell) in the device folder, before the checksum and before any reboot to the bootloader; the first non-zero exit stops the boot naming the gate and its output; the dry run lists the gates and runs none; no pre_boot changes nothing; pre_boot without boot = fastboot or a blank gate is refused. Landed lab-tools #317, released v0.41.0 (#318), read back from main. Also made the transport test helper tolerate a closed stdin pipe (a flaky CI failure).
+
+Considered
+: gates as arrays of argv (no quoting problem; the item's proof says strings); a Gate type parsed once at the edge (follow-up); a timeout per gate (follow-up)
+
+Rejected
+: running the gates through sh -c: the item asks argv and a shell string invites splicing; gates after the checksum or the reboot to bootloader: a refused gate must leave the phone untouched
+
+About
+: boot-once-pre-boot-gates
