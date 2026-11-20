@@ -5051,3 +5051,27 @@ Rejected
 
 About
 : attended-eof-is-no-answer
+
+---
+
+
+<a id="2026-11-20-phone-reached-by-its-declared-transport-slice-2"></a>
+### Phone reached by its declared transport, slice 2
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-20
+
+Done
+: boot_once by fastboot boot from memory ([kernels] boot = fastboot), gadget wait by usb_id, way back always reboots under it; landed lab-tools #308
+
+Considered
+: boot kind in [boot] (it describes the image) vs [kernels] (how kernels boot); refusing kept under fastboot
+
+Rejected
+: refusing kept under fastboot: walleye's real manifest has it; matching the gadget by serial now: no fake of it in the tests yet, left open
+
+About
+: phone-declared-transport
