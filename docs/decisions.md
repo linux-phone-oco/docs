@@ -2585,3 +2585,28 @@ About
 
 Research
 : dagre-lays-out-the-bring-up-graph-in-0-13-s-at
+
+
+<a id="2026-11-20-outgoing-items-live-in-upstream"></a>
+### 2026-11-20-outgoing-items-live-in-upstream
+
+Brief
+: Every outgoing item (patch series, message, finding) lives in docs upstream/DESTINATION/ITEM/, whichever lane makes it; research keeps only material and pointers
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-19
+
+Decision
+: An outgoing item's files - patches, cover letter, SEND-NOTES, message - live in docs upstream/DESTINATION/ITEM/, where DESTINATION is the upstreams id (the list or project) and ITEM the upstream item id; the item's file field points there. Research folders keep the material behind it (measurements, candidate diffs, logs) and leave a pointer when an item moves out. Moved 2026-11-20: pmic-wdt-gen2-v1 to upstream/linux-watchdog/, the withdrawn sxmo suspend series to upstream/sxmo-devel/sxmo-suspend-series/, and walleye's board dts v0 copied to upstream/linux-arm-msm/walleye-board-dts/; lanes make later versions there.
+
+Why
+: The author looked for the walleye patches in docs' upstream folder and did not find them: 'where are those patches for upstreams for walleye ? i dont see them in the upstreams folder of docs' (through the Top Coordinator, 2026-11-20). The PMIC series sat in research/upstream-forks/ and walleye's board dts in google-walleye-lab research: two homes for one kind of thing.
+
+Rejected
+: Leaving each series in the research folder that made it: the author cannot find them, and the upstream item rows pointed at three different trees. Moving walleye's research folder out of its lab base: that is the walleye lane's repository; its next version is made in docs instead.
+
+About
+: upstream-forks

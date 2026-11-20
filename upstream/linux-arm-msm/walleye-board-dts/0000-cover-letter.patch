@@ -1,0 +1,28 @@
+From e674cd956fb38e717367c3e250b010de359b8fa9 Mon Sep 17 00:00:00 2001
+From: "walleye-builder.e7150c" <idunerg+walleye-builder.e7150c@gmail.com>
+Date: Thu, 19 Nov 2026 07:56:54 +0100
+Subject: [PATCH 0/2] arm64: dts: qcom: Add Google Pixel 2 (walleye)
+
+Add a minimal board file for the Google Pixel 2 (MSM8998): reserved memory,
+the RPM regulators of the USB 2.0 PHY, the USB controller as a high-speed
+gadget, ramoops and the debug UART.
+
+Storage, display, touch, GPU, Wi-Fi and the remote processors follow
+separately.
+
+Not tested: this exact file has not booted yet; the board file it was cut
+from boots to a USB gadget shell on the phone (v7.3).
+
+walleye-builder.e7150c (2):
+  dt-bindings: arm: qcom: Add Google Pixel 2
+  arm64: dts: qcom: msm8998: Add Google Pixel 2 (walleye)
+
+ .../devicetree/bindings/arm/qcom.yaml         |   1 +
+ arch/arm64/boot/dts/qcom/Makefile             |   1 +
+ .../boot/dts/qcom/msm8998-google-walleye.dts  | 196 ++++++++++++++++++
+ 3 files changed, 198 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/qcom/msm8998-google-walleye.dts
+
+-- 
+2.56.1
+

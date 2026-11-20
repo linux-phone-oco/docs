@@ -391,7 +391,7 @@ Local ref
 : linux-phone-oco/linux topic/pmic-wdt-wake-in-suspend e123d3bff on v7.3 (local worktree ~/Projects/linux-phone-oco/linux-topics)
 
 File
-: research/upstream-forks/2026-11-18/patches/linux/
+: upstream/linux-watchdog/pmic-wdt-wake-in-suspend/
 
 Supersedes
 : qcom-wdt-armed-in-suspend
@@ -431,7 +431,7 @@ Local ref
 : linux-phone-oco/sxmo-utils topic/sxmo-autosuspend-backoff 2bb2500 (local clone ~/Projects/linux-phone-oco/sxmo-utils-topics)
 
 File
-: research/upstream-forks/2026-11-18/patches/sxmo-utils/
+: upstream/sxmo-devel/sxmo-suspend-series/
 
 Carried in
 : fork-sxmo-utils/topic/sxmo-autosuspend-backoff
@@ -468,7 +468,7 @@ Local ref
 : linux-phone-oco/sxmo-utils topic/sxmo-suspend-stop-by-profile 1156bb6 (on the backoff patch)
 
 File
-: research/upstream-forks/2026-11-18/patches/sxmo-utils/
+: upstream/sxmo-devel/sxmo-suspend-series/
 
 Carried in
 : fork-sxmo-utils/topic/sxmo-suspend-stop-by-profile
@@ -505,7 +505,7 @@ Local ref
 : linux-phone-oco/sxmo-utils topic/sxmo-surya-sensors-suspend 6432ef9
 
 File
-: research/upstream-forks/2026-11-18/patches/sxmo-utils/
+: upstream/sxmo-devel/sxmo-suspend-series/
 
 Carried in
 : fork-sxmo-utils/topic/sxmo-surya-sensors-suspend
@@ -738,7 +738,7 @@ Local ref
 : next-20261118 + 6 (prep tree); fork-linux/topic/pmic-wdt-wake-in-suspend 8b2283da3 and f5bb57d27 for the fixes
 
 File
-: research/upstream-forks/2026-11-19/pmic-wdt-gen2-v1
+: upstream/linux-watchdog/pmic-wdt-gen2-v1/
 
 Waits
 : the author's word to send; first re-checked against walleye-wdt-reset-boots-charger-mode, bootstatus after a bite, surya's PM6150 bite (attended-keep-calls4-for-bite) and walleye-wdt-bite-cable-out, as each lands
@@ -829,6 +829,40 @@ Applied upstream
 
 Note
 : 2026-11-19: ideal-agent prune now|show, daily from the session start; clean worktrees and build runs idle 3 days. Also fixed orchestration's 0.3.62 sweep (find -newermt '-3 days' fails under bfs, so it removed every other build run folder).
+
+Last update
+: 2026-11-19
+
+
+<a id="walleye-board-dts"></a>
+### [PATCH 0/2] arm64: dts: qcom: Add Google Pixel 2 (walleye): binding and a minimal board file
+
+Upstream
+: linux-arm-msm
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: upstream-readiness-inventory
+
+About
+: upstream-forks
+
+Local ref
+: google-walleye-lab research/walleye-first-fastboot-boot/2026-11-19-upstream-dts (walleye-upstream-dts-series)
+
+File
+: upstream/linux-arm-msm/walleye-board-dts/
+
+Waits
+: walleye-upstream-board-dts-next (touch, haptics, display, splash, PMIC wdt node, each its own patch), the author's authorship, sign-off and go
+
+Note
+: Draft v0: two patches, checked on v7.3, booted once to the usb0 shell (walleye-upstream-dts-tried-boots). The walleye lane makes the next version, here. Not sent.
 
 Last update
 : 2026-11-19
