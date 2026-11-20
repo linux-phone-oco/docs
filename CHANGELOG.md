@@ -1,5 +1,69 @@
 # Changelog
 
+## [0.19.0](https://github.com/linux-phone-oco/docs/compare/v0.18.0...v0.19.0) (2026-11-20)
+
+
+### Features
+
+* a backlog item can be dropped: closed without doing, with its reason ([#588](https://github.com/linux-phone-oco/docs/issues/588)) ([a058188](https://github.com/linux-phone-oco/docs/commit/a0581883739c9c64f7015814155ad0de9b73043d))
+* backlog may name a witness and the go until when it is open ([#553](https://github.com/linux-phone-oco/docs/issues/553)) ([465978d](https://github.com/linux-phone-oco/docs/commit/465978da8f2567177fc1c9b9657fdcfd2ac02b1c))
+* **backlog:** attended prompt and answer files, run --from, skip steps already done ([#672](https://github.com/linux-phone-oco/docs/issues/672)) ([8cae19c](https://github.com/linux-phone-oco/docs/commit/8cae19cbaaf8b09b89800eba5bdf64598a73fbf7))
+* **backlog:** attended-binary-shipped; kernel-try-cmdline first, a keeper waits on it ([#661](https://github.com/linux-phone-oco/docs/issues/661)) ([0540e6c](https://github.com/linux-phone-oco/docs/commit/0540e6cde1ed4ef75b0dae3728caa2ca93814dd5))
+* **backlog:** attended-eof-is-no-answer first - a non-interactive run waits on the answer file ([#721](https://github.com/linux-phone-oco/docs/issues/721)) ([1a75397](https://github.com/linux-phone-oco/docs/commit/1a753974255bfeada6ee3f5d42f9e1c2058ed960))
+* **backlog:** attended-ready-on-host - ready means the installed tools read the device ([#666](https://github.com/linux-phone-oco/docs/issues/666)) ([c85a7b8](https://github.com/linux-phone-oco/docs/commit/c85a7b8ac44a8ea8a0d29748911eeb4dbdfcaee6))
+* **backlog:** attended-scaffold done, session log ([#660](https://github.com/linux-phone-oco/docs/issues/660)) ([722778b](https://github.com/linux-phone-oco/docs/commit/722778b463f327f7c164453af335c61836db2545))
+* **backlog:** attended-step-library and kernel-try-cmdline for the surya and walleye attended runs ([#645](https://github.com/linux-phone-oco/docs/issues/645)) ([45c9440](https://github.com/linux-phone-oco/docs/commit/45c944028a37b670c929b9479ce9b53c339090f4))
+* **backlog:** host-clones-commons-only, never move the author's own repositories ([#691](https://github.com/linux-phone-oco/docs/issues/691)) ([f734ae1](https://github.com/linux-phone-oco/docs/commit/f734ae10008fc0839935b191b722a6604ba72c57))
+* **backlog:** host-clones-fresh first, the stale-clone fault came back ([#678](https://github.com/linux-phone-oco/docs/issues/678)) ([ef45983](https://github.com/linux-phone-oco/docs/commit/ef459834463d1aadc850fefd3210cbbb2ffd4e38))
+* **backlog:** kernel-try-heartbeat from surya, beside the usb timeline ([#664](https://github.com/linux-phone-oco/docs/issues/664)) ([1522596](https://github.com/linux-phone-oco/docs/commit/15225967af086ba2d3e1165bb432e72d8cdd9f50))
+* **backlog:** kernel-try-usb-timeline from surya, host-clones-fresh for stale shared clones ([#659](https://github.com/linux-phone-oco/docs/issues/659)) ([947732c](https://github.com/linux-phone-oco/docs/commit/947732c8595f913b7fe802edda72b7001d9e3024))
+* **backlog:** lpoco-attended first slice released as lpoco-attended-v0.29.0 ([#640](https://github.com/linux-phone-oco/docs/issues/640)) ([e3519d5](https://github.com/linux-phone-oco/docs/commit/e3519d52bd44d03580eed280da4185eece7f2619))
+* **backlog:** lpoco-attended takes the author's shape, an entry file of named steps ([#635](https://github.com/linux-phone-oco/docs/issues/635)) ([f715b9a](https://github.com/linux-phone-oco/docs/commit/f715b9a64dce5abe16c9b2ee31b289e6d84e2977))
+* **backlog:** lpoco-attended, the shared runner for attended sequences, at rank 1 ([#634](https://github.com/linux-phone-oco/docs/issues/634)) ([9631c31](https://github.com/linux-phone-oco/docs/commit/9631c31614d763e25125d7dbcdf7c4b0917482b6))
+* **backlog:** manifest-attended-keys done (v0.32.0), session log ([#663](https://github.com/linux-phone-oco/docs/issues/663)) ([b3f24c2](https://github.com/linux-phone-oco/docs/commit/b3f24c2bec2c3b0dbe2cfeaced3e4ae8ae63c774))
+* **backlog:** step groups' two open ends - way back settled, lift sees groups ([#712](https://github.com/linux-phone-oco/docs/issues/712)) ([8c2712f](https://github.com/linux-phone-oco/docs/commit/8c2712f11437b5156910210f95ce2024a14c0e45))
+* **backlog:** the bisect and hold test flakes are done (lab-tools [#241](https://github.com/linux-phone-oco/docs/issues/241)) ([#636](https://github.com/linux-phone-oco/docs/issues/636)) ([bbc6790](https://github.com/linux-phone-oco/docs/commit/bbc6790ad43dce1a678eaf9908b447052ce663ca))
+* **backlog:** the lpoco-attended runner landed, its step library is open (lab-tools [#243](https://github.com/linux-phone-oco/docs/issues/243)) ([#639](https://github.com/linux-phone-oco/docs/issues/639)) ([81e88cd](https://github.com/linux-phone-oco/docs/commit/81e88cd2b24076518c998f26df29f42de418cf1b))
+* **backlog:** weigh what we built against shelf tools (Renovate, lift check, git-rhizoid) ([#696](https://github.com/linux-phone-oco/docs/issues/696)) ([83ef40f](https://github.com/linux-phone-oco/docs/commit/83ef40f2899ca84255a1d674c7a3e44b03c492f2))
+* **bringup:** display-any-order and storage-full-speed; briefs claim the step a proof shows ([#702](https://github.com/linux-phone-oco/docs/issues/702)) ([2bf4340](https://github.com/linux-phone-oco/docs/commit/2bf4340c7317485de17f4a5d45284d920c85308d))
+* **chips:** chip knowledge upstream first; docs keeps one product-agnostic row per part number ([#648](https://github.com/linux-phone-oco/docs/issues/648)) ([d44ca8f](https://github.com/linux-phone-oco/docs/commit/d44ca8fa0eff2dbf47465c67967a4487fc9f36c6))
+* **decisions:** attended keys get homes in lpoco-manifest, ahead of the rest ([#662](https://github.com/linux-phone-oco/docs/issues/662)) ([404577a](https://github.com/linux-phone-oco/docs/commit/404577a171dc4a551acc12e644fe59a861abd58e))
+* **decisions:** attended steps name the physical act; a bench backend does it ([#655](https://github.com/linux-phone-oco/docs/issues/655)) ([a2017be](https://github.com/linux-phone-oco/docs/commit/a2017be59ca64a403d37e815dfd3cfe8736e1949))
+* **decisions:** phone reached by its declared transport; no-password is no blocker ([#715](https://github.com/linux-phone-oco/docs/issues/715)) ([b8d9b78](https://github.com/linux-phone-oco/docs/commit/b8d9b784d130c067e58dfc5d569b8dd74c3cc539))
+* **decisions:** procedures chain by named step groups with their own way back ([#694](https://github.com/linux-phone-oco/docs/issues/694)) ([b89cd91](https://github.com/linux-phone-oco/docs/commit/b89cd914d452c9ab4abd7a1271487743b0caf21a))
+* **decisions:** procedures chain by named step groups with their own way back ([#695](https://github.com/linux-phone-oco/docs/issues/695)) ([25b78dc](https://github.com/linux-phone-oco/docs/commit/25b78dc6fd24b916bbf9e74ddaa5f13f5674eb24))
+* **decisions:** procedures chain small device-agnostic steps, one step type for both runners ([#638](https://github.com/linux-phone-oco/docs/issues/638)) ([ab2d9f9](https://github.com/linux-phone-oco/docs/commit/ab2d9f904c19e948e767da873d11406237b29f14))
+* **decisions:** procedures in one shape, procedures/NAME.rs over lpoco-attended ([#646](https://github.com/linux-phone-oco/docs/issues/646)) ([4889694](https://github.com/linux-phone-oco/docs/commit/488969421027f65dd441529ed8092c85a8d25071))
+* **decisions:** procedures read their values from the named device's device.toml ([#651](https://github.com/linux-phone-oco/docs/issues/651)) ([a29ed59](https://github.com/linux-phone-oco/docs/commit/a29ed59b0fa064e2d75ca19d5bc1115572cc0e84))
+* **decisions:** the bring-up graph page, Cytoscape.js and dagre on the rows' JSON ([#703](https://github.com/linux-phone-oco/docs/issues/703)) ([73dd239](https://github.com/linux-phone-oco/docs/commit/73dd23904f0ed1c2fedde4c86d73b617f7d92be5))
+* **decisions:** the host follows releases - binaries in release CI, a follow timer ([#667](https://github.com/linux-phone-oco/docs/issues/667)) ([52a2a6b](https://github.com/linux-phone-oco/docs/commit/52a2a6b0e87208065c58e1771270e98810d6d53a))
+* **face:** a Bring-up guide on the front page leading to the guidebook, the steps and the tables ([#554](https://github.com/linux-phone-oco/docs/issues/554)) ([26610a9](https://github.com/linux-phone-oco/docs/commit/26610a962b48b186b4909e88df07862596a84431))
+* **face:** the bring-up steps against each phone, a view of the face like the devices' ([#551](https://github.com/linux-phone-oco/docs/issues/551)) ([7c381ef](https://github.com/linux-phone-oco/docs/commit/7c381ef884bd435240009e0f8400f54621f11d43))
+* **guidebook:** the bring-up guidebook, rendered from the steps by make render ([#548](https://github.com/linux-phone-oco/docs/issues/548)) ([e1f5083](https://github.com/linux-phone-oco/docs/commit/e1f5083789a549d02c8fdb0f11ec663f38af5c62))
+* **pages:** the bring-up graph is the Graph tab of the steps page, with full screen and details ([#717](https://github.com/linux-phone-oco/docs/issues/717)) ([5dd993f](https://github.com/linux-phone-oco/docs/commit/5dd993f304725bdd0e220e7b532f25fb11445a33))
+* **pages:** the bring-up graph page, a tab per device, drawn from docs/graph/bringup.json ([#706](https://github.com/linux-phone-oco/docs/issues/706)) ([bfb462a](https://github.com/linux-phone-oco/docs/commit/bfb462a4ccb7d3a82301662edf980e6178865315))
+* **pages:** the graph opens folded by stage, searches, filters open steps, and is measured at 1500 ([#707](https://github.com/linux-phone-oco/docs/issues/707)) ([7e89493](https://github.com/linux-phone-oco/docs/commit/7e89493f78847247b00847b5e29492efbc226c1d))
+* **pages:** the graph's node labels are short, the whole title on hover ([#710](https://github.com/linux-phone-oco/docs/issues/710)) ([3b68d64](https://github.com/linux-phone-oco/docs/commit/3b68d649d3fd61bcc3c8d00da29b951957d86644))
+* **queries:** bringup-chain --goal STEP gives a goal and what it needs ([#531](https://github.com/linux-phone-oco/docs/issues/531)) ([093978a](https://github.com/linux-phone-oco/docs/commit/093978a4ac9d6f1ec3900658e5048bd622244db8))
+* **queries:** milestone-steps reads a milestone's step terms from the bases' claims ([#539](https://github.com/linux-phone-oco/docs/issues/539)) ([cd76ff7](https://github.com/linux-phone-oco/docs/commit/cd76ff726ad8c493afd8766f096e852eecc6f3ff))
+* **queries:** milestones name goal steps - step:daily-usable-phone@DEVICE ([#540](https://github.com/linux-phone-oco/docs/issues/540)) ([b6e0ef4](https://github.com/linux-phone-oco/docs/commit/b6e0ef4c52df8e8646bf0032da75c046c2eef645))
+* **queries:** prior-art gives a subject's research and each cited source with what we take ([#534](https://github.com/linux-phone-oco/docs/issues/534)) ([9d12b02](https://github.com/linux-phone-oco/docs/commit/9d12b024eeb298bb2eda76a330662f0a97cbf5f3))
+* **records:** component - and the parts the phone steps had none for ([#538](https://github.com/linux-phone-oco/docs/issues/538)) ([1cf7f7e](https://github.com/linux-phone-oco/docs/commit/1cf7f7ef8ce2797667d4c39cd41ba27a96467250))
+* **records:** landscape - a record for the map of others' projects and efforts ([#537](https://github.com/linux-phone-oco/docs/issues/537)) ([ae58fb7](https://github.com/linux-phone-oco/docs/commit/ae58fb7f347a032cbcf2d765c9112163ebe1ac0d))
+* **steps:** hardware proven in a no-shell test layer; the shell is a later stage ([#603](https://github.com/linux-phone-oco/docs/issues/603)) ([2ad2297](https://github.com/linux-phone-oco/docs/commit/2ad229747d13da6c01fe983a48bf7ea7a2cf20e1))
+* **verify:** the steps' shape is checked - every stage has a step, no phone step is loose ([#533](https://github.com/linux-phone-oco/docs/issues/533)) ([f11869a](https://github.com/linux-phone-oco/docs/commit/f11869ab01112f14e841abe980c64c7dfd4fe234))
+
+
+### Bug Fixes
+
+* **backlog:** lpoco-attended cites the one decision for the attend rule ([#637](https://github.com/linux-phone-oco/docs/issues/637)) ([aec8265](https://github.com/linux-phone-oco/docs/commit/aec826575ceb70816120ea9cd8fa21f1e735749d))
+* **ci:** the feeds job commits a table it fills for the first time ([#547](https://github.com/linux-phone-oco/docs/issues/547)) ([91e9a34](https://github.com/linux-phone-oco/docs/commit/91e9a34e44089b32208da1c4b04d69d53b1163ed))
+* **data:** lpoco-layer-pack note no longer carries a copy of its row's fields ([#625](https://github.com/linux-phone-oco/docs/issues/625)) ([5552486](https://github.com/linux-phone-oco/docs/commit/555248667a7f4c60a34a69ea11743e92903159f7))
+* **data:** Nura's AI policy date in the source and research rows too ([#584](https://github.com/linux-phone-oco/docs/issues/584)) ([5b3bb17](https://github.com/linux-phone-oco/docs/commit/5b3bb17d068d4550d979e62d09a58eee8f5def21))
+* **data:** Nura's AI policy was adopted on 2026-02-18, proposed on 02-16 ([#583](https://github.com/linux-phone-oco/docs/issues/583)) ([78afb9b](https://github.com/linux-phone-oco/docs/commit/78afb9b1a8ac2c7f0d388e1f44fee5801b745cbb))
+* **pages:** install tad's DuckDB before the face's data is made ([#552](https://github.com/linux-phone-oco/docs/issues/552)) ([954fe6f](https://github.com/linux-phone-oco/docs/commit/954fe6faa7b4fdd1f8f2c98e83d0481ee7a0b16e))
+* **pages:** the graph legend's swatch border shows in dark; the backlog item says what was seen ([#718](https://github.com/linux-phone-oco/docs/issues/718)) ([af8344c](https://github.com/linux-phone-oco/docs/commit/af8344c830ab545513a007a520f85383d7d45ba4))
+
 ## [0.18.0](https://github.com/linux-phone-oco/docs/compare/v0.17.0...v0.18.0) (2026-11-18)
 
 
