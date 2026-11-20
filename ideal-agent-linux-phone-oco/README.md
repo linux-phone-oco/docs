@@ -50,6 +50,9 @@ Recorded as ideal-agent's record-the-work says; linux-phone's part:
   milestone - go into this repository's tables through its named records, each naming its place:
   `tad r decision --project surya-lab ...`. `tad statements` lists every record and query with its
   parameters; a missing one is added to `records/` alongside the work that needs it.
+- **What goes upstream lives in upstream/.** A prepared series, its cover letter and its send notes go in
+  `upstream/DESTINATION/ITEM/` (`ikb upstream-item ... --file auto`); `research/` keeps only the material behind
+  it (decision 2026-11-20-outgoing-items-live-in-upstream).
 - **What it is about.** Give every record `--about` - a component, feature, milestone, device or backlog
   item (`tad q about` lists them) - so `tad q about --subject X` finds it.
 - **No ocoeco.** Git itself records the work: the session's shell is ready by ideal-agent's agent-env
