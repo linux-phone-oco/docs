@@ -5099,3 +5099,27 @@ Rejected
 
 About
 : phone-declared-transport
+
+---
+
+
+<a id="2026-11-20-orchestration-pause"></a>
+### Orchestration at a stable pause
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-20
+
+Done
+: The author: "lets wrap it up gently for now. let everything open in work complete gently to a stable pause point". Landed today on the orchestration side: lpoco-attended from runner to scaffold, device values, physical steps, step groups and their way-back settling, the EOF fix (lpoco up to v0.39.1); the host conveyor (release binaries, lpoco host follow and clones timers, live; land with land-regen); briefs start in fresh worktrees, claim steps, ready-is-the-go, large outputs on disk; the bring-up graph as the Table | Graph tab (ocoeco-engine #65/#66); decisions on chip knowledge, procedures (small steps, one shape, named groups, values from the named device, reflect-and-lift, physical acts), phone transport, stale clones. At the pause: no builder or subagent of orchestration runs; nothing parked; every orchestration worktree removed; docs #465 and #596 closed as already on main; docs release 0.19.0 landed. Left open for the resume: docs #557 (dependabot actions/cache 4 to 6, a CI change). Host: lpoco 0.39.x by the follow timer when both phones are free; follow and clones timers keep running (they act only on a free lease, and clones only fast-forwards clean commons clones).
+
+Considered
+: Stopping the host timers for the pause: they change nothing while a keeper holds a phone and keep the host and the shared clones current, so a resume starts fresh.
+
+Rejected
+: Leaving the two stale record PRs open: they would read as unfinished work at the resume.
+
+About
+: agent-folder
