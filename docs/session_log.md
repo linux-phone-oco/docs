@@ -5264,3 +5264,27 @@ Rejected
 
 About
 : keeper-release-hardening
+
+---
+
+
+<a id="2026-11-21-lab-tools-builder-follow-installed"></a>
+### lab-tools builder: follow judges the installed lpoco
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-21
+
+Done
+: Un-parked and landed the follow installed-vs-newest end (lab-tools #326, v0.42.2) after a programmer review; added the kill-mid-reinstall, window/keeper-wait and unreadable-version tests.
+
+Considered
+: Reading every family program for drift: derive from tools_for found, but ok() would downgrade a newer program; left as a noted limit.
+
+Rejected
+: A silent up-to-date for an unreadable version: it repeats the lie the change fixes.
+
+About
+: host-follows-releases
