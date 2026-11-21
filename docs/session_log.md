@@ -5240,3 +5240,27 @@ Rejected
 
 About
 : host-follows-releases
+
+---
+
+
+<a id="2026-11-21-lab-tools-builder-keeper-release-hardened-follow"></a>
+### lab-tools builder: keeper release hardened, follow drift parked
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-21
+
+Done
+: Landed keeper release hardening (lab-tools #324, v0.42.1) with a programmer review; built the follow installed-vs-newest end and parked it on a pushed branch when orchestration redirected the run.
+
+Considered
+: A flock on the lease for the take/release race: a design change beyond this item; a tombstone rename covers the common interleaving.
+
+Rejected
+: Landing the follow change too: orchestration said hold the rest.
+
+About
+: keeper-release-hardening
