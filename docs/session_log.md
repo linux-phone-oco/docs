@@ -5195,3 +5195,24 @@ Rejected
 
 About
 : boot-once-pre-boot-gates
+
+---
+
+
+<a id="2026-11-21-follow-judges-fail-lines-only"></a>
+### follow judges FAIL lines only
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-21
+
+Done
+: lab-tools #319 and release v0.41.1: lpoco-host follow judges the host check by FAIL lines; not measured is not known yet, never failing (practice 12); the wait message names the FAIL lines. Tests seen failing first; review anchored the FAIL match.
+
+Considered
+: judging by exit status alone, as before; dropping the exit and judging only lines
+
+Rejected
+: exit status alone: an older installed host exits 1 on not measured and held 0.39.1-0.41.0; lines alone: an error exit (2) with no FAIL line would pass
