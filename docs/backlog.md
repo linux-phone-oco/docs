@@ -7864,3 +7864,34 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="keeper-release-hardening"></a>
+### keeper release: a rerun with no lease is a no-op, and release cannot remove a lease another keeper took meanwhile
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-21, orchestration: from the programmer review of lab-tools #323 (released without one): medium - releasing twice now fails (was Ok 'nobody held the lease'); medium - check-then-remove with no lock lets a take slip in and its live lease be deleted when a lapsed lease is released late; low - mid-write blank holder, lapsed leases called held, a partial failure losing the report, an unreadable state root read as nothing held, --device silently ignored for release (say it in the help). Matching was found exact.
+
+Opened
+: 2026-11-21
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools devlab tests: release NAME when no lease is held anywhere exits 0 ('nobody held a lease'), and errors only when other keepers hold leases (exit 1, on stderr, listing code: holder, lapsed ones marked lapsed); release renames the lease dir to a unique tombstone before reading its holder, so a take between read and remove keeps its lease (a test interleaves them); a prefix name (walleye vs walleye-keeper) releases nothing; a blank holder (mid-write) is skipped; a failed removal reports what was released and what failed
+
+Rank
+: 1
+
+About
+: bringup-steps
