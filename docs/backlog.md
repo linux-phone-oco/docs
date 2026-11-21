@@ -7833,3 +7833,34 @@ Device
 
 About
 : bringup-steps
+
+
+<a id="keeper-release-from-anywhere"></a>
+### lpoco lab keeper release NAME finds the lease by its name from any folder, so a keeper that removed its worktree still releases
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-21, orchestration: the sign from the walleye coordinator - three keeper runs reported 'lease released' while status still said kept by walleye-keeper; one held the 0.41.0 install over an hour. Cause seen in a keeper transcript: release ran from ~/Projects/linux-phone-oco (no device.toml) after the worktree was removed; it exits 1 ('no device.toml here or above'), but the keeper's chained command went on. walleye's keepers now read the status back (google-walleye-lab PR 680).
+
+Opened
+: 2026-11-21
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools devlab tests: a lease taken from a fixture device repo is released by keeper release NAME run from an unrelated folder (the device found through lab.toml's devices or the lease's own record), status then reads free; an unknown NAME exits non-zero naming the leases held
+
+Rank
+: 2
+
+About
+: bringup-steps
