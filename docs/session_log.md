@@ -5216,3 +5216,27 @@ Considered
 
 Rejected
 : exit status alone: an older installed host exits 1 on not measured and held 0.39.1-0.41.0; lines alone: an error exit (2) with no FAIL line would pass
+
+---
+
+
+<a id="2026-11-21-lab-tools-builder-follow-window-keeper-release"></a>
+### lab-tools-builder: follow window, keeper release by name
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-21
+
+Done
+: Landed the [follow] window (#321) and keeper release by name from any folder (#323); released v0.42.0, release assets read back from the releases list.
+
+Considered
+: Release by name through lab.toml's devices, or the lease's own record: scanning the state folders needs neither.
+
+Rejected
+: A typed Window in the lab.toml schema now (parse once at the edge): a later cleanup, the slice stayed small; checking the window again after the baseline check: a run that began inside finishes.
+
+About
+: host-follows-releases
