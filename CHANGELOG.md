@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.20.0](https://github.com/linux-phone-oco/docs/compare/v0.19.0...v0.20.0) (2026-11-21)
+
+
+### Features
+
+* **backlog:** keeper release by name from any folder ([#740](https://github.com/linux-phone-oco/docs/issues/740)) ([61dbf55](https://github.com/linux-phone-oco/docs/commit/61dbf5515b41906c9fd403165a98f4307c0b0bc2))
+* **backlog:** keeper-release-hardening from the review of [#323](https://github.com/linux-phone-oco/docs/issues/323) ([#744](https://github.com/linux-phone-oco/docs/issues/744)) ([3177545](https://github.com/linux-phone-oco/docs/commit/317754589bab313be30e2e25187ff022bee38e9a))
+* **backlog:** walleye stage 1 - login = key first, then pre-boot gates; install steps lift later ([#735](https://github.com/linux-phone-oco/docs/issues/735)) ([4d10ec9](https://github.com/linux-phone-oco/docs/commit/4d10ec9ad3b93b31835d33689260b4db42296996))
+
 ## [0.19.0](https://github.com/linux-phone-oco/docs/compare/v0.18.0...v0.19.0) (2026-11-20)
 
 
