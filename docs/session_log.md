@@ -5288,3 +5288,27 @@ Rejected
 
 About
 : host-follows-releases
+
+---
+
+
+<a id="2026-11-22-orchestration-pause-for-structure-review"></a>
+### Orchestration paused for the structure review
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-22
+
+Done
+: At the Top Coordinator's word for the author's planned structure review (a steward reorganises repos, the kernel branch layout and the briefs). Since the walleye-only resume: lab-tools v0.39.2-v0.42.2 for walleye's stage 1 (no-login not applicable, fastboot entry over the transport, login = key, pre_boot gates, follow judges FAIL lines, keeper release from anywhere and its hardening after review, follow reinstalls on drift); host lpoco 0.42.0 installed by the follow timer itself (lab-machine #88). At the pause: no builder or subagent of orchestration runs; nothing parked; no worktree left; docs release 0.20.0 (#736) landed; device-template #31 closed as superseded. Open for the resume: docs #557 (dependabot actions/cache 4 to 6).
+
+Considered
+: Stopping the host follow and clones timers: they act only when both keeper leases are free and only fast-forward clean commons clones, so they keep the host and clones current through the review.
+
+Rejected
+: Landing the dependabot CI bump at the pause: a CI change belongs to a working session that watches it.
+
+About
+: agent-folder

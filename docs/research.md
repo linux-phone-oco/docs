@@ -500,19 +500,19 @@ About
 ### orchestration-how-it-stands
 
 Brief
-: Paused 2026-11-20 at a stable point: nothing of orchestration runs; resume from the lab-tools queue top (phone-declared-transport, rank 2)
+: Paused 2026-11-22 for the structure review: nothing of orchestration runs; resume from lab-tools host-follows-releases (1) and phone-declared-transport (2)
 
 Project
 : linux-phone-oco/docs
 
 Date
-: 2026-11-20
+: 2026-11-22
 
 Question
 : Where does orchestration's work stand, for a fresh orchestration session to take it up without the old session's long context?
 
 Found
-: How it stands at the pause (2026-11-20, the author's word). Running: nothing of orchestration (no builder, no subagent); the host's lpoco host follow and clones user timers keep running - follow installs a release only when both keeper leases are free, clones fast-forwards only clean commons clones on main. Host: lpoco family 0.39.x via release binaries; land with land-regen (lab-machine PR 79, pinned 39ad836). Resume: start lab-tools-builder; its queue (tad q ready --for builder) leads with phone-declared-transport (rank 2, slices 1-3 landed: transport/login, fastboot boot_once, image sha and gadget serial; open: the phone must already be in fastboot; provision, kernel try, watch and MCP suite still assume a login), then attended-lift-sees-groups (4), host-follows-releases (6: window, lease during install, rate limit, cargo fallback), lpoco-layer-pack (7), kernel-try-heartbeat (8), lpoco-health-suspend-trace-hook (8), lpoco-host-rest (9). docs: weigh-built-against-shelf (research, 9); docs #557 dependabot actions/cache 4 to 6 open. Waiting on others: ideal-knowledge-base's owner (print witness and go_until in ready; upstream-item --file under upstream/ and the AGENTS.md line); lab-machine-builder (stop the retired lab-agent service); the lanes (surya and walleye: procedures/ move, step groups, values in device.toml, land-regen target, device.toml CI check copied, walleye transport/login declared). Briefs owned here: builder, phone-keeper, coordinators, patrol, README (upstream/ rule). Session log 2026-11-20-orchestration-pause.
+: How it stands at the pause for the author's structure review (2026-11-22). Running: nothing of orchestration; the host's lpoco host follow and clones timers keep running (follow installs only when both keeper leases are free; clones fast-forwards only clean commons clones). Host: lpoco family 0.42.x. Since the walleye-only resume (2026-11-21) lab-tools released v0.39.2-v0.42.2 for walleye's stage 1. Resume (tad q ready --for builder): host-follows-releases (1: lease held during install, rate limit of every, cargo fallback, follow reads only lpoco's version), phone-declared-transport (2: provision is postmarketOS-specific, kernel try boot-entry based, reboot bootloader untried on a phone), attended-lift-sees-groups (4), lpoco-layer-pack (7), kernel-try-heartbeat (8), lpoco-health-suspend-trace-hook (8), lpoco-host-rest (9); a flock for keeper release's tombstone restore (noted on keeper-release-hardening); walleye-install-steps-lift waits on walleye's proven code. docs: weigh-built-against-shelf (research, 9); #557 dependabot open. Waiting on others: ideal-knowledge-base (go_until in ready; upstream-item --file under upstream/ and its AGENTS.md line), lab-machine-builder (the retired lab-agent service). Surya paused since 2026-11-20. Session logs 2026-11-20-orchestration-pause and 2026-11-22-orchestration-pause-for-structure-review.
 
 About
 : agent-folder
