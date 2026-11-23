@@ -3157,3 +3157,28 @@ About
 
 Research
 : image-recipes-how-it-stands
+
+
+<a id="2026-11-23-release-tools-may-ship-an-archive"></a>
+### 2026-11-23-release-tools-may-ship-an-archive
+
+Brief
+: A [tools.NAME] release pin may name a tar.gz plus the release's checksums file and the member to install; nfpm comes this way, not from Nix
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-23
+
+Decision
+: [tools.NAME] gains checksums (the release's HASH  NAME file) and member (one file of the archive). The archive's hash is the first line naming exactly it; the member, never a symlink, is installed and the tag stamped after. Landed in lab-tools #382 (main 851037e).
+
+Why
+: nfpm's releases ship nfpm_X_Linux_x86_64.tar.gz and checksums.txt (v2.49.0 captured); run against the real v2.49.0 release, lpoco-host check lists nfpm ok, v2.49.0. Test: host/tests/release_archive.rs, seen failing first.
+
+Rejected
+: Nix's nfpm: nixpkgs on the lab has 2.46.3, behind the release 2.49.0, and a second way to pin a host tool. A repackaged bare binary with a .sha256: we would republish another project's release.
+
+About
+: nfpm-on-the-lab-host
