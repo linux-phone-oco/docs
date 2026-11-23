@@ -5600,3 +5600,27 @@ Rejected
 
 About
 : self-explaining-structure
+
+---
+
+
+<a id="2026-11-23-follow-rate-limit-of-every"></a>
+### follow rate limit of every
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lab-tools #340 (main 2bb7d99): a failed follow of a release stamps ~/.cache/lpoco-host/follow/tried (RELEASE START-SECOND); follow now waits for that release until every (less 60 s, systemd's AccuracySec) has passed since that run began; another release is tried at once; a landed follow deletes the stamp; no [follow] table, no limit. valid_every now accepts only units every_seconds reads (s, min, h, d, w). Proof: host/tests/follow.rs a_release_that_failed_is_not_tried_again_before_every_has_passed and a_newer_release_than_the_one_that_failed_is_tried_at_once_and_a_follow_that_lands_forgets (both seen failing first), a_release_that_failed_is_tried_again_once_every_has_passed, without_a_follow_table_there_is_no_every_and_so_no_rate_limit, unit follow::tests::an_interval_in_seconds_and_what_a_failed_try_still_waits. Review (programmer) fixed: a timer run held by its own stamp (slack), a stamp from a clock ahead holding for days, valid_every accepting units that silently turned the limit off, a swallowed write error. Not covered: no live systemd timer; stamp written non-atomically; a killed follow and failures before the install leave no stamp. Open on the item: cargo fallback. The release PR was not yet there when land --release ran.
+
+Considered
+: A back-off growing with each failure (kept for later, no failure history is kept).
+
+Rejected
+: Counting from the end of the failed run: the timer beat is from the start, so it would hold every timer run. A limit on every follow run, not only after a failure: an up-to-date check is cheap and a manual run should answer.
+
+About
+: host-follows-releases
