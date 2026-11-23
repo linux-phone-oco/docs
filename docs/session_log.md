@@ -6077,3 +6077,27 @@ Rejected
 
 About
 : image-ensure-in-attended
+
+---
+
+
+<a id="2026-11-23-avb-footer-in-rust"></a>
+### AVB footer written in Rust
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: avb.rs (read, add_footer, verify); swap and bisect use it; ensure.nix drops avbtool and python; README updated; landed as lab-tools #377 after a programmer review whose three panic findings got failing tests first.
+
+Considered
+: the avbroot crate as a dependency (not needed: the NONE footer is a few fixed structs, held to avbtool by tests)
+
+Rejected
+: sha1 (sha1 0.10 and sha2 0.11 sit on different digest versions; no control uses it); keeping avbtool as a fallback (it would keep Python in the recipe sandbox)
+
+About
+: image-avb-footer-in-rust

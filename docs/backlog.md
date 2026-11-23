@@ -8493,10 +8493,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Practice 21: bringup swap and bisect call avbtool (Python, Arch android-tools) today, and so do the lab's build scripts. A hash footer with algorithm NONE is a vbmeta header, one hash descriptor and properties, no key (avbroot is a Rust reference). Next: write it in bringup/src/swap.rs beside pack, test it against z21's footer. (decision 2026-11-23-image-recipes-on-nix-fixed-output-paths; research image-recipes-how-it-stands)
+: 2026-11-23, lab-tools-builder: landed (lab-tools #377). bringup/src/avb.rs reads and writes algorithm NONE footers; swap, bisect verify and ensure.nix no longer run avbtool. Proof: tests/avb_native.rs holds the bytes to avbtool 1.4.0 (default and sha512/rollback/do_not_use_ab/props footers); tests/avb_hostile.rs (review: three panics on truncated vbmeta now errors); on the lab, lpoco-bringup image swap z20 --dtb z21.dtb with an empty PATH gives bdc0a89179d2... = z21. Limits: sha256 and sha512 only; the release string is copied from the control (untested against a non-1.4.0 control); the lab's build scripts still call avbtool.
 
 Opened
 : 2026-11-23
