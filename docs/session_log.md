@@ -5672,3 +5672,27 @@ Rejected
 
 About
 : attended-releases-when-it-changes
+
+---
+
+
+<a id="2026-11-23-manifest-releases-when-it-changes"></a>
+### lpoco-manifest is tagged only when manifest/ changes
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: Wrote the proof first (a release-plz fixture: a change outside the library leaves its version, a change in it moves the family together; seen failing), then took lpoco-manifest out of version_group in release-plz.toml (lab-tools #344). Review by the programmer found the fixture's second half passed whatever happened (the first change was still in history): fixed with a reset. lpoco-manifest ships a binary (lpoco manifest schema), so the dispatcher's OWN_VERSION now lists it too, with a dispatch test.
+
+Considered
+: Family members keep lpoco-manifest in changelog_include so a member moved only by a manifest release still gets an entry; the fixture asserts only the Cargo.toml version, because release-plz update does not tag.
+
+Rejected
+: A 'move only when needed' gate at each follower (the Rhizoid lane's reason: it judges every tag everywhere and an old pin stands behind for good).
+
+About
+: manifest-releases-when-it-changes

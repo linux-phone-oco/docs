@@ -8219,10 +8219,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Rhizoid lane's design call 2026-11-23 (git-rhizoid decision 2026-11-23-every-pin-one-pushed-mover, rule 6: a tag means a change, kept at the source): lpoco-manifest leaves release-plz's version_group lpoco like lpoco-attended did (lab-tools #342). A manifest change still moves its path dependents in the family, and version_group keeps those in step, so lpoco NAME never sees mixed versions - test that. Then orchestration adds the graph edge for attended/Cargo.toml's lpoco-manifest tag, moved by rhizoid-bump. Rejected: a 'move only when needed' gate at each follower (judges every tag everywhere; an old pin stands behind for good).
+: Landed in lab-tools #344 (d89c9cc, read back from main): lpoco-manifest is outside version_group lpoco; proof a_release_moves_lpoco_manifest_only_when_manifest_changed (fixture release-plz both ways, seen failing first). lpoco runs 'manifest' at its own version. Next: orchestration adds the graph edge for attended/Cargo.toml's lpoco-manifest tag, moved by rhizoid-bump.
 
 Opened
 : 2026-11-23
