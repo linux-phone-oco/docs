@@ -5957,3 +5957,27 @@ Considered
 
 About
 : attended-check-names-its-source
+
+---
+
+
+<a id="2026-11-23-lab-tools-builder-lift-sees-groups"></a>
+### lab-tools-builder: lift sees groups
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: Landed lab-tools #366: lift flags a copied step group (lift-group) and a library's (use-library). Review by programmer subagent found a substring match on '-> Group' (GroupKind, Fn() -> Group parameter) and only crate:: stripped; fixed by a token-level return-type check and more prefixes, with tests.
+
+Considered
+: A kind enum instead of a bool (left as returns_group bool).
+
+Rejected
+: Matching the return type as text in the joined body: it flags GroupKind and parameters.
+
+About
+: attended-lift-sees-groups
