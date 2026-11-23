@@ -6177,9 +6177,6 @@ Note
 Opened
 : 2026-11-19
 
-Waits
-: nfpm or a real package manager on the lab host, or a kernel build, for its remaining ends (lab-tools #380 landed the last host-only slice; Nura deviceinfo is not ours to prepare)
-
 Blocked by
 : layer-table-in-manifest
 
@@ -6401,9 +6398,6 @@ Note
 
 Opened
 : 2026-11-19
-
-Waits
-: nfpm on the lab host (a declared tool at its pin) for the real package; the rest is proved in containers (Fedora, Arch, Debian dpkg -i)
 
 Needs
 : build
@@ -8667,13 +8661,10 @@ Status
 : in-progress
 
 Note
-: 2026-11-23, lab-tools-builder: the archive form landed (lab-tools #382, main 851037e); real nfpm v2.49.0 installs and lpoco-host check lists it ok in a scratch home. Open: after the next lab-tools release, declare [tools.nfpm] (repository goreleaser/nfpm, tag v2.49.0, asset nfpm_2.49.0_Linux_x86_64.tar.gz, checksums checksums.txt, member nfpm) in the lab's lab.toml, run prepare on the lab, and prove lpoco layer pack builds a real .apk/.deb. Reviewer's leftovers: parse checksums+member as one Option; share plumbing with install_release.
+: nfpm v2.49.0 is on the lab host (lab-machine [tools.nfpm], archive form of lab-tools #382; lpoco host check: nfpm ok). Left: a real lpoco layer pack of walleye's layer building .apk/.deb with it; then lpoco-layer-pack and bootimg-trigger-per-base drop their waits.
 
 Opened
 : 2026-11-23
-
-Waits
-: the lab host following lpoco 0.48.0; then orchestration lands [tools.nfpm] (written, waiting) and prepares, and a builder runs a real lpoco layer pack
 
 Needs
 : build

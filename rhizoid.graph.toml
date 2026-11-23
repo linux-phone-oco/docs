@@ -149,7 +149,7 @@ follower = "grenudi/lab-machine"
 file = "lab.toml"
 table = "tools"
 git_only = false
-unpinned = { land = "a script pinned at a git rev (its rev is the pin), not a release", agent-env = "a script pinned at a git rev (its rev is the pin), not a release", oco-work = "not known yet: no living repository to pin it to" }
+unpinned = { land = "a script pinned at a git rev (its rev is the pin), not a release", agent-env = "a script pinned at a git rev (its rev is the pin), not a release", nfpm = "its asset name holds the version, so tag and asset move together - one edge cannot move both yet", oco-work = "not known yet: no living repository to pin it to" }
 
 [[pins]]
 follower = "linux-phone-oco/google-walleye-lab"
