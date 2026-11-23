@@ -31,8 +31,7 @@ the only thing that moves a pin.** The author accepted this on 2026-11-23, with 
 introduce drift and busy work, then ok". If any lane finds a pin it has to keep in sync by hand, it reports this to
 the top coordinator and does not add a workaround.
 
-One pin is still moved by hand: `tools.rhizoid` in lab-machine's `lab.toml` (now v0.3.1) has no `[[tool]]` edge in
-the graph, so `bump` cannot see it. Adding that edge is orchestration's step, since it keeps the graph.
+rhizoid's own pin, `tools.rhizoid` in lab-machine's `lab.toml`, has its `[[tool]]` edge since #777, so `bump` moves it too.
 
 ## Each lane's git jobs
 
@@ -64,7 +63,7 @@ the graph, so `bump` cannot see it. Adding that edge is orchestration's step, si
 
 `MAP.md` (the kernel's branches; pins, forks and slices), the briefs of the builders (the kernel), the phone keeper
 (the `int/` tag), orchestration (the graph and its pins), the walleye coordinator (the kernel ranks with the phone
-work) and patrol (drift and pins, measured each round). ideal-agent's role cards are general and name no
-project tool; its skills name rhizoid's general rules since 0.3.66-0.3.67 (land-a-change: its verbs, `now`, the first
+work) and patrol (drift and pins, measured each round). ideal-agent's role cards name no project tool, except
+the steward card's `rhizoid status` (since 0.3.69, where a graph names an integration or forks); its skills name rhizoid's general rules since 0.3.66-0.3.67 (land-a-change: its verbs, `now`, the first
 outward step's go, pins moved only by `bump`; bring-up-a-part: lists and `send-back`) and point here. This page is
 where a linux-phone role finds the command.
