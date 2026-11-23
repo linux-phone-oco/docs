@@ -236,3 +236,55 @@ How
 
 Notes
 : Alpine's own; Nura's pmaports is the upstream nura-pmaports. Alpine's rules on AI-made contributions not checked (research nura-relation-how-it-stands).
+
+
+<a id="linux-input"></a>
+### linux-input (input drivers, haptics)
+
+Kind
+: list
+
+Address
+: linux-input@vger.kernel.org
+
+How
+: git send-email to the input maintainer and devicetree reviewers from scripts/get_maintainer.pl
+
+
+<a id="linux-pm"></a>
+### linux-pm (power supply, fuel gauges)
+
+Kind
+: list
+
+Address
+: linux-pm@vger.kernel.org
+
+How
+: git send-email to the power-supply maintainer from scripts/get_maintainer.pl; a Tested-by is a reply on the thread
+
+
+<a id="dri-devel"></a>
+### dri-devel (DRM panel drivers)
+
+Kind
+: list
+
+Address
+: dri-devel@lists.freedesktop.org
+
+How
+: git send-email to the drm-panel maintainers and devicetree reviewers from scripts/get_maintainer.pl
+
+
+<a id="linux-scsi"></a>
+### linux-scsi (UFS host and core)
+
+Kind
+: list
+
+Address
+: linux-scsi@vger.kernel.org
+
+How
+: git send-email to the UFS maintainers from scripts/get_maintainer.pl; the qmp-ufs PHY part goes to linux-phy, pinctrl to linux-gpio
