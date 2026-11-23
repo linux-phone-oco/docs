@@ -37,7 +37,7 @@ Each repository's README opens with its own map: one line per top-level folder.
 
 ## Pins, forks and slices
 
-Each pin stays in the file its reader reads: `idealkb.toml`, `devicebase.toml`, `lab.toml`'s `tools.*`, a Cargo git tag. `rhizoid bump` lists every pin of the graph in one place (decision 2026-11-23-pins-stay-with-their-readers). Each pin has one mover, never a hand: the lab machine's timers `idealkb-update-pins` (slices), `tad-update-pins` (`install-tad.sh`) and `lpoco-host-follow` (`tools.lpoco`), and `rhizoid bump` for the rest, each landing through `land` (git-rhizoid decision 2026-11-23-every-pin-one-pushed-mover, which will name each mover on its edge); a pin kept in step by hand is a sign for the top coordinator. A fork we own is a cutting, a `[[fork]]` edge of `rhizoid.graph.toml`; an idealkb release is laid into a base by `rhizoid follow`. Which command each role uses: [rhizoid.md](ideal-agent-linux-phone-oco/rhizoid.md).
+Each pin stays in the file its reader reads: `idealkb.toml`, `devicebase.toml`, `lab.toml`'s `tools.*`, a Cargo git tag. `rhizoid bump` lists every pin of the graph in one place (decision 2026-11-23-pins-stay-with-their-readers). Each pin's mover is named on its edge of `rhizoid.graph.toml` (`moved_by`; `rhizoid-bump` when none is named), never a hand, each landing through `land` (git-rhizoid decision 2026-11-23-every-pin-one-pushed-mover); a pin kept in step by hand is a sign for the top coordinator. A fork we own is a cutting, a `[[fork]]` edge of `rhizoid.graph.toml`; an idealkb release is laid into a base by `rhizoid follow`. Which command each role uses: [rhizoid.md](ideal-agent-linux-phone-oco/rhizoid.md).
 
 ## Branches in our other repositories
 
