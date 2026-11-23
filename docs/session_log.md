@@ -5624,3 +5624,27 @@ Rejected
 
 About
 : host-follows-releases
+
+---
+
+
+<a id="2026-11-23-attended-release-built-not-landed"></a>
+### attended releases when it changes: built, not landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: Proof tests written and seen failing, then green: release_family.rs a_release_moves_lpoco_attended_only_when_attended_changed (release-plz fixture), dispatch.rs lpoco_attended_runs_at_its_own_version; release-plz.toml takes lpoco-attended and lpoco-manifest out of version_group lpoco; lpoco dispatcher OWN_VERSION skips the family check for attended. Branch builder/attended-release (lab-tools worktree, commit b68900f), NOT landed.
+
+Considered
+: release-plz bumps a package whose path dependency was released, so attended alone out of the group still moved at every family release because lpoco-manifest is in the group; taking manifest out too stops that.
+
+Rejected
+: Landing as is: the programmer review found (1) manifest out of the group skews the family version - a manifest-only change bumps only its dependents (bringup, lab, layer, host), not lpoco/health/tone/ffs-acm, so lpoco NAME refuses mixed versions; (2) lpoco-host FAMILY (host/src/lib.rs) and assets.yml still expect lpoco-attended-v<family version>. Manifest kept in the group: attended then moves with every release, which is the fault.
+
+About
+: attended-releases-when-it-changes

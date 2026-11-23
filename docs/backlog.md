@@ -8138,7 +8138,7 @@ Status
 : open
 
 Note
-: Top Coordinator 2026-11-23, after the author's 'no drift and busy work': release-plz.toml puts every crate in version_group lpoco (so lpoco NAME refuses a program of another version), so each family release (0.44.4) moves lpoco-attended's tag unchanged and both labs get a bump PR. Fix at the source: take lpoco-attended - the library the labs pin as a Cargo git tag - out of the version group so release-plz tags it only when its own files change (release-plz's default per package; cargo-workspaces' changed-only is the other prior art), and let the dispatcher check lpoco-attended against its own version, not the family's. Look at both before writing anything of our own. Rejected: a graph rule ignoring unchanged tags (hides the fault, does not remove it); one lab-wide family version (busy work every release).
+: Builder 2026-11-23: built on branch builder/attended-release (b68900f), not landed. release-plz bumps dependents of a released path dependency, and lpoco-attended depends on lpoco-manifest (family): attended alone out of version_group still moves each release. Taking manifest out too skews the family (manifest-only change bumps only bringup, lab, layer, host; lpoco NAME then refuses mixed versions). Needs a decision before landing: (a) attended stops depending on manifest in the workspace (git-tag dep or copy of the types it reads), or (b) every family member depends on manifest, or (c) a release-plz option for no dependent bump. Also: host FAMILY and assets.yml must stop expecting lpoco-attended-v<family>; lpoco list must honour OWN_VERSION. Aim: lpoco-attended tagged only when attended/ changes; rejected: graph rule ignoring unchanged tags, one lab-wide version.
 
 Opened
 : 2026-11-23
