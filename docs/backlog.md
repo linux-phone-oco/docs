@@ -8330,6 +8330,9 @@ Note
 Opened
 : 2026-11-23
 
+Waits
+: the labs: lpoco-attended's release with #361 reaching each lab's pin (after their one-pin items), a static aarch64 restart2 and [boot.to_bootloader] in each device.toml (their builders); lab-tools' part is landed (#358, #360, #361, #363)
+
 Needs
 : build
 
