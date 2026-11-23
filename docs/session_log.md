@@ -5504,3 +5504,27 @@ Rejected
 
 About
 : host-installs-cargo-tool-at-pin
+
+---
+
+
+<a id="2026-11-23-follow-holds-every-phone-s-lease-while-it"></a>
+### follow holds every phone's lease while it installs
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lab-tools #333/v0.44.1: lpoco host follow takes every phone's keeper lease for the whole install and gives it back on any exit; lease made whole and moved in; live lease never taken; real errors not waits; programmer review fixed 4 findings; 6 tests + unit tests.
+
+Considered
+: Calling devlab keeper take (a second program, a version skew during the very install that replaces it); renewing the lease during land_pin.
+
+Rejected
+: Keeping the old 'keeper came' recheck: it sees follow's own lease. Renewing: left open, follow rarely exceeds 90 min.
+
+About
+: host-follows-releases
