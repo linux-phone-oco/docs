@@ -8238,3 +8238,31 @@ Rank
 
 About
 : self-explaining-structure
+
+
+<a id="host-installs-moved-tool-pins"></a>
+### lpoco host follow installs any declared tool whose lab.toml pin moved (rhizoid), not only the lpoco family
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-23: the rhizoid-bump timer moves [tools.rhizoid]'s tag in lab.toml, but only a hand-run prepare installs it (follow installs the lpoco family only); docs' graph had to wait for the host's rhizoid to reach 0.3.8 before [[pins]] could land, since 0.3.6 refuses it. follow should install every [tools.*] whose installed version differs from its pin, under the leases it already holds, and step back on failure the same way.
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: lab-tools host tests: with a stand-in release, a [tools.rhizoid] pin newer than the installed binary is installed by follow when both leases are free and left when a lease is held
+
+Rank
+: 2
+
+About
+: self-explaining-structure
