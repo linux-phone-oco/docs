@@ -5576,3 +5576,27 @@ Rejected
 
 About
 : bootimg-trigger-per-base
+
+---
+
+
+<a id="2026-11-23-rhizoid-v032-checked"></a>
+### rhizoid v0.3.2 checked; MAP.md and briefs name it
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-23
+
+Done
+: Checked rhizoid v0.3.2 (released binary, sha256 OK) against rhizoid.md (#776). bump lists all 11 pins of the graph in one place and reads well; 3 tool pins are behind (lpoco-attended in surya-lab 0.34.1 and google-walleye-lab 0.41.0, lpoco in lab-machine 0.44.2; latest 0.44.3) with no bump run yet. status: 54 checks, 17 drift - the 13 moved-by-hand lines are idealkb slice ones (records/*.sql, tables.toml's idealkb part) standing in every base, while follow calls the same files the base's own; topic/pmic-wdt-next-prep has no release under it. follow laid idealkb 0.25.0 into a copy of device-template exactly as follow.sh did (same lines, exit 0, equal trees). refresh names grenudi/linux a cutting (integration) and grenudi/sxmo-utils still a fork edge. lab-tools' kernel assemble/publish exist (lpoco 0.44.2); the host runs rhizoid 0.3.1 with no [[tool]] edge. bump now and cut tags not run on a toy (outward, covered by rhizoid's tests). MAP.md and the builder, phone-keeper, orchestration, walleye-coordinator and patrol briefs now name the rhizoid jobs (branch steward/rhizoid-v032-map, sent to orchestration who owns the briefs). Sign: walleye-kernel-series-to-topics sat at rank 7 because the steward's 2026-11-23 verdict said it did not block the phone work, MAP.md let a lab build 'as its build/ says' until it had a list with no item named, and builder.md named no kernel flow (only phone-keeper.md did).
+
+Considered
+: Landing the briefs myself, as the Top asked
+
+Rejected
+: Landing in docs' briefs: AGENTS.md makes them orchestration's; the branch is sent to it instead
+
+About
+: self-explaining-structure

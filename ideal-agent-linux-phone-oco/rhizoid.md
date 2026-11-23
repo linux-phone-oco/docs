@@ -60,7 +60,9 @@ the graph, so `bump` cannot see it. Adding that edge is orchestration's step, si
 - **Sending a series upstream:** `send-back` only drafts. The author reads, signs and sends.
 - **surya is paused.** Nothing in its lane moves until it resumes.
 
-## Not yet named elsewhere
+## Where else it is named
 
-`MAP.md` names only `assemble` and the `int/` tags. The [builder brief](builder.md) and ideal-agent's role cards and
-skills do not name rhizoid yet. Bringing them up to date is the steward's next step, with this page as its source.
+`MAP.md` (the kernel's branches; pins, forks and slices), the briefs of the builders (the kernel), the phone keeper
+(the `int/` tag), orchestration (the graph and its pins), the walleye coordinator (the kernel ranks with the phone
+work) and patrol (drift and pins, measured each round). ideal-agent's role cards and skills are general and name no
+project tool; this page is where a linux-phone role finds the command.

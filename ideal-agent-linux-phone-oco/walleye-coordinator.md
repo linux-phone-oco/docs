@@ -36,6 +36,10 @@ worktree of your own of `~/Projects/linux-phone-oco/google-walleye-lab` at origi
 
 Why: decision 2026-11-17-a-coordinator-per-lane; walleye-fastboot-first.
 
+- **The kernel** is topic branches and `kernel/topics.toml` (MAP.md, rhizoid.md). An image whose kernel is no
+  `int/` tag cannot be rebuilt from the record, so the item that moves the lane's series onto topics ranks with the
+  phone work, not after it.
+
 ## Starting sessions (since 2026-11-17)
 
 Stored tasks, manual only: `walleye-keeper` (`tad q ready --for keeper` in google-walleye-lab, within the recorded
