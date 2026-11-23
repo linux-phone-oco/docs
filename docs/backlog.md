@@ -8049,7 +8049,7 @@ About
 
 
 <a id="host-installs-cargo-tool-at-pin"></a>
-### lpoco-host installs a cargo-built tool at its pin (rhizoid v0.2.x), never by hand
+### lpoco-host installs a release binary of another project at its pin (rhizoid), checked by its sha256
 
 Project
 : linux-phone-oco/lab-tools
@@ -8058,10 +8058,22 @@ Status
 : open
 
 Note
-: [tools.NAME] today takes a script (git, path, rev) or the lpoco family. kernel assemble calls rhizoid from PATH (--rhizoid / LPOCO_RHIZOID). Needs: a [tools.NAME] form with git, tag and a cargo install, judged by the stamped rev; then lab.toml declares rhizoid. Also the first real run: a lab's list reproducing an existing image byte for byte (rhizoid assemble --reproduces).
+: Reshaped 2026-11-23: rhizoid's releases will carry rhizoid-x86_64-unknown-linux-gnu and its .sha256 (as lab-tools' assets.yml; v0.2.2 back-filled), so no cargo build on the lab machine (rhizoid coordinator, asked by orchestration). [tools.NAME] today takes a script or the lpoco family: add a form naming a GitHub repository, tag and asset, installed only when its sha256 matches; then lab.toml declares rhizoid at v0.2.2. Then the first real run: a lab's list reproducing an existing image byte for byte (rhizoid assemble --reproduces).
 
 Opened
 : 2026-11-23
+
+Waits
+: rhizoid's release assets (the rhizoid lane; it sends the URLs)
+
+Needs
+: build
+
+Proof
+: lab-tools host tests: a [tools.rhizoid] with repository, tag and asset installs a stand-in release binary whose sha256 matches and refuses one that does not
+
+Rank
+: 1
 
 About
 : self-explaining-structure
