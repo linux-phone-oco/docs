@@ -5936,3 +5936,24 @@ Rejected
 
 About
 : linux-to-bootloader-by-restart2
+
+---
+
+
+<a id="2026-11-23-attended-check-names-its-source"></a>
+### attended: a check names its source
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: Landed lab-tools #364 (main 124ec72): check_from, the dry run refuses a check with no source, a missing/empty/non-text file, a link out of the repository or text outside research/; scaffold writes a placeholder refused until filled. Proof attended/tests/sources.rs (seen failing first), scaffold.rs; whole lpoco-attended suite passes.
+
+Considered
+: Open now: release PR not yet open at the read-back (release-plz), labs' procedures must move to check_from when they bump (each lane's item), a research:ID row is not looked up, pins in examples/ stay until the release moves them.
+
+About
+: attended-check-names-its-source
