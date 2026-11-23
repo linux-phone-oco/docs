@@ -5720,3 +5720,27 @@ Rejected
 
 About
 : host-follows-releases
+
+---
+
+
+<a id="2026-11-23-follow-installs-moved-tool-pins"></a>
+### follow installs moved tool pins
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: Built follow_tools in lpoco-host (lab-tools #348): moved [tools.*] installed under the leases, checked, stepped back. Review by programmer caught that the baseline check fails on the very tool being moved: fixed by judge_check_without.
+
+Considered
+: A staged lab.toml with the moved pins set to the installed ones, as the family path does
+
+Rejected
+: Staged lab.toml: needs rewriting each tool kind's lines (release tag, script rev); dropping the tool's own FAIL line is one pure function
+
+About
+: host-installs-moved-tool-pins
