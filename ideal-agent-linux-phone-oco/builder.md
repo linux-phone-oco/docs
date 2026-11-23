@@ -66,7 +66,7 @@ tag from a named list of the lab's `kernel/topics.toml`:
 - the image's sha256 and `kernel_tag` in `device.toml`, then `lpoco bringup kernel publish TAG --repo CLONE`
   (pushes the tag, ends the worktree); a tag no image names: `rhizoid assemble --done TAG --repo CLONE`.
 
-A pin (a Cargo git tag, `idealkb.toml`) is never edited by hand: `rhizoid bump` moves it. Every git job's
+A pin (a Cargo git tag, `idealkb.toml`) is never edited by hand: its mover does (MAP.md, "Pins, forks and slices"). Every git job's
 command: [rhizoid.md](rhizoid.md).
 
 ## Recording and the writes you may make

@@ -68,7 +68,7 @@ Follow orchestrate-agents, "The loop". Here:
 - **One phone** means one session changing it at a time: implementation is queued on the phone's queue for its keeper, not raced.
 - **The graph and its pins** are yours (`rhizoid.graph.toml`, in docs): `rhizoid status --fetch` for the whole
   graph's drift, `rhizoid bump` for every pin in one place, `rhizoid bump now --only OWNER/REPO --pr` to move a tool
-  pin behind its release - the only way a pin moves (decision 2026-11-23-pins-stay-with-their-readers). A pin bump
+  pin that has no other mover (the timers idealkb-update-pins, tad-update-pins and lpoco-host-follow move theirs; each pin one mover, decision git-rhizoid 2026-11-23-every-pin-one-pushed-mover). A pin bump
   needs no one's go; a fork, a push to a fork or a merge from upstream (`rhizoid import|add|update ... now`) waits on
   the author's go the first time for its module. Commands: [rhizoid.md](rhizoid.md).
 
