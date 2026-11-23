@@ -8135,10 +8135,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Builder 2026-11-23: built on branch builder/attended-release (b68900f), not landed. release-plz bumps dependents of a released path dependency, and lpoco-attended depends on lpoco-manifest (family): attended alone out of version_group still moves each release. Taking manifest out too skews the family (manifest-only change bumps only bringup, lab, layer, host; lpoco NAME then refuses mixed versions). Needs a decision before landing: (a) attended stops depending on manifest in the workspace (git-tag dep or copy of the types it reads), or (b) every family member depends on manifest, or (c) a release-plz option for no dependent bump. Also: host FAMILY and assets.yml must stop expecting lpoco-attended-v<family>; lpoco list must honour OWN_VERSION. Aim: lpoco-attended tagged only when attended/ changes; rejected: graph rule ignoring unchanged tags, one lab-wide version.
+: Landed in lab-tools #342 (0f44973). Open follow-ups: the pinned lpoco-manifest tag in attended/Cargo.toml has no check for falling behind the manifest; the lab host no longer installs lpoco-attended (README says so).
 
 Opened
 : 2026-11-23
