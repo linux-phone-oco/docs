@@ -8341,3 +8341,31 @@ Rank
 
 About
 : self-explaining-structure
+
+
+<a id="attended-on-manifest-0-44-5"></a>
+### lpoco-attended's tests fail against lpoco-manifest 0.44.5: the first timer bump was gated out
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: rhizoid-bump timer, 12:00 2026-11-23 (rhizoid lane): bump of attended/Cargo.toml's lpoco-manifest tag 0.44.4 -> 0.44.5, gate cargo test --manifest-path attended/Cargo.toml failed (exit 101, --test attended). First tell which it is: run the gate on main at 0.44.4 the way the timer does (in a fresh worktree, no host lpoco-attended on PATH) - if it fails there too, the gate or the test's environment is wrong, not manifest; if it passes, fix attended for 0.44.5 (or name what manifest broke). Then the timer's next run lands the bump by itself; do not bump by hand.
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: lab-tools: cargo test --manifest-path attended/Cargo.toml passes with attended/Cargo.toml at lpoco-manifest-v0.44.5, in a fresh worktree
+
+Rank
+: 1
+
+About
+: self-explaining-structure
