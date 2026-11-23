@@ -5528,3 +5528,27 @@ Rejected
 
 About
 : host-follows-releases
+
+---
+
+
+<a id="2026-11-23-boot-img-trigger-per-base-landed-lab-tools-335"></a>
+### boot.img trigger per base landed (lab-tools #335)
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: Built bootimg-trigger-per-base: generated boot image script plus kernel-install plugin / libalpm hook per base; proof in containers on Fedora (real kernel-install) and Arch (real pacman -U), Debian by hand. Review by programmer fixed: loud failure without initrd or entry dir, one trap, alpm loop skips a kernel without dtb, values that start with - or are empty refused.
+
+Considered
+: A plugin writing into KERNEL_INSTALL_STAGING_AREA (the review's advice): the real kernel-install run showed 90-loaderentry has already consumed it, so the image goes into the entry dir.
+
+Rejected
+: A cmdline escape for single quotes: refused instead, as deviceinfo does, so both files take one rule. Debian via qcom-phone-utils as the only path: kept as the alternative, the plugin is the one script for every base.
+
+About
+: bootimg-trigger-per-base
