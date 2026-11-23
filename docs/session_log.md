@@ -5360,3 +5360,27 @@ Rejected
 
 About
 : structure-review
+
+---
+
+
+<a id="2026-11-23-structure-applied-branches-and-root"></a>
+### Branches cleared and the lab machine's root cleared
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-23
+
+Done
+: Branches on the author's go: 11 deleted, 48 archive/ tags then deleted, 9 kept, auto-delete on in all five repositories, read back from GitHub. The first count (2,138) was wrong - unpruned remote-tracking names - and is corrected in research structure-review-what-is and decision 2026-11-23-structure-branch-names. Root of ~/Projects/linux-phone-oco: worktrees, logs and upstream-queue out; now it holds the eight clones only.
+
+Considered
+: Deleting branches by API call each (GitHub's budget): one git push per repository instead.
+
+Rejected
+: Archiving the oco-data branches (ocoeco writes them) and walleye-wdt-pon-bites-procedure (an open item names it).
+
+About
+: structure-review

@@ -24,18 +24,31 @@ Repositories and their top-level folders:
 | surya-lab | 19 | 1 (ucm) |
 | lab-tools | 13 | 0 (each crate has a CHANGELOG, not a README) |
 
-Remote branches, by the state of their pull request:
+Branches. Corrected the same day: the first count (2,138, of which 2,050 merged) was of the lab machine's
+clones' remote-tracking names, never pruned - `land` had already deleted those branches on GitHub. GitHub
+held 68 (docs 17, google-walleye-lab 30, surya-lab 11, lab-tools 4, device-template 6). What a clone shows
+under `git branch -a` is not what the remote holds until it is fetched with `--prune`.
 
-| repository | branches | PR merged | PR closed unmerged | PR open | no PR |
-|---|---|---|---|---|---|
-| docs | 704 | 676 | 21 | 1 | 7 |
-| google-walleye-lab | 738 | 696 | 35 | 0 | 12 |
-| surya-lab | 432 | 420 | 8 | 1 | 3 |
-| lab-tools | 224 | 222 | 0 | 0 | 2 |
-| device-template | 40 | 36 | 3 | 0 | 1 |
+What was done with the 68, on the author's go of 2026-11-23 ("Yes, both"), each branch's tip checked against
+its pull request's head commit first:
 
-Branches are squash-merged and never deleted, so `git branch -a` shows 2,138 names of which 2,050 are
-finished work.
+| repository | deleted (PR merged at the tip) | kept as tag `archive/NAME`, then deleted | kept |
+|---|---|---|---|
+| docs | 1 | 14 | 2: `oco-data` (ocoeco's gather writes it), an open dependabot PR |
+| google-walleye-lab | 6 | 22 | 2: `oco-data`, `walleye-wdt-pon-bites-procedure` (open item walleye-wdt-pon-bites-procedure) |
+| surya-lab | 0 | 9 | 2: `oco-data`, an open PR |
+| lab-tools | 2 | 0 | 2: `oco-data`, an open PR (the steward's #328) |
+| device-template | 2 | 3 | 1: `oco-data` |
+| total | 11 | 48 | 9 |
+
+"Automatically delete head branches" is now on in all five (docs and surya-lab had it already).
+
+The lab machine's root, cleared on 2026-11-23 (all lanes paused): six clean worktrees removed; surya's
+`wt-surya-keeper-1795036066` removed with its five uncommitted edits, whose two rows were already on main
+(checked); walleye's `wt-walleye-builder-1795096405` (unlanded display-late L4 work) moved, not removed, to
+`~/.local/share/agent-worktrees/google-walleye-lab/walleye-builder/display-late-l4-1795096405`; four run logs
+moved into google-walleye-lab research (PRs 735, 736); `upstream-queue/` removed - its eight files byte-equal
+to files in `upstream/`, its README kept here as `upstream-queue-README.md` (its recipients list).
 
 The lab machine, `~/Projects/linux-phone-oco/`: 7 clones (docs, lab-tools, google-walleye-lab, surya-lab,
 device-template, lens, sxmo-deviceprofiles), one fork clone (sxmo-utils, a mirror of grenudi/sxmo-utils),
