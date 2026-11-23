@@ -2896,3 +2896,31 @@ About
 
 Research
 : structure-review-what-is,structure-review-look-around
+
+
+<a id="2026-11-23-structure-git-flows-run-on-rhizoid"></a>
+### 2026-11-23-structure-git-flows-run-on-rhizoid
+
+Brief
+: The structure's git flows run on git-rhizoid: assemble, status, send-back and fork tracking; lab-tools keeps the record checks and the image build
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-23
+
+Decision
+: git-rhizoid (generic git, no knowledge of tad or phones) carries the git work the structure decisions need: rhizoid assemble (base + ordered list, a fresh worktree in ~/.local/share/agent-worktrees, rerere, stop at a conflict naming both, tag int/DEVICE/LIST/BASE/N with every sha in its message, a base that may be a fork commit), status over topic, backport, int and fork edges, send-back (rebase onto the target tree, format-patch --base into vN-draft/, range-diff; never signs, sends or pushes), and fork tracking: its graph file is the one place that says a fork's upstream (linux, sxmo-utils); lab.toml [clones] names folders only. rhizoid owns the list format; each lab owns its kernel/topics.toml. lab-tools' lpoco-bringup kernel assemble keeps the refusals that need records (no upstream-item row, FROMLIST subjects that disagree), then calls rhizoid; the image build stays in lab-tools and the labs. Worktree home, branch names, land and prune stay ideal-agent's.
+
+Why
+: The author asked on 2026-11-23 that the git parts run through rhizoid rather than a separately hand-rolled tool; rhizoid's concepts (a cutting: pristine tracking side and patch branches; a clean patch back) are already this layout (rhizoid coordinator's needs draft, 2026-11-23). Orchestration: forks are a fact about repositories, so their upstream belongs in rhizoid's graph.
+
+Rejected
+: The merge and tag loop inside lab-tools (a second git tool beside rhizoid); forks marked in lab.toml [clones] (two places saying one fact); rhizoid reading tad records (it stays generic).
+
+About
+: self-explaining-structure
+
+Research
+: structure-review-what-is,structure-review-look-around
