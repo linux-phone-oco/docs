@@ -2977,3 +2977,31 @@ About
 
 Research
 : structure-review-look-around
+
+
+<a id="2026-11-23-lpoco-attended-leaves-the-family-its-own-version"></a>
+### 2026-11-23-lpoco-attended-leaves-the-family-its-own-version
+
+Brief
+: lpoco-attended leaves the family: its own version, released only when it changes; it takes lpoco-manifest by a released tag, not a path, so a manifest release does not move it
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-23
+
+Decision
+: lpoco-attended (the library the labs pin) leaves release-plz's version_group lpoco and gets its own version. First choice: a release-plz setting that stops dependent bumps, if its documentation has one. Otherwise attended depends on lpoco-manifest by its released git tag instead of the workspace path, so release-plz no longer bumps it when manifest releases; attended moves its manifest tag only when it needs something new. lpoco-host FAMILY, assets.yml and lpoco list read lpoco-attended at its own version, and the dispatcher checks it against that version.
+
+Why
+: Each family release moved lpoco-attended's tag unchanged and both labs got a bump PR (busy work, against the author's condition on pins). The builder found that leaving the group alone is not enough: release-plz bumps dependents of a released path dependency, and attended depends on manifest (lab-tools builder, docs #789).
+
+Rejected
+: Every family member depending on manifest (a manifest change would then move everything, the busy work again); taking manifest out of the family too (skews the family: lpoco NAME refuses mixed versions); a graph rule ignoring unchanged tags (hides the fault).
+
+About
+: self-explaining-structure
+
+Research
+: structure-review-look-around
