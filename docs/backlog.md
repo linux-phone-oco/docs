@@ -7977,7 +7977,7 @@ About
 
 
 <a id="kernel-assemble-from-topics"></a>
-### lpoco-bringup kernel assemble: a phone's test kernel int/DEVICE built from its kernel/topics.toml, tagged int/DEVICE/BASE/N
+### lpoco-bringup kernel assemble: a phone's test kernel int/DEVICE/LIST built from a named list in its kernel/topics.toml, tagged
 
 Project
 : linux-phone-oco/lab-tools
@@ -7986,7 +7986,7 @@ Status
 : open
 
 Note
-: Decision 2026-11-23-structure-kernel-topics-and-integration. Reads the lab's kernel/topics.toml (base; then topics in order, each: branch topic/ITEM, what it is for, state known-good with its test-run id, or trying). Starts from the base every time in a worktree of the one kernel clone (rerere on), merges each topic, stops at a conflict naming the two, tags int/DEVICE/BASE/N, writes base and each topic's sha into the tag message. Refuses a topic with no upstream-item row or whose FROMLIST(item) subjects disagree (check-fork-tags.sh). Rests on linux-next's Next/Trees and qcom-next (research structure-review-look-around).
+: Decision 2026-11-23-structure-kernel-topics-and-integration. Reads a named list of the lab's kernel/topics.toml (base; then topic/ITEM or backport/ITEM/BASE in order, each with what it is for and its state: known-good with test-run and tested commit, or trying). Starts from the base every time in a worktree of the one kernel clone (rerere on), merges each, stops at a conflict naming the two, tags int/DEVICE/LIST/BASE/N with base and each sha in the message. Refuses a topic with no upstream-item row or whose FROMLIST(item) subjects disagree. Plain git, no b4. Rests on linux-next's Next/Trees and qcom-next (research structure-review-look-around).
 
 Opened
 : 2026-11-23

@@ -2668,34 +2668,6 @@ Research
 : bringup-steps
 
 
-<a id="2026-11-23-structure-lab-machine-homes"></a>
-### 2026-11-23-structure-lab-machine-homes
-
-Brief
-: On the lab machine: ~/Projects/linux-phone-oco holds clones only; worktrees only in ~/.local/share/agent-worktrees; run output in AGENT_BUILD
-
-Project
-: linux-phone-oco/docs
-
-Date
-: 2026-11-23
-
-Decision
-: ~/Projects/linux-phone-oco/ holds one clone per repository, on main - ours and the forks we patch (linux, sxmo-utils) - and nothing else. Every worktree lives in ~/.local/share/agent-worktrees/REPO/NAME, made by ideal-agent's branch (a read-only one too). A run's output goes to $AGENT_BUILD; what is kept as evidence goes into its research row's material folder. The one kernel clone moves from ~/Projects/surya-audio/linux to ~/Projects/linux-phone-oco/linux. The build areas walleye-build and surya-audio stay where they are, each with a README; device.toml [images.*] is their index.
-
-Why
-: Four roles named the same cause: a place chosen by whoever creates the thing, nothing tying it to a session or ending it (wt-* worktrees, logs at the root, upstream-queue). ideal-agent's branch already has one home; prune already ends clean worktrees there.
-
-Rejected
-: wt-ROLE-RUN beside the clones (no owner, never removed); ~/Projects/.worktrees (a second home again); moving the build areas now (scripts and manifests name their paths; 135 GB to move for no reader's gain).
-
-About
-: self-explaining-structure
-
-Research
-: structure-review-what-is,structure-review-look-around
-
-
 <a id="2026-11-23-structure-folder-readme-and-map"></a>
 ### 2026-11-23-structure-folder-readme-and-map
 
@@ -2752,34 +2724,6 @@ Research
 : structure-review-what-is,structure-review-look-around
 
 
-<a id="2026-11-23-structure-kernel-topics-and-integration"></a>
-### 2026-11-23-structure-kernel-topics-and-integration
-
-Brief
-: Kernel: one repo; topic/ITEM per upstream series on a stated tag; wip/LANE/WHAT for tries; int/DEVICE assembled by a tool from the lab's kernel/topics.toml, tagged int/DEVICE/BASE/N
-
-Project
-: linux-phone-oco/docs
-
-Date
-: 2026-11-23
-
-Decision
-: One kernel repository, linux-phone-oco/linux (today grenudi/linux; moving it into the organisation is the author's call), and one lab clone of it at ~/Projects/linux-phone-oco/linux whose worktrees share git rerere's memory. topic/ITEM: one branch per upstream series, ITEM its upstream-item id, on a stated base (a mainline tag, or for a carried series the fork tag it needs); b4 can enrol it. docs upstream/LIST/ITEM/ keeps the send notes and, per version sent, vN/ made from the branch by git format-patch (never edited by hand); the sent version is kept as tag topic/ITEM/vN. wip/LANE/WHAT: tries on any base; one that works becomes a topic. int/DEVICE: a phone's test kernel, assembled by lpoco-bringup kernel assemble (lab-tools) from the lab's kernel/topics.toml - the base, then each topic in order with what it is for and its state (known-good naming its test-run, or trying) - starting from the base every time, stopping at a conflict naming the two topics, tagging each result int/DEVICE/BASE/N; every test kernel is built from such a tag and a test-run names it. The tool refuses a topic with no upstream-item row or with FROMLIST(item) subjects that disagree. A lab repository keeps only kernel/topics.toml, config fragments and the image build; its .patch series and board .dts move to topic branches.
-
-Why
-: The author, 2026-11-22: 'patches could stay separate for upstreaming and at the same time there is clear and simple way of cherypicking them or something into one kernel with known working patches (like working display, with working storage) ... so that this process is not a handmade mess of wherever the builder came up with ... and its gonna be proper homes for upstreaming at the same time'. Today patches live in five forms and no list says what a test kernel holds. linux-next and qcom-next do exactly this: a written list of topic branches merged onto a fresh tag by a tool, never edited; b4 keeps one series per branch.
-
-Rejected
-: A long-lived device branch with cherry-picks (test/surya-calls: nobody can say what is in it); .patch files in a lab repo (they drift from the tree); quilt, StGit, TopGit (more to learn; series files drift the same way); topics in a second repository like qcom-next (ceremony for two phones); Linaro automerge as-is (undocumented config; the merge loop is small).
-
-About
-: self-explaining-structure
-
-Research
-: structure-review-what-is,structure-review-look-around
-
-
 <a id="2026-11-23-structure-project-map"></a>
 ### 2026-11-23-structure-project-map
 
@@ -2808,11 +2752,11 @@ Research
 : structure-review-what-is,structure-review-look-around
 
 
-<a id="2026-11-23-structure-rendered-pages-not-committed"></a>
-### 2026-11-23-structure-rendered-pages-not-committed
+<a id="2026-11-23-structure-lab-machine-homes"></a>
+### 2026-11-23-structure-lab-machine-homes
 
 Brief
-: Rendered pages (docs/*.md of a tad base) are no longer committed; the site renders them in CI; data/ stays committed
+: On the lab machine: ~/Projects/linux-phone-oco holds clones only; worktrees only in ~/.local/share/agent-worktrees; run output in AGENT_BUILD
 
 Project
 : linux-phone-oco/docs
@@ -2821,13 +2765,75 @@ Date
 : 2026-11-23
 
 Decision
-: A tad base commits its data/ and its sources (tables, records, queries); the pages rendered from them are made by the Pages workflow and not committed. idealkb carries it out, on one base first (google-walleye-lab), then every base. land's regeneration keeps settling same-file appends in data/.
+: ~/Projects/linux-phone-oco/ holds one clone per repository, on main, and nothing else: ours (docs, lab-tools, google-walleye-lab, surya-lab, device-template, sxmo-deviceprofiles, lens) and the forks we patch (sxmo-utils; linux once moved in). Every worktree lives in ~/.local/share/agent-worktrees/REPO/NAME (NAME may be ROLE/WHAT), made by ideal-agent's branch, a read-only one too; the kernel's worktrees as well, so git rerere is shared through the one clone. A worktree with uncommitted work is saved or dropped by its lane before it goes; one nobody has checked is moved into the home, not removed. A run's output goes to $AGENT_BUILD; what is kept as evidence goes into its research row's material folder, with the pointer in the same change. The one kernel clone moves from ~/Projects/surya-audio/linux to ~/Projects/linux-phone-oco/linux in one builder change that updates every path that names it or walleye-build (device.toml kernel_tree, build/, tools/, procedures/, AGENTS.md: 155 places in google-walleye-lab), between phone runs. The build areas walleye-build and surya-audio stay where they are, each with a README; device.toml [images.*] is their index.
 
 Why
-: Every record touches a rendered page and the index counts, so any two landings minutes apart conflict on them; walleye replayed records six times on 2026-11-22 (2026-11-22-walleye-land-regen-conflicts). Agents are told never to read docs/ to answer; its only readers are people on the site.
+: Four roles named the same cause: a place chosen by whoever creates the thing, nothing tying it to a session or ending it. ideal-agent's branch already has one home; prune ends clean worktrees there. Objections of 2026-11-23 taken: orchestration (uncommitted worktrees; name sxmo-deviceprofiles and lens), walleye (the kernel move touches 155 paths, one change between runs), ideal-agent (kernel worktrees in the same home).
 
 Rejected
-: Hand-merging generated files (they drift from canon); one landing session per repository (a queue for a race that need not exist); one file per row (a larger change than the conflict calls for); not committing data/ (it is the base).
+: wt-ROLE-RUN beside the clones (no owner, never removed); ~/Projects/.worktrees (a second home again); moving the kernel clone by itself (breaks the image manifests' kernel_tree); moving the build areas now (scripts and manifests name them; 135 GB for no reader's gain).
+
+About
+: self-explaining-structure
+
+Research
+: structure-review-what-is,structure-review-look-around
+
+
+<a id="2026-11-23-structure-kernel-topics-and-integration"></a>
+### 2026-11-23-structure-kernel-topics-and-integration
+
+Brief
+: Kernel: one repo; topic/ITEM per upstream series on a stated tag; backport/ITEM/BASE; wip/LANE/WHAT; int/DEVICE built by a tool from named lists in kernel/topics.toml, tagged
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-23
+
+Decision
+: One kernel repository, linux-phone-oco/linux (today grenudi/linux; its move into the organisation is the author's, later), one lab clone of it whose worktrees share git rerere's memory.
+- topic/ITEM: one branch per upstream series, ITEM its upstream-item id without a version, on a stated mainline tag. Its home for upstreaming. A carried patch we did not write is a topic too; a workaround keeps its WORKAROUND(item) marker and the item's --local-ref names its branch.
+- backport/ITEM/BASE: the same item on another base a phone runs (e.g. sm7150-mainline v7.2); topics.toml lists it without a second item.
+- Sending: a version is cut by rebasing the topic onto the target maintainer tree (the subsystem's for-next; linux-next only when none fits), with plain git format-patch - b4 is the author's option, never a requirement. docs upstream/LIST/ITEM/ keeps SEND-NOTES (the --base sha, the commit that was tested), the prepared unsigned vN-draft/, and after sending vN/ from the author's signed branch, which he pushes; its tip is tagged topic/ITEM/vN. Only the author signs and sends.
+- wip/LANE/WHAT: tries on any base; one that works becomes a topic.
+- int/DEVICE/LIST: a phone's test kernel, assembled by lpoco-bringup kernel assemble (lab-tools) from a named list in the lab's kernel/topics.toml - the base, then each topic in order with what it is for and its state (known-good naming the test-run and the tested commit, or trying). A phone may have several lists (walleye: ufs-off and ufs-on, never one tag for both). The tool starts from the base every time, stops at a conflict naming the two topics, tags each result int/DEVICE/LIST/BASE/N; every test kernel is built from such a tag, and [images.X] names it (kernel_tag). It refuses a topic or backport with no upstream-item row.
+- A lab repository keeps kernel/topics.toml, config fragments, and its bring-up device-tree experiments that have no upstream item (applied after assembly), plus the rest of an image's recipe (ramdisk, header, modules). Its .patch series and the board .dts move to topic branches. A build script an [images.*] row names retires only when the image rebuilt from an int/ tag has the same sha256. A running phone's kernel stays pinned by commit until int/DEVICE reproduces it.
+
+Why
+: The author, 2026-11-22: 'patches could stay separate for upstreaming and at the same time there is clear and simple way of cherypicking them or something into one kernel with known working patches (like working display, with working storage) ... so that this process is not a handmade mess of wherever the builder came up with ... and its gonna be proper homes for upstreaming at the same time'. Today patches live in five forms and no list says what a test kernel holds. linux-next and qcom-next do this: a written list of topic branches merged onto a fresh tag by a tool, never edited. Objections of 2026-11-23 taken: upstreams (sign-off only in the author's clone; no b4 dependency; cut onto the maintainer tree; backports; versionless item ids), walleye (images rebuilt byte for byte before a script retires; experiment dts; UFS-on and UFS-off apart), surya (WORKAROUND markers; the running kernel pinned by commit).
+
+Rejected
+: A long-lived device branch with cherry-picks (test/surya-calls: nobody can say what is in it); .patch files in a lab repo (they drift); quilt, StGit, TopGit (more to learn; series files drift the same way); b4 as a requirement (Python; our tools never depend on it); topics in a second repository like qcom-next (ceremony for two phones); Linaro automerge as-is (undocumented config; the merge loop is small); a version in an item id (vN folders and tags carry it).
+
+About
+: self-explaining-structure
+
+Research
+: structure-review-what-is,structure-review-look-around
+
+
+<a id="2026-11-23-structure-rendered-pages-not-committed"></a>
+### 2026-11-23-structure-rendered-pages-not-committed
+
+Brief
+: Rendered pages (docs/*.md of a tad base) are no longer committed; the site renders them in CI; data/ stays committed; tried first on two concurrent PRs
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-23
+
+Decision
+: A tad base commits its data/ and its sources (tables, records, queries); the pages rendered from them are made by the Pages workflow and not committed. In the same change: make verify checks that the pages render (instead of that the committed ones are fresh), and the README points readers to the site instead of docs/ on GitHub. idealkb carries it out on one base first (google-walleye-lab) and shows two PRs landed minutes apart without a replay before every base follows; if data/*.json appends still conflict, that is the next step (e.g. new rows at the end).
+
+Why
+: Every record touches a rendered page and the index counts, so two landings minutes apart conflict; walleye replayed records six times on 2026-11-22 (2026-11-22-walleye-land-regen-conflicts). Objections of 2026-11-23 taken: orchestration (verify and readers need a new place), walleye (land's regeneration did not settle data/*.json either: test before relying).
+
+Rejected
+: Hand-merging generated files; one landing session per repository; one file per row (larger than the conflict calls for); not committing data/ (it is the base).
 
 About
 : self-explaining-structure
@@ -2840,7 +2846,7 @@ Research
 ### 2026-11-23-structure-go-is-its-own-record
 
 Brief
-: A keeper's go is its own append-only record an item update cannot clear; a wait names a record; the keeper's query prints the verdict; a keeper starts for one named item
+: A keeper's go is its own append-only record an item update cannot clear; a wait names a record; the keeper's query prints the verdict and the keeper acts only on 'act now'
 
 Project
 : linux-phone-oco/docs
@@ -2849,13 +2855,13 @@ Date
 : 2026-11-23
 
 Decision
-: A go is its own record (item, image sha256, until, by) with its own close, append-only; re-entering a backlog item cannot clear it. A wait names a record (a decision, an author's word, a go); free text such as 'waits on author' is not a wait. tad q ready --for keeper prints per item: act now (go until T), waits: RECORD, or blocked: ID. A keeper is started for one named item. idealkb carries the records and query; orchestration the briefs.
+: A go is its own record (item, image sha256, until, by) with its own close, append-only; re-entering a backlog item cannot clear it. A wait names a record (a decision, an author's word, a go); free text such as 'waits on author' is not a wait. tad q ready --for keeper prints per item: act now (go until T), waits: RECORD, or blocked: ID. The keeper stays one lasting role per device serving its queue under its lease (practice 44); it acts only on rows whose verdict is act now. idealkb carries the records and the query; orchestration the briefs.
 
 Why
-: 2026-11-22: an item note replaced the field that carried a go window and erased it; a keeper read 'waits on author' as a block and skipped an open go. Both come from steering kept as free text in a field several writers overwrite (reflections of orchestration, walleye, surya).
+: 2026-11-22: an item note replaced the field that carried a go window and erased it; a keeper read 'waits on author' as a block and skipped an open go. Both come from steering kept as free text in a field several writers overwrite. Objection of 2026-11-23 taken (orchestration): a keeper per item would break the lasting keeper and its lease.
 
 Rejected
-: Queue markers in notes (what failed twice); a rule telling writers to copy the go along (a countermeasure, not a fit); messages to running keepers (lost when idle).
+: Queue markers in notes (what failed twice); a keeper started per item (a lease and a cold start per item); messages to running keepers (lost when idle).
 
 About
 : self-explaining-structure
@@ -2868,7 +2874,7 @@ Research
 ### 2026-11-23-structure-checks-refuse-wrong-homes
 
 Brief
-: Each home is held by a check that refuses the wrong one, owned where it runs: repo CI layout check, ideal-agent's guard, ikb records, the kernel assemble tool
+: Each home is held by a check owned where it runs: a layout check read from each README's Map in CI, ideal-agent's guard at tool time, ikb's records, the kernel assemble tool
 
 Project
 : linux-phone-oco/docs
@@ -2877,13 +2883,13 @@ Date
 : 2026-11-23
 
 Decision
-: Repository: the layout check of 2026-11-23-structure-folder-readme-and-map, provided by ideal-agent and run in each repository's CI. Tool time: ideal-agent's guard refuses git worktree add outside ~/.local/share/agent-worktrees and a file written directly into ~/Projects/linux-phone-oco/. Records: ikb refuses research --material outside research/ (as upstream-item --file outside upstream/), and CI checks each named path exists. Kernel: the assemble tool refuses a topic with no upstream-item row.
+: Repository: ideal-agent layout-check, run from a CI step (installed from ideal-agent; CI has no plugin), reads the README's Map as the layout's data and refuses a tracked top-level folder with no README or no Map line (dot-folders, LICENSES and untracked ones aside); idealkb lays the READMEs of its own folders (data, docs, queries, records, research). The kernel repository's topic/, backport/, wip/ and int/ are its own scheme. Tool time: ideal-agent's guard refuses a git worktree add outside ~/.local/share/agent-worktrees, and a file written under ~/Projects outside a git working tree (Write and Edit always; a shell redirect where the parse sees it - best effort) - creating or moving a clone there stays allowed (the clones timer, a first clone such as linux). Records: ikb refuses research --material outside research/ (as upstream-item --file outside upstream/), and CI checks each named path exists. Kernel: the assemble tool refuses a topic with no upstream-item row.
 
 Why
-: The one refusal that existed (upstream-item --file) ended the two homes of outgoing series; prose rules alone did not (research how-outgoing-series-got-two-homes).
+: The one refusal that existed (upstream-item --file) ended the two homes of outgoing series; prose alone did not. Objections of 2026-11-23 taken: ideal-agent (CI has no plugin; the layout kept as data in the Map; no file under ~/Projects outside a working tree; best-effort for redirects; the kernel's scheme), orchestration (clones must still be made and moved).
 
 Rejected
-: A rule in briefs only (read once, then forgotten); a cleanup job that moves things after the fact (the wrong home still happens).
+: A rule in briefs only (read once, forgotten); a cleanup job after the fact (the wrong home still happens); a separate layout file (the Map already says it).
 
 About
 : self-explaining-structure
