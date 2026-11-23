@@ -15,8 +15,8 @@ land = ["land"]
 [clones]
 "grenudi/lab-machine" = "lab-machine"
 "grenudi/sxmo-utils" = "linux-phone-oco/sxmo-utils"
-# the one kernel clone, until its move to linux-phone-oco/linux (decision 2026-11-23-structure-lab-machine-homes)
-"grenudi/linux" = "surya-audio/linux"
+# the one kernel clone (moved 2026-11-23 from surya-audio/linux; decision 2026-11-23-structure-lab-machine-homes)
+"grenudi/linux" = "linux-phone-oco/linux"
 
 # idealkb -> the bases that follow it: each pins a release, keeps some files as its own, and keeps the source's marked
 # part of tables.toml between idealkb:begin and idealkb:end
