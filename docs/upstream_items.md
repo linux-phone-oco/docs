@@ -866,3 +866,336 @@ Note
 
 Last update
 : 2026-11-19
+
+
+<a id="walleye-drv2624"></a>
+### Input: drv2624: TI DRV2624 haptics - binding, driver (porthole, Giuseppe Maggio), two fix patches, the walleye dts node
+
+Upstream
+: linux-input
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: chip-series-in-fork-linux
+
+About
+: walleye-drv2624
+
+Local ref
+: topic/walleye-drv2624
+
+File
+: upstream/linux-input/walleye-drv2624/
+
+Carried in
+: fork-linux/topic/walleye-drv2624
+
+Waits
+: its topic branch on v7.3 made and pushed by walleye's builder, then the author's authorship, sign-off and go
+
+Note
+: topic/walleye-drv2624 exists on the lab machine only (4 commits on v7.3); the dts node 0005 is still a .patch in google-walleye-lab kernel/drv2624/. The driver is porthole's port, Assisted-by LLM: the author settles the lab's line before it goes.
+
+Last update
+: 2026-11-23
+
+
+<a id="walleye-fuel-gauge-rfc"></a>
+### Tested-by on [PATCH RFC 0/8] Qualcomm 3rd gen fuel gauge (Heidelberg for Selvaraj): patches 1-3 carried for the Pixel 2
+
+Upstream
+: linux-pm
+
+Form
+: information
+
+State
+: draft
+
+From work
+: 2026-11-23-structure-kernel-topics-and-integration
+
+About
+: walleye-fuel-gauge
+
+Local ref
+: topic/walleye-fuel-gauge-rfc
+
+File
+: upstream/linux-pm/walleye-fuel-gauge-rfc/
+
+Carried in
+: fork-linux/topic/walleye-fuel-gauge-rfc
+
+Waits
+: the fuel gauge's readings checked on walleye (readiness class b), then the author's word for a Tested-by reply
+
+Note
+: Others' patches, kept as received (lore 20251124-pmi8998_fuel_gauge-v1-0-dd3791f61478@ixit.cz). Today they are 3 .patch files in google-walleye-lab kernel/fuel-gauge-rfc/ and 3 commits inside topic/ufs-match-android: they move to their own topic. Ends when the RFC lands upstream.
+
+Last update
+: 2026-11-23
+
+
+<a id="walleye-audio-adsp-q6"></a>
+### MSM8998 ADSP audio: sndcard binding, machine driver, q6afe I2S clock fix, APR/slimbus/voice dtsi nodes, the walleye dts (9 patches, mostly porthole's)
+
+Upstream
+: linux-sound
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-23-structure-kernel-topics-and-integration
+
+About
+: walleye-adsp-q6-mi2s
+
+Local ref
+: topic/walleye-audio-adsp-q6
+
+File
+: upstream/linux-sound/walleye-audio-adsp-q6/
+
+Carried in
+: fork-linux/topic/walleye-audio-adsp-q6
+
+Waits
+: its topic branch on v7.3 made and pushed by walleye's builder, then the author's authorship, sign-off and go; the dtsi and board patches go to linux-arm-msm as their own series
+
+Note
+: Nine .patch files in google-walleye-lab kernel/audio-adsp-q6/, authors Maggio, Kettunen, Del Regno, Connolly kept (decision 2026-11-19-walleye-audio-port-shape: four groups, each upstreamable alone). Not yet a branch. Whether we send others' patches or ask porthole to is the author's call.
+
+Last update
+: 2026-11-23
+
+
+<a id="walleye-panel-s6e3fa5"></a>
+### drm/panel: Samsung S6E3FA5 (Pixel 2) - dt-bindings and the panel driver, two patches
+
+Upstream
+: dri-devel
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-23-structure-kernel-topics-and-integration
+
+About
+: walleye-display-s6e3fa5
+
+Local ref
+: topic/walleye-panel-s6e3fa5
+
+File
+: upstream/dri-devel/walleye-panel-s6e3fa5/
+
+Carried in
+: fork-linux/topic/walleye-panel-s6e3fa5
+
+Waits
+: its topic branch on v7.3 made and pushed by walleye's builder, then the author's authorship, sign-off and go; a clean boot of the exact series (walleye's walleye-upstream-panel-series)
+
+Note
+: Today one source file, google-walleye-lab kernel/panel-samsung-s6e3fa5.c, copied in by the build; the binding is not written yet. Walleye named the docs home upstream/dri-devel/ in PR 637.
+
+Last update
+: 2026-11-23
+
+
+<a id="ufs-match-android"></a>
+### MSM8998 UFS as Android runs it: host revision to the PHY, qmp-ufs tables by revision, UFS_RESET gpio, the card's quirk and purge guard, register dump
+
+Upstream
+: linux-scsi
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-23-structure-kernel-topics-and-integration
+
+About
+: walleye-ufs-match-android-z
+
+Local ref
+: topic/ufs-match-android
+
+File
+: upstream/linux-scsi/ufs-match-android/
+
+Carried in
+: fork-linux/topic/ufs-match-android
+
+Waits
+: walleye-ufs-try-2 on the phone (the author's go), then the series split by list (scsi, phy, pinctrl) and the author's word
+
+Note
+: topic/ufs-match-android exists on the lab machine only, on v7.3 plus the pmic-wdt topic and 3 fuel-gauge commits: those leave it (a topic stands alone). The register dump is bring-up only and is not sent.
+
+Last update
+: 2026-11-23
+
+
+<a id="ufs-hynix-quirks"></a>
+### scsi: ufs: qcom: Hynix quirks (extended sync length, no purge, one TX lane) with review fixes
+
+Upstream
+: linux-scsi
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-23-structure-kernel-topics-and-integration
+
+About
+: walleye-ufs-match-android-z
+
+Local ref
+: topic/ufs-hynix-quirks
+
+File
+: upstream/linux-scsi/ufs-hynix-quirks/
+
+Carried in
+: fork-linux/topic/ufs-hynix-quirks
+
+Waits
+: whether it goes at all: decision 2026-11-19-walleye-ufs-no-sync-length-quirk found Android writes neither quirk on this card
+
+Note
+: On the fork, 2 commits on v7.3 plus the pmic-wdt topic (which leaves it). Likely not-needed for walleye; kept as a row so the assemble check knows it.
+
+Last update
+: 2026-11-23
+
+
+<a id="surya-wcd9375-wireup"></a>
+### arm64: dts: qcom: sm7150-xiaomi-surya: wire up the WCD9375 codec for mic and headphone (LPASS SoundWire, codec node, DAI links)
+
+Upstream
+: sm7150-mainline
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-23-structure-kernel-topics-and-integration
+
+About
+: audio-mic
+
+Local ref
+: topic/surya-wcd9375-wireup
+
+File
+: upstream/sm7150-mainline/surya-wcd9375-wireup/
+
+Carried in
+: fork-linux/topic/surya-wcd9375-wireup
+
+Waits
+: surya's builder splitting the 9 commits into topics until rhizoid assemble --reproduces 29d92793b says equal; then the author's word
+
+Note
+: Commit cadeb5a68 on origin/v7.2 (feat/surya-wcd937x-mic-headphone). It adds aoncc, which sm7150-va-macro-q6afecc-clock removes: the two should be folded into one patch before sending, beside sm7150-wcd-series.
+
+Last update
+: 2026-11-23
+
+
+<a id="sm7150-va-macro-q6afecc-clock"></a>
+### arm64: dts: qcom: sm7150: drop aoncc; clock the VA macro from q6afecc (aoncc at the SM8250 address hung the boot)
+
+Upstream
+: sm7150-mainline
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: wcd937x-dt-aoncc
+
+About
+: audio-mic
+
+Local ref
+: topic/sm7150-va-macro-q6afecc-clock
+
+File
+: upstream/sm7150-mainline/sm7150-va-macro-q6afecc-clock/
+
+Carried in
+: fork-linux/topic/sm7150-va-macro-q6afecc-clock
+
+Waits
+: the same split and reproduce as surya-wcd9375-wireup; folded into it if that is not upstream first
+
+Note
+: Commit 708930065 (dt/surya-wcd-rx-channel-map), proven on the phone: only aoncc disabled, the tree boots. Fixes our own wire-up, so upstream it only exists as part of that patch.
+
+Last update
+: 2026-11-23
+
+
+<a id="surya-q6voice-calls"></a>
+### Modem calls on SM7150: q6voice from sdm845-mainline with CVD 2.3, APR voice services and a VoiceMMode1 link (pulpoff's commit)
+
+Upstream
+: sm7150-mainline
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: calls-audio-q6voice
+
+About
+: modem-calls
+
+Local ref
+: topic/surya-q6voice-calls
+
+File
+: upstream/sm7150-mainline/surya-q6voice-calls/
+
+Carried in
+: fork-linux/topic/surya-q6voice-calls
+
+Waits
+: pulpoff, whose work it is: whether he sends it to sm7150-mainline; we carry it as it is
+
+Note
+: Commit 29d92793b, cherry-picked from pulpoff/linux-surya c314b3bdf (test/surya-calls). Not ours to send. Its uplink also needs a userspace mono capture during a call (surya-call-uplink): a WORKAROUND candidate, not marked yet.
+
+Last update
+: 2026-11-23
