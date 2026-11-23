@@ -8689,7 +8689,7 @@ Status
 : in-progress
 
 Note
-: 2026-11-23, lab-tools-builder: (a) done, lab-tools #386: check fails when follow's last success is older than 3 x every. 2026-11-24, lab-tools-builder: (b) done, lab-tools #388 (main 4d44c37): follow reads GitHub with gh auth token when GITHUB_TOKEN is unset (github.com only, no refresh). Open: (2) family member whose tag is gone, mixed-version message; narrow judge_check_without to pinned/found; tests for lookalike URLs and no-token asset fetches; a gh timeout; a 401 from a stale gh token aborts follow (retry anonymous).
+: 2026-11-23, lab-tools-builder: (a) done, lab-tools #386: check fails when follow's last success is older than 3 x every. 2026-11-24, lab-tools-builder: (b) done, lab-tools #388 (main 4d44c37): follow reads GitHub with gh auth token when GITHUB_TOKEN is unset (github.com only, no refresh). Open: (2) family member whose tag is gone, mixed-version message; narrow judge_check_without to pinned/found; tests for lookalike URLs and no-token asset fetches; a gh timeout; 2026-11-24, lab-tools-builder: (c) done, lab-tools #390 (main abfba81): a 401 for the token gh gave is retried anonymous (a GITHUB_TOKEN given is never dropped); proof host/tests/follow.rs a_401_for_the_token_gh_gave_is_retried_anonymous_and_a_given_token_is_not (seen failing first). Review: the 401 is matched in the error text of fetch_with (a typed error would hold it), no note says the retry fired, run_curl writes the header line twice. Open: family member whose tag is gone, mixed-version message; narrow judge_check_without; lookalike-URL and no-token asset-fetch tests; a gh timeout.
 
 Opened
 : 2026-11-23
