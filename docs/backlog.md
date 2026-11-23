@@ -6390,7 +6390,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
+
+Note
+: 2026-11-23, lab-tools-builder: landed lab-tools #335 (main e328e3c): lpoco layer pack adds, for an android-bootimg layer, one script /usr/libexec/NAME-bootimg (dtb appended, header from [boot], mkbootimg) and the base's trigger: kernel-install plugin 95-NAME-bootimg.install (deb, rpm), libalpm hook (archlinux), none on apk (boot-deploy reads /etc/deviceinfo). Proof: layer/tests/bootimg.rs (11, seen failing first) and layer/tests/bootimg_containers.rs (ignored; docker): Fedora through the real kernel-install add, Arch through a real pacman -U, each boot.img accepted by lpoco-bringup image check with the dtb appended. Found in the container: Arch mkbootimg needs python (added to depends); kernel-install keeps only files it knows, so the plugin writes boot.img into the entry dir after 90-loaderentry. Open: Debian is run by hand with kernel-install's arguments, not through a linux-image install (its postinst runs /etc/kernel/postinst.d; the bridge is systemd-boot's) - prove it or use qcom-phone-utils; Nura boot-deploy untested; no nfpm package built yet (lab has no nfpm).
 
 Opened
 : 2026-11-19
