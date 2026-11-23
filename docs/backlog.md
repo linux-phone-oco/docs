@@ -8247,10 +8247,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-23: the rhizoid-bump timer moves [tools.rhizoid]'s tag in lab.toml, but only a hand-run prepare installs it (follow installs the lpoco family only); docs' graph had to wait for the host's rhizoid to reach 0.3.8 before [[pins]] could land, since 0.3.6 refuses it. follow should install every [tools.*] whose installed version differs from its pin, under the leases it already holds, and step back on failure the same way.
+: 2026-11-23, lab-tools-builder: landed (lab-tools #348): with the family current, follow installs an installed [tools.NAME] whose stamp (or an unstamped one on PATH) is not its pin, under every phone's lease, judged by the host's check (the moved tool's own FAIL line not held against the baseline), put back with its stamp on a failure; no pin landed. Proof host/tests/follow_tools.rs (8 tests: installed, held lease, said without now, current, failing check steps back, honest-host baseline found by review, never-installed left to prepare, unstamped). Open: a follow killed after install and before its check keeps the new tool (no journal); a family follow and a tool follow do not share one pass; a symlinked binary is restored as a file.
 
 Opened
 : 2026-11-23
