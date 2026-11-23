@@ -19,7 +19,7 @@ The shared clones under `~/Projects/linux-phone-oco/` may be stale: never work i
 repository your item changes (lab-tools-builder: docs too, for its records), make a worktree of your own at
 origin/main with ideal-agent's `branch`:
 
-`cd ~/Projects/linux-phone-oco/REPO && git pull -q --ff-only && branch builder/WHAT`
+`cd ~/Projects/linux-phone-oco/REPO && branch builder/WHAT` (branch fetches and cuts from origin/main; never pull or switch in the shared clone)
 
 It lands you in `~/.local/share/agent-worktrees/REPO/builder/WHAT` on branch `builder/WHAT` (MAP.md). At the end,
 after `land`, remove it: `git -C ~/Projects/linux-phone-oco/REPO worktree remove ~/.local/share/agent-worktrees/REPO/builder/WHAT`
