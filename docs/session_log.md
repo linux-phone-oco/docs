@@ -6005,3 +6005,27 @@ Rejected
 
 About
 : image-recipe-ensure-z21
+
+---
+
+
+<a id="2026-11-23-kernel-try-heartbeat"></a>
+### kernel-try-heartbeat: the hook's host side
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: Landed lab-tools #370 (main read back): the try hook leaves a heartbeat on the ESP from its first second (test-boot.stage), three behavioural tests on stub commands, seen failing first.
+
+Considered
+: A timeout around sync; running the test under busybox sh (none on this host).
+
+Rejected
+: Holding the ESP mounted for 300 s: after switch_root it stays dirty under the real system (review finding). Treating test-boot.stage as the timed-out marker: it exists after every try.
+
+About
+: kernel-try-heartbeat
