@@ -8428,3 +8428,28 @@ Rank
 
 About
 : self-explaining-structure
+
+
+<a id="image-recipes-with-a-cache"></a>
+### Research: procedures name an image recipe, and ensure RECIPE builds it or takes it from a cache keyed by its inputs, on any machine
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: in-progress
+
+Note
+: The author, 2026-11-23 (verbatim): "would it be helpful if we could use recepies for images in our procedures, and those recepies could have image cach to not recompile rebundle images by the same recepy if they are the same ? that way procedures arent bound to some external files of images just because, but reflect intelligent resoning pointing to recepy maker with a recepy for an image ... if the same procedure and recepy is ran on another machine it doesnt need the image it will make it . for consideration, research and so on." Relayed by the Top. An image as a pure function of its inputs (kernel int/ tag and config, dtb and overlays, init and initramfs, rootfs, mkbootimg header, signing). Weigh Nix (lab-machine setup/nix.sh; Mobile NixOS, google-walleye?), pmbootstrap (Python, practice 21), Yocto sstate, Buildroot+ccache, mkosi, Bazel/Buck remote cache, a thin Rust hash-keyed tool. Criteria: byte-for-byte vs today's declared sha256s, cache across machines, naming a rhizoid int/ tag, a procedure naming a recipe, aarch64 cross, AVB/signing, surya second, adoption cost. Ends in a decision with what was rejected, a backlog of first slices, and the first proof: one walleye image rebuilt from a recipe equal to its declared sha256, then served from the cache on a second run. Parties: walleye (its image rows and build/*.sh), the rhizoid lane (int/ tags).
+
+Opened
+: 2026-11-23
+
+Needs
+: research
+
+Proof
+: a walleye image rebuilt from a recipe equals its device.toml sha256, and a second ensure serves it from the cache
+
+About
+: self-explaining-structure
