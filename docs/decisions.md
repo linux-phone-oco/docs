@@ -2949,3 +2949,31 @@ Rejected
 
 About
 : host-installs-cargo-tool-at-pin
+
+
+<a id="2026-11-23-linux-phone-oco-s-rhizoid-graph-lives-in-docs-as"></a>
+### 2026-11-23-linux-phone-oco-s-rhizoid-graph-lives-in-docs-as
+
+Brief
+: linux-phone-oco's rhizoid graph lives in docs as rhizoid.graph.toml, started from rhizoid's example; the attended pins are bumped through it, gated by cargo check
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-23
+
+Decision
+: docs keeps rhizoid.graph.toml at its top, the one graph rhizoid status and rhizoid bump read for linux-phone-oco: slices, the device layer, tool pins (lpoco in lab.toml, tad, lpoco-attended in each lab's steps crate with cargo check as the gate and the crate's Cargo.lock beside the pin) and forks. It starts from git-rhizoid/rhizoid's examples/linux-phone-oco.graph.toml (514d7e7) and is kept here from now on; a gate is argv from this file, so it is reviewed like code.
+
+Why
+: Decision 2026-11-23-structure-git-flows-run-on-rhizoid makes rhizoid's graph the one place for these edges but named no home; docs is the project's memory and orchestration keeps it. Read with rhizoid 0.2.4: lab.toml's lpoco and both labs' lpoco-attended pins show behind 0.43.0, the rest current.
+
+Rejected
+: The graph only in rhizoid's examples (its tests compare it with docs' research, so our pins would change its fixture); in lab-machine (it is one machine's, the graph is the project's); one graph per lab (the edges span repositories).
+
+About
+: self-explaining-structure
+
+Research
+: structure-review-look-around

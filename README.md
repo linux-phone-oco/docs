@@ -33,6 +33,7 @@ The whole project on one screen: [`MAP.md`](MAP.md). This repository:
 | `device-layer/` | what docs gives every phone's lab base |
 | `face/`, `lenses/` | the project's view for the Open Commons Observatory, and further lenses |
 | `bin/` | installs, checks, feeds and page renders |
+| `rhizoid.graph.toml` | the repository graph: who follows which source, each pin and its gate, each fork's upstream (`rhizoid status`, `rhizoid bump`) |
 
 Never at the top: run logs, worktrees, a second queue of anything.
 
