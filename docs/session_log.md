@@ -6218,3 +6218,27 @@ Rejected
 
 About
 : follow-never-locks-itself-out
+
+---
+
+
+<a id="2026-11-24-follow-401-retry"></a>
+### follow retries anonymous on a 401
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lab-tools #390: a stale gh login no longer locks follow out; test seen failing first; programmer review read, three points left open in the item
+
+Considered
+: a typed fetch error instead of matching the text; a note when the retry fires
+
+Rejected
+: retrying on 403: that is a rate limit, anonymous is lower
+
+About
+: follow-never-locks-itself-out
