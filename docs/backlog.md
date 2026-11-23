@@ -8353,7 +8353,7 @@ Status
 : done
 
 Note
-: 2026-11-23, lab-tools-builder: not reproduced, no code change. cargo test --manifest-path attended/Cargo.toml passed in a fresh worktree of lab-tools main (3e885ed) at lpoco-manifest 0.44.4 and at 0.44.5 (cargo updates Cargo.lock by itself), and the --test attended suite (69 tests) passed again under 4 busy CPU loops (x3), with the timer's env (PATH without ~/.local/bin), and with cold CARGO_HOME and rust-script caches. So the 12:04 failure was transient; its cause is not known, because the bump's journal keeps only the gate's last line ('error: test failed, to rerun pass --test attended'), not the failing test. Candidate: the tests compile rust-script examples that fetch git tags, so a first run just after the 0.44.5 tag could race the network. Next: the timer's next run lands the bump; if it is gated out again, read the gate's whole output (rhizoid lane: the gate should keep the failing test's name).
+: Not transient (corrected by orchestration the same day, after the 13:00 run failed the same way): reproduced with systemd-run in the rhizoid-bump unit's environment - 18 attended tests panic 'rust-script is on the lab machine: NotFound', since rust-script lives in ~/.cargo/bin and the unit's PATH lacks it (cargo is /usr/bin/cargo). Fixed on the lab: ~/.config/rhizoid/bump.env carries a PATH with ~/.cargo/bin (an EnvironmentFile PATH overrides the unit's Environment=PATH, checked); lab.toml's [tools.rhizoid] env carries the same once lpoco-host 0.46 is installed. The builder's interactive runs had the user's PATH, so they passed. No lab-tools code change.
 
 Opened
 : 2026-11-23
