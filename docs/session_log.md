@@ -6101,3 +6101,27 @@ Rejected
 
 About
 : image-avb-footer-in-rust
+
+---
+
+
+<a id="2026-11-23-layer-pack-overlaps-refused"></a>
+### layer pack: a path written twice is refused
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lab-tools #380 (main): materialize refuses a path two items of one package write; refuse_overlaps (called in lpoco-layer pack before packing) refuses a path two packages of the layer write. Proof layer/tests/pack.rs a_path_two_files_of_one_package_both_write_is_refused (seen failing first, in a Nura-path form), a_path_two_packages_of_the_layer_both_own_is_refused. Review by programmer: no blocking finding; it found the cross-package gap (fixed) and that Layer::validate already refuses two declared files on one path. Item lpoco-layer-pack stays open: its other ends need nfpm/real package managers or a kernel build.
+
+Considered
+: Testing with Nura's /etc/deviceinfo collision: dropped, orchestration said to leave Nura deviceinfo out; the test uses declared files and the boot package instead. Known gap: a dtb ./a.dtb beside a.dtb is not seen as one path.
+
+Rejected
+: Marking the item done: its ends (kernel from [layer.kernel], real rpm/arch scriptlets, boot-deploy check) are unproved.
+
+About
+: lpoco-layer-pack
