@@ -56,6 +56,8 @@ Recorded as ideal-agent's record-the-work says; linux-phone's part:
   it (decision 2026-11-20-outgoing-items-live-in-upstream).
 - **What it is about.** Give every record `--about` - a component, feature, milestone, device or backlog
   item (`tad q about` lists them) - so `tad q about --subject X` finds it.
+- **One agent at a time** (decision 2026-11-24-one-agent-at-a-time): no parallel agents where it can be avoided; walleye's
+  phone work goes first; checks, land and read back stay.
 - **Messages between sessions carry work** (ideal-agent decision 2026-11-23-messages-between-sessions-carry-work):
   a result, a question, a refusal or a blocker - one report when a piece is finished, never an ack or a step
   report; mid-piece only a question or a blocker (a turning point). If sends are paused, the report goes as a note
