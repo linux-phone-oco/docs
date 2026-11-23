@@ -8087,10 +8087,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Proposed by the rhizoid coordinator 2026-11-23: an [[integration]] edge for grenudi/linux (topics topic/ITEM and backport/ITEM/BASE, assembled int/NAME/LIST/BASE/N, releases torvalds/linux) and [clones] grenudi/sxmo-utils = linux-phone-oco/sxmo-utils. Do it together with lab.toml's [tools.rhizoid] at v0.3.1 (which tracks the kernel from torvalds releases, not the fork's v7.2), since 0.2.4 on the host does not know [[integration]]; then rhizoid import grenudi/linux --patches integration, which only writes the graph. sxmo-utils' import pushes a branch: waits on the author's go. Dry runs: side-notes rhizcut-import-dry-runs-v0.3.0.md.
+: Landed by orchestration 2026-11-23 with rhizoid 0.3.1 (sha256 checked; lab.toml pinned at v0.3.1, host install when both leases are free): [[integration]] for grenudi/linux, [clones] for sxmo-utils and the kernel clone (surya-audio/linux until its move), and import grenudi/linux --patches integration recorded tracking = torvalds/linux - graph only, nothing pushed. rhizoid status reads it: 4 topics on v7.3, current; topic/ufs-match-android and topic/walleye-drv2624 only in the lab clone (walleye builder's to push); sxmo-utils 4 behind upstream. sxmo-utils' import pushes a branch: waits on the author's go.
 
 Opened
 : 2026-11-23

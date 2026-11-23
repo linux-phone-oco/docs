@@ -9,6 +9,9 @@ rev = "origin/main"
 
 [clones]
 "grenudi/lab-machine" = "lab-machine"
+"grenudi/sxmo-utils" = "linux-phone-oco/sxmo-utils"
+# the one kernel clone, until its move to linux-phone-oco/linux (decision 2026-11-23-structure-lab-machine-homes)
+"grenudi/linux" = "surya-audio/linux"
 
 # idealkb -> the bases that follow it: each pins a release, keeps some files as its own, and keeps the source's marked
 # part of tables.toml between idealkb:begin and idealkb:end
@@ -62,6 +65,14 @@ followers = [
   "linux-phone-oco/google-walleye-lab",
 ]
 
+# the kernel fork assembles its phones' test kernels from topics; it releases with torvalds/linux (decision
+# 2026-11-23-structure-git-flows-run-on-rhizoid, MAP.md's kernel branches)
+[[integration]]
+repo = "grenudi/linux"
+topics = ["topic/ITEM", "backport/ITEM/BASE"]
+assembled = "int/NAME/LIST/BASE/N"
+releases = "torvalds/linux"
+
 # a fork: its tracking branch is its upstream's head (no branch: the remote's HEAD)
 [[fork]]
 fork = "grenudi/sxmo-utils"
@@ -71,6 +82,9 @@ upstream_branch = "master"
 
 [[fork]]
 fork = "grenudi/linux"
+tracks = "torvalds/linux"
+patches = "integration"
+added = "import"
 upstream = "sm7150-mainline/linux"
 
 # lpoco-attended as a Cargo git dependency of a lab's attended steps: the tag holds more than the version, a bump
