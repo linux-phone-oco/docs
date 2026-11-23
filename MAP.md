@@ -31,7 +31,7 @@ Each repository's README opens with its own map: one line per top-level folder.
 | `topic/ITEM` | one upstream series alone, on a stated mainline tag; ITEM is its upstream-item id - its home for upstreaming | until upstream takes it; each version sent is tag `topic/ITEM/vN`, on the author's signed commits |
 | `backport/ITEM/BASE` | the same series on another base a phone runs (e.g. sm7150-mainline `v7.2`) | while a phone runs that base |
 | `wip/LANE/WHAT` | a try, on any base | until it works (then it becomes a topic) or is dropped |
-| `int/DEVICE/LIST` | a phone's test kernel, assembled by git-rhizoid (`rhizoid assemble`, called by lab-tools after its checks) from a named list in the lab's `kernel/topics.toml`; never edited by hand | rebuilt each time; each build tagged `int/DEVICE/LIST/BASE/N`, which the image (`kernel_tag`) and its test-run name |
+| tag `int/DEVICE/LIST/BASE/N` (no branch) | a phone's test kernel, assembled by git-rhizoid (`rhizoid assemble LIST`, called by lab-tools after its checks) from a named list in the lab's `kernel/topics.toml`; its message records the base and every branch's commit; never edited by hand | for good: the image (`kernel_tag`) and its test-run name it |
 
 "A kernel with working display and working storage" is two lines in `kernel/topics.toml` (rhizoid owns its format, the lab owns the file). Until a lab has it, its kernel is built as its `build/` says.
 

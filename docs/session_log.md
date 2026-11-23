@@ -5384,3 +5384,27 @@ Rejected
 
 About
 : structure-review
+
+---
+
+
+<a id="2026-11-23-rhizoid-assemble-tried"></a>
+### rhizoid assemble v0.1.1 tried on a toy repository: the flow works; three refinements sent
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-23
+
+Done
+: Steward's ergonomics check on a toy repo (base tag, two clean topics, two conflicting): a clean list tags int/toy/good/v1.0/N with base and every branch's sha, for and state in the message; a conflict exits 1 naming both branches and the path, and tags nothing; a wip/ branch in a list is refused; --reproduces names the paths that differ. Refinements sent to the rhizoid coordinator: (1) each run leaves a locked worktree (1.8 GB per kernel tree), which prune skips - say when one ends; (2) an unchanged list gets a new tag each run (four tags for one recipe) - reuse the tag whose recipe is equal; (3) tested_commit accepts 'HEAD' - resolve or refuse a name that is not a commit. Decision 2026-11-23-structure-kernel-topics-and-integration: test kernels are tags only.
+
+Considered
+: Moving an int/ branch to the newest tag (rhizoid's question).
+
+Rejected
+: Keeping int/ branches: nobody reads them; images name tags.
+
+About
+: structure-review
