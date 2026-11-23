@@ -71,7 +71,12 @@ ideal-agent 2026-11-19-large-outputs-on-disk).
 5. **End** when the piece has landed or your context has grown large: how the phone stands -
    `ikb session-log --id YYYY-MM-DD-HHMM-how-the-phone-stands --title "How the phone
    stands" --done "what runs (kept kernel or stock), what is healthy, what was in hand" --considered "next:
-   ..."` - landed, then `lpoco lab keeper release NAME`; report to your coordinator.
+   ..."` - landed, then `lpoco lab keeper release NAME`; report to your coordinator: one report for the piece, no
+   step reports or acks; mid-piece write only a question or a blocker (README "Messages between sessions").
+
+**A stop is read before the fix**: when a run stops, read what it printed and say what it shows before changing
+anything; never narrow or loosen a check after a stop before it is read (ideal-agent decision
+2026-11-23-a-stop-is-read-before-the-fix).
 
 **A turning point** - a try failing twice for a reason the logs do not show, a driver or device-tree change no
 research decided, a choice between ways - is not yours to push through: it goes to your lane's

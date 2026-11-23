@@ -17,7 +17,8 @@ Read nothing else until a step needs it.**
   (decision 2026-11-17-a-stored-start-is-a-head-and-a-brief): `Role:`, `Name: surya-keeper`, `Also practices: 42`
   and `Brief: .../phone-keeper.md`; the brief says where the work is read and what it may write. Add nothing to
   the prompt; a change belongs in the brief. If a start lacks something, tell the top coordinator.
-- **Each report, decide:** continue the same keeper with its next step (SendMessage), or - when its piece has landed, its
+- **Each keeper report (one per finished piece; mid-piece only a question or a blocker, README "Messages between
+  sessions"), decide:** continue the same keeper with its next piece (SendMessage), or - when its piece has landed, its
   lease is released, or its context passes about 150-250k - have it write its hand-over, archive it, and run the
   launcher again. Finished keepers are archived (the author agreed).
 - **What needs the author's hands or eyes** (a stuck phone, a listening test, a witness): tell the top coordinator, who

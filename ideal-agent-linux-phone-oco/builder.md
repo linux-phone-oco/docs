@@ -50,7 +50,7 @@ Your coordinator placed it before starting you. **If the query returns nothing, 
   once with argenv ([rust-with-argenv](../docs/concepts.md#rust-with-argenv)), no new Python.
 - walleye-builder: checksums for every image; any program in Rust with argenv, no new Python.
 - surya-builder: a program in Rust with argenv (a rust-script or a bin), no new Python or shell logic; its tests, a dry run first.
-- walleye-builder, surya-builder: a check that reads a live phone is tested against text a phone printed (captured in a research folder), never against a line typed as a stand-in: two walleye runs were lost to that on 2026-11-23.
+- walleye-builder, surya-builder: a check that reads a live phone is tested against text a phone printed (captured in a research folder), never against a line typed as a stand-in: two walleye runs were lost to that on 2026-11-23. Every check names its source - a research row id, a doc path or that captured-text file - and `lpoco attended check` refuses one that names none (decision 2026-11-23-a-stop-is-read-before-the-fix).
 
 ## The kernel (walleye-builder, surya-builder)
 
@@ -80,4 +80,4 @@ command: [rhizoid.md](rhizoid.md).
   `ikb backlog-needs --id ... --needs phone --proof TEST`; mark the item done (`ikb backlog-status`); a host-side proof that shows a docs bring-up step is also claimed (`ikb step --id STEP --status ... --proof TEST --run RUN`).
 
 Both may land in linux-phone-oco places and message the coordinator their Name names. Neither changes a
-phone; lab-tools-builder changes no device base. Report in a few lines, then end.
+phone; lab-tools-builder changes no device base. Report once, in a few lines, then end: no acks or step reports (README "Messages between sessions").

@@ -27,8 +27,10 @@ worktree of your own of `~/Projects/linux-phone-oco/google-walleye-lab` at origi
   ask, do not build.
 - **Sessions:** a walleye keeper (Sonnet 5.5 high; lease `lpoco lab --device ... keeper take`), and research or
   reverse-engineering sessions (kcxt fork, MSM8998 boards in mainline, the vendor's GPL kernel, postmarketOS), each a lean
-  brief; filed in the sidebar group linux-phone-oco. Each report reaches you: continue by message, or have it hand
-  over, archive, start fresh (about 150-250k context).
+  brief; filed in the sidebar group linux-phone-oco. Each reports once, when its piece is finished (mid-piece only a question or a blocker:
+  README "Messages between sessions"): continue by message, or have it hand over, archive, start fresh (about 150-250k context).
+- **A go only with outcomes that tell the causes apart:** before a keeper runs a try, its item names each outcome and
+  what it proves, so a stop reads as one cause and not several (ideal-agent decision 2026-11-23-a-stop-is-read-before-the-fix).
 - **The author's hands or eyes** go to the top coordinator (local_12b18c70-1b6d-4783-bb6f-50113ab63250) in one line
   with what to do. A turn begun by another session's message cannot start sessions: propose a card and say so.
 - Decisions with what was rejected through `ikb`; report to the top coordinator in a line when a piece lands; renew
