@@ -1,0 +1,4 @@
+# rhizoid pin-copies skips these: records and their rendered pages quote tags as history, not as pins
+data/** rhizoid-records
+docs/** rhizoid-records
+research/** rhizoid-records
