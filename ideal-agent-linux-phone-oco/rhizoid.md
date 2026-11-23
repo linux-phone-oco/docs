@@ -64,5 +64,7 @@ the graph, so `bump` cannot see it. Adding that edge is orchestration's step, si
 
 `MAP.md` (the kernel's branches; pins, forks and slices), the briefs of the builders (the kernel), the phone keeper
 (the `int/` tag), orchestration (the graph and its pins), the walleye coordinator (the kernel ranks with the phone
-work) and patrol (drift and pins, measured each round). ideal-agent's role cards and skills are general and name no
-project tool; this page is where a linux-phone role finds the command.
+work) and patrol (drift and pins, measured each round). ideal-agent's role cards are general and name no
+project tool; its skills name rhizoid's general rules since 0.3.66-0.3.67 (land-a-change: its verbs, `now`, the first
+outward step's go, pins moved only by `bump`; bring-up-a-part: lists and `send-back`) and point here. This page is
+where a linux-phone role finds the command.
