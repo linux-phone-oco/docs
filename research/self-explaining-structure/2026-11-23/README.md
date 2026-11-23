@@ -12,6 +12,7 @@ The material of the steward's structure review (research rows `structure-review-
 - `look-around.md` - how the kernel, phone ports, Linaro/Qualcomm, KernelCI and documentation patterns
   organise the same things, with sources.
 - `design.md` - the rules this review decided, with what was rejected.
+- `image-recipes-with-a-cache.md` - not of the review: the material of research `image-recipes-how-it-stands` (lab-tools; image recipes, ensure, a cache keyed by hash), with its measurements.
 
 ## What is (read 2026-11-23 from origin/main of each repository)
 

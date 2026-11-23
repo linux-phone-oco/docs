@@ -3086,3 +3086,46 @@ About
 
 Research
 : structure-review-look-around
+
+
+<a id="2026-11-23-image-recipes-on-nix-fixed-output-paths"></a>
+### 2026-11-23-image-recipes-on-nix-fixed-output-paths
+
+Brief
+: Images named by sha256, made by TOML recipes; lpoco bringup ensure takes them from Nix's store or a file:// cache, else builds a fixed-output derivation; no Python in the sandbox
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-23
+
+Decision
+: An image is named by what it is - its declared sha256 - and made by a recipe. A recipe is TOML in the device's repository, beside the image's row (`[images.NAME] recipe = ...`): the image either derived from another image by name with parts swapped (the `image bisect` series format grown up: dtb, kernel, ramdisk, cmdline, footer), or made from parts - a kernel from an `int/` tag (tag and commit) with the lab's dts and config fragments, an initramfs spec, the header, the footer. Every input is named by content (a git commit, a file's sha256), never by a path on one host.
+
+`lpoco bringup ensure NAME` (Rust, lab-tools) does what the author asked, on any machine with Nix: the image's Nix store path is computed from its sha256 and name (a fixed-output path); present in the store - done; else `nix copy --from` each cache the lab declares (a plain file:// directory, or ssh:// to the lab host) - done; else the recipe is built in Nix's sandbox as a fixed-output derivation whose outputHash is the declared sha256, so Nix itself refuses a build that does not equal it, and the result is copied to the cache. An image with no sha256 yet is built input-addressed and its sha256 then declared. lpoco-attended boots `[images.NAME]` through ensure, so a procedure names an image and its recipe, not a file.
+
+Nix is used for what it already does - the content-addressed store, the sandbox, the binary cache, and the toolchain pinned by a nixpkgs commit and hash (as lab-tools' shell.nix) - and nothing else: recipes stay TOML, the image steps stay lpoco-bringup's Rust (pack, swap, initramfs build), one generic derivation in lab-tools turns a recipe into a build. No Python enters the recipe sandbox: the AVB hash footer moves from avbtool into lpoco-bringup.
+
+Images whose kernel was built by hand (timestamp, mll@grig, a -dirty tree, the host's rolling clang) take that Image.gz as an input by sha256, imported into the cache once; a kernel built from an int/ tag from now on is built in the sandbox with KBUILD_BUILD_TIMESTAMP/USER/HOST fixed and its release named from the tag, and must pass `nix-build --check`.
+
+Why
+: The author, 2026-11-23: procedures should not be "bound to some external files of images", but point to a recipe; "if the same procedure and recepy is ran on another machine it doesnt need the image it will make it". Measured the same day (research image-recipes-how-it-stands): a Nix fixed-output path is computed from the declared sha256 alone, an unsigned file:// cache restores it for a normal user, and a derivation with that outputHash resolves without building - Nix already is "take it from a cache keyed by its hash, or build it and check it"; z21 was rebuilt byte for byte from z20 and its dtb by lpoco bringup image swap; the hand-built kernel was not reproducible from what was recorded, for want of exactly the inputs a sandbox and a pinned toolchain record. Nix is on the host (lab-machine setup/nix.sh) and pins lab-tools' shell already; recipes in TOML keep the lab's data where its tools and records read it; the image steps are lpoco-bringup's Rust already.
+
+Rejected
+: Nix whole, recipes written as Nix expressions (Mobile NixOS's way): Mobile NixOS dropped google-walleye on 2023-09-14, never had surya or sm7150, and has no AVB handling; per-image Nix expressions would put the lab's image data in a language none of our tools or records read - we take Nix's store, sandbox and pin, not its language for our data.
+A thin Rust tool with its own hash-keyed directory store (the do-it-ourselves baseline): it would reinvent the store, its integrity check, its copy between machines and a sandbox, all of which Nix already gives on the host (measured: an image restored from an unsigned file:// cache by its sha256 in 0.3 s), and it would still need Nix or a container to pin the toolchain for "any machine". Kept as the fallback should fixed-output builds prove unworkable.
+pmbootstrap (Nura, ex-postmarketOS): Python (practice 21), Alpine chroots, a distfiles cache only - nothing keyed by an image's inputs; its surya now boots U-Boot from boot, not our image shape.
+Yocto/BitBake sstate: the right keying (inputs plus dependencies' hashes, a hash-equivalence server, mirrors over HTTP) but BitBake is Python and it is a whole distribution builder for two boot images.
+Buildroot plus ccache: no output cache by design (ccache only speeds compiles); a rootfs builder.
+mkosi: Python; makes disk images and UKIs, not Android boot images; no input-keyed output cache.
+Bazel/Buck2 with a REAPI remote cache (and Android's Kleaf): the action-cache + CAS model is right, but the client, its rules and Kleaf bring Python and a build system for one image step; Kleaf is not fully hermetic; Buck2 has no stable release.
+BuildStream: a CAS and remote assets, but Python.
+Content-addressed derivations (ca-derivations), flakes, Attic: experimental or early; fixed-output paths and a file:// cache are enough and stable.
+An OCI registry (ORAS) as the store: needs a registry; a later transport if the cache leaves the lab host.
+
+About
+: self-explaining-structure
+
+Research
+: image-recipes-how-it-stands
