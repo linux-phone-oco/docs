@@ -7935,28 +7935,6 @@ About
 : self-explaining-structure
 
 
-<a id="kernel-assemble-from-topics"></a>
-### lpoco-bringup kernel assemble: a phone's test kernel int/DEVICE/LIST built from a named list in its kernel/topics.toml, tagged
-
-Project
-: linux-phone-oco/lab-tools
-
-Status
-: open
-
-Note
-: Decision 2026-11-23-structure-kernel-topics-and-integration. Reads a named list of the lab's kernel/topics.toml (base; then topic/ITEM or backport/ITEM/BASE in order, each with what it is for and its state: known-good with test-run and tested commit, or trying). Starts from the base every time in a worktree of the one kernel clone (rerere on), merges each, stops at a conflict naming the two, tags int/DEVICE/LIST/BASE/N with base and each sha in the message. Refuses a topic with no upstream-item row or whose FROMLIST(item) subjects disagree. Plain git, no b4. Rests on linux-next's Next/Trees and qcom-next (research structure-review-look-around).
-
-Opened
-: 2026-11-23
-
-Proof
-: a test: a list of two topics on a base assembles to a tag holding both; a conflict stops naming both topics; a topic with no upstream-item row is refused
-
-About
-: self-explaining-structure
-
-
 <a id="old-branches-cleared"></a>
 ### Old branches cleared: auto-delete head branches on, merged branches deleted, the others kept as archive/NAME tags
 
@@ -7976,6 +7954,31 @@ About
 : self-explaining-structure
 
 
+<a id="kernel-assemble-from-topics"></a>
+### lpoco-bringup kernel assemble: the record checks of a phone's kernel list, then rhizoid assemble builds int/DEVICE/LIST
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Reshaped 2026-11-23 by decision 2026-11-23-structure-git-flows-run-on-rhizoid: the merge, rerere and tag loop lives in rhizoid; this keeps the refusals that need records (no upstream-item row; FROMLIST(item) subjects that disagree, as check-fork-tags.sh) and the image build. Do not build the merge loop here.
+
+Opened
+: 2026-11-23
+
+Waits
+: git-rhizoid's rhizoid assemble (the rhizoid lane, after the steward's hand-back)
+
+Proof
+: a test: a list naming a topic with no upstream-item row is refused before rhizoid runs; a good list is passed to rhizoid assemble and its tag read back
+
+About
+: self-explaining-structure
+
+
 <a id="lab-machine-root-clones-only"></a>
 ### ~/Projects/linux-phone-oco holds clones only: worktrees, run logs and upstream-queue moved out with pointers; the kernel clone moved in
 
@@ -7986,7 +7989,7 @@ Status
 : in-progress
 
 Note
-: Root cleared 2026-11-23 by the steward (material README.md of research structure-review-what-is): 7 worktrees removed (one with spent edits), 1 moved to the worktree home, 4 logs into google-walleye-lab research, upstream-queue removed (byte-equal to upstream/; README kept in the material). Left: the kernel clone's move in one builder change with its 155 paths (decision 2026-11-23-structure-lab-machine-homes), and lab.toml [clones] naming linux and marking sxmo-utils a fork (orchestration).
+: Root cleared 2026-11-23 by the steward: it holds the eight clones only. Left: the kernel clone's move in one walleye builder change with its 155 paths (decision 2026-11-23-structure-lab-machine-homes); lab.toml [clones] names linux (orchestration). Which clone is a fork, and of what, is git-rhizoid's graph, not [clones] (decision 2026-11-23-structure-git-flows-run-on-rhizoid).
 
 Opened
 : 2026-11-23
