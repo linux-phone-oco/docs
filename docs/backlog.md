@@ -8508,7 +8508,7 @@ Proof
 : lpoco bringup image swap z20 --dtb z21.dtb gives z21's sha256 with no avbtool on PATH; the footer bytes equal avbtool's
 
 Rank
-: 1
+: 3
 
 About
 : self-explaining-structure
@@ -8536,7 +8536,7 @@ Proof
 : nix-build --check of the kernel derivation gives the same Image.gz, and an image made from it declares its sha256 and is served by ensure
 
 Rank
-: 2
+: 1
 
 About
 : self-explaining-structure
@@ -8567,7 +8567,7 @@ Proof
 : a dry run of a walleye fastboot procedure on a checkout with no build/images gets z21 by ensure (from the cache) with its sha256 equal, and says so
 
 Rank
-: 3
+: 2
 
 About
 : self-explaining-structure
