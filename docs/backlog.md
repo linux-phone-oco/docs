@@ -8313,3 +8313,31 @@ Proof
 
 About
 : phone-declared-transport
+
+
+<a id="linux-to-bootloader-by-restart2"></a>
+### From a phone's Linux to its bootloader by reboot(2) RESTART2 'bootloader', not busybox 'reboot bootloader'
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Walleye lane 2026-11-23: busybox 'reboot bootloader' drops the argument (busybox signals init, init calls reboot(RB_AUTOBOOT); google-walleye-lab research walleye-reboot-reason-bootloader-read, PR 784). A static reboot(2) LINUX_REBOOT_CMD_RESTART2 'bootloader' binary (google-walleye-lab tools/walleye-reboot, PR 809) pushed to /tmp reached the bootloader in rerun 7 (PR 814); the 'fastboot reboot' after it left the phone in fastboot 240 s, cause not known. Wherever lpoco lab takes a phone from Linux to fastboot over its transport, use such a helper (lift walleye's into lab-tools, built for the phone's arch) or the device's declared command, never 'reboot bootloader'. Read walleye's code and research first; its real-phone proof is walleye-transport-real-phone-run.
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: lab-tools tests: the Linux-to-bootloader step sends the RESTART2 helper, not 'reboot bootloader', over a stand-in transport; the helper's argument is 'bootloader'
+
+Rank
+: 3
+
+About
+: self-explaining-structure
