@@ -6149,3 +6149,27 @@ Rejected
 
 About
 : nfpm-on-the-lab-host
+
+---
+
+
+<a id="2026-11-23-follow-moved-tool-and-token"></a>
+### follow: moved tool pins and the token
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: Took follow-never-locks-itself-out (the first row, nfpm-on-the-lab-host, waits for the host to follow 0.48.0 before [tools.nfpm] can be declared). Landed lab-tools #384: a family follow is not stopped by FAIL lines of tools it installs itself; the releases request carries GITHUB_TOKEN to api.github.com via curl stdin. Reviewed by the programmer subagent; its token-hygiene findings applied.
+
+Considered
+: Reading the token from gh auth or ~/.config/ideal-agent/token: the file is forbidden by the Top; gh auth and ETag left open.
+
+Rejected
+: Putting the token on curl's command line (visible in ps).
+
+About
+: follow-never-locks-itself-out

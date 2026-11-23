@@ -8692,10 +8692,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: Seen 2026-11-23 by orchestration: the host sat at lpoco 0.44.3 all day. (1) follow refused while the host check failed on rhizoid (pinned 0.3.13, found 0.3.9), which only a newer follow installs; (2) follow 0.44.3 installed lpoco-attended at the family tag, gone since lab-tools #342; (3) releases read from api.github.com unauthenticated got HTTP 403/504. Unstuck by hand once (lpoco-host 0.47.1 from its asset, lab.toml lpoco = 0.47.1, lpoco-host prepare now). Fix: a check FAIL that is only what follow itself installs does not block follow; the dispatcher's mixed-version refusal names lpoco-host prepare now. Added by the Top: (a) lpoco host check fails when the installed lpoco is behind lab.toml's pin, or when follow's last success is older than a set age, so the next lockout shows within the hour; (b) release reads use the host's existing gh auth or the API with ETag/conditional requests - never read or copy ~/.config/ideal-agent/token into follow (it stays out of tools and CI).
+: 2026-11-23, lab-tools-builder: part done (lab-tools #384, main dcdb733): (1) a check FAIL that is only a moved tool pin (tool NAME: FAIL, ...) no longer stops a family follow, before or after its install (host/tests/follow.rs a_check_that_fails_only_on_a_tool_follow_installs_does_not_stop_a_family_release, seen failing first; another FAIL still stops it); (3) the releases request carries GITHUB_TOKEN from the environment to api.github.com only, through curl's stdin config, refused when it holds a character a token does not, redirects https only; it never reads ~/.config/ideal-agent/token. Open: the follow service must be given GITHUB_TOKEN, or follow reads through gh auth / ETag (the Top's b, not built); (2) a family member whose tag is gone (lpoco-attended) and the dispatcher's mixed-version message; the Top's (a): lpoco host check fails when the installed lpoco is behind its pin or follow's last success is stale. Reviewer's leftovers: judge_check_without matches any 'tool NAME: FAIL,' line, narrow it to pinned/found; tests for lookalike URLs and for asset fetches sending no token.
 
 Opened
 : 2026-11-23
