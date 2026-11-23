@@ -5981,3 +5981,27 @@ Rejected
 
 About
 : attended-lift-sees-groups
+
+---
+
+
+<a id="2026-11-23-image-ensure-z21-landed"></a>
+### image ensure z21 landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lab-tools #368: lpoco bringup image ensure NAME, [images.NAME.recipe] in the manifest (control cycle and over-long cmdline refused), bringup/src/ensure.nix, nixpkgs.nix shared with shell.nix. Proof bringup/tests/ensure.rs (build, in the store, from the cache, wrong sha256 refused, leftover not taken; seen failing first as no verb). Measured on the lab: z21 from z20 + its dtb, built in the sandbox, equal to bdc0a891...; second run in the store; with the path deleted, from the cache. Programmer review fixed: control cycle, parts before control, seed hashing streamed and unreadable files skipped, cache errors said, private scratch dir, stdout/stderr split, sha2 0.11, test guard on avbtool 1.4.0.
+
+Considered
+: Building avbtool 1.3.0 from nixpkgs (one byte differs). Building the control before the parts (wasted minutes).
+
+Rejected
+: Nothing held back.
+
+About
+: image-recipe-ensure-z21

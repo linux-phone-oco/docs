@@ -3129,3 +3129,31 @@ About
 
 Research
 : image-recipes-how-it-stands
+
+
+<a id="2026-11-23-ensure-pins-avbtool-and-takes-seeds"></a>
+### 2026-11-23-ensure-pins-avbtool-and-takes-seeds
+
+Brief
+: image ensure is a verb of image; the recipe sandbox pins avbtool 1.4.0 by AOSP revision; hand-built inputs enter through --seed
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-23
+
+Decision
+: lpoco bringup image ensure NAME (a verb of image, beside swap) is the first slice of 2026-11-23-image-recipes-on-nix-fixed-output-paths. [images.NAME.recipe] = control (another image) + kernel/dtb/ramdisk by sha256 + cmdline. Order: store, cache, seed folder (--seed: a file whose sha256 is wanted enters the store once and is copied to the cache), else the recipe built by one generic derivation (bringup/src/ensure.nix: builds lpoco-bringup from --source or the release tag, runs image swap, outputHash = declared sha256). Until image-avb-footer-in-rust, the sandbox's avbtool is AOSP external/avb at ba2dec4b (what android-tools 37.0.0p1 vendors, byte-identical to the host's avbtool 1.4.0). A path is in the store only if nix-store --check-validity says so. Step lines go to stderr, the store path alone to stdout.
+
+Why
+: Measured 2026-11-23: nixpkgs' android-tools (35.0.2) has avbtool 1.3.0 and its footer differs from the host's 1.4.0 by one byte, so z21 built there missed the declared sha256; with the pinned 1.4.0 z21 was rebuilt from z20 and its dtb in the sandbox, equal to device.toml, then served from the store and from the cache. Nix leaves a refused build's file unregistered at the expected path, so existence is not validity.
+
+Rejected
+: nixpkgs' android-tools avbtool: 1.3.0, a different footer byte. Taking a file's existence at the path as the store holding it: a refused build leaves one. A top-level ensure verb: image verbs are the family's shape (swap, bisect).
+
+About
+: self-explaining-structure
+
+Research
+: image-recipes-how-it-stands
