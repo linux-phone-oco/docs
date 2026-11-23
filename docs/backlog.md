@@ -8154,3 +8154,31 @@ Rank
 
 About
 : self-explaining-structure
+
+
+<a id="kernel-assemble-reproduces-and-names"></a>
+### lpoco bringup kernel assemble passes --reproduces through and takes the branch names a lab's list really uses
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Walleye's kernel-topics builder, 2026-11-23: assemble refuses archive/ITEM branch names and has no --reproduces, so the first lists (ufs-off-e123d3bff, ufs-on-3644090c7) were reproduced with rhizoid assemble --reproduces directly - EQUAL, tags pushed. Pass --reproduces COMMIT to rhizoid and print its verdict; take any branch kind MAP.md names that rhizoid assembles (topic/, backport/, and archive/ where a list carries one), keeping the record check by ITEM. Read walleye's kernel/topics.toml for the real names first.
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: lab-tools bringup tests: a list naming an archive/ITEM branch with an upstream-item row is assembled; --reproduces is passed to the stand-in rhizoid and its equal/differs verdict printed
+
+Rank
+: 2
+
+About
+: self-explaining-structure
