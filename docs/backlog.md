@@ -7897,25 +7897,6 @@ About
 : bringup-steps
 
 
-<a id="structure-review"></a>
-### Structure review: every repository, folder, branch and brief self-explaining
-
-Project
-: linux-phone-oco/docs
-
-Status
-: in-progress
-
-Note
-: Steward, 2026-11-23, while all lanes are paused: reflections from six roles gathered, look-around done, rules decided (research/structure/2026-11-23/design.md); next: apply after the Top Coordinator's 'all lanes paused', then each role confirms the map.
-
-Opened
-: 2026-11-23
-
-About
-: self-explaining-structure
-
-
 <a id="briefs-follow-the-structure-map"></a>
 ### Role briefs follow the structure map: worktrees only by branch, run output to AGENT_BUILD, ROLE/WHAT branches, a keeper started for one named item
 
@@ -8043,6 +8024,25 @@ Needs
 
 Proof
 : lab-tools tone tests: the argument tests leave the working folder unchanged; no .wav tracked at the top
+
+About
+: self-explaining-structure
+
+
+<a id="structure-review"></a>
+### Structure review: every repository, folder, branch and brief self-explaining
+
+Project
+: linux-phone-oco/docs
+
+Status
+: done
+
+Note
+: Done 2026-11-23. Decisions 2026-11-23-structure-* (nine, five amended by the roles), MAP.md, a README and map in every repository, branches and the lab machine's root cleared, ideal-agent 0.3.65 holding the homes, rhizoid v0.2.0 checked for the kernel flow. All six roles confirmed the map (walleye, surya, orchestration, upstreams, ideal-agent, ikb). Follow-on work is on each owner's queue: briefs-follow-the-structure-map, kernel-assemble-from-topics, lab-machine-root-clones-only (docs); surya-kernel-split-into-topics (surya-lab); idealkb's docs-pages-rendered-in-ci, go-as-a-record, material-and-file-have-a-home.
+
+Opened
+: 2026-11-23
 
 About
 : self-explaining-structure
