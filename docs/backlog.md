@@ -7964,7 +7964,7 @@ Status
 : open
 
 Note
-: Reshaped 2026-11-23 by decision 2026-11-23-structure-git-flows-run-on-rhizoid: the merge, rerere and tag loop lives in rhizoid; this keeps the refusals that need records (no upstream-item row; FROMLIST(item) subjects that disagree, as check-fork-tags.sh) and the image build. Do not build the merge loop here.
+: Reshaped 2026-11-23 by decision 2026-11-23-structure-git-flows-run-on-rhizoid: the merge, rerere and tag loop lives in rhizoid; do not build it here. The wrapper: the record checks (no upstream-item row; FROMLIST(item) subjects that disagree, as check-fork-tags.sh), then rhizoid assemble LIST --lists kernel/topics.toml --repo CLONE --json, then the image build; push the int/ tag once an image names it (tags are only local in rhizoid, and every image's recipe would be lost with the lab clone); once the image is recorded, end rhizoid's worktree with --done --force (Top Coordinator, 2026-11-23). rhizoid v0.2.0 is released (git-rhizoid/rhizoid) but not on the host's PATH: declare it as a host tool at its pin, never a hand install. Walleye's lists come later (its builder); test against a throwaway repository.
 
 Opened
 : 2026-11-23
