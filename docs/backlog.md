@@ -8378,10 +8378,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Rhizoid lane, 2026-11-23: follow installs a moved [tools.NAME] pin only when both keepers' leases are free (lab-tools #348), so rhizoid 0.3.11 sat uninstalled most of the day behind walleye's keeper while its fixes waited. rhizoid, land and agent-env never touch a phone; only the lpoco family (and devlab) drive one. Release-pin and script tools outside the family install at once, still checked afterwards with their step-back; the family keeps the lease window. Never take a running keeper's lease.
+: 2026-11-23, lab-tools-builder: landed (lab-tools #355, main edf3f31): follow_tools takes no lease and waits for no keeper; the family path keeps the lease window. Proof: host/tests/follow_tools.rs a_keepers_lease_does_not_hold_back_a_tool_that_never_drives_a_phone and a_tool_pin_newer_than_the_installed_binary_is_installed_and_stamped_without_taking_a_lease (seen failing first); family waits still covered by follow.rs. Review: moved_tools drops OLD_NAMES (devlab, tone) so a script tool of that name cannot install lease-free. Open: Script arm of manifest validation does not refuse family/old names (lib.rs ~1236); [follow] window still applies to tools.
 
 Opened
 : 2026-11-23

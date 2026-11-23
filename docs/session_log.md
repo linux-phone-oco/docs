@@ -5840,3 +5840,27 @@ Rejected
 
 About
 : host-declares-tool-timers
+
+---
+
+
+<a id="2026-11-23-host-only-tools-skip-the-lease-window"></a>
+### Host-only tools skip the lease window
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: follow_tools (lpoco host follow, moved [tools.NAME] pins) no longer waits for or takes any phone lease; moved_tools also skips the old names devlab and tone. README and no-now message updated. lab-tools #355.
+
+Considered
+: Keeping the [follow] window for tools (kept: the author's declared setting). Refusing family names for Script tools in manifest validation (reviewer's finding; not done, noted open).
+
+Rejected
+: A per-tool 'drives_phone' flag: nothing needs it while the family is the only phone-driving set, and the filter already excludes it.
+
+About
+: host-only-tools-skip-the-lease-window
