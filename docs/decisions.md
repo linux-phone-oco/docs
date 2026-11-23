@@ -3182,3 +3182,31 @@ Rejected
 
 About
 : nfpm-on-the-lab-host
+
+
+<a id="2026-11-24-one-agent-at-a-time"></a>
+### 2026-11-24-one-agent-at-a-time
+
+Brief
+: One agent at a time across linux-phone-oco, no parallel agents where possible: tokens are short, quality is not traded; walleye's phone work goes first
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-23
+
+Decision
+: Binds all linux-phone-oco sessions. The author, 2026-11-24, verbatim: "keep up the work, one agent at the time, no parallel agents where possible, im low on tokens, but dont want to lose in quality of work". So: at most one lab-tools builder at a time, launched only while no walleye session is working (list_sessions first; walleye's phone work goes first); no subagent fan-outs, no reviewers or coordinators run in parallel; builders run on a lighter model with short briefs; the quality steps stay - checks, land, read back. The lanes waker runs hourly and wakes one lane only when nothing runs. For the rhizoid coordinator and the steward: this binds your lanes too - your next work waits for an idle moment rather than running beside a lane.
+
+Why
+: The author's word, relayed by the Top Coordinator on 2026-11-24: he is low on tokens and does not want quality to drop.
+
+Rejected
+: Pausing everything (he said keep up the work); cutting the quality steps to save tokens (he said not to lose quality).
+
+About
+: self-explaining-structure
+
+Research
+: structure-review-look-around
