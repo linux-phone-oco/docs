@@ -5552,3 +5552,27 @@ Rejected
 
 About
 : bootimg-trigger-per-base
+
+---
+
+
+<a id="2026-11-23-bootimg-debian-real-install"></a>
+### boot.img trigger: Debian through a real dpkg -i
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lab-tools #339 (eba9fca): Debian container test installs a fake linux-image with dpkg -i (postinst runs /etc/kernel/postinst.d, systemd-boot bridge to kernel-install); seen failing (no initrd), plugin now finds Debian's initrd.img-VERSION; programmer review applied (exact name, not a glob; header says what is not proved).
+
+Considered
+: qcom-phone-utils on Debian instead of a plugin (not needed: the bridge works)
+
+Rejected
+: stubbing the initrd by hand in the test: the real initramfs-tools output is the stronger proof
+
+About
+: bootimg-trigger-per-base
