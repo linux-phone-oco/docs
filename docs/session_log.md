@@ -6194,3 +6194,27 @@ Rejected
 
 About
 : follow-never-locks-itself-out
+
+---
+
+
+<a id="2026-11-24-follow-gh-token"></a>
+### follow asks with gh's token
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: Landed lab-tools #388 (main 4d44c37, read back): with no GITHUB_TOKEN, follow runs gh auth token --hostname github.com --no-refresh (GH_PROMPT_DISABLED=1) for api.github.com urls only and sends it through curl's stdin. Proof: host/tests/follow.rs with_no_token_given_follow_asks_gh... (seen failing first), a_given_token_wins_and_gh_is_not_asked, gh_is_not_asked_for_a_url_that_is_not_githubs_api, a_gh_that_fails_or_prints_no_token_leaves_follow_anonymous. Programmer review applied: hostname pinned (else GH_HOST's token could go to github.com), no refresh or prompt, one is_github_api.
+
+Considered
+: ETag conditional requests: not needed once gh gives an authenticated read.
+
+Rejected
+: Reading the token file (forbidden). Not done from the review: a timeout on gh, retry without token on a 401 from a stale gh token, a line saying gh was tried.
+
+About
+: follow-never-locks-itself-out
