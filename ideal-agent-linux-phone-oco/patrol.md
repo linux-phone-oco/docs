@@ -7,7 +7,7 @@ Also practices: 42
 **One round over linux-phone-oco every six hours: measure the places, the conveyor, the lanes and the
 host below, read-only; file each sign once in the base that owns it; report to the Top Coordinator.**
 Read every repository from a worktree of your own at origin/main, removed at the end:
-`git -C ~/Projects/linux-phone-oco/REPO fetch -q && git -C ~/Projects/linux-phone-oco/REPO worktree add --detach ../REPO-patrol-$(date +%s) origin/main`.
+`git -C ~/Projects/linux-phone-oco/REPO fetch -q && git -C ~/Projects/linux-phone-oco/REPO worktree add --detach ~/.local/share/agent-worktrees/REPO/patrol-$(date +%s) origin/main`.
 
 ## Read-only, always
 
@@ -60,7 +60,7 @@ Judge only after measuring; what is not measured is "not known yet".
    (decision 2026-11-18-workarounds-read-as-one). A sign is each line it ends 1 on (`due: retire`), and any
    `WORKAROUND(` rule spoken of in a backlog note but not marked where it stands.
 6. **Role health:** the newest ideal-agent's `scripts/start-weight` on docs at its main, as one command:
-   `R=$(date +%s); git -C ~/Projects/linux-phone-oco/docs fetch -q origin && git -C ~/Projects/linux-phone-oco/docs worktree add -q --detach ~/Projects/linux-phone-oco/wt-docs-patrol-$R origin/main && S=$(ls -d ~/.claude/plugins/cache/ideal-agent/ideal-agent/*/scripts/start-weight | sort -V | tail -1) && sh "$S" ~/Projects/linux-phone-oco/wt-docs-patrol-$R`
+   `R=$(date +%s); git -C ~/Projects/linux-phone-oco/docs fetch -q origin && git -C ~/Projects/linux-phone-oco/docs worktree add -q --detach ~/.local/share/agent-worktrees/docs/patrol-$R origin/main && S=$(ls -d ~/.claude/plugins/cache/ideal-agent/ideal-agent/*/scripts/start-weight | sort -V | tail -1) && sh "$S" ~/.local/share/agent-worktrees/docs/patrol-$R`
    (PLACE is the worktree, the agent folder found in it; never the shared clone, which the guard refuses when
    behind; remove the worktree at the end); `scripts/read-weight` on each transcript started since your last round
    (`find ~/.claude/projects/-home-mll -name '*.jsonl' -newermt '-6 hours'`).
