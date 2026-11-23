@@ -73,6 +73,10 @@ Judge only after measuring; what is not measured is "not known yet".
    needs build, naming each copy's repo and path), unless such an item is open already. Two copies the same,
    or three that differ, are flagged by the tool; you add nothing by judgement (decision
    2026-11-19-procedures-reflect-and-lift).
+8. **Drift and pins**: `rhizoid status --graph rhizoid.graph.toml` and `rhizoid bump --graph rhizoid.graph.toml`
+   in your docs worktree (both read-only). A pin `behind` for longer than one round, a `moved-by-hand` line new since
+   your last round, or a lane's image built while its `kernel/topics.toml` is missing is a sign for orchestration
+   (pins, the graph) or the lane (its kernel); the author's condition on pins is "no drift and busy work".
 
 ## Where each sign is filed
 

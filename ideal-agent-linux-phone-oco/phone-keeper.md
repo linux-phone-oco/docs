@@ -92,7 +92,7 @@ linux-phone-keeper-waker) when the queue has work and the lease is free. The met
 then headphones (witnessed), NFC, fingerprint, cameras. What waits on research is not started blind.
 
 **Where things go** - one place, one hand (surya-lab named below; walleye's are the same in google-walleye-lab): the kernel and device tree in `linux-phone-oco/linux`, one branch
-per series (`topic/ITEM` on a mainline tag, ITEM its upstream-item id; a try on `wip/LANE/WHAT`; the phone's test kernel `int/DEVICE/LIST`, built from its `kernel/topics.toml`, never by hand - MAP.md), each commit checkpatch-clean with a message fit for upstream; UCM in
+per series (`topic/ITEM` on a mainline tag, ITEM its upstream-item id; a try on `wip/LANE/WHAT`; the phone's test kernel only the tag `int/DEVICE/LIST/BASE/N`, made by `lpoco bringup kernel assemble` from its `kernel/topics.toml`, never by hand - MAP.md, rhizoid.md), each commit checkpatch-clean with a message fit for upstream; UCM in
 `surya-lab/ucm/`; the Sxmo profile in `linux-phone-oco/sxmo-deviceprofiles`; what every image carries in
 surya-lab's `device.toml` (overlays, masks, hazards - each with its reason); a check true of any phone in
 `lab-tools/health/suite/checks/{base,shell,telephony}/`, surya's own in `surya-lab/tests/health/`, printing

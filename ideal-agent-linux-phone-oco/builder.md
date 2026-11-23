@@ -15,17 +15,15 @@ touch a phone.** Your Name picks the place, the query, the base you record in an
 
 ## Fresh worktrees, never the shared clone
 
-The shared clones under `~/Projects/linux-phone-oco/` may be stale: never work in them. First:
+The shared clones under `~/Projects/linux-phone-oco/` may be stale: never work in them. In the clone of the
+repository your item changes (lab-tools-builder: docs too, for its records), make a worktree of your own at
+origin/main with ideal-agent's `branch`:
 
-- lab-tools-builder - docs, then lab-tools the same way:
-  `R=$(date +%s); git -C ~/Projects/linux-phone-oco/docs fetch -q origin && git -C ~/Projects/linux-phone-oco/docs worktree add -q --detach ~/.local/share/agent-worktrees/docs/builder-$R origin/main && cd ~/.local/share/agent-worktrees/docs/builder-$R`
-  `git -C ~/Projects/linux-phone-oco/lab-tools fetch -q origin && git -C ~/Projects/linux-phone-oco/lab-tools worktree add -q --detach ~/.local/share/agent-worktrees/lab-tools/builder-$R origin/main`
-- walleye-builder:
-  `R=$(date +%s); git -C ~/Projects/linux-phone-oco/google-walleye-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/google-walleye-lab worktree add -q --detach ~/.local/share/agent-worktrees/google-walleye-lab/walleye-builder-$R origin/main && cd ~/.local/share/agent-worktrees/google-walleye-lab/walleye-builder-$R`
-- surya-builder:
-  `R=$(date +%s); git -C ~/Projects/linux-phone-oco/surya-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/surya-lab worktree add -q --detach ~/.local/share/agent-worktrees/surya-lab/surya-builder-$R origin/main && cd ~/.local/share/agent-worktrees/surya-lab/surya-builder-$R`
+`cd ~/Projects/linux-phone-oco/REPO && git pull -q --ff-only && branch builder/WHAT`
 
-At the end remove each: `git -C ~/Projects/linux-phone-oco/REPO worktree remove ~/.local/share/agent-worktrees/REPO/NAME` (a run whose output is kept moves it into its research folder first).
+It lands you in `~/.local/share/agent-worktrees/REPO/builder/WHAT` on branch `builder/WHAT` (MAP.md). At the end,
+after `land`, remove it: `git -C ~/Projects/linux-phone-oco/REPO worktree remove ~/.local/share/agent-worktrees/REPO/builder/WHAT`
+(a run whose output is kept moves it into its research folder first).
 
 Large outputs - kernel builds, images, package trees, a `cargo install` build - go to `$AGENT_BUILD` (on disk,
 set by agent-env, with `TMPDIR` under it); a cargo target stays in its worktree. The session scratchpad under
@@ -52,6 +50,24 @@ Your coordinator placed it before starting you. **If the query returns nothing, 
   once with argenv ([rust-with-argenv](../docs/concepts.md#rust-with-argenv)), no new Python.
 - walleye-builder: checksums for every image; any program in Rust with argenv, no new Python.
 - surya-builder: a program in Rust with argenv (a rust-script or a bin), no new Python or shell logic; its tests, a dry run first.
+- walleye-builder, surya-builder: a check that reads a live phone is tested against text a phone printed (captured in a research folder), never against a line typed as a stand-in: two walleye runs were lost to that on 2026-11-23.
+
+## The kernel (walleye-builder, surya-builder)
+
+Every kernel change is a branch of the kernel clone, never a .patch file in a lab (MAP.md, "The kernel's
+branches"): one series on `topic/ITEM` on a mainline tag (ITEM its upstream-item id: record the item first), a
+try on `wip/LANE/WHAT`, pushed to the fork and read back with `git ls-remote`. A test kernel is only an `int/`
+tag from a named list of the lab's `kernel/topics.toml`:
+
+- `lpoco bringup kernel assemble LIST --lists kernel/topics.toml --repo CLONE --records DOCS` - record checks,
+  then `rhizoid assemble`; its `worktree=` is the tree you build in (`build/` says how);
+- a lab's first list, or a list replacing a kernel built another way: add `--reproduces COMMIT` (the commit the
+  current image was built from) until it says `equal`;
+- the image's sha256 and `kernel_tag` in `device.toml`, then `lpoco bringup kernel publish TAG --repo CLONE`
+  (pushes the tag, ends the worktree); a tag no image names: `rhizoid assemble --done TAG --repo CLONE`.
+
+A pin (a Cargo git tag, `idealkb.toml`) is never edited by hand: `rhizoid bump` moves it. Every git job's
+command: [rhizoid.md](rhizoid.md).
 
 ## Recording and the writes you may make
 
