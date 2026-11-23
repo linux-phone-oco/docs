@@ -5912,3 +5912,27 @@ Rejected
 
 About
 : linux-to-bootloader-by-restart2
+
+---
+
+
+<a id="2026-11-23-restart2-slice3"></a>
+### restart2 slice 3: a failing phone put is tested
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lab-tools #363 (test only): attended/tests/attended.rs a_helper_that_cannot_be_pushed_is_never_run_and_the_step_says_what_the_push_said (seen failing first: the fake devlab could not fail a push; now put-fails does): with phone put failing the step exits 1 with what the push said, nothing is run as root, nothing rebooted, no boot. Closes one review note of slice 2.
+
+Considered
+: the dry-run-shows-refusal note: left open, it changes what a dry run prints for every device
+
+Rejected
+: Building restart2 static and declaring [images.restart2]/[boot.to_bootloader] in surya/walleye device.toml: those are the labs' own places, not lab-tools; item stays in-progress until the lpoco-attended release with #361 and the movers' pin bumps
+
+About
+: linux-to-bootloader-by-restart2
