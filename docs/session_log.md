@@ -5648,3 +5648,27 @@ Rejected
 
 About
 : attended-releases-when-it-changes
+
+---
+
+
+<a id="2026-11-23-attended-release-landed"></a>
+### lpoco-attended tagged only when it changes: landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lab-tools #342 (0f44973): lpoco-attended out of version_group, naming lpoco-manifest by its git tag (release-plz config reference has no setting against dependent bumps, so orchestration's option a); dispatcher and lpoco list take attended at its own version; lpoco-host FAMILY and assets.yml no longer carry it. Proofs: release_family a_release_moves_lpoco_attended_only_when_attended_changed (fixture with a file:// git dependency), lpoco_attended_names_lpoco_manifest_by_tag_not_by_path, dispatch tests; two programmer reviews.
+
+Considered
+: manifest out of the family too (skews versions); a hard link of lpoco for the dispatch tests (a copy raced: text file busy).
+
+Rejected
+: Path dependency kept (moves attended every release); manifest tag follow-up: nothing checks the pinned tag against new manifest keys (rhizoid bump moves it).
+
+About
+: attended-releases-when-it-changes
