@@ -8664,10 +8664,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: Two items wait on it: lpoco-layer-pack and bootimg-trigger-per-base. lab.toml's release form takes a bare binary asset with a .sha256 beside it; nfpm's GitHub releases ship tar.gz archives and a checksums.txt. Look first at whether the form should take an archive and a checksums file, or whether nfpm comes another way (Nix, already on the lab, has nfpm). The host-only rule (lab-tools #355) lets it install without a lease.
+: 2026-11-23, lab-tools-builder: the archive form landed (lab-tools #382, main 851037e); real nfpm v2.49.0 installs and lpoco-host check lists it ok in a scratch home. Open: after the next lab-tools release, declare [tools.nfpm] (repository goreleaser/nfpm, tag v2.49.0, asset nfpm_2.49.0_Linux_x86_64.tar.gz, checksums checksums.txt, member nfpm) in the lab's lab.toml, run prepare on the lab, and prove lpoco layer pack builds a real .apk/.deb. Reviewer's leftovers: parse checksums+member as one Option; share plumbing with install_release.
 
 Opened
 : 2026-11-23

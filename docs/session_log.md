@@ -6125,3 +6125,27 @@ Rejected
 
 About
 : lpoco-layer-pack
+
+---
+
+
+<a id="2026-11-23-nfpm-archive-form"></a>
+### nfpm on the lab host: the archive form of a release pin
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lab-tools #382: checksums + member in [tools.NAME]; 8 tests in host/tests/release_archive.rs; programmer review fixed a symlink member, a skipped broken checksums line, fmt. Real nfpm v2.49.0 installed and checked in a scratch home with root stubbed.
+
+Considered
+: Carrying checksums+member as one parsed Option (reviewer); sharing plumbing with install_release at the second use.
+
+Rejected
+: Not done in this run: the lab's own lab.toml, a lab-tools release, a real lpoco layer pack.
+
+About
+: nfpm-on-the-lab-host
