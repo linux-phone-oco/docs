@@ -7280,7 +7280,7 @@ Proof
 : lab-tools host tests with stand-ins: a newer release and both leases free install it, run check, and write the pin bump; a held lease waits; a failing check restores the previous binaries and reports; a release needing root is not applied and is reported
 
 Rank
-: 1
+: 2
 
 About
 : bringup-steps
@@ -7923,10 +7923,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Decisions 2026-11-23-structure-lab-machine-homes, -branch-names, -go-is-its-own-record. The briefs in ideal-agent-linux-phone-oco/ still tell roles to make worktrees as ~/Projects/linux-phone-oco/wt-ROLE-RUN; each points to MAP.md instead. Owner: orchestration.
+: Landed by orchestration 2026-11-23: every brief makes its worktrees in ~/.local/share/agent-worktrees/REPO/NAME; README points to MAP.md (clones only, AGENT_BUILD, ROLE/WHAT branches, lasting keeper acting only on an open go); phone-keeper names topic/wip/int kernel branches and upstream/LIST/ITEM. The keeper's verdict line waits on ikb's go record and ready --for keeper.
 
 Opened
 : 2026-11-23
@@ -7969,11 +7969,11 @@ Note
 Opened
 : 2026-11-23
 
-Waits
-: git-rhizoid's rhizoid assemble (the rhizoid lane, after the steward's hand-back)
-
 Proof
 : a test: a list naming a topic with no upstream-item row is refused before rhizoid runs; a good list is passed to rhizoid assemble and its tag read back
+
+Rank
+: 1
 
 About
 : self-explaining-structure
@@ -7990,6 +7990,47 @@ Status
 
 Note
 : Root cleared 2026-11-23 by the steward: it holds the eight clones only. Left: the kernel clone's move in one walleye builder change with its 155 paths (decision 2026-11-23-structure-lab-machine-homes); lab.toml [clones] names linux (orchestration). Which clone is a fork, and of what, is git-rhizoid's graph, not [clones] (decision 2026-11-23-structure-git-flows-run-on-rhizoid).
+
+Opened
+: 2026-11-23
+
+About
+: self-explaining-structure
+
+
+<a id="follow-installs-only"></a>
+### lpoco-host follow installs what lab.toml's pin names; rhizoid bumps the pin
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Agreed with the rhizoid coordinator 2026-11-23: rhizoid shows every pin and bumps lab.toml's lpoco pin; follow stops bumping and only installs the pin once both keeper leases are free. Waits on rhizoid's pin bump.
+
+Opened
+: 2026-11-23
+
+Waits
+: git-rhizoid's pin bump of lab.toml
+
+About
+: host-follows-releases
+
+
+<a id="tone-recording-out-of-the-tree"></a>
+### --weird.wav out of lab-tools' top, and a test that keeps lpoco tone from writing into the working folder
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: A 576 KB recording, tracked since #101 (a tone argument test leaked it); the structure map says no recordings at a repository's top. Take it out with a Takes-out: trailer and add the test.
 
 Opened
 : 2026-11-23

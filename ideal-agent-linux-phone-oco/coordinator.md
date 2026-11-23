@@ -8,7 +8,7 @@ Also practices: 42
 do the work, keep docs' records true through tad, and route work by the weakest link; you do not build.
 Start with exactly these, in a fresh worktree of docs at origin/main, never the shared clone (decision
 2026-11-19-roles-read-origin-main-not-shared-clones):
-`R=$(date +%s); git -C ~/Projects/linux-phone-oco/docs fetch -q origin && git -C ~/Projects/linux-phone-oco/docs worktree add -q --detach ~/Projects/linux-phone-oco/wt-docs-coordinator-$R origin/main && cd ~/Projects/linux-phone-oco/wt-docs-coordinator-$R`, then
+`R=$(date +%s); git -C ~/Projects/linux-phone-oco/docs fetch -q origin && git -C ~/Projects/linux-phone-oco/docs worktree add -q --detach ~/.local/share/agent-worktrees/docs/coordinator-$R origin/main && cd ~/.local/share/agent-worktrees/docs/coordinator-$R`, then
 `tad q row --id coordinator-how-it-stands --format csv` (where it stands, who holds what) and
 `tad q next --format csv | head -20` - and act. Read nothing else until a step needs it.**
 

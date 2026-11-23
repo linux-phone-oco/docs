@@ -18,14 +18,14 @@ touch a phone.** Your Name picks the place, the query, the base you record in an
 The shared clones under `~/Projects/linux-phone-oco/` may be stale: never work in them. First:
 
 - lab-tools-builder - docs, then lab-tools the same way:
-  `R=$(date +%s); git -C ~/Projects/linux-phone-oco/docs fetch -q origin && git -C ~/Projects/linux-phone-oco/docs worktree add -q --detach ~/Projects/linux-phone-oco/wt-docs-builder-$R origin/main && cd ~/Projects/linux-phone-oco/wt-docs-builder-$R`
-  `git -C ~/Projects/linux-phone-oco/lab-tools fetch -q origin && git -C ~/Projects/linux-phone-oco/lab-tools worktree add -q --detach ~/Projects/linux-phone-oco/wt-lab-tools-builder-$R origin/main`
+  `R=$(date +%s); git -C ~/Projects/linux-phone-oco/docs fetch -q origin && git -C ~/Projects/linux-phone-oco/docs worktree add -q --detach ~/.local/share/agent-worktrees/docs/builder-$R origin/main && cd ~/.local/share/agent-worktrees/docs/builder-$R`
+  `git -C ~/Projects/linux-phone-oco/lab-tools fetch -q origin && git -C ~/Projects/linux-phone-oco/lab-tools worktree add -q --detach ~/.local/share/agent-worktrees/lab-tools/builder-$R origin/main`
 - walleye-builder:
-  `R=$(date +%s); git -C ~/Projects/linux-phone-oco/google-walleye-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/google-walleye-lab worktree add -q --detach ~/Projects/linux-phone-oco/wt-walleye-builder-$R origin/main && cd ~/Projects/linux-phone-oco/wt-walleye-builder-$R`
+  `R=$(date +%s); git -C ~/Projects/linux-phone-oco/google-walleye-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/google-walleye-lab worktree add -q --detach ~/.local/share/agent-worktrees/google-walleye-lab/walleye-builder-$R origin/main && cd ~/.local/share/agent-worktrees/google-walleye-lab/walleye-builder-$R`
 - surya-builder:
-  `R=$(date +%s); git -C ~/Projects/linux-phone-oco/surya-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/surya-lab worktree add -q --detach ~/Projects/linux-phone-oco/wt-surya-builder-$R origin/main && cd ~/Projects/linux-phone-oco/wt-surya-builder-$R`
+  `R=$(date +%s); git -C ~/Projects/linux-phone-oco/surya-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/surya-lab worktree add -q --detach ~/.local/share/agent-worktrees/surya-lab/surya-builder-$R origin/main && cd ~/.local/share/agent-worktrees/surya-lab/surya-builder-$R`
 
-At the end remove each: `git -C ~/Projects/linux-phone-oco/REPO worktree remove ~/Projects/linux-phone-oco/wt-...-$R`.
+At the end remove each: `git -C ~/Projects/linux-phone-oco/REPO worktree remove ~/.local/share/agent-worktrees/REPO/NAME` (a run whose output is kept moves it into its research folder first).
 
 Large outputs - kernel builds, images, package trees, a `cargo install` build - go to `$AGENT_BUILD` (on disk,
 set by agent-env, with `TMPDIR` under it); a cargo target stays in its worktree. The session scratchpad under

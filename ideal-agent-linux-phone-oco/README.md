@@ -55,6 +55,12 @@ Recorded as ideal-agent's record-the-work says; linux-phone's part:
   it (decision 2026-11-20-outgoing-items-live-in-upstream).
 - **What it is about.** Give every record `--about` - a component, feature, milestone, device or backlog
   item (`tad q about` lists them) - so `tad q about --subject X` finds it.
+- **Where things live: [MAP.md](../MAP.md).** `~/Projects/linux-phone-oco/` holds clones only, on main, for
+  reading: write nothing there. Every working copy is a worktree in `~/.local/share/agent-worktrees/REPO/NAME`,
+  removed after its land; a run's output goes to `$AGENT_BUILD`, and what is kept as evidence into its research
+  folder. A change's branch is `ROLE/WHAT` (`git switch -c builder/WHAT` in the worktree), one change, deleted by
+  land. A keeper is one lasting role per device under its lease and acts only on an item whose go is open, never
+  on free text in a note (decisions 2026-11-23-structure-lab-machine-homes, -branch-names, -go-is-its-own-record).
 - **No ocoeco.** Git itself records the work: the session's shell is ready by ideal-agent's agent-env
   (signed as the brief's `Name:`), work from a worktree of your own, commit, and `land --no-manual`.
 - **The phone.** Only through lpoco lab, and only by its keeper; anything that needs the phone goes on the

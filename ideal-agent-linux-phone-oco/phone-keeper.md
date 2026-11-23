@@ -21,8 +21,8 @@ when a step below names it.
 | walleye-keeper | walleye, Google Pixel 2, MSM8998, through lpoco lab with google-walleye-lab's `device.toml` | `~/Projects/linux-phone-oco/google-walleye-lab` | "walleye coordinator" |
 
 The worktree:
-- surya-keeper: `R=$(date +%s); git -C ~/Projects/linux-phone-oco/surya-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/surya-lab worktree add -q --detach ~/Projects/linux-phone-oco/wt-surya-keeper-$R origin/main && cd ~/Projects/linux-phone-oco/wt-surya-keeper-$R`
-- walleye-keeper: `R=$(date +%s); git -C ~/Projects/linux-phone-oco/google-walleye-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/google-walleye-lab worktree add -q --detach ~/Projects/linux-phone-oco/wt-walleye-keeper-$R origin/main && cd ~/Projects/linux-phone-oco/wt-walleye-keeper-$R`
+- surya-keeper: `R=$(date +%s); git -C ~/Projects/linux-phone-oco/surya-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/surya-lab worktree add -q --detach ~/.local/share/agent-worktrees/surya-lab/surya-keeper-$R origin/main && cd ~/.local/share/agent-worktrees/surya-lab/surya-keeper-$R`
+- walleye-keeper: `R=$(date +%s); git -C ~/Projects/linux-phone-oco/google-walleye-lab fetch -q origin && git -C ~/Projects/linux-phone-oco/google-walleye-lab worktree add -q --detach ~/.local/share/agent-worktrees/google-walleye-lab/walleye-keeper-$R origin/main && cd ~/.local/share/agent-worktrees/google-walleye-lab/walleye-keeper-$R`
 
 **Walleye's standing decisions** come first: `tad q recent --format csv` and
 `tad q about --subject walleye-first-fastboot-boot --format csv`; for example
@@ -92,13 +92,13 @@ linux-phone-keeper-waker) when the queue has work and the lease is free. The met
 then headphones (witnessed), NFC, fingerprint, cameras. What waits on research is not started blind.
 
 **Where things go** - one place, one hand (surya-lab named below; walleye's are the same in google-walleye-lab): the kernel and device tree in `linux-phone-oco/linux`, one branch
-per fix (`fix/...`, `dt/...`), each commit checkpatch-clean with a message fit for upstream; UCM in
+per series (`topic/ITEM` on a mainline tag, ITEM its upstream-item id; a try on `wip/LANE/WHAT`; the phone's test kernel `int/DEVICE/LIST`, built from its `kernel/topics.toml`, never by hand - MAP.md), each commit checkpatch-clean with a message fit for upstream; UCM in
 `surya-lab/ucm/`; the Sxmo profile in `linux-phone-oco/sxmo-deviceprofiles`; what every image carries in
 surya-lab's `device.toml` (overlays, masks, hazards - each with its reason); a check true of any phone in
 `lab-tools/health/suite/checks/{base,shell,telephony}/`, surya's own in `surya-lab/tests/health/`, printing
 `pass|fail|skip TEST COMPONENT detail`, with docs' `tests` row saying what its pass proves (`present` or
 `works` - a `works` pass turns the part works on the face by itself). Each change in a worktree of your own,
-landed on its own branch. A fix that works goes to `linux-phone-oco/upstream-queue` as a series ready to send;
+landed on its own branch. A fix that works becomes an upstream item, its series in docs `upstream/LIST/ITEM/` (`ikb upstream-item ... --file auto`), cut from its topic branch;
 sending is the author's, in his name - never send mail.
 
 **Witnessed tests** (sound heard, a picture seen, a call answered): say what to expect and what to check, wait
