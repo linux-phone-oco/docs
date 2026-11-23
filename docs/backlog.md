@@ -8210,3 +8210,31 @@ Rank
 
 About
 : self-explaining-structure
+
+
+<a id="manifest-releases-when-it-changes"></a>
+### lpoco-manifest is tagged only when manifest/ changes, so lpoco-attended's manifest pin can have an edge
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Rhizoid lane's design call 2026-11-23 (git-rhizoid decision 2026-11-23-every-pin-one-pushed-mover, rule 6: a tag means a change, kept at the source): lpoco-manifest leaves release-plz's version_group lpoco like lpoco-attended did (lab-tools #342). A manifest change still moves its path dependents in the family, and version_group keeps those in step, so lpoco NAME never sees mixed versions - test that. Then orchestration adds the graph edge for attended/Cargo.toml's lpoco-manifest tag, moved by rhizoid-bump. Rejected: a 'move only when needed' gate at each follower (judges every tag everywhere; an old pin stands behind for good).
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: lab-tools release tests: a change outside manifest/ leaves lpoco-manifest's version and tag; a change in manifest/ tags it and moves the whole family together; lpoco NAME still runs every program
+
+Rank
+: 1
+
+About
+: self-explaining-structure
