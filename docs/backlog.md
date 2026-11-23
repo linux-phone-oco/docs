@@ -8266,3 +8266,25 @@ Rank
 
 About
 : self-explaining-structure
+
+
+<a id="graph-checked-by-the-pinned-rhizoid"></a>
+### docs' CI parses rhizoid.graph.toml with the rhizoid lab.toml pins, so a graph the host cannot read cannot land
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Rhizoid lane's call 2026-11-23, after [[pins]] waited on the host's rhizoid 0.3.6 refusing it: a CI job reads grenudi/lab-machine's lab.toml [tools.rhizoid] tag, fetches that release asset with its sha256 checked, and runs rhizoid check --graph rhizoid.graph.toml (parse only, no clones; the rhizoid builder is adding the verb). Then the order holds by construction: the pin moves, the host installs, then the graph may use a new field. Rejected: rhizoid ignoring unknown tables (an old one skipping moved_by or [[pins]] would move pins it does not own).
+
+Opened
+: 2026-11-23
+
+Waits
+: rhizoid check --graph released (the rhizoid lane)
+
+About
+: self-explaining-structure
