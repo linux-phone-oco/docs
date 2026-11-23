@@ -7617,10 +7617,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: open end of attended-step-groups (lab-tools #300): lift does not see groups (decision 2026-11-19-procedures-chain-by-named-groups said it should).
+: 2026-11-23, lab-tools-builder: landed (lab-tools #366, read back from main): lpoco attended lift reads a pub fn whose return type is Group (by any path) as a group; equal group bodies in two repos are kind lift-group (they were lift), one the library has is use-library; crate/self/super/lpoco_attended :: prefixes no longer make copies differ. Proof: attended/tests/lift.rs a_group_copied_and_renamed_into_two_repos_is_one_flagged_pair_with_both_places and a_group_the_library_already_has_is_flagged_use_the_library (seen failing first), plus review's cases (GroupKind and Fn()->Group parameter are not groups; module paths stay different). Limits: a group differing in 3 repos stays lift-differing; lpoco_attended::group(..) vs group(..) in a body still differ. Release not yet cut when this was written.
 
 Opened
 : 2026-11-19
