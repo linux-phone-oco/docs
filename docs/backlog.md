@@ -8689,7 +8689,7 @@ Status
 : in-progress
 
 Note
-: 2026-11-23, lab-tools-builder: (a) done, lab-tools #386: check fails when follow's last success is older than 3 x every (lpoco behind its pin already failed as tool lpoco: FAIL). Open: (b) follow reads through gh auth/ETag, GITHUB_TOKEN for the service; (2) family member whose tag is gone, mixed-version message; narrow judge_check_without to pinned/found; tests for lookalike URLs and no-token asset fetches.
+: 2026-11-23, lab-tools-builder: (a) done, lab-tools #386: check fails when follow's last success is older than 3 x every. 2026-11-24, lab-tools-builder: (b) done, lab-tools #388 (main 4d44c37): follow reads GitHub with gh auth token when GITHUB_TOKEN is unset (github.com only, no refresh). Open: (2) family member whose tag is gone, mixed-version message; narrow judge_check_without to pinned/found; tests for lookalike URLs and no-token asset fetches; a gh timeout; a 401 from a stale gh token aborts follow (retry anonymous).
 
 Opened
 : 2026-11-23
