@@ -3033,3 +3033,28 @@ About
 
 Research
 : structure-review-look-around
+
+
+<a id="2026-11-23-a-check-names-its-source-as-a-row-a-doc-or-captured-text"></a>
+### 2026-11-23-a-check-names-its-source-as-a-row-a-doc-or-captured-text
+
+Brief
+: A check names its source: research:ID, a .md doc, or a file under the repository's research/ folder; the dry run refuses the rest
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-23
+
+Decision
+: check_from(what, source, ..) in lpoco-attended; check() names none and fails the dry run (lpoco attended check, exit 1, the check named). A path is read through its real path inside the repository, a bounded head, a file only; captured text must start at research/; lpoco attended new writes research:ROW-ID, refused until replaced. A real run does not read the source.
+
+Why
+: ideal-agent decision 2026-11-23-a-stop-is-read-before-the-fix: two walleye runs were lost to a check typed as a stand-in. Review (programmer) found a symlink escape and 'any research component', both fixed.
+
+Rejected
+: Changing check()'s signature in place (breaks every procedure at once, no way to tell the new from the old); looking up research:ID rows in the base (the base is not this program's; stated as a limit); a Source enum parsed at construction (tidier, left for later); judging the source in a real run (a gate in CI is the dry run).
+
+About
+: attended-check-names-its-source

@@ -8409,10 +8409,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: ideal-agent decision 2026-11-23-a-stop-is-read-before-the-fix (author, relayed by the steward): in attended/, check(what, ..) names its source - a research row id, a doc path, or a captured-text file in the repository - and the dry run (so lpoco attended check) exits 1 when a check names no source or a file that does not exist; the dry run also refuses a fixture that is not a captured-text file (text a phone printed, kept in a research folder). A lab-tools test shows a refusal and a pass. This gives walleye's procedure gate (lpoco attended check in its CI) its teeth; the labs' procedures then name their sources in their own items.
+: Landed #364 (main 124ec72), breaking: check() is refused by the dry run; use check_from. Awaiting lpoco-attended release; labs then name their sources in their own items.
 
 Opened
 : 2026-11-23
