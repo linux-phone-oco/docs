@@ -8521,10 +8521,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Measured 2026-11-23: the hand-built kernels carry timestamp, mll@grig, -dirty and the host's rolling clang 23.1.5 (rebuilt 2026-11-23 with the knobs set: 19,720 bytes still differ, the original build moment and counter were never recorded). In the sandbox: the tag's commit by builtins.fetchGit (rev pinned), the lab's dts and walleye*.config by sha256, clang/lld from the pinned nixpkgs, KBUILD_BUILD_TIMESTAMP/USER/HOST fixed, the release from the tag (no -dirty: the dts as an input file, until walleye-kernel-series-to-topics puts it in the tag). Next: one walleye kernel from int/walleye/ufs-off/v7.3/1. (decision 2026-11-23-image-recipes-on-nix-fixed-output-paths; research image-recipes-how-it-stands)
+: 2026-11-23, lab-tools-builder: landed (lab-tools #373, main b3a0273): [kernel_builds.NAME] in device.toml (tag, rev, epoch, configs/patches by sha256, targets, output, sha256) and bringup/src/kernel.nix; image ensure NAME builds it, and a recipe's kernel part that nothing holds is made by the row declaring its sha256. Measured on the lab: walleye Image.gz from int/walleye/ufs-off/v7.3/1 + build/walleye.config (5424de9b...) = eccad8d3626b30382a8ff7c20f99adc4d1f8545ba7e897304d61e9c16937b7f8 in two separate sandbox builds (nix-build --check itself not run: the second build equal to the first is the same claim); image k1 = z20 + that kernel + z21's dtb, sha256 ba3f77ae...19c2, built by ensure from nothing and served from the store the second time. Needed on the way: unwrapped clang for the target (the wrapper cannot cross-compile), LD_LIBRARY_PATH for openssl (extract-cert), -Wno-unused-command-line-argument. Proof: bringup/tests/ensure_kernel.rs (stand-in tree; recipe fallback test seen failing with the fallback off), manifest/tests/schema.rs. Open: walleye's own device.toml does not declare [kernel_builds] yet and the dtbs (the lab's dts as a patch, topic/walleye-fuel-gauge-rfc commits) are not built here: only Image.gz; the kernel is the sandbox's clang 21.1.8, not the hand builds' 23.1.5, so it is a new kernel, not z21's; not run without Nix's sandbox. Review (programmer) found no injection; fixed repo/tag/- validation, name and sha collisions, clock literal, hash-mismatch assertion.
 
 Opened
 : 2026-11-23
@@ -8627,6 +8627,28 @@ Needs
 
 Proof
 : one surya-lab image declared by sha256 is an [images.NAME] row with a recipe, rebuilt by lpoco bringup ensure equal to its sha256, and a second ensure serves it from the cache
+
+About
+: self-explaining-structure
+
+
+<a id="walleye-declares-its-kernel-build"></a>
+### walleye's device.toml declares [kernel_builds] and its image recipes name that kernel
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Follows image-recipe-kernel-from-int-tag (done). Needs the lab's dts and Makefile lines as a patch by sha256 (and the fuel-gauge commits in the tag: ufs-on, or the topic added to the ufs-off list) so the dtbs build too; the declared sha256s for Image.gz and each dtb; then one real image of the lab's recipes from it. A walleye-lab item: its builder, in google-walleye-lab's own base.
+
+Opened
+: 2026-11-23
+
+Proof
+: a walleye image declared by recipe from int/walleye/ufs-off/v7.3/1 is built by lpoco bringup image ensure equal to its sha256 on a checkout with no build/images
 
 About
 : self-explaining-structure
