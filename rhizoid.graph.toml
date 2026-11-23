@@ -141,3 +141,24 @@ value = "lpoco-manifest-v{version}"
 gate = ["cargo", "test", "--manifest-path", "attended/Cargo.toml"]
 also = ["Cargo.lock"]
 followers = ["linux-phone-oco/lab-tools"]
+
+# every key of these tables is a pin some edge must cover, or is named here as unpinned with why (rhizoid status
+# reports an uncovered key): lab.toml's tools, and each lab's attended steps crate's git dependencies
+[[pins]]
+follower = "grenudi/lab-machine"
+file = "lab.toml"
+table = "tools"
+git_only = false
+unpinned = { land = "a script pinned at a git rev (its rev is the pin), not a release", agent-env = "a script pinned at a git rev (its rev is the pin), not a release", oco-work = "not known yet: no living repository to pin it to" }
+
+[[pins]]
+follower = "linux-phone-oco/google-walleye-lab"
+file = "tools/walleye-tries/Cargo.toml"
+table = "dependencies"
+git_only = true
+
+[[pins]]
+follower = "linux-phone-oco/surya-lab"
+file = "procedures/steps/Cargo.toml"
+table = "dependencies"
+git_only = true
