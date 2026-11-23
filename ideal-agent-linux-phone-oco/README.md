@@ -19,6 +19,7 @@ Checked against ideal-agent 0.3.27 (overlay-check under 15%). A stored task's pr
 | [bring-up.md](bring-up.md) | prepares a part's work for the keeper | `bring-up-a-part` |
 | [builder.md](builder.md) | builds one item: lab-tools-builder (lab-tools), walleye-builder (the Pixel 2's images) | `land-a-change`, `write-code-by-the-canon` |
 | [patrol.md](patrol.md) | linux-phone-patrol: a read-only round every six hours, signs filed where they belong | `keep-the-start-light` |
+| [rhizoid.md](rhizoid.md) | not a role: every lane's git jobs, one rhizoid command each, and what waits on the author's go | - |
 
 Every brief, and the author's words in it, is a starting point: look around first (ideal-agent's look-around-first,
 practice 22) before building on it. A coordinator that sees a method missing researches it on its own
