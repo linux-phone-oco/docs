@@ -8063,9 +8063,6 @@ Note
 Opened
 : 2026-11-23
 
-Waits
-: rhizoid's release assets (the rhizoid lane; it sends the URLs)
-
 Needs
 : build
 
