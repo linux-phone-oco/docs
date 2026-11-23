@@ -8104,3 +8104,22 @@ Waits
 
 About
 : self-explaining-structure
+
+
+<a id="attended-pin-is-one-pin"></a>
+### A lab's lpoco-attended is one pin: procedures' headers and the CI install follow the steps crate; bump's gate is the dry run
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Seen 2026-11-23: rhizoid bump moved walleye-tries' Cargo tag 0.41.0 -> 0.44.3 and its gate (cargo check) passed, but 13 procedures' headers and check.yml's cargo install still named 0.41.0, so each procedure linked two lpoco-attended copies and panicked (google-walleye-lab #790, fixed in the same PR; surya's attended-session.rs likewise). Either procedures take lpoco-attended from the steps crate (one pin) or the graph names every place; the gate becomes the lab's lpoco-attended check dry run.
+
+Opened
+: 2026-11-23
+
+About
+: self-explaining-structure
