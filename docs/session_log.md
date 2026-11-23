@@ -5792,3 +5792,27 @@ Rejected
 
 About
 : kernel-assemble-reproduces-and-names
+
+---
+
+
+<a id="2026-11-23-attended-at-lpoco-manifest-0-44-5-gate-passes"></a>
+### attended at lpoco-manifest 0.44.5: gate passes, failure not reproduced
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: Ran the timer's gate in a fresh worktree on main at 0.44.4 and 0.44.5, under load, in the timer's env and with cold caches: all pass (69 attended tests). No change to lab-tools.
+
+Considered
+: A flaky test or a network race on the just-published tag; a stale host lpoco-attended on PATH (the suite passes with and without it).
+
+Rejected
+: Editing attended or its pin by hand: nothing fails, and the timer's next run lands the bump.
+
+About
+: attended-on-manifest-0-44-5
