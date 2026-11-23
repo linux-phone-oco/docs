@@ -19,7 +19,7 @@ SPDX-License-Identifier = "CC-BY-SA-4.0"
 
 # Scripts, statements and configuration. device-layer/ is what device bases follow: they annotate it the same way.
 [[annotations]]
-path = ["bin/**", "records/**", "queries/**", "device-layer/records/**", "device-layer/queries/**", "device-layer/tables.toml", ".github/**", "face/**", "lenses/**", "Makefile", "package.json", "commitlint.config.js", "release-please-config.json", ".release-please-manifest.json", ".gitignore", "tables.toml", "idealkb.toml", "rhizoid.graph.toml", "oco.toml", "generic", "consumers", "REUSE.toml"]
+path = ["bin/**", "records/**", "queries/**", "device-layer/records/**", "device-layer/queries/**", "device-layer/tables.toml", ".github/**", "face/**", "lenses/**", "Makefile", "package.json", "commitlint.config.js", "release-please-config.json", ".release-please-manifest.json", ".gitignore", "tables.toml", "idealkb.toml", "rhizoid.graph.toml", "oco.toml", "generic", "consumers", "REUSE.toml", ".gitattributes"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 grenudi"
 SPDX-License-Identifier = "MIT OR Apache-2.0"
