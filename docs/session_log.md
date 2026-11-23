@@ -5456,3 +5456,27 @@ Rejected
 
 About
 : structure-review
+
+---
+
+
+<a id="2026-11-23-lpoco-bringup-kernel-assemble-and-publish-landed"></a>
+### lpoco-bringup kernel assemble and publish landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: kernel assemble: the record checks of check-fork-tags.sh (topic with an upstream-item row, subject tags agree with tad q carried), then rhizoid assemble --json, its conflict report printed and exit 1; kernel publish: push the int/ tag and end rhizoid's worktree only once an image's kernel_tag names it. manifest [images.X] kernel_tag (int/ tags only). Lab-tools #330, read back from main.
+
+Considered
+: Doing the merge loop here: no, rhizoid owns it (decision 2026-11-23-structure-git-flows-run-on-rhizoid). Moving the entry plumbing in main.rs into kernel.rs: review's debt note, left.
+
+Rejected
+: Pushing the tag at assemble time: every try would then be public; an image names it first. Exit 2 for a conflict: the report names the two topics, so it is a refusal, exit 1.
+
+About
+: kernel-assemble-from-topics
