@@ -2696,34 +2696,6 @@ Research
 : structure-review-what-is,structure-review-look-around
 
 
-<a id="2026-11-23-structure-branch-names"></a>
-### 2026-11-23-structure-branch-names
-
-Brief
-: Branches in our repositories are ROLE/WHAT, one change each, deleted when they land; merged old branches deleted, others kept as archive/NAME tags
-
-Project
-: linux-phone-oco/docs
-
-Date
-: 2026-11-23
-
-Decision
-: A branch is named ROLE/WHAT (keeper/, builder/, research/, coord/, orch/, steward/), holds one change and is deleted when it lands (GitHub's automatic deletion of head branches, with the author's go). Release branches are the release tool's. The old branches whose PR merged are deleted - the change is on main and the PR is the pointer; any other is first kept as a tag archive/NAME.
-
-Why
-: 2,138 remote branches, of which 2,050 belong to merged PRs: git branch -a says nothing a reader can use.
-
-Rejected
-: No convention (today); dated or run-id names (they say when, not what); keeping merged branches 'just in case' (the PR keeps them).
-
-About
-: self-explaining-structure
-
-Research
-: structure-review-what-is,structure-review-look-around
-
-
 <a id="2026-11-23-structure-project-map"></a>
 ### 2026-11-23-structure-project-map
 
@@ -2890,6 +2862,34 @@ Why
 
 Rejected
 : A rule in briefs only (read once, forgotten); a cleanup job after the fact (the wrong home still happens); a separate layout file (the Map already says it).
+
+About
+: self-explaining-structure
+
+Research
+: structure-review-what-is,structure-review-look-around
+
+
+<a id="2026-11-23-structure-branch-names"></a>
+### 2026-11-23-structure-branch-names
+
+Brief
+: Branches in our repositories are ROLE/WHAT, one change each, deleted when they land; on 2026-11-23 the 68 left were cleared: merged deleted, others kept as archive/NAME tags
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-23
+
+Decision
+: A branch is named ROLE/WHAT (keeper/, builder/, research/, coord/, orch/, steward/), holds one change and is deleted when it lands (land does it; GitHub's automatic deletion of head branches is on in all five repositories, author's go 2026-11-23). Release branches are the release tool's; oco-data is ocoeco's. A branch whose PR merged at its tip is deleted (the PR is the pointer); any other no open item names is first kept as a tag archive/NAME. A clone shows the remote's branches only when fetched with --prune.
+
+Why
+: The clones showed 2,138 branch names; GitHub held 68 - land already deletes on merge, but nothing pruned the clones and nothing cleared branches whose PR closed unmerged. Done 2026-11-23: 11 deleted, 48 archived then deleted, 9 kept (5 oco-data, 3 open PRs, 1 named by an open item).
+
+Rejected
+: No convention (today); dated or run-id names (they say when, not what); keeping unmerged branches as branches (a tag keeps the work without crowding the list).
 
 About
 : self-explaining-structure

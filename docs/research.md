@@ -2557,31 +2557,6 @@ About
 : upstream-forks
 
 
-<a id="structure-review-what-is"></a>
-### structure-review-what-is
-
-Brief
-: linux-phone-oco's structure on 2026-11-23: 2,138 remote branches (2,050 merged), 5 of ~55 top folders with a README, kernel patches in five forms, no list of what a test kernel holds
-
-Project
-: linux-phone-oco/docs
-
-Date
-: 2026-11-23
-
-Question
-: Where do things live today across linux-phone-oco's repositories, the lab machine and the kernel trees, and how do the roles' flows actually read and write them?
-
-Found
-: Read from origin/main of every repository and from six roles' own reflections (material: README.md and reflection-*.md). Branches are squash-merged and never deleted: docs 704 (676 merged), google-walleye-lab 738 (696), surya-lab 432 (420), lab-tools 224 (222), device-template 40 (36). Of ~55 top-level folders in docs, google-walleye-lab, surya-lab and lab-tools, 5 have a README. ~/Projects/linux-phone-oco/ mixes clones, worktrees (wt-*), run logs and upstream-queue/ (every file byte-equal to one in docs upstream/). Worktrees have two homes. Kernel patches live in five forms: branches on grenudi/linux with mixed prefixes, branches only in a local clone, .patch files in lab repos (google-walleye-lab kernel/, surya-lab patches/), .dts copied in by a build script (google-walleye-lab dt/), and copies in docs upstream/. No list says which patches a test kernel holds: it is in one build script per try (google-walleye-lab build/, ~175 files) or a hand cherry-pick (surya test/surya-calls). Build areas outside git: walleye-build 84 GB, surya-audio 51 GB. Every PR commits rendered pages, so landings minutes apart conflict (walleye replayed six times on 2026-11-22). A go and a wait are free text an item update overwrites. Root cause named by four roles: a thing's place is chosen by whoever creates it, and nothing ties it to a session or ends it.
-
-About
-: self-explaining-structure
-
-Material
-: research/self-explaining-structure/2026-11-23/
-
-
 <a id="structure-review-look-around"></a>
 ### structure-review-look-around
 
@@ -2602,6 +2577,31 @@ Found
 
 Sources
 : linux-next-trees,kernel-rebasing-and-merging,b4-prep,qcom-next-kernel-config,linaro-automerge,msm8916-mainline-linux,kernelci-pipeline-config,matklad-architecture-md,fhs-3,kramdown-rfc-skel,git-rerere
+
+About
+: self-explaining-structure
+
+Material
+: research/self-explaining-structure/2026-11-23/
+
+
+<a id="structure-review-what-is"></a>
+### structure-review-what-is
+
+Brief
+: linux-phone-oco's structure on 2026-11-23: 68 branches on GitHub (the clones showed 2,138 unpruned), 5 of ~55 top folders with a README, kernel patches in five forms
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-23
+
+Question
+: Where do things live today across linux-phone-oco's repositories, the lab machine and the kernel trees, and how do the roles' flows actually read and write them?
+
+Found
+: Read from origin/main of every repository and from six roles' own reflections (material: README.md and reflection-*.md). Branches: GitHub held 68 (docs 17, google-walleye-lab 30, surya-lab 11, lab-tools 4, device-template 6); the 2,138 first counted were the clones' remote-tracking names, never pruned - land had already deleted them on GitHub (corrected the same day). Of ~55 top-level folders in docs, google-walleye-lab, surya-lab and lab-tools, 5 had a README; google-walleye-lab's README was still device-template's. ~/Projects/linux-phone-oco/ mixed clones, worktrees (wt-*), run logs and upstream-queue/ (every file byte-equal to one in docs upstream/). Worktrees had two homes. Kernel patches live in five forms: branches on grenudi/linux with mixed prefixes, branches only in a local clone, .patch files in lab repos (google-walleye-lab kernel/, surya-lab patches/), .dts copied in by a build script (google-walleye-lab dt/), and copies in docs upstream/. No list says which patches a test kernel holds: it is in one build script per try (google-walleye-lab build/) or a hand cherry-pick (surya test/surya-calls). Build areas outside git: walleye-build 84 GB, surya-audio 51 GB. Every PR commits rendered pages, so landings minutes apart conflict (walleye replayed six times on 2026-11-22). A go and a wait are free text an item update overwrites. Root cause named by four roles: a thing's place is chosen by whoever creates it, and nothing ties it to a session or ends it.
 
 About
 : self-explaining-structure

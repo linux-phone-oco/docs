@@ -7935,47 +7935,6 @@ About
 : self-explaining-structure
 
 
-<a id="old-branches-cleared"></a>
-### Old branches cleared: auto-delete head branches on, 2,050 merged branches deleted, the other 88 kept as archive/NAME tags
-
-Project
-: linux-phone-oco/docs
-
-Status
-: open
-
-Note
-: Decision 2026-11-23-structure-branch-names. Counts of 2026-11-23 in research structure-review-what-is. Asked of the author through the Top Coordinator on 2026-11-23.
-
-Opened
-: 2026-11-23
-
-Waits
-: the author's go: GitHub setting and branch deletion are outward changes
-
-About
-: self-explaining-structure
-
-
-<a id="lab-machine-root-clones-only"></a>
-### ~/Projects/linux-phone-oco holds clones only: worktrees, run logs and upstream-queue moved out with pointers; the kernel clone moved in
-
-Project
-: linux-phone-oco/docs
-
-Status
-: in-progress
-
-Note
-: Decision 2026-11-23-structure-lab-machine-homes. Steward, after the Top Coordinator's 'all lanes paused'. upstream-queue/: all 8 files byte-equal to docs upstream/ (checked 2026-11-23). Then lab.toml [clones] (grenudi/lab-machine) names linux and marks sxmo-utils a fork: orchestration.
-
-Opened
-: 2026-11-23
-
-About
-: self-explaining-structure
-
-
 <a id="kernel-assemble-from-topics"></a>
 ### lpoco-bringup kernel assemble: a phone's test kernel int/DEVICE/LIST built from a named list in its kernel/topics.toml, tagged
 
@@ -7993,6 +7952,44 @@ Opened
 
 Proof
 : a test: a list of two topics on a base assembles to a tag holding both; a conflict stops naming both topics; a topic with no upstream-item row is refused
+
+About
+: self-explaining-structure
+
+
+<a id="old-branches-cleared"></a>
+### Old branches cleared: auto-delete head branches on, merged branches deleted, the others kept as archive/NAME tags
+
+Project
+: linux-phone-oco/docs
+
+Status
+: done
+
+Note
+: Done 2026-11-23 on the author's go ('Yes, both'): of 68 branches on GitHub, 11 deleted (PR merged at the tip, checked), 48 archived as tags then deleted, 9 kept (oco-data x5, 3 open PRs, walleye-wdt-pon-bites-procedure named by an open item). Auto-delete on in all five. The first count of 2,138 was unpruned remote-tracking names (research structure-review-what-is, corrected).
+
+Opened
+: 2026-11-23
+
+About
+: self-explaining-structure
+
+
+<a id="lab-machine-root-clones-only"></a>
+### ~/Projects/linux-phone-oco holds clones only: worktrees, run logs and upstream-queue moved out with pointers; the kernel clone moved in
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: Root cleared 2026-11-23 by the steward (material README.md of research structure-review-what-is): 7 worktrees removed (one with spent edits), 1 moved to the worktree home, 4 logs into google-walleye-lab research, upstream-queue removed (byte-equal to upstream/; README kept in the material). Left: the kernel clone's move in one builder change with its 155 paths (decision 2026-11-23-structure-lab-machine-homes), and lab.toml [clones] naming linux and marking sxmo-utils a fork (orchestration).
+
+Opened
+: 2026-11-23
 
 About
 : self-explaining-structure
