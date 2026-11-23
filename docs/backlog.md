@@ -7997,10 +7997,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: dropped
 
 Note
-: Agreed with the rhizoid coordinator 2026-11-23: rhizoid shows every pin and bumps lab.toml's lpoco pin; follow stops bumping and only installs the pin once both keeper leases are free. Waits on rhizoid's pin bump.
+: Dropped 2026-11-23 by orchestration: git-rhizoid decision 2026-11-23-every-pin-one-pushed-mover keeps lpoco-host-follow as the one mover of lab.toml's lpoco pin (docs #786); rhizoid bump moves only pins with no other mover, so follow keeps bumping and installing.
 
 Opened
 : 2026-11-23
@@ -8166,7 +8166,7 @@ Status
 : open
 
 Note
-: Walleye's kernel-topics builder, 2026-11-23: assemble refuses archive/ITEM branch names and has no --reproduces, so the first lists (ufs-off-e123d3bff, ufs-on-3644090c7) were reproduced with rhizoid assemble --reproduces directly - EQUAL, tags pushed. Pass --reproduces COMMIT to rhizoid and print its verdict; take any branch kind MAP.md names that rhizoid assembles (topic/, backport/, and archive/ where a list carries one), keeping the record check by ITEM. Read walleye's kernel/topics.toml for the real names first.
+: Walleye's kernel-topics builder, 2026-11-23: assemble refuses archive/ITEM branch names (frozen lists need them, e.g. archive/pmic-wdt-e123d3bff) and has no --reproduces, so the first lists (ufs-off-e123d3bff, ufs-on-3644090c7) were reproduced with rhizoid assemble --reproduces directly - EQUAL, int/ tags pushed to grenudi/linux (read back by the Top), kernel_tag lines in google-walleye-lab #797. Pass --reproduces COMMIT to rhizoid and print its verdict; take any branch kind MAP.md names that rhizoid assembles (topic/, backport/, and archive/ where a frozen list carries one), keeping the record check by ITEM. Read walleye's kernel/topics.toml for the real names first.
 
 Opened
 : 2026-11-23
