@@ -8262,7 +8262,7 @@ Proof
 : lab-tools host tests: with a stand-in release, a [tools.rhizoid] pin newer than the installed binary is installed by follow when both leases are free and left when a lease is held
 
 Rank
-: 2
+: 1
 
 About
 : self-explaining-structure
