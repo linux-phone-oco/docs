@@ -8191,10 +8191,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-23, orchestration installed rhizoid v0.3.6's packaging/systemd/rhizoid-bump.{service,timer} by hand as user units, with ~/.config/rhizoid/bump.env (RHIZOID_GRAPH_CLONE, mode 600) and enabled the hourly timer; idealkb-update-pins and tad-update-pins came the same way. lab.toml should declare them (e.g. [tools.rhizoid] timers = ["rhizoid-bump"] with the env lines) so prepare installs them from the pinned tag and plan shows drift, the way [follow] and [clones] already are.
+: 2026-11-23, lab-tools-builder: landed (lab-tools #353, main e686109): [tools.NAME] timers, env_file, env on a release pin; prepare writes the tag's packaging/systemd units as user units, the env file mode 600, enables the timer, restarts a changed installed one; plan names a differing unit and never prints env values. Proof: host/tests/tool_timers.rs (8 tests, seen failing first). Open: units fetched with no hash check; prepare needs the network when timers are declared; unknown keys in a release pin are ignored; enable checked by the wants link only; lab.toml of the lab not yet declaring [tools.rhizoid] timers (orchestration's by-hand units stay until it does); idealkb-update-pins and tad-update-pins timers come the same way, not declared.
 
 Opened
 : 2026-11-23

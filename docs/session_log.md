@@ -5816,3 +5816,27 @@ Rejected
 
 About
 : attended-on-manifest-0-44-5
+
+---
+
+
+<a id="2026-11-23-lab-tools-builder-tool-timers"></a>
+### lpoco host: user timers a tool ships
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: host-declares-tool-timers built and landed (lab-tools #353): timers/env_file/env on a release pin, units fetched from the tag, private env file, plan drift, review by the programmer subagent fixed 6 findings (plan printed env values, loose mode, no restart, scratch name, env quoting, label).
+
+Considered
+: Plan stays offline with a stored hash of what prepare wrote; a hash compare via systemd is-enabled.
+
+Rejected
+: Stored copy/hash of the written units: a second state to drift; fetching the tag's text at plan is the truth, and plan says 'not measured' when it cannot fetch.
+
+About
+: host-declares-tool-timers
