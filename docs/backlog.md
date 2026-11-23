@@ -8075,3 +8075,25 @@ Rank
 
 About
 : self-explaining-structure
+
+
+<a id="graph-records-the-forks"></a>
+### rhizoid.graph.toml records the kernel and sxmo-utils forks, with rhizoid v0.3.1 on the host
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Proposed by the rhizoid coordinator 2026-11-23: an [[integration]] edge for grenudi/linux (topics topic/ITEM and backport/ITEM/BASE, assembled int/NAME/LIST/BASE/N, releases torvalds/linux) and [clones] grenudi/sxmo-utils = linux-phone-oco/sxmo-utils. Do it together with lab.toml's [tools.rhizoid] at v0.3.1 (which tracks the kernel from torvalds releases, not the fork's v7.2), since 0.2.4 on the host does not know [[integration]]; then rhizoid import grenudi/linux --patches integration, which only writes the graph. sxmo-utils' import pushes a branch: waits on the author's go. Dry runs: side-notes rhizcut-import-dry-runs-v0.3.0.md.
+
+Opened
+: 2026-11-23
+
+Waits
+: rhizoid v0.3.1 released (the rhizoid lane)
+
+About
+: self-explaining-structure
