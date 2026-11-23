@@ -5744,3 +5744,27 @@ Rejected
 
 About
 : host-installs-moved-tool-pins
+
+---
+
+
+<a id="2026-11-23-transport-item-closed-on-its-proof"></a>
+### Transport item closed on its proof
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: Ran cargo test --workspace on lab-tools main 9833e04 (v0.44.8): all pass, so phone-declared-transport is done; the real-phone leftovers are the new item transport-real-phone-run.
+
+Considered
+: Building Phone::at addr for telnet/adb now
+
+Rejected
+: More host-side slices: they would prove nothing the phone has not said; the gaps need a real device run.
+
+About
+: phone-declared-transport
