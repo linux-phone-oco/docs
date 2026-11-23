@@ -8163,10 +8163,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Walleye's kernel-topics builder, 2026-11-23: assemble refuses archive/ITEM branch names (frozen lists need them, e.g. archive/pmic-wdt-e123d3bff) and has no --reproduces, so the first lists (ufs-off-e123d3bff, ufs-on-3644090c7) were reproduced with rhizoid assemble --reproduces directly - EQUAL, int/ tags pushed to grenudi/linux (read back by the Top), kernel_tag lines in google-walleye-lab #797. Pass --reproduces COMMIT to rhizoid and print its verdict; take any branch kind MAP.md names that rhizoid assembles (topic/, backport/, and archive/ where a frozen list carries one), keeping the record check by ITEM. Read walleye's kernel/topics.toml for the real names first.
+: 2026-11-23, lab-tools-builder: landed lab-tools #351 (main 5fa1e78), read back. kernel assemble --reproduces COMMIT passes to rhizoid and prints 'reproduces COMMIT: equal' or 'differs in PATHS'; asked and not reported ends 2; empty value refused. archive/NAME branches of a frozen list are checked by their commits' subjects (name carries no item); an archive branch with no commit over the base is refused. Proof: bringup/tests/kernel.rs (16 tests, new ones seen failing first), stand-in rhizoid. Not pinned: the stand-in's JSON shape against rhizoid's real output. Release PR left for land --release.
 
 Opened
 : 2026-11-23
