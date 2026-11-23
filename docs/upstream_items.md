@@ -1199,3 +1199,40 @@ Note
 
 Last update
 : 2026-11-23
+
+
+<a id="walleye-mdss-reset"></a>
+### arm64: dts: qcom: msm8998: Add the MDSS reset (the bootloader leaves the display block scanning out its splash)
+
+Upstream
+: linux-arm-msm
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-23-structure-kernel-topics-and-integration
+
+About
+: walleye-display-s6e3fa5
+
+Local ref
+: topic/walleye-mdss-reset
+
+File
+: upstream/linux-arm-msm/walleye-mdss-reset/
+
+Carried in
+: fork-linux/topic/walleye-mdss-reset
+
+Waits
+: the display boot proven with it on walleye, then the author's word
+
+Note
+: topic/walleye-mdss-reset on the fork: one commit on v7.3 (58d8fd902, walleye-builder, 2026-11-23); one dtsi line, the mmcc already provides MDSS_BCR.
+
+Last update
+: 2026-11-23
