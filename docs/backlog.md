@@ -7895,3 +7895,22 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="structure-review"></a>
+### Structure review: every repository, folder, branch and brief self-explaining
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: Steward, 2026-11-23, while all lanes are paused: reflections from six roles gathered, look-around done, rules decided (research/structure/2026-11-23/design.md); next: apply after the Top Coordinator's 'all lanes paused', then each role confirms the map.
+
+Opened
+: 2026-11-23
+
+About
+: self-explaining-structure

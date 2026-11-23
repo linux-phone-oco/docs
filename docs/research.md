@@ -2555,3 +2555,56 @@ Root: one precedent, followed because nothing at start named the place and nothi
 
 About
 : upstream-forks
+
+
+<a id="structure-review-what-is"></a>
+### structure-review-what-is
+
+Brief
+: linux-phone-oco's structure on 2026-11-23: 2,138 remote branches (2,050 merged), 5 of ~55 top folders with a README, kernel patches in five forms, no list of what a test kernel holds
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-23
+
+Question
+: Where do things live today across linux-phone-oco's repositories, the lab machine and the kernel trees, and how do the roles' flows actually read and write them?
+
+Found
+: Read from origin/main of every repository and from six roles' own reflections (material: README.md and reflection-*.md). Branches are squash-merged and never deleted: docs 704 (676 merged), google-walleye-lab 738 (696), surya-lab 432 (420), lab-tools 224 (222), device-template 40 (36). Of ~55 top-level folders in docs, google-walleye-lab, surya-lab and lab-tools, 5 have a README. ~/Projects/linux-phone-oco/ mixes clones, worktrees (wt-*), run logs and upstream-queue/ (every file byte-equal to one in docs upstream/). Worktrees have two homes. Kernel patches live in five forms: branches on grenudi/linux with mixed prefixes, branches only in a local clone, .patch files in lab repos (google-walleye-lab kernel/, surya-lab patches/), .dts copied in by a build script (google-walleye-lab dt/), and copies in docs upstream/. No list says which patches a test kernel holds: it is in one build script per try (google-walleye-lab build/, ~175 files) or a hand cherry-pick (surya test/surya-calls). Build areas outside git: walleye-build 84 GB, surya-audio 51 GB. Every PR commits rendered pages, so landings minutes apart conflict (walleye replayed six times on 2026-11-22). A go and a wait are free text an item update overwrites. Root cause named by four roles: a thing's place is chosen by whoever creates it, and nothing ties it to a session or ends it.
+
+About
+: self-explaining-structure
+
+Material
+: research/self-explaining-structure/2026-11-23/
+
+
+<a id="structure-review-look-around"></a>
+### structure-review-look-around
+
+Brief
+: Kernel integration is a written list of topic branches merged onto a fresh tag by a tool (linux-next, qcom-next); one series = one branch (b4); a repo is explained by a one-screen map
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-23
+
+Question
+: How do the kernel, phone ports, Linaro/Qualcomm, KernelCI and documentation practice organise trees, branches, tests and the notes that explain them?
+
+Found
+: linux-next merges every tree named in a plain list (Next/Trees, name url#branch) onto a fresh base each day and never edits the result; qcom-next does the same from qcom-next.conf (a baseline line, then name url branch) with Linaro automerge and a shared rr-cache. Maintainers base series on well-known tags, treat a moved series as new code, and give a shared prerequisite its own topic branch. b4 keeps one series per branch with its cover letter as an empty commit and versions under one change-id, and can enrol an existing branch. Phone ports (msm8916-mainline, sm7150-mainline, msm8998-mainline) flatten per-release branches, which loses the series - the mess to avoid; pmaports pins an immutable tag. TopGit/StGit add tools and metadata; quilt/gbp-pq move patches out of git. KernelCI keeps trees, devices, jobs and results in separate homes; Linaro test-definitions one folder per test. ARCHITECTURE.md, FHS and kramdown-rfc agree on a short note: a few key lines, one purpose per top folder, what must never be there. Material: look-around.md.
+
+Sources
+: linux-next-trees,kernel-rebasing-and-merging,b4-prep,qcom-next-kernel-config,linaro-automerge,msm8916-mainline-linux,kernelci-pipeline-config,matklad-architecture-md,fhs-3,kramdown-rfc-skel,git-rerere
+
+About
+: self-explaining-structure
+
+Material
+: research/self-explaining-structure/2026-11-23/

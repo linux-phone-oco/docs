@@ -4247,22 +4247,6 @@ Takes
 : boot stages proven by console matchers: bootloader message, kernel-start-message, prompts
 
 
-<a id="kernelci-pipeline-config"></a>
-### KernelCI pipeline configuration
-
-Project
-: linux-phone-oco/docs
-
-Url
-: https://docs.kernelci.org/components/maestro/pipeline/config-reference/
-
-By
-: KernelCI
-
-Takes
-: generic jobs x platforms; a job waits on another's result
-
-
 <a id="openqa-docs"></a>
 ### openQA documentation
 
@@ -8070,3 +8054,152 @@ By
 
 Takes
 : A shortcode takes named arguments from the page and reads page resources bundled with it
+
+
+<a id="linux-next-trees"></a>
+### linux-next Next/Trees: the list of trees merged daily
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/plain/Next/Trees
+
+Takes
+: a written list, merged in order onto a fresh base every time; the result rebuilt, never edited
+
+
+<a id="kernel-rebasing-and-merging"></a>
+### Rebasing and merging (kernel maintainer docs)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://docs.kernel.org/maintainer/rebasing-and-merging.html
+
+Takes
+: base on well-known tags; a moved series is new code; a shared prerequisite gets its own topic branch
+
+
+<a id="b4-prep"></a>
+### b4 prep: preparing a patch series
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://b4.docs.kernel.org/en/latest/contributor/prep.html
+
+Takes
+: one series, one branch; cover letter as an empty commit; versions and change-id; enrol an existing branch
+
+
+<a id="qcom-next-kernel-config"></a>
+### qualcomm-linux/kernel-config: qcom-next.conf
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/qualcomm-linux/kernel-config
+
+Takes
+: a baseline line, then name url branch lines; topics in kernel-topics; the integration rebuilt per tag
+
+
+<a id="linaro-automerge"></a>
+### Linaro automerge (ci-merge)
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git-us.linaro.org/power/automerge.git/about/
+
+Takes
+: merges branches named in a config file like linux-next, resolutions shared through rr-cache
+
+
+<a id="msm8916-mainline-linux"></a>
+### msm8916-mainline/linux branches
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/msm8916-mainline/linux
+
+Takes
+: wip/msm8916/VERSION per release, feature side branches, old/ for retired
+
+
+<a id="kernelci-pipeline-config"></a>
+### kernelci-pipeline config/
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/kernelci/kernelci-pipeline/tree/main/config
+
+Takes
+: trees, platforms, jobs and results in separate homes
+
+
+<a id="matklad-architecture-md"></a>
+### ARCHITECTURE.md
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://matklad.github.io/2021/02/06/ARCHITECTURE.md.html
+
+Author
+: Aleksey Kladov
+
+Year
+: 2021
+
+Takes
+: short; a map of coarse parts; invariants as an absence of something
+
+
+<a id="fhs-3"></a>
+### Filesystem Hierarchy Standard 3.0
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.txt
+
+Takes
+: one purpose per directory; no new root directories; static apart from variable
+
+
+<a id="kramdown-rfc-skel"></a>
+### kramdown-rfc skeleton
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://github.com/cabo/kramdown-rfc/blob/master/examples/skel.mkd
+
+Takes
+: a few key: value lines of front matter, then the text
+
+
+<a id="git-rerere"></a>
+### git-rerere
+
+Project
+: linux-phone-oco/docs
+
+Url
+: https://git-scm.com/docs/git-rerere
+
+Takes
+: a conflict resolved once is replayed
