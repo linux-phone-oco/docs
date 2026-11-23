@@ -5480,3 +5480,27 @@ Rejected
 
 About
 : kernel-assemble-from-topics
+
+---
+
+
+<a id="2026-11-23-host-installs-a-release-binary-at-its-pin"></a>
+### Host installs a release binary at its pin
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lpoco-host [tools.NAME] repository/tag/asset form: fetch asset and .sha256 from LPOCO_GITHUB (GitHub default), install only on hash match, stamp the tag, no cargo. Test first (failing), programmer review fixed: tag/asset escaping the URL, family names, untested validation and missing .sha256. Landed #331, released v0.44.0.
+
+Considered
+: Reusing LPOCO_RELEASE_BASE (it is lab-tools' own tag folder, not a repository's); a cargo fallback; a typed no-fallback instead of an empty list (left as a ratchet note).
+
+Rejected
+: Building rhizoid with cargo on the lab machine: the rhizoid coordinator asked for release binaries; hash is from the same release so it guards damage, not a replaced release (hash pinned in lab.toml is a follow-up).
+
+About
+: host-installs-cargo-tool-at-pin
