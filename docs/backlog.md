@@ -5939,7 +5939,7 @@ Status
 : open
 
 Note
-: Items sxmo-autosuspend-backoff, sxmo-suspend-stop-by-profile, sxmo-surya-sensors-suspend: state withdrawn, carried-in none (SourceHut's terms bar agent-made patches; the author may send his own by hand). fork-tracking-job drops fork-sxmo-utils. Archive (read-only) on GitHub is the author's or orchestration's act; the tag lab-20261118.1 and the topics stay as history. The surya profile is upstream (1fd7822) and is not touched.
+: Items sxmo-autosuspend-backoff, sxmo-suspend-stop-by-profile, sxmo-surya-sensors-suspend: state withdrawn, carried-in none (SourceHut's terms bar agent-made patches; the author may send his own by hand). fork-tracking-job drops fork-sxmo-utils. Archive (read-only) on GitHub is the author's or orchestration's act; the tag lab-20261118.1 and the topics stay as history. The surya profile is upstream (1fd7822) and is not touched. Archived on GitHub 2026-11-19. When this closes, its owner also removes the [[fork]] grenudi/sxmo-utils entry and its [clones] line from rhizoid.graph.toml, so rhizoid status stops reporting the fork. rhizoid import grenudi/sxmo-utils was dropped 2026-11-23: its push met the archive (403), nothing pushed or recorded; keeping the fork as a cutting needs the author to unarchive it and a fresh go.
 
 Opened
 : 2026-11-19
