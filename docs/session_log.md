@@ -5864,3 +5864,27 @@ Rejected
 
 About
 : host-only-tools-skip-the-lease-window
+
+---
+
+
+<a id="2026-11-23-restart2-and-boot-to-bootloader-landed-attended"></a>
+### restart2 and [boot.to_bootloader] landed; attended step waits for the manifest release
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lab-tools #358: manifest [boot.to_bootloader] with validation and schema, restart2 helper bin in ffs-acm, tests seen failing first, reviewed by the programmer subagent (two tests that could not fail and an unconfined 'to' fixed).
+
+Considered
+: A new family crate lpoco-restart2 (needs release-plz changelog_include in every member); a second bin in ffs-acm needs none. Using the helper through a pushed file declared in device.toml, as walleye does.
+
+Rejected
+: Editing lpoco-attended's manifest pin by hand (a pin is moved by its mover); landing the attended step against a path manifest (it would not build from the released tag).
+
+About
+: linux-to-bootloader-by-restart2
