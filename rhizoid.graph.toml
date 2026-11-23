@@ -51,6 +51,16 @@ pin = "lab.toml"
 key = "tools.lpoco"
 followers = ["grenudi/lab-machine"]
 
+# rhizoid on the lab host: a release binary at its tag, [tools.rhizoid] in lab.toml (lab-tools #331)
+[[tool]]
+name = "rhizoid"
+source = "git-rhizoid/rhizoid"
+tag_prefix = "v"
+pin = "lab.toml"
+key = "tools.rhizoid.tag"
+value = "v{version}"
+followers = ["grenudi/lab-machine"]
+
 [[tool]]
 name = "tad"
 source = "creation-guidelines/tad-engine"
