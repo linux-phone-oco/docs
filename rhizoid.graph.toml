@@ -7,6 +7,11 @@
 # the revision each clone is read at
 rev = "origin/main"
 
+# how a bump lands: the rhizoid-bump timer on the lab host runs `bump now --land`, which lands each pin's pull
+# request through the follower's own checks with ideal-agent's land; a failing gate or check leaves it open
+[bump]
+land = ["land"]
+
 [clones]
 "grenudi/lab-machine" = "lab-machine"
 "grenudi/sxmo-utils" = "linux-phone-oco/sxmo-utils"
