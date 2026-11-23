@@ -593,10 +593,22 @@ Step id
 : rootfs-boots
 
 Status
-: open
+: done
+
+Proof
+: procedures/rootfs-boots-on-the-pixel-2.rs
+
+Run
+: walleye-rootfs-boots-run-6-passed-bootloader-not-reached
+
+Proven on
+: c3373d7199d26a403a7ac9b10c8c95f4dd17f41d358eb59de095efd6bb6c7ba9
+
+Notes
+: run 6: 26 of 26; bootloader way back not reached (forced reboot ran)
 
 Updated
-: 2026-11-18
+: 2026-11-23
 
 
 ### Row 26
@@ -1976,19 +1988,22 @@ Step id
 : display-any-order
 
 Status
-: open
+: partial
 
 Proof
 : display-boots-any-order
 
 Run
-: research walleye-display-b2-dsi-clock-warning; items walleye-display-delay-bisect, walleye-display-splash-region-dts, walleye-display-dts-any-order
+: walleye-display-any-order-b-r2-b-rp2-clean
+
+Proven on
+: B-r2 c05ae4ec, B-rp2 29fce8b7
 
 Notes
-: Not yet: B2 loaded at 2 s fails (SMMU faults at the splash buffer, pclk0 rcg warnings, DSI -110), clean at 66 s; the dts reserves nothing at 0x9d400000. The cause is the bootloader's scan-out still live; the fix is the splash region in the dts (decision 2026-11-19-walleye-display-early-load-splash-handover).
+: two orders at 2 s clean (0/0/0, 13 of 13); autoload by modalias and three cold boots not yet
 
 Updated
-: 2026-11-19
+: 2026-11-23
 
 
 ### Row 115
@@ -2030,7 +2045,7 @@ Notes
 : Not known yet: linux-phone-oco/google-walleye-lab does not claim this step.
 
 Updated
-: 2026-11-22
+: 2026-11-23
 
 
 ### Row 117
@@ -4487,7 +4502,7 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-22
+: 2026-11-23
 
 
 ### Row 231
@@ -4505,7 +4520,7 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-22
+: 2026-11-23
 
 
 ### Row 232
@@ -4523,4 +4538,4 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-22
+: 2026-11-23
