@@ -2608,3 +2608,34 @@ About
 
 Material
 : research/self-explaining-structure/2026-11-23/
+
+
+<a id="image-recipes-how-it-stands"></a>
+### image-recipes-how-it-stands
+
+Brief
+: Images can be named by sha256 and made by recipe: Nix fixed-output paths are ensure; z21 rebuilt byte for byte by swap; hand-built kernels are not reproducible as recorded
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-23
+
+Question
+: An image is a pure function of its inputs; a procedure names a recipe and ensure RECIPE takes it from a cache keyed by hash or builds it, on any machine: what is the best existing way? (backlog image-recipes-with-a-cache)
+
+Found
+: How it stands (2026-11-23). Images are declared by sha256 in device.toml [images.NAME] and booted by path from ~/Projects/walleye-build on one host; ~85 build/*.sh make them, mostly as an earlier image with parts swapped (a DAG rooted in a few hand-built kernels). lpoco-bringup already holds the deterministic steps in Rust (pack, swap, bisect series, initramfs build), but swap's AVB footer calls Python avbtool.
+Measured: (1) lpoco bringup image swap z20 --dtb z21.dtb gives bdc0a891..., equal to [images.z21] sha256 - a recipe-shaped rebuild of an existing image, byte for byte. (2) Nix on the host stores an image as a fixed-output path computed from its sha256 and name; an unsigned file:// cache restores it for the normal user in 0.3 s, and a derivation whose outputHash is that sha256 then resolves without running its builder: Nix's fixed-output semantics are ensure. (3) An untrusted user cannot add a substituter (trusted-substituters empty): sharing goes by nix copy --from, or one nix.conf line for lab-machine's keeper. (4) The hand-built z20/z21 kernel cannot be rebuilt byte for byte from what was recorded: with timestamp, user, host, config and clang 23.1.5 set it still differed, by DTC_FLAGS=-@ in build-kernel.sh's environment, the built-in cpio's build moment and the build counter - all named knobs, none recorded.
+Outside: Mobile NixOS dropped walleye (2023-09-14), has no surya, no AVB; pmbootstrap, Yocto/BitBake, mkosi, BuildStream are Python; Buildroot has no output cache; Bazel/Buck2 REAPI has the right model but brings a build system and Kleaf's Python. The thin Rust store would reinvent Nix's store and still need Nix to pin the toolchain.
+Way: TOML recipes beside the image rows, lpoco bringup ensure over Nix's store, sandbox, file:// cache and pinned nixpkgs (decision 2026-11-23-image-recipes-on-nix-fixed-output-paths). Never again: a kernel built with an unpinned compiler, an unset KBUILD_BUILD_TIMESTAMP or a dirty tree for an image that is declared. Material: research/self-explaining-structure/2026-11-23/image-recipes-with-a-cache.md.
+
+Sources
+: mobile-nixos-drop-vendor-devices,mobile-nixos-bootimg-nix,nix-local-binary-cache-store,nix-conf-file,nix-experimental-features,nixpkgs-kernel-build-nix,nix-builtins-fetchgit,harmonia,nixpkgs-android-tools,avbroot,pmos-boot-deploy,yocto-sstate-mirrors,yocto-hash-equivalence,buildroot-manual,mkosi-readme,bazel-remote-caching,kleaf-hermeticity,buildstream-caches,kernel-reproducible-builds
+
+About
+: self-explaining-structure
+
+Material
+: research/self-explaining-structure/2026-11-23/

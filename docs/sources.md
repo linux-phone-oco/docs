@@ -8203,3 +8203,307 @@ Url
 
 Takes
 : a conflict resolved once is replayed
+
+
+<a id="mobile-nixos-drop-vendor-devices"></a>
+### Mobile NixOS: devices: Drop vendor-based systems (2023-09-14)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/mobile-nixos/mobile-nixos/commit/c72dc1274bcc83c1b0ccb4c1a4500307c84d108d
+
+By
+: orchestration-renewed
+
+Takes
+: google-walleye was removed from Mobile NixOS; no surya either
+
+
+<a id="mobile-nixos-bootimg-nix"></a>
+### Mobile NixOS android bootimg.nix
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/mobile-nixos/mobile-nixos/blob/master/modules/system-types/android/bootimg.nix
+
+By
+: orchestration-renewed
+
+Takes
+: a boot.img as one runCommand: osm0sis mkbootimg (C), dtb appended, no AVB
+
+
+<a id="nix-local-binary-cache-store"></a>
+### Nix manual: Local Binary Cache Store (file://)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://nix.dev/manual/nix/stable/store/types/local-binary-cache-store.html
+
+By
+: orchestration-renewed
+
+Takes
+: a plain directory is a Nix binary cache; nix copy --to/--from
+
+
+<a id="nix-conf-file"></a>
+### Nix manual: nix.conf (substituters, trusted-substituters, require-sigs)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://nix.dev/manual/nix/stable/command-ref/conf-file.html
+
+By
+: orchestration-renewed
+
+Takes
+: an untrusted user cannot add a substituter not in trusted-substituters
+
+
+<a id="nix-experimental-features"></a>
+### Nix manual: experimental features
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://nix.dev/manual/nix/stable/development/experimental-features.html
+
+By
+: orchestration-renewed
+
+Takes
+: ca-derivations, flakes, nix-command are still experimental; we need none but nix-command per call
+
+
+<a id="nixpkgs-kernel-build-nix"></a>
+### nixpkgs kernel build.nix
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/NixOS/nixpkgs/blob/master/pkgs/os-specific/linux/kernel/build.nix
+
+By
+: orchestration-renewed
+
+Takes
+: KBUILD_BUILD_TIMESTAMP from SOURCE_DATE_EPOCH; python3Minimal in nativeBuildInputs
+
+
+<a id="nix-builtins-fetchgit"></a>
+### Nix manual: builtins.fetchGit
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://nix.dev/manual/nix/stable/language/builtins.html#builtins-fetchGit
+
+By
+: orchestration-renewed
+
+Takes
+: a git tag as input: ref refs/tags/... with rev pinned
+
+
+<a id="harmonia"></a>
+### harmonia: Nix binary cache server in Rust
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/nix-community/harmonia
+
+By
+: orchestration-renewed
+
+Takes
+: serves a /nix/store over HTTP, should the cache leave the lab host
+
+
+<a id="nixpkgs-android-tools"></a>
+### nixpkgs android-tools (mkbootimg, avbtool)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/misc/android-tools/default.nix
+
+By
+: orchestration-renewed
+
+Takes
+: avbtool in nixpkgs is Python; mkbootimg-osm0sis is the C one
+
+
+<a id="avbroot"></a>
+### avbroot (Rust AVB tooling)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/chenxiaolong/avbroot
+
+By
+: orchestration-renewed
+
+Takes
+: Rust AVB structures; a reference for a footer written in lpoco-bringup without avbtool
+
+
+<a id="pmos-boot-deploy"></a>
+### postmarketOS boot-deploy functions
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://gitlab.com/postmarketOS/boot-deploy/-/raw/master/boot-deploy-functions.sh
+
+By
+: orchestration-renewed
+
+Takes
+: pmOS makes boot.img with AOSP mkbootimg (Python) from shell; no input-keyed cache
+
+
+<a id="yocto-sstate-mirrors"></a>
+### Yocto: setting up sstate mirrors
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.yoctoproject.org/dev/dev-manual/sstate-mirrors-setup.html
+
+By
+: orchestration-renewed
+
+Takes
+: a task keyed by its inputs' signature, shared over HTTP: the model, not the tool
+
+
+<a id="yocto-hash-equivalence"></a>
+### Yocto: hash equivalence server
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.yoctoproject.org/dev-manual/hashequivserver.html
+
+By
+: orchestration-renewed
+
+Takes
+: inputs that differ but give the same output map to one entry
+
+
+<a id="buildroot-manual"></a>
+### The Buildroot user manual
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://buildroot.org/downloads/manual/manual.html
+
+By
+: orchestration-renewed
+
+Takes
+: ccache only; no binary output cache by design
+
+
+<a id="mkosi-readme"></a>
+### mkosi README
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/systemd/mkosi/blob/main/README.md
+
+By
+: orchestration-renewed
+
+Takes
+: Python; disk images and UKIs, no Android boot image
+
+
+<a id="bazel-remote-caching"></a>
+### Bazel: remote caching
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://bazel.build/remote/caching
+
+By
+: orchestration-renewed
+
+Takes
+: action cache + CAS over HTTP; tools outside the workspace poison a shared cache
+
+
+<a id="kleaf-hermeticity"></a>
+### Kleaf: hermeticity
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/docs/hermeticity.md
+
+By
+: orchestration-renewed
+
+Takes
+: Android's own kernel build on Bazel is not fully hermetic and carries Python
+
+
+<a id="buildstream-caches"></a>
+### BuildStream: caches
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.buildstream.build/master/arch_caches.html
+
+By
+: orchestration-renewed
+
+Takes
+: key -> digest -> CAS; Python
+
+
+<a id="kernel-reproducible-builds"></a>
+### Linux kernel: reproducible builds
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://docs.kernel.org/kbuild/reproducible-builds.html
+
+By
+: orchestration-renewed
+
+Takes
+: KBUILD_BUILD_TIMESTAMP/USER/HOST, prefix maps, setlocalversion -dirty

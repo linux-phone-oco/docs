@@ -8437,10 +8437,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: The author, 2026-11-23 (verbatim): "would it be helpful if we could use recepies for images in our procedures, and those recepies could have image cach to not recompile rebundle images by the same recepy if they are the same ? that way procedures arent bound to some external files of images just because, but reflect intelligent resoning pointing to recepy maker with a recepy for an image ... if the same procedure and recepy is ran on another machine it doesnt need the image it will make it . for consideration, research and so on." Relayed by the Top. An image as a pure function of its inputs (kernel int/ tag and config, dtb and overlays, init and initramfs, rootfs, mkbootimg header, signing). Weigh Nix (lab-machine setup/nix.sh; Mobile NixOS, google-walleye?), pmbootstrap (Python, practice 21), Yocto sstate, Buildroot+ccache, mkosi, Bazel/Buck remote cache, a thin Rust hash-keyed tool. Criteria: byte-for-byte vs today's declared sha256s, cache across machines, naming a rhizoid int/ tag, a procedure naming a recipe, aarch64 cross, AVB/signing, surya second, adoption cost. Ends in a decision with what was rejected, a backlog of first slices, and the first proof: one walleye image rebuilt from a recipe equal to its declared sha256, then served from the cache on a second run. Parties: walleye (its image rows and build/*.sh), the rhizoid lane (int/ tags).
+: Done 2026-11-23: decision 2026-11-23-image-recipes-on-nix-fixed-output-paths (research image-recipes-how-it-stands). First slice image-recipe-ensure-z21; then image-avb-footer-in-rust, image-recipe-kernel-from-int-tag, image-ensure-in-attended, image-cache-across-machines, image-recipe-surya.
 
 Opened
 : 2026-11-23
@@ -8450,6 +8450,168 @@ Needs
 
 Proof
 : a walleye image rebuilt from a recipe equals its device.toml sha256, and a second ensure serves it from the cache
+
+About
+: self-explaining-structure
+
+
+<a id="image-recipe-ensure-z21"></a>
+### lpoco bringup ensure: an image by its sha256 from the Nix store or a file:// cache, else built from its recipe as a fixed-output derivation (first: z21)
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: First slice of decision 2026-11-23-image-recipes-on-nix-fixed-output-paths. Recipe for z21 in google-walleye-lab: z20 (input by sha256 fe9e0cce...) with the z21 dtb (f9f2ca5d...) swapped - measured 2026-11-23: lpoco bringup image swap gives bdc0a891..., equal to device.toml. ensure computes the fixed path (nix-store --print-fixed-path), tries the store, then nix copy --from the declared caches, else builds the recipe in the sandbox with outputHash = the declared sha256, then nix copy --to the cache. Inputs (z20, the dtb) are imported into the cache by sha256 once. The swap may still call avbtool in this slice (image-avb-footer-in-rust removes it). Next: the recipe schema in manifest, the generic derivation in lab-tools, ensure in bringup.
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: z21 rebuilt by lpoco bringup ensure from its recipe on an empty store equals device.toml [images.z21] sha256 (bdc0a891...); a second ensure serves it from the cache without building (the builder is not run)
+
+About
+: self-explaining-structure
+
+
+<a id="image-avb-footer-in-rust"></a>
+### lpoco-bringup writes the AVB hash footer itself (algorithm NONE, the control's salt and properties), so no Python avbtool in the recipe sandbox
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Practice 21: bringup swap and bisect call avbtool (Python, Arch android-tools) today, and so do the lab's build scripts. A hash footer with algorithm NONE is a vbmeta header, one hash descriptor and properties, no key (avbroot is a Rust reference). Next: write it in bringup/src/swap.rs beside pack, test it against z21's footer. (decision 2026-11-23-image-recipes-on-nix-fixed-output-paths; research image-recipes-how-it-stands)
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: lpoco bringup image swap z20 --dtb z21.dtb gives z21's sha256 with no avbtool on PATH; the footer bytes equal avbtool's
+
+About
+: self-explaining-structure
+
+
+<a id="image-recipe-kernel-from-int-tag"></a>
+### A recipe's kernel built from an int/ tag in the Nix sandbox with a pinned clang, reproducible
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Measured 2026-11-23: the hand-built kernels carry timestamp, mll@grig, -dirty and the host's rolling clang 23.1.5 (rebuilt 2026-11-23 with the knobs set: 19,720 bytes still differ, the original build moment and counter were never recorded). In the sandbox: the tag's commit by builtins.fetchGit (rev pinned), the lab's dts and walleye*.config by sha256, clang/lld from the pinned nixpkgs, KBUILD_BUILD_TIMESTAMP/USER/HOST fixed, the release from the tag (no -dirty: the dts as an input file, until walleye-kernel-series-to-topics puts it in the tag). Next: one walleye kernel from int/walleye/ufs-off/v7.3/1. (decision 2026-11-23-image-recipes-on-nix-fixed-output-paths; research image-recipes-how-it-stands)
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: nix-build --check of the kernel derivation gives the same Image.gz, and an image made from it declares its sha256 and is served by ensure
+
+About
+: self-explaining-structure
+
+
+<a id="image-ensure-in-attended"></a>
+### lpoco-attended boots [images.NAME] through ensure: a procedure names an image and its recipe, not a file on one host
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Today attended/src/steps.rs reads [images.NAME] path under [images] dir and refuses a sha256 miss. With a recipe declared, a missing file is ensured (cache or build) before fastboot boot; a dry run says which (cache, build). Next after image-recipe-ensure-z21. (decision 2026-11-23-image-recipes-on-nix-fixed-output-paths; research image-recipes-how-it-stands)
+
+Opened
+: 2026-11-23
+
+Blocked by
+: image-recipe-ensure-z21
+
+Needs
+: build
+
+Proof
+: a dry run of a walleye fastboot procedure on a checkout with no build/images gets z21 by ensure (from the cache) with its sha256 equal, and says so
+
+About
+: self-explaining-structure
+
+
+<a id="image-cache-across-machines"></a>
+### The lab's image cache reachable from a second machine, and ensure using it there
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The cache is a Nix file:// directory on the lab host; content-addressed paths need no signing key (measured: an untrusted user restored z21 from an unsigned file:// cache). From another machine: nix copy --from ssh://LAB (or harmonia over HTTP should it be needed). trusted-substituters in nix.conf is the host keeper's change and optional. Waits on the author: which second machine, and whether the lab host's store is opened to it over ssh. (decision 2026-11-23-image-recipes-on-nix-fixed-output-paths; research image-recipes-how-it-stands)
+
+Opened
+: 2026-11-23
+
+Waits
+: the author: which second machine, and whether the lab host's Nix store is opened to it over ssh
+
+Blocked by
+: image-recipe-ensure-z21
+
+Needs
+: build
+
+Proof
+: on a second machine with Nix and no images, lpoco bringup ensure z21 takes it from the lab's cache and its sha256 equals device.toml's
+
+About
+: self-explaining-structure
+
+
+<a id="image-recipe-surya"></a>
+### Surya's images named by sha256 and recipe: its declared images become [images.NAME] rows that ensure serves
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The second device. surya-lab declares no [images.*] rows: its images are sha256 values in procedure tables with paths outside the repository (device.toml 226-236: calls4_image_sha256 and others), and its Nura base image (sha256 202298d9...) has one copy only (device.toml line 3). Imported into the cache by sha256 they get a second copy and a name; those built by our scripts get recipes in the same schema. Host side only, surya paused. Next after image-recipe-ensure-z21. (decision 2026-11-23-image-recipes-on-nix-fixed-output-paths; research image-recipes-how-it-stands)
+
+Opened
+: 2026-11-23
+
+Blocked by
+: image-recipe-ensure-z21
+
+Needs
+: build
+
+Proof
+: one surya-lab image declared by sha256 is an [images.NAME] row with a recipe, rebuilt by lpoco bringup ensure equal to its sha256, and a second ensure serves it from the cache
 
 About
 : self-explaining-structure
