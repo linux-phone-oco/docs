@@ -8369,3 +8369,31 @@ Rank
 
 About
 : self-explaining-structure
+
+
+<a id="host-only-tools-skip-the-lease-window"></a>
+### A declared tool that never drives a phone (rhizoid) installs without waiting for both phone leases
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Rhizoid lane, 2026-11-23: follow installs a moved [tools.NAME] pin only when both keepers' leases are free (lab-tools #348), so rhizoid 0.3.11 sat uninstalled most of the day behind walleye's keeper while its fixes waited. rhizoid, land and agent-env never touch a phone; only the lpoco family (and devlab) drive one. Release-pin and script tools outside the family install at once, still checked afterwards with their step-back; the family keeps the lease window. Never take a running keeper's lease.
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: lab-tools host tests: with a lease held, follow installs a moved [tools.rhizoid] pin and leaves a moved family pin waiting
+
+Rank
+: 1
+
+About
+: self-explaining-structure
