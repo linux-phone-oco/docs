@@ -8476,6 +8476,9 @@ Needs
 Proof
 : z21 rebuilt by lpoco bringup ensure from its recipe on an empty store equals device.toml [images.z21] sha256 (bdc0a891...); a second ensure serves it from the cache without building (the builder is not run)
 
+Rank
+: 1
+
 About
 : self-explaining-structure
 
