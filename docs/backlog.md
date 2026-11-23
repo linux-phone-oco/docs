@@ -8123,3 +8123,31 @@ Opened
 
 About
 : self-explaining-structure
+
+
+<a id="attended-releases-when-it-changes"></a>
+### lpoco-attended gets a release tag only when it changes, so the labs' pin moves only for a real change
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Top Coordinator 2026-11-23, after the author's 'no drift and busy work': release-plz.toml puts every crate in version_group lpoco (so lpoco NAME refuses a program of another version), so each family release (0.44.4) moves lpoco-attended's tag unchanged and both labs get a bump PR. Fix at the source: take lpoco-attended - the library the labs pin as a Cargo git tag - out of the version group so release-plz tags it only when its own files change (release-plz's default per package; cargo-workspaces' changed-only is the other prior art), and let the dispatcher check lpoco-attended against its own version, not the family's. Look at both before writing anything of our own. Rejected: a graph rule ignoring unchanged tags (hides the fault, does not remove it); one lab-wide family version (busy work every release).
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: lab-tools release tests: a release PR after a change outside attended/ leaves lpoco-attended's version and tag as they were; a change inside attended/ moves it; lpoco attended still runs
+
+Rank
+: 1
+
+About
+: self-explaining-structure
