@@ -7679,10 +7679,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-phone-reached-by-its-declared-transport. Then walleye declares [connection] transport and login = none and drops its own boot/dmesg/way-back helpers (its coordinator's item). 2026-11-20, lab-tools-builder: slice 1 landed (lab-tools #304, main 5b12e43): [connection] transport ssh|telnet|adb and login password|none (manifest refuses a pair that cannot work, an unknown word, telnet without shell_port); phone sh|root|put reach the phone through it (telnet: raw TCP to shell_address:shell_port with run markers; adb: adb -s SERIAL shell, serial from [fastboot] else first gadget); suite says 'not applicable: device.toml declares no login' and asks no password (exit 0 latest/list, 2 others). Proof: manifest/tests/transport.rs, devlab/tests/transport.rs (telnet via a real sh on a socket, adb and sshpass stand-ins; seen failing first), phone.rs unit tests for echo/prompt/IAC parsing. Review caught prompt-before-marker, IAC subnegotiation, hangs, large-script deadlock, noisy adb probe: fixed. Open now: boot_once by fastboot boot waiting for the gadget usb_id, lpoco-attended read_dmesg/back_to_known_good/phone() through the transport, other callers (provision, kernel try, watch, MCP suite tools) still assume login, telnet root = sh, a script that exits the shell or reads stdin is an error over telnet, Phone::at ignores addr for telnet/adb, adb serial taken from fastboot (may differ from adb's). Not run on a real telnetd/pty or real adb. 2026-11-20, lab-tools-builder: slice 2 landed (lab-tools #308, main c3b0798): [kernels] boot = entry|fastboot (manifest refuses fastboot without [fastboot] serial, a [[host.gadget]] usb_id, or [images.NAME] per test kernel); boot_once on a fastboot device runs devlab fastboot boot now on the [images] dir/NAME path then waits [boot] device_wait s (default 60, wait/2+1 tries every 2 s) for the gadget usb_id, no login; back_to_known_good no longer skips its reboot for a kernel that runs from memory. read_dmesg/back_to_known_good/phone() call devlab phone sh|root, which slice 1 routes through the transport (not re-proved in attended: its tests use a stand-in devlab). Proof: manifest/tests/kernels.rs (two tests), attended/tests/attended.rs boot_once_on_a_fastboot_device_..., the_way_back_of_a_fastboot_device_reboots_..., the_gadget_may_come_up_within_device_wait_... (seen failing first). Review caught kept-skips-the-way-back, one try short, serial untrimmed, silent fallback to kernel try: fixed. Open now: gadget matched by vendor:product only (a second phone with 1d6b:0104 passes; match the sysfs serial too), the phone must already be in fastboot (a prior step puts it there), sha256 of the image not checked, provision/kernel try/watch/MCP suite tools still assume login, telnet root = sh, Phone::at ignores addr for telnet/adb, adb serial from fastboot may differ. Not run on a real phone. 2026-11-20, lab-tools-builder: slice 3 landed (lab-tools #310, release v0.39.1, main 22e09e8): boot_once on a fastboot device checks the image's sha256 against [images.NAME] sha256 (read in chunks; a mismatch or an unreadable image stops the step before fastboot, naming the path, the hash found and the one declared) and matches the gadget by the sysfs serial of the [[host.gadget]] that carries the usb_id, compared as written (another phone with the same vendor:product, a different case, a missing serial file are no match). wait_for_usb/wait_for_gadget stay vendor:product only. Proof: attended/tests/attended.rs an_image_whose_checksum_is_not_the_declared_one_..., a_declared_checksum_with_no_image_on_disk_..., the_gadget_is_the_one_with_the_declared_serial_..., the_serial_is_found_among_devices_of_one_id_..., wait_for_usb_still_goes_by_vendor_and_product_alone (the first two seen failing first). Review: no bug; weak tests strengthened, hash streamed. CI flaked once on a_call_that_outlasts_the_limit (a <30 s timing assertion on a loaded runner), passed on rerun. Open now: the phone must already be in fastboot (a prior step puts it there), the sha256 is read at the step so a file changed between hash and devlab's read is not caught, provision/kernel try/watch/MCP suite tools still assume login, telnet root = sh, Phone::at ignores addr for telnet/adb, adb serial from fastboot may differ. Not run on a real phone. 2026-11-21, lab-tools-builder: slice 4 landed (lab-tools #312): a device with login = none finds test, health, suite, watch, the health MCP tools and the checks after a change (provision, kernel try, reboot) 'not applicable' - test/health/suite exit 2, watch ends 0, the MCP action tools return an error (a suite that did not run is not a pass); proof devlab/tests/transport.rs (two tests, seen failing first) and suite.rs not_applicable unit test; the attended limit test's bound moved 30 to 45 s (flaked twice on CI). Slice 5 landed (lab-tools #314, release v0.39.2 with #313 before it): boot_once on a fastboot device reads devlab fastboot state; a phone elsewhere (Android, a test image) gets 'reboot bootloader' through devlab phone root over its declared transport and is waited for (device_wait) before the boot from memory; a state devlab cannot read ends the step with no reboot; a phone that never reaches fastboot ends it naming what the transport said; a phone already in fastboot is left alone. Proof attended/tests/attended.rs boot_once_on_a_fastboot_device_puts_..., a_phone_that_never_reaches_fastboot_..., a_fastboot_state_devlab_cannot_read_... (first two seen failing first). flash reads no login (image files and fastboot). provision works through the transport (Phone::at, root) but its first-boot script, apk and USB share are postmarketOS-specific - not for a device that boots another distribution. Open now: whether busybox/Android reboot honours 'bootloader' on each declared transport (only a real run shows it), the reboot is not under the device hold (the keeper holds it), kernel try is boot-entry based (postmarketOS), telnet root = sh, Phone::at ignores addr for telnet/adb, adb serial from fastboot may differ. Not run on a real phone.
+: Done 2026-11-23: slices 1-5 landed; the host-side proof (manifest transport.rs and kernels.rs, devlab transport.rs, attended boot_once tests) passes on lab-tools main v0.44.8, cargo test --workspace. What only a real phone shows moved to transport-real-phone-run.
 
 Opened
 : 2026-11-19
@@ -8285,3 +8285,31 @@ Opened
 
 About
 : self-explaining-structure
+
+
+<a id="transport-real-phone-run"></a>
+### Run the declared transports on a real phone and close the small transport gaps
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Split from phone-declared-transport 2026-11-23: its host-side proof passes on lab-tools main v0.44.8 (cargo test --workspace, all ok). Left: reboot bootloader on busybox/Android per transport, telnet root = sh, Phone::at ignores addr for telnet/adb, adb serial from [fastboot] may differ from adb's; none of it is shown without a real phone.
+
+Opened
+: 2026-11-23
+
+Needs
+: phone
+
+Device
+: google-walleye
+
+Proof
+: a walleye telnet/adb run: phone sh reaches the shell, reboot bootloader is honoured, Phone::at uses the declared addr, adb serial matches adb's
+
+About
+: phone-declared-transport
