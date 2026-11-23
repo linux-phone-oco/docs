@@ -2924,3 +2924,28 @@ About
 
 Research
 : structure-review-what-is,structure-review-look-around
+
+
+<a id="2026-11-23-host-tool-release-at-pin"></a>
+### 2026-11-23-host-tool-release-at-pin
+
+Brief
+: A tool of another project is pinned by repository, tag and asset, installed from its release by hash, never built
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-23
+
+Decision
+: [tools.NAME] repository/tag/asset; URL is LPOCO_GITHUB/REPOSITORY/releases/download/TAG/ASSET with .sha256 beside; stamp = tag; names of the lpoco family refused.
+
+Why
+: rhizoid's releases carry the binary and its .sha256; no cargo on the lab machine (rhizoid coordinator via orchestration).
+
+Rejected
+: cargo install from a git tag (slow, needs a toolchain); LPOCO_RELEASE_BASE reuse (wrong folder shape); hash pinned in lab.toml (follow-up).
+
+About
+: host-installs-cargo-tool-at-pin

@@ -8055,10 +8055,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Reshaped 2026-11-23: rhizoid's releases will carry rhizoid-x86_64-unknown-linux-gnu and its .sha256 (as lab-tools' assets.yml; v0.2.2 back-filled), so no cargo build on the lab machine (rhizoid coordinator, asked by orchestration). [tools.NAME] today takes a script or the lpoco family: add a form naming a GitHub repository, tag and asset, installed only when its sha256 matches; then lab.toml declares rhizoid at v0.2.2. Then the first real run: a lab's list reproducing an existing image byte for byte (rhizoid assemble --reproduces).
+: Landed in lab-tools #331, released v0.44.0: [tools.NAME] with repository, tag, asset installs a release binary only when its .sha256 matches, stamps the tag, never builds (host/tests/release_tool.rs, 7 tests, seen failing first). Left: lab.toml's [tools.rhizoid] repository git-rhizoid/rhizoid tag v0.2.2 asset rhizoid-x86_64-unknown-linux-gnu in lab-machine (orchestration lands it), then the first real run (rhizoid assemble --reproduces).
 
 Opened
 : 2026-11-23
