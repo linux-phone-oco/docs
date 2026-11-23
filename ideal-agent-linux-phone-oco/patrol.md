@@ -66,7 +66,7 @@ Judge only after measuring; what is not measured is "not known yet".
    (`find ~/.claude/projects/-home-mll -name '*.jsonl' -newermt '-6 hours'`).
 
 7. **Steps to lift**: `lpoco-attended lift` over fresh worktrees at origin/main of each lab and of lab-tools:
-   `lpoco-attended lift --repos WT-SURYA,WT-WALLEYE --library WT-LAB-TOOLS/attended/src --format csv` (each WT a
+   `cargo run -q --manifest-path WT-LAB-TOOLS/Cargo.toml -p lpoco-attended -- lift --repos WT-SURYA,WT-WALLEYE --library WT-LAB-TOOLS/attended/src --format csv` (built from that worktree: since lab-tools #342 the host installs no lpoco-attended) (each WT a
    `git -C ~/Projects/linux-phone-oco/REPO worktree add -q --detach ... origin/main`, removed at the end; a lab with no
    procedures/steps yet is left out and named). Each flagged
    pair or triple is a sign, filed on docs' backlog for lab-tools as `lift-STEP` ("lift STEP into lpoco-attended",
