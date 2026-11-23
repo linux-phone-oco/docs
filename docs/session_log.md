@@ -5696,3 +5696,27 @@ Rejected
 
 About
 : manifest-releases-when-it-changes
+
+---
+
+
+<a id="2026-11-23-follow-cargo-fallback-pinned"></a>
+### follow's cargo fallback is pinned by a test
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lab-tools #346 (main ac5f6a5): host/tests/follow.rs a_release_without_its_binaries_is_built_with_cargo - a listed release whose assets 404 is built with cargo install at its tag. It passed on its first run (the fallback came with prepare, #278), so it was not seen failing; the review confirmed it would fail without the fallback but I did not run it so. The last open end of the item; item marked done. Not covered: the cargo-built binary being the one checked and pinned (the cargo stub installs nothing); the lease is not renewed past 90 min; a pin ahead of the newest release with no asset retries every timer run.
+
+Considered
+: A stub that installs a host, to prove 'still checked and pinned': kept for later.
+
+Rejected
+: Treating 'cargo fallback' as a new feature: the decision rejects compiling from the timer as the normal path; the fallback only runs when no asset exists.
+
+About
+: host-follows-releases
