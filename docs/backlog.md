@@ -8462,10 +8462,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: First slice of decision 2026-11-23-image-recipes-on-nix-fixed-output-paths. Recipe for z21 in google-walleye-lab: z20 (input by sha256 fe9e0cce...) with the z21 dtb (f9f2ca5d...) swapped - measured 2026-11-23: lpoco bringup image swap gives bdc0a891..., equal to device.toml. ensure computes the fixed path (nix-store --print-fixed-path), tries the store, then nix copy --from the declared caches, else builds the recipe in the sandbox with outputHash = the declared sha256, then nix copy --to the cache. Inputs (z20, the dtb) are imported into the cache by sha256 once. The swap may still call avbtool in this slice (image-avb-footer-in-rust removes it). Next: the recipe schema in manifest, the generic derivation in lab-tools, ensure in bringup.
+: Landed in lab-tools #368 (main 59102ba), read back from main. Proof: bringup/tests/ensure.rs, and z21 measured on the lab (built from z20 + dtb in the sandbox = bdc0a891, then in the store, then from the cache). Open: the z21 recipe row in google-walleye-lab (walleye's), release of the next lpoco version (release PR not yet open), the default source (release tag from GitHub) is not run, CI has no nix so it does not prove this, avbtool until image-avb-footer-in-rust, ensure in attended (image-ensure-in-attended).
 
 Opened
 : 2026-11-23
