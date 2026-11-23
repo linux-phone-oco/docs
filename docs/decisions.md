@@ -3005,3 +3005,31 @@ About
 
 Research
 : structure-review-look-around
+
+
+<a id="2026-11-23-graph-checked-at-land-by-the-hosts-rhizoid"></a>
+### 2026-11-23-graph-checked-at-land-by-the-hosts-rhizoid
+
+Brief
+: docs' graph is checked at land by the host's own rhizoid (make land-check), not in GitHub CI: no secret, no copy of the pin
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-23
+
+Decision
+: land runs a repository's make land-check, when its Makefile declares one, on the branch exactly as it is about to merge (after any rebase and land-regen), and refuses the merge on failure. docs' land-check runs rhizoid check --graph rhizoid.graph.toml with the rhizoid installed on the lab host, the one the rhizoid-bump timer reads the graph with. No rhizoid, or one before check (0.3.9), fails and says which; it never skips. A merge outside land escapes the check: today none happen (every docs merge is land, the bump timer's --land included); if that changes, the check moves to CI.
+
+Why
+: A graph using a field the host's rhizoid does not know broke nothing only because orchestration held [[pins]] back by hand (0.3.6 refuses it). A CI job would need grenudi/lab-machine's lab.toml, which is private: a token or a visibility change, and the lab's own token has admin scopes and stays in its mode-600 file (Top Coordinator). Checking at land uses the binary that matters, even when the host lags its pin. Proposed by the Top, accepted by the rhizoid lane with its three conditions.
+
+Rejected
+: A CI job reading lab.toml with a read token (a credential to keep) or with lab-machine public (a visibility change for one file); checking against rhizoid's latest release (always new enough, so it passes the skew it exists to catch); rhizoid ignoring unknown fields (an old one would move pins it does not own).
+
+About
+: self-explaining-structure
+
+Research
+: structure-review-look-around

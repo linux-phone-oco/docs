@@ -23,6 +23,14 @@ sql:              ## ask the data in SQL: make sql Q="SELECT ..." (a change is k
 	$(TAD) sql "$(Q)"
 land-regen: canon render  ## what land runs after rebasing a branch onto a moved main (lab-machine bin/land, PR 79)
 
+# what land runs on the branch it is about to merge: the graph read by the rhizoid this host runs, the one the
+# rhizoid-bump timer reads it with (decision 2026-11-23-graph-checked-at-land-by-the-hosts-rhizoid); no rhizoid, or
+# one before check (0.3.9), fails and says which - never skipped
+land-check:  ## the graph readable by this host's rhizoid
+	@command -v rhizoid >/dev/null 2>&1 || { echo "land-check: no rhizoid on this host - the graph cannot be checked (lab.toml [tools.rhizoid], lpoco host prepare now)" >&2; exit 1; }
+	@v=$$(rhizoid --version | cut -d' ' -f2); [ "$$(printf '%s\n' 0.3.9 "$$v" | sort -V | head -1)" = 0.3.9 ] || { echo "land-check: rhizoid $$v predates check (0.3.9) - install the pinned rhizoid first" >&2; exit 1; }
+	@rhizoid check --graph rhizoid.graph.toml
+
 verify: check     ## what CI runs: data is valid and canonical, docs are fresh
 	@before="$$(find data docs face/graph -type f -print0 | sort -z | xargs -0 sha256sum)"; \
 	$(TAD) canon && $(TAD) render && ./bin/render-pages.sh || exit 1; \

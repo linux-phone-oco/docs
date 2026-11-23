@@ -8278,13 +8278,10 @@ Status
 : open
 
 Note
-: Rhizoid lane's call 2026-11-23, after [[pins]] waited on the host's rhizoid 0.3.6 refusing it: a CI job reads grenudi/lab-machine's lab.toml [tools.rhizoid] tag, fetches that release asset with its sha256 checked, and runs rhizoid check --graph rhizoid.graph.toml (parse only, no clones; the rhizoid builder is adding the verb). Then the order holds by construction: the pin moves, the host installs, then the graph may use a new field. Rejected: rhizoid ignoring unknown tables (an old one skipping moved_by or [[pins]] would move pins it does not own).
+: Decided 2026-11-23 (decision 2026-11-23-graph-checked-at-land-by-the-hosts-rhizoid): checked at land, not in CI. docs' make land-check is in (no rhizoid / before 0.3.9 fails and says which; 0.3.9 reads the graph). Left: lab-machine bin/land runs make land-check on the branch it merges, with a test of the failing cases; it lands once the host runs rhizoid >= 0.3.9, or every docs landing would stop.
 
 Opened
 : 2026-11-23
-
-Waits
-: rhizoid check --graph released (the rhizoid lane)
 
 About
 : self-explaining-structure
