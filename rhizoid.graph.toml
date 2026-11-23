@@ -128,3 +128,16 @@ value = "lpoco-attended-v{version}"
 gate = ["cargo", "check", "--manifest-path", "tools/walleye-tries/Cargo.toml"]
 also = ["tools/walleye-tries/Cargo.lock"]
 followers = ["linux-phone-oco/google-walleye-lab"]
+
+# lpoco-attended names lpoco-manifest by its released tag, not a path (lab-tools #342); manifest is tagged only when
+# manifest/ changes (lab-tools #344), so a bump here is a real change
+[[tool]]
+name = "lpoco-manifest"
+source = "linux-phone-oco/lab-tools"
+tag_prefix = "lpoco-manifest-v"
+pin = "attended/Cargo.toml"
+key = "dependencies.lpoco-manifest.tag"
+value = "lpoco-manifest-v{version}"
+gate = ["cargo", "test", "--manifest-path", "attended/Cargo.toml"]
+also = ["Cargo.lock"]
+followers = ["linux-phone-oco/lab-tools"]
