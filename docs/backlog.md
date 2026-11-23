@@ -8350,10 +8350,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: rhizoid-bump timer, 12:00 2026-11-23 (rhizoid lane): bump of attended/Cargo.toml's lpoco-manifest tag 0.44.4 -> 0.44.5, gate cargo test --manifest-path attended/Cargo.toml failed (exit 101, --test attended). First tell which it is: run the gate on main at 0.44.4 the way the timer does (in a fresh worktree, no host lpoco-attended on PATH) - if it fails there too, the gate or the test's environment is wrong, not manifest; if it passes, fix attended for 0.44.5 (or name what manifest broke). Then the timer's next run lands the bump by itself; do not bump by hand.
+: 2026-11-23, lab-tools-builder: not reproduced, no code change. cargo test --manifest-path attended/Cargo.toml passed in a fresh worktree of lab-tools main (3e885ed) at lpoco-manifest 0.44.4 and at 0.44.5 (cargo updates Cargo.lock by itself), and the --test attended suite (69 tests) passed again under 4 busy CPU loops (x3), with the timer's env (PATH without ~/.local/bin), and with cold CARGO_HOME and rust-script caches. So the 12:04 failure was transient; its cause is not known, because the bump's journal keeps only the gate's last line ('error: test failed, to rerun pass --test attended'), not the failing test. Candidate: the tests compile rust-script examples that fetch git tags, so a first run just after the 0.44.5 tag could race the network. Next: the timer's next run lands the bump; if it is gated out again, read the gate's whole output (rhizoid lane: the gate should keep the failing test's name).
 
 Opened
 : 2026-11-23
