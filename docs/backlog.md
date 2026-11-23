@@ -8683,3 +8683,31 @@ Rank
 
 About
 : self-explaining-structure
+
+
+<a id="follow-never-locks-itself-out"></a>
+### lpoco host follow never locks itself out: a failing check it alone can fix does not stop it, and it asks GitHub with the token
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Seen 2026-11-23 by orchestration: the host sat at lpoco 0.44.3 all day although both leases were free at times. (1) follow refused to follow while the host check failed on rhizoid (pinned 0.3.13, found 0.3.9), and only a newer follow (lab-tools #348) installs a moved tool pin; (2) follow 0.44.3 installed lpoco-attended at the family tag, which no longer exists since lab-tools #342 (lpoco-attended-v0.47.1 not found); (3) many runs failed with HTTP 403 or 504 from api.github.com/repos/.../releases, unauthenticated. Unstuck by hand, once: lpoco-host 0.47.1 from its release asset (sha256 checked, leases free), lab.toml lpoco = 0.47.1 (lab-machine), lpoco-host prepare now. Fix: a check FAIL that is only the tools follow itself installs (a moved tool pin, a family member behind) does not block follow; follow reads releases with the lab's token; and the dispatcher's mixed-version refusal names lpoco-host prepare now as the way out.
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: lab-tools host tests: follow with a moved tool pin failing the check still installs; a family release follows when the check fails only on family members behind; the releases request carries the token
+
+Rank
+: 1
+
+About
+: self-explaining-structure
