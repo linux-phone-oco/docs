@@ -56,6 +56,10 @@ Recorded as ideal-agent's record-the-work says; linux-phone's part:
   it (decision 2026-11-20-outgoing-items-live-in-upstream).
 - **What it is about.** Give every record `--about` - a component, feature, milestone, device or backlog
   item (`tad q about` lists them) - so `tad q about --subject X` finds it.
+- **Messages between sessions carry work** (ideal-agent decision 2026-11-23-messages-between-sessions-carry-work):
+  a result, a question, a refusal or a blocker - one report when a piece is finished, never an ack or a step
+  report; mid-piece only a question or a blocker (a turning point). If sends are paused, the report goes as a note
+  in the group's notes folder (`~/.config/Claude/side-session-notes/TOP-SESSION-ID/`).
 - **Where things live: [MAP.md](../MAP.md).** `~/Projects/linux-phone-oco/` holds clones only, on main, for
   reading: write nothing there. Every working copy is a worktree in `~/.local/share/agent-worktrees/REPO/NAME`,
   removed after its land; a run's output goes to `$AGENT_BUILD`, and what is kept as evidence into its research
