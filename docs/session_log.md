@@ -5312,3 +5312,27 @@ Rejected
 
 About
 : agent-folder
+
+---
+
+
+<a id="2026-11-23-structure-review-decided"></a>
+### Structure review: what is, how others do it, the rules decided
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-23
+
+Done
+: Steward (new role, one-off review asked by the author on 2026-11-22, all lanes paused): six roles' reflections gathered (walleye, surya, orchestration, upstreams, ideal-agent, ikb), every repository and the kernel trees read from origin/main, an outside look-around (linux-next, b4, qcom-next, Linaro automerge, phone ports, KernelCI, ARCHITECTURE.md, FHS, kramdown-rfc). Recorded: concept self-explaining-structure, research structure-review-what-is and structure-review-look-around (material research/self-explaining-structure/2026-11-23/), 11 sources, 8 decisions 2026-11-23-structure-*, and MAP.md - the project on one screen. Nothing moved yet: moves wait for the Top Coordinator's 'all lanes paused'.
+
+Considered
+: Sending the design to every role for objections before applying (done in parallel with recording; decisions are amended if one holds).
+
+Rejected
+: Moving files before the pause line (a lane could be writing them).
+
+About
+: structure-review

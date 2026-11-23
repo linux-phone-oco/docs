@@ -163,3 +163,19 @@ Ord
 
 Rests on
 : ideal-agent
+
+
+<a id="self-explaining-structure"></a>
+### A structure that explains itself
+
+Project
+: linux-phone-oco/docs
+
+Summary
+: Anyone, a person or an agent, knows where a thing is and why just by looking: one meaning per top-level folder with a README saying it, a short map at the top of every README, branch names that say whose and what, one home per kind of thing, and checks that refuse a thing in the wrong home.
+
+Why
+: The author, 2026-11-22: "currently all our repositories are a damn mess, agents create folders in root folder without trying to group them, to make sense of them, and without making them selfinformative, so that anyone humans or agents could make sense of it and know where things are just by looking at the structure." A place chosen by whoever creates the thing, with nothing tying it to a session or ending it, is how the mess grew (research structure-review-what-is).
+
+Rests on
+: 13,22,32,45
