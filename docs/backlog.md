@@ -8549,10 +8549,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Today attended/src/steps.rs reads [images.NAME] path under [images] dir and refuses a sha256 miss. With a recipe declared, a missing file is ensured (cache or build) before fastboot boot; a dry run says which (cache, build). Next after image-recipe-ensure-z21. (decision 2026-11-23-image-recipes-on-nix-fixed-output-paths; research image-recipes-how-it-stands)
+: Landed in lab-tools #375 (main 96a0e9d), read back from main. lpoco-bringup image ensure NAME --dry-run (store, cache, seed or build; changes nothing; refused by other image verbs) and lpoco-attended boot_once: an [images.NAME] with a recipe and no file is ensured and the store path booted, sha256 checked; the dry run's step line says where from and ends (exit 2) when ensure cannot say. Proof: bringup/tests/ensure.rs a_dry_run_says_where_the_image_would_come_from_and_puts_nothing_in_the_store, dry_run_is_refused_by_every_verb_but_ensure; attended/tests/attended.rs an_image_with_a_recipe_and_no_file_is_ensured_before_the_boot_and_a_dry_run_says_where_from (seen failing first), a_dry_run_ends_when_ensure_cannot_say_and_a_run_ends_when_ensure_gives_no_path. The attended test uses a stand-in lpoco-bringup: not measured on walleye with the real cache. Open: plan checks the cache with nix path-info, ensure with nix copy (a listed but unservable entry is planned as cache); plan of a [kernel_builds] name says build without looking at store/cache/seed; Build verdict does not check a recipe's kernel/dtb/ramdisk inputs; the release of the next lpoco version; walleye's procedures declaring the z21 recipe row (walleye's).
 
 Opened
 : 2026-11-23

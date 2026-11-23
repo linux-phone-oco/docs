@@ -6053,3 +6053,27 @@ Rejected
 
 About
 : image-recipe-kernel-from-int-tag
+
+---
+
+
+<a id="2026-11-23-image-ensure-in-attended-landed"></a>
+### image-ensure-in-attended landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lab-tools-builder: lab-tools #375. bringup --dry-run plan, attended boots recipe images through ensure; programmer review fixes (dry run fails on a failed plan, path parsed from the last line, --dry-run only for ensure).
+
+Considered
+: A plan computed at step construction in every run (review: spawns nix on each start); linking lpoco-bringup into attended as a crate (attended pins only the manifest).
+
+Rejected
+: Putting a failed plan in the step name only: the dry run would pass and the real run fail after the gates. Calling ensure's own code from attended: attended depends on the manifest by tag, not on bringup.
+
+About
+: image-ensure-in-attended
