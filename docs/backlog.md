@@ -6177,6 +6177,9 @@ Note
 Opened
 : 2026-11-19
 
+Waits
+: nfpm or a real package manager on the lab host, or a kernel build, for its remaining ends (lab-tools #380 landed the last host-only slice; Nura deviceinfo is not ours to prepare)
+
 Blocked by
 : layer-table-in-manifest
 
@@ -8649,6 +8652,34 @@ Opened
 
 Proof
 : a walleye image declared by recipe from int/walleye/ufs-off/v7.3/1 is built by lpoco bringup image ensure equal to its sha256 on a checkout with no build/images
+
+About
+: self-explaining-structure
+
+
+<a id="nfpm-on-the-lab-host"></a>
+### nfpm on the lab host as a declared tool at its pin, so layer packing and the boot.img trigger are proven on real packages
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Two items wait on it: lpoco-layer-pack and bootimg-trigger-per-base. lab.toml's release form takes a bare binary asset with a .sha256 beside it; nfpm's GitHub releases ship tar.gz archives and a checksums.txt. Look first at whether the form should take an archive and a checksums file, or whether nfpm comes another way (Nix, already on the lab, has nfpm). The host-only rule (lab-tools #355) lets it install without a lease.
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: lpoco host check lists nfpm ok at its pin; lpoco layer pack builds a real .apk/.deb on the lab
+
+Rank
+: 4
 
 About
 : self-explaining-structure
