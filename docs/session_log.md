@@ -5408,3 +5408,27 @@ Rejected
 
 About
 : structure-review
+
+---
+
+
+<a id="2026-11-23-rhizoid-v020-checked"></a>
+### rhizoid v0.2.0 checked: the kernel flow is ready for the lanes' builders
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-23
+
+Done
+: Steward's second ergonomics check on a toy repository. The three refinements hold: tested_commit HEAD is refused with the reason; an unchanged list prints its existing tag (unchanged=yes); --done TAG removes the tag's worktree; a conflict exits 1 naming both branches and the path, tags nothing, and leaves its worktree unlocked at the conflict. rhizoid status over an integration edge names a branch outside the scheme (a hand-made int/ branch), a tag shaped like an assembled one but without a recipe (made by hand), each topic's base against the newest release, each assembled tag's recipe read back, and a worktree left at a conflict with how to end it. The tag template and branch patterns now live in the lab's list file (rhizoid stays general; --lists is required). Left for the real check: a lab's first list reproducing an existing image byte for byte.
+
+Considered
+: Asking --done to take a conflicted worktree too: status already says how to end it.
+
+Rejected
+: Holding the lanes for more toy checks: the next evidence is a real image.
+
+About
+: structure-review
