@@ -8182,3 +8182,31 @@ Rank
 
 About
 : self-explaining-structure
+
+
+<a id="host-declares-tool-timers"></a>
+### lpoco host prepares the user timers a declared tool ships (rhizoid-bump), from lab.toml, never by hand
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-23, orchestration installed rhizoid v0.3.6's packaging/systemd/rhizoid-bump.{service,timer} by hand as user units, with ~/.config/rhizoid/bump.env (RHIZOID_GRAPH_CLONE, mode 600) and enabled the hourly timer; idealkb-update-pins and tad-update-pins came the same way. lab.toml should declare them (e.g. [tools.rhizoid] timers = ["rhizoid-bump"] with the env lines) so prepare installs them from the pinned tag and plan shows drift, the way [follow] and [clones] already are.
+
+Opened
+: 2026-11-23
+
+Needs
+: build
+
+Proof
+: lab-tools host tests: a declared tool timer is written from the release tag's packaging/systemd units, its env file mode 600, and plan reports a hand-changed unit
+
+Rank
+: 3
+
+About
+: self-explaining-structure
