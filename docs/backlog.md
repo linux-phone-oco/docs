@@ -7970,7 +7970,7 @@ Opened
 : 2026-11-23
 
 Proof
-: a test: a list naming a topic with no upstream-item row is refused before rhizoid runs; a good list is passed to rhizoid assemble and its tag read back
+: lab-tools bringup tests: a throwaway kernel repo and a topics.toml - a topic with no upstream-item row or a disagreeing FROMLIST subject is refused before rhizoid runs; a clean list calls rhizoid assemble, and its int/ tag is pushed once an image names it
 
 Rank
 : 1
@@ -8034,6 +8034,9 @@ Note
 
 Opened
 : 2026-11-23
+
+Proof
+: lab-tools tone tests: the argument tests leave the working folder unchanged; no .wav tracked at the top
 
 About
 : self-explaining-structure
