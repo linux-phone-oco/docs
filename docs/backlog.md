@@ -6399,6 +6399,9 @@ Note
 Opened
 : 2026-11-19
 
+Waits
+: nfpm on the lab host (a declared tool at its pin) for the real package; the rest is proved in containers (Fedora, Arch, Debian dpkg -i)
+
 Needs
 : build
 
