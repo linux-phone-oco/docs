@@ -7914,3 +7914,85 @@ Opened
 
 About
 : self-explaining-structure
+
+
+<a id="briefs-follow-the-structure-map"></a>
+### Role briefs follow the structure map: worktrees only by branch, run output to AGENT_BUILD, ROLE/WHAT branches, a keeper started for one named item
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decisions 2026-11-23-structure-lab-machine-homes, -branch-names, -go-is-its-own-record. The briefs in ideal-agent-linux-phone-oco/ still tell roles to make worktrees as ~/Projects/linux-phone-oco/wt-ROLE-RUN; each points to MAP.md instead. Owner: orchestration.
+
+Opened
+: 2026-11-23
+
+About
+: self-explaining-structure
+
+
+<a id="old-branches-cleared"></a>
+### Old branches cleared: auto-delete head branches on, 2,050 merged branches deleted, the other 88 kept as archive/NAME tags
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Decision 2026-11-23-structure-branch-names. Counts of 2026-11-23 in research structure-review-what-is. Asked of the author through the Top Coordinator on 2026-11-23.
+
+Opened
+: 2026-11-23
+
+Waits
+: the author's go: GitHub setting and branch deletion are outward changes
+
+About
+: self-explaining-structure
+
+
+<a id="lab-machine-root-clones-only"></a>
+### ~/Projects/linux-phone-oco holds clones only: worktrees, run logs and upstream-queue moved out with pointers; the kernel clone moved in
+
+Project
+: linux-phone-oco/docs
+
+Status
+: in-progress
+
+Note
+: Decision 2026-11-23-structure-lab-machine-homes. Steward, after the Top Coordinator's 'all lanes paused'. upstream-queue/: all 8 files byte-equal to docs upstream/ (checked 2026-11-23). Then lab.toml [clones] (grenudi/lab-machine) names linux and marks sxmo-utils a fork: orchestration.
+
+Opened
+: 2026-11-23
+
+About
+: self-explaining-structure
+
+
+<a id="kernel-assemble-from-topics"></a>
+### lpoco-bringup kernel assemble: a phone's test kernel int/DEVICE built from its kernel/topics.toml, tagged int/DEVICE/BASE/N
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-23-structure-kernel-topics-and-integration. Reads the lab's kernel/topics.toml (base; then topics in order, each: branch topic/ITEM, what it is for, state known-good with its test-run id, or trying). Starts from the base every time in a worktree of the one kernel clone (rerere on), merges each topic, stops at a conflict naming the two, tags int/DEVICE/BASE/N, writes base and each topic's sha into the tag message. Refuses a topic with no upstream-item row or whose FROMLIST(item) subjects disagree (check-fork-tags.sh). Rests on linux-next's Next/Trees and qcom-next (research structure-review-look-around).
+
+Opened
+: 2026-11-23
+
+Proof
+: a test: a list of two topics on a base assembles to a tag holding both; a conflict stops naming both topics; a topic with no upstream-item row is refused
+
+About
+: self-explaining-structure
