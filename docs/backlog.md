@@ -8695,7 +8695,7 @@ Status
 : open
 
 Note
-: Seen 2026-11-23 by orchestration: the host sat at lpoco 0.44.3 all day although both leases were free at times. (1) follow refused to follow while the host check failed on rhizoid (pinned 0.3.13, found 0.3.9), and only a newer follow (lab-tools #348) installs a moved tool pin; (2) follow 0.44.3 installed lpoco-attended at the family tag, which no longer exists since lab-tools #342 (lpoco-attended-v0.47.1 not found); (3) many runs failed with HTTP 403 or 504 from api.github.com/repos/.../releases, unauthenticated. Unstuck by hand, once: lpoco-host 0.47.1 from its release asset (sha256 checked, leases free), lab.toml lpoco = 0.47.1 (lab-machine), lpoco-host prepare now. Fix: a check FAIL that is only the tools follow itself installs (a moved tool pin, a family member behind) does not block follow; follow reads releases with the lab's token; and the dispatcher's mixed-version refusal names lpoco-host prepare now as the way out.
+: Seen 2026-11-23 by orchestration: the host sat at lpoco 0.44.3 all day. (1) follow refused while the host check failed on rhizoid (pinned 0.3.13, found 0.3.9), which only a newer follow installs; (2) follow 0.44.3 installed lpoco-attended at the family tag, gone since lab-tools #342; (3) releases read from api.github.com unauthenticated got HTTP 403/504. Unstuck by hand once (lpoco-host 0.47.1 from its asset, lab.toml lpoco = 0.47.1, lpoco-host prepare now). Fix: a check FAIL that is only what follow itself installs does not block follow; the dispatcher's mixed-version refusal names lpoco-host prepare now. Added by the Top: (a) lpoco host check fails when the installed lpoco is behind lab.toml's pin, or when follow's last success is older than a set age, so the next lockout shows within the hour; (b) release reads use the host's existing gh auth or the API with ETag/conditional requests - never read or copy ~/.config/ideal-agent/token into follow (it stays out of tools and CI).
 
 Opened
 : 2026-11-23
@@ -8704,7 +8704,7 @@ Needs
 : build
 
 Proof
-: lab-tools host tests: follow with a moved tool pin failing the check still installs; a family release follows when the check fails only on family members behind; the releases request carries the token
+: lab-tools host tests: follow with only a moved tool pin failing still installs; a family release follows when the check fails only on family members behind; check fails when lpoco is behind its pin or follow's last success is stale; release reads use gh auth or a conditional request, not the token file
 
 Rank
 : 1
