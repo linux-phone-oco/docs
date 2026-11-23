@@ -8275,10 +8275,10 @@ Project
 : linux-phone-oco/docs
 
 Status
-: open
+: done
 
 Note
-: Decided 2026-11-23 (decision 2026-11-23-graph-checked-at-land-by-the-hosts-rhizoid): checked at land, not in CI. docs' make land-check is in (no rhizoid / before 0.3.9 fails and says which; 0.3.9 reads the graph). Left: lab-machine bin/land runs make land-check on the branch it merges, with a test of the failing cases; it lands once the host runs rhizoid >= 0.3.9, or every docs landing would stop.
+: Done 2026-11-23 (decision 2026-11-23-graph-checked-at-land-by-the-hosts-rhizoid): docs' make land-check reads rhizoid.graph.toml with the host's rhizoid (no rhizoid or <0.3.9 fails and says which); lab-machine bin/land runs a repository's land-check on the branch it merges (tests/land-check.sh: missing tool, failing tool, pass, LAND_CHECK=0; seen failing first), tools.land at 98567bc, host rhizoid 0.3.9. This landing is the first that ran it.
 
 Opened
 : 2026-11-23
