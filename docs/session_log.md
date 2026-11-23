@@ -6029,3 +6029,27 @@ Rejected
 
 About
 : kernel-try-heartbeat
+
+---
+
+
+<a id="2026-11-23-kernel-builds-from-an-int-tag-in-the-nix-sandbox"></a>
+### kernel builds from an int/ tag in the Nix sandbox
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: Built [kernel_builds] and kernel.nix; five failed real builds taught the sandbox three things (unwrapped clang for the target, openssl lib path for a host tool, the unused -nostdlibinc argument); then the walleye kernel built to the same sha256 twice and an image from it by recipe equalled its declared sha256. Landed lab-tools #373.
+
+Considered
+: Putting the kernel in the existing recipe (control + parts): a kernel is made, not swapped in, so it is its own table. nix-build --check: two builds equal is the same claim.
+
+Rejected
+: A nixpkgs kernel derivation (linux_x_y): our tree is the int/ tag, not a nixpkgs source. Hand-built kernels as the lab's source of truth: not reproducible as recorded (research image-recipes-how-it-stands, 4).
+
+About
+: image-recipe-kernel-from-int-tag
