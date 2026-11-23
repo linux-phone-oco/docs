@@ -20,6 +20,7 @@ source = "grenudi/ideal-knowledge-base"
 pin = "idealkb.toml"
 tag_prefix = "v"
 marker = "idealkb"
+moved_by = "idealkb-update-pins"
 followers = [
   "linux-phone-oco/docs",
   "linux-phone-oco/device-template",
@@ -49,6 +50,7 @@ source = "linux-phone-oco/lab-tools"
 tag_prefix = "lpoco-v"
 pin = "lab.toml"
 key = "tools.lpoco"
+moved_by = "lpoco-host-follow"
 followers = ["grenudi/lab-machine"]
 
 # rhizoid on the lab host: a release binary at its tag, [tools.rhizoid] in lab.toml (lab-tools #331)
@@ -63,6 +65,7 @@ followers = ["grenudi/lab-machine"]
 
 [[tool]]
 name = "tad"
+moved_by = "tad-update-pins"
 source = "creation-guidelines/tad-engine"
 tag_prefix = "tad-v"
 pin = "bin/install-tad.sh"
