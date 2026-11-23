@@ -3058,3 +3058,31 @@ Rejected
 
 About
 : attended-check-names-its-source
+
+
+<a id="2026-11-23-a-try-ends-by-itself"></a>
+### 2026-11-23-a-try-ends-by-itself
+
+Brief
+: A background try (load, soak, watcher) runs as a transient unit that ends by itself; a run leaves nothing running; patrol reports load nobody owns
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-23
+
+Decision
+: In linux-phone-oco's briefs (builder, phone-keeper): a try that runs in the background runs as systemd-run --user --collect -p RuntimeMaxSec=N (or stress-ng --timeout), never a bare & or nohup, and a run ends with nothing of its own still running. Patrol's host round reports a process above 50% CPU for over 30 minutes whose session ended and that is no declared unit, or a load above what running units use; it names it, never kills it. Results since 12:09 on the host, read: the 12:04 gate failure came before the load; the 13:00 one was the unit's PATH (rust-script not found), not load; the 14:00 pass under load stands; lab-tools suites that passed stand. What may be skewed is host-side timing in walleye's runs between 12:09 and about 16:40 (fastboot waits, timeouts): its lane rereads any timeout that fired then.
+
+Why
+: Twelve yes >/dev/null started by the lab-tools builder on attended-on-manifest-0-44-5 (session 49ae020f) to reproduce a flake under load were never killed and held all 12 threads for 4.5 hours until the author saw them (Top Coordinator, who killed them). Practices 6 and 10: jobs run as user units, a try falls back by itself. Nothing measured them: patrol is off and had no such line.
+
+Rejected
+: A rule to remember to kill background jobs (care instead of a mechanism); killing orphans automatically from patrol (patrol changes nothing; an orphan may be someone's live work).
+
+About
+: self-explaining-structure
+
+Research
+: structure-review-look-around

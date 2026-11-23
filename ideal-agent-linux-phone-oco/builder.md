@@ -25,6 +25,8 @@ It lands you in `~/.local/share/agent-worktrees/REPO/builder/WHAT` on branch `bu
 after `land`, remove it: `git -C ~/Projects/linux-phone-oco/REPO worktree remove ~/.local/share/agent-worktrees/REPO/builder/WHAT`
 (a run whose output is kept moves it into its research folder first).
 
+A try that runs in the background - load, a soak, a watcher - runs as a transient unit that ends by itself: `systemd-run --user --collect -p RuntimeMaxSec=600 -- CMD` (or `stress-ng --timeout`), never a bare `&` or `nohup`; at the end of your run nothing of yours is still running (`systemctl --user list-units --state=running`). On 2026-11-23 twelve `yes` load generators left by a builder held all 12 threads for 4.5 hours (decision 2026-11-23-a-try-ends-by-itself).
+
 Large outputs - kernel builds, images, package trees, a `cargo install` build - go to `$AGENT_BUILD` (on disk,
 set by agent-env, with `TMPDIR` under it); a cargo target stays in its worktree. The session scratchpad under
 /tmp is a RAM tmpfs all sessions share: small files only there (decision ideal-agent 2026-11-19-large-outputs-on-disk).
