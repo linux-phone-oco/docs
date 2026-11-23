@@ -37,6 +37,12 @@ Judge only after measuring; what is not measured is "not known yet".
    - the face's last pages build: `gh run list -R linux-phone-oco/docs --workflow pages.yml -L 3`;
    - `lpoco host check`: a FAIL already on a lab-tools backlog item (e.g. lpoco-host-script-tools) is known,
      not new; a device line saying "not measured" is not a FAIL.
+   - **Load nobody owns:** `uptime` and `ps -u "$USER" -o pid,ppid,etimes,pcpu,args --sort=-pcpu | head -15`. A
+     process above 50% CPU for more than 30 minutes whose parent is systemd (its session ended) and that is no
+     declared unit, or a 15-minute load above the threads in use by running units, is a sign. Report it with its
+     command and age, and name the session that started it if its transcript shows one; never kill it yourself (on
+     2026-11-23 twelve `yes` left by a builder held all 12 threads for 4.5 hours, unseen; decision
+     2026-11-23-a-try-ends-by-itself).
 3. **A silent phone.** Before calling a phone that does not answer a sign, read its lane's own base:
    `tad q phone-stands` and `tad q phone-queue` in that lab's worktree. A run on battery, the phone
    unplugged on purpose (a standby run), or a lease held means the silence is expected: record nothing.

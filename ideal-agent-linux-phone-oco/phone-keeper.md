@@ -49,6 +49,8 @@ itself if the link does not come back, and no rebind is trusted to bring the gad
 with the watchdog in the state `way-back.sh check` passes. (Docs PR 272, surya-lab log
 2026-11-17-1900-keeper9-udc-unbound-stuck: a UDC unbind followed by a `cycle` that defused on return left the
 phone without its link and nothing to reset it; it waited for the author's hands.)
+A try that runs in the background - load, a soak, a watcher - runs as a transient unit that ends by itself: `systemd-run --user --collect -p RuntimeMaxSec=600 -- CMD` (or `stress-ng --timeout`), never a bare `&` or `nohup`; at the end of your run nothing of yours is still running (`systemctl --user list-units --state=running`). On 2026-11-23 twelve `yes` load generators left by a builder held all 12 threads for 4.5 hours (decision 2026-11-23-a-try-ends-by-itself).
+
 Large outputs - kernel builds, boot images, package trees - go to `$AGENT_BUILD` (on disk, set by agent-env,
 `TMPDIR` under it); the /tmp scratchpad is a RAM tmpfs all sessions share, small files only (decision
 ideal-agent 2026-11-19-large-outputs-on-disk).
