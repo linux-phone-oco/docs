@@ -8689,7 +8689,7 @@ Status
 : in-progress
 
 Note
-: 2026-11-23, lab-tools-builder: part done (lab-tools #384, main dcdb733): (1) a check FAIL that is only a moved tool pin (tool NAME: FAIL, ...) no longer stops a family follow, before or after its install (host/tests/follow.rs a_check_that_fails_only_on_a_tool_follow_installs_does_not_stop_a_family_release, seen failing first; another FAIL still stops it); (3) the releases request carries GITHUB_TOKEN from the environment to api.github.com only, through curl's stdin config, refused when it holds a character a token does not, redirects https only; it never reads ~/.config/ideal-agent/token. Open: the follow service must be given GITHUB_TOKEN, or follow reads through gh auth / ETag (the Top's b, not built); (2) a family member whose tag is gone (lpoco-attended) and the dispatcher's mixed-version message; the Top's (a): lpoco host check fails when the installed lpoco is behind its pin or follow's last success is stale. Reviewer's leftovers: judge_check_without matches any 'tool NAME: FAIL,' line, narrow it to pinned/found; tests for lookalike URLs and for asset fetches sending no token.
+: 2026-11-23, lab-tools-builder: (a) done, lab-tools #386: check fails when follow's last success is older than 3 x every (lpoco behind its pin already failed as tool lpoco: FAIL). Open: (b) follow reads through gh auth/ETag, GITHUB_TOKEN for the service; (2) family member whose tag is gone, mixed-version message; narrow judge_check_without to pinned/found; tests for lookalike URLs and no-token asset fetches.
 
 Opened
 : 2026-11-23
