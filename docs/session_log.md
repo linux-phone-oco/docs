@@ -5768,3 +5768,27 @@ Rejected
 
 About
 : phone-declared-transport
+
+---
+
+
+<a id="2026-11-23-kernel-assemble-reproduces"></a>
+### kernel assemble: --reproduces and archive/ branches
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: lab-tools #351: --reproduces passed through with its verdict printed; archive/NAME branches taken, judged by commit subjects.
+
+Considered
+: Deriving the item from archive/NAME: the real branch archive/pmic-wdt-e123d3bff does not carry the item id (pmic-wdt-wake-in-suspend), so the subjects name it. Walleye's topics.toml says archive/ITEM while the code treats NAME as free text: vocabulary to align.
+
+Rejected
+: Passing a missing verdict as a pass (review finding): an old rhizoid that ignores the flag would look proven equal; now exit 2.
+
+About
+: kernel-assemble-reproduces-and-names
