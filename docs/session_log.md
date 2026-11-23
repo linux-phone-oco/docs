@@ -5432,3 +5432,27 @@ Rejected
 
 About
 : structure-review
+
+---
+
+
+<a id="2026-11-23-rhizoid-flow-walked-for-walleye"></a>
+### The kernel flow walked for walleye and surya: walleye may resume
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-23
+
+Done
+: Steward, on the Top Coordinator's ask, walked walleye's path on rhizoid v0.2.0 against the disk. Walleye may resume: its first items (init-handover diagnose, stage 1 rerun) don't need the new kernel flow. Found: the kernel clone (~/Projects/surya-audio/linux) is shallow at v7.3; topic/ufs-match-android and topic/walleye-drv2624 exist only on the lab machine; audio-adsp-q6, fuel-gauge-rfc and the panel are .patch files; only 4 upstream-item rows exist, none for 6 walleye series, so the wrapper would refuse them; the build dirties the worktree (dt copy, Makefile line), so --done needs --force after the image is recorded; int/ tags are local only. surya's running kernel 29d92793b is 9 linear commits on origin/v7.2: it splits into about five topics and --reproduces will prove the split. To perfect beside the phone work: upstream-item rows (upstreams), series to topic branches with --reproduces until equal (lane builders), the lab-tools wrapper pushing int/ tags and ending worktrees, --fetch tried on a shallow clone (rhizoid). Note: steward-to-top-rhizoid-check.md.
+
+Considered
+: Holding walleye until the kernel lists exist.
+
+Rejected
+: Holding it: its next items run on the kernel already built; the move is parallel work.
+
+About
+: structure-review
