@@ -7176,10 +7176,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: 2026-11-19, orchestration: from surya-lab surya-try-heartbeat-to-esp, handed over by the surya coordinator. devlab/src/kernel.rs TIMEOUT_HOOK sleeps 300 s first, so a hang before that leaves nothing. Mount the ESP by pmos_boot_uuid as soon as the block device shows, append 'initramfs start, uptime' to test-boot.stage, then every 10 s uptime and dmesg | tail -3, sync, until PID 1 is systemd. Only the try's second initramfs carries it - stock and kept kernels never run it. Never pmos.debug-shell unattended. Pairs with kernel-try-usb-timeline (the host's side of the same hang): the timeline says frozen/re-enumerating/absent from outside, the heartbeat says how far the kernel got from inside.
+: 2026-11-23, lab-tools-builder: host side landed (lab-tools #370): the try hook writes 'initramfs start, uptime' to test-boot.stage before any sleep, then every 10 s uptime and the last kernel lines until PID 1 is systemd; the ESP is mounted per write, never held; it leaves when the root is gone; lpoco-lab kernel log reads the stage file. Proof: devlab/src/kernel.rs the_hook_writes_its_stage_line_before_it_sleeps_and_beats_until_systemd_runs, the_hook_leaves_quietly_when_the_initramfs_root_is_gone, the_hook_saves_the_log_and_reboots_when_systemd_never_runs (seen failing first; host sh, not busybox ash). Open: one keeper try of a held-initramfs kernel leaves the heartbeat on the ESP (surya lane, phone); hook never run under busybox sh; no release PR existed.
 
 Opened
 : 2026-11-19
