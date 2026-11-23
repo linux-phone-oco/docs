@@ -6173,3 +6173,24 @@ Rejected
 
 About
 : follow-never-locks-itself-out
+
+---
+
+
+<a id="2026-11-23-follow-last-success-stale"></a>
+### follow's last success, read by check
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: landed lab-tools #386 (main ed446eb): follow keeps its last success second in ~/.cache/lpoco-host/follow/ok (now runs only: up to date, followed, tools followed); lpoco host check says FAIL past 3 x [follow] every, ok within, not measured before the first. Review caught a lockout: the stale line failed follow's own baseline check; judge_check_without now ignores 'follow: FAIL, '. Proof: plan.rs two check tests, follow.rs stamp, stale-line and dry-run tests (seen failing first).
+
+Rejected
+: stamping on a dry run (a look that installed nothing); letting the stale line stop follow (it could never clear)
+
+About
+: follow-never-locks-itself-out
