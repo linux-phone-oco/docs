@@ -5888,3 +5888,27 @@ Rejected
 
 About
 : linux-to-bootloader-by-restart2
+
+---
+
+
+<a id="2026-11-23-into-fastboot-sends-the-declared-restart2-helper"></a>
+### into_fastboot sends the declared RESTART2 helper
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-23
+
+Done
+: Moved attended's lpoco-manifest pin to 0.45.0 with rhizoid bump (#360); the into_fastboot step now pushes and runs [boot.to_bootloader] (#361), tests seen failing first, programmer review read.
+
+Considered
+: Refusing at step-making (so a dry run refuses) rather than at run time: a helper is only needed when the phone is not in fastboot.
+
+Rejected
+: Falling back to busybox 'reboot bootloader' when none is declared: it drops the argument.
+
+About
+: linux-to-bootloader-by-restart2
