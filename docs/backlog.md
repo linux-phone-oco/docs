@@ -8672,6 +8672,9 @@ Note
 Opened
 : 2026-11-23
 
+Waits
+: the lab host following lpoco 0.48.0; then orchestration lands [tools.nfpm] (written, waiting) and prepares, and a builder runs a real lpoco layer pack
+
 Needs
 : build
 
