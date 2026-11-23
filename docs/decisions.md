@@ -2752,40 +2752,6 @@ Research
 : structure-review-what-is,structure-review-look-around
 
 
-<a id="2026-11-23-structure-kernel-topics-and-integration"></a>
-### 2026-11-23-structure-kernel-topics-and-integration
-
-Brief
-: Kernel: one repo; topic/ITEM per upstream series on a stated tag; backport/ITEM/BASE; wip/LANE/WHAT; int/DEVICE built by a tool from named lists in kernel/topics.toml, tagged
-
-Project
-: linux-phone-oco/docs
-
-Date
-: 2026-11-23
-
-Decision
-: One kernel repository, linux-phone-oco/linux (today grenudi/linux; its move into the organisation is the author's, later), one lab clone of it whose worktrees share git rerere's memory.
-- topic/ITEM: one branch per upstream series, ITEM its upstream-item id without a version, on a stated mainline tag. Its home for upstreaming. A carried patch we did not write is a topic too; a workaround keeps its WORKAROUND(item) marker and the item's --local-ref names its branch.
-- backport/ITEM/BASE: the same item on another base a phone runs (e.g. sm7150-mainline v7.2); topics.toml lists it without a second item.
-- Sending: a version is cut by rebasing the topic onto the target maintainer tree (the subsystem's for-next; linux-next only when none fits), with plain git format-patch - b4 is the author's option, never a requirement. docs upstream/LIST/ITEM/ keeps SEND-NOTES (the --base sha, the commit that was tested), the prepared unsigned vN-draft/, and after sending vN/ from the author's signed branch, which he pushes; its tip is tagged topic/ITEM/vN. Only the author signs and sends.
-- wip/LANE/WHAT: tries on any base; one that works becomes a topic.
-- int/DEVICE/LIST: a phone's test kernel, assembled by lpoco-bringup kernel assemble (lab-tools) from a named list in the lab's kernel/topics.toml - the base, then each topic in order with what it is for and its state (known-good naming the test-run and the tested commit, or trying). A phone may have several lists (walleye: ufs-off and ufs-on, never one tag for both). The tool starts from the base every time, stops at a conflict naming the two topics, tags each result int/DEVICE/LIST/BASE/N; every test kernel is built from such a tag, and [images.X] names it (kernel_tag). It refuses a topic or backport with no upstream-item row.
-- A lab repository keeps kernel/topics.toml, config fragments, and its bring-up device-tree experiments that have no upstream item (applied after assembly), plus the rest of an image's recipe (ramdisk, header, modules). Its .patch series and the board .dts move to topic branches. A build script an [images.*] row names retires only when the image rebuilt from an int/ tag has the same sha256. A running phone's kernel stays pinned by commit until int/DEVICE reproduces it.
-
-Why
-: The author, 2026-11-22: 'patches could stay separate for upstreaming and at the same time there is clear and simple way of cherypicking them or something into one kernel with known working patches (like working display, with working storage) ... so that this process is not a handmade mess of wherever the builder came up with ... and its gonna be proper homes for upstreaming at the same time'. Today patches live in five forms and no list says what a test kernel holds. linux-next and qcom-next do this: a written list of topic branches merged onto a fresh tag by a tool, never edited. Objections of 2026-11-23 taken: upstreams (sign-off only in the author's clone; no b4 dependency; cut onto the maintainer tree; backports; versionless item ids), walleye (images rebuilt byte for byte before a script retires; experiment dts; UFS-on and UFS-off apart), surya (WORKAROUND markers; the running kernel pinned by commit).
-
-Rejected
-: A long-lived device branch with cherry-picks (test/surya-calls: nobody can say what is in it); .patch files in a lab repo (they drift); quilt, StGit, TopGit (more to learn; series files drift the same way); b4 as a requirement (Python; our tools never depend on it); topics in a second repository like qcom-next (ceremony for two phones); Linaro automerge as-is (undocumented config; the merge loop is small); a version in an item id (vN folders and tags carry it).
-
-About
-: self-explaining-structure
-
-Research
-: structure-review-what-is,structure-review-look-around
-
-
 <a id="2026-11-23-structure-rendered-pages-not-committed"></a>
 ### 2026-11-23-structure-rendered-pages-not-committed
 
@@ -2918,6 +2884,40 @@ Why
 
 Rejected
 : The merge and tag loop inside lab-tools (a second git tool beside rhizoid); forks marked in lab.toml [clones] (two places saying one fact); rhizoid reading tad records (it stays generic).
+
+About
+: self-explaining-structure
+
+Research
+: structure-review-what-is,structure-review-look-around
+
+
+<a id="2026-11-23-structure-kernel-topics-and-integration"></a>
+### 2026-11-23-structure-kernel-topics-and-integration
+
+Brief
+: Kernel: one repo; topic/ITEM per upstream series on a stated tag; backport/ITEM/BASE; wip/LANE/WHAT; test kernels are tags int/DEVICE/LIST/BASE/N made by rhizoid assemble from a lab's named list
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-23
+
+Decision
+: One kernel repository, linux-phone-oco/linux (today grenudi/linux; its move into the organisation is the author's, later), one lab clone of it whose worktrees share git rerere's memory.
+- topic/ITEM: one branch per upstream series, ITEM its upstream-item id without a version, on a stated mainline tag. Its home for upstreaming. A carried patch we did not write is a topic too; a workaround keeps its WORKAROUND(item) marker and the item's --local-ref names its branch.
+- backport/ITEM/BASE: the same item on another base a phone runs (e.g. sm7150-mainline v7.2); topics.toml lists it without a second item.
+- Sending: a version is cut by rebasing the topic onto the target maintainer tree (the subsystem's for-next; linux-next only when none fits), with plain git format-patch - b4 is the author's option, never a requirement. docs upstream/LIST/ITEM/ keeps SEND-NOTES (the --base sha, the commit that was tested), the prepared unsigned vN-draft/, and after sending vN/ from the author's signed branch, which he pushes; its tip is tagged topic/ITEM/vN. Only the author signs and sends.
+- wip/LANE/WHAT: tries on any base; one that works becomes a topic.
+- int/DEVICE/LIST/BASE/N: a phone's test kernel, a tag only (no int/ branch: the image names the tag), made by git-rhizoid's rhizoid assemble - called by lab-tools after the checks that need records - from a named list in the lab's kernel/topics.toml - the base, then each topic in order with what it is for and its state (known-good naming the test-run and the tested commit, or trying). A phone may have several lists (walleye: ufs-off and ufs-on, never one tag for both). The tool starts from the base every time, stops at a conflict naming the two topics, tags each result; every test kernel is built from such a tag, and [images.X] names it (kernel_tag). lab-tools refuses a topic or backport with no upstream-item row before rhizoid runs (decision 2026-11-23-structure-git-flows-run-on-rhizoid).
+- A lab repository keeps kernel/topics.toml, config fragments, and its bring-up device-tree experiments that have no upstream item (applied after assembly), plus the rest of an image's recipe (ramdisk, header, modules). Its .patch series and the board .dts move to topic branches. A build script an [images.*] row names retires only when the image rebuilt from an int/ tag has the same sha256. A running phone's kernel stays pinned by commit until int/DEVICE reproduces it.
+
+Why
+: The author, 2026-11-22: 'patches could stay separate for upstreaming and at the same time there is clear and simple way of cherypicking them or something into one kernel with known working patches (like working display, with working storage) ... so that this process is not a handmade mess of wherever the builder came up with ... and its gonna be proper homes for upstreaming at the same time'. Today patches live in five forms and no list says what a test kernel holds. linux-next and qcom-next do this: a written list of topic branches merged onto a fresh tag by a tool, never edited. Objections of 2026-11-23 taken: upstreams (sign-off only in the author's clone; no b4 dependency; cut onto the maintainer tree; backports; versionless item ids), walleye (images rebuilt byte for byte before a script retires; experiment dts; UFS-on and UFS-off apart), surya (WORKAROUND markers; the running kernel pinned by commit). Amended the same day: test kernels are tags only - rhizoid assemble tags and never moves a branch, and an image names the tag, so an int/ branch has no job (rhizoid coordinator, v0.1.1).
+
+Rejected
+: A long-lived device branch with cherry-picks (test/surya-calls: nobody can say what is in it); .patch files in a lab repo (they drift); quilt, StGit, TopGit (more to learn; series files drift the same way); b4 as a requirement (Python; our tools never depend on it); topics in a second repository like qcom-next (ceremony for two phones); Linaro automerge as-is (undocumented config; the merge loop is small); a version in an item id (vN folders and tags carry it). An int/DEVICE/LIST branch moved to the newest tag (a name with no reader; one more thing to keep true).
 
 About
 : self-explaining-structure
