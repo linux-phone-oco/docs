@@ -5336,3 +5336,27 @@ Rejected
 
 About
 : structure-review
+
+---
+
+
+<a id="2026-11-23-structure-decisions-amended"></a>
+### Structure decisions amended by the roles' objections
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-23
+
+Done
+: Five of the eight decisions (lab-machine-homes, kernel-topics-and-integration, rendered-pages-not-committed, go-is-its-own-record, checks-refuse-wrong-homes) re-recorded the same day, before any was carried out, with the objections of orchestration, ideal-agent, upstreams, walleye and surya; MAP.md, upstream/README.md and the material's design.md follow. Replaced by id because ikb's decision record has no --amends yet.
+
+Considered
+: New decisions superseding the morning's (AGENTS.md's rule): ikb decision has no --supersedes or --amends option here.
+
+Rejected
+: Leaving the first wording (it would bind a keeper per item and a b4 dependency the roles showed wrong).
+
+About
+: structure-review

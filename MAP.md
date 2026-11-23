@@ -28,9 +28,10 @@ Each repository's README opens with its own map: one line per top-level folder.
 
 | branch | what it is | lifetime |
 |---|---|---|
-| `topic/ITEM` | one upstream series alone, on a stated mainline tag; ITEM is its upstream-item id | until upstream takes it; the sent version is tag `topic/ITEM/vN` |
+| `topic/ITEM` | one upstream series alone, on a stated mainline tag; ITEM is its upstream-item id - its home for upstreaming | until upstream takes it; each version sent is tag `topic/ITEM/vN`, on the author's signed commits |
+| `backport/ITEM/BASE` | the same series on another base a phone runs (e.g. sm7150-mainline `v7.2`) | while a phone runs that base |
 | `wip/LANE/WHAT` | a try, on any base | until it works (then it becomes a topic) or is dropped |
-| `int/DEVICE` | a phone's test kernel, built by `lpoco-bringup kernel assemble` from the lab's `kernel/topics.toml`; never edited by hand | rebuilt each time; each build tagged `int/DEVICE/BASE/N`, which a test-run names |
+| `int/DEVICE/LIST` | a phone's test kernel, built by `lpoco-bringup kernel assemble` from a named list in the lab's `kernel/topics.toml`; never edited by hand | rebuilt each time; each build tagged `int/DEVICE/LIST/BASE/N`, which the image (`kernel_tag`) and its test-run name |
 
 "A kernel with working display and working storage" is two lines in `kernel/topics.toml`.
 
@@ -58,4 +59,4 @@ when it lands through `land`. `main` is the only lasting branch.
 | build | a builder's branch in the lab or tool repository; kernel changes on `topic/` or `wip/` branches |
 | phone try | a keeper runs a procedure from the lab repository, under a go; the result is a test-run row and research |
 | record | every record through `ikb`, landed with `land`; the author's words in marshall-oco/conversation |
-| upstream | an upstream-item row; the series in `docs/upstream/LIST/ITEM/`, cut from `topic/ITEM` |
+| upstream | an upstream-item row; the series in `docs/upstream/LIST/ITEM/`, cut from `topic/ITEM` as an unsigned `vN-draft/`; only the author signs and sends, then `vN/` is his signed version |

@@ -92,3 +92,24 @@ lines in that list.
 - Records: `research --material` refused outside `research/` (like `upstream-item --file`); CI checks the
   named path exists.
 - Kernel: the assemble tool refuses a topic without an upstream-item row.
+
+## The roles' objections, taken before anything was carried out (2026-11-23)
+
+The decision rows hold the rules as amended; this is what changed and who asked.
+
+- orchestration: the keeper stays one lasting role per device and acts only on rows whose verdict is
+  "act now" (not one keeper per item); worktrees with uncommitted work are saved or dropped by their lane
+  first; sxmo-deviceprofiles and lens are named among the clones; rendered pages leave git only with a new job
+  for `make verify` and the site named in the README; the guard still lets a clone be made or moved.
+- ideal-agent: the layout check is `ideal-agent layout-check` in CI and reads each README's Map as the
+  layout's data; "no file under ~/Projects outside a git working tree" (redirects best effort); kernel
+  worktrees in the same home; the kernel's branch scheme is its own; idealkb lays its folders' READMEs.
+- upstreams: only the author signs and sends, so `vN-draft/` is prepared unsigned and `vN/` comes from his
+  signed branch; b4 is never required (Python); a version is cut onto the target maintainer tree; the tested
+  commit is named; `backport/ITEM/BASE` for one item on two bases; item ids carry no version.
+- walleye: a build script an image names retires only when the image rebuilds byte for byte from an `int/`
+  tag (`kernel_tag` in `[images.X]`); bring-up dts experiments with no upstream item stay in the lab; named
+  lists (ufs-off, ufs-on), never one tag for both; the kernel clone moves in one builder change with its 155
+  paths, between phone runs; land's regeneration is tested on two concurrent PRs before relying on it.
+- surya: carried patches move with their WORKAROUND(item) markers and `--local-ref`; the running kernel stays
+  pinned by commit until `int/surya` reproduces it; adsp/, sleep/, ui/, lab/ stay where they are.
