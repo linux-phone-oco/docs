@@ -6716,3 +6716,27 @@ Rejected
 
 About
 : layer-firmware-rule-plain-alpine
+
+---
+
+
+<a id="2026-11-24-apk-drops-deviceinfo"></a>
+### apk drops deviceinfo
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Removed Nura's deviceinfo and cmdline file from the apk (lab-tools #430, 0.51.0).
+
+Considered
+: Keeping deviceinfo for a later Nura target.
+
+Rejected
+: Keeping it: a second copy of [boot] that can drift; no Nura target is left (orchestration, decision 2026-11-24-plain-alpine-not-nura).
+
+About
+: layer-apk-drops-deviceinfo
