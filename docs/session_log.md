@@ -6692,3 +6692,27 @@ Rejected
 
 About
 : layer-apk-bootimg-trigger
+
+---
+
+
+<a id="2026-11-24-layer-apk-firmware-service"></a>
+### layer apk firmware service
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Built the apk firmware rule (lab-tools #429, 0.50.0): OpenRC service mounts, package links.
+
+Considered
+: Linking in the script (first build); copying files like droid-juicer.
+
+Rejected
+: Links made by the script: the root is read-only at sysinit (review finding). Copying vendor blobs: the rule is that none is ever packaged or duplicated.
+
+About
+: layer-firmware-rule-plain-alpine

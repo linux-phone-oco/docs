@@ -8901,10 +8901,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Re-scopes firmware-extract-declared's apk part (decision 2026-11-24-plain-alpine-not-nura). From [layer.firmware] sources: at boot, mount the declared partitions read-only and make the declared files reachable under the kernel's firmware path (as msm-firmware-loader does, our own small service). Test first in an alpine:3.24 container with a fake partition image: after the service, the declared file is at its firmware path; an undeclared file is not. Vendor blobs are never packaged.
+: 2026-11-24, lab-tools-builder: landed lab-tools #429, released as 0.50.0 (#428), read back from main. The apk gets NAME-firmware: /etc/NAME-firmware/sources, /usr/libexec/NAME-firmware and an OpenRC service (need dev, before modules hwdrivers; depends openrc; added to sysinit on install) that mounts each declared partition read-only under /run/NAME-firmware; the package holds the links /lib/firmware/DEST/LINK -> /run/... (a new symlink item kind), because the programmer review found the root is still read-only when the service runs, so the script could not make links. A partition that does not mount or a file it lacks is named and fails the service after the rest. No vendor file is packaged. Manifest word now refuses . and ... Proof: layer/tests/firmware_service.rs (6, seen failing first) and firmware_containers.rs (ignored: real ext4 on a loop device, real rc-service, alpine:3.24; passes). Open: unverified on a booted phone (ordering before hwdrivers, root read-only at sysinit is read from Alpine's sources, the container root is read-write); no stop() and no rc-update del on package removal; stale links after a file leaves the manifest; leaked loop devices on the lab host from earlier failed runs of the container test (5, detach needs root).
 
 Opened
 : 2026-11-24
