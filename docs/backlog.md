@@ -8122,13 +8122,16 @@ Status
 : open
 
 Note
-: Seen 2026-11-23: rhizoid bump moved walleye-tries' Cargo tag 0.41.0 -> 0.44.3 and its gate (cargo check) passed, but 13 procedures' headers and check.yml's cargo install still named 0.41.0, so each procedure linked two lpoco-attended copies and panicked (google-walleye-lab #790, fixed in the same PR; surya's attended-session.rs likewise). Decided with the rhizoid lane (its decision 2026-11-23-every-pin-one-pushed-mover, points 5 and 6): each lab's procedures take lpoco-attended from the lab's steps crate (walleye tools/walleye-tries, surya procedures/steps) by path, re-exported, so its Cargo tag is the lab's one pin; CI runs the CLI that crate builds. The graph gate becomes the dry run of the bumped version - cargo run --manifest-path <steps>/Cargo.toml -- check ..., never the host's CLI - with Cargo.lock in also; rhizoid status then shows no second copy. Then in the graph: moved_by on the three job-moved edges, [[pins]] for lab.toml [tools] and the steps crates, and the rhizoid-bump timer enabled. The labs' procedure changes are each lane's builder item.
+: Seen 2026-11-23: rhizoid bump moved walleye-tries' Cargo tag 0.41.0 -> 0.44.3 and its gate (cargo check) passed, but 13 procedures' headers and check.yml's cargo install still named 0.41.0, so each procedure linked two lpoco-attended copies and panicked (google-walleye-lab #790, fixed in the same PR; surya's attended-session.rs likewise). Decided with the rhizoid lane (its decision 2026-11-23-every-pin-one-pushed-mover, points 5 and 6): each lab's procedures take lpoco-attended from the lab's steps crate (walleye tools/walleye-tries, surya procedures/steps) by path, re-exported, so its Cargo tag is the lab's one pin; CI runs the CLI that crate builds. The graph gate becomes the dry run of the bumped version - cargo run --manifest-path <steps>/Cargo.toml -- check ..., never the host's CLI - with Cargo.lock in also; rhizoid status then shows no second copy. Then in the graph: moved_by on the three job-moved edges, [[pins]] for lab.toml [tools] and the steps crates, and the rhizoid-bump timer enabled. The labs' procedure changes are each lane's builder item. Seen again 2026-11-24: the host's hand-installed lpoco-attended 0.44.3 (in no lab.toml pin, so neither follow nor host check sees it) refused walleye main's device.toml ([images.z21.recipe]); the walleye keeper cargo-installed 0.45.4 by hand (old kept as ~/.local/bin/lpoco-attended.before-0.45.4). Under this item a keeper runs its lab's steps crate's CLI, and the host's ~/.local/bin/lpoco-attended is retired.
 
 Opened
 : 2026-11-23
 
 Needs
 : build
+
+Rank
+: 2
 
 About
 : self-explaining-structure
