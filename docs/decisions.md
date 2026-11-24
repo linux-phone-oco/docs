@@ -3238,3 +3238,31 @@ About
 
 Research
 : plain-alpine-carries-a-phone-layer
+
+
+<a id="2026-11-24-a-recipe-sha-is-proved-by-a-rebuild"></a>
+### 2026-11-24-a-recipe-sha-is-proved-by-a-rebuild
+
+Brief
+: An image's declared sha256 is proved against its recipe by a sandbox rebuild in the lab's CI when either changes; ensure at run time still serves by sha
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-24
+
+Decision
+: lpoco bringup image ensure gets --rebuild NAME: it builds [images.NAME.recipe] in Nix's sandbox, ignoring store, cache and seed, and fails unless the output equals the declared sha256. Each lab's CI runs it for every image whose sha256 or recipe a change touches. Run-time ensure keeps its order (store, cache, seed, build), since the sha it serves was proved when it landed.
+
+Why
+: Walleye run 4 (2026-11-24): rw image 2477...b54f was built by a script whose header added walleye.booted-slot, absent from the recipe's cmdline; ensure found the sha in the store and served it, as a fixed-output path is trusted by its hash alone. The declared sha had never been the recipe's output. Proving it once, where it lands, closes that for every lab without slowing a run.
+
+Rejected
+: Rebuild on every ensure: minutes per run while the phone waits, for a proof that only changes when device.toml does. Recording provenance next to the store path: the store is shared and a script can write it too; a CI rebuild is evidence, a tag is a claim. Trusting the sha alone: the sign itself.
+
+About
+: image-ensure-in-attended
+
+Research
+: image-recipes-how-it-stands

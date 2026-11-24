@@ -8942,3 +8942,28 @@ Needs
 
 About
 : attended-pin-is-one-pin
+
+
+<a id="image-ensure-rebuild"></a>
+### image ensure --rebuild NAME: build the recipe in the sandbox, ignoring store/cache/seed; fail unless it equals the declared sha256
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-24-a-recipe-sha-is-proved-by-a-rebuild. Test first: a manifest whose declared sha is in the store but is not its recipe's output passes plain ensure and fails --rebuild, naming the image and both sha256s. Then the labs' CI calls it per touched image (each lane's builder item).
+
+Opened
+: 2026-11-24
+
+Needs
+: build
+
+Rank
+: 1
+
+About
+: image-ensure-in-attended
