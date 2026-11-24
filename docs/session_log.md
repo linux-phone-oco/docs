@@ -6242,3 +6242,27 @@ Rejected
 
 About
 : follow-never-locks-itself-out
+
+---
+
+
+<a id="2026-11-24-follow-gives-gh-auth-token-a-timeout"></a>
+### follow gives gh auth token a timeout
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-tools #392: gh auth token is bounded to 10 s; a hang or a helper holding the pipe no longer stops follow. Test first, seen failing; programmer review found the grandchild case, fixed with a channel and a recv timeout.
+
+Considered
+: coreutils timeout (not on the tests' stubs-only PATH); killing a process group (needs libc)
+
+Rejected
+: joining the reader thread: a helper holding the pipe would block follow past the timeout
+
+About
+: follow-never-locks-itself-out
