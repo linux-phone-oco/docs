@@ -5421,10 +5421,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Split from bringup-generic-init (done) so the picking query offers these on their own; the reviewer's caveat stands: an ffs function linked in both c.1 and c.2 is untested on hardware.
+: Split from bringup-generic-init (done) so the picking query offers these on their own; the reviewer's caveat stands: an ffs function linked in both c.1 and c.2 is untested on hardware. 2026-11-24, lab-tools-builder: done, lab-tools #415 (released v0.49.0, #416). (1) bringup/tests/shellcheck.rs: the init for each console x rndis x window and udhcpc.script, selftest.sh pass shellcheck at warning level (CI's ubuntu image has shellcheck; on the lab LPOCO_SHELLCHECK='docker run --rm -i koalaman/shellcheck:stable'); a known-fault case proves the checker can fail; two real findings fixed with justified directives (SC2154 udhcpc env, SC2034 UDC in the FFS init). CI passed with it. (2) .github/workflows/ci.yml builds lpoco-ffs-acm for aarch64-unknown-linux-musl (aarch64 GCC as linker, as health/build.sh), proof lpoco/tests/ci_cross.rs; I built it here first: a static aarch64 ELF. (3) 'initramfs files' writes the self-test's console check by the manifest's console: ACM keeps the ttyGS0 check, ffs checks usb_f_fs in /modules.list and fails without it (bringup/tests/init.rs the_selftest_of_an_ffs_console_checks_the_ffs_function_and_fails_without_it, seen failing first; SELFTEST_CONSOLE_ONLY runs the check alone). The reviewer's caveat stands: an ffs function linked in both c.1 and c.2 is untested on hardware.
 
 Opened
 : 2026-11-19
