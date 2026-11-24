@@ -6488,7 +6488,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
+
+Note
+: null 2026-11-24, lab-tools-builder: done for deb, rpm and archlinux, lab-tools #417 (released, #418). Looked around first: droid-juicer (Mobian, gitlab.com/mobian1/droid-juicer; Fedora packages it as rust-droid-juicer) reads /usr/share/droid-juicer/configs/<DT compatible>.toml, one [juicer] section whose firmware array names partition, origin folder, destination under the firmware dir and files (name, rename), plus folders and partdump (not used here). [layer.firmware] gains compatible and [[layer.firmware.source]] (partition, origin, destination, files = [{name, rename?}]); the manifest refuses anything that would break that TOML or leave its folders (plain words and relative paths only), sources without compatible, and any [[layer.file]] under /usr/lib/firmware (vendor firmware is never packaged). lpoco layer pack writes the entry into NAME-config for deb, rpm and archlinux and makes droid-juicer a dependency (token map applies); the real nfpm deb of the fixture holds the entry and 'Depends: droid-juicer'. Proof manifest/tests/schema.rs (2), layer/tests/pack.rs deb_rpm_and_archlinux_get_the_extractors_entry..., no_package_holds_an_oem_firmware_file, apk_gets_no_extractor_entry... (seen failing first). WAITING ON THE AUTHOR'S WORD (nothing is prepared aimed at Nura): apk, the msm-firmware-loader config - pack prints a line saying so and writes none. Open elsewhere: surya's own [layer.firmware.source] list is surya-lab's builder's (paused; it needs the file names read from the phone's vendor partitions). Not tried: droid-juicer itself reading the entry (it is not in Debian trixie or the lab's images).
 
 Opened
 : 2026-11-19
