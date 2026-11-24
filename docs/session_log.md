@@ -6314,3 +6314,27 @@ Rejected
 
 About
 : land-reruns-a-stuck-check
+
+---
+
+
+<a id="2026-11-24-land-cancels-a-stuck-run-before-the-re-run"></a>
+### land cancels a stuck run before the re-run
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-machine #119: the stuck path is gh run cancel, a bounded wait (LAND_CANCEL_WAIT, 120 s) for status completed, then gh run rerun; a refused cancel, a run that does not complete or a refused re-run stops land. tests/land-stuck.sh cases 5-7 (seen failing first), the fake gh refuses a re-run before a cancel.
+
+Considered
+: force-cancel (only for a run not answering the cancel); gh run rerun --job
+
+Rejected
+: re-running an in-progress run: orchestration says GitHub refuses; docs.github.com names no refusal text, so the test holds that on the orchestration's word
+
+About
+: land-reruns-a-stuck-check
