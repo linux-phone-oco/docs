@@ -8876,10 +8876,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Re-scopes the Nura part of bootimg-trigger-per-base (decision 2026-11-24-plain-alpine-not-nura). The apk -boot package depends on android-tools-mkbootimg and carries an apk trigger on the kernel's install paths (as Alpine's mkinitfs trigger does) that runs /usr/libexec/NAME-bootimg. Test first in an alpine:3.24 container: apk add of the layer, then of a kernel package, leaves a boot.img that lpoco bringup image check accepts with the dtb appended. No /etc/deviceinfo.
+: 2026-11-24, lab-tools-builder: landed lab-tools #425 and #427, released as 0.49.4 (#426), read back from main. The apk -boot package carries /usr/libexec/NAME-bootimg and /etc/kernel-hooks.d/95-NAME-bootimg (depends android-tools-mkbootimg, kernel-hooks, kmod, mkinitfs). Not an apk trigger: nfpm 2.49 writes none (its schema has triggers for deb only), so Alpine's own kernel-hooks package runs the hook. Found in the container: kernel-hooks' trigger runs BEFORE kmod's and mkinitfs's, so neither modules.dep nor /boot/initramfs-FLAVOR exists then; the hook runs depmod and mkinitfs -o TMP itself for the image and mkinitfs's trigger makes the initramfs after (twice the mkinitfs work per kernel install). The script got --dtbs DIR (Alpine: /boot/dtbs-FLAVOR). Proof: layer/tests/bootimg_containers.rs alpine_apk_add_of_a_kernel_leaves_a_boot_img_with_the_dtb_appended (real linux-lts, seen failing first, ignored in CI) and layer/tests/bootimg.rs (hook run with stand-ins, --dtbs, deps). Open: the apk NAME-config still writes Nura's /etc/deviceinfo (the hook reads none) - drop it or keep it is a decision; a missing device tree fails the kernel's apk add (as deb/rpm do), non-phone flavours would fail; a removed kernel leaves its NAME-FLAVOR.img.
 
 Opened
 : 2026-11-24

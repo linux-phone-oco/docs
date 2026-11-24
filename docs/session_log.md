@@ -6668,3 +6668,27 @@ Rejected
 
 About
 : image-ensure-rebuild
+
+---
+
+
+<a id="2026-11-24-layer-apk-bootimg-hook"></a>
+### layer apk bootimg hook
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Built the apk boot.img hook (lab-tools #425, #427, 0.49.4). Proof in a real alpine:3.24 container with linux-lts.
+
+Considered
+: An apk trigger (nfpm cannot write one; rewriting the apk's control tar in Rust was too heavy); depending on a later trigger order (mkinitfs has no hook).
+
+Rejected
+: Waiting for /boot/initramfs-FLAVOR in the hook: kernel-hooks runs before mkinitfs's trigger, so it never exists then. The hook makes its own initramfs for the image.
+
+About
+: layer-apk-bootimg-trigger
