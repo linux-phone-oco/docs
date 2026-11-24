@@ -8758,3 +8758,28 @@ Proof
 
 Rank
 : 2
+
+
+<a id="lpoco-layer-on-the-host"></a>
+### lpoco-layer is delivered like the rest of the lpoco family: a release asset, in host FAMILY, installed by follow
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: nfpm-on-the-lab-host's real pack (2026-11-24) stopped: lpoco layer pack found no lpoco-layer on the host - it is in version_group lpoco but has git_release_enable=false and is not in lpoco-host's FAMILY, so no asset and follow never installs it; the dispatcher's 'lpoco layer' then fails. Decided (orchestration): deliver it as the family's other lab-side programs are (git_release_enable=true, its asset built in the release workflow, added to FAMILY). Rejected: keep it build-time only (the dispatcher names it, so the host must have it at the family version); a separate pin (the family is one version by design). Test first: the release-family test lists lpoco-layer's asset, and host follow's FAMILY includes it.
+
+Opened
+: 2026-11-24
+
+Needs
+: build
+
+Proof
+: lpoco/tests/release_family.rs + host/tests/follow.rs: lpoco-layer asset released and followed
+
+Rank
+: 3
