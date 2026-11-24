@@ -542,19 +542,19 @@ Status
 : done
 
 Proof
-: research walleye-ufs-try1-card-readable
+: ufs-matched-image-on-the-pixel-2
 
 Run
-: research walleye-ufs-match-tried-version-ok-link-stays-gear1 (lab PR 580, 583, 584)
+: walleye-ufs-try-2-run-10-unpinned-ramp-passes-at-hs-gear3
 
 Proven on
-: NOT-TO-BOOT-ufs-on-ufs-match.img sha256 461077869fb275ab8803b8bb771050d4f19724ccfd62e197dc1f3fe3a6297df5
+: ufs-match image sha256 461077869fb2
 
 Notes
-: One read-only try on the author's go: UFS 3.1.0, six LUNs SKhynix H28U74301AMR D003, partition tables read by the kernel, no UFS error, nothing written. The link idles at HS gear 1 (speed, item walleye-ufs-why-gear1); by-name partition listing needs udev, not read.
+: Card read: UFS 3.1.0, 6 disks, GPT hashed equal before and after; unpinned ramp 64 to 2048 MiB read rc=0 at HS_GEAR3, shell answered every poll (run 10)
 
 Updated
-: 2026-11-19
+: 2026-11-24
 
 
 ### Row 24
@@ -2015,19 +2015,22 @@ Step id
 : storage-full-speed
 
 Status
-: open
+: partial
 
 Proof
-: storage-link-speed
+: ufs-matched-image-on-the-pixel-2
 
 Run
-: research walleye-ufs-why-gear1-ranked; item walleye-ufs-try-2
+: walleye-ufs-try-2-run-10-unpinned-ramp-passes-at-hs-gear3
+
+Proven on
+: ufs-match image sha256 461077869fb2
 
 Notes
-: Not yet: UFS try 1 reads the link at HS gear 1, 2 lanes, FAST_MODE, HIBERN8. The power-mode change was made; gear 1 at idle is most likely clock scale-down (no operating-points table in msm8998.dtsi). A second try with read-only readings after a bounded read waits for the author's word.
+: Run 10: under an unpinned read the card chose HS_GEAR3, 2 lanes, HS_RATE_B, 200 MHz, reads to 2048 MiB fine. Idle stays HS_GEAR1 at 50 MHz. Reads only; writes not tried (stage 3).
 
 Updated
-: 2026-11-19
+: 2026-11-24
 
 
 ### Row 116
@@ -2045,7 +2048,7 @@ Notes
 : Not known yet: linux-phone-oco/google-walleye-lab does not claim this step.
 
 Updated
-: 2026-11-23
+: 2026-11-24
 
 
 ### Row 117
@@ -4502,7 +4505,7 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-23
+: 2026-11-24
 
 
 ### Row 231
@@ -4520,7 +4523,7 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-23
+: 2026-11-24
 
 
 ### Row 232
@@ -4538,4 +4541,4 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-23
+: 2026-11-24
