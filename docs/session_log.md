@@ -6452,3 +6452,21 @@ Done
 
 About
 : lpoco-layer-on-the-host
+
+---
+
+
+<a id="2026-11-24-layer-packs-are-reproducible"></a>
+### layer packs are reproducible
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-tools #402, released v0.48.10; the lab's follow installed it unaided; walleye packed twice with equal sha256.
+
+About
+: layer-pack-reproducible

@@ -8817,10 +8817,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-24: two packs of walleye's layer (first d47559b6.../4c5c63be..., then from the installed lpoco-layer 0.48.9 d7dae022.../0b2c6dde...) had identical file trees but different sums, only by nfpm's timestamps. Fix: lpoco layer pack sets nfpm's mtime from SOURCE_DATE_EPOCH, taken from the layer's commit time when unset. Test first: two packs of one fixture layer give equal sha256 for apk and deb.
+: 2026-11-24: two packs of walleye's layer (first d47559b6.../4c5c63be..., then from the installed lpoco-layer 0.48.9 d7dae022.../0b2c6dde...) had identical file trees but different sums, only by nfpm's timestamps. Fix: lpoco layer pack sets nfpm's mtime from SOURCE_DATE_EPOCH, taken from the layer's commit time when unset. Test first: two packs of one fixture layer give equal sha256 for apk and deb. 2026-11-24, lab-tools-builder: done, lab-tools #402 (released v0.48.10, #403): lpoco layer pack gives nfpm SOURCE_DATE_EPOCH: the given one (whole seconds, a number nfpm can hold: a larger one is refused, nfpm would silently stamp now), else the time of the last commit that touched the layer's folder (git log -1 -- .; the programmer review found HEAD of the whole repository would move the bytes), else none and a 'not reproducible' line. Proof layer/tests/reproducible.rs (6 CI tests with a stand-in nfpm, seen failing first; the pathspec mutation fails the subfolder test) and the real-nfpm test two_packs_of_one_layer_give_equal_sha256_for_apk_and_deb (ignored in CI, run by hand: passes, failed before). On the lab with the installed lpoco-layer 0.48.10 (follow installed it by itself): two packs of walleye main f782d05, 3 s apart, equal: apk google-walleye-config-0.1.0-r0.apk 0c2445011ba9fedce0b8df3c1c27d13867e6e275959a59d59d54cb9108b346b9, deb google-walleye-boot_0.1.0_all.deb 903fdabed1bbc151289f2a9a2b05f9709c482f67c11ceb17c353cc27e9bab3ba. Note: uncommitted changes in the layer pack under the commit's time (said in the --help of the input).
 
 Opened
 : 2026-11-24
