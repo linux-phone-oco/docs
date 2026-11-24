@@ -6608,3 +6608,21 @@ Done
 
 About
 : bringup-init-finish
+
+---
+
+
+<a id="2026-11-24-the-layer-s-firmware-the-extractor-s-entry-never"></a>
+### the layer's firmware: the extractor's entry, never the blobs
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-tools #417 and released it; the Nura part recorded as waiting on the author's word.
+
+About
+: firmware-extract-declared
