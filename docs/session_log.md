@@ -6644,3 +6644,27 @@ Done
 
 About
 : layer-export-makefile
+
+---
+
+
+<a id="2026-11-24-image-ensure-rebuild"></a>
+### image ensure --rebuild
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Built and landed image ensure --rebuild (lab-tools #423, 0.49.3). Programmer review found a stale-result hole (input-addressed output reused without running the builder): fixed with nix-build --check after the build.
+
+Considered
+: Parsing Nix's hash-mismatch message for the built sha256; nix-build --check alone (errors when the output is absent).
+
+Rejected
+: Parsing the mismatch message: fragile. Recursing the rebuild into the control: left open.
+
+About
+: image-ensure-rebuild

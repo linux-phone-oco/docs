@@ -8951,10 +8951,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-24-a-recipe-sha-is-proved-by-a-rebuild. Test first: a manifest whose declared sha is in the store but is not its recipe's output passes plain ensure and fails --rebuild, naming the image and both sha256s. Then the labs' CI calls it per touched image (each lane's builder item).
+: 2026-11-24, lab-tools-builder: landed lab-tools #423 (main af62f27), released as lpoco-bringup 0.49.3 (#424, db8aa97), read back from main. image ensure NAME --rebuild builds the recipe as a plain derivation (nix-build, no substituters, then --check so the builder runs again even where the output is in the store) and fails unless it equals the declared sha256, naming the image and both. Proof: bringup/tests/ensure.rs a_rebuild_fails_a_declared_sha256_the_recipe_does_not_make_though_plain_ensure_passes_it (seen failing first), rebuild_is_refused_with_dry_run_and_by_every_verb_but_ensure, a_rebuild_names_a_kernel_build_as_not_its_kind. Open: the control and parts are served as for ensure, not rebuilt (an input wrong but sha-consistent passes); a [kernel_builds] name is refused; the labs' CI calling it per touched image is each lane's builder item.
 
 Opened
 : 2026-11-24
