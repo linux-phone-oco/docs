@@ -6422,7 +6422,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
+
+Note
+: 2026-11-24, lab-tools-builder: done, lab-tools #419 (released v0.49.2, #420). lpoco layer export --manifest FILE --out DIR [--pkg-version V] writes NAME-VERSION.tar.gz: files/common/PATH and files/<debian|fedora|arch|alpine>/PATH and a Makefile with install and install-debian|fedora|arch|alpine (each depends on install, installs with the packages' modes under $(DESTDIR)); the same bytes every time (sorted names, root owner, SOURCE_DATE_EPOCH or the layer's last commit; gzip -n). Proof layer/tests/export.rs (5, seen failing first): make install yields exactly the config package's files (path and mode), each install-TARGET exactly its format's package file list, no /etc/deviceinfo anywhere, the tarball is byte-equal across two runs, a destination a Makefile would misread is refused. NOTE on the proof text: 'make install yields the deb's file list' holds for install-debian (install is the common part: the deb's config package; the boot package's files are the format's extras). A package's post-install (systemctl preset, initramfs rebuild) is the packager's to run (said in the Makefile). Nothing aimed at Nura: install-alpine adds only the apk's generic extras; the Nura deviceinfo is not exported (waits on the author's word). Not run: a real distribution's source packager (rpmbuild/debuild/makepkg) on the tarball.
 
 Opened
 : 2026-11-19

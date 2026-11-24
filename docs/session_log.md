@@ -6626,3 +6626,21 @@ Done
 
 About
 : firmware-extract-declared
+
+---
+
+
+<a id="2026-11-24-lpoco-layer-export-a-tarball-and-a-makefile"></a>
+### lpoco layer export: a tarball and a Makefile
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-tools #419, released v0.49.2.
+
+About
+: layer-export-makefile
