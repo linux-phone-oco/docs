@@ -6386,3 +6386,27 @@ Rejected
 
 About
 : nfpm-on-the-lab-host
+
+---
+
+
+<a id="2026-11-24-lpoco-layer-released-the-host-cannot-follow-its"></a>
+### lpoco-layer released; the host cannot follow its first new member
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed and released lpoco-layer as a family asset (v0.48.8), verified the asset; read the follow stop: an old follow cannot install a member only the new FAMILY names, and the new check fails on it.
+
+Considered
+: hand-installing lpoco-layer; running prepare now myself
+
+Rejected
+: patching past the stop: both change the shared lab host outside follow
+
+About
+: lpoco-layer-on-the-host
