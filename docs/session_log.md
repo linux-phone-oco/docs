@@ -6518,3 +6518,21 @@ Rejected
 
 About
 : lpoco-health-suspend-trace-hook
+
+---
+
+
+<a id="2026-11-24-host-a-watcher-that-cannot-be-probed-is-said-not"></a>
+### host: a watcher that cannot be probed is said not measured
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-tools #408, released v0.48.12 (with manifest 0.48.0); the item stays open on its named remaining parts.
+
+About
+: lpoco-host-rest
