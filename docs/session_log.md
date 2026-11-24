@@ -6470,3 +6470,27 @@ Done
 
 About
 : layer-pack-reproducible
+
+---
+
+
+<a id="2026-11-24-the-layer-s-real-packages-installed-by-each-base"></a>
+### the layer's real packages installed by each base's manager
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-tools #404 (tests): packages_in_containers.rs and bootimg_containers.rs now use real nfpm packages and apt, dnf, pacman and apk; the proof script passes for surya; recorded what is proven and what stays open.
+
+Considered
+: a pmOS container for boot-deploy (not in the host's images)
+
+Rejected
+: closing either item with Nura's boot-deploy untested
+
+About
+: lpoco-layer-pack
