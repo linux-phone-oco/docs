@@ -8733,3 +8733,28 @@ Rank
 
 About
 : lpoco-attended
+
+
+<a id="land-reruns-a-stuck-check"></a>
+### land re-runs once a check stuck in_progress past its usual time with its job's log ended
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Walleye's land waited 72 min on a GitHub job that had passed but still showed in_progress, until a hand re-run (Top Coordinator, 2026-11-24). land (grenudi/lab-machine bin/land) should notice: a check in_progress well past its usual duration whose job log has ended gets one automatic re-run, logged as such; never a second. Usual time from the workflow's recent runs (one gh API call, budget in mind). Test first in lab-machine tests/ with a faked gh: stuck-and-ended re-runs once; running log waits; a second stall refuses. Lands in grenudi/lab-machine; lab.toml [tools.land] rev moves after.
+
+Opened
+: 2026-11-24
+
+Needs
+: build
+
+Proof
+: land-reruns-a-stuck-check
+
+Rank
+: 2
