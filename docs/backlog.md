@@ -8705,3 +8705,31 @@ Rank
 
 About
 : self-explaining-structure
+
+
+<a id="deps-bump-releases-its-crate"></a>
+### A rhizoid deps bump releases the crate it moves (lpoco-attended carries lpoco-manifest 0.47.0)
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: lab-tools #379 moved attended's lpoco-manifest pin to v0.47.0 as 'chore(deps): ...', and release_commits in release-plz.toml excludes chore, so no lpoco-attended tag carries manifest 0.47.0; walleye PR 996 fails with 'unknown field kernel_builds'. Fix: release_commits also takes chore(deps) (never 'chore: release' or 'chore(PKG): release'); extend lpoco/tests/release_family.rs release_plz_ignores_its_own_release_commits with a deps case seen failing first; the next release PR then tags lpoco-attended v0.45.3. Asked by the walleye coordinator, item walleye-lpoco-attended-carries-manifest-0-47.
+
+Opened
+: 2026-11-24
+
+Needs
+: build
+
+Proof
+: release_plz_ignores_its_own_release_commits
+
+Rank
+: 1
+
+About
+: lpoco-attended
