@@ -9001,10 +9001,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Seen by the lab-tools builder in layer-apk-bootimg-trigger (#425/#427): the kernel-hooks.d hook makes the boot.img from [boot], so deviceinfo (Nura/postmarketOS's file, add_deviceinfo in layer/src/lib.rs) is dead weight, a second copy of [boot] that can drift. Per decision 2026-11-24-plain-alpine-not-nura there is no Nura target to keep it for. Test first: a packed apk lists no /etc/deviceinfo; deviceinfo()/add_deviceinfo go if no other caller remains.
+: 2026-11-24, lab-tools-builder: landed lab-tools #430, released as 0.51.0 (#431), read back from main. add_deviceinfo, deviceinfo() and the call in lpoco-layer pack are gone: the apk packs no /etc/deviceinfo and no /usr/lib/kernel-cmdline.d file. The config package used to exist for the deviceinfo it held, so a layer of dependencies only lost its needs: the config package is now made whenever there are files or needs. Proof: layer/tests/pack_run.rs no_format_packs_a_deviceinfo_or_a_cmdline_file_from_boot and pack.rs a_layer_without_files_still_gets_its_dependencies_on_a_config_package (seen failing first); packages_in_containers alpine_installs_the_apk_packages now asserts no /etc/deviceinfo (passes). Not reviewed by the programmer subagent (a removal).
 
 Opened
 : 2026-11-24
