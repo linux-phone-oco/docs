@@ -9017,3 +9017,25 @@ Rank
 
 About
 : layer-apk-bootimg-trigger
+
+
+<a id="host-detach-stale-loop-devices"></a>
+### Detach five stale loop devices on the lab host: sudo losetup -d /dev/loop0 /dev/loop1 /dev/loop2 /dev/loop3 /dev/loop4
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Left 2026-11-24 by the lab-tools builder's early failed alpine:3.24 container runs (layer-firmware-rule-plain-alpine, lab-tools #429): losetup -a shows /dev/loop0..loop4 each backed by a deleted /p.img. Detaching needs root, which is typed by the author (no standing root grant). Before: losetup -a lists exactly those five on (/p.img); after, losetup -a lists none of them. Harmless meanwhile, apart from holding five loop slots.
+
+Opened
+: 2026-11-24
+
+Waits
+: the author's hands: root on the lab host
+
+About
+: layer-firmware-rule-plain-alpine
