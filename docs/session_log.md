@@ -6410,3 +6410,27 @@ Rejected
 
 About
 : lpoco-layer-on-the-host
+
+---
+
+
+<a id="2026-11-24-follow-installs-a-new-family-member"></a>
+### follow installs a new family member
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-tools #400, released v0.48.9; the host's 0.48.7 follow cannot take it by itself (the same deadlock, once more), read at 06:38.
+
+Considered
+: journaling the extras (a second journal write is worse than the orphan: remove_dir_all then rename); ignoring a not-found member (rejected by orchestration)
+
+Rejected
+: hand-installing on the lab host from this session
+
+About
+: follow-installs-a-new-family-member
