@@ -6554,3 +6554,21 @@ Done
 
 About
 : lpoco-host-rest
+
+---
+
+
+<a id="2026-11-24-follow-reads-tags-with-git-not-the-api"></a>
+### follow reads tags with git, not the API
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-tools #413, released v0.48.14; verified live that anonymous git ls-remote and asset download work.
+
+About
+: follow-reads-releases-without-the-api
