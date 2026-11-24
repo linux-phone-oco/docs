@@ -6266,3 +6266,27 @@ Rejected
 
 About
 : follow-never-locks-itself-out
+
+---
+
+
+<a id="2026-11-24-a-deps-bump-releases-its-crate"></a>
+### a deps bump releases its crate
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-tools #394 and released it (#395): chore(deps) now releases; lpoco-attended v0.45.3 carries lpoco-manifest v0.47.0, which walleye waited for.
+
+Considered
+: matching any chore scope
+
+Rejected
+: allowing chore: release or chore(PKG): release: the release commit would open the next release PR for ever
+
+About
+: deps-bump-releases-its-crate
