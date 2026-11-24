@@ -6590,3 +6590,21 @@ Done
 
 About
 : lpoco-host-rest
+
+---
+
+
+<a id="2026-11-24-bringup-init-shellcheck-console-check-ffs-acm"></a>
+### bringup init: shellcheck, console check, ffs-acm cross build
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-tools #415, released v0.49.0; no phone touched.
+
+About
+: bringup-init-finish
