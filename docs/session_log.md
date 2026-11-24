@@ -6338,3 +6338,27 @@ Rejected
 
 About
 : land-reruns-a-stuck-check
+
+---
+
+
+<a id="2026-11-24-follow-never-locks-itself-out-the-last-four"></a>
+### follow never locks itself out: the last four pieces
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-tools #396, released v0.48.7: gone family member skipped, judge narrowed, lookalike and no-token tests.
+
+Considered
+: failing the install on a gone member (the old behaviour)
+
+Rejected
+: ignoring family members' FAIL lines in general: only a member follow itself skipped is ignored
+
+About
+: follow-never-locks-itself-out
