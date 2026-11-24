@@ -6572,3 +6572,21 @@ Done
 
 About
 : follow-reads-releases-without-the-api
+
+---
+
+
+<a id="2026-11-24-the-old-watcher-unit-copy-leaves-lab-machine"></a>
+### the old watcher unit copy leaves lab-machine
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Checked the lab (0.48.14, check ok, watcher declared and running), removed the identical unit copy from lab-machine (#127).
+
+About
+: lpoco-host-rest
