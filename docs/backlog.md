@@ -8808,3 +8808,28 @@ Proof
 
 Rank
 : 1
+
+
+<a id="layer-pack-reproducible"></a>
+### lpoco layer pack is reproducible: the same layer at the same commit gives the same package bytes
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-24: two packs of walleye's layer (first d47559b6.../4c5c63be..., then from the installed lpoco-layer 0.48.9 d7dae022.../0b2c6dde...) had identical file trees but different sums, only by nfpm's timestamps. Fix: lpoco layer pack sets nfpm's mtime from SOURCE_DATE_EPOCH, taken from the layer's commit time when unset. Test first: two packs of one fixture layer give equal sha256 for apk and deb.
+
+Opened
+: 2026-11-24
+
+Needs
+: build
+
+Proof
+: layer/tests: two packs of one layer give equal sha256
+
+Rank
+: 6
