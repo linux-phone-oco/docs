@@ -6494,3 +6494,27 @@ Rejected
 
 About
 : lpoco-layer-pack
+
+---
+
+
+<a id="2026-11-24-suspend-cycle-trace-hook"></a>
+### suspend cycle trace hook
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-tools #406, released v0.48.11: lpoco-health suspend cycle --trace, fixtures only; no phone touched.
+
+Considered
+: a --pre/--post hook pair (the stopgap already has --before/--after)
+
+Rejected
+: clearing tracefs instead of restoring it
+
+About
+: lpoco-health-suspend-trace-hook
