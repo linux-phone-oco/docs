@@ -8967,3 +8967,28 @@ Rank
 
 About
 : image-ensure-in-attended
+
+
+<a id="image-rebuild-proves-inputs"></a>
+### image ensure --rebuild also rebuilds each input that has its own recipe; a seed-only input is named as unproved
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Left open by image-ensure-rebuild (lab-tools #423): control and parts are served by sha256 as in plain ensure, so an input whose declared sha came from a script passes - the same class one level down. A seed (hand-built, decision 2026-11-23-ensure-pins-avbtool-and-takes-seeds) has no recipe, so --rebuild says it is not proved rather than failing.
+
+Opened
+: 2026-11-24
+
+Needs
+: build
+
+Rank
+: 4
+
+About
+: image-ensure-in-attended
