@@ -8783,3 +8783,28 @@ Proof
 
 Rank
 : 3
+
+
+<a id="follow-installs-a-new-family-member"></a>
+### follow installs what the new host's FAMILY adds before the new host judges it
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-24 06:05: follow 0.48.7 -> 0.48.8 stepped back: 'tool lpoco-layer: FAIL, pinned 0.48.8 found not found'. The running follow's FAMILY lacked lpoco-layer (added in #398), so it never installed it while the new host's check named it: a deadlock for every newly added family member, each timer round. Unstuck once by hand (orchestration, both leases free): lpoco-host 0.48.8 from its checked asset, then prepare now. Fix: follow takes the member list from the new lpoco-host (e.g. 'lpoco-host family' printing FAMILY) and installs each before the check. Test first in host/tests/follow.rs: a release adding a member installs it and passes. Rejected: ignoring a not-found member in the check (hides a real missing tool).
+
+Opened
+: 2026-11-24
+
+Needs
+: build
+
+Proof
+: host/tests/follow.rs: a release that adds a family member installs it and follows
+
+Rank
+: 1
