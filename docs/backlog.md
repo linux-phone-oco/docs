@@ -8917,3 +8917,28 @@ Proof
 
 Rank
 : 3
+
+
+<a id="retire-host-attended"></a>
+### Retire the host's ~/.local/bin/lpoco-attended once no lane calls it bare
+
+Project
+: linux-phone-oco/docs
+
+Status
+: open
+
+Note
+: Walleye runs its own CLI (google-walleye-lab #1034). Surya still documents bare 'lpoco-attended run attended-session' and is paused; it gets walleye's bin/attended shape when it resumes. Then remove the binary and its .before-0.45.4 copy with both leases free.
+
+Opened
+: 2026-11-24
+
+Waits
+: surya runs its own lpoco-attended CLI (surya is paused)
+
+Needs
+: build
+
+About
+: attended-pin-is-one-pin
