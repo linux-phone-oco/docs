@@ -8742,10 +8742,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Walleye's land waited 72 min on a GitHub job that had passed but still showed in_progress, until a hand re-run (Top Coordinator, 2026-11-24). land (grenudi/lab-machine bin/land) should notice: a check in_progress well past its usual duration whose job log has ended gets one automatic re-run, logged as such; never a second. Usual time from the workflow's recent runs (one gh API call, budget in mind). Test first in lab-machine tests/ with a faked gh: stuck-and-ended re-runs once; running log waits; a second stall refuses. Lands in grenudi/lab-machine; lab.toml [tools.land] rev moves after.
+: 2026-11-24, lab-tools-builder: done, grenudi/lab-machine #117 (bin/land): a check in_progress past 3 x the median of the last 20 successful runs (one gh run list call; LAND_STUCK_AFTER overrides) whose job log has ended gets one gh run rerun of its run, said in a line; a second stall refuses; a running log waits. Proof tests/land-stuck.sh (4 cases, seen failing first). Not proved on GitHub: whether it accepts a re-run of a run still in progress (the hand re-run worked; if refused land says so and stops). lab.toml [tools.land] rev still to move (orchestration). tests/land-push.sh fails on main before this.
 
 Opened
 : 2026-11-24
