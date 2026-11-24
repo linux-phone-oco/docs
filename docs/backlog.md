@@ -8833,3 +8833,28 @@ Proof
 
 Rank
 : 6
+
+
+<a id="follow-reads-releases-without-the-api"></a>
+### follow finds and fetches releases without GitHub's REST API: git ls-remote for tags, releases/download URLs for assets
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: 2026-11-24: the lab stuck at 0.48.11 - follow's round got 'cannot fetch ...releases (HTTP 403)'. gh on the lab is logged in only through GH_TOKEN in interactive shells; the follow unit has none, so it asks api.github.com anonymously and the lab's address is rate limited. Decided (orchestration): follow takes the newest family tag from git ls-remote --tags (git over https, not the REST rate limit) and fetches each asset and its .sha256 from https://github.com/OWNER/REPO/releases/download/TAG/NAME, checking the sum; the API stays only as a fallback. Rejected: conditional requests (GitHub counts a 304 free only for authorized requests - check the doc and name it); giving the unit the lab's token (Top: it stays out of follow); a stored gh login (the author's hand, and still one token for everything). Test first in host/tests/follow.rs with a faked git and http: a newer tag is found and installed with no API call; a bad sum refuses.
+
+Opened
+: 2026-11-24
+
+Needs
+: build
+
+Proof
+: host/tests/follow.rs: follow installs a newer release with no REST API call
+
+Rank
+: 1
