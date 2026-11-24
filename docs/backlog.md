@@ -9039,3 +9039,28 @@ Waits
 
 About
 : layer-firmware-rule-plain-alpine
+
+
+<a id="image-rebuild-changed-since"></a>
+### image ensure --rebuild --changed-since REV: rebuild only images whose sha256 or recipe differ from REV; pass when none do
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-24-image-rebuild-runs-at-land. Test first: a manifest pair differing in one image's recipe rebuilds that image only; an identical pair rebuilds none and passes. The labs' make land-check calling it is each lane's builder item.
+
+Opened
+: 2026-11-24
+
+Needs
+: build
+
+Rank
+: 1
+
+About
+: image-ensure-in-attended

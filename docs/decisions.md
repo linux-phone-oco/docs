@@ -3266,3 +3266,31 @@ About
 
 Research
 : image-recipes-how-it-stands
+
+
+<a id="2026-11-24-image-rebuild-runs-at-land"></a>
+### 2026-11-24-image-rebuild-runs-at-land
+
+Brief
+: The image rebuild proof runs on the lab at land, through each lab's make land-check, not on hosted CI
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-24
+
+Decision
+: Each lab's Makefile land-check runs lpoco bringup image ensure --rebuild for every [images.NAME] whose sha256 or recipe the branch changes against origin/main; lab-machine's land already runs make land-check on the branch as it is about to merge and refuses on failure. lab-tools gives the selection: image ensure --rebuild --changed-since REV rebuilds only the touched images and passes when none are. Hosted CI keeps the checks it can run without the store.
+
+Why
+: Walleye's builder (google-walleye-lab #1049): hosted ubuntu-latest jobs have no Nix store or seed, and a recipe's inputs (control image, dtb, ramdisk) live only in the lab's store. land is the only way to main (practice 7) and already runs on the lab, so the gate sits where the inputs are, with no new runner or upload.
+
+Rejected
+: A self-hosted runner on the lab: it runs pull-request code on the host that holds the phones, outside the keepers' leases. Publishing the inputs as release assets: control images carry vendor files that are not ours to redistribute, and seeds are hand-built, so publishing proves nothing more. A gate only in hosted CI: it cannot run.
+
+About
+: image-ensure-in-attended
+
+Research
+: image-recipes-how-it-stands
