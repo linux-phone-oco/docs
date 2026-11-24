@@ -6362,3 +6362,27 @@ Rejected
 
 About
 : follow-never-locks-itself-out
+
+---
+
+
+<a id="2026-11-24-a-real-lpoco-layer-pack-with-nfpm-on-the-lab"></a>
+### a real lpoco layer pack with nfpm on the lab
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Packed walleye's layer to .apk and .deb with nfpm 2.49.0 on the lab; read both; recorded names and sha256; read the stop (lpoco-layer not installed on the host) and ran the main-built binary without installing it.
+
+Considered
+: adding lpoco-layer to the host FAMILY here (a design change, not asked)
+
+Rejected
+: installing a built binary into ~/.local/bin: unreleased, outside follow's pins
+
+About
+: nfpm-on-the-lab-host
