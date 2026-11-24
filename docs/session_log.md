@@ -6290,3 +6290,27 @@ Rejected
 
 About
 : deps-bump-releases-its-crate
+
+---
+
+
+<a id="2026-11-24-land-re-runs-a-stuck-check-once"></a>
+### land re-runs a stuck check once
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-machine #117: wait_checks in bin/land, tests/land-stuck.sh with a faked gh.
+
+Considered
+: gh run rerun --job
+
+Rejected
+: re-running without the log-ended test: a running job would be restarted
+
+About
+: land-reruns-a-stuck-check
