@@ -8992,3 +8992,28 @@ Rank
 
 About
 : image-ensure-in-attended
+
+
+<a id="layer-apk-drops-deviceinfo"></a>
+### The apk NAME-config carries no /etc/deviceinfo nor boot-deploy's cmdline file: on plain Alpine nothing reads them
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Seen by the lab-tools builder in layer-apk-bootimg-trigger (#425/#427): the kernel-hooks.d hook makes the boot.img from [boot], so deviceinfo (Nura/postmarketOS's file, add_deviceinfo in layer/src/lib.rs) is dead weight, a second copy of [boot] that can drift. Per decision 2026-11-24-plain-alpine-not-nura there is no Nura target to keep it for. Test first: a packed apk lists no /etc/deviceinfo; deviceinfo()/add_deviceinfo go if no other caller remains.
+
+Opened
+: 2026-11-24
+
+Needs
+: build
+
+Rank
+: 3
+
+About
+: layer-apk-bootimg-trigger
