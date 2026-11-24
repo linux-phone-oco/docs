@@ -2639,3 +2639,28 @@ About
 
 Material
 : research/self-explaining-structure/2026-11-23/
+
+
+<a id="plain-alpine-carries-a-phone-layer"></a>
+### plain-alpine-carries-a-phone-layer
+
+Brief
+: Plain Alpine 3.24 carries the Qualcomm phone userspace (qrtr, rmtfs, tqftpserv, hexagonrpcd, qbootctl, mkbootimg); we carry only a boot.img trigger and a firmware rule
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-24
+
+Question
+: Can a phone layer run on plain Alpine with no Nura (postmarketOS) pieces, and what must we carry ourselves?
+
+Found
+: Asked apk in alpine:3.24 and alpine:edge on the lab (2026-11-24). In Alpine: qrtr 1.2, rmtfs 1.3, tqftpserv 1.1.1 (edge 1.3), hexagonrpcd 0.4.0, qbootctl 0.2.2 (community); mkinitfs 3.14.1, linux-firmware-qcom, alsa-ucm-conf (main); android-tools-mkbootimg (community; 35.0.2 in 3.24). Not in Alpine: pd-mapper (userspace) - the kernel has its own since 6.12 (CONFIG_QCOM_PD_MAPPER), so it is a kernel config line; msm-firmware-loader, droid-juicer, boot-deploy, postmarketos-mkinitfs (pmaports only). We carry: (1) the boot.img rewrite as an apk trigger running the same /usr/libexec/NAME-bootimg the deb/rpm/arch hooks run (mkbootimg from android-tools-mkbootimg); (2) our own firmware rule: vendor blobs from the phone's partitions made visible to the kernel loader (what msm-firmware-loader does), a small OpenRC service of the layer; (3) CONFIG_QCOM_PD_MAPPER=y in our kernel builds. Nothing found that needs Nura to boot.
+
+Sources
+: https://lwn.net/Articles/973399/,https://www.kernelconfig.io/CONFIG_QCOM_PD_MAPPER,https://pkgs.alpinelinux.org/packages
+
+About
+: base-distro

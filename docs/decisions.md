@@ -3210,3 +3210,31 @@ About
 
 Research
 : structure-review-look-around
+
+
+<a id="2026-11-24-plain-alpine-not-nura"></a>
+### 2026-11-24-plain-alpine-not-nura
+
+Brief
+: Amends base-distro and device-layer-declared-once: the apk target is plain Alpine, not Nura; our layer carries its own boot.img trigger and firmware rule
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-24
+
+Decision
+: The apk target of a device layer is plain Alpine. Its boot.img rewrite is an apk trigger running the same script as the deb/rpm/arch hooks; its firmware is our own rule (an OpenRC service of the layer making the partitions' blobs visible to the loader); pd-mapper is the kernel's (CONFIG_QCOM_PD_MAPPER). Nura's boot-deploy, /etc/deviceinfo and the msm-firmware-loader config are not used. walleye's root filesystem is plain Alpine. surya stays on its Nura image while paused.
+
+Why
+: The author, 2026-11-24 (conversation turn-2026-11-24-why-still-nura): "Why do we still need nura i dont get it ? Dont we used alpine ?" Research plain-alpine-carries-a-phone-layer: Alpine carries the Qualcomm userspace; what Nura adds is a boot-deploy and a firmware loader we can carry in the layer with the script we already have.
+
+Rejected
+: Keeping Nura's boot-deploy/deviceinfo for the apk (a second path for one job, and a distribution we do not use); packaging msm-firmware-loader from pmaports (carrying another project's package where a layer service does).
+
+About
+: base-distro
+
+Research
+: plain-alpine-carries-a-phone-layer

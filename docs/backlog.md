@@ -5640,7 +5640,7 @@ Waits
 
 
 <a id="walleye-rootfs-on-our-layer"></a>
-### walleye's first root filesystem: Alpine 3.24 / Nura v26.06 userland with walleye's own kernel and device packages from its lab's apk repository, built by the conveyor, no pmaports fork
+### walleye's first root filesystem: plain Alpine 3.24 userland (no Nura, decision 2026-11-24-plain-alpine-not-nura) with walleye's own kernel and device packages from its lab's apk repository, built by the conveyor, no pmaports fork
 
 Project
 : linux-phone-oco/google-walleye-lab
@@ -8592,7 +8592,7 @@ Opened
 : 2026-11-23
 
 Waits
-: the author: which second machine, and whether the lab host's Nix store is opened to it over ssh
+: until there are two or more labs (the author, 2026-11-24: turn-2026-11-24-image-cache-waits-two-labs)
 
 Blocked by
 : image-recipe-ensure-z21
@@ -8864,3 +8864,53 @@ Proof
 
 Rank
 : 1
+
+
+<a id="layer-apk-bootimg-trigger"></a>
+### The layer's apk rewrites boot.img by an apk trigger running the same NAME-bootimg script as the deb/rpm/arch hooks (plain Alpine, no boot-deploy)
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Re-scopes the Nura part of bootimg-trigger-per-base (decision 2026-11-24-plain-alpine-not-nura). The apk -boot package depends on android-tools-mkbootimg and carries an apk trigger on the kernel's install paths (as Alpine's mkinitfs trigger does) that runs /usr/libexec/NAME-bootimg. Test first in an alpine:3.24 container: apk add of the layer, then of a kernel package, leaves a boot.img that lpoco bringup image check accepts with the dtb appended. No /etc/deviceinfo.
+
+Opened
+: 2026-11-24
+
+Needs
+: build
+
+Proof
+: layer/tests/bootimg_containers.rs: Alpine apk add leaves a checked boot.img
+
+Rank
+: 2
+
+
+<a id="layer-firmware-rule-plain-alpine"></a>
+### The layer's apk carries our own firmware rule: an OpenRC service making the phone's partition blobs visible to the kernel loader (no msm-firmware-loader)
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Re-scopes firmware-extract-declared's apk part (decision 2026-11-24-plain-alpine-not-nura). From [layer.firmware] sources: at boot, mount the declared partitions read-only and make the declared files reachable under the kernel's firmware path (as msm-firmware-loader does, our own small service). Test first in an alpine:3.24 container with a fake partition image: after the service, the declared file is at its firmware path; an undeclared file is not. Vendor blobs are never packaged.
+
+Opened
+: 2026-11-24
+
+Needs
+: build
+
+Proof
+: layer/tests: the firmware service exposes declared files from a fake partition
+
+Rank
+: 3
