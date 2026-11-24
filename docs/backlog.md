@@ -6637,10 +6637,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Taken over from surya-lab's queue (the lanes waker nudged surya over a lab-tools build item; coordinator, 2026-11-19). surya's sleep/bt-trace.sh is the stopgap probe that wraps the cycle to trace Bluetooth across suspend; it is removed once this exists. Fits beside suspend_stop (lab-tools #209).
+: Taken over from surya-lab's queue (the lanes waker nudged surya over a lab-tools build item; coordinator, 2026-11-19). surya's sleep/bt-trace.sh is the stopgap probe that wraps the cycle to trace Bluetooth across suspend; it is removed once this exists. Fits beside suspend_stop (lab-tools #209). 2026-11-24, lab-tools-builder: done on the host side, lab-tools #406 (released v0.48.11, #405): lpoco-health suspend cycle --trace. The manifest's [health] suspend_trace_dyndbg (dynamic_debug queries, the tool adds +p/-p) and suspend_trace_irq (irq numbers) become env SUSPEND_TRACE_DYNDBG/SUSPEND_TRACE_IRQ (devlab test, schema regenerated); with --trace the sites go on before the suspend (tracing_on, irq_handler_entry enable + filter 'irq == N || ...', control '+p'), after the wake the trace and a 150-line dmesg tail are kept as var/lib/lpoco-health/suspend/cycle.trace and cycle.dmesg and counted in the report ('trace': irq_events, files, problems), and tracing_on, the event's enable and filter are written back as they were found (a dynamic_debug site is switched off with -p: one already on at boot is off afterwards). trace.json records what is on, written first or nothing is switched on; a cut-off cycle's sites are put right by the next cycle. Without --trace nothing is touched; --trace with nothing declared, a query that carries its own flag, or a tracefs that cannot be switched on refuses the cycle (exit 2, nothing suspended). Proof health/tests/suspend_cycle.rs (8 new, a made-up phone; seen failing first) - the programmer review found: the stop must restore not clear, a failed record write must stop, collection errors must be reported: all fixed. NOT tried on a phone (surya is paused): the first real --trace cycle is surya's; surya-lab's builder declares suspend_trace_dyndbg = ['file drivers/bluetooth/hci_qca.c', 'file drivers/tty/serial/qcom_geni_serial.c'] and suspend_trace_irq = [157] in device.toml and removes sleep/bt-trace.sh then.
 
 Opened
 : 2026-11-19
