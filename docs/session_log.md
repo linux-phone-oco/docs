@@ -6434,3 +6434,21 @@ Rejected
 
 About
 : follow-installs-a-new-family-member
+
+---
+
+
+<a id="2026-11-24-walleye-packed-through-the-installed-lpoco-layer"></a>
+### walleye packed through the installed lpoco-layer
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Re-packed walleye's layer with the installed lpoco layer 0.48.9; compared with the first pack; closed lpoco-layer-on-the-host.
+
+About
+: lpoco-layer-on-the-host
