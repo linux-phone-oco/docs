@@ -6536,3 +6536,21 @@ Done
 
 About
 : lpoco-host-rest
+
+---
+
+
+<a id="2026-11-24-host-rest-gadget-group-default-declared-targets"></a>
+### host rest: gadget group default, declared targets; the script stays
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-24
+
+Done
+: Landed lab-tools #411, released v0.48.13 (a) and (b); (c) not done: follow is stuck on a 403 without a token in its service.
+
+About
+: lpoco-host-rest
