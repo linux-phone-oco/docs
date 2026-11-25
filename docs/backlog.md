@@ -3964,10 +3964,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: dropped
 
 Note
-: As surya-manifest-schema.
+: Moved to google-walleye-lab's own base on 2026-11-25 (same id), where walleye's builder reads its queue; this docs row was invisible to it. The template's piece is device-template #44.
 
 Opened
 : 2026-11-18
@@ -3995,10 +3995,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: dropped
 
 Note
-: Its gadget serial, address and functions move to device.toml [boot]; build/initramfs*/ and build/ffs-acm* stay in history.
+: Moved to google-walleye-lab's own base on 2026-11-25 (same id), where walleye's builder reads its queue; this docs row was invisible to it. The template's piece is device-template #44.
 
 Opened
 : 2026-11-18
