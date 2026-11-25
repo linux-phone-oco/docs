@@ -3319,3 +3319,28 @@ Rejected
 
 About
 : image-rebuild-changed-since
+
+
+<a id="2026-11-25-attended-export-scripts-not-judgement"></a>
+### 2026-11-25-attended-export-scripts-not-judgement
+
+Brief
+: attended export writes each check's phone script as a lava-test-case; the procedure's judgement of the answer is not exported
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-25
+
+Decision
+: lpoco attended export NAME walks the procedure with --export (a dry run that runs each check closure, its phone sh|root scripts logged, never sent) and prints Lava-Test Test Definition 1.0: one lava-test-case ID --shell sh -c SCRIPT per check that sends a script; checks that send none are named in a comment. A case passes when its script exits 0; what the procedure judged of the answer (a Rust closure) stays in the procedure, and the YAML says so. Landed lab-tools #442.
+
+Why
+: Check bodies are Rust closures, so the only exportable part is what they send the phone; the device's values are already inside the scripts, read outside closures. Programmer review found the weakness (a check such as uname -r exports as always-green) and it is stated, not hidden.
+
+Rejected
+: LAVA params from [procedures.NAME]: the scripts have the values baked in, so a lab setting them would change nothing. A run step calling lpoco attended run on the phone: the procedure drives the phone from the host. Parsing Rust source for the checks: the closures are not data. Our own schema: LAVA's format is what others' labs run.
+
+About
+: attended-export

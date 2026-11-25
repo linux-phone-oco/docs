@@ -6860,3 +6860,27 @@ Rejected
 
 About
 : layer-apk-via-nfpm
+
+---
+
+
+<a id="2026-11-25-lab-tools-builder-attended-export"></a>
+### lab-tools-builder: lpoco attended export
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-25
+
+Done
+: Built lpoco attended export and the library's --export mode (lab-tools #442, tests tests/export.rs seen failing first, programmer review fixed: names with ': ', phone sh|root only, 15 min limit, no decorative params). No phone reached.
+
+Considered
+: Exporting judgement as data (not derivable from closures); a later step could let a check state its expectation as data so the case is not vacuous.
+
+Rejected
+: params, run-on-phone steps, source parsing (see decision 2026-11-25-attended-export-scripts-not-judgement).
+
+About
+: attended-export
