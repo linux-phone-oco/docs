@@ -6614,10 +6614,13 @@ Status
 : open
 
 Note
-: The author's second part of 'how it stays organized' (with his yes to decision 2026-11-19-device-layer-declared-once): the site and the steps view show per phone which distributions it is packaged for and which layer pieces are already upstream, derived from the data.
+: The author's second part of 'how it stays organized' (with his yes to decision 2026-11-19-device-layer-declared-once): the site and the steps view show per phone which distributions it is packaged for and which layer pieces are already upstream, derived from the data. 2026-11-26, orchestration: a builder found nothing to derive it from (lab-tools-builder run, nothing landed): no layer is published in any format yet, docs has no table of where a layer is published, and upstream_items does not mark which layer piece a row is. Blocked by layer-apk-via-nfpm, the first publishing (an apk in the conveyor's Alpine repository); when it lands orchestration adds the published-in table and the layer-piece mark with a feed from the bases (schema, records, queries are orchestration's: AGENTS.md), then the builder builds the view.
 
 Opened
 : 2026-11-19
+
+Blocked by
+: layer-apk-via-nfpm
 
 Needs
 : build
