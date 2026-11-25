@@ -9064,3 +9064,28 @@ Rank
 
 About
 : image-ensure-in-attended
+
+
+<a id="host-tool-pinned-sha256"></a>
+### lpoco-host takes a release archive by a sha256 pinned in lab.toml and a member path inside it, so the host can carry shellcheck
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Seen 2026-11-25 by the lab-tools builder (image-rebuild-changed-since, #434): bringup/tests/shellcheck.rs fails on the lab host, which has no shellcheck. koalaman/shellcheck v0.11.0 ships shellcheck-v0.11.0.linux.x86_64.tar.xz with no checksums file and its binary at shellcheck-v0.11.0/shellcheck, while [tools.NAME] today needs ASSET.sha256 or a checksums file, and a member with no '/'. Test first: a [tools.shellcheck] with sha256 = and member = 'shellcheck-v0.11.0/shellcheck' installs and checks; a wrong sha256 is refused. Then orchestration adds [tools.shellcheck] to lab.toml.
+
+Opened
+: 2026-11-25
+
+Needs
+: build
+
+Rank
+: 3
+
+About
+: lpoco-layer-on-the-host
