@@ -5700,6 +5700,9 @@ Note
 Opened
 : 2026-11-19
 
+Waits
+: surya resumes: it builds surya's image (the SM7150 fallback), a lane the author paused on 2026-11-22 (decision 2026-11-25-docs-own-build-items-the-site-its-checks-go-to)
+
 Needs
 : build
 

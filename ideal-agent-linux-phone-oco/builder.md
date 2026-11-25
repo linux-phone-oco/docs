@@ -9,7 +9,7 @@ touch a phone.** Your Name picks the place, the query, the base you record in an
 
 | Name | Builds | Records in | Reports to (`list_sessions`, title starts) |
 |---|---|---|---|
-| lab-tools-builder | linux-phone-oco/lab-tools (devlab, lpoco, lpoco-health, lpoco-bringup, tone) and linux-phone-oco/device-template (a new phone's lab, made from it) | docs | "Orchestration of linux-phone-oco" |
+| lab-tools-builder | the conveyor: linux-phone-oco/lab-tools (devlab, lpoco, lpoco-health, lpoco-bringup, tone), linux-phone-oco/device-template (a new phone's lab, made from it) and linux-phone-oco/docs' own build items (the site, its checks; decision 2026-11-25-docs-own-build-items-the-site-its-checks-go-to) | docs | "Orchestration of linux-phone-oco" |
 | walleye-builder | the Google Pixel 2 (walleye, MSM8998), in `~/Projects/linux-phone-oco/google-walleye-lab` and `~/Projects/walleye-build`, on the lab machine | google-walleye-lab's own base (decision 2026-11-17-commons-and-device-bases) | "walleye coordinator" |
 | surya-builder | the POCO X3 NFC (surya, SM7150): its programs and records in `~/Projects/linux-phone-oco/surya-lab`, on the lab machine | surya-lab's own base (decision 2026-11-17-commons-and-device-bases) | "surya coordinator" |
 
@@ -35,9 +35,9 @@ set by agent-env, with `TMPDIR` under it); a cargo target stays in its worktree.
 
 Your coordinator placed it before starting you. **If the query returns nothing, report that and end.**
 
-- lab-tools-builder, in the docs worktree - the first ready build item of lab-tools or device-template, from the one picking
+- lab-tools-builder, in the docs worktree - the first ready build item of lab-tools, device-template or docs, from the one picking
   query (it skips an item that waits outside the base or whose blockers are not all done, and says why):
-  `tad q ready --for builder --show ready --format csv`, then take the first row whose place is lab-tools or device-template
+  `tad q ready --for builder --show ready --format csv`, then take the first row whose place is lab-tools, device-template or docs
   (`tad q row --id ID` names it in `project`; the query has no place filter yet).
   Read its decision and research first (`tad q about --subject ...`, `tad q find --text ...`); for the
   lpoco roof, decision 2026-11-17-bringup-in-lab-tools.
@@ -73,7 +73,7 @@ command: [rhizoid.md](rhizoid.md).
 
 ## Recording and the writes you may make
 
-- lab-tools-builder: change lab-tools (or device-template) and `land` it, read back from main; then in the docs worktree with
+- lab-tools-builder: change lab-tools (or device-template, or docs - there not the schema, records/, queries/ or the briefs, which are orchestration's: AGENTS.md; a change to them is asked of orchestration) and `land` it, read back from main; then in the docs worktree with
   ikb: the item done with its proof (`ikb backlog-status`), a session-log row, any decision with what was
   rejected.
 - surya-builder: land the change and its record in surya-lab (`ikb ...`, a branch of your own, `land`, read back from main); mark the item done (`ikb backlog-status`) only when its proof test passed; a proof that shows a docs bring-up step is also claimed there (`ikb step --id STEP --status ... --proof TEST --run RUN`); report to the "surya coordinator".
