@@ -4046,6 +4046,9 @@ Device
 Proof
 : device-template CI validates device.toml against the schema of the pinned release
 
+Rank
+: 1
+
 About
 : phone-side-pieces
 
