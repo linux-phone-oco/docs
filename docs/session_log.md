@@ -6908,3 +6908,27 @@ Rejected
 
 About
 : tone-recording-out-of-the-tree
+
+---
+
+
+<a id="2026-11-25-template-manifest-schema-the-pin-and-its-check"></a>
+### template-manifest-schema: the pin and its check
+
+Project
+: linux-phone-oco/device-template
+
+Entry date
+: 2026-11-25
+
+Done
+: device.toml pins its lpoco-lab release on a #:schema first line; CI reads it with that release and the newest (device-template #44; programmer review fixed: the newest case was unproven).
+
+Considered
+: Schema as a release asset (not published today: the raw URL at the release tag serves it); a JSON-schema validator (none installed; lpoco-lab manifest check reads the same types).
+
+Rejected
+: Checking only the newest release: it cannot say which schema editors follow.
+
+About
+: template-manifest-schema
