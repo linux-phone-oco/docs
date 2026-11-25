@@ -3263,6 +3263,9 @@ Note
 Opened
 : 2026-11-17
 
+Waits
+: a device declares net_address (none does); the rest landed
+
 Needs
 : build
 
@@ -3718,6 +3721,9 @@ Note
 Opened
 : 2026-11-18
 
+Waits
+: surya resumes: its lab-tools steps are done (phone-pieces-drift-named, health-reports-pieces, lpoco-awake); only surya-awake-from-package on the phone is left
+
 Needs
 : build
 
@@ -3931,6 +3937,9 @@ Note
 
 Opened
 : 2026-11-18
+
+Waits
+: surya resumes (surya-lab's device.toml and CI; surya is paused)
 
 Blocked by
 : manifest-one-schema
