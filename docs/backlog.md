@@ -7017,10 +7017,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-19, orchestration: decision 2026-11-19-procedures-reflect-and-lift, part (4). Later than the lift loop; nothing is opened upstream without the author's word.
+: Landed lab-tools #442 (main 4653bd2). Export is the check scripts only; a follow-up could make checks state expectations as data.
 
 Opened
 : 2026-11-19
