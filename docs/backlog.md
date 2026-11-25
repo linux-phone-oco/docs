@@ -8046,10 +8046,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: A 576 KB recording, tracked since #101 (a tone argument test leaked it); the structure map says no recordings at a repository's top. Take it out with a Takes-out: trailer and add the test.
+: Landed in lab-tools #444 (read back from main: 0 .wav tracked). --weird.wav and tone/a.wav taken out (Takes-out trailers); tone tests: a refused command line leaves its working folder empty, and no .wav may sit in the crate or repository top (seen failing on a.wav first).
 
 Opened
 : 2026-11-23

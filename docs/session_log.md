@@ -6884,3 +6884,27 @@ Rejected
 
 About
 : attended-export
+
+---
+
+
+<a id="2026-11-25-tone-recording-out-of-the-tree"></a>
+### tone recording out of the tree
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-25
+
+Done
+: Proof test first, seen failing on tone/a.wav; then took --weird.wav and tone/a.wav out and landed lab-tools #444. Tone tests now run each command in a scratch folder, check refused command lines leave it empty, and fail on any .wav in the crate or repository top. Release: none waiting (test-only change).
+
+Considered
+: Checking tracked files with git ls-files in the test.
+
+Rejected
+: git ls-files in a test: ties tests to a checkout; reading the two folders is the same check without git. A 'make -- --weird.wav' case in the refused list: that command is valid and writes the file, so it was my stand-in mistake, dropped.
+
+About
+: tone-recording-out-of-the-tree
