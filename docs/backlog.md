@@ -4707,6 +4707,9 @@ Note
 Opened
 : 2026-11-18
 
+Waits
+: surya resumes (surya is paused)
+
 Blocked by
 : steps-contract,surya-follows-template
 
