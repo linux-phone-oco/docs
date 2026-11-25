@@ -3294,3 +3294,28 @@ About
 
 Research
 : image-recipes-how-it-stands
+
+
+<a id="2026-11-25-changed-since-compares-the-typed-declaration"></a>
+### 2026-11-25-changed-since-compares-the-typed-declaration
+
+Brief
+: --changed-since compares typed [images] declarations (sha256, recipe, control chain), not file text, and refuses a REV it cannot read
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-25
+
+Decision
+: An image is rebuilt when its sha256 or recipe differ from the manifest at REV, when REV lacked it, or when a control it starts from (transitively) has another sha256. A REV with no or unparsable device.toml is an error, never 'nothing changed'.
+
+Why
+: A recipe names its control by name, so its own text is unchanged when the control file changes; the review reproduced a pass in that case. Failing loud keeps the gate honest.
+
+Rejected
+: Text diff of device.toml (reformatting would rebuild; control changes invisible); treating an unreadable REV as no change (a silent pass).
+
+About
+: image-rebuild-changed-since
