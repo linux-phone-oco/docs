@@ -7866,6 +7866,9 @@ Needs
 Device
 : google-walleye
 
+Proof
+: lab-tools attended tests: read_slot, mount_is_readonly and adb_write_partition each tested on a fake adb; adb_write_partition refuses a partition outside the allow-list and the active slot, and fails when the read-back sha256 differs
+
 About
 : bringup-steps
 
