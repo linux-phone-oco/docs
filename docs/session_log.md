@@ -6836,3 +6836,27 @@ Rejected
 
 About
 : layer-real-kernel-scriptlets
+
+---
+
+
+<a id="2026-11-25-layer-apk-via-nfpm-slice-1"></a>
+### layer apk via nfpm: the release the index needs
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-25
+
+Done
+: Settled nfpm against Alpine 3.24's apk-tools in containers: unsigned nfpm apk signed and indexed in a container, installed by a clean 3.24 root trusting only the public key. Found nfpm leaves -rN out of pkgver; fixed in lpoco-layer (lab-tools #441, read back from main).
+
+Considered
+: renaming the file to the pkgver in the conveyor; changing the conveyor here
+
+Rejected
+: renaming in the conveyor: the layer should make a package whose file name and pkgver agree; the conveyor is another owner's, so not changed
+
+About
+: layer-apk-via-nfpm

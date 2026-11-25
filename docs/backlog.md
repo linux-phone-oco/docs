@@ -6272,7 +6272,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
+
+Note
+: 2026-11-25, lab-tools-builder: slice 1 done, lab-tools #441 (main 00b1598): the nfpm apk was left without -rN in .PKGINFO pkgver (file named -r0), so an index made from it named a file apk could not find; the layer now says release 0 to nfpm for apk (APK_RELEASE). Proof: layer/tests/pack.rs an_apk_says_its_release... (seen failing first) and packages_in_containers.rs an_unsigned_nfpm_apk_signed_in_a_container_installs_from_a_signed_repository_without_allow_untrusted (ignored, docker): nfpm packs unsigned; a fresh alpine:3.24 container with the key runs abuild-sign on the apk, apk index, abuild-sign on the index; a second clean 3.24 root trusting only the public key installs by name at 0.1.0-r0 (6/6 container tests pass). OPEN, the conveyor's (linux-package-distribution-oco/conveyor alpine.yml, another owner): it takes an APKBUILD only; it must take a prebuilt unsigned apk, sign it in the signing container, add it to the index and run the page's install line; then the proof 'installs from the published repository' can be run. Not changed here.
 
 Opened
 : 2026-11-19
