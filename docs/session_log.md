@@ -6764,3 +6764,27 @@ Rejected
 
 About
 : image-rebuild-changed-since
+
+---
+
+
+<a id="2026-11-25-host-tool-pinned-sha256"></a>
+### lpoco-host pins a release archive by its own sha256
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-25
+
+Done
+: lab-tools #435 (merged, read back from main: ArchiveHash::Pinned in host/src/lib.rs): [tools.NAME] takes sha256 = 64 hex digits and member = a path inside the archive (folders allowed) instead of checksums; tar reads .tar.gz and .tar.xz by format. Proof host/tests/release_archive.rs: an_archive_pinned_by_its_own_sha256_installs_a_member_inside_a_folder_and_stamps_the_tag, an_archive_whose_sha256_is_not_the_pinned_one_installs_nothing_and_stamps_nothing, a_pinned_sha256_that_is_not_64_hex_digits_or_that_lacks_a_member_or_comes_with_checksums_is_refused (seen failing first: sha256 was ignored). Review (programmer) found no blocker; its diagnostics, extra refused-member rows and README notes landed. Not yet released (no release PR seen at read-back). Next for orchestration: add [tools.shellcheck] (koalaman/shellcheck v0.11.0, asset shellcheck-v0.11.0.linux.x86_64.tar.xz, member shellcheck-v0.11.0/shellcheck, sha256 of that asset) to lab.toml once a release carries this. Limits: a changed sha256 or member with the same tag does not reinstall (bump the tag); tools_for still falls through to a bare release for combinations validation already refuses.
+
+Considered
+: an enum pin {Sums, Sha} instead of two optional fields (the reviewer's point): left, the change was small and validation runs first
+
+Rejected
+: stamping tag plus hash: more than this item needs; a separate checksums file for shellcheck: the release ships none
+
+About
+: host-tool-pinned-sha256
