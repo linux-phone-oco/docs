@@ -6812,3 +6812,27 @@ Rejected
 
 About
 : image-rebuild-proves-inputs
+
+---
+
+
+<a id="2026-11-25-layer-real-distro-kernel-scriptlets"></a>
+### layer: real distro kernel scriptlets
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-25
+
+Done
+: Three ignored container tests (lab-tools #439): Fedora kernel-core, Debian linux-image-amd64, Arch linux install after the layer's -boot package; boot.img accepted by image check; negative control failed as it should; reviewer's fake-initrd on Arch dropped.
+
+Considered
+: arm64 kernel packages in containers (needs qemu-user)
+
+Rejected
+: a stand-in kernel: it is what the item replaces
+
+About
+: layer-real-kernel-scriptlets
