@@ -8127,6 +8127,9 @@ Note
 Opened
 : 2026-11-23
 
+Waits
+: surya resumes: walleye's part landed (google-walleye-lab #1034, bin/attended); the graph has moved_by and [[pins]]; only surya's procedures/steps CLI is left, and surya is paused
+
 Needs
 : build
 
