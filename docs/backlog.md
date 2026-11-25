@@ -6280,6 +6280,9 @@ Note
 Opened
 : 2026-11-19
 
+Waits
+: the conveyor (linux-package-distribution-oco/conveyor): alpine.yml takes an APKBUILD only; it must take a prebuilt unsigned apk, sign it in the signing container, index it and run the install line; asked of its owner through the Top 2026-11-25
+
 Blocked by
 : lpoco-layer-pack
 
