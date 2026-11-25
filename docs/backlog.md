@@ -7852,10 +7852,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: 2026-11-21, orchestration: walleye builds these in tools/walleye-tries first (items walleye-install-write-procedure, walleye-install-boot-procedure) and sends the code once proven; lift on the second use (decision 2026-11-19-procedures-reflect-and-lift). adb_write_partition writes only a partition in a declared allow-list and only the other slot.
+: Landed in lab-tools PR 446 (attended/src/install.rs): read_slot, mount_is_readonly, adb_write_partition, tested on a stand-in phone with captured text (attended tests/install.rs). The allow-list is an argument the procedure reads from its device.toml; no manifest key. Next: walleye's procedure calls the library steps instead of its own plumbing; release of lpoco-attended follows release-plz.
 
 Opened
 : 2026-11-20

@@ -6932,3 +6932,27 @@ Rejected
 
 About
 : template-manifest-schema
+
+---
+
+
+<a id="2026-11-25-install-steps-lift"></a>
+### Install steps lifted into lpoco-attended
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-25
+
+Done
+: Lifted walleye's install plumbing as generic steps read_slot, mount_is_readonly, adb_write_partition (PR 446): write only an allow-listed partition of the slot the phone is not on, node must exist, image whole blocks and declared sha256 checked before the dd, read-back by sha256 after a flush. Programmer review fixed: no-slot partitions refused, missing node refused, leading dash refused, read-back flush.
+
+Considered
+: A manifest key for the allow-list; reading the read-back with iflag=direct.
+
+Rejected
+: A manifest key now: lpoco-manifest is pinned by tag and needs its own release; the procedure passes its device values. Block-device check (-b): the stand-in phone uses files, so -e. Size check against the partition: left for a later step.
+
+About
+: bringup-steps
