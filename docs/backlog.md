@@ -9076,7 +9076,7 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
 : Seen 2026-11-25 by the lab-tools builder (image-rebuild-changed-since, #434): bringup/tests/shellcheck.rs fails on the lab host, which has no shellcheck. koalaman/shellcheck v0.11.0 ships shellcheck-v0.11.0.linux.x86_64.tar.xz with no checksums file and its binary at shellcheck-v0.11.0/shellcheck, while [tools.NAME] today needs ASSET.sha256 or a checksums file, and a member with no '/'. Test first: a [tools.shellcheck] with sha256 = and member = 'shellcheck-v0.11.0/shellcheck' installs and checks; a wrong sha256 is refused. Then orchestration adds [tools.shellcheck] to lab.toml.
