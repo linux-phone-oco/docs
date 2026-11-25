@@ -6788,3 +6788,27 @@ Rejected
 
 About
 : host-tool-pinned-sha256
+
+---
+
+
+<a id="2026-11-25-image-rebuild-proves-inputs"></a>
+### image --rebuild proves inputs
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-25
+
+Done
+: image-rebuild-proves-inputs landed (lab-tools #437, main 42aa8a1): --rebuild rebuilds each recipe input first; a seed input is named not proved. Review (programmer) caught a missing cycle guard, repeated rebuilds under --changed-since, a wrong 'seed' for a kernel build and a sha-collision pick; all fixed.
+
+Considered
+: Rebuilding kernel/dtb/ramdisk parts into the outer build; left open.
+
+Rejected
+: Failing on a seed input: it has no recipe to prove, so naming it is the honest result.
+
+About
+: image-rebuild-proves-inputs
