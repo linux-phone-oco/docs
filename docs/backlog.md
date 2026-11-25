@@ -9101,10 +9101,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Left by lpoco-layer-pack: the container proofs install a one-file linux-image or kernel stand-in. Test: on each base (debian:trixie, fedora, archlinux, alpine:3.24), install the distro's own arm64 kernel package (or its cross-installed form) after the layer's -boot package, and lpoco bringup image check accepts the boot.img left behind.
+: 2026-11-25, lab-tools-builder: lab-tools #439 (main 00da6e8): layer/tests/bootimg_containers.rs fedora_kernel_core_scriptlets_..., debian_linux_image_amd64_scriptlets_..., arch_linux_package_hooks_... install the distro's own kernel-core, linux-image-amd64 and linux after the layer's package; lpoco bringup image check accepts each boot.img (all pass; Alpine linux-lts was already real). Only the phone's dtb is put in place by a 50- helper (x86_64 kernels ship none). Negative control: helper not executable, fedora test fails. Arch: the real mkinitcpio hook makes the initramfs. Still not covered: a real arm64 kernel package (needs qemu-user or an arm64 host).
 
 Opened
 : 2026-11-25
