@@ -8979,10 +8979,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Left open by image-ensure-rebuild (lab-tools #423): control and parts are served by sha256 as in plain ensure, so an input whose declared sha came from a script passes - the same class one level down. A seed (hand-built, decision 2026-11-23-ensure-pins-avbtool-and-takes-seeds) has no recipe, so --rebuild says it is not proved rather than failing.
+: 2026-11-25, lab-tools-builder: done, lab-tools #437 (main 42aa8a1): --rebuild first proves each input (control, kernel, dtb, ramdisk) that is an image with a recipe, once per run (also across --changed-since), stops on an input that leads back to the image, prefers the recipe image when two share a sha256; a seed input is said 'not proved, it has no recipe (a seed)', a [kernel_builds] kernel 'not proved, made by [kernel_builds.N]'. Proof: bringup/tests/ensure.rs a_rebuild_proves_an_input_that_has_a_recipe_and_names_a_seed_input_as_not_proved (seen failing first), a_rebuild_whose_input_leads_back_to_the_image_stops_and_says_so (not seen failing: it would have overflowed the stack). Open: a rebuilt kernel/dtb/ramdisk image is proved but the outer build still takes the part by its sha from store/cache/seed; no test has a part that is an image with a recipe.
 
 Opened
 : 2026-11-24
