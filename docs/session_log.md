@@ -6740,3 +6740,27 @@ Rejected
 
 About
 : layer-apk-drops-deviceinfo
+
+---
+
+
+<a id="2026-11-25-image-rebuild-changed-since"></a>
+### image-rebuild-changed-since built and released
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-25
+
+Done
+: lab-tools #434: image ensure --rebuild --changed-since REV; released 0.51.1 (#433). Review by programmer found a recipe whose control file changed passed unseen: fixed (Change::Control walks the control chain), tests' not-named assertions made exact, unreadable/unparsable REV tested.
+
+Considered
+: Comparing in git by file diff; reading the old manifest as typed Manifest instead, so formatting changes do not rebuild.
+
+Rejected
+: Choosing an image without a recipe: it has nothing to rebuild, so never chosen (the sibling item image-rebuild-proves-inputs names unproved seeds).
+
+About
+: image-rebuild-changed-since

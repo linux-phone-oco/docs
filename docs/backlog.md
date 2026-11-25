@@ -9048,10 +9048,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-24-image-rebuild-runs-at-land. Test first: a manifest pair differing in one image's recipe rebuilds that image only; an identical pair rebuilds none and passes. The labs' make land-check calling it is each lane's builder item.
+: 2026-11-25, lab-tools-builder: landed lab-tools #434 (released in lpoco-bringup 0.51.1, #433, read back from main): image ensure --rebuild --changed-since REV (no NAME) reads device.toml at git REV, rebuilds each image with a recipe whose sha256, recipe or control chain differ (or that REV lacked), passes saying so when none do; an unreadable or unparsable REV is refused. Proof: bringup/tests/rebuild_changed_since.rs (5, first four seen failing: flag not declared) and ensure::tests (2; the control case written with the review's fix, not seen failing alone). Not covered: the all-rebuilt happy path (needs nix+avbtool+control; ensure.rs covers --rebuild itself). Open: each lab's make land-check calls it (lane builders). Pre-existing: bringup/tests/shellcheck.rs fails on hosts without shellcheck.
 
 Opened
 : 2026-11-24
