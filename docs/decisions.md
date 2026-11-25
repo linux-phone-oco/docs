@@ -3344,3 +3344,28 @@ Rejected
 
 About
 : attended-export
+
+
+<a id="2026-11-25-docs-own-build-items-the-site-its-checks-go-to"></a>
+### 2026-11-25-docs-own-build-items-the-site-its-checks-go-to
+
+Brief
+: docs' own build items (the site, its checks) go to the lab-tools builder, the conveyor's builder; an item about a paused lane waits on that lane
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-25
+
+Decision
+: The lab-tools builder (builder.md) takes the first ready build row whose place is lab-tools, device-template or docs; in docs it never changes the schema, records/, queries/ or the briefs, which stay orchestration's (AGENTS.md) and are asked of it. The lanes waker counts docs' build rows in the lab-tools lane. A docs row whose work is a paused lane's (mobian-sm7150-offphone builds surya's image) waits on that lane resuming, like the other surya items.
+
+Why
+: On 2026-11-25 two docs build items (mobian-sm7150-offphone, site-packaged-and-upstream) were ready and no brief took them, so the waker never saw them; the Top Coordinator asked them a home. The site and its checks are the conveyor's face, which orchestration tends and the lab-tools builder already builds beside (lpoco, the template). One agent at a time (the author, 2026-11-24) is kept: the builder is still one launcher, started only when nothing runs.
+
+Rejected
+: A docs-builder launcher of its own: one more launcher and waker lane for a handful of items, under a one-agent-at-a-time rule that runs them one by one anyway. Orchestration building them itself: the orchestrator card says it never does a builder's piece a session could hold. Moving them to another place: they are docs' own (the site lives in docs; base-distro is a project-wide subject recorded in docs).
+
+About
+: agent-folder
