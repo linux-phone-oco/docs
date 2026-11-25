@@ -8652,6 +8652,9 @@ Note
 Opened
 : 2026-11-23
 
+Waits
+: surya resumes: its rows go in surya-lab's device.toml, a lane the author paused on 2026-11-22
+
 Blocked by
 : image-recipe-ensure-z21
 
