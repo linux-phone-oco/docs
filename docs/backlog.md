@@ -4026,10 +4026,10 @@ Project
 : linux-phone-oco/device-template
 
 Status
-: open
+: done
 
 Note
-: A new phone's lab then gets completion, hover and the check from its first commit; the header's claim that unknown fields are refused becomes true.
+: 2026-11-25, lab-tools-builder: done (device-template #44). device.toml's first line is #:schema URL of lpoco-lab-v0.53.2's device.schema.json; bin/check-device-toml.sh requires that pin and reads the file with the pinned release and the newest. Proof: tests/ci/check-device-toml.sh, 13 cases, the pin and newest cases seen failing first; CI check passed on the PR. Moving the pin to a newer release is a one-line edit. Not done: no draft-07 validator runs, only lpoco-lab's types (same as the manifest-one-schema follow-up).
 
 Opened
 : 2026-11-18
