@@ -4671,10 +4671,10 @@ Project
 : linux-phone-oco/google-walleye-lab
 
 Status
-: open
+: dropped
 
 Note
-: The 26 claims are written out in research/bringup-steps/2026-11-18/claims-walleye.sh, each run a record of google-walleye-lab (its tad r step-claim lines are tad r step here, without --device and --updated). Data only; no phone. The contract is in the base (docs 0.18.0): add steps = 1 to devicebase.toml, claim with tad r step (done needs --proof and --run; not-needed needs --notes). The test research/bringup-steps/2026-11-18/bringup-chain-walleye.sh passes its order, count and six-proof checks with those 26 claims and still fails at 'steps not known yet': the base must claim every step of the chain (80 more, the phone stages and linux-runs), even as open or not-needed.
+: Moved to google-walleye-lab's own base on 2026-11-25 (same id, rank 6), where walleye's builder reads its queue; the spec (claims-walleye.sh in research/bringup-steps/2026-11-18/) went with it.
 
 Opened
 : 2026-11-18
