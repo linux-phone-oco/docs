@@ -83,6 +83,18 @@ followers = [
   "linux-phone-oco/google-walleye-lab",
 ]
 
+
+# lpoco-bringup as a lab's install script installs it (walleye's land-check runs it): a line of the script. Its
+# lpoco-bringup reads the lab's device.toml, so a manifest table newer than the pin fails land-check (2026-11-26:
+# 0.51.1 refused [connections] and held google-walleye-lab #1154)
+[[tool]]
+name = "lpoco-bringup"
+source = "linux-phone-oco/lab-tools"
+tag_prefix = "lpoco-bringup-v"
+pin = "bin/install-bringup.sh"
+line = 'version="${LPOCO_BRINGUP_VERSION:-{version}}"'
+followers = ["linux-phone-oco/google-walleye-lab"]
+
 # the kernel fork assembles its phones' test kernels from topics; it releases with torvalds/linux (decision
 # 2026-11-23-structure-git-flows-run-on-rhizoid, MAP.md's kernel branches)
 [[integration]]
