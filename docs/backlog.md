@@ -9367,10 +9367,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Seen by walleye 2026-11-26 (google-walleye-lab#1191): ~/.local/bin/lpoco-attended is 0.45.4, in no lab.toml pin and not followed (lpoco-attended has its own tag line), so it cannot read today's device.toml ('connections' unknown). Labs run their own locked lpoco-attended (walleye's bin/attended, item walleye-procedures-run-own-cli), so the global one is a leftover. Next: check reports any lpoco-* in the install prefix that no pin names; the leftover is removed by lpoco host, not by hand.
+: Landed lab-tools#464 (298e0d3 on main): check fails on and names a family-named program in ~/.local/bin no pin holds, plan lists its rm, prepare now removes it. Proof: host/tests/plan.rs stray tests. Release PR pending (release-plz); the host follows it, then the stray lpoco-attended goes at the next prepare now.
 
 Opened
 : 2026-11-26
