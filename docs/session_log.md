@@ -7004,3 +7004,27 @@ Rejected
 
 About
 : attended-reads-connections
+
+---
+
+
+<a id="2026-11-26-way-back-back-on-in-lpoco-manifest-released-0-51"></a>
+### way_back/back_on in lpoco-manifest, released 0.51.0
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-26
+
+Done
+: Wrote four failing manifest tests, then way_back/back_on in [kernels] with validation, schema and README; programmer review found only fmt; landed #452, release #453 landed, tag lpoco-manifest-v0.51.0 read back. Tried rhizoid bump for attended's pin: gate fails on old fixtures and the worktree is dropped.
+
+Considered
+: Hand-editing attended's pin (refused: only the mover moves a pin); a path dependency (refused by attended's Cargo.toml comment).
+
+Rejected
+: Landing the attended half without the pin: it cannot compile against 0.50.
+
+About
+: declared-way-back
