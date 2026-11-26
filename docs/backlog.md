@@ -9209,3 +9209,34 @@ Proof
 
 About
 : named-connections
+
+
+<a id="attended-reads-connections"></a>
+### lpoco-attended's manifest pin moves to lpoco-manifest 0.50.0, so attended reads [connections]; released as attended 0.46.1
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Found by walleye's coordinator 2026-11-26: lpoco-attended 0.46.0 (named-connections, lab-tools #448/#449) still pins lpoco-manifest-v0.49.1 (attended/Cargo.toml:18), which refuses the table, so walleye's attended check --host fails. Walleye's change is green and parked on wip/walleye/install-steps-user-root (google-walleye-lab #1151 waits on this). The sign: attended's tests of named connections ran against types that its released manifest pin does not carry - the release should carry a test that reads a device.toml through the pinned manifest (rhizoid bump the pin in the same change).
+
+Opened
+: 2026-11-26
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools attended test: bin/attended check --host on a device.toml with [connections.android] transport = adb, user = root passes; lpoco-attended's released Cargo.toml pins lpoco-manifest-v0.50.0 or newer (git show of the tag)
+
+Rank
+: 1
+
+About
+: named-connections
