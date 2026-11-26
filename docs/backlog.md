@@ -9218,10 +9218,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Found by walleye's coordinator 2026-11-26: lpoco-attended 0.46.0 (named-connections, lab-tools #448/#449) still pins lpoco-manifest-v0.49.1 (attended/Cargo.toml:18), which refuses the table, so walleye's attended check --host fails. Walleye's change is green and parked on wip/walleye/install-steps-user-root (google-walleye-lab #1151 waits on this). The sign: attended's tests of named connections ran against types that its released manifest pin does not carry - the release should carry a test that reads a device.toml through the pinned manifest (rhizoid bump the pin in the same change).
+: Released: lpoco-attended 0.46.1 (lab-tools #450, #451) pins lpoco-manifest-v0.50.0, read back with git show of the tag. Proof: attended test check_host_reads_a_device_toml_with_a_named_connection, seen failing at 0.49.1 first. Sign kept: tests of named connections ran against the checkout's manifest, not the released pin.
 
 Opened
 : 2026-11-26
