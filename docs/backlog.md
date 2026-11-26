@@ -9150,3 +9150,34 @@ Rank
 
 About
 : lpoco-layer-pack
+
+
+<a id="named-connections"></a>
+### A connection per system a phone boots: [connections.NAME] in lpoco-manifest, devlab --connection, a procedure step on a named connection
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-26-a-phone-that-boots-more-than-one-system-declares. Asked by walleye's coordinator 2026-11-26: lpoco-attended 0.45.8's install steps go through phone root over walleye's one connection (telnet, its test images), so on Android they fail at the first call. walleye-install-steps-from-library (google-walleye-lab, branch wip/walleye/install-steps-from-library, green and parked) waits on this release. mount_is_readonly is not walleye's (its rw write reads the booted image's mounts over ssh).
+
+Opened
+: 2026-11-26
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools tests: a device.toml with [connections.android] transport = adb parses (an unknown key in it is refused) and its schema carries it; devlab phone root --connection android runs adb shell su -c on a fake adb; read_slot and adb_write_partition on a named connection reach the fake adb, and on a connection that does not answer fail naming it
+
+Rank
+: 1
+
+About
+: bringup-steps

@@ -3369,3 +3369,28 @@ Rejected
 
 About
 : agent-folder
+
+
+<a id="2026-11-26-a-phone-that-boots-more-than-one-system-declares"></a>
+### 2026-11-26-a-phone-that-boots-more-than-one-system-declares
+
+Brief
+: A phone that boots more than one system declares a connection for each: [connection] the default, [connections.NAME] the others; a procedure step names the one it expects
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-26
+
+Decision
+: lpoco-manifest gains [connections.NAME] tables of the same shape as [connection] (transport, login, user, addresses, ports), and the default stays [connection]. Devlab and lpoco-attended take a connection name: devlab phone root --connection NAME, and in a procedure crate::phone_on("NAME"). A library step that runs on one system (read_slot, adb_write_partition on Android) takes the name from the procedure, which takes it from the device; a step that reaches a system not answering on that connection fails saying which connection it tried. walleye declares [connections.android] transport = adb beside its telnet [connection].
+
+Why
+: On 2026-11-26 walleye's coordinator found lpoco-attended 0.45.8's install steps cannot reach walleye's Android: they go through phone root, and walleye's one declared connection is telnet, for its test images. The change was built and green on google-walleye-lab wip/walleye/install-steps-from-library (471 tests) and parked. A phone with stock Android plus test images is the common bring-up case (surya too, under recovery and Android), so the device says each way in once (device-layer-declared-once) and the procedure says which it means.
+
+Rejected
+: Guessing the system from what answers (adb first, then telnet): it hides which system runs, and a step meant for Android would act on a test image that happened to answer. A transport argument on each step: each procedure would restate what the device declares. adb hard-wired into adb_write_partition: the same step writes a partition from a test image's root shell too, and the name says only how it was first used.
+
+About
+: bringup-steps
