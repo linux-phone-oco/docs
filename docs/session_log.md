@@ -6956,3 +6956,27 @@ Rejected
 
 About
 : bringup-steps
+
+---
+
+
+<a id="2026-11-26-lab-tools-builder-named-connections"></a>
+### lab-tools-builder: named connections
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-26
+
+Done
+: [connections.NAME] in lpoco-manifest (validated, plain-word names, schema regenerated); devlab phone find|sh|root|put --connection NAME (undeclared name refused, silent one fails naming the connection, named adb root via su -c sh unless user = root, default adb unchanged); lpoco-attended phone_on and install steps taking a Phone. Tests first, seen failing; programmer review: su scoped to named connections, named ssh needs addresses, README fixed.
+
+Considered
+: Gating su on the named connection only, so existing adb manifests keep their behaviour.
+
+Rejected
+: Export-mode log naming the connection (left: log format is read by others). A ConnectionName newtype (the rule is checked once in the manifest; phone_on fails at devlab).
+
+About
+: named-connections
