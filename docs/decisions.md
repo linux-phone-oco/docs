@@ -3394,3 +3394,28 @@ Rejected
 
 About
 : bringup-steps
+
+
+<a id="2026-11-26-a-phone-s-way-back-to-its-known-good-is-declared"></a>
+### 2026-11-26-a-phone-s-way-back-to-its-known-good-is-declared
+
+Brief
+: A phone's way back to its known good is declared in [kernels]: way_back, host commands like pre_boot, then back_on, the connection that must answer; systemctl reboot only when none is declared
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-26
+
+Decision
+: lpoco-manifest's [kernels] gains way_back (a list of command lines run in order as argv in the device's folder, each exiting 0, the same rules as pre_boot) and back_on (the name of a declared connection, [connection] when left out). back_to_known_good runs way_back when it is declared and then waits until back_on answers; without way_back it keeps today's systemd-run systemctl reboot over the root shell. A device with boot = fastboot and no way_back is refused at check (its test image may have no systemd). walleye declares its own way back (the walleye-reboot RESTART2 tool, or fastboot reboot) with back_on = "android".
+
+Why
+: On 2026-11-26 walleye's coordinator found lpoco-attended 0.46.1's phone_ready and leave_known_good cannot serve walleye: back_to_known_good is systemctl reboot over a root shell, and walleye's test images are busybox over telnet without systemd, booted by fastboot boot only, returned to Android by walleye's own tool. [kernels] already says how a test kernel boots and its host-side gates; how it comes back belongs beside them (device-layer-declared-once), and decision 2026-11-26-a-phone-that-boots-more-than-one-system-declares already names the system it comes back to.
+
+Rejected
+: A reboot command run on the phone (a shell line in device.toml): walleye's way back may run from the host (fastboot reboot from the bootloader), and an argv on the host can still reach the phone through lpoco lab when a device needs that. Choosing by boot = fastboot alone (always fastboot reboot): the bootloader is not always reachable from a hung test image, and walleye's measured way is its RESTART2 tool. Leaving the way back to each procedure: phone_ready's way_back would then differ per device, and the library group could not be used as one.
+
+About
+: bringup-steps
