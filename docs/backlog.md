@@ -9190,10 +9190,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Asked by walleye's coordinator 2026-11-26 (decision google-walleye-lab 2026-11-26-walleye-android-connection-user-root: walleye reaches root on stock Android by adb root, measured; the su path of user = shell keeps no walleye proof). walleye keeps its own adb root step until this lands, so it does not block walleye.
+: Landed in lab-tools #456 (read back from main 1bcf0c2): adb root + wait-for-device (30 s bound) once per Phone for user = root; refusal named; user = shell unchanged. Proof: devlab/tests/transport.rs, 4 new tests. Release PR comes from release-plz; the stand-in's refusal wording is from the item note, not captured phone text.
 
 Opened
 : 2026-11-26

@@ -7052,3 +7052,27 @@ Rejected
 
 About
 : declared-way-back
+
+---
+
+
+<a id="2026-11-26-lab-tools-builder-adb-connection-user-root"></a>
+### lab-tools-builder: adb connection user = root
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-26
+
+Done
+: devlab Phone runs adb root then a bounded wait-for-device once per Phone when an adb connection says user = root; adbd's refusal is a typed failure surfaced from find/at; landed #456.
+
+Considered
+: Polling adb shell id -u to prove root: the test stand-in cannot answer it, left for a real-phone proof. Caching only Ok: every caller builds a fresh Phone per attempt, so kept.
+
+Rejected
+: Unbounded wait-for-device (review: can hang the watcher).
+
+About
+: adb-connection-user-root
