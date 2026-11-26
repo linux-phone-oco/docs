@@ -9240,3 +9240,34 @@ Rank
 
 About
 : named-connections
+
+
+<a id="declared-way-back"></a>
+### [kernels] way_back and back_on in lpoco-manifest; back_to_known_good runs the declared way back and waits for back_on
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-26-a-phone-s-way-back-to-its-known-good-is-declared. Asked by walleye's coordinator 2026-11-26: phone_ready and leave_known_good (lpoco-attended 0.46.1) end in systemctl reboot, which walleye's busybox test images over telnet do not have. walleye-procedures-on-step-groups (google-walleye-lab #1162) waits on this release; a keeper try follows. Released through lpoco-manifest and lpoco-attended (attended's manifest pin moves in the same change: attended-reads-connections).
+
+Opened
+: 2026-11-26
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools tests: a device.toml with [kernels] boot = fastboot, way_back = [...], back_on = "android" parses and its schema carries both; boot = fastboot without way_back is refused at check; back_to_known_good on a stand-in runs each way_back argv in the device folder in order (one exiting non-zero fails the step naming it), then waits until the back_on connection answers; with no way_back it still runs systemctl reboot over the root shell; a back_on that names no declared connection is refused
+
+Rank
+: 1
+
+About
+: bringup-steps
