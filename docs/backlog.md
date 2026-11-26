@@ -9249,10 +9249,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: Half done 2026-11-26: lpoco-manifest 0.51.0 released (lab-tools #452, #453): [kernels] way_back and back_on parse, boot = fastboot without way_back is refused at check, back_on must name a declared connection, schema regenerated. Left: attended reads them (back_to_known_good runs way_back argv in the device folder then waits for back_on's connection; falls back to systemctl reboot) and its manifest pin moves to 0.51.0. Blocked by a loop: rhizoid bump's gate (cargo test attended) fails on attended's own fastboot fixtures (tests/attended.rs lines ~1535, 1589, 1802), which need way_back, which 0.50 refuses; the mover drops its worktree on a failed gate. Needs orchestration: let bump keep the branch when the gate fails, or a bump without its gate for this pin, then the builder lands fixtures + steps on it.
+: Done 2026-11-26: lpoco-manifest 0.51.0 (#452, #453) and lpoco-attended 0.46.2 (#454, #455): back_to_known_good runs [kernels] way_back as argv in the device folder, then waits on back_on's connection; without way_back it still reboots; leave_known_good asks nothing more after a way_back. Pin moved with the change (orchestration's go). Proof: attended tests a_declared_way_back_runs_its_commands_in_order_as_argv_then_waits_on_the_back_on_connection, a_way_back_command_that_fails_..., a_dry_run_lists_the_way_back_...; manifest tests in transport.rs.
 
 Opened
 : 2026-11-26

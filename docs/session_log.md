@@ -7028,3 +7028,27 @@ Rejected
 
 About
 : declared-way-back
+
+---
+
+
+<a id="2026-11-26-way-back-in-lpoco-attended-released-0-46-2"></a>
+### way_back in lpoco-attended, released 0.46.2
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-26
+
+Done
+: Orchestration said to move attended's manifest pin by hand with the fixtures; wrote three failing attended tests, then back_to_known_good running way_back and waiting on back_on, leave_known_good skipping its down/up check; review fixes applied; landed #454, release #455, tag lpoco-attended-v0.46.2 read back.
+
+Considered
+: Skipping the already-running guard for a declared way_back: kept it reboot-only.
+
+Rejected
+: A rhizoid change for the gate loop: unneeded, the branch's own check is the gate.
+
+About
+: declared-way-back
