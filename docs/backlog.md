@@ -9386,3 +9386,31 @@ Proof
 
 About
 : attended-pin-is-one-pin
+
+
+<a id="recipe-static-binary-part"></a>
+### image ensure builds a part from its recipe: a static aarch64 binary from a crate at a git rev, by sha256, in the Nix sandbox
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Asked by walleye 2026-11-26: [images.X.recipe] only swaps parts named by sha256 into a control image (decision 2026-11-23-image-recipes-on-nix-fixed-output-paths); nothing builds a part, so 'ensure' says no recipe for walleye-reboot, and google-walleye-lab keeps build/build-reboot-bin.sh and build/build-nfc-up-bin.sh (cargo build --target aarch64-unknown-linux-gnu, +crt-static, -Zbuild-std, paths remapped, unit tests first) outside walleye-retire-build-scripts. Next: a part recipe kind (crate source + rev + target + sha256) built as a fixed-output derivation, sha proved by a rebuild (decision 2026-11-24-a-recipe-sha-is-proved-by-a-rebuild); then whether the ramdisk that packs such binaries is itself a recipe, recorded as a decision. Once released, walleye retires both scripts.
+
+Opened
+: 2026-11-26
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test: ensure on a stand-in crate with a part recipe builds a static aarch64 binary whose sha256 matches the declared one, takes it from the store on a second run without building, and fails naming the part when the sha differs
+
+About
+: image-recipe-ensure-z21
