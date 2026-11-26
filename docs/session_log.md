@@ -7100,3 +7100,27 @@ Rejected
 
 About
 : attended-way-back-on-signal
+
+---
+
+
+<a id="2026-11-26-lab-tools-builder-attended-collect-tail-bound"></a>
+### lab-tools-builder: a bound on a call's output tail
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-26
+
+Done
+: lpoco-attended: the output of a call that has ended must end within --tail-limit (LPOCO_ATTENDED_TAIL_LIMIT, 30 s default, argenv-declared in lib and bin cli, passed on by lpoco attended run); expiry fails the step naming the bound and the owed way backs run; a signal ends the wait too (lab-tools#460). Test first, seen failing; programmer review fixed a race (ready output taken before any bound), README, and a refusal test.
+
+Considered
+: One shared tail deadline for stdout and stderr, counted from the call's exit; call-limit still counts from the start.
+
+Rejected
+: Reusing --call-limit for the tail (its default is none, which is the hang); a third-signal escape (the other item, left open).
+
+About
+: attended-step-groups
