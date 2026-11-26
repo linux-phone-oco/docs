@@ -9311,10 +9311,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Left by attended-way-back-on-signal (lab-tools#458): collect's wait for the tail has no limit. Next: a bound, declared or defaulted, whose expiry fails the step by name.
+: Done in lab-tools#460: --tail-limit / LPOCO_ATTENDED_TAIL_LIMIT (default 30 s); proof groups.rs a_call_whose_output_never_ends_fails_its_step_after_the_tail_bound_and_the_way_backs_run, seen failing first.
 
 Opened
 : 2026-11-26
