@@ -9358,3 +9358,31 @@ Proof
 
 About
 : attended-step-groups
+
+
+<a id="host-stray-attended"></a>
+### lpoco host check names an lpoco binary on the host that no lab.toml pin holds, and the stray lpoco-attended 0.45.4 is taken off
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Seen by walleye 2026-11-26 (google-walleye-lab#1191): ~/.local/bin/lpoco-attended is 0.45.4, in no lab.toml pin and not followed (lpoco-attended has its own tag line), so it cannot read today's device.toml ('connections' unknown). Labs run their own locked lpoco-attended (walleye's bin/attended, item walleye-procedures-run-own-cli), so the global one is a leftover. Next: check reports any lpoco-* in the install prefix that no pin names; the leftover is removed by lpoco host, not by hand.
+
+Opened
+: 2026-11-26
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test: lpoco host check on a stand-in prefix holding an unpinned lpoco-attended reports it as a stray by name; plan lists its removal
+
+About
+: attended-pin-is-one-pin
