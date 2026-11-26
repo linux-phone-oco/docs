@@ -6980,3 +6980,27 @@ Rejected
 
 About
 : named-connections
+
+---
+
+
+<a id="2026-11-26-lab-tools-builder-attended-reads-connections"></a>
+### lab-tools-builder: attended reads connections
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-26
+
+Done
+: lpoco-attended's manifest pin moved to lpoco-manifest-v0.50.0 (the pin edit and Cargo.lock), with a check --host test on a device.toml carrying [connections.android] adb root, seen failing first; landed lab-tools #450, release 0.46.1 landed #451, tag read back from main.
+
+Considered
+: Reading the device.toml through the pinned manifest in the test; the first fixture lacked addresses, which the new manifest requires (fixed in the fixture, not the schema).
+
+Rejected
+: A programmer subagent review: the change is a pin and one test, nothing to review in code; skipped to save tokens.
+
+About
+: attended-reads-connections
