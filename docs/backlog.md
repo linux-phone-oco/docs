@@ -9280,10 +9280,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Seen by walleye-builder in google-walleye-lab#1175 (display delay bisect), also true of display-at-boot: Ctrl-C ends a run without running its groups' way backs (phone_ready / leave_known_good), so a phone can be left in fastboot; the old watcher did run them. Per decision 2026-11-19-way-backs-run-on-failure-only a panic counts as failing; a signal is one more kind of failing. Until it lands walleye's keepers never interrupt a run, and a phone left in fastboot is brought back by the way-back procedure.
+: landed lab-tools#458, released lpoco-attended 0.46.3 (#459); proof: attended/tests/groups.rs sigint/sigterm/sighup/second-signal/retry tests
 
 Opened
 : 2026-11-26

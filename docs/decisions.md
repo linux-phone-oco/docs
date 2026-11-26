@@ -3419,3 +3419,28 @@ Rejected
 
 About
 : bringup-steps
+
+
+<a id="2026-11-26-a-signal-is-one-more-way-to-fail"></a>
+### 2026-11-26-a-signal-is-one-more-way-to-fail
+
+Brief
+: A signal (SIGINT, SIGTERM, SIGHUP) ends an attended run through the way backs owed, exit 128+n; a way back is never cut short
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-26
+
+Decision
+: Handlers (signal-hook) only set flags; the run reads them at a step's start, in a call being waited on, in a prompt wait and in retry/fastboot waits, then runs the way backs as for a failure and exits 130/143/129. Once way backs begin, signals are ignored and their calls (devlab, gate commands) leave the run's process group.
+
+Why
+: walleye-builder saw Ctrl-C leave a phone in fastboot (google-walleye-lab#1175); decision 2026-11-19-way-backs-run-on-failure-only counts a panic as failing and a signal is one more kind.
+
+Rejected
+: Running way backs inside the handler (way backs are thread-local, not signal-safe). Letting a second signal exit at once (it would leave the phone as the first Ctrl-C did). Waiting for a step to end by itself on SIGTERM (a wait of minutes).
+
+About
+: attended-step-groups
