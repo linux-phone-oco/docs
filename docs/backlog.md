@@ -9249,10 +9249,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: Decision 2026-11-26-a-phone-s-way-back-to-its-known-good-is-declared. Asked by walleye's coordinator 2026-11-26: phone_ready and leave_known_good (lpoco-attended 0.46.1) end in systemctl reboot, which walleye's busybox test images over telnet do not have. walleye-procedures-on-step-groups (google-walleye-lab #1162) waits on this release; a keeper try follows. Released through lpoco-manifest and lpoco-attended (attended's manifest pin moves in the same change: attended-reads-connections).
+: Half done 2026-11-26: lpoco-manifest 0.51.0 released (lab-tools #452, #453): [kernels] way_back and back_on parse, boot = fastboot without way_back is refused at check, back_on must name a declared connection, schema regenerated. Left: attended reads them (back_to_known_good runs way_back argv in the device folder then waits for back_on's connection; falls back to systemctl reboot) and its manifest pin moves to 0.51.0. Blocked by a loop: rhizoid bump's gate (cargo test attended) fails on attended's own fastboot fixtures (tests/attended.rs lines ~1535, 1589, 1802), which need way_back, which 0.50 refuses; the mover drops its worktree on a failed gate. Needs orchestration: let bump keep the branch when the gate fails, or a bump without its gate for this pin, then the builder lands fixtures + steps on it.
 
 Opened
 : 2026-11-26
