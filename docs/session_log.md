@@ -7076,3 +7076,27 @@ Rejected
 
 About
 : adb-connection-user-root
+
+---
+
+
+<a id="2026-11-26-lab-tools-builder-attended-way-back-on-signal"></a>
+### lab-tools-builder: way backs on a signal
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-26
+
+Done
+: lpoco-attended 0.46.3 (lab-tools#458, release #459): stop.rs, signals end the run through the way backs owed (130/143/129), waits and gate commands cut by a signal, way-back calls leave the process group, end-of-run lines survive a dead terminal. Tests first, seen failing (INT, TERM, HUP, second signal during a slow way back, retry); programmer review fixed retry/fastboot waits, run_argv, SIGHUP prints, FAIL logged before the signal.
+
+Considered
+: A stop-aware sleep shared by retry and the fastboot wait.
+
+Rejected
+: Cutting collect's tail wait on a daemon holding the pipes, and a third-signal escape for a wedged way back: not in the proof, left.
+
+About
+: attended-way-back-on-signal
