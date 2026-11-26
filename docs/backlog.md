@@ -9302,3 +9302,59 @@ Rank
 
 About
 : attended-step-groups
+
+
+<a id="attended-collect-tail-wait-bounded"></a>
+### lpoco-attended's collect waits for its tail within a bound, so a signal or a silent phone cannot hold a run forever
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Left by attended-way-back-on-signal (lab-tools#458): collect's wait for the tail has no limit. Next: a bound, declared or defaulted, whose expiry fails the step by name.
+
+Opened
+: 2026-11-26
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test: collect on a stand-in that never sends its tail fails after the bound, naming the step, and the owed way backs run
+
+About
+: attended-step-groups
+
+
+<a id="attended-way-back-third-signal"></a>
+### A third signal during a wedged way back ends lpoco-attended, naming the way back left unfinished
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Left by attended-way-back-on-signal (lab-tools#458): a second signal does not cut the way back short (by design), so a way back that hangs has no escape but SIGKILL. Next: decide whether a third signal escapes, saying which way back was left and how to bring the phone back by hand.
+
+Opened
+: 2026-11-26
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test: a stand-in way back that hangs, given three SIGINTs, exits non-zero and names the unfinished way back
+
+About
+: attended-step-groups
