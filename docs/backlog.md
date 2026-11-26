@@ -4674,7 +4674,7 @@ Status
 : dropped
 
 Note
-: Moved to google-walleye-lab's own base on 2026-11-25 (same id, rank 6), where walleye's builder reads its queue; the spec (claims-walleye.sh in research/bringup-steps/2026-11-18/) went with it.
+: Moved to google-walleye-lab's own base on 2026-11-25 (same id, rank 6), where walleye's builder reads its queue; the spec (claims-walleye.sh in research/bringup-steps/2026-11-18/) went with it. 2026-11-26: google-walleye-lab #1147 claims the whole chain (test-layer-boots open, not measured yet); after make feeds, research/bringup-steps/2026-11-18/bringup-chain-walleye.sh passes: 116 steps in order, proven steps with proof and run.
 
 Opened
 : 2026-11-18
