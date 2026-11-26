@@ -9181,3 +9181,31 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="adb-connection-user-root"></a>
+### An adb connection with user = root runs adb root itself before its first command, and waits for the device to come back
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Asked by walleye's coordinator 2026-11-26 (decision google-walleye-lab 2026-11-26-walleye-android-connection-user-root: walleye reaches root on stock Android by adb root, measured; the su path of user = shell keeps no walleye proof). walleye keeps its own adb root step until this lands, so it does not block walleye.
+
+Opened
+: 2026-11-26
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools tests on a fake adb: a connection transport = adb, user = root runs adb -s SERIAL root, then wait-for-device, once per Phone, then adb shell CMD without su; a phone whose adbd cannot run as root (adb root says so) fails naming it; user = shell is unchanged
+
+About
+: named-connections
