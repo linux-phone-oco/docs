@@ -9271,3 +9271,34 @@ Rank
 
 About
 : bringup-steps
+
+
+<a id="attended-way-back-on-signal"></a>
+### lpoco-attended runs the owed way backs when a run is ended by a signal (SIGINT, SIGTERM, SIGHUP), as on a failure
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Seen by walleye-builder in google-walleye-lab#1175 (display delay bisect), also true of display-at-boot: Ctrl-C ends a run without running its groups' way backs (phone_ready / leave_known_good), so a phone can be left in fastboot; the old watcher did run them. Per decision 2026-11-19-way-backs-run-on-failure-only a panic counts as failing; a signal is one more kind of failing. Until it lands walleye's keepers never interrupt a run, and a phone left in fastboot is brought back by the way-back procedure.
+
+Opened
+: 2026-11-26
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test: a run on a stand-in that gets SIGINT (and SIGTERM) mid-step runs the way backs owed by the open and finished groups, in the same order as on a failure, reports the run as stopped by that signal and exits non-zero; a second signal during the way back does not cut it short
+
+Rank
+: 1
+
+About
+: attended-step-groups
