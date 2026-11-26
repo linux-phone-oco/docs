@@ -9159,10 +9159,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-26-a-phone-that-boots-more-than-one-system-declares. Asked by walleye's coordinator 2026-11-26: lpoco-attended 0.45.8's install steps go through phone root over walleye's one connection (telnet, its test images), so on Android they fail at the first call. walleye-install-steps-from-library (google-walleye-lab, branch wip/walleye/install-steps-from-library, green and parked) waits on this release. mount_is_readonly is not walleye's (its rw write reads the booted image's mounts over ssh).
+: Landed lab-tools #448, released #449: lpoco-manifest 0.50.0, lpoco-lab 0.53.3, lpoco-attended 0.46.0. walleye-install-steps-from-library can now adapt: install steps take a Phone (read_slot(phone_on("android"))).
 
 Opened
 : 2026-11-26
