@@ -7124,3 +7124,24 @@ Rejected
 
 About
 : attended-step-groups
+
+---
+
+
+<a id="2026-11-26-third-signal-escapes-a-hung-way-back"></a>
+### Third signal escapes a hung way back
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-26
+
+Done
+: Built attended-way-back-third-signal (lab-tools#462), reviewed by programmer: fixed end-of-run race and signals-before-way-back count.
+
+Considered
+: host-stray-attended is the next ready item
+
+About
+: attended-way-back-third-signal

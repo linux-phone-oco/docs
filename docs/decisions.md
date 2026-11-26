@@ -3444,3 +3444,28 @@ Rejected
 
 About
 : attended-step-groups
+
+
+<a id="2026-11-26-third-signal-escapes-a-hung-way-back"></a>
+### 2026-11-26-third-signal-escapes-a-hung-way-back
+
+Brief
+: A third signal in all ends lpoco-attended when a way back hangs: exit 3, naming the way back left unfinished
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-26
+
+Decision
+: Signals are counted by an async-safe handler; a watcher thread started with the way backs ends the run (exit 3) at the third signal in all (two more when a signal began the run), saying which way back was left, that its command may still run, and that the phone is brought back by hand.
+
+Why
+: Second signal does not cut a way back short by design (lab-tools#458), so a hung way back had only SIGKILL; the escape is the third, tested with a hanging stand-in way back (lab-tools#462).
+
+Rejected
+: SIGKILL only: leaves no word on what was left. A second signal escaping: a double Ctrl-C would cut a way back that is merely slow. Running the remaining way backs after the hung one: they may need what the hung one was doing.
+
+About
+: attended-way-back-third-signal
