@@ -102,6 +102,7 @@
 {"device_id":"google-walleye","step_id":"reset-state-survives","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"key-reset-recovers","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"rtc-alarm-powers-on","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
+{"device_id":"google-walleye","step_id":"test-layer-boots","status":"open","proof":null,"run":null,"proven_on":null,"notes":"not measured yet: lpoco-health test-layer-quiet has not run on a walleye boot; the rootfs-boots step is done (stage 1 Alpine, run 6) but its image is not shown to be the test layer","updated":"2026-11-26"}
 {"device_id":"google-walleye","step_id":"shell-autosleep-tamed","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"real-suspend-under-shell","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"alarm-wakes-from-sleep","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
@@ -113,7 +114,6 @@
 {"device_id":"google-walleye","step_id":"standby-current","status":"open","proof":null,"run":null,"proven_on":null,"notes":null,"updated":"2026-11-18"}
 {"device_id":"google-walleye","step_id":"display-any-order","status":"partial","proof":"display-boots-any-order","run":"walleye-display-any-order-b-r2-b-rp2-clean","proven_on":"B-r2 c05ae4ec, B-rp2 29fce8b7","notes":"two orders at 2 s clean (0/0/0, 13 of 13); autoload by modalias and three cold boots not yet","updated":"2026-11-23"}
 {"device_id":"google-walleye","step_id":"storage-full-speed","status":"partial","proof":"ufs-matched-image-on-the-pixel-2","run":"walleye-ufs-try-2-run-10-unpinned-ramp-passes-at-hs-gear3","proven_on":"ufs-match image sha256 461077869fb2","notes":"Run 10: under an unpinned read the card chose HS_GEAR3, 2 lanes, HS_RATE_B, 200 MHz, reads to 2048 MiB fine. Idle stays HS_GEAR1 at 50 MHz. Reads only; writes not tried (stage 3).","updated":"2026-11-24"}
-{"device_id":"google-walleye","step_id":"test-layer-boots","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/google-walleye-lab does not claim this step.","updated":"2026-11-25"}
 {"device_id":"xiaomi-surya","step_id":"bootloader-unlocked","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"stock-measured","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"stock-facts-read","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
@@ -227,6 +227,6 @@
 {"device_id":"xiaomi-surya","step_id":"days-without-reboot","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"photo-taken","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"standby-current","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
-{"device_id":"xiaomi-surya","step_id":"test-layer-boots","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/surya-lab does not claim this step.","updated":"2026-11-25"}
-{"device_id":"xiaomi-surya","step_id":"display-any-order","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/surya-lab does not claim this step.","updated":"2026-11-25"}
-{"device_id":"xiaomi-surya","step_id":"storage-full-speed","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/surya-lab does not claim this step.","updated":"2026-11-25"}
+{"device_id":"xiaomi-surya","step_id":"test-layer-boots","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/surya-lab does not claim this step.","updated":"2026-11-26"}
+{"device_id":"xiaomi-surya","step_id":"display-any-order","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/surya-lab does not claim this step.","updated":"2026-11-26"}
+{"device_id":"xiaomi-surya","step_id":"storage-full-speed","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/surya-lab does not claim this step.","updated":"2026-11-26"}

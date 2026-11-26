@@ -1850,13 +1850,16 @@ Device id
 : google-walleye
 
 Step id
-: shell-autosleep-tamed
+: test-layer-boots
 
 Status
 : open
 
+Notes
+: not measured yet: lpoco-health test-layer-quiet has not run on a walleye boot; the rootfs-boots step is done (stage 1 Alpine, run 6) but its image is not shown to be the test layer
+
 Updated
-: 2026-11-18
+: 2026-11-26
 
 
 ### Row 106
@@ -1865,7 +1868,7 @@ Device id
 : google-walleye
 
 Step id
-: real-suspend-under-shell
+: shell-autosleep-tamed
 
 Status
 : open
@@ -1880,7 +1883,7 @@ Device id
 : google-walleye
 
 Step id
-: alarm-wakes-from-sleep
+: real-suspend-under-shell
 
 Status
 : open
@@ -1895,7 +1898,7 @@ Device id
 : google-walleye
 
 Step id
-: auto-rotate-follows
+: alarm-wakes-from-sleep
 
 Status
 : open
@@ -1910,7 +1913,7 @@ Device id
 : google-walleye
 
 Step id
-: brightness-follows-light
+: auto-rotate-follows
 
 Status
 : open
@@ -1925,7 +1928,7 @@ Device id
 : google-walleye
 
 Step id
-: proximity-blanks-in-call
+: brightness-follows-light
 
 Status
 : open
@@ -1940,7 +1943,7 @@ Device id
 : google-walleye
 
 Step id
-: days-without-reboot
+: proximity-blanks-in-call
 
 Status
 : open
@@ -1955,7 +1958,7 @@ Device id
 : google-walleye
 
 Step id
-: photo-taken
+: days-without-reboot
 
 Status
 : open
@@ -1970,7 +1973,7 @@ Device id
 : google-walleye
 
 Step id
-: standby-current
+: photo-taken
 
 Status
 : open
@@ -1980,6 +1983,21 @@ Updated
 
 
 ### Row 114
+
+Device id
+: google-walleye
+
+Step id
+: standby-current
+
+Status
+: open
+
+Updated
+: 2026-11-18
+
+
+### Row 115
 
 Device id
 : google-walleye
@@ -2006,7 +2024,7 @@ Updated
 : 2026-11-23
 
 
-### Row 115
+### Row 116
 
 Device id
 : google-walleye
@@ -2031,24 +2049,6 @@ Notes
 
 Updated
 : 2026-11-24
-
-
-### Row 116
-
-Device id
-: google-walleye
-
-Step id
-: test-layer-boots
-
-Status
-: unknown
-
-Notes
-: Not known yet: linux-phone-oco/google-walleye-lab does not claim this step.
-
-Updated
-: 2026-11-25
 
 
 ### Row 117
@@ -4505,7 +4505,7 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-25
+: 2026-11-26
 
 
 ### Row 231
@@ -4523,7 +4523,7 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-25
+: 2026-11-26
 
 
 ### Row 232
@@ -4541,4 +4541,4 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-25
+: 2026-11-26
