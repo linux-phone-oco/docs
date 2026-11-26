@@ -9339,10 +9339,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Left by attended-way-back-on-signal (lab-tools#458): a second signal does not cut the way back short (by design), so a way back that hangs has no escape but SIGKILL. Next: decide whether a third signal escapes, saying which way back was left and how to bring the phone back by hand.
+: Landed lab-tools#462 (exit 3, names the way back left; test a_third_signal_during_a_way_back_that_hangs...). Released with the next lpoco-attended release PR.
 
 Opened
 : 2026-11-26
