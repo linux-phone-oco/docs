@@ -7145,3 +7145,27 @@ Considered
 
 About
 : attended-way-back-third-signal
+
+---
+
+
+<a id="2026-11-26-host-stray-lpoco-programs-named-and-taken-off"></a>
+### host: stray lpoco programs named and taken off
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-26
+
+Done
+: Proof tests first (failing), then stray_programs/stray_paths in lpoco-host; check FAIL, plan rm, prepare now removal; programmer review fixed: unreadable bin dir is 'not measured', tests for pinned name, dir, sorting. Landed lab-tools#464.
+
+Considered
+: Counting a stray as FAIL blocks unattended follow until prepare now runs (intended, FAIL line names the cure); FAMILY is compiled in, so an older host against a newer install would call a new member a stray (not handled).
+
+Rejected
+: Removing by hand (item says lpoco host does it); name-only report without FAIL (a check that only prints is not a check).
+
+About
+: host-stray-attended
