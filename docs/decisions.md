@@ -3550,3 +3550,31 @@ Rejected
 
 About
 : bringup-steps
+
+
+<a id="2026-11-27-busybox-is-a-nixpkgs-part-not-a-second-recipe-kind"></a>
+### 2026-11-27-busybox-is-a-nixpkgs-part-not-a-second-recipe-kind
+
+Brief
+: busybox is a [part_builds] part with nixpkgs = busybox: the pinned nixpkgs' static aarch64 build, sha declared; not a new recipe kind
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-27
+
+Decision
+: [part_builds.NAME] takes one of two sources: repo+rev(+crate) for a crate, or nixpkgs (a package of pkgsCross.aarch64-multiplatform.pkgsStatic) for a program that is not a crate; the manifest refuses both and neither. part.nix copies bin/BIN, scrubs its one store path as a crate part's, and holds it to the declared sha256; image ensure --rebuild proves it the same way. Measured 2026-11-27: pinned nixpkgs gives busybox 1.37.0 (musl, static, EM_AARCH64, no PT_INTERP), sha256 7593d31b555f67d197296966c05f8474be4e8f073ff4e39ba72aa50476d32ad2, built and rebuilt equal (lab-tools#470). Walleye's ramdisk busybox therefore changes from build-busybox.sh's 1.36.1 glibc defconfig to this one when walleye adopts it.
+
+Why
+: Smallest form that fits: no new table, no new recipe machinery, the pinned nixpkgs already builds it and a pin bump re-proves the sha as for a crate. The item said decide the form first.
+
+Rejected
+: A second recipe kind (a [source_builds] table) that runs build-busybox.sh's make in the sandbox: a second derivation to keep, a defconfig and tarball sha to carry, for the same bytes class. Porting build-busybox.sh's exact 1.36.1 glibc build into Nix: forces the script's toolchain into Nix for no gain, as the ramdisk decision already rejected for the crate part. Typing a repo/rev for busybox: it is not a git crate.
+
+About
+: part-busybox-recipe
+
+Research
+: part-real-crate-walleye-reboot-builds

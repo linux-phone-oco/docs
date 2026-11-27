@@ -9448,10 +9448,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: From decision 2026-11-27-the-ramdisk-is-not-a-recipe-until-its-inputs-are. busybox is a C program, not a crate: part.nix builds crates only; decide the form first (a second recipe kind or a nixpkgs pkgsStatic aarch64 busybox with its sha declared).
+: Done in lab-tools#470 (proof: a_part_of_a_nixpkgs_program_is_its_static_aarch64_build_held_to_its_sha256_and_proved_by_a_rebuild in bringup/tests/ensure_part.rs, seen failing first on the placeholder sha, then passing; --rebuild equal). busybox = [part_builds.busybox] nixpkgs = busybox, 1.37.0 musl. gen_init_cpio pin split to part-gen-init-cpio-pin.
 
 Opened
 : 2026-11-27
@@ -9477,6 +9477,31 @@ Status
 
 Note
 : Moved to google-walleye-lab's base (walleye's own work, its builder; decision 2026-11-25-docs-own-build-items-the-site-its-checks-go-to keeps walleye rows out of the lab-tools lane). Carried there: declare [part_builds.walleye-reboot] (sha 8f141f1b2973fd8fa1eaa433f55c26ca60538395c12407cb39c24c721ecf17f8, research part-real-crate-walleye-reboot-builds) and walleye-nfc-up, retire build-reboot-bin.sh and build-nfc-up-bin.sh; the rev holds the crate and its Cargo.lock.
+
+Opened
+: 2026-11-27
+
+Needs
+: build
+
+Device
+: google-walleye
+
+About
+: image-recipe-ensure-z21
+
+
+<a id="part-gen-init-cpio-pin"></a>
+### Pin gen_init_cpio apart from a kernel tree, as a part or a recipe, so the ramdisk can become a recipe
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Split from part-busybox-recipe (busybox half done, lab-tools#470). gen_init_cpio is one C file of the kernel tree (usr/gen_init_cpio.c) built by hand today; nixpkgs has no standalone package. Decide the form (a part from the kernel git at a tag, compiled static, or the roof's own newc writer, lpoco bringup initramfs) before building. Then walleye-adopts-part-builds and the ramdisk recipe.
 
 Opened
 : 2026-11-27
