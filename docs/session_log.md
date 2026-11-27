@@ -7283,3 +7283,24 @@ Considered
 
 About
 : agnostic-layer
+
+---
+
+
+<a id="2026-11-27-author-os-factory-any-device"></a>
+### The author: os-factory (osfact), any device, phones first, grown inside lab-tools
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-27
+
+Done
+: Relayed by the Top Coordinator, the author's words verbatim (2026-11-27): "basically its so general that its like os factory, that currently uses linux for kernel and linux ecosystem, but its basically fit for any device not just scoped to smartphones, but we develop it from perspective of smartphones at the moment but the factory itself isnt limited to that by design. i mean, it would propably fit as a separate tool that lab-tools will include but the tool is more general than that. i think we could make a repo for it under grenudi/os-factory (osfact shorthand) or we could grow it under existing lab-tools infrastructure, to not do double work as it has a good infrastructure that any project needs, and we can grow it there in a way that would be easy to extract into standalone repo later, and use the same namings for now but under our one roof of tools for now." Orchestration amended lab-tools image-factory-any-distro-any-phone (no new item): scope any device, phones first; working name os-factory / osfact; the research also decides its home, the author's lean the default to test.
+
+Considered
+: A new item for the home question: rejected - the Top asked for one item, and the home is part of the same decision.
+
+About
+: agnostic-layer
