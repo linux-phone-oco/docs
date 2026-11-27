@@ -9498,10 +9498,35 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
+: done
+
+Note
+: Form decided: no pin; the roof's writer replaces gen_init_cpio, which stays the test oracle. Next: walleye-ramdisk-by-roof-writer.
+
+Opened
+: 2026-11-27
+
+Needs
+: build
+
+Device
+: google-walleye
+
+About
+: image-recipe-ensure-z21
+
+
+<a id="walleye-ramdisk-by-roof-writer"></a>
+### walleye's build-initramfs.sh packs with lpoco bringup initramfs build instead of gen_init_cpio, then the ramdisk becomes a recipe
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
 : open
 
 Note
-: Split from part-busybox-recipe (busybox half done, lab-tools#470). gen_init_cpio is one C file of the kernel tree (usr/gen_init_cpio.c) built by hand today; nixpkgs has no standalone package. Decide the form (a part from the kernel git at a tag, compiled static, or the roof's own newc writer, lpoco bringup initramfs) before building. Then walleye-adopts-part-builds and the ramdisk recipe.
+: Decision 2026-11-27-the-roof-writes-the-cpio-gen-init-cpio-is-only-the-oracle. Same cpio measured; gzip differs, so the images' sha256 change once. Walleye's place (google-walleye-lab build/build-initramfs.sh): its builder takes it, then part-ramdisk-packs-parts.
 
 Opened
 : 2026-11-27
