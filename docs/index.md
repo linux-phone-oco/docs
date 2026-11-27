@@ -11,7 +11,7 @@ The memory of linux-phone-oco, whose goal is Linux phones as good as Android for
 - [Chips](chips.md): 2
 - [Components](components.md): 25
 - [Concepts](concepts.md): 11
-- [Decisions](decisions.md): 133
+- [Decisions](decisions.md): 134
 - [Devices](devices.md): 3
 - [Feature Support](feature_support.md): 101
 - [Features](features.md): 46
