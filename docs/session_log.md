@@ -7238,3 +7238,27 @@ Rejected
 
 About
 : part-busybox-recipe
+
+---
+
+
+<a id="2026-11-27-part-gen-init-cpio-pin"></a>
+### part-gen-init-cpio-pin: the roof's writer, no pin
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-27
+
+Done
+: Compared gen_init_cpio and lpoco bringup initramfs build on walleye's real phone spec: same cpio. Decided no part; opened walleye-ramdisk-by-roof-writer.
+
+Considered
+: A static part from the kernel git; the roof's writer.
+
+Rejected
+: The part: a second way to make the same bytes.
+
+About
+: part-gen-init-cpio-pin

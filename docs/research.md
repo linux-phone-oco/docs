@@ -2686,3 +2686,25 @@ Found
 
 About
 : part-ramdisk-packs-parts
+
+
+<a id="roof-newc-writer-equals-gen-init-cpio-on-walleye-spec"></a>
+### roof-newc-writer-equals-gen-init-cpio-on-walleye-spec
+
+Brief
+: lpoco bringup initramfs build makes walleye's real phone ramdisk spec the same cpio as gen_init_cpio -t 0 (sha256 2cbcd7bf...)
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-27
+
+Question
+: Can the roof's own newc writer replace gen_init_cpio for walleye's real ramdisk, so no gen_init_cpio needs pinning apart from a kernel tree?
+
+Found
+: Measured 2026-11-27 on walleye-build/initramfs-phone-43.spec (real busybox-arm64, walleye-nfc-up, roof43 init): gen_init_cpio -t 0 (from out-ufsm/b/usr/gen_init_cpio) and lpoco bringup initramfs build --codec gzip give the same uncompressed cpio, sha256 2cbcd7bfe61d23ed0ebab4b41887660da386eb8998d3bc0fc4edae06513e2622. The gzip files differ (f4b6c1d7 vs 350ec2c8): gzip -9n and the writer's deflate are different encoders, so the image sha changes once on adoption. The byte-for-byte test (bringup/tests/initramfs.rs, since lab-tools#114) already proves this on fixtures; it says 'not measured: no gen_init_cpio' where the oracle is absent. gen_init_cpio is therefore an oracle, not a build input.
+
+About
+: part-gen-init-cpio-pin

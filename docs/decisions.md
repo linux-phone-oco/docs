@@ -3578,3 +3578,31 @@ About
 
 Research
 : part-real-crate-walleye-reboot-builds
+
+
+<a id="2026-11-27-the-roof-writes-the-cpio-gen-init-cpio-is-only-the-oracle"></a>
+### 2026-11-27-the-roof-writes-the-cpio-gen-init-cpio-is-only-the-oracle
+
+Brief
+: gen_init_cpio is not pinned as a part: the roof's initramfs build writes the cpio; gen_init_cpio stays the test oracle
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-27
+
+Decision
+: The ramdisk's cpio is written by lpoco bringup initramfs build, the roof's own newc writer. gen_init_cpio is not built as a part or recipe; it stays the oracle of bringup's byte-for-byte test. walleye's build-initramfs.sh adopts the roof's writer in place of GEN; after that the ramdisk's inputs are busybox (a part), the roof's init and the parts, and it can become a recipe.
+
+Why
+: Measured on walleye's real phone spec: the same cpio as gen_init_cpio -t 0 (research roof-newc-writer-equals-gen-init-cpio-on-walleye-spec). The writer exists, is tested and is ours; a pinned C build would add a second way to make the same bytes.
+
+Rejected
+: A part from the kernel git at a tag, compiled static: builds a one-file C tool only to be replaced by the writer we already have, and adds a toolchain recipe. nixpkgs package: none exists standalone. Keeping the kernel tree as the source: it ties a ramdisk to a built kernel tree.
+
+About
+: part-gen-init-cpio-pin
+
+Research
+: roof-newc-writer-equals-gen-init-cpio-on-walleye-spec
