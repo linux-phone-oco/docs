@@ -9548,10 +9548,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: The author's turns 2026-11-27 (session log 2026-11-27-author-image-factory-any-distro and 2026-11-27-author-os-factory-any-device). Scope: any device, not only phones; developed from phones first. Working name os-factory, shorthand osfact. Three inputs - the device's declaration (for a phone device.toml: kernel list, firmware, boot format, install steps), a distro profile (base, package format, package set), the proven parts - and one output: an installable image and its install command. Home, decided by this research, with the author's lean as the default to test: grow it inside lab-tools as its own extractable crate(s) named osfact, its own release tag prefix (osfact-vX), its own docs folder, depending on no lpoco or phone crate (lab-tools depends on it, never the reverse), with the condition for extracting it to grenudi/os-factory written down (for example a second user outside linux-phone-oco). Read what we have first: decisions 2026-11-19-device-layer-declared-once, 2026-11-19-base-distro, 2026-11-19-base-distro-any-arm-base, 2026-11-24-plain-alpine-not-nura, 2026-11-23-image-recipes-on-nix-fixed-output-paths; lpoco layer pack (apk/rpm/arch) and layer export; image ensure, recipes and [part_builds]; kernel assemble's int/ tags. Then how others do it: mkosi, debos, KIWI, Buildroot, Yocto, OpenWrt ImageBuilder, distrobuilder, NixOS images, alpine mkimage, Mobian/Droidian recipes; pmbootstrap only as landscape. Say whether to build on one of them (upstream first) or write our own in Rust; Rust for logic, no Python. One research-lead, the capable model; the author starts it from orchestration's card.
+: Answered 2026-11-27 by research-osfact: decision 2026-11-27-osfact-own-rust-in-lab-tools, research osfact-image-builders-landscape, osfact-what-we-have, osfact-how-it-stands; backlog osfact-device-declaration .. osfact-extract-to-own-repo; the failing test lab-tools osfact/tests/walleye_two_distros.rs and the boundary test osfact/tests/boundary.rs (lab-tools#473).
 
 Opened
 : 2026-11-27
@@ -9570,3 +9570,242 @@ Rank
 
 About
 : agnostic-layer
+
+
+<a id="osfact-device-declaration"></a>
+### osfact: the device-neutral tables ([layer], [boot], new [install]) typed in osfact, lpoco-manifest taking them from it
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-27-osfact-own-rust-in-lab-tools, step 1. Move the [layer] and [boot] types (and their JSON Schema part) from lpoco-manifest into osfact; add [install] (steps: write OUTPUT to PLACE via TRANSPORT, activate SLOT; {other} read at the run) as osfact/tests/fixtures/google-walleye/device.toml proposes; lpoco-manifest re-exports them so device.toml stays one file and its schema one. Add the [install] table to google-walleye-lab's device.toml (a lab change, landed by its builder or keeper; no phone change). First, because every other step reads it.
+
+Opened
+: 2026-11-27
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: osfact/tests/boundary.rs passes with the types in osfact; lpoco-manifest's schema test and every device.toml of the labs still read
+
+About
+: image-factory-any-distro-any-phone
+
+
+<a id="osfact-distro-profile"></a>
+### osfact: the distro profile, data not code - alpine and debian profiles
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision step 1-3. Type [distro] (name, format, release, mirror, repositories, keys or the package that carries them, init, packages) in osfact with its schema; the profiles in osfact/profiles/ (alpine 3.23 as walleye-rootfs pins it, debian trixie). No distro name in osfact's code: a test greps for none.
+
+Opened
+: 2026-11-27
+
+Blocked by
+: osfact-device-declaration
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: a test reads the two fixture profiles and refuses an unknown format; a test finds no distro name in osfact/src
+
+About
+: image-factory-any-distro-any-phone
+
+
+<a id="osfact-root-apk"></a>
+### osfact: the apk root tree, rootless - walleye-rootfs generalised
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision step 2. Move google-walleye-lab tools/walleye-rootfs' way into osfact's apk adapter: apk.static --root --initdb --usermode --no-scripts from the profile, the parts from a local repository in the same transaction, the skipped scripts' work (OpenRC links, inittab) written per format, pins checked by sha256. walleye-rootfs then calls osfact with walleye's profile and goes (a walleye-lab change).
+
+Opened
+: 2026-11-27
+
+Blocked by
+: osfact-distro-profile
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: the Alpine half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=alpine, P:google-walleye-config in the apk database; the same sha256 built twice
+
+About
+: image-factory-any-distro-any-phone
+
+
+<a id="osfact-root-deb"></a>
+### osfact: the deb root tree, rootless, by mmdebstrap --mode=unshare
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision steps 2-3. The deb adapter: mmdebstrap --mode=unshare --variant from the profile, the layer's deb packages from a local repository, SOURCE_DATE_EPOCH fixed; the glue systemd presets do. mmdebstrap is Perl, Debian's own tool, called as apt is - not our code (practice 21 is about Python and our own logic).
+
+Opened
+: 2026-11-27
+
+Blocked by
+: osfact-distro-profile
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: the Debian half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=debian, Package: google-walleye-config in dpkg status; the same sha256 built twice
+
+About
+: image-factory-any-distro-any-phone
+
+
+<a id="osfact-boot-and-pack"></a>
+### osfact: boot artifact by boot format and the layer's per-format packing moved in from lpoco-bringup and lpoco-layer
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision step 2 and the boundary. Move the Android boot image writer (header v0, appended dtb) and the AVB footer from lpoco-bringup, and lpoco-layer's per-format package model and nfpm config, into osfact; lpoco-bringup and lpoco-layer call osfact (lab-tools depends on osfact, never the reverse). Their own tests move with them and stay green.
+
+Opened
+: 2026-11-27
+
+Blocked by
+: osfact-device-declaration
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: bringup/tests/pack_v0.rs and layer/tests pass against osfact's code; osfact/tests/boundary.rs passes
+
+About
+: image-factory-any-distro-any-phone
+
+
+<a id="osfact-walleye-two-distros"></a>
+### osfact pack now and install.toml: one walleye declaration, an installable Alpine and Debian image each with its install command
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision steps 1-3. The command osfact pack now (file system by mke2fs -d under fakeroot, built twice; boot.img; install.toml with each output's sha256; the line install: osfact install now OUT ...) and osfact install now (the plan's steps by transport; android-dd and fastboot first). Then remove the #[ignore] of the two tests if the CI runner can carry their tools, else keep them run by the lab host. Release osfact-v0.1.0 (release = false off).
+
+Opened
+: 2026-11-27
+
+Blocked by
+: osfact-root-apk,osfact-root-deb,osfact-boot-and-pack
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools osfact/tests/walleye_two_distros.rs: both tests pass with --ignored on the lab host
+
+About
+: image-factory-any-distro-any-phone
+
+
+<a id="osfact-ensure-fixed-output"></a>
+### lpoco bringup ensure names an osfact image by sha256: an osfact build as a Nix fixed-output derivation
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision step 4: images stay named by what they are (2026-11-23-image-recipes-on-nix-fixed-output-paths). An [images.NAME] recipe kind osfact = { profile, parts } that ensure builds in the sandbox; the labs' rootfs images ([images.alpine-rootfs-vN]) then come from it.
+
+Opened
+: 2026-11-27
+
+Blocked by
+: osfact-walleye-two-distros
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: a bringup/tests/ensure test: an osfact recipe's image is refused by Nix when its sha256 differs, taken from the cache when it is there
+
+About
+: image-factory-any-distro-any-phone
+
+
+<a id="osfact-extract-to-own-repo"></a>
+### osfact leaves lab-tools for grenudi/os-factory, history kept
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision step 5; condition written in lab-tools osfact/docs/README.md. Waits on the condition, not on work: a user outside linux-phone-oco builds an image with it, or it serves a device that is not a phone, or the author says so. Then git filter-repo --path osfact/, its own CI and release, lab-tools depends on it by tag.
+
+Opened
+: 2026-11-27
+
+Waits
+: a second user outside linux-phone-oco, a device that is not a phone, or the author's word
+
+Proof
+: lab-tools builds against osfact by tag from grenudi/os-factory; osfact's tests pass there
+
+About
+: image-factory-any-distro-any-phone

@@ -8507,3 +8507,193 @@ By
 
 Takes
 : KBUILD_BUILD_TIMESTAMP/USER/HOST, prefix maps, setlocalversion -dirty
+
+
+<a id="debos-actions"></a>
+### debos: its actions (apt, debootstrap, mmdebstrap, pacstrap, image-partition, ostree)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/go-debos/debos/tree/main/actions
+
+Year
+: 2026
+
+By
+: go-debos
+
+Takes
+: Go, YAML recipes run in fakemachine (a VM); Debian and Arch only (apt/debootstrap/mmdebstrap, pacman/pacstrap), no apk; Mobian's and Droidian's recipes are debos
+
+
+<a id="distrobuilder-sources"></a>
+### distrobuilder: Source (downloaders)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://linuxcontainers.org/distrobuilder/docs/latest/reference/source/
+
+Year
+: 2026
+
+By
+: LXC/Incus
+
+Takes
+: Go; one YAML per distro, ~20 downloaders (alpinelinux-http, debootstrap, fedora-http, archlinux-http, rootfs-http...); container and VM images, run as root, no device boot formats
+
+
+<a id="kiwi-docs"></a>
+### KIWI NG documentation
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://osinside.github.io/kiwi/
+
+Year
+: 2026
+
+By
+: openSUSE (OSInside)
+
+Takes
+: Python; XML image descriptions; zypper, dnf, apt, pacman; disk, ISO, OEM images; rpm-first
+
+
+<a id="openwrt-imagebuilder"></a>
+### OpenWrt: Using the Image Builder
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://openwrt.org/docs/guide-user/additional-software/imagebuilder
+
+Year
+: 2026
+
+By
+: OpenWrt
+
+Takes
+: the shape we want: a device profile x a package list from prebuilt packages -> a flashable image per device, no compiling; OpenWrt-only
+
+
+<a id="alpine-mkimage"></a>
+### aports scripts/mkimage.sh
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/scripts/mkimage.sh
+
+Year
+: 2026
+
+By
+: Alpine
+
+Takes
+: shell, Alpine-only; profiles as shell functions (ISO, netboot, rpi); apk --root --initdb is the root step we already use
+
+
+<a id="mmdebstrap"></a>
+### mmdebstrap
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://gitlab.mister-muffin.de/josch/mmdebstrap
+
+Year
+: 2026
+
+By
+: Johannes Schauer Marin Rodrigues (Debian)
+
+Takes
+: Debian's rootless root-tree maker (--mode=unshare, reproducible with SOURCE_DATE_EPOCH); Perl, Debian's own tool: the deb root step
+
+
+<a id="droidian-rootfs-builder"></a>
+### Droidian rootfs-builder
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/droidian/rootfs-builder
+
+Year
+: 2026
+
+By
+: Droidian
+
+Takes
+: debos recipes over Halium adaptation packages; Debian-only and Halium (rejected by 2026-11-19-base-distro)
+
+
+<a id="nixos-make-disk-image"></a>
+### nixpkgs nixos/lib/make-disk-image.nix
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://github.com/NixOS/nixpkgs/blob/master/nixos/lib/make-disk-image.nix
+
+Year
+: 2026
+
+By
+: NixOS
+
+Takes
+: NixOS-only images from a system closure; we take Nix's store and sandbox, not its distro (2026-11-23-image-recipes-on-nix-fixed-output-paths)
+
+
+<a id="systemd-repart"></a>
+### systemd-repart(8)
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://www.freedesktop.org/software/systemd/man/latest/systemd-repart.html
+
+Year
+: 2026
+
+By
+: systemd
+
+Takes
+: C, distro-neutral: partitions and file systems from directory trees without root (CopyFiles=, Format=); mkosi's last stage; a candidate for osfact's disk stage beside mke2fs -d
+
+
+<a id="pmbootstrap-repo"></a>
+### pmbootstrap
+
+Project
+: linux-phone-oco/lab-tools
+
+Url
+: https://gitlab.postmarketos.org/postmarketOS/pmbootstrap
+
+Year
+: 2026
+
+By
+: postmarketOS (Nura)
+
+Takes
+: landscape only: deviceinfo + device package = a device declaration, pmbootstrap flasher = an install command per boot format; Python, Alpine-only

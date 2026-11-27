@@ -7304,3 +7304,27 @@ Considered
 
 About
 : agnostic-layer
+
+---
+
+
+<a id="2026-11-27-research-osfact"></a>
+### Research: os-factory (osfact) decided - own Rust in lab-tools composing each format's installer
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-28
+
+Done
+: research-osfact (research-lead) answered lab-tools image-factory-any-distro-any-phone. Read the five named decisions, lpoco-layer, lpoco-manifest's [layer]/[boot]/[part_builds], lpoco-bringup's ensure, kernel assemble, and google-walleye-lab's walleye-rootfs and install procedures; read mkosi (man page and distribution/ folder), debos (actions), distrobuilder (sources) live and the rest from their docs. Recorded research osfact-what-we-have, osfact-image-builders-landscape (10 new sources), osfact-how-it-stands; decision 2026-11-27-osfact-own-rust-in-lab-tools; 8 lab-tools backlog rows (osfact-device-declaration .. osfact-extract-to-own-repo). Landed lab-tools#473: osfact/ home, boundary test (green in CI; fails with an lpoco crate added, checked), walleye_two_distros test (ignored, fails with --ignored: no bin target osfact). Phone step queued in google-walleye-lab's base for its keeper.
+
+Considered
+: Building on mkosi (unprivileged, widest distro set): its Python and its missing Alpine and Android boot image outweighed it. A test that runs unignored and fails: it would block lab-tools' CI and every landing; ignored with its reason and run on the lab host instead, as the container tests are.
+
+Rejected
+: grenudi/os-factory now (no second user yet); osfact inside lpoco-bringup (fails the boundary).
+
+About
+: image-factory-any-distro-any-phone

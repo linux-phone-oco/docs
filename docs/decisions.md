@@ -3606,3 +3606,47 @@ About
 
 Research
 : roof-newc-writer-equals-gen-init-cpio-on-walleye-spec
+
+
+<a id="2026-11-27-osfact-own-rust-in-lab-tools"></a>
+### 2026-11-27-osfact-own-rust-in-lab-tools
+
+Brief
+: osfact: our own Rust in lab-tools (own crate, tag osfact-v*, docs, no lpoco in its tree) composing each format's installer - device decl + distro profile + parts -> image + install command
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-27
+
+Decision
+: A recommendation for the author's word (the factory's shape and home are his turning point). osfact (os-factory) is our own Rust, grown in lab-tools as its own crate, that composes what each upstream already does well rather than adopting one whole image builder.
+1. What it is: `osfact pack now --device DEVICE.toml --distro PROFILE.toml --parts DIR --out OUT` makes OUT/rootfs.img, OUT/boot.img (the device's boot format), OUT/install.toml and prints the one install command (`osfact install now OUT ...`). Three inputs: the device's declaration (the device-neutral tables of a device.toml: [layer], [boot], and a new [install] - each step one write of one output to one named place by one transport, as walleye's procedures do: rootfs by android-dd to system_{other}, boot by fastboot to boot_{other}, activate {other}); a distro profile, which is data (name, package format, release, mirror, repositories, keys, init, package set) - no distro is named in osfact's code, only formats; the proven parts (the layer's packages in the profile's format, the kernel, part builds), each by sha256.
+2. Its stages, each neutral with one adapter per format or per boot format: root tree by the format's own installer run rootless into a directory (apk.static --root --initdb --usermode for apk, mmdebstrap --mode=unshare for deb, then pacman --root, dnf5 --installroot), the profile's set and the parts in one transaction from a local repository of the parts; the glue the skipped scripts would write, per format; the file system by mke2fs -d under fakeroot, fixed time and UUID, built twice and compared (systemd-repart when a device needs partitions); the boot artifact by boot format (android-bootimg with AVB footer, efi); install.toml with each output's sha256. walleye-rootfs is the apk path's seed, generalised; lpoco-layer's per-format packing and lpoco-bringup's boot image and AVB writers move into osfact.
+3. Distros: Alpine (apk) first, as walleye runs today; Debian (deb) second, as decision 2026-11-19-device-layer-declared-once orders the formats. The failing test asks both of one walleye declaration.
+4. Home - the author's lean, tested and kept: osfact/ in lab-tools, one crate `osfact` (split into crates only when a second consumer needs one stage), its own version and tag prefix osfact-v* outside the lpoco family (release = false until its first build lands), its own docs folder osfact/docs/, and no lpoco or devlab crate in its tree in any edge (normal, build, dev) - osfact/tests/boundary.rs runs in CI and fails on one. lab-tools depends on osfact, never the reverse: lpoco-manifest takes [layer]/[boot]/[install] types from osfact, lpoco-layer and lpoco-bringup call it, lpoco bringup ensure wraps an osfact build as a Nix fixed-output derivation so images stay named by sha256, a lab's attended install procedure reads install.toml. Its records stay in linux-phone-oco/docs under place lab-tools until it leaves.
+5. The way out to grenudi/os-factory, history kept (git filter-repo --path osfact/): when a user outside linux-phone-oco builds an image with it, or it serves a device that is not a phone, or the author says so. Written in osfact/docs/README.md.
+6. The word: os-factory / osfact, the author's own; "image builder" and "distro packer" (his first word) are kept as descriptions - the first is mkosi's and KIWI's class, the second undersells the device side.
+
+Why
+: The author's words (session log 2026-11-27-author-image-factory-any-distro and 2026-11-27-author-os-factory-any-device): a universal factory, "basically distro packer", that "shouldnt be dependant of selected upstream distro or current phone", "fit for any device", grown "under existing lab-tools infrastructure ... easy to extract into standalone repo later". Research osfact-image-builders-landscape: no upstream builder is free of both the distro and the device - each is bound to its distros (mkosi has no plain Alpine and no Android boot image; debos is Debian and Arch in a VM; KIWI rpm-first; mkimage and OpenWrt ImageBuilder one distro each) or builds an OS of its own (Buildroot, Yocto, NixOS) - and the ones with the widest reach are Python (mkosi, KIWI), which practice 21 refuses as a dependency. What they all share is the format's own installer for the root, which osfact calls as they do: upstream first per stage, not per tool. Research osfact-what-we-have: the declaration, the per-format packing, a rootless reproducible Alpine root and the boot image writers already exist in Rust; what is missing is the profile, the deb root, [install] and one command - smaller than adopting and bending a builder. The home: lab-tools gives CI, release-plz, land and the records today; a second repository now would double that for no user; the boundary test makes leaving a folder move. Proven by lab-tools osfact/tests/walleye_two_distros.rs (failing, landed in lab-tools#473) and osfact/tests/boundary.rs (passing in CI).
+
+Rejected
+: mkosi as the engine, our device side on top (~20 agent-hours to a first image): the strongest multi-distro builder and unprivileged, but Python - our work would depend on it (practice 21) - with no plain Alpine (only nura.py, edge), no Android boot image or AVB, and a systemd-centric shape; its device side would be ours anyway. Its ideas are taken: profiles as layered config, systemd-repart for disks.
+debos (Mobian's and Droidian's way): Go and declarative, but Debian and Arch only, run in fakemachine (a VM, KVM on the builder), and one recipe tree per distro with devices inside - the N x M drift the device layer decision rejected; Alpine, our first base, is out.
+distrobuilder for the root stage: the widest distro reach (~20 downloaders) but root-only and made for containers and VM disks, with no device boot format; it would add a Go tool and root for a step apk.static and mmdebstrap already do rootless.
+KIWI: Python and rpm-first, XML descriptions.
+Buildroot or Yocto: build the whole OS from source - a distribution of our own, the OS burden decision 2026-11-19-base-distro-any-arm-base refuses; Yocto's BitBake is Python.
+NixOS images / Mobile NixOS: NixOS only, and walleye dropped in 2023; we keep Nix's store and sandbox (2026-11-23-image-recipes-on-nix-fixed-output-paths), not its distro.
+OpenWrt ImageBuilder and alpine mkimage: one distro each; OpenWrt's shape (device profile x package list from prebuilt packages) is the one osfact takes.
+pmbootstrap: landscape only - Python and Alpine/Nura only; its deviceinfo and flasher are the concepts [layer]/[boot]/[install] and the install command already cover.
+Writing our own package resolver in Rust (no format installer): every format's dependency solver, signatures and scripts reimplemented - the opposite of upstream first.
+Keeping a per-device, per-distro tool (walleye-rootfs as it is, one more per distro): N devices x M distros tools, the drift asked to end.
+Home - grenudi/os-factory now: a second CI, release conveyor and record place with no second user; the extraction condition is written instead. Inside lpoco-bringup or lpoco-layer: binds the factory to lpoco and fails the boundary. Several crates now (osfact-root, osfact-boot, ...): splits before any consumer needs one stage alone. In the lpoco family's version_group: its version would move with every lpoco release and its tag would not be its own.
+
+About
+: image-factory-any-distro-any-phone
+
+Research
+: osfact-image-builders-landscape
