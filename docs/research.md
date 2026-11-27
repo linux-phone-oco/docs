@@ -2708,3 +2708,89 @@ Found
 
 About
 : part-gen-init-cpio-pin
+
+
+<a id="osfact-image-builders-landscape"></a>
+### osfact-image-builders-landscape
+
+Brief
+: No image builder is free of both distro and device: each is bound to its distros (mkosi, debos, KIWI, mkimage, OpenWrt) or builds its own OS (Buildroot, Yocto); neutral: each format's installer
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-27
+
+Question
+: How do others build a device's installable image from a base distro and a device's parts, and is one of them a factory independent of both the distro and the device, in a language we may depend on?
+
+Found
+: Read 2026-11-27 (mkosi's man page and distribution/ folder, debos' actions folder, distrobuilder's source reference read live; the rest from their docs).
+mkosi (systemd, Python): Distribution= fedora, debian, kali, ubuntu, arch, opensuse, mageia, centos, rhel, alma, rocky, openmandriva, azure, buildstream, custom - and nura.py (apk, edge only), no plain Alpine; runs unprivileged in user namespaces; systemd-centric (repart, ukify, kernel-install); no Android boot image, no AVB. The best multi-distro engine, but Python (practice 21: our work never depends on it) and its device side would still be ours.
+debos (Go): YAML recipes in fakemachine (a VM); apt/debootstrap/mmdebstrap and pacman/pacstrap actions - Debian and Arch only. Mobian's recipes (a per-SoC TOML, boot.img offsets) and Droidian's rootfs-builder are debos: one recipe tree per distro, devices inside it.
+distrobuilder (Go, LXC/Incus): ~20 downloaders (alpinelinux-http, debootstrap, fedora-http, archlinux-http, rootfs-http...) - the widest distro reach - but for containers and VM disks, as root, with no device boot format.
+KIWI (Python, openSUSE): XML descriptions over zypper/dnf/apt/pacman; rpm-first; Python.
+Buildroot (make/Kconfig) and Yocto (BitBake, Python): build the whole OS from source - a distro of our own, the OS burden decision 2026-11-19-base-distro-any-arm-base refuses.
+OpenWrt ImageBuilder: the right shape - a device profile x a package list from prebuilt packages -> a flashable image per device, no compiling - but OpenWrt only.
+NixOS make-disk-image and Mobile NixOS: NixOS only (Mobile NixOS dropped walleye in 2023).
+alpine mkimage.sh: shell, Alpine only; its root step (apk --root --initdb) is the one walleye-rootfs already runs rootless.
+pmbootstrap (landscape only): deviceinfo + a device package is a device declaration, pmbootstrap flasher is an install command per boot format - Python, Alpine/Nura only.
+What every one shares: the root tree is made by the format's own installer run into a directory (apk --root, debootstrap/mmdebstrap, pacstrap/pacman --root, dnf --installroot, zypper --root); the disk by a neutral tool (mke2fs -d, systemd-repart, genimage); the device side (kernel, boot format, flashing) is per tool and per distro. So the neutral cut is: format adapters for the root, device adapters for boot and install, data for the rest. mmdebstrap (Perl, Debian's own) makes a Debian root rootless and reproducible; apk.static does it for Alpine; dnf5 (C++) for rpm; pacman for Arch.
+
+Sources
+: mkosi-distributions,mkosi-nura,debos-actions,distrobuilder-sources,kiwi-docs,buildroot-manual,yocto-bsp-guide,openwrt-imagebuilder,nixos-make-disk-image,alpine-mkimage,mobian-recipes-qcom,mobian-recipes-sm7150,droidian-rootfs-builder,pmbootstrap-repo,mmdebstrap,systemd-repart,mobile-nixos-bootimg-nix
+
+About
+: image-factory-any-distro-any-phone
+
+
+<a id="osfact-what-we-have"></a>
+### osfact-what-we-have
+
+Brief
+: Half of osfact exists, bound to lpoco and walleye: [layer]/[boot] declared, layer packed in 4 formats, rootless Alpine root in walleye-rootfs, boot.img+AVB in bringup; no profile, no [install]
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-27
+
+Question
+: What does linux-phone-oco already have of a factory from device declaration, distro and proven parts to an installable image with its install command?
+
+Found
+: Read at lab-tools 712bf95 and google-walleye-lab 6ab243c5 (2026-11-27).
+What osfact needs is already half built, in pieces bound to lpoco and to walleye:
+- The device's declaration: device.toml [layer] (name, needs, token map per format, kernel tree/tag/config/dtbs, boot method efi-kernel-install | android-bootimg, firmware method, initramfs modules, files) and [boot] (Android header values, partition_size, AVB footer), typed in lpoco-manifest (decision 2026-11-19-device-layer-declared-once). No install steps are declared: walleye's install is two attended procedures (install-rootfs: dd from Android to system_{other}; install-boot: fastboot to boot_{other}, set_active, the way back).
+- The parts as packages: lpoco-layer packs the layer for apk, deb, rpm and archlinux through nfpm (NAME-config, NAME-boot, the kernel package, a boot.img trigger per format, a firmware service on plain Alpine - decision 2026-11-24-plain-alpine-not-nura), and layer export writes Asahi's tree-and-Makefile contract. Formats are a closed enum in code; the distro is not named anywhere - only the format. That is already the right cut.
+- The root: google-walleye-lab tools/walleye-rootfs (Rust) makes walleye's plain Alpine root rootless - apk.static --usermode --no-scripts into a directory, the skipped scripts' work written by hand (OpenRC links, inittab, gadget unit), mke2fs -d under fakeroot, fixed time and UUID, built twice and compared - but its package set, distro and device are constants of one walleye tool.
+- The boot artifact: lpoco-bringup writes Android boot images (v0 byte for byte against mkbootimg), swaps parts, builds initramfs and the AVB footer in Rust (no avbtool).
+- Content-named images: lpoco bringup image ensure takes an [images.NAME] by sha256 from Nix's store or a file:// cache, else builds its recipe as a fixed-output derivation; [part_builds] make static binaries from a crate at a commit; kernel assemble merges a topic list into an int/ tag the images name (decision 2026-11-23-image-recipes-on-nix-fixed-output-paths).
+Gaps: no distro profile (the package set and repositories live in walleye-rootfs' constants and pins), no Debian root path, no [install] declaration, no single command from declaration to installable image; and every piece depends on lpoco-manifest, so none can leave lab-tools today.
+
+About
+: image-factory-any-distro-any-phone
+
+
+<a id="osfact-how-it-stands"></a>
+### osfact-how-it-stands
+
+Brief
+: osfact decided (2026-11-27-osfact-own-rust-in-lab-tools), homed in lab-tools/osfact: boundary test green, walleye two-distro test failing (lab-tools#473); next osfact-device-declaration
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-28
+
+Question
+: How does the os-factory (osfact) stand, and what does a builder or keeper take up next?
+
+Found
+: Decision 2026-11-27-osfact-own-rust-in-lab-tools (a recommendation for the author's word): our own Rust in lab-tools, one crate osfact, composing each package format's own installer rootless (apk.static, mmdebstrap) with device adapters for the boot format and install, distro profiles as data. Rests on osfact-image-builders-landscape (no upstream builder is free of both distro and device; mkosi and KIWI are Python) and osfact-what-we-have (half exists in lpoco-manifest, lpoco-layer, lpoco-bringup and walleye-rootfs). Landed in lab-tools#473 and read back from main 08384e6: osfact/ with its own version 0.0.0 (release = false), tag prefix osfact-v*, docs/README.md (shape, boundary, the way out to grenudi/os-factory), tests/boundary.rs passing in CI (fails when an lpoco crate enters, checked), tests/walleye_two_distros.rs failing for Alpine and Debian (run with --ignored: no bin target osfact). Builder queue (lab-tools, needs build): osfact-device-declaration, then osfact-distro-profile and osfact-boot-and-pack, then osfact-root-apk and osfact-root-deb, then osfact-walleye-two-distros (the test passes), then osfact-ensure-fixed-output. osfact-extract-to-own-repo waits on its condition. The phone step (an osfact image installed on walleye and booting) is in walleye's keeper queue, after the build. Not known yet: whether the CI runner can carry apk.static and mmdebstrap (else the two-distro test stays a lab-host test); whether mmdebstrap's unshare mode runs on the lab host's kernel settings.
+
+About
+: image-factory-any-distro-any-phone
