@@ -7262,3 +7262,24 @@ Rejected
 
 About
 : part-gen-init-cpio-pin
+
+---
+
+
+<a id="2026-11-27-author-image-factory-any-distro"></a>
+### The author: a universal image factory, independent of distro and phone
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-27
+
+Done
+: Relayed by the Top Coordinator, the author's words verbatim (2026-11-27): "i think it would be best to look around and research how best to acheive this, so that we have a universal builder factory for images, basically distro packer, so we could make images for any distro, currently alpine is curation selected but the tool that builds, the factory shouldnt be dependant of selected upstream distro or current phone." 'This' is the goal he set: each phone has one rolling image - every part proven to work, in one build, rebuilt and tested on the phone on every change, installable with one command; a part counts as working only once it works inside that image. Orchestration queued one research-lead item, lab-tools image-factory-any-distro-any-phone, to run after walleye's current keeper run, one agent at a time.
+
+Considered
+: Queuing it as a build item: rejected - which factory to build on (an upstream one or our own in Rust) is a design turning point, so it is research ending in a decision first.
+
+About
+: agnostic-layer
