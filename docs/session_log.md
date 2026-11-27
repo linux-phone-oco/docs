@@ -7169,3 +7169,24 @@ Rejected
 
 About
 : host-stray-attended
+
+---
+
+
+<a id="2026-11-27-recipe-static-binary-part"></a>
+### recipe-static-binary-part built and landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-27
+
+Done
+: Failing proof test first; [part_builds] in the manifest; part.nix (build-std in the sandbox, static aarch64); ensure and --rebuild; programmer review, fixes (errors name the part, bin dots, scoped RUSTC_BOOTSTRAP, limits in README); landed lab-tools #466.
+
+Considered
+: musl pkgsStatic; cross rustc; vendor config for git deps
+
+About
+: recipe-static-binary-part

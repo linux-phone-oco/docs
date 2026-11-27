@@ -3469,3 +3469,31 @@ Rejected
 
 About
 : attended-way-back-third-signal
+
+
+<a id="2026-11-27-a-part-is-built-from-a-crate-at-a-commit"></a>
+### 2026-11-27-a-part-is-built-from-a-crate-at-a-commit
+
+Brief
+: A part is a static aarch64 binary built from a standalone crate at a commit by [part_builds.NAME]; ensure serves it by sha256, --rebuild proves it
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-27
+
+Decision
+: [part_builds.NAME] (repo, rev, crate folder, bin, sha256) is built by bringup/src/part.nix as a fixed-output derivation: crate unit tests first, then aarch64-unknown-linux-gnu with +crt-static and -Zbuild-std from the pinned toolchain's own source, crates vendored from the crate's Cargo.lock, store paths scrubbed in place. image ensure NAME serves it (store, cache, seed, build); image ensure --rebuild NAME builds it ignoring those, nix-build --check, and compares. Limits: standalone crate, crates.io dependencies only. The ramdisk that packs such binaries is not made a recipe here (backlog item below).
+
+Why
+: walleye asked 2026-11-26: build-reboot-bin.sh and build-nfc-up-bin.sh sat outside walleye-retire-build-scripts. Measured 2026-11-27 on the lab: a stand-in crate builds to the same bytes in two folders with two commits, and nix-build --check agrees (lab-tools #466, bringup/tests/ensure_part.rs).
+
+Rejected
+: Target musl via pkgsStatic: changes the target walleye's scripts declare, so shas would differ for no gain. pkgsCross rustc: it runs on aarch64 and builds LLVM from source (tried, stopped). A rebuild --changed-since for parts: the review noted it; parts are proved by naming them until a part has a changed-since need. cargo vendor config for git dependencies: not needed by the lab's two tools yet.
+
+About
+: recipe-static-binary-part
+
+Research
+: image-recipes-how-it-stands
