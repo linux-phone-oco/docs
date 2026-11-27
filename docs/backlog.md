@@ -9395,10 +9395,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Asked by walleye 2026-11-26: [images.X.recipe] only swaps parts named by sha256 into a control image (decision 2026-11-23-image-recipes-on-nix-fixed-output-paths); nothing builds a part, so 'ensure' says no recipe for walleye-reboot, and google-walleye-lab keeps build/build-reboot-bin.sh and build/build-nfc-up-bin.sh (cargo build --target aarch64-unknown-linux-gnu, +crt-static, -Zbuild-std, paths remapped, unit tests first) outside walleye-retire-build-scripts. Next: a part recipe kind (crate source + rev + target + sha256) built as a fixed-output derivation, sha proved by a rebuild (decision 2026-11-24-a-recipe-sha-is-proved-by-a-rebuild); then whether the ramdisk that packs such binaries is itself a recipe, recorded as a decision. Once released, walleye retires both scripts.
+: Landed in lab-tools #466 (read back from main 6dfce7b): [part_builds], part.nix, ensure/--rebuild, proof bringup/tests/ensure_part.rs. Next: walleye declares [part_builds.walleye-reboot] and measures its sha256 by --rebuild on the real crate (deps, LTO, panic=abort unmeasured), then retires both build scripts.
 
 Opened
 : 2026-11-26
@@ -9411,6 +9411,31 @@ Device
 
 Proof
 : lab-tools test: ensure on a stand-in crate with a part recipe builds a static aarch64 binary whose sha256 matches the declared one, takes it from the store on a second run without building, and fails naming the part when the sha differs
+
+About
+: image-recipe-ensure-z21
+
+
+<a id="part-ramdisk-packs-parts"></a>
+### Decide whether the ramdisk that packs part binaries is itself a recipe, and prove --rebuild on walleye-reboot's real crate
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: From recipe-static-binary-part. Real crate has crates.io deps, lto, panic=abort, strip: unmeasured. Record the ramdisk question as a decision.
+
+Opened
+: 2026-11-27
+
+Needs
+: build
+
+Device
+: google-walleye
 
 About
 : image-recipe-ensure-z21
