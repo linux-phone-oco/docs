@@ -9523,10 +9523,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: dropped
 
 Note
-: Decision 2026-11-27-the-roof-writes-the-cpio-gen-init-cpio-is-only-the-oracle. Same cpio measured; gzip differs, so the images' sha256 change once. Walleye's place (google-walleye-lab build/build-initramfs.sh): its builder takes it, then part-ramdisk-packs-parts.
+: Moved to google-walleye-lab's base: walleye's own work (its build-initramfs.sh packs with lpoco bringup initramfs build instead of gen_init_cpio; the image sha changes once, gzip bytes differ; then the ramdisk becomes a recipe). The builder brief now sends such follow-ups to the lane's coordinator.
 
 Opened
 : 2026-11-27

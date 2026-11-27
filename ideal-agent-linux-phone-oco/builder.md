@@ -75,7 +75,7 @@ command: [rhizoid.md](rhizoid.md).
 
 - lab-tools-builder: change lab-tools (or device-template, or docs - there not the schema, records/, queries/ or the briefs, which are orchestration's: AGENTS.md; a change to them is asked of orchestration) and `land` it, read back from main; then in the docs worktree with
   ikb: the item done with its proof (`ikb backlog-status`), a session-log row, any decision with what was
-  rejected.
+  rejected. A follow-up whose work is in a device lab (google-walleye-lab, surya-lab) is not a lab-tools row: name it in your report, and that lane's coordinator records it in its own base.
 - surya-builder: land the change and its record in surya-lab (`ikb ...`, a branch of your own, `land`, read back from main); mark the item done (`ikb backlog-status`) only when its proof test passed; a proof that shows a docs bring-up step is also claimed there (`ikb step --id STEP --status ... --proof TEST --run RUN`); report to the "surya coordinator".
 - walleye-builder: build on the lab; land the change and its record in google-walleye-lab (`ikb ...`, a
   branch of your own, `land`, read back from main); queue each try for the keeper with

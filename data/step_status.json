@@ -227,6 +227,6 @@
 {"device_id":"xiaomi-surya","step_id":"days-without-reboot","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"photo-taken","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
 {"device_id":"xiaomi-surya","step_id":"standby-current","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"no suite result for its proof in this base's runs; nobody checked","updated":"2026-11-18"}
-{"device_id":"xiaomi-surya","step_id":"test-layer-boots","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/surya-lab does not claim this step.","updated":"2026-11-26"}
-{"device_id":"xiaomi-surya","step_id":"display-any-order","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/surya-lab does not claim this step.","updated":"2026-11-26"}
-{"device_id":"xiaomi-surya","step_id":"storage-full-speed","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/surya-lab does not claim this step.","updated":"2026-11-26"}
+{"device_id":"xiaomi-surya","step_id":"test-layer-boots","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/surya-lab does not claim this step.","updated":"2026-11-27"}
+{"device_id":"xiaomi-surya","step_id":"display-any-order","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/surya-lab does not claim this step.","updated":"2026-11-27"}
+{"device_id":"xiaomi-surya","step_id":"storage-full-speed","status":"unknown","proof":null,"run":null,"proven_on":null,"notes":"Not known yet: linux-phone-oco/surya-lab does not claim this step.","updated":"2026-11-27"}
