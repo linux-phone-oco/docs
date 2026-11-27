@@ -9587,6 +9587,9 @@ Note
 Opened
 : 2026-11-27
 
+Waits
+: the author's word on decision 2026-11-27-osfact-own-rust-in-lab-tools (a recommendation until then; the rest of the osfact chain is blocked by this item)
+
 Needs
 : build
 
@@ -9809,3 +9812,34 @@ Proof
 
 About
 : image-factory-any-distro-any-phone
+
+
+<a id="attended-pin-manifest-0-53"></a>
+### lpoco-attended's manifest pin moves to 0.53.0 with its fixtures, so rhizoid's bump passes (lab-tools #472)
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: rhizoid's bump lab-tools #472 (rhizoid/bump/lpoco-manifest-0.53.0, opened 2026-11-27) fails build, test, lint: attended's scaffold test check_dry_runs_every_procedure_and_names_the_one_that_fails, 15 passed 1 failed. As with 0.51.0, the builder moves attended's manifest pin itself in the same change as its fixtures and code, then closes #472 as carried.
+
+Opened
+: 2026-11-27
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools CI green with lpoco-attended pinned to lpoco-manifest-v0.53.0, scaffold tests included; #472 closed as carried
+
+Rank
+: 1
+
+About
+: attended-pin-is-one-pin
