@@ -1236,3 +1236,34 @@ Note
 
 Last update
 : 2026-11-23
+
+
+<a id="pmic-wdt-s2-type"></a>
+### watchdog: pm8916_wdt: set the reset type with S2 disabled and take it from qcom,s2-type
+
+Upstream
+: linux-watchdog
+
+Form
+: patch
+
+State
+: draft
+
+From work
+: 2026-11-27-topic-lists-made-before-kernel-assemble-s-record
+
+About
+: deep-sleep
+
+Local ref
+: linux-phone-oco/linux topic/pmic-wdt-s2-type on v7.3 (two patches; walleye item walleye-wdt-s2-type-topic-branch)
+
+Carried in
+: fork-linux/topic/pmic-wdt-s2-type
+
+Note
+: Retagged 2026-11-27 (subjects only, trees equal): OURS(pmic-wdt-s2-type). The binding for qcom,s2-type is a later patch (walleye item walleye-wdt-s2-binding-patch). Upstream only if the bites say a warm type is wanted.
+
+Last update
+: 2026-11-27
