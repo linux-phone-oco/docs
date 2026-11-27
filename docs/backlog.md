@@ -9473,10 +9473,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: dropped
 
 Note
-: Walleye's own base to do (its builder): declare repo, rev, crate, bin and sha256 8f141f1b2973fd8fa1eaa433f55c26ca60538395c12407cb39c24c721ecf17f8 for walleye-reboot (measured, research part-real-crate-walleye-reboot-builds); measure walleye-nfc-up the same way; the shas of [images.walleye-reboot] and every image packing it change once. The rev must be a commit that holds the crate and its Cargo.lock.
+: Moved to google-walleye-lab's base (walleye's own work, its builder; decision 2026-11-25-docs-own-build-items-the-site-its-checks-go-to keeps walleye rows out of the lab-tools lane). Carried there: declare [part_builds.walleye-reboot] (sha 8f141f1b2973fd8fa1eaa433f55c26ca60538395c12407cb39c24c721ecf17f8, research part-real-crate-walleye-reboot-builds) and walleye-nfc-up, retire build-reboot-bin.sh and build-nfc-up-bin.sh; the rev holds the crate and its Cargo.lock.
 
 Opened
 : 2026-11-27
