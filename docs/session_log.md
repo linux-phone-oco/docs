@@ -7214,3 +7214,27 @@ Rejected
 
 About
 : part-ramdisk-packs-parts
+
+---
+
+
+<a id="2026-11-27-part-busybox-recipe"></a>
+### part-busybox-recipe: busybox as a nixpkgs part
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-27
+
+Done
+: Added the nixpkgs source to [part_builds] (manifest PartSource, part.nix, ensure_part), tests first: manifest edge cases, a nix build proved by --rebuild, a wrong-sha refusal; programmer review applied (source() a Result, edge tests, docs); landed as lab-tools#470, read back from main. gen_init_cpio split to part-gen-init-cpio-pin.
+
+Considered
+: Where a recipe form for C programs belongs: a nixpkgs attribute in the existing table was the least new surface.
+
+Rejected
+: A second recipe kind and porting build-busybox.sh into Nix (see the decision).
+
+About
+: part-busybox-recipe
