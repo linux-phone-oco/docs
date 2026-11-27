@@ -9542,7 +9542,7 @@ About
 
 
 <a id="image-factory-any-distro-any-phone"></a>
-### Research: how lab-tools builds a phone's rolling image with a factory that depends on neither the distro nor the phone
+### Research: os-factory (osfact) - how lab-tools builds a device's rolling image with a factory that depends on neither the distro nor the device (any device, phones first), and where it lives
 
 Project
 : linux-phone-oco/lab-tools
@@ -9551,7 +9551,7 @@ Status
 : open
 
 Note
-: The author's turn 2026-11-27 (session log 2026-11-27-author-image-factory-any-distro). Three inputs - the device's declaration in device.toml (kernel list, firmware, boot format, install steps), a distro profile (base, package format, package set), the proven parts - and one output: an installable image and its install command. Read what we have first: decisions 2026-11-19-device-layer-declared-once, 2026-11-19-base-distro, 2026-11-19-base-distro-any-arm-base, 2026-11-24-plain-alpine-not-nura, 2026-11-23-image-recipes-on-nix-fixed-output-paths; lpoco layer pack (apk/rpm/arch) and layer export; image ensure, recipes and [part_builds]; kernel assemble's int/ tags. Then how others do it: mkosi, debos, KIWI, Buildroot, Yocto, OpenWrt ImageBuilder, distrobuilder, NixOS images, alpine mkimage, Mobian/Droidian recipes; pmbootstrap only as landscape. Say whether to build on one of them (upstream first) or write our own in Rust; Rust for logic, no Python. A research-lead, the capable model; started by orchestration when nothing else runs.
+: The author's turns 2026-11-27 (session log 2026-11-27-author-image-factory-any-distro and 2026-11-27-author-os-factory-any-device). Scope: any device, not only phones; developed from phones first. Working name os-factory, shorthand osfact. Three inputs - the device's declaration (for a phone device.toml: kernel list, firmware, boot format, install steps), a distro profile (base, package format, package set), the proven parts - and one output: an installable image and its install command. Home, decided by this research, with the author's lean as the default to test: grow it inside lab-tools as its own extractable crate(s) named osfact, its own release tag prefix (osfact-vX), its own docs folder, depending on no lpoco or phone crate (lab-tools depends on it, never the reverse), with the condition for extracting it to grenudi/os-factory written down (for example a second user outside linux-phone-oco). Read what we have first: decisions 2026-11-19-device-layer-declared-once, 2026-11-19-base-distro, 2026-11-19-base-distro-any-arm-base, 2026-11-24-plain-alpine-not-nura, 2026-11-23-image-recipes-on-nix-fixed-output-paths; lpoco layer pack (apk/rpm/arch) and layer export; image ensure, recipes and [part_builds]; kernel assemble's int/ tags. Then how others do it: mkosi, debos, KIWI, Buildroot, Yocto, OpenWrt ImageBuilder, distrobuilder, NixOS images, alpine mkimage, Mobian/Droidian recipes; pmbootstrap only as landscape. Say whether to build on one of them (upstream first) or write our own in Rust; Rust for logic, no Python. One research-lead, the capable model; the author starts it from orchestration's card.
 
 Opened
 : 2026-11-27
@@ -9563,7 +9563,7 @@ Device
 : google-walleye
 
 Proof
-: a failing lab-tools test: the same google-walleye device declaration packs an installable walleye image for Alpine and for one other distro, each with its install command; plus a decision with what was rejected and backlog rows
+: a failing lab-tools test: the same google-walleye device declaration packs an installable walleye image for Alpine and for one other distro, each with its install command; and the boundary: osfact builds and its tests run with no lpoco crate in its dependency tree. Plus a decision with what was rejected (home included) and backlog rows
 
 Rank
 : 1
