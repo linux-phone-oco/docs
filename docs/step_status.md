@@ -737,10 +737,22 @@ Step id
 : remoteprocs-running
 
 Status
-: open
+: partial
+
+Proof
+: walleye-modem-up
+
+Run
+: walleye-modem-mss-second-boot
+
+Proven on
+: modem image ae22f965 (kernel int/walleye/ufs-off-modem/v7.3/1)
+
+Notes
+: mss runs (remoteproc 4080000 'now up', modem-up.sh passed live in run 2, PR 1270; first in run 1, PR 1265); adsp and cdsp not measured yet.
 
 Updated
-: 2026-11-18
+: 2026-11-27
 
 
 ### Row 34
@@ -4505,7 +4517,7 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-26
+: 2026-11-27
 
 
 ### Row 231
@@ -4523,7 +4535,7 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-26
+: 2026-11-27
 
 
 ### Row 232
@@ -4541,4 +4553,4 @@ Notes
 : Not known yet: linux-phone-oco/surya-lab does not claim this step.
 
 Updated
-: 2026-11-26
+: 2026-11-27
