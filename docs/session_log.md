@@ -7328,3 +7328,21 @@ Rejected
 
 About
 : image-factory-any-distro-any-phone
+
+---
+
+
+<a id="2026-11-28-author-accepts-osfact"></a>
+### The author accepts osfact's decision
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-27
+
+Done
+: The author's word in orchestration's session, verbatim (2026-11-28): "Accept it" - to decision 2026-11-27-osfact-own-rust-in-lab-tools (our own Rust in lab-tools, its own crate osfact, composing each package format's installer). Orchestration marked the decision accepted and cleared the wait on osfact-device-declaration, so the osfact build chain is on the lab-tools conveyor, one agent at a time.
+
+About
+: agnostic-layer

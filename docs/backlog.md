@@ -9587,9 +9587,6 @@ Note
 Opened
 : 2026-11-27
 
-Waits
-: the author's word on decision 2026-11-27-osfact-own-rust-in-lab-tools (a recommendation until then; the rest of the osfact chain is blocked by this item)
-
 Needs
 : build
 
