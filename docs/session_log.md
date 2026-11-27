@@ -7190,3 +7190,27 @@ Considered
 
 About
 : recipe-static-binary-part
+
+---
+
+
+<a id="2026-11-27-part-ramdisk-packs-parts"></a>
+### part-ramdisk-packs-parts done: real crate proved, ramdisk decision
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-27
+
+Done
+: Ran image ensure and --rebuild on walleye's real tools/walleye-reboot from a scratch manifest on the lab (no change to lab-tools code, none needed). Recorded the research, the ramdisk decision and two follow-ups.
+
+Considered
+: A new real-crate test in lab-tools: it would read walleye's repo, another place's; the stand-in test (ensure_part.rs) already covers the code path.
+
+Rejected
+: Editing walleye's device.toml: another session's place; handed on as walleye-adopts-part-builds.
+
+About
+: part-ramdisk-packs-parts

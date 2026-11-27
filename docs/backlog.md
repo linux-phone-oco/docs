@@ -9423,10 +9423,60 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
+: done
+
+Note
+: Decided: the ramdisk is not a recipe until busybox and gen_init_cpio are (decision 2026-11-27-the-ramdisk-is-not-a-recipe-until-its-inputs-are). Proved: real walleye-reboot builds static aarch64, --rebuild equal (research part-real-crate-walleye-reboot-builds). Follow-ups: part-busybox-recipe, walleye-adopts-part-builds.
+
+Opened
+: 2026-11-27
+
+Needs
+: build
+
+Device
+: google-walleye
+
+About
+: image-recipe-ensure-z21
+
+
+<a id="part-busybox-recipe"></a>
+### Build walleye's static busybox (build-busybox.sh) as a [part_builds] recipe, and pin gen_init_cpio, so the ramdisk can become a recipe
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
 : open
 
 Note
-: From recipe-static-binary-part. Real crate has crates.io deps, lto, panic=abort, strip: unmeasured. Record the ramdisk question as a decision.
+: From decision 2026-11-27-the-ramdisk-is-not-a-recipe-until-its-inputs-are. busybox is a C program, not a crate: part.nix builds crates only; decide the form first (a second recipe kind or a nixpkgs pkgsStatic aarch64 busybox with its sha declared).
+
+Opened
+: 2026-11-27
+
+Needs
+: build
+
+Device
+: google-walleye
+
+About
+: image-recipe-ensure-z21
+
+
+<a id="walleye-adopts-part-builds"></a>
+### walleye declares [part_builds.walleye-reboot] and [part_builds.walleye-nfc-up], retiring build-reboot-bin.sh and build-nfc-up-bin.sh
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Walleye's own base to do (its builder): declare repo, rev, crate, bin and sha256 8f141f1b2973fd8fa1eaa433f55c26ca60538395c12407cb39c24c721ecf17f8 for walleye-reboot (measured, research part-real-crate-walleye-reboot-builds); measure walleye-nfc-up the same way; the shas of [images.walleye-reboot] and every image packing it change once. The rev must be a commit that holds the crate and its Cargo.lock.
 
 Opened
 : 2026-11-27

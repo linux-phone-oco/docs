@@ -2664,3 +2664,25 @@ Sources
 
 About
 : base-distro
+
+
+<a id="part-real-crate-walleye-reboot-builds"></a>
+### part-real-crate-walleye-reboot-builds
+
+Brief
+: walleye-reboot (crates.io deps, lto, panic=abort, strip) builds static aarch64 in Nix to 8f141f1b, --rebuild equal; it differs from the script's fd73925b
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-27
+
+Question
+: Does [part_builds.NAME] hold for walleye's real tools/walleye-reboot (argenv-resolve and libc from crates.io, lto, panic=abort, strip), and does --rebuild prove it?
+
+Found
+: Measured 2026-11-27 on the lab, lpoco 0.53.7, crate at google-walleye-lab commit 58672498 (crate tools/walleye-reboot). With a declared zero-ish sha, Nix built it (crate tests, vendored crates from Cargo.lock, std from source, 32 s) and printed the hash: 8f141f1b2973fd8fa1eaa433f55c26ca60538395c12407cb39c24c721ecf17f8. With that declared, ensure served it from the store and ensure --rebuild said 'rebuilt from its recipe, equal to its declared sha256' (nix-build --check). file: ELF aarch64, statically linked, stripped, 1059104 bytes. The old script build-reboot-bin.sh (cross gcc from the host, not Nix's) made fd73925b, 994064 bytes: the two toolchains give different bytes, so walleye adopting the part changes the sha of [images.walleye-reboot] once (and of every image that packs it). Not measured: walleye-nfc-up (same shape, expected alike); two machines (one lab machine only).
+
+About
+: part-ramdisk-packs-parts

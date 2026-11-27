@@ -3497,3 +3497,31 @@ About
 
 Research
 : image-recipes-how-it-stands
+
+
+<a id="2026-11-27-the-ramdisk-is-not-a-recipe-until-its-inputs-are"></a>
+### 2026-11-27-the-ramdisk-is-not-a-recipe-until-its-inputs-are
+
+Brief
+: A ramdisk stays a seed input of an image recipe until busybox and gen_init_cpio are recipes; parts are proved by their own recipe, then packed
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-27
+
+Decision
+: The ramdisk that packs part binaries is not made a recipe now. It is packed by walleye's build-initramfs.sh from busybox (build-busybox.sh, hand-built), gen_init_cpio (a built kernel tree), the roof's init (lpoco bringup initramfs init) and the parts; of these only the init and the parts are recipes or declared. image --rebuild names the ramdisk as unproved (seed only), which is true. The parts it packs (walleye-reboot, walleye-nfc-up) are proved by [part_builds.NAME] on their own: shown for the real walleye-reboot (research part-real-crate-walleye-reboot-builds). The ramdisk becomes a recipe when busybox is a part build and gen_init_cpio is pinned apart from a kernel tree: backlog items part-busybox-recipe and walleye-adopts-part-builds.
+
+Why
+: Measured 2026-11-27: the real crate builds and rebuilds equal; the ramdisk's other inputs are not yet recipes, so a ramdisk recipe now would name hand-built files as inputs and prove nothing more than the seed already does.
+
+Rejected
+: A ramdisk recipe now: its busybox and gen_init_cpio inputs are not reproducible recipes, so --rebuild could not prove it. Packing the parts inside part.nix: it would tie the part recipe to one device's ramdisk layout and a second device would copy it. Keeping the script's sha fd73925b as the part's declared sha: Nix's toolchain builds other bytes, and forcing the script's toolchain into Nix was not worth a changed target.
+
+About
+: part-ramdisk-packs-parts
+
+Research
+: part-real-crate-walleye-reboot-builds
