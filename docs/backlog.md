@@ -9539,3 +9539,34 @@ Device
 
 About
 : image-recipe-ensure-z21
+
+
+<a id="image-factory-any-distro-any-phone"></a>
+### Research: how lab-tools builds a phone's rolling image with a factory that depends on neither the distro nor the phone
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The author's turn 2026-11-27 (session log 2026-11-27-author-image-factory-any-distro). Three inputs - the device's declaration in device.toml (kernel list, firmware, boot format, install steps), a distro profile (base, package format, package set), the proven parts - and one output: an installable image and its install command. Read what we have first: decisions 2026-11-19-device-layer-declared-once, 2026-11-19-base-distro, 2026-11-19-base-distro-any-arm-base, 2026-11-24-plain-alpine-not-nura, 2026-11-23-image-recipes-on-nix-fixed-output-paths; lpoco layer pack (apk/rpm/arch) and layer export; image ensure, recipes and [part_builds]; kernel assemble's int/ tags. Then how others do it: mkosi, debos, KIWI, Buildroot, Yocto, OpenWrt ImageBuilder, distrobuilder, NixOS images, alpine mkimage, Mobian/Droidian recipes; pmbootstrap only as landscape. Say whether to build on one of them (upstream first) or write our own in Rust; Rust for logic, no Python. A research-lead, the capable model; started by orchestration when nothing else runs.
+
+Opened
+: 2026-11-27
+
+Needs
+: research
+
+Device
+: google-walleye
+
+Proof
+: a failing lab-tools test: the same google-walleye device declaration packs an installable walleye image for Alpine and for one other distro, each with its install command; plus a decision with what was rejected and backlog rows
+
+Rank
+: 1
+
+About
+: agnostic-layer
