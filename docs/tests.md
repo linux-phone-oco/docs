@@ -715,3 +715,16 @@ Proves
 
 Says
 : after a suspend the sensors daemon (hexagonrpcd-adsp-sensorspd) was stopped before it and runs again after it, and a sensor gives a reading; run in the test layer, with no shell
+
+
+<a id="walleye-modem-up"></a>
+### walleye-modem-up
+
+Component id
+: modem-data
+
+Proves
+: present
+
+Says
+: Walleye's modem is up (tests/health/base/modem-up.sh, google-walleye-lab #1267): remoteproc 4080000.remoteproc (qcom-q6v5-mss) is running and qrtr lists services 2 (device management) and 21 (the modem's embedded file system) on node 0; calls, SIM and data are not proved
