@@ -3525,3 +3525,28 @@ About
 
 Research
 : part-real-crate-walleye-reboot-builds
+
+
+<a id="2026-11-27-topic-lists-made-before-kernel-assemble-s-record"></a>
+### 2026-11-27-topic-lists-made-before-kernel-assemble-s-record
+
+Brief
+: Topic lists made before kernel assemble's record check are retagged, not let through
+
+Project
+: linux-phone-oco/docs
+
+Date
+: 2026-11-27
+
+Decision
+: When kernel assemble refuses a list whose carried commits lack TAG(item) subjects or whose item has no upstream-item row, the lane retags its topic branches: commit subjects only, trees unchanged (range-diff before and after shows no code change, tip tree hash equal), and records the missing upstream-item rows (tad q carried) - then assembles. The judge stays as it is; first case: walleye's topics (wake-in-suspend, ufs-match-android, pmic-wdt-s2-type, ...), google-walleye-lab #1247.
+
+Why
+: The check is decision 2026-11-23-structure-kernel-topics-and-integration's record: every carried commit says where it stands upstream (Android's and ChromeOS's UPSTREAM/BACKPORT/FROMGIT/FROMLIST convention), so a kernel's int/ tag is read off the base, not off memory. Retagging costs one rewrite of subjects that a range-diff proves harmless; the shipped images keep their int/ tags, which stay as they are.
+
+Rejected
+: Ease judge for lists made before it (a date or a grandfather list): the unrecorded commits stay unrecorded and every later list inherits the exception; a per-list switch to skip the check: the check becomes optional
+
+About
+: bringup-steps
