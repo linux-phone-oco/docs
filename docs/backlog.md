@@ -10087,10 +10087,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: The skeleton's last open question (osfact-pack-alpine-walleye, lab-tools #481: how the root image reaches the phone from a fastboot boot). Walleye already proves the way: decisions 2026-11-27-walleye-mm-runs-in-a-pushed-alpine-rootfs and 2026-11-28-walleye-modem-push-the-rootfs-compressed (google-walleye-lab) push an aarch64 Alpine rootfs compressed into RAM over USB and enter it, nothing flashed. Generalise that into install.toml steps osfact runs (no device name in osfact's source): boot IMG from RAM; wait for the declared connection; push ROOT compressed to a RAM path; verify its sha256 on the device; enter it (switch_root, or chroot as walleye does today - the builder records which, with what it rejects); on any failure the declared way back. Move walleye's push code into osfact rather than copy it.
+: Landed lab-tools #482 (d7e57a7): osfact install now boots, pushes compressed with the sha256 checked on the device, enters by chroot, takes the way back on a failure; host tests on a stand-in and loopback sockets pass. Not yet run on a phone: walleye's keeper, witnessed, with a plan from osfact-pack-writes-the-ram-root-plan.
 
 Opened
 : 2026-11-28
@@ -10137,6 +10137,34 @@ Proof
 
 Rank
 : 5
+
+About
+: agnostic-layer
+
+
+<a id="osfact-pack-writes-the-ram-root-plan"></a>
+### osfact pack: the install.toml it writes carries the connection, the push and the enter steps from the device's declaration
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Follow-up of osfact-root-to-ram: install now runs push/enter plans, but pack still writes only the boot-from-ram step (connection None). The declaration's [install] gains the connection, the receiver command, the root path and the command; pack emits them and compresses the root image (sha256 of the compressed file). Also, in walleye's lane: its modem-boot procedure takes osfact's push instead of its own (walleye coordinator records it).
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test: pack of the walleye fixture writes an install.toml that install::read accepts with boot, push, enter in order, the root image's sha256 that of the compressed file
 
 About
 : agnostic-layer

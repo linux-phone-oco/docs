@@ -7484,3 +7484,27 @@ Rejected
 
 About
 : osfact-pack-alpine-walleye
+
+---
+
+
+<a id="2026-11-28-osfact-root-to-ram"></a>
+### osfact install runs: boot, push compressed, enter
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Built osfact install now (without --dry-run): Device trait with device::Live (fastboot boot, a root shell over TCP with marked command ends, a pushed stream closed at its end); install.toml gained [install.connection], push and enter steps, image compression, a shell way back. Tests (seen failing first): tests/install_run.rs on a stand-in device (order, sha256 mismatch, lost connection, no connection, host sum, switch-root refused, dry run) and tests/install_live.rs on loopback sockets. Not run on a phone: that is walleye's keeper's, witnessed.
+
+Considered
+: Where the receiver lives: kept as the plan's own command (data) rather than a script in osfact.
+
+Rejected
+: Copying walleye's phone.rs and modem_boot.rs push code: the follow-up is that walleye's procedure calls osfact instead (walleye lane); osfact has its own tested copy of the small parts it needs.
+
+About
+: osfact-root-to-ram
