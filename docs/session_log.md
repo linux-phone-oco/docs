@@ -7652,3 +7652,27 @@ Rejected
 
 About
 : osfact-pack-trusts-the-profile-keys
+
+---
+
+
+<a id="2026-11-28-osfact-receiver-job-control"></a>
+### osfact receiver job control: built, held by a red main
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Receiver line gets </dev/null; pty (bash -i via script) stand-in tests, old line seen stopped first; PR 501 open.
+
+Considered
+: Taking walleye's Shell::background as is: osfact's shell() already sends the line alone, so only the input redirect was missing.
+
+Rejected
+: Hand-editing the lpoco/health/tone versions to 0.54.6 to get green: release machinery, its own item.
+
+About
+: agnostic-layer

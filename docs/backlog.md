@@ -10332,10 +10332,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: osfact's first phone run (google-walleye-lab #1378, osfact 0.1.1, walleye's real parts): the image booted from RAM, but install now stopped at the push - 'receiver did not end within 60 s', also with nc -w 5; the way back worked, phone unchanged. Walleye met the same: a backgrounded nc in the busybox telnet shell is stopped by job control when it holds the tty's input (google-walleye-lab item walleye-reboot-send-nc-job-control, commit 8dc2653, session log 2026-11-25-nc-job-control); its fix sends the listener as its own line with </dev/null and no markers (walleye-tries Shell::background). Do the same in osfact's receiver start, taking walleye's code rather than copying the idea loosely. The stand-in tests pass today because a pipe hides the tty: the stand-in shell must run on a pty with job control, as busybox's telnetd gives it. Where else: any lab-tools step that backgrounds a listener over a telnet shell (devlab, lpoco-attended) - name each one found in the item's close, fix in the same change if small. Release, and tell orchestration the tag for walleye's retry.
+: Built and tested: install::receiver_line starts the receiver with </dev/null; pty job-control tests in osfact/tests/install_live.rs (old line seen stopped, new takes the push, sha256 equal). Reviewed by programmer. lab-tools PR #501 open, red only on the family-version defect (item release-family-version-group-skipped-members). Not released. Open: whether busybox nc -l keeps receiving at stdin EOF - only the keeper's phone run shows it. No other lab-tools step backgrounds a listener over telnet.
 
 Opened
 : 2026-11-28
@@ -10351,6 +10351,34 @@ Proof
 
 Rank
 : 1
+
+About
+: agnostic-layer
+
+
+<a id="release-family-version-group-skipped-members"></a>
+### main's CI is red after release #499: lpoco, lpoco-health, lpoco-tone and lpoco-ffs-acm stayed 0.54.5 while the rest went to 0.54.6
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Found by the receiver-job-control builder 2026-11-28: lab-tools PR #501 failed 'build, test, lint' on lpoco/tests/mcp.rs ('lpoco-lab is 0.54.6 but lpoco is 0.54.5; the family runs one version'). Main's own ci run on #499 failed the same; PR #500 too. #497 bumped every member, #499 only the changed ones, although release-plz.toml has version_group = lpoco. Fix: why release-plz skipped the unchanged members (config or release-plz), and align the versions; then #501 can land.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test: a release PR that changes one family member bumps every member of the version_group (release_family.rs); main's cargo test --workspace green
 
 About
 : agnostic-layer
