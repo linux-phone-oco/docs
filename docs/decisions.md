@@ -3875,3 +3875,28 @@ Rejected
 
 About
 : osfact-enter-binds
+
+
+<a id="2026-11-28-osfact-s-tables-in-device-toml-are-read-and"></a>
+### 2026-11-28-osfact-s-tables-in-device-toml-are-read-and
+
+Brief
+: osfact's tables in device.toml are read and checked by osfact alone; lpoco-manifest's reader keeps them unread, its schema still embeds osfact's types
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-28
+
+Decision
+: Amends 2026-11-28-manifest-takes-osfact-s-declaration-types. One reader per table: the keys osfact owns ([install] and its sub-tables; [device] arch and serial_env, which osfact reads; any later osfact key) are deserialized and checked by osfact only - osfact check and osfact pack, strict, unknown keys refused naming file and field. lpoco-manifest's reader (what lpoco-attended, lpoco-lab, lpoco-bringup and devlab use) keeps those tables as unread values, as [[install.step]] already is: it neither types nor refuses them, so a new osfact key needs no lpoco-manifest release, no lpoco-attended pin move or release, and no bump in a device lab. lpoco-manifest's generated JSON Schema still embeds osfact's types (one source, schemars), so device.toml keeps autocomplete and inline errors; that schema is regenerated with the family release, which already happens whenever osfact changes (decision 2026-11-28-every-family-member-includes-osfact). lpoco-lab manifest check validates osfact's tables by calling osfact's own check, so CI still refuses a misspelled osfact key. Then a new osfact key reaches a lab as: an osfact release, rhizoid's bump of the lab's install-osfact.sh, the lab's own device.toml line.
+
+Why
+: Five times on 2026-11-27..28 a new osfact key set off lpoco-manifest -> lpoco-attended -> lab releases and bumps (arch, the install tables, serial_env, back_on, check_wait, binds), each by hand, costing the author's tokens and an hour of turns; the cause is two strict readers of one table, the second (lpoco-manifest's) having no use for the keys - lpoco-attended never reads [install]. One owner per kind of thing: the table's owner reads it.
+
+Rejected
+: Gather the next osfact schema changes into one manifest release (the Top's first example): fewer chains, same shape - each batch still walks manifest -> attended -> lab, and a batch waits on its slowest key. lpoco-manifest's schema referencing osfact's published schema by URL instead of embedding: device.toml's one #:schema header would then pin two releases, and editors differ in following a remote $ref. lpoco-manifest dropping deny_unknown_fields everywhere: a misspelled lpoco key would pass.
+
+About
+: agnostic-layer

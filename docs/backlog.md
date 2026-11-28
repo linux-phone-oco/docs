@@ -10478,3 +10478,34 @@ Rank
 
 About
 : agnostic-layer
+
+
+<a id="osfact-tables-one-reader"></a>
+### lpoco-manifest's reader keeps osfact's tables unread (osfact alone checks them), so a new osfact key needs no manifest, attended or lab release
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-28-osfact-s-tables-in-device-toml-are-read-and. lpoco-manifest: the osfact-owned keys ([install] and sub-tables, [device] arch and serial_env) become unread values in the reader's types (as [[install.step]] is), while the generated schema still embeds osfact's types; lpoco-lab manifest check calls osfact's own check for those tables; lpoco-attended's pin moves once to this manifest (the last chain of its kind). A test proves the point: a device.toml with an osfact key lpoco-manifest's types have never seen is read by lpoco-attended's manifest reader without error, and refused by lpoco-lab manifest check (via osfact) when misspelled. Release, and tell orchestration the tags.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools tests: (1) lpoco-manifest's reader reads a device.toml whose [install.root] has a key osfact adds after this release (a fixture key) without error; (2) lpoco-lab manifest check on the same file with that key misspelled fails naming it, through osfact; (3) the generated schema still names osfact's install keys; (4) boundary.rs passes (osfact depends on no lpoco crate)
+
+Rank
+: 1
+
+About
+: agnostic-layer
