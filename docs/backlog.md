@@ -10366,10 +10366,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Found by the receiver-job-control builder 2026-11-28: lab-tools PR #501 failed 'build, test, lint' on lpoco/tests/mcp.rs ('lpoco-lab is 0.54.6 but lpoco is 0.54.5; the family runs one version'). Main's own ci run on #499 failed the same; PR #500 too. #497 bumped every member, #499 only the changed ones, although release-plz.toml has version_group = lpoco. Fix: why release-plz skipped the unchanged members (config or release-plz), and align the versions; then #501 can land.
+: Fixed by lab-tools #503 (decision 2026-11-28-every-family-member-includes-osfact); proof: release_family test a_release_moves_lpoco_manifest_only_when_manifest_changed, main cargo test green; #501 can land.
 
 Opened
 : 2026-11-28

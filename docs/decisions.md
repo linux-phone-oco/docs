@@ -3800,3 +3800,28 @@ Rejected
 
 About
 : agnostic-layer
+
+
+<a id="2026-11-28-every-family-member-includes-osfact"></a>
+### 2026-11-28-every-family-member-includes-osfact
+
+Brief
+: Every lpoco family member lists osfact in changelog_include, so a release reaching the family only through dependencies moves all of it
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-28
+
+Decision
+: release-plz.toml: each version_group member lists osfact (as lpoco-manifest) in changelog_include. release-plz (core 0.43.0, updater.rs group_has_release_commit) bumps a group member only for a release-kind commit of its own or of an included package; dependency bumps do not reach group members. The four stale members were aligned to 0.54.6 by hand (Cargo.toml, lock, changelog) so main is green; release-plz tagged them.
+
+Why
+: Release #499 (osfact -> lpoco-manifest -> bringup/lab/host/layer) left lpoco, health, tone, ffs-acm at 0.54.5 and main's CI red. Reproduced by fixture scenario 3 in lpoco/tests/release_family.rs (seen failing), green after the change; lab-tools PR #503.
+
+Rejected
+: Cutting the osfact path dependency of lpoco-manifest: the same gap stays for any chain (osfact -> bringup alone). A dummy dependency of each member on osfact: hides the reason and moves them by a code dependency. Waiting for the next release PR to align: main and PR #501 stay red until then.
+
+About
+: agnostic-layer
