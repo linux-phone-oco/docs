@@ -10332,10 +10332,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: Built and tested: install::receiver_line starts the receiver with </dev/null; pty job-control tests in osfact/tests/install_live.rs (old line seen stopped, new takes the push, sha256 equal). Reviewed by programmer. lab-tools PR #501 open, red only on the family-version defect (item release-family-version-group-skipped-members). Not released. Open: whether busybox nc -l keeps receiving at stdin EOF - only the keeper's phone run shows it. No other lab-tools step backgrounds a listener over telnet.
+: Landed by lab-tools #501 (fix(osfact): the push receiver starts with its input closed); released as osfact-v0.1.2 (release #505, tag e5e80f8 holds the fix; assets osfact-x86_64 + .sha256). Proof: pty job-control tests in osfact/tests/install_live.rs, old line seen stopped first. Open for the keeper's phone run only: whether busybox nc -l keeps receiving at stdin EOF.
 
 Opened
 : 2026-11-28
