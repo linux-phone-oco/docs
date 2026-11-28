@@ -3725,3 +3725,28 @@ Rejected
 
 About
 : osfact-pack-writes-the-ram-root-plan
+
+
+<a id="2026-11-28-manifest-takes-osfact-s-declaration-types"></a>
+### 2026-11-28-manifest-takes-osfact-s-declaration-types
+
+Brief
+: lpoco-manifest takes [device] arch and [install] from osfact::declaration: one definition, arch a closed set, unknown install keys refused
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-28
+
+Decision
+: osfact::declaration holds Arch (aarch64, armv7, armhf, x86_64, x86, riscv64), InstallTables (connection, root, way_back, and step accepted unread), Root and WayBackCommand, with JSON Schema derived; osfact pack and lpoco-manifest both read them. osfact's install Connection is renamed InstallConnection in the schema so it does not displace the lab's Connection. Released as lpoco-manifest 0.55.0 / lpoco-lab 0.54.2 (lab-tools #484, #485).
+
+Why
+: walleye could not land its arch line: lpoco-lab 0.54.1 refused 'unknown field arch'. osfact accepted any string for arch, but the item's proof needs arm65 refused, so the set is closed. osfact depends on no lpoco crate (boundary.rs), so the shared types live in osfact.
+
+Rejected
+: A copy of the enum and tables in lpoco-manifest: two definitions drift. Keeping osfact lenient on unknown [install] keys: the manifest must refuse a misspelt table, and one type serves both. A schema key rename of lpoco-manifest's Connection: would change the committed schema for every reader.
+
+About
+: manifest-device-arch

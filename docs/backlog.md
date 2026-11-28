@@ -10118,10 +10118,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Seen by walleye 2026-11-28: osfact reads [device] arch (decision 2026-11-28-osfact-pack-reads-arch-from-the-declaration, lab-tools #481), but lpoco-lab 0.54.1's manifest reader refuses it ('unknown field arch, expected codename'), so google-walleye-lab cannot land it (its branch coordinator/device-arch holds the pin to 0.54.1 plus the arch line, waiting for the release that reads it). Add arch to lpoco-manifest's Device (the values osfact accepts, one source: take osfact's type if the dependency direction allows - lab-tools depends on osfact, never the reverse - else the same enum), in the generated schema, and release. osfact-device-declaration later makes osfact's types the one source for the whole table; this is the one field now. Then tell walleye's coordinator the lpoco-lab release tag. Widened 2026-11-28 after osfact-pack-writes-the-ram-root-plan (lab-tools #483): osfact pack also reads [install.connection], [install.root] and [install.way_back], and lpoco-manifest's top level refuses unknown tables, so walleye's device.toml cannot carry them either. Take osfact's types for these (lpoco-manifest may depend on osfact; osfact never on lpoco - boundary.rs), so there is one definition; osfact-device-declaration later does the same for the rest of the table.
+: Done 2026-11-28: lab-tools #484, released lpoco-lab-v0.54.2 / lpoco-manifest-v0.55.0 (#485). Proof: manifest/tests/install_tables.rs. Follow-ups: [device] serial_env is not in the manifest yet; osfact-device-declaration replaces the opaque step.
 
 Opened
 : 2026-11-28
