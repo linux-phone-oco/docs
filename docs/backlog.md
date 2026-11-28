@@ -10487,10 +10487,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-28-osfact-s-tables-in-device-toml-are-read-and. lpoco-manifest: the osfact-owned keys ([install] and sub-tables, [device] arch and serial_env) become unread values in the reader's types (as [[install.step]] is), while the generated schema still embeds osfact's types; lpoco-lab manifest check calls osfact's own check for those tables; lpoco-attended's pin moves once to this manifest (the last chain of its kind). A test proves the point: a device.toml with an osfact key lpoco-manifest's types have never seen is read by lpoco-attended's manifest reader without error, and refused by lpoco-lab manifest check (via osfact) when misspelled. Release, and tell orchestration the tags.
+: Landed lab-tools #518, released #519: lpoco-manifest 0.56.8, osfact 0.4.1, lpoco-lab 0.54.12. Proof: manifest/tests/install_tables.rs (a later osfact key read; schema still names osfact keys), osfact/tests/declaration_check.rs, devlab/tests/manifest_check.rs (misspelled osfact key refused through osfact), boundary.rs passes. Left to orchestration: rhizoid bump moves attended's lpoco-manifest pin (now v0.56.7) to v0.56.8.
 
 Opened
 : 2026-11-28
