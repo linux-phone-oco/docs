@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.21.0](https://github.com/linux-phone-oco/docs/compare/v0.20.0...v0.21.0) (2026-11-28)
+
+
+### Features
+
+* backlog field image_sha256, the go's image (idealkb --image-sha256) ([#860](https://github.com/linux-phone-oco/docs/issues/860)) ([2306e67](https://github.com/linux-phone-oco/docs/commit/2306e676b0f4c9db646e0abafb2ec97473802728))
+* **graph:** [[pins]] coverage of lab.toml [tools] and the labs' attended steps crates ([#807](https://github.com/linux-phone-oco/docs/issues/807)) ([bf703b8](https://github.com/linux-phone-oco/docs/commit/bf703b8cdd12e8b55b3a337bd6f389cb31de165d))
+* **graph:** [bump] land through ideal-agent's land, for the rhizoid-bump timer ([#795](https://github.com/linux-phone-oco/docs/issues/795)) ([c908682](https://github.com/linux-phone-oco/docs/commit/c908682c93a6aff03ac14acfa2e9a7a88db982ff))
+* **graph:** lpoco-attended's lpoco-manifest tag as a tool edge, moved by rhizoid-bump ([#803](https://github.com/linux-phone-oco/docs/issues/803)) ([830a908](https://github.com/linux-phone-oco/docs/commit/830a90844a9e6c461e89ea6b0c785d416c493fcd))
+* **graph:** moved_by on the three timer-moved edges (follow, tad, idealkb) ([#792](https://github.com/linux-phone-oco/docs/issues/792)) ([e7a0ade](https://github.com/linux-phone-oco/docs/commit/e7a0ade99097d551c9d16effcb56cdbb52d2c1ba))
+* **graph:** rhizoid's own pin in lab.toml as a tool edge, so bump moves it ([#777](https://github.com/linux-phone-oco/docs/issues/777)) ([ff8b98f](https://github.com/linux-phone-oco/docs/commit/ff8b98f7d0b677e91e56ec8f03056d5bdb51512c))
+* **graph:** the kernel fork's integration edge and import, sxmo-utils' and the kernel's clones ([#772](https://github.com/linux-phone-oco/docs/issues/772)) ([5c5085d](https://github.com/linux-phone-oco/docs/commit/5c5085dbc9aba6c2fc9c34798d804452aadfffe0))
+* make land-check, the graph read by this host's rhizoid; the decision to check at land ([#804](https://github.com/linux-phone-oco/docs/issues/804)) ([baa5639](https://github.com/linux-phone-oco/docs/commit/baa5639cd14b41233b5ac3d11cea4a12ca70998e))
+* rhizoid.graph.toml, the project's repository graph, with the attended pins and their gate ([#767](https://github.com/linux-phone-oco/docs/issues/767)) ([cb42fce](https://github.com/linux-phone-oco/docs/commit/cb42fce0c8c8a3af722bf3cd7f07c86a8e0c44ee))
+
 ## [0.20.0](https://github.com/linux-phone-oco/docs/compare/v0.19.0...v0.20.0) (2026-11-21)
 
 
