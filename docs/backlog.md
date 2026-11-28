@@ -10323,3 +10323,34 @@ Rank
 
 About
 : agnostic-layer
+
+
+<a id="osfact-receiver-job-control"></a>
+### osfact install's push receiver starts as its own line with </dev/null, so busybox telnet job control does not stop it; the stand-in shell gets a tty
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: osfact's first phone run (google-walleye-lab #1378, osfact 0.1.1, walleye's real parts): the image booted from RAM, but install now stopped at the push - 'receiver did not end within 60 s', also with nc -w 5; the way back worked, phone unchanged. Walleye met the same: a backgrounded nc in the busybox telnet shell is stopped by job control when it holds the tty's input (google-walleye-lab item walleye-reboot-send-nc-job-control, commit 8dc2653, session log 2026-11-25-nc-job-control); its fix sends the listener as its own line with </dev/null and no markers (walleye-tries Shell::background). Do the same in osfact's receiver start, taking walleye's code rather than copying the idea loosely. The stand-in tests pass today because a pipe hides the tty: the stand-in shell must run on a pty with job control, as busybox's telnetd gives it. Where else: any lab-tools step that backgrounds a listener over a telnet shell (devlab, lpoco-attended) - name each one found in the item's close, fix in the same change if small. Release, and tell orchestration the tag for walleye's retry.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test: a stand-in shell on a pty with job control (busybox sh -i or an equivalent) receives the push and the sha256 matches; the same test with the old receiver line fails (seen failing first); osfact released
+
+Rank
+: 1
+
+About
+: agnostic-layer
