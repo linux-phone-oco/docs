@@ -7436,3 +7436,27 @@ Rejected
 
 About
 : osfact-boot-adapter
+
+---
+
+
+<a id="2026-11-28-builder-osfact-root-tree-apk"></a>
+### osfact rootfs now landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Built osfact rootfs now (pkgformat interface, apk adapter, distro profile reader): proof test first seen failing, then green incl. the real build. The pin check caught that the fixture said Alpine 3.23 while the pinned hash is the v3.24 file (walleye's cli.rs default 3.24): fixed. apk --usermode leaves bbsuid 0111, so the adapter applies the database's owners and modes through fakeroot. Programmer review: fixed curl flags, tree root 0755, malformed database lines fail, required args in argenv; landed #478.
+
+Considered
+: Applying modes by ignoring unreadable files (rejected: the image would lose bbsuid); a per-arch pin now (kept as item osfact-pins-per-arch).
+
+Rejected
+: Editing osfact/CHANGELOG.md by hand: the changelog check refuses it without a version; release-plz writes it.
+
+About
+: osfact-root-tree-apk
