@@ -10211,10 +10211,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Left by manifest-device-arch (lab-tools #484, decision 2026-11-28-manifest-takes-osfact-s-declaration-types): osfact's install plan carries serial_env (osfact/src/install.rs; every fastboot call names it, main.rs reads it), taken from the declaration's [device] serial_env, but lpoco-manifest does not read it yet, so walleye's device.toml cannot carry it. Same way as arch: osfact's type, one definition. Before the skeleton's phone run. Check there is no other field osfact reads from a device.toml that lpoco-manifest refuses ([[install.step]] is accepted unread until osfact-device-declaration).
+: Landed in lab-tools #487 (read back from main 68e40ab): osfact::declaration::Identity holds [device] codename, arch, serial_env; pack and lpoco-manifest share it; proof tests in manifest/tests/install_tables.rs and osfact/tests/pack_walleye.rs pass. Left: the manifest release PR, then walleye's device.toml may carry serial_env.
 
 Opened
 : 2026-11-28
