@@ -7787,3 +7787,27 @@ Rejected
 
 About
 : osfact-enter-binds
+
+---
+
+
+<a id="2026-11-28-lab-tools-builder-osfact-tables-one-reader"></a>
+### osfact's tables read by osfact alone
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: osfact::declaration::check is the one strict reader of [device] and [install]; lpoco-manifest keeps install, arch, serial_env and later osfact keys as unread toml values with schema from osfact's types; lpoco-lab manifest check calls osfact. Tests written first, seen failing. Reviewed by programmer: fixed a corrupted SPDX header and a stale doc.
+
+Considered
+: A flattened rest map on [device] so later osfact keys pass.
+
+Rejected
+: Strict [device] in the schema: a flatten rest map cannot carry additionalProperties false, so the schema no longer flags an unknown [device] key (check does).
+
+About
+: osfact-tables-one-reader
