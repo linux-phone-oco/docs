@@ -3675,3 +3675,28 @@ Rejected
 
 About
 : osfact-pack-alpine-walleye
+
+
+<a id="2026-11-28-osfact-enter-by-chroot"></a>
+### 2026-11-28-osfact-enter-by-chroot
+
+Brief
+: osfact install enters a pushed root by chroot in a tmpfs, after a checked push; switch_root is refused until a device needs it
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-28
+
+Decision
+: osfact install runs the plan's steps in order: boot-from-ram (fastboot boot, then the declared connection answers), push (the receiver the plan names is started on the device, the root image sent as a stream to its port, the sha256 of the received file computed ON the device and compared with the packed one; a host-side check of the file before sending too), enter (a tmpfs of size_mib at root, the compressed tar unpacked into it by the device's own gzip or xz, the file removed, the plan's command started in a chroot, the plan's check run). Any failing step runs the declared way back (fastboot reboot, or a command in the device's shell) and the error names the step and why. The receiver, ports, paths, size and command are data in install.toml, none in osfact's source. The device is a trait: device::Live is the real one, tests bring a stand-in.
+
+Why
+: Walleye already proves this way (decisions 2026-11-27-walleye-mm-runs-in-a-pushed-alpine-rootfs and 2026-11-28-walleye-modem-push-the-rootfs-compressed): the root is pushed compressed over the USB network and run chrooted, nothing flashed. A chroot keeps the init and the host's shell alive, so the run can check what it entered and take the way back on a failure; the sha256 on the far side is what proves the copy is the packed image.
+
+Rejected
+: switch_root as the first entry: it replaces the init the host's shell and the way back belong to, so the run could neither read the result nor go back on a failure; it parses as how = switch-root and is refused naming the reason until a device needs it and a way to read it exists. Hash only on the host: proves nothing about the bytes that arrived. A copy of walleye's telnet shell code: osfact has its own small marker-framed shell (the end of each command is marked by an echo spelled in two quoted halves); walleye's procedure takes osfact's later (follow-up for walleye's lane). fastboot flash of the root: osfact refuses any write to the device (item osfact-install-flash is later).
+
+About
+: osfact-root-to-ram
