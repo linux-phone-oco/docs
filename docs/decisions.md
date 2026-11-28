@@ -3825,3 +3825,28 @@ Rejected
 
 About
 : agnostic-layer
+
+
+<a id="2026-11-28-osfact-run-log-and-check-wait"></a>
+### 2026-11-28-osfact-run-log-and-check-wait
+
+Brief
+: osfact writes a run log beside install.toml (appended), enter's device lines have one source, check_wait is a declared key
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-28
+
+Decision
+: install now writes install.log beside the plan (every shell line sent and the device's answer with status and seconds since start); a failing run names the file. enter's device lines are built once (EnterLines) and read by the dry run and the run. [install.root] check_wait (seconds, default 10, at least 1, needs a check) is osfact's own type, so lpoco-manifest reads it.
+
+Why
+: osfact 0.1.2's second phone run could not tell whether enter never unpacked or 10 s was too short (google-walleye-lab #1381).
+
+Rejected
+: A --log flag (a new argument nobody asked for, yagni); replacing the log each run (a retry would destroy the evidence); NonZeroU32 for check_wait (schema minimum 1 but a larger change; zero is refused at read, naming it).
+
+About
+: osfact-enter-observable

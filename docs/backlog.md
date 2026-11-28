@@ -10397,10 +10397,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: osfact 0.1.2's second phone run (google-walleye-lab #1381): boot from RAM and push pass; enter stops - walleye's check 'test -e /mm/sbin/init' is not true within 10 s, and the run cannot tell why: osfact keeps no device-side output, so either enter never unpacks /tmp/root.tar.gz into /mm or 10 s is too short to gunzip into the 400 MiB tmpfs. (1) every shell line osfact sends and the device's answer go into the run's files (a log beside install.toml or a --log DIR), and a failing step names that file; (2) the dry run and the log say exactly what enter runs on the device (mount the tmpfs, unpack, the check, the chroot); (3) the check's wait is a declared key in [install.root] (e.g. check_wait, seconds), with today's 10 s its default - it is an osfact type, so lpoco-manifest reads it as it reads the rest (decision 2026-11-28-manifest-takes-osfact-s-declaration-types), and the release moves lpoco-attended's manifest pin as before. Release, and tell orchestration the tag.
+: Landed in lab-tools #506, released as osfact 0.2.0 and lpoco-manifest 0.56.5 (tags osfact-v0.2.0, lpoco-manifest-v0.56.5). Proof: osfact/tests/install_live.rs (log, never-holding check, check_wait, dry run, slow root) and manifest/tests/install_tables.rs passed. Next: lpoco-attended's manifest pin moves to 0.56.5 by the pin mover (bump PR not yet open when this was written; #507 is for 0.56.4, older); walleye's next phone run reads install.log beside install.toml.
 
 Opened
 : 2026-11-28
