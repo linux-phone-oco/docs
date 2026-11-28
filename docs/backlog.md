@@ -9582,7 +9582,7 @@ Status
 : open
 
 Note
-: Decision 2026-11-27-osfact-own-rust-in-lab-tools, step 1. Move the [layer] and [boot] types (and their JSON Schema part) from lpoco-manifest into osfact; add [install] (steps: write OUTPUT to PLACE via TRANSPORT, activate SLOT; {other} read at the run) as osfact/tests/fixtures/google-walleye/device.toml proposes; lpoco-manifest re-exports them so device.toml stays one file and its schema one. Add the [install] table to google-walleye-lab's device.toml (a lab change, landed by its builder or keeper; no phone change). First, because every other step reads it.
+: Decision 2026-11-27-osfact-own-rust-in-lab-tools, step 1. Move the [layer] and [boot] types (and their JSON Schema part) from lpoco-manifest into osfact; add [install] (steps: write OUTPUT to PLACE via TRANSPORT, activate SLOT; {other} read at the run) as osfact/tests/fixtures/google-walleye/device.toml proposes; lpoco-manifest re-exports them so device.toml stays one file and its schema one. Add the [install] table to google-walleye-lab's device.toml (a lab change, landed by its builder or keeper; no phone change). First, because every other step reads it. Also (left by osfact-boot-adapter, lab-tools #476): [boot] is declared twice today, lpoco-manifest's manifest::Boot and osfact::boot::Boot; this item makes osfact's the one and lpoco-manifest re-export it.
 
 Opened
 : 2026-11-27
@@ -9718,7 +9718,7 @@ Status
 : open
 
 Note
-: Decision step 2 and the boundary. Move the Android boot image writer (header v0, appended dtb) and the AVB footer from lpoco-bringup, and lpoco-layer's per-format package model and nfpm config, into osfact; lpoco-bringup and lpoco-layer call osfact (lab-tools depends on osfact, never the reverse). Their own tests move with them and stay green.
+: Decision step 2 and the boundary. Move the Android boot image writer (header v0, appended dtb) and the AVB footer from lpoco-bringup, and lpoco-layer's per-format package model and nfpm config, into osfact; lpoco-bringup and lpoco-layer call osfact (lab-tools depends on osfact, never the reverse). Their own tests move with them and stay green. Also (left by osfact-boot-adapter, lab-tools #476): the android-bootimg adapter, avb and fdt are in osfact and bringup takes them from it, but bringup still calls them directly; this item routes bringup through osfact's BootFormat trait.
 
 Opened
 : 2026-11-27
