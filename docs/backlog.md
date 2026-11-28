@@ -10340,6 +10340,9 @@ Note
 Opened
 : 2026-11-28
 
+Blocked by
+: release-family-version-group-skipped-members
+
 Needs
 : build
 
@@ -10350,7 +10353,7 @@ Proof
 : lab-tools test: a stand-in shell on a pty with job control (busybox sh -i or an equivalent) receives the push and the sha256 matches; the same test with the old receiver line fails (seen failing first); osfact released
 
 Rank
-: 1
+: 2
 
 About
 : agnostic-layer
@@ -10379,6 +10382,9 @@ Device
 
 Proof
 : lab-tools test: a release PR that changes one family member bumps every member of the version_group (release_family.rs); main's cargo test --workspace green
+
+Rank
+: 1
 
 About
 : agnostic-layer
