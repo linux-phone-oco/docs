@@ -10180,10 +10180,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: The two programmer-review findings left open by osfact-root-to-ram (lab-tools #482): (5) the way back is sent but never confirmed - after it, wait for the declared back_on connection to answer within a bound and fail loudly naming it if it does not, as lpoco-attended's back_to_known_good does (decision 2026-11-26-a-phone-s-way-back-to-its-known-good-is-declared); (8) plan values (paths, commands, sha256s from install.toml) go into shell lines unquoted - quote every value, or pass them as argv, and refuse a value that cannot be quoted. Both before osfact touches a phone.
+: Landed in lab-tools #492 (a602016), read back from main: tests on the stand-in prove the bound, the retry and kill, and every quoted line; programmer review applied. Not yet seen on a phone (keeper, witnessed).
 
 Opened
 : 2026-11-28
@@ -10230,6 +10230,34 @@ Proof
 
 Rank
 : 7
+
+About
+: agnostic-layer
+
+
+<a id="osfact-way-back-fastboot-and-walleye-back-on"></a>
+### osfact: a fastboot way back is confirmed too, and walleye's device.toml declares back_on
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Left by #492: back_on is required only for a way back via shell; a boot-only plan's fastboot reboot is still only sent (pack writes back_on: None). And google-walleye-lab's device.toml [install.way_back] has no back_on yet, so pack of the real declaration now refuses: its lane adds back_on = ["adb","-s","{serial}","get-state"] (as in osfact's fixture). The walleye part is the walleye coordinator's to record in its own base.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test: a boot-only plan without back_on is refused at read, or its fastboot way back is confirmed; pack of walleye's declaration with back_on passes
 
 About
 : agnostic-layer
