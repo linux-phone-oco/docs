@@ -7628,3 +7628,27 @@ Rejected
 
 About
 : osfact-first-release
+
+---
+
+
+<a id="2026-11-28-osfact-pack-a-relative-out-left-apk-without-its"></a>
+### osfact pack: a relative --out left apk without its keys
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Reproduced walleye's UNTRUSTED APKINDEX on the lab machine (clean, no /etc/apk): only with a relative --out. Fixed in lab-tools #498 (out_dir absolute at the edge), released osfact-v0.1.1 (#499).
+
+Considered
+: Bringing Alpine's keys into the build (the item's guess): they already come from the pinned alpine-keys package.
+
+Rejected
+: Copying keys from the host or a second key source: the profile pin already names and checks them.
+
+About
+: osfact-pack-trusts-the-profile-keys
