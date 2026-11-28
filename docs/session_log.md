@@ -7508,3 +7508,27 @@ Rejected
 
 About
 : osfact-root-to-ram
+
+---
+
+
+<a id="2026-11-28-builder-osfact-pack-ram-plan"></a>
+### osfact pack writes the RAM root plan
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Built osfact-pack-writes-the-ram-root-plan: pack gzips the root tar, writes boot+push+enter from the declaration's install tables; tests first (failing), review by programmer: fixed silent drop of orphan tables, value-for-value plan test, boot-only plan test, gzip twice and compared, no partial file on failure.
+
+Considered
+: root_tar name shared with rootfs::make_image, Measured tuple as a struct, receive/port consistency check (review findings 6-9).
+
+Rejected
+: Not done now: taste items, noted here.
+
+About
+: osfact-pack-writes-the-ram-root-plan
