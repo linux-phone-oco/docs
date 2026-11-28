@@ -10000,7 +10000,7 @@ Status
 : open
 
 Note
-: Closes osfact-walleye-alpine-skeleton; the device's [install] read from device.toml, not hard-coded; then walleye queues the phone run for its keeper (witness: the author).
+: Closes osfact-walleye-alpine-skeleton; the device's [install] read from device.toml, not hard-coded; then walleye queues the phone run for its keeper (witness: the author). The root tree in walleye's image is aarch64 (the device's arch, from its declaration), built on this x86_64 host: osfact-root-tree-apk proved the rootless build with host-arch pins; if rootfs now builds only the host's arch, making it build the device's arch is part of this item (osfact-pins-per-arch covers pins taken on another host arch, which is not needed here).
 
 Opened
 : 2026-11-28
@@ -10015,7 +10015,7 @@ Device
 : google-walleye
 
 Proof
-: the_walleye_declaration_packs_an_installable_alpine_image
+: the_walleye_declaration_packs_an_installable_alpine_image The packed image's root tree is aarch64: its /bin/busybox (or /sbin/apk) reads as an AArch64 ELF, checked in the test.
 
 Rank
 : 4
