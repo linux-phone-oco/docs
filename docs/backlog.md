@@ -10388,3 +10388,34 @@ Rank
 
 About
 : agnostic-layer
+
+
+<a id="osfact-enter-observable"></a>
+### osfact install's device-side steps keep their output in the run's files, enter says what it runs, and the enter check's wait is a declared key
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: osfact 0.1.2's second phone run (google-walleye-lab #1381): boot from RAM and push pass; enter stops - walleye's check 'test -e /mm/sbin/init' is not true within 10 s, and the run cannot tell why: osfact keeps no device-side output, so either enter never unpacks /tmp/root.tar.gz into /mm or 10 s is too short to gunzip into the 400 MiB tmpfs. (1) every shell line osfact sends and the device's answer go into the run's files (a log beside install.toml or a --log DIR), and a failing step names that file; (2) the dry run and the log say exactly what enter runs on the device (mount the tmpfs, unpack, the check, the chroot); (3) the check's wait is a declared key in [install.root] (e.g. check_wait, seconds), with today's 10 s its default - it is an osfact type, so lpoco-manifest reads it as it reads the rest (decision 2026-11-28-manifest-takes-osfact-s-declaration-types), and the release moves lpoco-attended's manifest pin as before. Release, and tell orchestration the tag.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test on the stand-in pty shell: enter writes every sent line and answer to the run's log; a check that never passes fails naming the step, the wait and the log file; check_wait = 120 in a declaration reaches the plan and the wait; the dry run prints enter's device commands; lpoco-lab manifest check accepts check_wait
+
+Rank
+: 1
+
+About
+: agnostic-layer
