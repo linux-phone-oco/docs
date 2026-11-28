@@ -97,6 +97,14 @@ followers = ["linux-phone-oco/google-walleye-lab"]
 
 # the kernel fork assembles its phones' test kernels from topics; it releases with torvalds/linux (decision
 # 2026-11-23-structure-git-flows-run-on-rhizoid, MAP.md's kernel branches)
+[[tool]]
+name = "osfact"
+source = "linux-phone-oco/lab-tools"
+tag_prefix = "osfact-v"
+pin = "bin/install-osfact.sh"
+line = 'version="${OSFACT_VERSION:-{version}}"'
+followers = ["linux-phone-oco/google-walleye-lab"]
+
 [[integration]]
 repo = "grenudi/linux"
 topics = ["topic/ITEM", "backport/ITEM/BASE"]
