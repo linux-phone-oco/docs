@@ -9587,6 +9587,9 @@ Note
 Opened
 : 2026-11-27
 
+Blocked by
+: osfact-walleye-alpine-skeleton
+
 Needs
 : build
 
@@ -9595,6 +9598,9 @@ Device
 
 Proof
 : osfact/tests/boundary.rs passes with the types in osfact; lpoco-manifest's schema test and every device.toml of the labs still read
+
+Rank
+: 3
 
 About
 : image-factory-any-distro-any-phone
@@ -9627,6 +9633,9 @@ Device
 Proof
 : a test reads the two fixture profiles and refuses an unknown format; a test finds no distro name in osfact/src
 
+Rank
+: 4
+
 About
 : image-factory-any-distro-any-phone
 
@@ -9657,6 +9666,9 @@ Device
 
 Proof
 : the Alpine half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=alpine, P:google-walleye-config in the apk database; the same sha256 built twice
+
+Rank
+: 6
 
 About
 : image-factory-any-distro-any-phone
@@ -9689,6 +9701,9 @@ Device
 Proof
 : the Debian half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=debian, Package: google-walleye-config in dpkg status; the same sha256 built twice
 
+Rank
+: 7
+
 About
 : image-factory-any-distro-any-phone
 
@@ -9719,6 +9734,9 @@ Device
 
 Proof
 : bringup/tests/pack_v0.rs and layer/tests pass against osfact's code; osfact/tests/boundary.rs passes
+
+Rank
+: 5
 
 About
 : image-factory-any-distro-any-phone
@@ -9751,6 +9769,9 @@ Device
 Proof
 : lab-tools osfact/tests/walleye_two_distros.rs: both tests pass with --ignored on the lab host
 
+Rank
+: 8
+
 About
 : image-factory-any-distro-any-phone
 
@@ -9781,6 +9802,9 @@ Device
 
 Proof
 : a bringup/tests/ensure test: an osfact recipe's image is refused by Nix when its sha256 differs, taken from the cache when it is there
+
+Rank
+: 9
 
 About
 : image-factory-any-distro-any-phone
@@ -9836,7 +9860,38 @@ Proof
 : lab-tools CI green with lpoco-attended pinned to lpoco-manifest-v0.53.0, scaffold tests included; #472 closed as carried
 
 Rank
-: 1
+: 2
 
 About
 : attended-pin-is-one-pin
+
+
+<a id="osfact-walleye-alpine-skeleton"></a>
+### osfact's walking skeleton: walleye's rolling image for Alpine, built by osfact from what is proven, installable by one command that boots it from RAM
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: First osfact row, by the author's focus (session log 2026-11-28-author-focus-osfact; decision 2026-11-27-osfact-own-rust-in-lab-tools). Build the thinnest osfact that packs ONE image end to end, then let every later row grow it: (1) inputs only what is already proven on walleye - the ufs-off kernel list (its int/ tag via kernel assemble), the modem, NFC and touch parts that work, walleye's rootless Alpine build (walleye-rootfs) for the root tree, the existing boot.img and AVB writers; (2) only what this needs of [install] and an alpine profile, typed in osfact, no Debian yet; (3) output: the image, its sha256 and install.toml; (4) one host command that boots it from RAM (fastboot boot, never flash) and, on any failure, runs the declared way back to Android. osfact keeps no lpoco crate in its tree (boundary.rs); lab-tools calls it. Reuse by moving code into osfact, not copying. The phone run is walleye's keeper's (witness: the author), queued by walleye from this item's install command.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools: osfact builds walleye's Alpine image from the proven inputs on the lab, prints its sha256 and install.toml; the install command's dry run lists fastboot boot of that image and the way back, and refuses a flash; boundary.rs still passes. On the phone (walleye's keeper, witnessed): the image boots from RAM, the health checks of the proven parts pass, and the way back returns to Android.
+
+Rank
+: 1
+
+About
+: agnostic-layer

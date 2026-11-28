@@ -7346,3 +7346,24 @@ Done
 
 About
 : agnostic-layer
+
+---
+
+
+<a id="2026-11-28-author-focus-osfact"></a>
+### The author: focus on osfact, to see and touch the work as it grows
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-28
+
+Done
+: Relayed by the Top Coordinator, the author's words verbatim (2026-11-28): "what about osfact ? if walleye is safely parked, can we focuse efforts in this direction ? as it is what is required to actually have something to show our work by, and i would love to be able to see and touch fruits of our work as we develop, discover them piece by piece, chip by chip, kernel part by kernel part, feature by feature and so on, accumulating into working solution, into one". The Top: the osfact chain takes the slots back to back (the lanes waker puts lab-tools first while it has a ready item; walleye is parked), ordered as a walking skeleton. Orchestration put a new first item, osfact-walleye-alpine-skeleton: walleye's rolling image built by osfact for Alpine only from what is already proven, with its install.toml and one command that boots it from RAM through the declared way back; every later osfact row now grows that same image.
+
+Considered
+: Keeping the chain as the research ordered it (device-neutral tables, both distro profiles, then the two-distro image): rejected for the order - nothing the author can boot until the sixth item; the rows stay, after the skeleton. attended-pin-manifest-0-53 first: put second, as its size is not known (one failing scaffold test, its cause unread).
+
+About
+: agnostic-layer
