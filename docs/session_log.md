@@ -7697,3 +7697,24 @@ Considered
 
 About
 : agnostic-layer
+
+---
+
+
+<a id="2026-11-28-osfact-receiver-job-control-item-closed-released"></a>
+### osfact receiver job-control item closed: released as osfact 0.1.2
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Found the first ready item already built and merged (#501) and released in #505 as osfact-v0.1.2 (fix is an ancestor of the tag; binary and sha256 assets present); closed it with its proof. Next ready: osfact-enter-observable (rank 1).
+
+Considered
+: Building osfact-enter-observable in the same run - left for the next builder, one item per run.
+
+About
+: osfact-receiver-job-control
