@@ -10112,7 +10112,7 @@ About
 
 
 <a id="manifest-device-arch"></a>
-### lpoco-manifest's [device] takes arch (aarch64 ...), in its schema, so a device.toml can declare what osfact reads
+### lpoco-manifest reads what osfact reads from a device.toml: [device] arch and the [install] tables (connection, root, way_back), in its schema
 
 Project
 : linux-phone-oco/lab-tools
@@ -10121,7 +10121,7 @@ Status
 : open
 
 Note
-: Seen by walleye 2026-11-28: osfact reads [device] arch (decision 2026-11-28-osfact-pack-reads-arch-from-the-declaration, lab-tools #481), but lpoco-lab 0.54.1's manifest reader refuses it ('unknown field arch, expected codename'), so google-walleye-lab cannot land it (its branch coordinator/device-arch holds the pin to 0.54.1 plus the arch line, waiting for the release that reads it). Add arch to lpoco-manifest's Device (the values osfact accepts, one source: take osfact's type if the dependency direction allows - lab-tools depends on osfact, never the reverse - else the same enum), in the generated schema, and release. osfact-device-declaration later makes osfact's types the one source for the whole table; this is the one field now. Then tell walleye's coordinator the lpoco-lab release tag.
+: Seen by walleye 2026-11-28: osfact reads [device] arch (decision 2026-11-28-osfact-pack-reads-arch-from-the-declaration, lab-tools #481), but lpoco-lab 0.54.1's manifest reader refuses it ('unknown field arch, expected codename'), so google-walleye-lab cannot land it (its branch coordinator/device-arch holds the pin to 0.54.1 plus the arch line, waiting for the release that reads it). Add arch to lpoco-manifest's Device (the values osfact accepts, one source: take osfact's type if the dependency direction allows - lab-tools depends on osfact, never the reverse - else the same enum), in the generated schema, and release. osfact-device-declaration later makes osfact's types the one source for the whole table; this is the one field now. Then tell walleye's coordinator the lpoco-lab release tag. Widened 2026-11-28 after osfact-pack-writes-the-ram-root-plan (lab-tools #483): osfact pack also reads [install.connection], [install.root] and [install.way_back], and lpoco-manifest's top level refuses unknown tables, so walleye's device.toml cannot carry them either. Take osfact's types for these (lpoco-manifest may depend on osfact; osfact never on lpoco - boundary.rs), so there is one definition; osfact-device-declaration later does the same for the rest of the table.
 
 Opened
 : 2026-11-28
@@ -10133,10 +10133,10 @@ Device
 : google-walleye
 
 Proof
-: lab-tools test: a device.toml with [device] arch = "aarch64" passes lpoco-lab manifest check and its schema names arch with its values; arch = "arm65" fails naming the field; the release's lpoco-lab reads google-walleye-lab's branch coordinator/device-arch
+: lab-tools test: a device.toml with [device] arch = "aarch64" and [install.connection], [install.root], [install.way_back] as osfact's fixture has them passes lpoco-lab manifest check, and the generated schema names them; arch = "arm65" or a misspelled install key fails naming the field; boundary.rs still passes; the release's lpoco-lab reads google-walleye-lab's branch coordinator/device-arch once walleye adds the install tables
 
 Rank
-: 7
+: 6
 
 About
 : agnostic-layer
@@ -10198,7 +10198,7 @@ Proof
 : lab-tools tests on the stand-in: a way back whose back_on never answers fails after the bound naming it, and one that answers passes; a plan value with a space, a quote, a semicolon or $(...) reaches the device as one literal argument and runs nothing
 
 Rank
-: 6
+: 7
 
 About
 : agnostic-layer
