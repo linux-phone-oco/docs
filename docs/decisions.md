@@ -3850,3 +3850,28 @@ Rejected
 
 About
 : osfact-enter-observable
+
+
+<a id="2026-11-28-enter-binds-are-a-named-list"></a>
+### 2026-11-28-enter-binds-are-a-named-list
+
+Brief
+: osfact's enter mounts a declared list of named kernel filesystems (proc, sys, dev, dev-pts, run) before the chroot
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-28
+
+Decision
+: [install.root] binds is a list of names from a closed enum; osfact knows each one's mount, the declaration only says which and in what order. dev-pts before dev is refused at read; a repeat is refused; a failing mkdir or mount stops the step naming the bind. They are not undone: the way back restarts the phone.
+
+Why
+: walleye's modem root needs ModemManager, dbus and udev, which read proc, sys and dev; the item osfact-enter-binds asks for a declared list with no device names in src/.
+
+Rejected
+: free mount lines in the declaration (a shell line from data, no quoting guarantee); a bind per name with its own fstype and target keys (more to misspell, the same five cover the need); unmounting on the way back (the restart ends them).
+
+About
+: osfact-enter-binds

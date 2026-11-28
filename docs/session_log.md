@@ -7766,3 +7766,24 @@ Rejected
 
 About
 : osfact-root-applies-package-scripts
+
+---
+
+
+<a id="2026-11-28-builder-osfact-enter-binds"></a>
+### osfact enter binds built and released
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: lab-tools #515 (binds; tests first seen failing; programmer review applied: the failing-mount test hit mkdir, dev-pts before dev now refused), released as osfact 0.4.0 in #514.
+
+Rejected
+: see decision 2026-11-28-enter-binds-are-a-named-list
+
+About
+: osfact-enter-binds
