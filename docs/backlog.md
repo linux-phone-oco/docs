@@ -9969,10 +9969,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: The profile is data (tests/fixtures/distros/alpine.toml); osfact names only the format apk. Needs apk.static on the host (not found on PATH on 2026-11-28: look at how google-walleye-lab tools/walleye-rootfs gets it, and move that into osfact).
+: Landed lab-tools #478 (8ba573f): osfact rootfs now, a rootless apk root tree and ext4 image, built twice and compared. Proof osfact/tests/rootfs_apk.rs: dry run, refused format, ignored real build (ext4, ID=alpine, equal twice, sha256 = the file's) - passed 2026-11-28. Pins are the v3.24 files on x86_64.
 
 Opened
 : 2026-11-28
@@ -10053,3 +10053,28 @@ Rank
 
 About
 : attended-step-groups
+
+
+<a id="osfact-pins-per-arch"></a>
+### osfact: a profile pin names its machine kind (apk-tools-static differs per host arch), and a pinned revision the mirror dropped fails with its URL
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: From the review of #478: pins are one sha256 per name and version, valid only on the host they were taken on (x86_64); a mirror keeps only the current revision, so a -r1 move 404s. Add arch to [[pin]] and Profile::pinned(name, host_arch); today an aarch64 host fails closed on the sha256.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+About
+: agnostic-layer
