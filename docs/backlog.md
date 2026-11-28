@@ -9946,6 +9946,12 @@ Note
 Opened
 : 2026-11-28
 
+Needs
+: build
+
+Device
+: google-walleye
+
 Rank
 : 2
 
@@ -9967,6 +9973,12 @@ Note
 
 Opened
 : 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
 
 Rank
 : 3
@@ -9992,6 +10004,12 @@ Opened
 
 Blocked by
 : osfact-boot-adapter,osfact-root-tree-apk
+
+Needs
+: build
+
+Device
+: google-walleye
 
 Proof
 : the_walleye_declaration_packs_an_installable_alpine_image
