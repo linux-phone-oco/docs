@@ -9881,8 +9881,8 @@ Note
 Opened
 : 2026-11-28
 
-Blocked by
-: osfact-pack-writes-the-ram-root-plan,osfact-install-way-back-confirmed-and-quoted,manifest-device-arch,manifest-device-serial-env
+Waits
+: walleye's keeper run walleye-osfact-image-installs (an unattended RAM boot under the standing go), once google-walleye-lab's device.toml declares arch, serial_env, the [install] tables and back_on; every lab-tools slice is done (lab-tools #475-#493)
 
 Needs
 : build
