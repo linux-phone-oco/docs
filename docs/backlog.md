@@ -9600,7 +9600,7 @@ Proof
 : osfact/tests/boundary.rs passes with the types in osfact; lpoco-manifest's schema test and every device.toml of the labs still read
 
 Rank
-: 4
+: 7
 
 About
 : image-factory-any-distro-any-phone
@@ -9634,7 +9634,7 @@ Proof
 : a test reads the two fixture profiles and refuses an unknown format; a test finds no distro name in osfact/src
 
 Rank
-: 5
+: 8
 
 About
 : image-factory-any-distro-any-phone
@@ -9668,7 +9668,7 @@ Proof
 : the Alpine half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=alpine, P:google-walleye-config in the apk database; the same sha256 built twice
 
 Rank
-: 7
+: 10
 
 About
 : image-factory-any-distro-any-phone
@@ -9702,7 +9702,7 @@ Proof
 : the Debian half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=debian, Package: google-walleye-config in dpkg status; the same sha256 built twice
 
 Rank
-: 8
+: 11
 
 About
 : image-factory-any-distro-any-phone
@@ -9736,7 +9736,7 @@ Proof
 : bringup/tests/pack_v0.rs and layer/tests pass against osfact's code; osfact/tests/boundary.rs passes
 
 Rank
-: 6
+: 9
 
 About
 : image-factory-any-distro-any-phone
@@ -9770,7 +9770,7 @@ Proof
 : lab-tools osfact/tests/walleye_two_distros.rs: both tests pass with --ignored on the lab host
 
 Rank
-: 9
+: 12
 
 About
 : image-factory-any-distro-any-phone
@@ -9804,7 +9804,7 @@ Proof
 : a bringup/tests/ensure test: an osfact recipe's image is refused by Nix when its sha256 differs, taken from the cache when it is there
 
 Rank
-: 10
+: 13
 
 About
 : image-factory-any-distro-any-phone
@@ -9860,7 +9860,7 @@ Proof
 : lab-tools CI green with lpoco-attended pinned to lpoco-manifest-v0.53.0, scaffold tests included; #472 closed as carried
 
 Rank
-: 3
+: 6
 
 About
 : attended-pin-is-one-pin
@@ -9925,7 +9925,7 @@ Proof
 : lab-tools test: a misspelled field in each kind of file fails deserialization naming file and field; a dangling reference (a part, a kernel list or a package that does not exist; a sha256 that does not match) fails osfact check naming file and field; the generated schema of each file kind is byte-equal to the published one (a check in CI), and walleye's files pin it in their #:schema line
 
 Rank
-: 2
+: 5
 
 About
 : agnostic-layer
@@ -9946,6 +9946,9 @@ Note
 Opened
 : 2026-11-28
 
+Rank
+: 2
+
 About
 : agnostic-layer
 
@@ -9964,6 +9967,9 @@ Note
 
 Opened
 : 2026-11-28
+
+Rank
+: 3
 
 About
 : agnostic-layer
@@ -9989,6 +9995,9 @@ Blocked by
 
 Proof
 : the_walleye_declaration_packs_an_installable_alpine_image
+
+Rank
+: 4
 
 About
 : agnostic-layer
