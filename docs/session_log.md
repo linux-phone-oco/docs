@@ -7556,3 +7556,27 @@ Rejected
 
 About
 : manifest-device-arch
+
+---
+
+
+<a id="2026-11-28-manifest-reads-serial-env-from-osfact-s-identity"></a>
+### manifest reads serial_env from osfact's Identity
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Moved [device] into one osfact::declaration::Identity (codename, arch, serial_env); pack reads it, lpoco-manifest re-exports it; schema regenerated; tests: serial_env accepted and in schema, every [device] key of osfact's fixture accepted, pack refuses an unknown [device] key naming it. Landed lab-tools #487; programmer reviewed.
+
+Considered
+: Adding serial_env to the manifest's own Identity (a second definition, drift).
+
+Rejected
+: A second definition in lpoco-manifest: osfact's type is the one definition, as for arch.
+
+About
+: manifest-device-serial-env
