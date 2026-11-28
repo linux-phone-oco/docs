@@ -9891,7 +9891,7 @@ Device
 : google-walleye
 
 Proof
-: lab-tools: osfact builds walleye's Alpine image from the proven inputs on the lab, prints its sha256 and install.toml; the install command's dry run lists fastboot boot of that image and the way back, and refuses a flash; boundary.rs still passes. On the phone (walleye's keeper, witnessed): the image boots from RAM, the health checks of the proven parts pass, and the way back returns to Android. And every file it reads (its declaration, the alpine profile, the parts, install.toml) is deserialized into typed osfact structs that refuse unknown fields (session log 2026-11-28-author-osfact-data-intelligible); a misspelled field fails naming the file and field.
+: lab-tools: osfact builds walleye's Alpine image from the proven inputs on the lab, prints its sha256 and install.toml; the install command's dry run lists fastboot boot of that image and the way back, and refuses a flash; boundary.rs still passes. On the phone (walleye's keeper, an unattended RAM boot under the standing go, walleye-osfact-image-installs; the author's look follows as walleye-osfact-image-witnessed): the image boots from RAM, the health checks of the proven parts pass, and the way back returns to Android. And every file it reads (its declaration, the alpine profile, the parts, install.toml) is deserialized into typed osfact structs that refuse unknown fields (session log 2026-11-28-author-osfact-data-intelligible); a misspelled field fails naming the file and field.
 
 Rank
 : 1
@@ -10102,7 +10102,7 @@ Device
 : google-walleye
 
 Proof
-: lab-tools test on a stand-in device connection: osfact install now runs boot, push (compressed, sha256 checked on the far side), enter, in that order from install.toml; a sha256 mismatch or a lost connection runs the way back and fails naming the step; the dry run lists every step and refuses a flash. Then the skeleton's phone run (walleye's keeper, witnessed).
+: lab-tools test on a stand-in device connection: osfact install now runs boot, push (compressed, sha256 checked on the far side), enter, in that order from install.toml; a sha256 mismatch or a lost connection runs the way back and fails naming the step; the dry run lists every step and refuses a flash. Then the skeleton's phone run: walleye's keeper, an unattended RAM boot under the standing go (walleye-osfact-image-installs), then the author's look (walleye-osfact-image-witnessed).
 
 Rank
 : 4
