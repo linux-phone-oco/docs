@@ -10261,3 +10261,34 @@ Proof
 
 About
 : agnostic-layer
+
+
+<a id="osfact-first-release"></a>
+### osfact's first release, osfact-v0.1.0: release-plz releases it with a prebuilt binary asset and sha256, so walleye's keeper installs a pinned osfact
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Decision 2026-11-28-osfact-is-first-released-with-the-walking-skeleton-s (read the printed id). release-plz.toml: osfact release = true, version 0.1.0, tag osfact-v{{version}}; the release workflow attaches an x86_64 binary and its .sha256 as it does for lpoco-lab; osfact/docs/README.md says how to install it. Afterwards orchestration adds the rhizoid graph edge (osfact -> google-walleye-lab's install script) and walleye's coordinator adds that script. Walleye's first run waits on this (google-walleye-lab #1368).
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: the osfact-v0.1.0 release exists on GitHub with osfact-x86_64 and its sha256, the binary's sha256 matches, and that binary's osfact install now --dry-run on walleye's device.toml at main lists boot, push, enter and the way back
+
+Rank
+: 1
+
+About
+: agnostic-layer

@@ -3775,3 +3775,28 @@ Rejected
 
 About
 : osfact-install-way-back-confirmed-and-quoted
+
+
+<a id="2026-11-28-osfact-is-first-released-with-the-walking"></a>
+### 2026-11-28-osfact-is-first-released-with-the-walking
+
+Brief
+: osfact is first released with the walking skeleton's Alpine build, not after the two-distro test
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-28
+
+Decision
+: Amends 2026-11-27-osfact-own-rust-in-lab-tools on one point: osfact's release gate. It said release = false until its first build lands, naming osfact-walleye-two-distros; the author's focus (session log 2026-11-28-author-focus-osfact) reordered the chain as a walking skeleton, and the skeleton's build is that first build (lab-tools #481, #483, #492). So osfact releases now, as osfact-v0.1.0, with a prebuilt x86_64 binary asset and its sha256 like lpoco-lab's, so a keeper installs a pinned release instead of building from a commit; rhizoid's graph gets an osfact edge to google-walleye-lab's install script; every later osfact row releases as it lands. The rest of the decision stands (home, tag prefix, boundary, extraction condition).
+
+Why
+: A keeper runs only pinned, released tools (walleye's run could not start: google-walleye-lab #1368); the two-distro test is generality the author asked to come after something he can see; releasing early is how each later part grows the same image in the open.
+
+Rejected
+: Keep release = false and let walleye's keeper cargo-install osfact at a commit, as bin/attended does for lpoco-attended: a second way to pin a tool, outside rhizoid's graph and lab.toml, for the one tool the author wants to see grow; wait for osfact-walleye-two-distros: the first phone run would wait on Debian.
+
+About
+: agnostic-layer
