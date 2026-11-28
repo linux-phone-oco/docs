@@ -9873,16 +9873,13 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: in-progress
+: done
 
 Note
-: Slice 1 landed (lab-tools #475): osfact install now --dry-run reads install.toml into enums, lists fastboot -s $SERIAL boot IMG then the way back, refuses a flash or a plan with no boot step; tests/no_names_in_source.rs fails on any distro or device name in src/ (Top Coordinator's seam request); boundary green. Still to do, in order: osfact-boot-adapter, osfact-root-tree-apk, osfact-pack-alpine-walleye; then the pack command prints sha256 and writes install.toml, and walleye queues the keeper run. apk.static, mmdebstrap not installed on the lab host (not known yet where walleye-rootfs gets apk).
+: Slice 1 landed (lab-tools #475): osfact install now --dry-run reads install.toml into enums, lists fastboot -s $SERIAL boot IMG then the way back, refuses a flash or a plan with no boot step; tests/no_names_in_source.rs fails on any distro or device name in src/ (Top Coordinator's seam request); boundary green. Still to do, in order: osfact-boot-adapter, osfact-root-tree-apk, osfact-pack-alpine-walleye; then the pack command prints sha256 and writes install.toml, and walleye queues the keeper run. apk.static, mmdebstrap not installed on the lab host (not known yet where walleye-rootfs gets apk). Done 2026-11-28: proven on the phone - walleye's run 4 (google-walleye-lab #1392, osfact 0.3.0, walleye's real parts) booted from RAM by its one command, pushed, checked and entered the root (/sbin/init), touch present, and the way back returned Android slot b with nothing flashed (walleye decision 2026-11-28-walleye-osfact-skeleton-proven-parts-grow-it). Runs 1-3 found and fixed: the receiver under busybox job control (#501), device-side output and check_wait (#506), busybox's applet links (#511). Every later osfact row grows this one image.
 
 Opened
 : 2026-11-28
-
-Waits
-: walleye's keeper run walleye-osfact-image-installs (an unattended RAM boot under the standing go), once google-walleye-lab's device.toml declares arch, serial_env, the [install] tables and back_on; every lab-tools slice is done (lab-tools #475-#493)
 
 Needs
 : build
@@ -10444,6 +10441,37 @@ Device
 
 Proof
 : lab-tools test: pack's root for the alpine profile has /sbin/init as busybox's link and every applet the package lists; a root without /sbin/init fails pack naming it; the ignored real build passes on this host; released
+
+Rank
+: 1
+
+About
+: agnostic-layer
+
+
+<a id="osfact-enter-binds"></a>
+### osfact install's enter binds the kernel's filesystems into the root (proc, sys, dev; declared in [install.root]), so services such as ModemManager, dbus and udev can run in it
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The first part to grow osfact's proven walleye image (walleye's walleye-osfact-image-modem: ModemManager, dbus and udev in the root, ipa_fws in the ramdisk, proc/sys/dev in the chroot). Today enter mounts only the tmpfs and chroots (osfact/src/install.rs). Add a declared list of binds/mounts made before the chroot - proc, sysfs, devtmpfs or a bind of /dev, devpts, run as a tmpfs - each undone on the way back where it matters; the list is data in [install.root] (an osfact type, so lpoco-manifest reads it; the release moves lpoco-attended's pin as before), with no device names in src/. The packages (the profile's package set) and the ramdisk firmware (the parts) are walleye's data, not lab-tools'. Release, and tell orchestration the tag.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test on the stand-in pty shell: a declaration with binds = proc, sys, dev sends each mount before the chroot in that order, quoted, logged in install.log, and a failing mount stops the step naming it; the dry run lists them; lpoco-lab manifest check accepts the key; released
 
 Rank
 : 1
