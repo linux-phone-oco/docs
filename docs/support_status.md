@@ -236,19 +236,19 @@ Deep sleep that wakes for calls and messages × Google Pixel 2
 
 <a id="gnss--google-walleye"></a>
 Location (GNSS) × Google Pixel 2
-: unknown — notes: Not known yet: linux-phone-oco/google-walleye-lab does not claim this part. — updated: 2026-11-27 — judged: unknown
+: unknown — notes: Not known yet: linux-phone-oco/google-walleye-lab does not claim this part. — updated: 2026-11-28 — judged: unknown
 
 <a id="gpu--google-walleye"></a>
 Graphics (GPU) × Google Pixel 2
-: unknown — notes: Not known yet: linux-phone-oco/google-walleye-lab does not claim this part. — updated: 2026-11-27 — judged: unknown
+: unknown — notes: Not known yet: linux-phone-oco/google-walleye-lab does not claim this part. — updated: 2026-11-28 — judged: unknown
 
 <a id="battery--google-walleye"></a>
 Battery and charging × Google Pixel 2
-: unknown — notes: Not known yet: linux-phone-oco/google-walleye-lab does not claim this part. — updated: 2026-11-27 — judged: unknown
+: unknown — notes: Not known yet: linux-phone-oco/google-walleye-lab does not claim this part. — updated: 2026-11-28 — judged: unknown
 
 <a id="buttons--google-walleye"></a>
 Buttons (power, volume) × Google Pixel 2
-: unknown — notes: Not known yet: linux-phone-oco/google-walleye-lab does not claim this part. — updated: 2026-11-27 — judged: unknown
+: unknown — notes: Not known yet: linux-phone-oco/google-walleye-lab does not claim this part. — updated: 2026-11-28 — judged: unknown
 
 <a id="audio-speaker--xiaomi-surya"></a>
 Speaker × Xiaomi POCO X3 NFC
@@ -332,20 +332,20 @@ Deep sleep that wakes for calls and messages × Xiaomi POCO X3 NFC
 
 <a id="kernel--xiaomi-surya"></a>
 Kernel (boots without unexpected warnings) × Xiaomi POCO X3 NFC
-: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-27 — judged: unknown
+: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-28 — judged: unknown
 
 <a id="gnss--xiaomi-surya"></a>
 Location (GNSS) × Xiaomi POCO X3 NFC
-: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-27 — judged: unknown
+: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-28 — judged: unknown
 
 <a id="gpu--xiaomi-surya"></a>
 Graphics (GPU) × Xiaomi POCO X3 NFC
-: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-27 — judged: unknown
+: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-28 — judged: unknown
 
 <a id="battery--xiaomi-surya"></a>
 Battery and charging × Xiaomi POCO X3 NFC
-: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-27 — judged: unknown
+: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-28 — judged: unknown
 
 <a id="buttons--xiaomi-surya"></a>
 Buttons (power, volume) × Xiaomi POCO X3 NFC
-: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-27 — judged: unknown
+: unknown — notes: Not known yet: linux-phone-oco/surya-lab does not claim this part. — updated: 2026-11-28 — judged: unknown
