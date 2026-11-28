@@ -9600,7 +9600,7 @@ Proof
 : osfact/tests/boundary.rs passes with the types in osfact; lpoco-manifest's schema test and every device.toml of the labs still read
 
 Rank
-: 11
+: 12
 
 About
 : image-factory-any-distro-any-phone
@@ -9634,7 +9634,7 @@ Proof
 : a test reads the two fixture profiles and refuses an unknown format; a test finds no distro name in osfact/src
 
 Rank
-: 12
+: 13
 
 About
 : image-factory-any-distro-any-phone
@@ -9668,7 +9668,7 @@ Proof
 : the Alpine half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=alpine, P:google-walleye-config in the apk database; the same sha256 built twice
 
 Rank
-: 14
+: 15
 
 About
 : image-factory-any-distro-any-phone
@@ -9702,7 +9702,7 @@ Proof
 : the Debian half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=debian, Package: google-walleye-config in dpkg status; the same sha256 built twice
 
 Rank
-: 15
+: 16
 
 About
 : image-factory-any-distro-any-phone
@@ -9736,7 +9736,7 @@ Proof
 : bringup/tests/pack_v0.rs and layer/tests pass against osfact's code; osfact/tests/boundary.rs passes
 
 Rank
-: 13
+: 14
 
 About
 : image-factory-any-distro-any-phone
@@ -9770,7 +9770,7 @@ Proof
 : lab-tools osfact/tests/walleye_two_distros.rs: both tests pass with --ignored on the lab host
 
 Rank
-: 16
+: 17
 
 About
 : image-factory-any-distro-any-phone
@@ -9804,7 +9804,7 @@ Proof
 : a bringup/tests/ensure test: an osfact recipe's image is refused by Nix when its sha256 differs, taken from the cache when it is there
 
 Rank
-: 17
+: 18
 
 About
 : image-factory-any-distro-any-phone
@@ -9860,7 +9860,7 @@ Proof
 : lab-tools CI green with lpoco-attended pinned to lpoco-manifest-v0.53.0, scaffold tests included; #472 closed as carried
 
 Rank
-: 10
+: 11
 
 About
 : attended-pin-is-one-pin
@@ -9882,7 +9882,7 @@ Opened
 : 2026-11-28
 
 Blocked by
-: osfact-pack-writes-the-ram-root-plan,osfact-install-way-back-confirmed-and-quoted,manifest-device-arch
+: osfact-pack-writes-the-ram-root-plan,osfact-install-way-back-confirmed-and-quoted,manifest-device-arch,manifest-device-serial-env
 
 Needs
 : build
@@ -9928,7 +9928,7 @@ Proof
 : lab-tools test: a misspelled field in each kind of file fails deserialization naming file and field; a dangling reference (a part, a kernel list or a package that does not exist; a sha256 that does not match) fails osfact check naming file and field; the generated schema of each file kind is byte-equal to the published one (a check in CI), and walleye's files pin it in their #:schema line
 
 Rank
-: 9
+: 10
 
 About
 : agnostic-layer
@@ -10049,7 +10049,7 @@ Proof
 : lab-tools test with a stand-in ntfy server: a filed prompt is published once with its step, to-do, to-check and limit; a reply for that prompt id becomes the answer and the run goes on, naming ntfy as who answered; a reply for another id is ignored; with no notify file the run starts, says so, and waits on the answer file as today. Then live: the author's phone shows the prompt and his reply reaches the run (walleye's keeper, witnessed).
 
 Rank
-: 8
+: 9
 
 About
 : attended-step-groups
@@ -10196,6 +10196,37 @@ Device
 
 Proof
 : lab-tools tests on the stand-in: a way back whose back_on never answers fails after the bound naming it, and one that answers passes; a plan value with a space, a quote, a semicolon or $(...) reaches the device as one literal argument and runs nothing
+
+Rank
+: 8
+
+About
+: agnostic-layer
+
+
+<a id="manifest-device-serial-env"></a>
+### lpoco-manifest reads [device] serial_env from osfact's type, so walleye's device.toml can name the variable that holds its serial
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Left by manifest-device-arch (lab-tools #484, decision 2026-11-28-manifest-takes-osfact-s-declaration-types): osfact's install plan carries serial_env (osfact/src/install.rs; every fastboot call names it, main.rs reads it), taken from the declaration's [device] serial_env, but lpoco-manifest does not read it yet, so walleye's device.toml cannot carry it. Same way as arch: osfact's type, one definition. Before the skeleton's phone run. Check there is no other field osfact reads from a device.toml that lpoco-manifest refuses ([[install.step]] is accepted unread until osfact-device-declaration).
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test: a device.toml with [device] serial_env = "WALLEYE_SERIAL" passes lpoco-lab manifest check and the schema names it; a test lists every key osfact pack reads from a declaration and checks lpoco-manifest accepts each one
 
 Rank
 : 7
