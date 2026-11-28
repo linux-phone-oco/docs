@@ -10301,10 +10301,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Seen by walleye 2026-11-28 (google-walleye-lab, after #1373): the released osfact-v0.1.0's pack now on walleye's device.toml with lab-tools' alpine.toml stops at apk: 'UNTRUSTED APKINDEX signature', 'no such package alpine-base'. The earlier real build (osfact-root-tree-apk's ignored test) likely passed on a host that has Alpine's keys; the release does not bring them. The profile already names keys (decision 2026-11-27-osfact-own-rust-in-lab-tools: name, format, release, mirror, repositories, keys, ...): make them data osfact uses - each key by sha256, taken from the profile (or Alpine's alpine-keys package, pinned) into the build root's keys dir, never the host's; an unknown or mismatched key fails naming it. Release it, and tell orchestration the tag for walleye.
+: Done 2026-11-28 (lab-tools #498, released osfact-v0.1.1 via #499). Cause was not missing keys: the profile's pinned alpine-keys already supplies them, never the host's. A relative --out made apk's --keys-dir relative, and apk reads it after entering the root, so every index was UNTRUSTED. rootfs and pack now make --out absolute at the edge. Proof: a dry-run test with a relative --out (seen failing first), and a real rootfs build from a clean host (no /etc/apk) with a relative --out: built twice equal. A wrong key sha256 is refused by the existing pin check naming file and both sums. Walleye: use osfact-v0.1.1, or pass an absolute --out.
 
 Opened
 : 2026-11-28
