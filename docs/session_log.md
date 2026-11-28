@@ -7367,3 +7367,24 @@ Considered
 
 About
 : agnostic-layer
+
+---
+
+
+<a id="2026-11-28-author-osfact-data-intelligible"></a>
+### The author: osfact's data intelligible - autocomplete, errors while editing, relations checked
+
+Project
+: linux-phone-oco/docs
+
+Entry date
+: 2026-11-28
+
+Done
+: Relayed by the Top Coordinator, the author's words verbatim (2026-11-28): "and all of our data that osfact will use will be intelligable ? i mean autocomplete from rust will work and error checking during coding and relations checks and so on, unlike dead plain text config files, or how ?" Made a requirement of the osfact chain: every file osfact reads (device declaration, distro profile, parts, install.toml) is typed Rust with unknown fields refused, described by a JSON Schema generated from the same structs and pinned in each file's #:schema header (as device.toml already does with lpoco-manifest's), and cross-checked by osfact check. The skeleton's proof gains the typed, refusing structs; the schema and the check are the new rank-2 item osfact-typed-data-and-check.
+
+Considered
+: All of it in the skeleton's proof: rejected - its builder is already at work and the skeleton's point is a bootable image soonest; the typed structs cost nothing there (serde deny_unknown_fields), the schema publishing and relation checks are a piece of their own, right after.
+
+About
+: agnostic-layer
