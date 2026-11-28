@@ -134,11 +134,11 @@ followers = ["linux-phone-oco/surya-lab"]
 name = "lpoco-attended"
 source = "linux-phone-oco/lab-tools"
 tag_prefix = "lpoco-attended-v"
-pin = "tools/walleye-tries/Cargo.toml"
+pin = "procedures/steps/Cargo.toml"
 key = "dependencies.lpoco-attended.tag"
 value = "lpoco-attended-v{version}"
-gate = ["cargo", "check", "--manifest-path", "tools/walleye-tries/Cargo.toml"]
-also = ["tools/walleye-tries/Cargo.lock"]
+gate = ["cargo", "check", "--manifest-path", "procedures/steps/Cargo.toml"]
+also = ["procedures/steps/Cargo.lock"]
 followers = ["linux-phone-oco/google-walleye-lab"]
 
 # lpoco-attended names lpoco-manifest by its released tag, not a path (lab-tools #342); manifest is tagged only when
@@ -165,7 +165,7 @@ unpinned = { land = "a script pinned at a git rev (its rev is the pin), not a re
 
 [[pins]]
 follower = "linux-phone-oco/google-walleye-lab"
-file = "tools/walleye-tries/Cargo.toml"
+file = "procedures/steps/Cargo.toml"
 table = "dependencies"
 git_only = true
 
