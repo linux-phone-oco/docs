@@ -7676,3 +7676,24 @@ Rejected
 
 About
 : agnostic-layer
+
+---
+
+
+<a id="2026-11-28-release-family-skipped-members"></a>
+### Family versions after release 499
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Reproduced the skipped members in a release-plz fixture, added osfact to every family changelog_include, aligned lpoco, health, tone, ffs-acm to 0.54.6, landed lab-tools #503; main ci, Release, Assets, Packages green; the four 0.54.6 tags exist; release PR 504 (0.54.7) is the one bump for this fix, left for the usual landing.
+
+Considered
+: programmer review: only risk was the missing 0.54.6 tags and a double bump; checked after the merge, tags present, PR 504 goes 0.54.6 -> 0.54.7 once.
+
+About
+: agnostic-layer
