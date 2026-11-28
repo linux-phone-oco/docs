@@ -7532,3 +7532,27 @@ Rejected
 
 About
 : osfact-pack-writes-the-ram-root-plan
+
+---
+
+
+<a id="2026-11-28-builder-manifest-device-arch"></a>
+### manifest-device-arch built and released
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Tests first (install_tables.rs, seen failing), osfact::declaration, manifest fields, schema regenerated, two pack_walleye tests changed to drop a table instead of misspelling it; programmer review: no defects; landed #484, released #485.
+
+Considered
+: Closed arch set vs free string; schema step type (opaque placeholder).
+
+Rejected
+: serial_env not added: not asked; walleye will meet the same refusal when it adds it.
+
+About
+: manifest-device-arch
