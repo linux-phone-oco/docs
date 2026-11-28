@@ -10419,3 +10419,34 @@ Rank
 
 About
 : agnostic-layer
+
+
+<a id="osfact-root-applies-package-scripts"></a>
+### osfact's cross-arch root build does what the packages' install scripts would: busybox's applet links first, so the root has /sbin/init
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: osfact 0.2.0's third phone run (google-walleye-lab #1388): push and unpack pass (2.6 s), but install.log shows the packed Alpine root has no /sbin/init - apk's scripts did not run at pack (the aarch64 root is built on x86_64), so busybox's applet links were never made. Make the root complete without running the aarch64 binary on the host: busybox's links from the list Alpine ships beside it (busybox's trigger runs busybox --install -s; the applet paths are listed in the package, e.g. /etc/busybox-paths.d/busybox), and survey every other script the profile's package set skipped (alpine-baselayout, openrc, users and groups, ...) - say in the item's close what each needs and do what the first boot needs; the profile, not code, names any per-distro step (no distro names in src/). Rejected for now unless the survey shows it is needed: qemu-user via binfmt on the host (a host dependency). Release, and tell orchestration the tag.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test: pack's root for the alpine profile has /sbin/init as busybox's link and every applet the package lists; a root without /sbin/init fails pack naming it; the ignored real build passes on this host; released
+
+Rank
+: 1
+
+About
+: agnostic-layer
