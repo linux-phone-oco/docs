@@ -10456,10 +10456,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: The first part to grow osfact's proven walleye image (walleye's walleye-osfact-image-modem: ModemManager, dbus and udev in the root, ipa_fws in the ramdisk, proc/sys/dev in the chroot). Today enter mounts only the tmpfs and chroots (osfact/src/install.rs). Add a declared list of binds/mounts made before the chroot - proc, sysfs, devtmpfs or a bind of /dev, devpts, run as a tmpfs - each undone on the way back where it matters; the list is data in [install.root] (an osfact type, so lpoco-manifest reads it; the release moves lpoco-attended's pin as before), with no device names in src/. The packages (the profile's package set) and the ramdisk firmware (the parts) are walleye's data, not lab-tools'. Release, and tell orchestration the tag.
+: Landed in lab-tools #515, released in #514 (osfact 0.4.0): [install.root] binds = proc, sys, dev, dev-pts, run mounted after unpack and before the chroot, in order; a failing mount stops the step naming it; the dry run lists them; manifest schema regenerated. Proof: osfact/tests/install_binds.rs. Walleye's lane adds binds to its device.toml; packages and firmware are its data.
 
 Opened
 : 2026-11-28
