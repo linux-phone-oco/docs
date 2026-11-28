@@ -9600,7 +9600,7 @@ Proof
 : osfact/tests/boundary.rs passes with the types in osfact; lpoco-manifest's schema test and every device.toml of the labs still read
 
 Rank
-: 3
+: 4
 
 About
 : image-factory-any-distro-any-phone
@@ -9634,7 +9634,7 @@ Proof
 : a test reads the two fixture profiles and refuses an unknown format; a test finds no distro name in osfact/src
 
 Rank
-: 4
+: 5
 
 About
 : image-factory-any-distro-any-phone
@@ -9668,7 +9668,7 @@ Proof
 : the Alpine half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=alpine, P:google-walleye-config in the apk database; the same sha256 built twice
 
 Rank
-: 6
+: 7
 
 About
 : image-factory-any-distro-any-phone
@@ -9702,7 +9702,7 @@ Proof
 : the Debian half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=debian, Package: google-walleye-config in dpkg status; the same sha256 built twice
 
 Rank
-: 7
+: 8
 
 About
 : image-factory-any-distro-any-phone
@@ -9736,7 +9736,7 @@ Proof
 : bringup/tests/pack_v0.rs and layer/tests pass against osfact's code; osfact/tests/boundary.rs passes
 
 Rank
-: 5
+: 6
 
 About
 : image-factory-any-distro-any-phone
@@ -9770,7 +9770,7 @@ Proof
 : lab-tools osfact/tests/walleye_two_distros.rs: both tests pass with --ignored on the lab host
 
 Rank
-: 8
+: 9
 
 About
 : image-factory-any-distro-any-phone
@@ -9804,7 +9804,7 @@ Proof
 : a bringup/tests/ensure test: an osfact recipe's image is refused by Nix when its sha256 differs, taken from the cache when it is there
 
 Rank
-: 9
+: 10
 
 About
 : image-factory-any-distro-any-phone
@@ -9860,7 +9860,7 @@ Proof
 : lab-tools CI green with lpoco-attended pinned to lpoco-manifest-v0.53.0, scaffold tests included; #472 closed as carried
 
 Rank
-: 2
+: 3
 
 About
 : attended-pin-is-one-pin
@@ -9888,10 +9888,44 @@ Device
 : google-walleye
 
 Proof
-: lab-tools: osfact builds walleye's Alpine image from the proven inputs on the lab, prints its sha256 and install.toml; the install command's dry run lists fastboot boot of that image and the way back, and refuses a flash; boundary.rs still passes. On the phone (walleye's keeper, witnessed): the image boots from RAM, the health checks of the proven parts pass, and the way back returns to Android.
+: lab-tools: osfact builds walleye's Alpine image from the proven inputs on the lab, prints its sha256 and install.toml; the install command's dry run lists fastboot boot of that image and the way back, and refuses a flash; boundary.rs still passes. On the phone (walleye's keeper, witnessed): the image boots from RAM, the health checks of the proven parts pass, and the way back returns to Android. And every file it reads (its declaration, the alpine profile, the parts, install.toml) is deserialized into typed osfact structs that refuse unknown fields (session log 2026-11-28-author-osfact-data-intelligible); a misspelled field fails naming the file and field.
 
 Rank
 : 1
+
+About
+: agnostic-layer
+
+
+<a id="osfact-typed-data-and-check"></a>
+### osfact's data is intelligible: typed structs, a JSON Schema generated from them and pinned in each file, and osfact check for relations
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The author's requirement (session log 2026-11-28-author-osfact-data-intelligible). Every file osfact reads - device declaration, distro profile, parts, install.toml - (1) is deserialized into typed Rust structs with unknown fields refused; (2) is described by a JSON Schema generated from those same structs (one source, never hand-written: schemars, as lpoco-manifest does), published with each osfact release and pinned in each file's #:schema header, as device.toml already pins lpoco-manifest's, so editors (taplo, even-better-toml) give autocomplete and inline errors; (3) is cross-checked by  for relations - a profile's packages and package format exist, a declaration's kernel list, firmware and parts resolve, an image's sha256s match - run in CI and before every build, failing with the file and field named. Grows the skeleton's files, not new ones.
+
+Opened
+: 2026-11-28
+
+Blocked by
+: osfact-walleye-alpine-skeleton
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test: a misspelled field in each kind of file fails deserialization naming file and field; a dangling reference (a part, a kernel list or a package that does not exist; a sha256 that does not match) fails osfact check naming file and field; the generated schema of each file kind is byte-equal to the published one (a check in CI), and walleye's files pin it in their #:schema line
+
+Rank
+: 2
 
 About
 : agnostic-layer
