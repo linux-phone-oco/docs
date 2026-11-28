@@ -3700,3 +3700,28 @@ Rejected
 
 About
 : osfact-root-to-ram
+
+
+<a id="2026-11-28-osfact-ram-plan-from-three-install-tables"></a>
+### 2026-11-28-osfact-ram-plan-from-three-install-tables
+
+Brief
+: osfact pack reads the RAM root plan from [install.connection], [install.root], [install.way_back] of the declaration; without a connection the plan boots alone
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-28
+
+Decision
+: A declaration's [install.connection] (address, shell_port, wait), [install.root] (port, receive, to, wait, path, size_mib, command, check) and [install.way_back] (command) make pack write boot, push, enter in order, with root.tar.gz (gzip -n -9 of the build's tree tar, made twice and compared) as image 'root' compressed gzip, its sha256 that of the compressed file. A root or way_back table without a connection, or a connection without them, is refused before any build, naming the table.
+
+Why
+: Values are those of walleye's modem boot (plans/walleye-root-in-ram.toml); the pack's plan equals that plan value for value (tests/pack_walleye.rs). The pushed file must be a tar because install enters it with tar -x.
+
+Rejected
+: Compressing the ext4 rootfs.img: install untars, an ext4 image cannot be entered. One flat [install] table of loose keys: collides with the proposed [[install.step]] array and hides which part is optional. Silently dropping root/way_back when the connection is missing: a mistyped table would pack a boot-only plan unnoticed (programmer review).
+
+About
+: osfact-pack-writes-the-ram-root-plan

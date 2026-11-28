@@ -10149,10 +10149,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Follow-up of osfact-root-to-ram: install now runs push/enter plans, but pack still writes only the boot-from-ram step (connection None). The declaration's [install] gains the connection, the receiver command, the root path and the command; pack emits them and compresses the root image (sha256 of the compressed file). Also, in walleye's lane: its modem-boot procedure takes osfact's push instead of its own (walleye coordinator records it).
+: Landed lab-tools #483 (a55be76), read back from main. Proof: tests/pack_walleye.rs, the plan equals walleye-root-in-ram.toml value for value; the ignored real build passed (root.tar.gz untars, plan boot/push/enter). Not released yet (osfact is unreleased). In walleye's lane: its modem-boot procedure takes osfact's push instead of its own, and its device.toml gains the three tables (walleye coordinator records it).
 
 Opened
 : 2026-11-28
