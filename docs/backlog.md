@@ -10428,10 +10428,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: osfact 0.2.0's third phone run (google-walleye-lab #1388): push and unpack pass (2.6 s), but install.log shows the packed Alpine root has no /sbin/init - apk's scripts did not run at pack (the aarch64 root is built on x86_64), so busybox's applet links were never made. Make the root complete without running the aarch64 binary on the host: busybox's links from the list Alpine ships beside it (busybox's trigger runs busybox --install -s; the applet paths are listed in the package, e.g. /etc/busybox-paths.d/busybox), and survey every other script the profile's package set skipped (alpine-baselayout, openrc, users and groups, ...) - say in the item's close what each needs and do what the first boot needs; the profile, not code, names any per-distro step (no distro names in src/). Rejected for now unless the survey shows it is needed: qemu-user via binfmt on the host (a host dependency). Release, and tell orchestration the tag.
+: Done: lab-tools #511, released as osfact-v0.3.0 (#512). The profile's [[link_list]] names a list a package ships and its target (busybox-paths -> /bin/busybox, what busybox's post-install runs as busybox --install -s); required_paths = [sbin/init] fails the build naming the path. Proof: tests/root_links.rs (304 applets linked, existing paths kept, absolute/dotdot/escaping-link refused, missing /sbin/init refused) and the ignored real build (/sbin/init is a symlink to /bin/busybox in the ext4 image). Survey of the other scripts: alpine-baselayout (shadow group and owners already come from the apk database), openrc post-install (no-op on a fresh root), openssh post-upgrade (not run on install) need nothing; busybox's klogd user is not needed to boot. Runlevels are empty: which services start at first boot is the profile's choice, not done here. Walleye's lane: google-walleye-lab's own profile needs the same [[link_list]] and required_paths.
 
 Opened
 : 2026-11-28

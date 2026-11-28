@@ -7742,3 +7742,27 @@ Rejected
 
 About
 : osfact-enter-observable
+
+---
+
+
+<a id="2026-11-28-osfact-root-gets-the-links-install-scripts-would"></a>
+### osfact root gets the links install scripts would make
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Surveyed the scripts apk skipped at pack, read from a real root's scripts.tar.gz; built root_links (profile-named link lists, required paths, no escape from the root); programmer review applied (path escape, source claims); landed #511, released osfact-v0.3.0.
+
+Considered
+: qemu-user via binfmt (a host dependency): not needed, the survey showed only busybox's links matter for boot.
+
+Rejected
+: A hard-coded busybox step in src/: the profile names the per-distro step.
+
+About
+: osfact-root-applies-package-scripts
