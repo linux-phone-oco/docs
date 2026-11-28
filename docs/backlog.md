@@ -10509,3 +10509,34 @@ Rank
 
 About
 : agnostic-layer
+
+
+<a id="osfact-cmdline-by-part"></a>
+### osfact composes the kernel command line from declared pieces, each owned by a part, into the one image, and logs each piece's owner in install.toml
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Asked by walleye 2026-11-28 (google-walleye-lab #1405: the osfact display image packs, boot.img a0e69654, but takes device.toml's one cmdline; the lit display image needed iommu.passthrough=1 - walleye decision 2026-11-19-walleye-display-iommu-reading - while the modem's IPA path runs without it). The goal is one rolling image with every proven part (the author's goal; decision 2026-11-27-osfact-own-rust-in-lab-tools), so not one image per part: [boot] keeps the base cmdline and each part may declare its own pieces (e.g. a display part: iommu.passthrough=1); pack composes base + every included part's pieces into the one image, refuses two pieces that set the same key to different values naming both owners, and writes each piece with its owner into install.toml and the log. Pieces are osfact's keys, read by osfact alone (decision 2026-11-28-osfact-s-tables-in-device-toml-are-read-and). Whether the modem works with iommu.passthrough=1 is a phone question for walleye's keeper, not this item's.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools tests: a declaration with base cmdline and a part piece packs one boot.img whose header cmdline is base + piece, install.toml lists each piece with its owner; two parts setting one key differently fail pack naming both; a piece over the header's cmdline budget fails naming it; released
+
+Rank
+: 1
+
+About
+: agnostic-layer
