@@ -10270,10 +10270,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Decision 2026-11-28-osfact-is-first-released-with-the-walking. release-plz.toml: osfact release = true, version 0.1.0, tag osfact-v{{version}}; the release workflow attaches an x86_64 binary and its .sha256 as it does for lpoco-lab; osfact/docs/README.md says how to install it. Afterwards orchestration adds the rhizoid graph edge (osfact -> google-walleye-lab's install script) and walleye's coordinator adds that script. Walleye's first run waits on this (google-walleye-lab #1368).
+: Done 2026-11-28: lab-tools #496 landed; osfact-v0.1.0 released with osfact-x86_64 and osfact-x86_64.sha256 (hash matches; pack on walleye's device.toml at main and osfact install now --dry-run list boot, push, enter, way back). Next: orchestration adds the rhizoid osfact edge; walleye's coordinator adds the install script.
 
 Opened
 : 2026-11-28

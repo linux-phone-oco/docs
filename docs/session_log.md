@@ -7604,3 +7604,27 @@ Rejected
 
 About
 : osfact-install-way-back-confirmed-and-quoted
+
+---
+
+
+<a id="2026-11-28-builder-osfact-first-release"></a>
+### osfact's first release, osfact-v0.1.0
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: release-plz.toml: osfact released (git_release_enable), version 0.1.0 with its changelog entry; assets.yml: an osfact job attaches osfact-x86_64 and its sha256 to osfact-vX.Y.Z; osfact/docs/README.md: how to install. Proof test lpoco/tests/release_osfact.rs seen failing first. Landed as lab-tools #496; read back from main: release osfact-v0.1.0 exists with both assets, sha256 -c OK; pack now on walleye's device.toml (main) and install now --dry-run list boot, push, enter, way back.
+
+Considered
+: release-plz tags the Cargo.toml version when no tag exists, so 0.1.0 is set by hand (confirmed by the release run). Programmer review found two weak checks (an upload-order assert that could not fail, a test pinning the moving version); both fixed.
+
+Rejected
+: A separate workflow file for osfact: the assets workflow already runs after Release and finds tags at HEAD. A test pinning version 0.1.0: it would turn main red at the next osfact release.
+
+About
+: osfact-first-release
