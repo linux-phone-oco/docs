@@ -3650,3 +3650,28 @@ About
 
 Research
 : osfact-image-builders-landscape
+
+
+<a id="2026-11-28-osfact-pack-reads-arch-from-the-declaration"></a>
+### 2026-11-28-osfact-pack-reads-arch-from-the-declaration
+
+Brief
+: osfact pack reads the root tree's arch from the declaration's [device] arch, never the host; parts are plain files
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-28
+
+Decision
+: pack now takes [device] arch from the declaration (refused naming file and key when missing), reads [boot] dtb, avb_footer and back_wait before any build, finds kernel, ramdisk and the dtb path in a --parts folder, hashes each image once and writes install.toml with both sha256s; serial_env defaults to the codename in capitals plus _SERIAL. The android-bootimg adapter writes the AVB footer (salt = the image's digest, so the same inputs give the same bytes). bringup keeps its own footer (avb_footer false in its facts).
+
+Why
+: Proof tests/pack_walleye.rs, real run: aarch64 busybox in the root image built on x86_64, boot.img partition-sized with AVBf, install.toml sha256s equal the files; landed lab-tools #481, read back from main de4e928.
+
+Rejected
+: arch from the host (wrong for a phone image); a per-distro arch flag on pack (the device says it, once); a random AVB salt (avbtool's; breaks same-bytes-twice); leaving back_wait to the write step (a dry run passed what the real run refused)
+
+About
+: osfact-pack-alpine-walleye

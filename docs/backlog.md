@@ -9997,10 +9997,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Closes osfact-walleye-alpine-skeleton; the device's [install] read from device.toml, not hard-coded; then walleye queues the phone run for its keeper (witness: the author). The root tree in walleye's image is aarch64 (the device's arch, from its declaration), built on this x86_64 host: osfact-root-tree-apk proved the rootless build with host-arch pins; if rootfs now builds only the host's arch, making it build the device's arch is part of this item (osfact-pins-per-arch covers pins taken on another host arch, which is not needed here).
+: Landed lab-tools #481 (de4e928): osfact pack now. Proof tests/pack_walleye.rs the_walleye_declaration_packs_an_installable_alpine_image passed on a real run (aarch64 busybox, boot.img 32 MiB with AVBf, install.toml sha256s). Open for the skeleton: how the root image reaches the phone from a fastboot boot (initramfs of the tree, or a flash step) - osfact-walleye-alpine-skeleton and walleye's keeper; walleye's device.toml needs [device] arch = aarch64.
 
 Opened
 : 2026-11-28

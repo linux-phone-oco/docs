@@ -7460,3 +7460,27 @@ Rejected
 
 About
 : osfact-root-tree-apk
+
+---
+
+
+<a id="2026-11-28-osfact-pack-now-landed"></a>
+### osfact pack now landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Built osfact pack now (root image, boot image, install.toml) test first; real run passed; programmer review fixed (declaration checked before any build, one hash, refusals name file and key); CI caught bringup's Boot literal, fixed; landed #481.
+
+Considered
+: the root image as a ramdisk of the fastboot boot (not decided: skeleton item)
+
+Rejected
+: none beyond the decision
+
+About
+: osfact-pack-alpine-walleye
