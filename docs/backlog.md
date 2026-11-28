@@ -9882,7 +9882,7 @@ Opened
 : 2026-11-28
 
 Blocked by
-: osfact-pack-alpine-walleye
+: osfact-root-to-ram
 
 Needs
 : build
@@ -10075,6 +10075,37 @@ Needs
 
 Device
 : google-walleye
+
+About
+: agnostic-layer
+
+
+<a id="osfact-root-to-ram"></a>
+### osfact install: after the fastboot boot, the root image is pushed compressed into RAM over the device's transport and entered - nothing flashed
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The skeleton's last open question (osfact-pack-alpine-walleye, lab-tools #481: how the root image reaches the phone from a fastboot boot). Walleye already proves the way: decisions 2026-11-27-walleye-mm-runs-in-a-pushed-alpine-rootfs and 2026-11-28-walleye-modem-push-the-rootfs-compressed (google-walleye-lab) push an aarch64 Alpine rootfs compressed into RAM over USB and enter it, nothing flashed. Generalise that into install.toml steps osfact runs (no device name in osfact's source): boot IMG from RAM; wait for the declared connection; push ROOT compressed to a RAM path; verify its sha256 on the device; enter it (switch_root, or chroot as walleye does today - the builder records which, with what it rejects); on any failure the declared way back. Move walleye's push code into osfact rather than copy it.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test on a stand-in device connection: osfact install now runs boot, push (compressed, sha256 checked on the far side), enter, in that order from install.toml; a sha256 mismatch or a lost connection runs the way back and fails naming the step; the dry run lists every step and refuses a flash. Then the skeleton's phone run (walleye's keeper, witnessed).
+
+Rank
+: 4
 
 About
 : agnostic-layer
