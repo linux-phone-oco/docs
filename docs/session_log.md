@@ -7412,3 +7412,27 @@ Rejected
 
 About
 : osfact-walleye-alpine-skeleton
+
+---
+
+
+<a id="2026-11-28-osfact-boot-adapter-landed"></a>
+### osfact boot adapter landed
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Moved avb, fdt and the header-v0 image from lpoco-bringup into osfact behind boot::BootFormat (lab-tools #476); os-word parsing now one place; test first, programmer review applied (stale docs, declaration wording, os-word refusal tests).
+
+Considered
+: bringup going through the trait; embedding osfact's Boot in the manifest
+
+Rejected
+: not done now: smallest change that moves the code; both are follow-ups
+
+About
+: osfact-boot-adapter

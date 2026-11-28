@@ -9941,10 +9941,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: done
 
 Note
-: Move, not copy: bringup/src/{avb,image,fdt,boot}.rs with their tests; lpoco-bringup then takes them from osfact (boundary.rs stays green; no device name in src/). Seam cost: the largest of the three (~1000 lines moved, bringup's callers rewired).
+: landed in lab-tools #476: osfact::boot (BootFormat, format(), Boot from a declaration's [boot]), android_bootimg, avb, fdt moved from lpoco-bringup; bringup/image.rs adapts the manifest's Boot. Proof: osfact/tests/boot_format.rs; workspace 1036 tests green. Follow-ups (not done): bringup calls the free functions, not the trait; manifest::Boot and osfact::boot::Boot declare the same [boot] fields twice (one should embed the other); manifest now pulls osfact's deps for os_word.
 
 Opened
 : 2026-11-28
