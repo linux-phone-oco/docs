@@ -9600,7 +9600,7 @@ Proof
 : osfact/tests/boundary.rs passes with the types in osfact; lpoco-manifest's schema test and every device.toml of the labs still read
 
 Rank
-: 9
+: 11
 
 About
 : image-factory-any-distro-any-phone
@@ -9634,7 +9634,7 @@ Proof
 : a test reads the two fixture profiles and refuses an unknown format; a test finds no distro name in osfact/src
 
 Rank
-: 10
+: 12
 
 About
 : image-factory-any-distro-any-phone
@@ -9668,7 +9668,7 @@ Proof
 : the Alpine half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=alpine, P:google-walleye-config in the apk database; the same sha256 built twice
 
 Rank
-: 12
+: 14
 
 About
 : image-factory-any-distro-any-phone
@@ -9702,7 +9702,7 @@ Proof
 : the Debian half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=debian, Package: google-walleye-config in dpkg status; the same sha256 built twice
 
 Rank
-: 13
+: 15
 
 About
 : image-factory-any-distro-any-phone
@@ -9736,7 +9736,7 @@ Proof
 : bringup/tests/pack_v0.rs and layer/tests pass against osfact's code; osfact/tests/boundary.rs passes
 
 Rank
-: 11
+: 13
 
 About
 : image-factory-any-distro-any-phone
@@ -9770,7 +9770,7 @@ Proof
 : lab-tools osfact/tests/walleye_two_distros.rs: both tests pass with --ignored on the lab host
 
 Rank
-: 14
+: 16
 
 About
 : image-factory-any-distro-any-phone
@@ -9804,7 +9804,7 @@ Proof
 : a bringup/tests/ensure test: an osfact recipe's image is refused by Nix when its sha256 differs, taken from the cache when it is there
 
 Rank
-: 15
+: 17
 
 About
 : image-factory-any-distro-any-phone
@@ -9860,7 +9860,7 @@ Proof
 : lab-tools CI green with lpoco-attended pinned to lpoco-manifest-v0.53.0, scaffold tests included; #472 closed as carried
 
 Rank
-: 8
+: 10
 
 About
 : attended-pin-is-one-pin
@@ -9882,7 +9882,7 @@ Opened
 : 2026-11-28
 
 Blocked by
-: osfact-root-to-ram
+: osfact-pack-writes-the-ram-root-plan,osfact-install-way-back-confirmed-and-quoted,manifest-device-arch
 
 Needs
 : build
@@ -9928,7 +9928,7 @@ Proof
 : lab-tools test: a misspelled field in each kind of file fails deserialization naming file and field; a dangling reference (a part, a kernel list or a package that does not exist; a sha256 that does not match) fails osfact check naming file and field; the generated schema of each file kind is byte-equal to the published one (a check in CI), and walleye's files pin it in their #:schema line
 
 Rank
-: 7
+: 9
 
 About
 : agnostic-layer
@@ -10049,7 +10049,7 @@ Proof
 : lab-tools test with a stand-in ntfy server: a filed prompt is published once with its step, to-do, to-check and limit; a reply for that prompt id becomes the answer and the run goes on, naming ntfy as who answered; a reply for another id is ignored; with no notify file the run starts, says so, and waits on the answer file as today. Then live: the author's phone shows the prompt and his reply reaches the run (walleye's keeper, witnessed).
 
 Rank
-: 6
+: 8
 
 About
 : attended-step-groups
@@ -10136,7 +10136,7 @@ Proof
 : lab-tools test: a device.toml with [device] arch = "aarch64" passes lpoco-lab manifest check and its schema names arch with its values; arch = "arm65" fails naming the field; the release's lpoco-lab reads google-walleye-lab's branch coordinator/device-arch
 
 Rank
-: 5
+: 7
 
 About
 : agnostic-layer
@@ -10165,6 +10165,40 @@ Device
 
 Proof
 : lab-tools test: pack of the walleye fixture writes an install.toml that install::read accepts with boot, push, enter in order, the root image's sha256 that of the compressed file
+
+Rank
+: 5
+
+About
+: agnostic-layer
+
+
+<a id="osfact-install-way-back-confirmed-and-quoted"></a>
+### osfact install: the way back is confirmed to have worked, and plan values are quoted in every shell line
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The two programmer-review findings left open by osfact-root-to-ram (lab-tools #482): (5) the way back is sent but never confirmed - after it, wait for the declared back_on connection to answer within a bound and fail loudly naming it if it does not, as lpoco-attended's back_to_known_good does (decision 2026-11-26-a-phone-s-way-back-to-its-known-good-is-declared); (8) plan values (paths, commands, sha256s from install.toml) go into shell lines unquoted - quote every value, or pass them as argv, and refuse a value that cannot be quoted. Both before osfact touches a phone.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools tests on the stand-in: a way back whose back_on never answers fails after the bound naming it, and one that answers passes; a plan value with a space, a quote, a semicolon or $(...) reaches the device as one literal argument and runs nothing
+
+Rank
+: 6
 
 About
 : agnostic-layer
