@@ -9842,10 +9842,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: dropped
 
 Note
-: rhizoid's bump lab-tools #472 (rhizoid/bump/lpoco-manifest-0.53.0, opened 2026-11-27) fails build, test, lint: attended's scaffold test check_dry_runs_every_procedure_and_names_the_one_that_fails, 15 passed 1 failed. As with 0.51.0, the builder moves attended's manifest pin itself in the same change as its fixtures and code, then closes #472 as carried.
+: rhizoid's bump lab-tools #472 (rhizoid/bump/lpoco-manifest-0.53.0, opened 2026-11-27) fails build, test, lint: attended's scaffold test check_dry_runs_every_procedure_and_names_the_one_that_fails, 15 passed 1 failed. As with 0.51.0, the builder moves attended's manifest pin itself in the same change as its fixtures and code, then closes #472 as carried. Dropped 2026-11-28: carried by rhizoid's own bumps - lab-tools #479 (0.54.0), #486 (0.55.0), #490 (0.56.0), each green; #472 closed. Nothing left to do by hand.
 
 Opened
 : 2026-11-27
