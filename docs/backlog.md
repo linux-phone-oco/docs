@@ -9873,10 +9873,10 @@ Project
 : linux-phone-oco/lab-tools
 
 Status
-: open
+: in-progress
 
 Note
-: First osfact row, by the author's focus (session log 2026-11-28-author-focus-osfact; decision 2026-11-27-osfact-own-rust-in-lab-tools). Build the thinnest osfact that packs ONE image end to end, then let every later row grow it: (1) inputs only what is already proven on walleye - the ufs-off kernel list (its int/ tag via kernel assemble), the modem, NFC and touch parts that work, walleye's rootless Alpine build (walleye-rootfs) for the root tree, the existing boot.img and AVB writers; (2) only what this needs of [install] and an alpine profile, typed in osfact, no Debian yet; (3) output: the image, its sha256 and install.toml; (4) one host command that boots it from RAM (fastboot boot, never flash) and, on any failure, runs the declared way back to Android. osfact keeps no lpoco crate in its tree (boundary.rs); lab-tools calls it. Reuse by moving code into osfact, not copying. The phone run is walleye's keeper's (witness: the author), queued by walleye from this item's install command.
+: Slice 1 landed (lab-tools #475): osfact install now --dry-run reads install.toml into enums, lists fastboot -s $SERIAL boot IMG then the way back, refuses a flash or a plan with no boot step; tests/no_names_in_source.rs fails on any distro or device name in src/ (Top Coordinator's seam request); boundary green. Still to do, in order: osfact-boot-adapter, osfact-root-tree-apk, osfact-pack-alpine-walleye; then the pack command prints sha256 and writes install.toml, and walleye queues the keeper run. apk.static, mmdebstrap not installed on the lab host (not known yet where walleye-rootfs gets apk).
 
 Opened
 : 2026-11-28
@@ -9926,6 +9926,69 @@ Proof
 
 Rank
 : 2
+
+About
+: agnostic-layer
+
+
+<a id="osfact-boot-adapter"></a>
+### osfact: the device adapter for the boot format - android-bootimg (header v0, appended dtb, AVB footer) moved from lpoco-bringup into osfact behind a boot-format interface, read from the declaration's [boot]
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Move, not copy: bringup/src/{avb,image,fdt,boot}.rs with their tests; lpoco-bringup then takes them from osfact (boundary.rs stays green; no device name in src/). Seam cost: the largest of the three (~1000 lines moved, bringup's callers rewired).
+
+Opened
+: 2026-11-28
+
+About
+: agnostic-layer
+
+
+<a id="osfact-root-tree-apk"></a>
+### osfact: the package-format interface and its apk adapter - a rootless root tree from a distro profile (apk --root --initdb --usermode), mke2fs -d under fakeroot, built twice and compared
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: The profile is data (tests/fixtures/distros/alpine.toml); osfact names only the format apk. Needs apk.static on the host (not found on PATH on 2026-11-28: look at how google-walleye-lab tools/walleye-rootfs gets it, and move that into osfact).
+
+Opened
+: 2026-11-28
+
+About
+: agnostic-layer
+
+
+<a id="osfact-pack-alpine-walleye"></a>
+### osfact pack now: the three stages joined for walleye's Alpine image, printing its sha256 and writing install.toml for install now
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Closes osfact-walleye-alpine-skeleton; the device's [install] read from device.toml, not hard-coded; then walleye queues the phone run for its keeper (witness: the author).
+
+Opened
+: 2026-11-28
+
+Blocked by
+: osfact-boot-adapter,osfact-root-tree-apk
+
+Proof
+: the_walleye_declaration_packs_an_installable_alpine_image
 
 About
 : agnostic-layer

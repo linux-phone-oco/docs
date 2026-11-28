@@ -7388,3 +7388,27 @@ Considered
 
 About
 : agnostic-layer
+
+---
+
+
+<a id="2026-11-28-osfact-install-slice"></a>
+### osfact: the install dry run and the seam check
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Landed lab-tools #475: osfact install now --dry-run (argenv, install.toml into enums, serial named, flash and no-step plans refused), tests/no_names_in_source.rs, programmer review's six findings fixed.
+
+Considered
+: Building pack whole in one run: it moves ~1000 lines from lpoco-bringup and needs apk.static, which the host lacks.
+
+Rejected
+: Hard-coding walleye or Alpine in osfact's source: the seam check fails on it; names live in fixtures and declarations.
+
+About
+: osfact-walleye-alpine-skeleton
