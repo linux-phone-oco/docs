@@ -9881,6 +9881,9 @@ Note
 Opened
 : 2026-11-28
 
+Blocked by
+: osfact-pack-alpine-walleye
+
 Needs
 : build
 
