@@ -9600,7 +9600,7 @@ Proof
 : osfact/tests/boundary.rs passes with the types in osfact; lpoco-manifest's schema test and every device.toml of the labs still read
 
 Rank
-: 7
+: 8
 
 About
 : image-factory-any-distro-any-phone
@@ -9634,7 +9634,7 @@ Proof
 : a test reads the two fixture profiles and refuses an unknown format; a test finds no distro name in osfact/src
 
 Rank
-: 8
+: 9
 
 About
 : image-factory-any-distro-any-phone
@@ -9668,7 +9668,7 @@ Proof
 : the Alpine half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=alpine, P:google-walleye-config in the apk database; the same sha256 built twice
 
 Rank
-: 10
+: 11
 
 About
 : image-factory-any-distro-any-phone
@@ -9702,7 +9702,7 @@ Proof
 : the Debian half of osfact/tests/walleye_two_distros.rs up to rootfs.img: ID=debian, Package: google-walleye-config in dpkg status; the same sha256 built twice
 
 Rank
-: 11
+: 12
 
 About
 : image-factory-any-distro-any-phone
@@ -9736,7 +9736,7 @@ Proof
 : bringup/tests/pack_v0.rs and layer/tests pass against osfact's code; osfact/tests/boundary.rs passes
 
 Rank
-: 9
+: 10
 
 About
 : image-factory-any-distro-any-phone
@@ -9770,7 +9770,7 @@ Proof
 : lab-tools osfact/tests/walleye_two_distros.rs: both tests pass with --ignored on the lab host
 
 Rank
-: 12
+: 13
 
 About
 : image-factory-any-distro-any-phone
@@ -9804,7 +9804,7 @@ Proof
 : a bringup/tests/ensure test: an osfact recipe's image is refused by Nix when its sha256 differs, taken from the cache when it is there
 
 Rank
-: 13
+: 14
 
 About
 : image-factory-any-distro-any-phone
@@ -9860,7 +9860,7 @@ Proof
 : lab-tools CI green with lpoco-attended pinned to lpoco-manifest-v0.53.0, scaffold tests included; #472 closed as carried
 
 Rank
-: 6
+: 7
 
 About
 : attended-pin-is-one-pin
@@ -9928,7 +9928,7 @@ Proof
 : lab-tools test: a misspelled field in each kind of file fails deserialization naming file and field; a dangling reference (a part, a kernel list or a package that does not exist; a sha256 that does not match) fails osfact check naming file and field; the generated schema of each file kind is byte-equal to the published one (a check in CI), and walleye's files pin it in their #:schema line
 
 Rank
-: 5
+: 6
 
 About
 : agnostic-layer
@@ -10022,3 +10022,34 @@ Rank
 
 About
 : agnostic-layer
+
+
+<a id="attended-ask-author-direct"></a>
+### lpoco-attended's ask_author reaches the author directly: a push to his phone, and his reply written to the run's answer file
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Asked by the Top through walleye 2026-11-28: tonight's PON control read lost two asks that sat in a busy keeper's message queue, and the run was parked (google-walleye-lab #1346). Today a prompt is only filed (~/.cache/lpoco-attended/DEVICE/prompt, mode 600) and DIR/answer is polled, so it reaches the author only if a session relays it. The lab has no ntfy client, topic or secret yet. Shape to build (the builder records a decision with what it rejects): when a prompt is filed, lpoco-attended publishes it - step, what to do, what to check, until when - to the author's ntfy topic over HTTPS (no Python, no new daemon of ours if ntfy's own subscribe can do), and his reply on a reply topic, or an ntfy action button, becomes DIR/answer with who: ntfy and for: ID. The topic and any access token live in a mode-600 file on the lab, never in a repository or CI; with no such file the run says so at start and keeps today's way. The author creates the topic and installs the app (his hands); until then the item is proved against a stand-in server.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test with a stand-in ntfy server: a filed prompt is published once with its step, to-do, to-check and limit; a reply for that prompt id becomes the answer and the run goes on, naming ntfy as who answered; a reply for another id is ignored; with no notify file the run starts, says so, and waits on the answer file as today. Then live: the author's phone shows the prompt and his reply reaches the run (walleye's keeper, witnessed).
+
+Rank
+: 5
+
+About
+: attended-step-groups
