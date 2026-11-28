@@ -10292,3 +10292,34 @@ Rank
 
 About
 : agnostic-layer
+
+
+<a id="osfact-pack-trusts-the-profile-keys"></a>
+### osfact pack builds for real on a clean host: the distro profile's signing keys come with it, not from the host's /etc/apk/keys
+
+Project
+: linux-phone-oco/lab-tools
+
+Status
+: open
+
+Note
+: Seen by walleye 2026-11-28 (google-walleye-lab, after #1373): the released osfact-v0.1.0's pack now on walleye's device.toml with lab-tools' alpine.toml stops at apk: 'UNTRUSTED APKINDEX signature', 'no such package alpine-base'. The earlier real build (osfact-root-tree-apk's ignored test) likely passed on a host that has Alpine's keys; the release does not bring them. The profile already names keys (decision 2026-11-27-osfact-own-rust-in-lab-tools: name, format, release, mirror, repositories, keys, ...): make them data osfact uses - each key by sha256, taken from the profile (or Alpine's alpine-keys package, pinned) into the build root's keys dir, never the host's; an unknown or mismatched key fails naming it. Release it, and tell orchestration the tag for walleye.
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Device
+: google-walleye
+
+Proof
+: lab-tools test that runs the release binary's pack now on walleye's fixture declaration and alpine.toml in a clean environment with no /etc/apk/keys and an empty HOME (e.g. a fresh container or an unshared mount), producing the image and install.toml; a profile key with a wrong sha256 fails naming it
+
+Rank
+: 1
+
+About
+: agnostic-layer
