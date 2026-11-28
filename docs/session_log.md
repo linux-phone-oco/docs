@@ -7580,3 +7580,27 @@ Rejected
 
 About
 : manifest-device-serial-env
+
+---
+
+
+<a id="2026-11-28-osfact-way-back-confirmed-and-plan-values-quoted"></a>
+### osfact way back confirmed and plan values quoted
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Built and landed lab-tools #492: back_on host argv confirms the way back within its wait (retry, kill at the bound, a failed send still confirmed); to/root absolute and quoted, receive/command/check split and word-quoted, unquotable values refused at read. Programmer review: all findings applied except fastboot way back (follow-up item) and run-time expect panics on an unread Plan (left as a read-only invariant).
+
+Considered
+: back_on as TCP address; down-first detection
+
+Rejected
+: see decision 2026-11-28-osfact-way-back-confirmed-by-a-host-back-on
+
+About
+: osfact-install-way-back-confirmed-and-quoted

@@ -3750,3 +3750,28 @@ Rejected
 
 About
 : manifest-device-arch
+
+
+<a id="2026-11-28-osfact-way-back-confirmed-by-a-host-back-on"></a>
+### 2026-11-28-osfact-way-back-confirmed-by-a-host-back-on
+
+Brief
+: osfact's way back is confirmed by a declared host command, back_on, and plan values reach the device quoted
+
+Project
+: linux-phone-oco/lab-tools
+
+Date
+: 2026-11-28
+
+Decision
+: [install.way_back] back_on is a host argv ({serial} = the device's serial) tried until it ends with status 0 within the way back's wait; required when the way back goes through the shell. A failed step's error says whether the device came back. to and root must be absolute paths (one quoted word); receive, command and check are split by shell rules and each word quoted; control characters, unclosed quotes, empty values and NUL are refused at read. The way back's own command stays one raw shell line (sync; echo b > /proc/sysrq-trigger), refused only for control characters.
+
+Why
+: The two review findings of lab-tools #482 (items 5 and 8): a restart that is only sent was never known to have worked; unquoted plan values reached a root shell. Walleye's known good is Android, which answers adb and has no TCP address, so a host command fits where an address would not (lab-tools #492).
+
+Rejected
+: back_on as a TCP address and port: walleye's android connection is adb with no address. Waiting for the shell to drop first: unmeasured on a phone, so back_on must name something only the known good answers. Quoting a command as one word: breaks nc -l -p 9001. Splicing values as before: a semicolon or command substitution ran on the phone.
+
+About
+: osfact-install-way-back-confirmed-and-quoted
