@@ -7718,3 +7718,27 @@ Considered
 
 About
 : osfact-receiver-job-control
+
+---
+
+
+<a id="2026-11-28-osfact-enter-observable-built"></a>
+### osfact enter observable built and released
+
+Project
+: linux-phone-oco/lab-tools
+
+Entry date
+: 2026-11-28
+
+Done
+: Built the run log, the shared enter lines and check_wait test-first over the loopback pty stand-in; reviewed by programmer; landed #506; released osfact 0.2.0.
+
+Considered
+: A Logged device wrapper over editing every call site.
+
+Rejected
+: A Python or shell glue for the edits (practice 21).
+
+About
+: osfact-enter-observable
